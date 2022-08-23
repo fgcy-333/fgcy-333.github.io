@@ -130,6 +130,244 @@
             
 
 <div class="post">
+    <a href="/2022/08/24/虚拟机/">
+        <h2>
+            虚拟机
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/23
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/院校帮/" style="color: #00bcd4">
+                院校帮
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/面试/" style="color: #03a9f4">
+                面试
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/java并发/" style="color: #ffa2c4">
+                java并发
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/24/虚拟机/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/24/框架篇/">
+        <h2>
+            框架篇
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/23
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="ApplicationContext-refresh"><a href="#ApplicationContext-refresh" class="headerlink" title="ApplicationContext refresh"></a>ApplicationContext refresh</h2><h2 id="refresh-12-个步骤"><a href="#refresh-12-个步骤" class="headerlink" title="refresh 12 个步骤"></a>refresh 12 个步骤</h2><p><code>1</code>是做一些准备工作<br><code>2-6</code>创建和准备beanfactory对象 bean的创建 bean的依赖注入 bean的初始化都是由beanfactory对象完成的<br><code>7-12</code>为applicationContext特有的功能作准备<br><code>11</code>是创建的单例bean的创建和初始化</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/院校帮/" style="color: #ffa2c4">
+                院校帮
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/面试/" style="color: #ffa2c4">
+                面试
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/java并发/" style="color: #00a596">
+                java并发
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/24/框架篇/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/24/基础篇/">
+        <h2>
+            基础篇
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/23
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、二分查找"><a href="#一、二分查找" class="headerlink" title="一、二分查找"></a>一、二分查找</h1><h3 id="1-0算法描述"><a href="#1-0算法描述" class="headerlink" title="1.0算法描述"></a>1.0<strong>算法描述</strong></h3><ol>
+<li><p>前提：有已排序数组 A（假设已经做好）</p>
+</li>
+<li><p>定义左边界 L、右边界 R，确定搜索范围，循环执行二分查找（3、4两步）</p>
+</li>
+<li><p>获取中间索引 M &#x3D; Floor((L+R) &#x2F;2)</p>
+</li>
+<li><p>中间索引的值  A[M] 与待搜索的值 T 进行比较</p>
+<p>① A[M] &#x3D;&#x3D; T 表示找到，返回中间索引</p>
+<p>② A[M] &gt; T，中间值右侧的其它元素都大于 T，无需比较，中间索引左边去找，M - 1 设置为右边界，重新查找</p>
+<p>③ A[M] &lt; T，中间值左侧的其它元素都小于 T，无需比较，中间索引右边去找， M + 1 设置为左边界，重新查找</p>
+</li>
+<li><p>当 L &gt; R 时，表示没有找到，应结束循环</p>
+</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/院校帮/" style="color: #ffa2c4">
+                院校帮
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/面试/" style="color: #ffa2c4">
+                面试
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/java并发/" style="color: #ffa2c4">
+                java并发
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/24/基础篇/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/24/并发篇/">
+        <h2>
+            并发篇
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/23
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="java线程状态-六种"><a href="#java线程状态-六种" class="headerlink" title="java线程状态(六种)"></a>java线程状态(六种)</h2>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/院校帮/" style="color: #ff7d73">
+                院校帮
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/面试/" style="color: #ffa2c4">
+                面试
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/java并发/" style="color: #00a596">
+                java并发
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/24/并发篇/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/08/22/第13章-约束/">
         <h2>
             第13章_约束
@@ -174,14 +412,14 @@
         
         <span class="tag">
             
-            <a href="/tags/宋红康/" style="color: #ffa2c4">
+            <a href="/tags/宋红康/" style="color: #00a596">
                 宋红康
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/MySQL/" style="color: #03a9f4">
+            <a href="/tags/MySQL/" style="color: #ff7d73">
                 MySQL
             </a>
         </span>
@@ -274,21 +512,21 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷/" style="color: #00a596">
+            <a href="/tags/尚硅谷/" style="color: #ffa2c4">
                 尚硅谷
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/宋红康/" style="color: #00a596">
+            <a href="/tags/宋红康/" style="color: #00bcd4">
                 宋红康
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/MySQL/" style="color: #ffa2c4">
+            <a href="/tags/MySQL/" style="color: #ff7d73">
                 MySQL
             </a>
         </span>
@@ -331,21 +569,21 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷/" style="color: #ff7d73">
+            <a href="/tags/尚硅谷/" style="color: #00a596">
                 尚硅谷
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/宋红康/" style="color: #ff7d73">
+            <a href="/tags/宋红康/" style="color: #ffa2c4">
                 宋红康
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/MySQL/" style="color: #00a596">
+            <a href="/tags/MySQL/" style="color: #03a9f4">
                 MySQL
             </a>
         </span>
@@ -389,21 +627,21 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷/" style="color: #ff7d73">
+            <a href="/tags/尚硅谷/" style="color: #00bcd4">
                 尚硅谷
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/宋红康/" style="color: #03a9f4">
+            <a href="/tags/宋红康/" style="color: #00bcd4">
                 宋红康
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/MySQL/" style="color: #00a596">
+            <a href="/tags/MySQL/" style="color: #ff7d73">
                 MySQL
             </a>
         </span>
@@ -454,14 +692,14 @@
         
         <span class="tag">
             
-            <a href="/tags/宋红康/" style="color: #ffa2c4">
+            <a href="/tags/宋红康/" style="color: #00a596">
                 宋红康
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/MySQL/" style="color: #00a596">
+            <a href="/tags/MySQL/" style="color: #ff7d73">
                 MySQL
             </a>
         </span>
@@ -505,245 +743,6 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷/" style="color: #ff7d73">
-                尚硅谷
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/宋红康/" style="color: #ff7d73">
-                宋红康
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/MySQL/" style="color: #00bcd4">
-                MySQL
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/22/第08章-聚合函数/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/22/第07章-单行函数/">
-        <h2>
-            第07章_单行函数
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/21
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="第07章-单行函数"><a href="#第07章-单行函数" class="headerlink" title="第07章_单行函数"></a>第07章_单行函数</h1><h2 id="1-函数的理解"><a href="#1-函数的理解" class="headerlink" title="1. 函数的理解"></a>1. 函数的理解</h2><h3 id="1-1-什么是函数"><a href="#1-1-什么是函数" class="headerlink" title="1.1 什么是函数"></a>1.1 什么是函数</h3><p>把我们经常使用的代码封装起来，需要的时候直接调用即可</p>
-<p>这样既<code>提高了代码效率</code>，又<code>提高了可维护性</code></p>
-<p>在 SQL 中我们也可以使用函数对检索出来的数据进行函数操作</p>
-<p>使用这些函数，可以极大地<code>提高用户对数据库的管理效率</code>。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/尚硅谷/" style="color: #00bcd4">
-                尚硅谷
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/宋红康/" style="color: #00bcd4">
-                宋红康
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/MySQL/" style="color: #ffa2c4">
-                MySQL
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/22/第07章-单行函数/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/22/第06章-多表查询/">
-        <h2>
-            第06章_多表查询
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/21
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="第06章-多表查询"><a href="#第06章-多表查询" class="headerlink" title="第06章_多表查询"></a>第06章_多表查询</h1><p>多表查询，也称为关联查询，指两个或更多个表一起完成查询操作。</p>
-<p>前提条件：这些一起查询的表之间是有关系的（一对一、一对多），它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。比如：员工表和部门表，这两个表依靠“部门编号”进行关联。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/尚硅谷/" style="color: #ff7d73">
-                尚硅谷
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/宋红康/" style="color: #03a9f4">
-                宋红康
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/MySQL/" style="color: #00a596">
-                MySQL
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/22/第06章-多表查询/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/22/第05章-排序与分页/">
-        <h2>
-            第05章_排序与分页
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/21
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="第05章-排序与分页"><a href="#第05章-排序与分页" class="headerlink" title="第05章_排序与分页"></a>第05章_排序与分页</h1><hr>
-<h2 id="1-排序数据"><a href="#1-排序数据" class="headerlink" title="1. 排序数据"></a>1. 排序数据</h2><h3 id="1-1-排序规则"><a href="#1-1-排序规则" class="headerlink" title="1.1 排序规则"></a>1.1 排序规则</h3><p>如果没有是使用排序规则，默认按照添加顺序进行排序</p>
-<ul>
-<li>使用 ORDER BY 子句排序<ul>
-<li><strong>ASC（ascend）: 升序</strong></li>
-<li><strong>DESC（descend）:降序</strong></li>
-</ul>
-</li>
-<li><strong>ORDER BY 子句在SELECT语句的结尾</strong></li>
-</ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/尚硅谷/" style="color: #ff7d73">
-                尚硅谷
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/宋红康/" style="color: #ff7d73">
-                宋红康
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/MySQL/" style="color: #ff7d73">
-                MySQL
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/22/第05章-排序与分页/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/22/第04章-运算符/">
-        <h2>
-            第04章_运算符
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/21
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="第04章-运算符"><a href="#第04章-运算符" class="headerlink" title="第04章_运算符"></a>第04章_运算符</h1><hr>
-<h2 id="1-算术运算符"><a href="#1-算术运算符" class="headerlink" title="1. 算术运算符"></a>1. 算术运算符</h2><p>算术运算符主要用于数学运算，其可以连接运算符前后的两个数值或表达式</p>
-<p>对数值或表达式进行加（+）、减（-）、乘（*）、除（&#x2F;）和取模（%）运算</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
             <a href="/tags/尚硅谷/" style="color: #03a9f4">
                 尚硅谷
             </a>
@@ -751,20 +750,20 @@
         
         <span class="tag">
             
-            <a href="/tags/宋红康/" style="color: #00bcd4">
+            <a href="/tags/宋红康/" style="color: #00a596">
                 宋红康
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/MySQL/" style="color: #ffa2c4">
+            <a href="/tags/MySQL/" style="color: #03a9f4">
                 MySQL
             </a>
         </span>
         
     </div>
-    <a href="/2022/08/22/第04章-运算符/" class="go-post">
+    <a href="/2022/08/22/第08章-聚合函数/" class="go-post">
         阅读全文
     </a>
 </div>
