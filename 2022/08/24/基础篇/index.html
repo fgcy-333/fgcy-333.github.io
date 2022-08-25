@@ -118,6 +118,15 @@
             2022/8/23
         </span>
         
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
         
         <span class="tags">
             <span class="icon">
@@ -126,21 +135,21 @@
             
             <span class="tag">
                 
-                <a href="/tags/院校帮/" style="color: #03a9f4">
+                <a href="/tags/院校帮/" style="color: #ff7d73">
                     院校帮
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/面试/" style="color: #ffa2c4">
+                <a href="/tags/面试/" style="color: #00a596">
                     面试
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/java并发/" style="color: #00a596">
+                <a href="/tags/java并发/" style="color: #00bcd4">
                     java并发
                 </a>
             </span>
@@ -990,9 +999,9 @@ public Iterator&lt;E&gt; iterator() &#123;
 </ol>
 <p>两者比较：<br>    ArrayList</p>
 <pre><code> 1. 基于数组，需要连续内存
- 2. 随机访问快【根据下标访问】（根据数组地址，元素类型，索引综合计算）直接得到想要访问元素的地址
- 3. 尾部插入、删除性能尚可；其他地方插入、删除需要移动元素，性能较低(尤其是头部)【综合性能ArrayList要优于LinkedList】
- 4. 可以利用cpu缓存(cpu与内存之间访问所需的时间较长，所以使用cpu缓存，来提升读写性能)，局部性原理(访问一个数据的时候，cpu会默认认为它附近的元素有很大概	   率会被访问，所以一并加载进cpu缓存)
+  2. 随机访问快【根据下标访问】（根据数组地址，元素类型，索引综合计算）直接得到想要访问元素的地址
+  3. 尾部插入、删除性能尚可；其他地方插入、删除需要移动元素，性能较低(尤其是头部)【综合性能ArrayList要优于LinkedList】
+  4. 可以利用cpu缓存(cpu与内存之间访问所需的时间较长，所以使用cpu缓存，来提升读写性能)，局部性原理(访问一个数据的时候，cpu会默认认为它附近的元素有很大概	   率会被访问，所以一并加载进cpu缓存)
 </code></pre>
 <p>LinkedList</p>
 <ol>
@@ -1119,9 +1128,9 @@ public Iterator&lt;E&gt; iterator() &#123;
 </ul>
 <p>1.7: </p>
 <pre><code> 1. 数组 + 链表
- 2. 链表插入节点时使用头插法
- 3. 当前元素个数大于等于阈值(当前数组长度的四分之三)且要插入的元素的桶下标对应的位置有元素时，才进行扩容；
- 4. 扩容后，要迁移元素；计算Node桶下标时没有优化（二次hash值 &amp; oldCapacity == 0则不用移动；否则移动到新的桶下标位置去 新位置=当前桶下标					+oldCacity）
+  2. 链表插入节点时使用头插法
+  3. 当前元素个数大于等于阈值(当前数组长度的四分之三)且要插入的元素的桶下标对应的位置有元素时，才进行扩容；
+  4. 扩容后，要迁移元素；计算Node桶下标时没有优化（二次hash值 &amp; oldCapacity == 0则不用移动；否则移动到新的桶下标位置去 新位置=当前桶下标					+oldCacity）
 </code></pre>
 <p>1.8: </p>
 <pre><code> 1.  数组 + 链表(或红黑树)
@@ -1373,7 +1382,7 @@ public Iterator&lt;E&gt; iterator() &#123;
 <pre><code>1. 字符串中的每个字符都可以表现为一个数字，称为Si，i的范围是 0到n-1，n是元素个数
 2. 代入散列公式： 
 
-  S0*31^ n-1+S1*31^ n-2+s3*31^N-3+...&quot;123456&quot; 49*31^5 + 50*31^4 + 51*31^3 + 52*31^2 + 53*31^1 + 54*31^0
+S0*31^ n-1+S1*31^ n-2+s3*31^N-3+...&quot;123456&quot; 49*31^5 + 50*31^4 + 51*31^3 + 52*31^2 + 53*31^1 + 54*31^0
 
 3. `  31`  代入公式有较好的散列特性，并且算数可以优化 31x = (32-1)x = 32x-x = 2^5x-x = x&lt;&lt;5-x
 </code></pre>
