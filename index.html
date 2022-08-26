@@ -130,9 +130,9 @@
             
 
 <div class="post">
-    <a href="/2022/08/27/SpringBoot/">
+    <a href="/2022/08/27/static关键字与单例与代码段与继承/">
         <h2>
-            SpringBoot
+            Static关键字与单例与代码段与继承
         </h2>
     </a>
     <div class="category-and-date">
@@ -149,23 +149,16 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/26
+            2022/8/27
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="第一章-JavaConfig"><a href="#第一章-JavaConfig" class="headerlink" title="第一章  JavaConfig"></a>第一章  JavaConfig</h1><ol>
-<li><p>为什么要使用 Spring Boot</p>
-<p>因为Spring， SpringMVC 需要使用的大量的配置文件 （xml文件）</p>
-<p>还需要配置各种对象，把使用的对象放入到spring容器中才能使用对象</p>
-<p>需要了解其他框架配置规则</p>
-</li>
-<li><p>SpringBoot 就相当于 <strong>不需要配置文件的Spring+SpringMVC</strong>。 <strong>常用的框架和第三方库都已经配置好了</strong>。</p>
-<p>拿来就可以使用了<strong>。【开箱即用】</strong></p>
-</li>
-<li><p>SpringBoot开发效率高，使用方便多了</p>
-</li>
+            <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="static概述"><a href="#static概述" class="headerlink" title="static概述"></a>static概述</h3><p>static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；<br>static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。</p>
+<h3 id="成员变量可以分为两种"><a href="#成员变量可以分为两种" class="headerlink" title="成员变量可以分为两种"></a>成员变量可以分为两种</h3><ol>
+<li>实例成员变量：类内方法外，无static修饰，属于每一个对象</li>
+<li>静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问</li>
 </ol>
             
         </div>
@@ -179,21 +172,21 @@
         
         <span class="tag">
             
-            <a href="/tags/动力节点-王鹤-SpringBoot/" style="color: #ffa2c4">
-                动力节点-王鹤-SpringBoot
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
+                黑马程序员-徐磊-java基础
             </a>
         </span>
         
     </div>
-    <a href="/2022/08/27/SpringBoot/" class="go-post">
+    <a href="/2022/08/27/static关键字与单例与代码段与继承/" class="go-post">
         阅读全文
     </a>
 </div>
 
 <div class="post">
-    <a href="/2022/08/27/SpringMVC/">
+    <a href="/2022/08/27/包与修饰符与抽象类与接口/">
         <h2>
-            SpringMVC
+            包与修饰符与抽象类与接口
         </h2>
     </a>
     <div class="category-and-date">
@@ -210,143 +203,29 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/26
+            2022/8/27
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="SpringMVC概述"><a href="#SpringMVC概述" class="headerlink" title="SpringMVC概述"></a>SpringMVC概述</h1><h2 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h2><p>  它是<strong>基于MVC开发模式</strong>的<strong>框架</strong>,用来优化控制器.它是Spring家族的一员.它也具备IOC和AOP.</p>
-<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC?"></a>什么是MVC?</h2><p>  它是一种<strong>开发模式</strong>,它是模型 视图 控制器的简称.所有的<strong>web应用都是基于MVC开发</strong>.</p>
-<ul>
-<li>M:模型层,包含实体类,业务逻辑层,数据访问层</li>
-<li>V:视图层,html,javaScript,vue等都是视图层,用来显现数据</li>
-<li>C:控制器,它是用来接收客户端的请求,并返回响应到客户端的组件,Servlet就是组件</li>
-</ul>
-<p><strong>图解MVC</strong></p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261738023.png" alt="image-20220509122947011"></p>
-<hr>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/动力节点-张啊荣-SpringMVC/" style="color: #ffa2c4">
-                动力节点-张啊荣-SpringMVC
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/SpringMVC/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/动态代理/">
-        <h2>
-            动态代理
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/26
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="一、什么是代理模式"><a href="#一、什么是代理模式" class="headerlink" title="一、什么是代理模式"></a>一、什么是代理模式</h2><ul>
-<li>代理模式是指，为<strong>目标对象</strong>提供一种代理<strong>以控制对这个对象的访问</strong></li>
-<li>在某些情况下， 一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户和目标对象之间起到中介的作用；</li>
-<li>使用代理对象，是<strong>为了在不修改目标对象的基础上，增强主业务逻辑</strong>。</li>
-</ul>
-<p>客户类<strong>真正的想要访问的对象是目标对象</strong>，但客户类真正可以访问的对象是代理对象。</p>
-<p><strong>客户类对目标对象的访问是通过访问代理对象来实现的</strong></p>
-<h2 id="二、代理模式的作用"><a href="#二、代理模式的作用" class="headerlink" title="二、代理模式的作用"></a>二、代理模式的作用</h2><p>1.控制目标对象【被代理对象】的访问<br>2.使用代理对象，是<strong>为了在不修改目标对象的基础上，增强主业务逻辑</strong>。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/动力节点-张啊荣-动态代理/" style="color: #00bcd4">
-                动力节点-张啊荣-动态代理
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/java/" style="color: #ff7d73">
-                java
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/动态代理/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/Mybatis/">
-        <h2>
-            Mybatis
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/26
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="一、框架概述"><a href="#一、框架概述" class="headerlink" title="一、框架概述"></a>一、框架概述</h1><h2 id="1-软件开发常用结构"><a href="#1-软件开发常用结构" class="headerlink" title="1.软件开发常用结构"></a>1.软件开发常用结构</h2><h3 id="1-1-三层架构"><a href="#1-1-三层架构" class="headerlink" title="1.1.三层架构"></a>1.1.三层架构</h3><p>什么是三层架构<br>  在项目开发中,遵循的一种形式模式.分为三层.<br>  界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer)<br>      1)界面层表示层，视图层):用来接收客 户端的输入,调用业务逻辑层进行功能处理,返回结果给客户端.过去的servlet就是界面层的功能.<br>      2)业务逻辑层:用来进行整个项目的业务逻辑处理,向上为界面层提供处理结果,向下问数据访问层要数据.<br>      3)数据访问层:专门用来进行数据库的增删改查操作,向上为业务逻辑层提供数据.</p>
-<ul>
-<li><strong>三层的处理请求的交互：</strong></li>
-</ul>
-<pre><code>客户端&lt;---&gt;界面层&lt;---&gt;业务逻辑层&lt;---&gt;数据访问层&lt;---&gt;数据库。
+            <h1 id="一、包"><a href="#一、包" class="headerlink" title="一、包"></a>一、包</h1><h2 id="1-0-概念"><a href="#1-0-概念" class="headerlink" title="1.0 概念"></a>1.0 概念</h2><ol>
+<li><p>包是用来分门别类的管理各种不同类的、建包利于程序的管理和维护</p>
+</li>
+<li><p>建包的语法格式：package 公司域名倒写.技术名称。报名建议全部英文小写，且具备意义</p>
+</li>
+<li><p>建包语句必须在第一行，一般IDEA工具会帮助创建</p>
+<pre><code class="java">    package com.itheima.javabean;//建包语句
+    public class Student &#123;
+    &#125;
 </code></pre>
-<p>  各层之间的调用顺序是固定的,不允许跨层访问</p>
+<p> <strong>注意：</strong></p>
+<p>带包编译某个目录下的全部java文件</p>
+<blockquote>
+<p>javac -d . *.java</p>
+</blockquote>
+</li>
+</ol>
             
         </div>
     </div>
@@ -359,21 +238,21 @@
         
         <span class="tag">
             
-            <a href="/tags/动力节点-张啊荣-Mybatis/" style="color: #00bcd4">
-                动力节点-张啊荣-Mybatis
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                黑马程序员-徐磊-java基础
             </a>
         </span>
         
     </div>
-    <a href="/2022/08/27/Mybatis/" class="go-post">
+    <a href="/2022/08/27/包与修饰符与抽象类与接口/" class="go-post">
         阅读全文
     </a>
 </div>
 
 <div class="post">
-    <a href="/2022/08/27/javaweb-servlet-jsp-tomcat/">
+    <a href="/2022/08/27/多态与内部类与常用API/">
         <h2>
-            Javaweb-Servlet-Jsp-Tomcat
+            多态与内部类与常用API
         </h2>
     </a>
     <div class="category-and-date">
@@ -390,183 +269,1150 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/26
+            2022/8/27
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="一、系统架构"><a href="#一、系统架构" class="headerlink" title="一、系统架构"></a>一、系统架构</h1><h2 id="1-0-C-x2F-S架构"><a href="#1-0-C-x2F-S架构" class="headerlink" title="1.0 C&#x2F;S架构"></a>1.0 C&#x2F;S<strong>架构</strong></h2><p>1.0 Client &#x2F; Server（客户端 &#x2F; 服务器）</p>
-<p>2.0 C&#x2F;S架构的特点</p>
-<ul>
-<li>需要   <strong>安装</strong>   特定的   <strong>客户端软件</strong>   。</li>
+            <h1 id="一、面向对象的三大特征之多态"><a href="#一、面向对象的三大特征之多态" class="headerlink" title="一、面向对象的三大特征之多态"></a>一、面向对象的三大特征之多态</h1><h2 id="1-0-什么是多态？"><a href="#1-0-什么是多态？" class="headerlink" title="1.0 什么是多态？"></a>1.0 什么是多态？</h2><ul>
+<li>同类型的对象，执行同一个行为，会表现出不同的行为特征。</li>
 </ul>
-<p>3.0    <strong>C&#x2F;S架构   的系统</strong>   优点和缺点分别是什么？</p>
-<ul>
-<li><p>优点：</p>
-<ul>
-<li>速度快（软件中的   <strong>数据大部分</strong>    都是   集成到<strong>客户端软件</strong>当中    的，    <strong>很少量的数据</strong>     <code> 从服务器端传送过来</code>，所以C&#x2F;S结构的系统速度快）</li>
-<li>界面酷炫（专门的语言去实现界面的，不仅是HTML &#x2F; CSS &#x2F; JS。）</li>
-<li>体验好（速度又快，界面又酷炫，当然体验好了。）</li>
-<li>服务器压力小（因为大量的数据都是集成在客户端软件当中，所以     <code>  服务器</code>      只需要传送      <strong>很少的数据量</strong>，当然服务器压力小。）</li>
-<li>安全（因为大量的数据是集成在客户端软件当中的，并且客户端有很多个，服务器虽然只有一个，就算服务器那边地震了，火灾了，服务器受损了，问题也不大，因为大量的数据在多个    <strong>客户端上有缓  存</strong>   ，有存储，所以从这个方面来说，<strong>C&#x2F;S结构的系统比较安全。数据安全</strong>）</li>
-<li>…..</li>
+<h2 id="2-0-多态的常见形式"><a href="#2-0-多态的常见形式" class="headerlink" title="2.0 多态的常见形式"></a>2.0 多态的常见形式</h2><ol>
+<li>父类类型 对象名称 &#x3D; new 子类构造器;</li>
+<li>接口 对象名称 &#x3D; new 实现类构造器;</li>
+</ol>
+<h2 id="3-0-多态中成员访问特点"><a href="#3-0-多态中成员访问特点" class="headerlink" title="3.0 多态中成员访问特点"></a>3.0 多态中成员访问特点</h2><ul>
+<li>方法调用：编译看左边，运行看右边。</li>
+<li>变量调用：编译看左边，运行也看左边。（多态侧重行为多态）</li>
 </ul>
+<h2 id="4-0-多态三前提"><a href="#4-0-多态三前提" class="headerlink" title="4.0 多态三前提"></a>4.0 多态三前提</h2><ol>
+<li><p>继承关系 </p>
 </li>
-<li><p>缺点：</p>
-<ul>
-<li><strong>升级维护</strong>    比较差劲。（升级维护比较麻烦。成本比较高。每一个客户端软件都需要升级。有一些软件不是那么容易安装的。）</li>
+<li><p>父句柄(引用)指向子类对象(向上转型) </p>
+</li>
+<li><p>方法重写</p>
+</li>
+</ol>
+<h2 id="5-0-注意"><a href="#5-0-注意" class="headerlink" title="5.0 注意"></a>5.0 注意</h2><ul>
+<li>多态是行为多态而不是属性多态</li>
 </ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/动力节点-老杜-javaWeb/" style="color: #ff7d73">
-                动力节点-老杜-javaWeb
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/javaweb-servlet-jsp-tomcat/" class="go-post">
-        阅读全文
-    </a>
-</div>
+<h2 id="6-0-多态案例"><a href="#6-0-多态案例" class="headerlink" title="6.0 多态案例"></a>6.0 多态<strong>案例</strong></h2><pre><code class="java">package inteface_demo;
 
-<div class="post">
-    <a href="/2022/08/26/动力Spring/">
-        <h2>
-            动力Spring
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/25
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="Spring框架是什么"><a href="#Spring框架是什么" class="headerlink" title="Spring框架是什么"></a>Spring框架是什么</h1><ul>
-<li><p>Spring是于2003年兴起的一个<strong>轻量级</strong>的Java开发框架,它是为了<strong>解决企业应用开发的复杂性而创建的</strong>。</p>
-</li>
-<li><p>Spring的<strong>核心是控制反转(loc)和面向切面编程(AOP)</strong> </p>
-</li>
-<li><p>Spring是可以在Java SE&#x2F;EE中使用的轻量级开源框架。 </p>
-</li>
-<li><p>Spring 的主要作用就是为代码“解耦”，降低代码间的耦合度。</p>
-</li>
-<li><p>就是让<strong>对象和对象（模块和模块）之间关系不是使用代码关联</strong>，而是<strong>通过配置来说明</strong>。即在 Spring 中说明对象（模块）的关系。</p>
-</li>
-<li><p>Spring 根据代码的功能特点，使用 <strong>Ioc 降低业务对象之间耦合度</strong>。</p>
-</li>
-<li><p>Ioc使得主业务在相互调用过程中，不用再自己维护关系了，即<strong>不用再自己创建要使用的对象</strong>了。</p>
-</li>
-<li><p>而是由 <strong>Spring 容器统一管理</strong>，自动“注入”,注入即赋值。</p>
-</li>
-<li><p>而 AOP 使得系统级服务得到了最大复用，且不用再由程序员手工<strong>将系统级服务“混杂”到主业务逻辑中</strong>了，而是<strong>由 Spring 容器统一完成“织入”</strong>。</p>
-</li>
-<li><p>它是整合其它框架的框架.</p>
-</li>
-<li><p>Spring 是存储对象的容器.</p>
-</li>
-<li><p>它的核心是IOC和AOP.</p>
-</li>
-<li><p>它由20多个模块构成.它在很多领域都提供优秀的解决方案</p>
-</li>
-</ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/动力节点-张啊荣-Spring/" style="color: #ff7d73">
-                动力节点-张啊荣-Spring
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/26/动力Spring/" class="go-post">
-        阅读全文
-    </a>
-</div>
+import javafx.animation.Animation;
 
-<div class="post">
-    <a href="/2022/08/25/String与ArrayList的基本使用/">
-        <h2>
-            String与ArrayList的基本使用
-        </h2>
-    </a>
-    <div class="category-and-date">
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/8
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public class Animal &#123;
+    public String name = &quot;父类动物&quot;;
+
+
+    public void run() &#123;
+        System.out.println(&quot;动物跑&quot;);
+    &#125;
+&#125;
+
+
+class Dog extends Animal &#123;
+    public String name = &quot;子类狗&quot;;
+
+    @Override
+    public void run() &#123;
+        System.out.println(&quot;狗刨&quot;);
+    &#125;
+&#125;
+
+class Cat extends Animal &#123;
+    public String name = &quot;子类猫&quot;;
+
+    @Override
+    public void run() &#123;
+        System.out.println(&quot;猫跑&quot;);
+    &#125;
+&#125;
+
+class Test &#123;
+    public static void main(String[] args) &#123;
+        final Animal cat = new Cat();//1.继承关系 2.父句柄(引用)指向子类对象(向上转型) 3.方法重写 格式:父类类型/接口=new 子类构造器/实现类构造器
+        cat.run();//多态指的是方法多态，编译看左边，运行看右边（编译的时候看看左边类型的变量有没有这个方法，真正是运行右边的对象的方法）
+        System.out.println(cat.name);//对于变量就不涉及多态，即编译看左边，运行也看左边
+
+        final Animal dog = new Dog();
+        dog.run();
+        System.out.println(dog.name);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="7-0-多态优势"><a href="#7-0-多态优势" class="headerlink" title="7.0 多态优势"></a>7.0 多态优势</h2><ul>
+<li><p>在多态的形势下，右边的对象可以实现解耦合，便于扩展与维护</p>
+<pre><code>Animal a = new Dog();//这只狗可以随时替换掉，换成猫；下面的业务照跑
+a.run();
+</code></pre>
+</li>
+<li><p>定义方法的时候，使用父类型作为参数，该方法就可以接收这父类的一切子类对象，体现出多态的扩展性与便利</p>
+</li>
+</ul>
+<pre><code class="java">package inteface_demo;
+
+
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/8
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public abstract class Animal &#123;
+    private String name;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public Animal(String name) &#123;
+        this.name = name;
+    &#125;
+
+    abstract void run();
+&#125;
+
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/9
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+class Dog extends Animal &#123;
+    
+    public Dog(String name) &#123;
+        super(name);
+    &#125;
+
+    @Override
+    public void run() &#123;
+        System.out.println(getName() + &quot;狗刨&quot;);
+
+    &#125;
+&#125;
+
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/9
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+class Cat extends Animal &#123;
+    public Cat(String name) &#123;
+        super(name);
+    &#125;
+
+    @Override
+    public void run() &#123;
+        System.out.println(getName() + &quot;猫跑&quot;);
+    &#125;
+&#125;
+
+class MyTest &#123;
+    //这个方法通过多态类型的局部变量来接收参数，提高了扩展性，可以接收这个类本类和所有的子类
+    public static void go(Animal animal) &#123;
+        System.out.println(&quot;开始&quot;);
+        animal.run();
+        System.out.println(&quot;结束&quot;);
+    &#125;
+
+
+    public static void main(String[] args) &#123;
+        final Dog dog = new Dog(&quot;旺财&quot;);//局部变量收到该值（子类对象）时体现多态
+        final Animal dog2 = new Dog(&quot;旺财&quot;);//此时就体现多态
+        final Cat cat = new Cat(&quot;Tom&quot;);
+        final Animal cat2 = new Cat(&quot;Tom&quot;);
+        go(dog);//这个被称为-------》对象回调，我把对象送过去，执行的是这个对象的方法
+        go(cat);
+    &#125;
+
+
+&#125;
+</code></pre>
+<h2 id="8-0-问题"><a href="#8-0-问题" class="headerlink" title="8.0 问题"></a>8.0 问题</h2><p>多态下不能使用子类的独有功能<br>原因编译看左边，运行看右边，所以编译时就会报错<br>    解决：<br>     向下转型，强制类型转化</p>
+<h3 id="8-1-引用数据类型的类型转换"><a href="#8-1-引用数据类型的类型转换" class="headerlink" title="8.1 引用数据类型的类型转换"></a>8.1 引用数据类型的类型转换</h3><ul>
+<li><p><strong>自动类型转换</strong></p>
+<p>（从子到父)：子类对象赋值给父类类型的变量指向。</p>
+</li>
+<li><p><strong>强制类型转换</strong></p>
+<p>（从父到子)：此时必须进行强制类型转换：子类 对象变量 &#x3D; (子类)父类类型的变量</p>
+<p>注意</p>
+<pre><code class="java">如果转型后的类型和对象真实类型不是同一种类型，那么在转换的时候就会出现ClassCastException;
+        Animal t = new Tortoise();
+//有继承关系/实现的2个类型就可以进行强制转换，编译无问题;如果发现强制转换后的类型不是对象真实类型则出现异常 ClassCastException
+        Dog d = (Dog)t; 
         
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/24
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
+Java建议强转转换前使用instanceof判断当前对象的真实类型，再进行强制转换
+    变量名 instanceof 真实类型
+    判断关键字左边的变量指向的对象的真实类型，是否是右边的类型或者是其子类类型，是则返回true，反之
+    
+    
+    //String与基本数据类型及其包装类之间不能强转-------》ClassCaseException
+       /*     
+        Object a = &quot;aaa&quot;;
+        int b = (int) a;
+        Object a=123;
+        String b=(String) a;
+        */
+</code></pre>
+<pre><code class="java">package inteface_demo;
+
+
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/8
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public abstract class Animal &#123;
+    private String name;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public Animal(String name) &#123;
+        this.name = name;
+    &#125;
+
+    abstract void run();
+&#125;
+
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/9
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+class Dog extends Animal &#123;
+    public Dog(String name) &#123;
+        super(name);
+    &#125;
+
+    @Override
+    public void run() &#123;
+        System.out.println(getName() + &quot;狗刨&quot;);
+
+    &#125;
+
+    public void eat() &#123;
+        System.out.println(&quot;狗吃⑩&quot;);
+    &#125;
+&#125;
+
+/**
+ * ClassName: Animal
+ * Description:
+ * date:2022/3/9
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+class Cat extends Animal &#123;
+    public Cat(String name) &#123;
+        super(name);
+    &#125;
+
+    @Override
+    public void run() &#123;
+        System.out.println(getName() + &quot;猫跑&quot;);
+    &#125;
+
+    public void eat() &#123;
+        System.out.println(&quot;猫吃九&quot;);
+    &#125;
+&#125;
+
+class MyTest &#123;
+    //这个方法通过多态类型的局部变量来接收参数，提高了扩展性，可以接收这个类本类和所有的子类
+    public static void go(Animal animal) &#123;
+
+        if (animal instanceof Dog) &#123;//判断左边是否是右边的本类型或者是子类型
+            Dog dog = (Dog) animal;//只要两者由继承关系，编译时就不会报错；但如果类型不一致，运行时就会报ClassCaseException
+            dog.eat();
+        &#125;
+        if (animal instanceof Cat) &#123;
+            Cat cat = (Cat) animal;
+            cat.eat();
+        &#125;
+    &#125;
+
+
+    public static void main(String[] args) &#123;
+        final Cat cat = new Cat(&quot;汤姆&quot;);
+        go(cat);
+        final Dog dog = new Dog(&quot;谢狗&quot;);
+        go(dog);
+    &#125;
+&#125;
+</code></pre>
+<p>好处</p>
+<p>可以解决多态下的劣势，可以实现调用子类独有的功能</p>
+<h2 id="9-0-多态综合案例"><a href="#9-0-多态综合案例" class="headerlink" title="9.0 多态综合案例"></a>9.0 多态综合案例</h2><pre><code class="java">package polymorphic;
+
+/**
+ * ClassName: Usb
+ * Description:Usb接口，规定有公共的方法，连接和断开连接
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public interface Usb &#123;
+
+    void connect();
+
+    void unconnect();
+&#125;
+</code></pre>
+</li>
+</ul>
+<pre><code class="java">package polymorphic;
+
+/**
+ * ClassName: Mouse
+ * Description:鼠标类，Usb接口的实现类，是现有连接和断开连接的方法 还有自己独有的功能
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public class Mouse implements Usb &#123;
+    private String name;
+
+    public Mouse(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    @Override
+    public void connect() &#123;
+        System.out.println(getName() + &quot;已连接&quot;);
+    &#125;
+
+    @Override
+    public void unconnect() &#123;
+        System.out.println(getName() + &quot;已移除&quot;);
+    &#125;
+
+    //自己独有的功能
+    public void click() &#123;
+        System.out.println(&quot;鼠标点击&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package polymorphic;
+
+
+/**
+ * ClassName: Keyboard
+ * Description:键盘类，Usb接口的实现类，是现有连接和断开连接的方法，还有自己独有的功能
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public class Keyboard implements Usb &#123;
+    private String name;
+
+    public Keyboard(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    @Override
+    public void connect() &#123;
+        System.out.println(getName() + &quot;已连接&quot;);
+    &#125;
+
+    @Override
+    public void unconnect() &#123;
+        System.out.println(getName() + &quot;已移除&quot;);
+    &#125;
+    //自己独有的功能
+    public void write() &#123;
+        System.out.println(&quot;键盘输入测试&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package polymorphic;
+
+import java.security.KeyStore;
+
+/**
+ * ClassName: Computer
+ * Description:连接Usb的实现类，并调用实现类的方法
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public class Computer &#123;
+    private String name;
+
+    public Computer(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public void start() &#123;
+        System.out.println(getName() + &quot;电脑启动&quot;);
+    &#125;
+
+    public void connect(Usb usb) &#123;
+        usb.connect();//USB接口的独有功能
+
+        if (usb instanceof Keyboard) &#123;
+            Keyboard keyboard = (Keyboard) usb;
+            keyboard.write();
+        &#125;
+        if (usb instanceof Mouse) &#123;
+            Mouse mouse = (Mouse) usb;
+            mouse.click();
+        &#125;
+        usb.unconnect();//USB接口的独有功能
+    &#125;
+</code></pre>
+<pre><code class="java">    /**
+     * ClassName: Computer
+     * Description:面向对象编程（将鼠标和键盘组装到电脑中）
+     * date:2022/3/10
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    public static void main(String[] args) &#123;
+        final Computer computer = new Computer(&quot;拯救者&quot;);
+        final Keyboard keyboard = new Keyboard(&quot;罗技&quot;);
+        final Mouse mouse = new Mouse(&quot;罗技&quot;);
+        computer.start();
+        computer.connect(keyboard);//对象回调（将一个对象作为参数传递过去，实际调用的是该对象的方法）
+        computer.connect(mouse);//对象回调（将一个对象作为参数传递过去，实际调用的是该对象的方法）
+
+    &#125;
+</code></pre>
+<pre><code>救者电脑启动
+罗技已连接
+键盘输入测试
+罗技已移除
+罗技已连接
+鼠标点击
+罗技已移除
+</code></pre>
+<h1 id="二、内部类"><a href="#二、内部类" class="headerlink" title="二、内部类"></a>二、内部类</h1><h2 id="1-0-内部类概念"><a href="#1-0-内部类概念" class="headerlink" title="1.0 内部类概念"></a>1.0 内部类概念</h2><p>定义在一个类里面的类，里面的类可以理解成（寄生），外部类可以理解成（宿主）</p>
+<ul>
+<li><p>形式</p>
+<pre><code class="java">public class People&#123;
+    // 内部类
+    public class Heart&#123;
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>特点</p>
+<ol>
+<li>当一个事物的内部，还有一个部分需要一个完整的结构进行描述，而这个内部的完整的结构又只为外部事物提供服务，那么整个内部的完整结构可以选择使用内部类来设计。</li>
+<li>内部类通常可以方便访问外部类的成员，包括私有的成员。</li>
+<li>内部类提供了更好的封装性，内部类本身就可以用private protectecd等修饰，封装性可以做更多控制</li>
+<li>内部类的修饰符可以是:private、缺省、protected、public，但类的修饰符只能是public（主类）和缺省（次类）</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-0-静态内部类"><a href="#2-0-静态内部类" class="headerlink" title="2.0 静态内部类"></a>2.0 静态内部类</h2><ul>
+<li>特点</li>
+</ul>
+<p>1.有static修饰，属于外部类本身<br>2.它的特点和使用与普通类是完全一样的，类有的成分它都有，只是位置在别人里面而已<br>3.静态内部类中可以直接访问外部类的静态成员，外部类的实例成员必须用外部类对象访问<br>4.开发中实际上用的还是比较少</p>
+<ul>
+<li>格式</li>
+</ul>
+<pre><code class="java">public class Outer&#123;
+    // 静态成员内部类
+    public static class Inner&#123;
+    &#125;
+&#125;
+静态内部类创建对象的格式：    
+    外部类名.内部类名 对象名 = new 外部类名.内部类构造器;
+    范例：Outer.Inner in =  new Outer.Inner();
+</code></pre>
+<ul>
+<li>案例</li>
+</ul>
+<pre><code class="java">package inner_class_demo;
+
+
+public class StaticInnerClass &#123;
+    private static int price;
+    private String sex;
+
+    public static class Inner &#123;
+        private String name;//静态内部类可以有实例成员变量
+        private static String codeName;//静态内部类可以有静态成员变量
+
+
+        //静态内部类可以有实例成员方法
+        public String getName() &#123;
+            return name;
+        &#125;
+
+        public void setName(String name) &#123;
+            this.name = name;
+        &#125;
+
+        public static String getCodeName() &#123;
+            return codeName;
+        &#125;
+
+        public static void setCodeName(String codeName) &#123;
+            Inner.codeName = codeName;
+        &#125;
+
+        public Inner() &#123;
+        &#125;
+
+        public Inner(String name) &#123;
+            this.name = name;
+        &#125;
+
+        //静态内部类可以有静态成员方法
+        public static void voice() &#123;
+            System.out.println(&quot;静态内部类的静态方法访问外部类的静态变量&quot; + price);
+        &#125;
+
+        public void init() &#123;
+//            System.out.println(sex);不能直接访问外部类的实例成员变量
+            //只能用外部类的实例来调用
+            final StaticInnerClass outClass = new StaticInnerClass();
+            System.out.println(outClass.sex);
+        &#125;
+    &#125;
+
+
+    public static void main(String[] args) &#123;
+        //实例化静态内部类的格式 注意类型，走的还是构造器
+        StaticInnerClass.Inner inner = new StaticInnerClass.Inner(&quot;a&quot;);
+        System.out.println(inner.getName());
+        inner.voice();//调用内部类的静态方法 不推荐写法
+        StaticInnerClass.Inner.voice();//调用内部类的静态方法 正确写法
+//        StaticInnerClass.voice();//调用内部类的静态方法 错误写法
+
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code>a
+静态内部类的静态方法访问外部类的静态变量0
+静态内部类的静态方法访问外部类的静态变量0
+</code></pre>
+<h2 id="3-0-成员内部类"><a href="#3-0-成员内部类" class="headerlink" title="3.0 成员内部类"></a>3.0 成员内部类</h2><p>1无static修饰，属于外部类的对象。</p>
+<p>2.JDK16之前，成员内部类中不能定义静态成员，JDK 16开始也可以定义静态成员了。</p>
+<p>创建格式：<br>    格式：外部类名.内部类名 对象名 &#x3D; new  外部类构造器.new 内部类构造器();<br>    范例：<code>Outer.Inner in =  new Outer().new  Inner();</code></p>
+<pre><code class="java">public class Outer &#123;
+    // 成员内部类
+    public class Inner &#123;
+    &#125;
+&#125;
+</code></pre>
+<p>3.成员内部类中是可以直接访问外部类的静态成员，外部类的静态成员只有一份可以被共享访问</p>
+<p>4、成员内部类的实例方法中可以直接访问外部类的实例成员，因为必须先有外部类对象，才能有成员内部类对象，所以可以直接访问外部类对象的实例成员</p>
+<p>5.静态内部类，内部类与外部类的关系相对独立；类似于定义了两个类；成员内部类则需要依赖外部类才能产生，可能更加契合面向对象语法</p>
+<pre><code class="java">package inner_class_demo;
+
+
+public class MemberClass &#123;
+    private static String name;
+    private int sex;
+
+    public MemberClass(int sex) &#123;
+        this.sex = sex;
+    &#125;
+
+    class Inner &#123;
+        private String number;
+//        private static String hobbis;//jdk16之后才可以定义静态的变量和方法
+
+        public Inner(String number) &#123;
+            this.number = number;
+        &#125;
+
+        public String getNumber() &#123;
+            return number;
+        &#125;
+
+        public void setNumber(String number) &#123;
+            this.number = number;
+        &#125;
+
+        /*   public static void t()&#123;
+            System.out.println(&quot;jdk16之后才可以定义静态的方法&quot;);
+        &#125;*/
+        public void get() &#123;
+            System.out.println(&quot;外部类的实例变量&quot; + sex);
+            System.out.println(&quot;外部类的静态变量&quot; + name);
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        //成员内部类实例需要使用外部类的实例调用内部类的构造器生成
+        final Inner inner = new MemberClass(12).new Inner(&quot;138&quot;);
+        System.out.println(inner.getNumber());//访问成员内部类的成员方法
+        inner.get();
+//        MemberClass.Inner.t();//调用成员内部类的静态方法
+    &#125;
+&#125;
+</code></pre>
+<h2 id="4-0-面试题"><a href="#4-0-面试题" class="headerlink" title="4.0 面试题"></a>4.0 面试题</h2><pre><code class="java">/**
+ * ClassName: StaticInnerClass
+ * Description:静态内部类访问不同位置的变量
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public class StaticInnerClass &#123;
+    private static int price;
+    private static String name = &quot;外部类变量&quot;;
+
+    public static class Inner &#123;
+        private String name = &quot;成员变量&quot;;//静态内部类可以有实例成员变量
+
+        public void test() &#123;
+            String name = &quot;局部变量&quot;;
+            System.out.println(name);
+            System.out.println(this.name);
+            //（外部类类名.this.变量名） 访问的是成员内部类的外部类的变量 有this代表对象所以这种方式是成员内部类的方式
+            System.out.println(StaticInnerClass.name);
+        &#125;
+    &#125;
+    public static void main(String[] args) &#123;
+        final Inner inner = new Inner();
+        inner.test();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>局部变量
+成员变量
+外部类变量
+</code></pre>
+<pre><code class="java">/**
+ * ClassName: MemberClass
+ * Description:成员内部类访问不同位置的变量
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+
+public class MemberClass &#123;
+    private String name = &quot;外部类的变量&quot;;
+
+    class Inner &#123;
+        private String name = &quot;成员变量&quot;;
+
+        public void test() &#123;
+            String name = &quot;局部变量&quot;;
+            System.out.println(name);
+            System.out.println(this.name);
+            System.out.println(MemberClass.this.name);
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        final Inner inner = new MemberClass().new Inner();
+        inner.test();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>局部变量
+成员变量
+外部类变量 
+</code></pre>
+<h2 id="5-0-局部内部类"><a href="#5-0-局部内部类" class="headerlink" title="5.0 局部内部类"></a>5.0 局部内部类</h2><p>（鸡肋语法，了解即可）<br>局部内部类放在方法、代码块、构造器等执行体中。<br>局部内部类的类文件名为： 外部类$N内部类.class。</p>
+<h2 id="6-0-匿名内部类"><a href="#6-0-匿名内部类" class="headerlink" title="6.0 匿名内部类"></a>6.0 匿名内部类</h2><pre><code class="java">本质上是一个没有名字的局部内部类，定义在方法中、代码块中、等。
+作用：方便创建子类对象，最终目的为了简化代码编写
+
+格式：
+    new 类 或 抽象类名 或 接口名() &#123;
+        重写方法;
+    &#125;;
+        Animal a = new Animal() &#123;
+            public void run() &#123;
             
-            <h1 id="一、String定义变量存储字符串"><a href="#一、String定义变量存储字符串" class="headerlink" title="一、String定义变量存储字符串"></a>一、String定义变量存储字符串</h1><ul>
-<li>API （Application Programming Interface,应用程序编程接口）</li>
+            &#125;
+        &#125;;
+        a. run();
+</code></pre>
+<p>特点总结：<br>    匿名内部类是一个没有名字的内部类。<br>    匿名内部类写出来就会产生一个匿名内部类的对象。<br>    匿名内部类的对象类型相当于是当前new的那个的类型的本类型或子类类型<br>    局部内部类的类文件名为： 外部类$N内部类.class。</p>
+<pre><code class="java">package incognit_demo;
+
+
+public class Father &#123;
+    public void eat() &#123;
+        System.out.println(&quot;父吃&quot;);
+    &#125;
+
+    public static void main(String[] args) &#123;
+
+        //匿名内部类，存在与方法，代码块，构造器中（本质上就是局部内部类，并且没有引用指向）
+        //这里是类的匿名内部类
+        Father father = new Father() &#123;
+            @Override
+            public void eat() &#123;
+                super.eat();
+                System.out.println(&quot;子也吃&quot;);
+            &#125;
+        &#125;;
+        father.eat();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>父吃
+子也吃
+</code></pre>
+<pre><code class="java">package incognit_demo;
+
+
+public abstract class Father &#123;
+    public abstract void eat();
+
+    public static void main(String[] args) &#123;
+
+        //匿名内部类，存在与方法，代码块，构造器中
+        //这里是抽象类的匿名内部类
+        //这里的匿名内部类会产生一个该抽象类的子类实例，通过夫类型引用接
+        Father father = new Father() &#123;
+            @Override
+            public void eat() &#123;
+                System.out.println(&quot;通过匿名内部类获得匿名内部类对象（抽象类的子类实例）&quot;);
+            &#125;
+        &#125;;
+        father.eat();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>通过匿名内部类获得匿名内部类对象（抽象类的子类实例）
+</code></pre>
+<pre><code class="java">package incognit_demo;
+
+
+public class Test &#123;
+
+    public static void main(String[] args) &#123;
+        final Father father = new Father() &#123;
+            @Override
+            public void eat() &#123;
+                System.out.println(&quot;通过匿名内部类获得匿名内部类对象（接口实现类的实例）&quot;);
+            &#125;
+        &#125;;
+        father.eat();
+    &#125;
+&#125;
+
+interface Father &#123;
+    void eat();//公开，抽象
+&#125;
+</code></pre>
+<pre><code>通过匿名内部类获得匿名内部类对象（接口实现类的实例）
+</code></pre>
+<ul>
+<li>实际开发案例</li>
+</ul>
+<pre><code class="java">package incognit_demo;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+ * ClassName: PracticalDemo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/10 13:22&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class PracticalDemo &#123;
+    public static void main(String[] args) &#123;
+        final JFrame win = new JFrame(&quot;登录&quot;);
+
+        final JPanel panel = new JPanel();
+        final JButton btnLogin = new JButton(&quot;登录&quot;);
+//对象回调
+//        匿名内部类产生的匿名内部类对象作为入参
+   /*     btnLogin.addActionListener(new ActionListener() &#123;
+            @Override
+            public void actionPerformed(ActionEvent e) &#123;
+                JOptionPane.showMessageDialog(win, &quot;点击小子&quot;);
+            &#125;
+        &#125;);*/
+
+        //lambda表达式
+        btnLogin.addActionListener(e -&gt; JOptionPane.showMessageDialog(win, &quot;点击小子2&quot;));
+
+        panel.add(btnLogin);
+        win.add(panel);
+        win.setVisible(true);//可见
+        win.setLocationRelativeTo(null);//居中
+        win.setSize(400, 300);//大小
+    &#125;
+&#125;
+
+
+开发中不是我们主动去定义匿名内部类的，而是别人需要我们写或者我们可以写的时候才会使用。
+匿名内部类的代码可以实现代码进一步的简化（回扣主题）
+
+类的四大金刚：
+    构造器，方法，属性，代码块
+</code></pre>
+<h1 id="三、常用API"><a href="#三、常用API" class="headerlink" title="三、常用API"></a>三、常用API</h1><ul>
+<li><strong>API</strong></li>
+</ul>
+<p>API(Application Programming interface)  应用程序编程接口。<br>简单来说：就是Java帮我们已经写好的一些方法，我们直接拿过来用就可以了</p>
+<h2 id="1-0-Object"><a href="#1-0-Object" class="headerlink" title="1.0 Object"></a>1.0 <strong>Object</strong></h2><p>一个类要么默认继承了Object类，要么间接继承了Object类，Object类是Java中的祖宗类<br>Object类的方法是一切子类对象都可以直接使用的，所以我们要学习Object类的方法</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050673.png"></p>
+<hr>
+<ul>
+<li><strong>toString()</strong></li>
+</ul>
+<p>Object类中的toString方法，默认是返回一个字符串地址的<br>但是，开发中直接输出对象，默认输出对象的地址其实是毫无意义的，开发中输出对象变量，更多的时候是希望看到对象的内容数据而不是对象的地址信息<br>所以，toString存在的意义是为了被子类重写，以便返回对象的内容信息，而不是地址信息！！ </p>
+<pre><code class="java">    @Override
+    public String toString() &#123;
+        return &quot;Student&#123;name=&#39;&quot; + name + &quot;\&#39;&quot; +
+                &quot;,dept=&#39;&quot; + depth + &quot;\&#39;&quot; +
+                &quot;,age=&quot; + age +
+                &quot;,id=&#39;&quot; + id + &quot;\&#39;&#125;&quot;;
+    &#125;
+</code></pre>
+<pre><code class="java">public static void main(String[] args) &#123;
+        final Student student = new Student(&quot;张三&quot;, &quot;调理农务系&quot;, 18, &quot;1212121210&quot;);
+//        System.out.println(student.toString());//本来需要这么写
+        System.out.println(student);//但是，是直接输出的话可以省略toString方法，他也会自动调用
+    &#125;
+</code></pre>
+<pre><code>    Student&#123;name=&#39;张三&#39;,dept=&#39;调理农务系&#39;,age=18,id=&#39;1212121210&#39;&#125;
+</code></pre>
+<ul>
+<li><strong>equals()</strong></li>
 </ul>
 <ol>
-<li>Java写好的技术(功能代码)，咱们可以直接调用。</li>
-<li>Oracle 也为Java提供的这些功能代码提供了相应的 API文档(程序使用说明书) 。</li>
+<li><p>Object的equals方法默认是比较两个对象地址是否相等，Object的equals方法和&#x3D;&#x3D;是等价的，本质就是equals调用了&#x3D;&#x3D;</p>
+<pre><code class="java">public boolean equals(Object obj) &#123;
+    return (this == obj);
+  &#125;
+</code></pre>
+</li>
+<li><p>父类equals方法存在的意义就是为了被子类重写，以便子类自己来定制比较规则</p>
+</li>
+</ol>
+<pre><code class="java">  @Override
+        public boolean equals(Object o) &#123;
+            if (o instanceof Student) &#123;
+                Student student = (Student) o;
+                return Objects.equals(this.name, student.getName()) &amp;&amp;
+                        Objects.equals(this.depth, student.getDepth()) &amp;&amp; Objects.equals(this.id, student.getId()) &amp;&amp;
+                        this.age == student.getAge();
+            &#125;
+            return false;
+        &#125;
+
+
+   @Override
+    public boolean equals(Object o) &#123;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return age == student.age &amp;&amp; Objects.equals(name, student.name) &amp;&amp; Objects.equals(depth, student.depth) &amp;&amp; Objects.equals(id, student.id);
+    &#125;
+</code></pre>
+<h2 id="2-0-Objects"><a href="#2-0-Objects" class="headerlink" title="2.0 Objects"></a>2.0 <strong>Objects</strong></h2><p>Objects是一个工具类，提供了一些方法去完成一些功能，是Object的子类<br>官方在进行字符串比较时，没有用字符串对象的的equals方法，而是选择了Objects的equals方法来比较<br>使用Objects的equals方法在进行对象的比较会更安全</p>
+<pre><code class="java">public static boolean equals(Object a, Object b) &#123;
+        return (a == b) || (a != null &amp;&amp; a.equals(b));
+    &#125;
+</code></pre>
+<p>首先看看是不是同一个对象，是直接返回真;否则看看调用者是否为null，若为null直接返回假，否则开始比较内容</p>
+<h2 id="3-0-StringBuilder"><a href="#3-0-StringBuilder" class="headerlink" title="3.0 StringBuilder"></a>3.0 <strong>StringBuilder</strong></h2><p>StringBuilder是一个可变的字符串类，我们可以把它看成是一个对象容器。<br>作用：提高字符串的操作效率，如拼接、修改等</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050354.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050025.png"></p>
+<hr>
+<pre><code class="java">package api_object;
+
+/**
+ * ClassName: StringBuilderDemo
+ * Description:
+ * date:2022/3/10
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class StringBuilderDemo &#123;
+    public static void main(String[] args) &#123;
+        final StringBuilder sb = new StringBuilder();
+        System.out.println(sb);//直接输出默认会调用该对象的toString方法 &quot;&quot;
+
+        sb.append(123).append(&#39;a&#39;).append(true).append(12.3).append(&quot;时&quot;);//支持链式编程
+        System.out.println(sb.toString());//直接输出默认会调用该对象的toString方法
+
+        final StringBuilder reverse = sb.reverse();//将源对象的值反转，并返回一个带有反转后结果的StringBuilder对象
+        System.out.println(reverse);
+
+        final String s = sb.toString();//将StringBuilder转为String
+        System.out.println(s);
+
+        System.out.println(sb.length());
+    &#125;
+&#125;
+</code></pre>
+<pre><code>123atrue12.3时
+时3.21eurta321
+时3.21eurta321
+13
+</code></pre>
+<h3 id="3-1-String类拼接字符串原理图"><a href="#3-1-String类拼接字符串原理图" class="headerlink" title="3.1 String类拼接字符串原理图"></a>3.1 String类拼接字符串原理图</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050092.png"></p>
+<hr>
+<ol>
+<li>首先将Test.class文件加载进方法区内存，并暴露访问静态方法的入口</li>
+<li>将main方法提取到栈内存中运行</li>
+<li>在栈内存中开辟一块存储String类型变量的空间，在字符串常量池中开辟一块空间存储字符“a”的实例把地址给到栈<br>3.在栈内存中开辟一块存储String类型变量的空间，在字符串常量池中开辟一块空间存储字符“b”的实例，然后在堆内存中创建一个StringBuilder的对象用于拼接字符串，然后将拼接好的StringBuilder对象转为String对象，再把地址给到栈中的变量</li>
+<li>同理<br>…..<br>一个加号，堆内存中两对象</li>
+</ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050141.png"></p>
+<hr>
+<ol>
+<li>首先将Test.class文件加载进方法区内存，并暴露访问静态方法的入口</li>
+<li>将main方法提取到栈内存中运行</li>
+<li>在栈内存中创建一个StringBuilder类型的变量，在堆内存中创建一个StringBuilder对象，将对象的地址给到变量</li>
+<li>在字符串常量池中创建一个对象，然后把字符串对象添加到StringBuilder对象中进行操作<br>……</li>
 </ol>
 <ul>
-<li>String类的概述</li>
+<li>总结</li>
 </ul>
-<ol>
-<li>java.lang.String 类代表字符串，String类定义的变量可以用于指向字符串对象，同时String类提供了很多操作字符串的功能</li>
-<li>Java 程序中的所有字符串文字（例如“abc”）都为此类的对象。<br>这种是存放由于字符串常量池中;new String(“xx”)是存放于堆中的,产生了两个对象，一个在字符串常量池中，一个在堆中</li>
-</ol>
+<p>String ：内容是不可变的、拼接字符串性能差。<br>StringBuilder：内容是可变的、拼接字符串性能好、代码优雅。</p>
+<p>定义字符串使用String<br>拼接、修改等操作字符串使用StringBuilder</p>
+<h3 id="3-2-数组拼接输出"><a href="#3-2-数组拼接输出" class="headerlink" title="3.2 数组拼接输出"></a>3.2 数组拼接输出</h3><pre><code class="java"> public String concat(int[] arr) &#123;
+        if (arr == null) return null;
+        final StringBuilder sb = new StringBuilder(&quot;[&quot;);
+        for (int i = 0; i &lt; arr.length; i++) &#123;
+            sb.append(arr[i]).append(i == arr.length - 1 ? &quot;&quot; : &quot;,&quot;);
+        &#125;
+        sb.append(&quot;]&quot;);
+        return sb.toString();
+    &#125;
+
+    @Test
+    public void test1() &#123;
+        System.out.println(concat(null));
+        System.out.println(concat(new int[0]));
+        System.out.println(concat(new int[]&#123;12, 55, 18, 34, 78, 145, 21&#125;));
+    &#125;
+</code></pre>
+<pre><code>null
+[]
+[12,55,18,34,78,145,21]
+</code></pre>
+<h2 id="4-0-Math"><a href="#4-0-Math" class="headerlink" title="4.0 Math"></a>4.0 <strong>Math</strong></h2><p>包含执行基本数字运算的方法，Math类没有提供公开的构造器。工具类一般都会私有构造器<br>如何使用类中的成员呢？看类的成员是否都是静态的，如果是，通过类名就可以直接调用</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050173.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void test1() &#123;
+        System.out.println(Math.abs(-887));//887
+        System.out.println(Math.sqrt(9));//3
+        System.out.println(Math.max(12, 1 - 2));//12
+        final int i = (int) (Math.random() * 7) + 3;//3----9
+        System.out.println(i);
+        System.out.println(Math.pow(2, 10));//1024
+        System.out.println(Math.round(3.14));//3
+        System.out.println(Math.round(3.5));//4
+        System.out.println(Math.ceil(1.000001));//2
+        System.out.println(Math.ceil(1.0));//1
+        System.out.println(Math.floor(1.9999999999));//1
+        System.out.println(Math.floor(1.0));//1
+    &#125;
+</code></pre>
+<pre><code>887
+3.0
+12
+5
+1024.0
+3
+4
+2.0
+1.0
+1.0
+1.0
+</code></pre>
+<h2 id="5-0-System"><a href="#5-0-System" class="headerlink" title="5.0 System"></a>5.0 System</h2><p>System也是一个工具类，代表了当前系统，提供了一些与系统相关的方法</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050233.png"></p>
+<hr>
+<pre><code class="java">package api_object;
+
+import org.junit.Test;
+
+import java.util.Arrays;
+
+/**
+ * ClassName: SystemDemo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/10 15:51&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class SystemDemo &#123;
+    @Test
+    public void test1() &#123;
+
+        System.out.println(&quot;程序开始&quot;);
+
+        final long start = System.currentTimeMillis();
+        int counter = 0;
+        for (int i = 0; i &lt; 100000000; i++) &#123;
+            counter++;
+        &#125;
+        final long end = System.currentTimeMillis();
+        System.out.println(&quot;循环一亿次，耗时：&quot;+(end - start) / 1000.0);
+
+
+        final int[] ints1 = &#123;12, 2, 1, 78, 45, 64, 55, 34&#125;;
+        final int[] ints2 = new int[5];
+        
+        System.arraycopy(ints1, 1, ints2, 2, 3);
+        System.out.println(Arrays.toString(ints2));
+        System.exit(0);//人为关掉JVM
+
+
+        System.out.println(&quot;程序结束&quot;);
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code>程序开始
+循环一亿次，耗时：0.002
+[0, 0, 2, 1, 78]   
+</code></pre>
+<p>1970年1月1日 算C语言的生日<br>原因：<br>       1969年8月，贝尔实验室的程序员肯汤普逊利用妻儿离开一个月的机会，开始着手创造一个全新的革命性的操作系统，他使用B编译语言在老旧的PDP-7机器上开发出了            Unix的一个版本。<br>         随后，汤普逊和同事丹尼斯里奇改进了B语言，开发出了C语言，重写了UNIX。</p>
+<p>计算机认为时间是有起点的，起始时间： 1970年1月1日  00:00:00</p>
+<p>时间毫秒值：指的是从1970年1月1日    00:00:00走到此刻的总的毫秒数，应该是很大的。 1s &#x3D; 1000m s</p>
+<h2 id="6-0-BigDecimal"><a href="#6-0-BigDecimal" class="headerlink" title="6.0 BigDecimal"></a>6.0 BigDecimal</h2><p>用于解决浮点型运算精度失真的问题</p>
 <ul>
-<li>一些特点</li>
+<li>失真问题</li>
+</ul>
+<pre><code class="java">    @Test
+    public void test1() &#123;
+        System.out.println(0.09 + 0.01);//0.09999999999999999
+        System.out.println(1.0 - 0.32);//0.6799999999999999
+        System.out.println(1.015 * 100);//101.49999999999999
+        System.out.println(1.301 / 100);//0.013009999999999999
+        System.out.println(&quot;-------------------------&quot;);
+        double c = 0.1 + 0.2;//0.30000000000000004
+        System.out.println(c);
+    &#125;
+</code></pre>
+<ul>
+<li>使用</li>
 </ul>
 <ol>
-<li><p>String其实常被称为不可变字符串类型，它的对象在创建后不能被更改。String变量每次的修改其实都是产生并指向了新的字符串对象。</p>
-<p>原来的字符串对象 都是没有改变的，所以称不可变字符串</p>
+<li><p>创建对象BigDecimal封装浮点型数据（最好的方式是调用方法）<br>public static BigDecimal valueOf(double val):   包装浮点数成为BigDecimal对象。</p>
 </li>
-<li><p>字符串常量池中的字符通过拼接(运算)，产生一个新的字符串存放于堆中先创建StringBuilder实例用于拼接字符串，然后再把StringBuilder转换成字符串</p>
+<li><p>通过BigDecimal类的构造器得到BigDecimal对象（比较麻烦，不推荐）<br>BigDecimal(String val)&#x2F;&#x2F;Translates the string representation of a BigDecimal into a BigDecimal.</p>
+</li>
+<li><p>其他方法不推荐，存在精度问题</p>
 </li>
 </ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270050061.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void test2() &#123;
+        final BigDecimal a = new BigDecimal(&quot;0.1&quot;);
+        final BigDecimal b = new BigDecimal(&quot;0.2&quot;);
+        System.out.println(a.add(b));//0.3
+
+        final BigDecimal c = BigDecimal.valueOf(1.0);
+        final BigDecimal d = BigDecimal.valueOf(0.32);
+        System.out.println(c.subtract(d));//0.68
+
+        final BigDecimal e = BigDecimal.valueOf(1.015);
+        final BigDecimal f = BigDecimal.valueOf(100);
+        System.out.println(e.multiply(f));//101.500
+
+        final BigDecimal g = BigDecimal.valueOf(1.301);
+        System.out.println(g.divide(f));//0.01301
+
+    &#125;
+</code></pre>
+<pre><code class="java">    @Test
+    public void test3()&#123;
+        final BigDecimal a = new BigDecimal(&quot;10&quot;);
+        final BigDecimal b = new BigDecimal(&quot;3&quot;);
+        System.out.println(a.divide(b,2,BigDecimal.ROUND_UP));
+    &#125;
+</code></pre>
+<p>参数1 :表示参与运算的BigDecimal 对象。<br>    参数2 ，表示小数点后面精确到多少位<br>    参数3 ，舍入模式<br>    BigDecimal.ROUND_UP  进一法<br>    BigDecimal.ROUND_FLOOR 去尾法<br>    BigDecimal.ROUND_HALF_UP 四舍五入</p>
+
             
         </div>
     </div>
@@ -585,15 +1431,15 @@
         </span>
         
     </div>
-    <a href="/2022/08/25/String与ArrayList的基本使用/" class="go-post">
+    <a href="/2022/08/27/多态与内部类与常用API/" class="go-post">
         阅读全文
     </a>
 </div>
 
 <div class="post">
-    <a href="/2022/08/25/面向对象基础/">
+    <a href="/2022/08/27/常用API与Lambda表达式与常见算法/">
         <h2>
-            面向对象基础
+            常用API与Lambda表达式与常见算法
         </h2>
     </a>
     <div class="category-and-date">
@@ -610,18 +1456,14 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/24
+            2022/8/27
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h2 id="一、初识面向对象"><a href="#一、初识面向对象" class="headerlink" title="一、初识面向对象"></a>一、初识面向对象</h2><ol>
-<li>面向对象并不是一个技术，而是一种编程指导思想</li>
-<li>面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题</li>
-<li>生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。</li>
-</ol>
-<h2 id="二、类、对象"><a href="#二、类、对象" class="headerlink" title="二、类、对象"></a>二、类、对象</h2><p>对象: 是对现实世界具体事物的抽象,是类的具体实例 。<br>类(可以看成是设计图)：同类事物的共性，是对对象的抽象。<br>在Java中，必须先设计类，才能获得对象</p>
+            <h1 id="一、处理时间"><a href="#一、处理时间" class="headerlink" title="一、处理时间"></a>一、处理时间</h1><h3 id="1-0-Date概念"><a href="#1-0-Date概念" class="headerlink" title="1.0 Date概念"></a>1.0 Date概念</h3><p>Date类代表当前所在系统的日期时间信息</p>
+<hr>
             
         </div>
     </div>
@@ -634,21 +1476,21 @@
         
         <span class="tag">
             
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
                 黑马程序员-徐磊-java基础
             </a>
         </span>
         
     </div>
-    <a href="/2022/08/25/面向对象基础/" class="go-post">
+    <a href="/2022/08/27/常用API与Lambda表达式与常见算法/" class="go-post">
         阅读全文
     </a>
 </div>
 
 <div class="post">
-    <a href="/2022/08/25/方法/">
+    <a href="/2022/08/27/Collection1与数据结构与List与泛型深入/">
         <h2>
-            方法
+            Collection1与数据结构与List与泛型深入
         </h2>
     </a>
     <div class="category-and-date">
@@ -665,17 +1507,134 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/24
+            2022/8/27
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h2 id="一、什么是方法"><a href="#一、什么是方法" class="headerlink" title="一、什么是方法"></a>一、什么是方法</h2><h3 id="1-0-方法概念"><a href="#1-0-方法概念" class="headerlink" title="1.0 方法概念"></a>1.0 方法概念</h3><p>它可以把一段代码封装成一个功能，以方便重复调用</p>
-<h3 id="2-0-好处"><a href="#2-0-好处" class="headerlink" title="2.0 好处"></a>2.0 好处</h3><ol>
-<li>提高代码复用</li>
-<li>逻辑清晰</li>
-</ol>
+            <h2 id="集合概述体系、常用API"><a href="#集合概述体系、常用API" class="headerlink" title="集合概述体系、常用API"></a>集合概述体系、常用API</h2><h3 id="前提引入"><a href="#前提引入" class="headerlink" title="前提引入"></a>前提引入</h3><ul>
+<li>数组特点</li>
+</ul>
+<p>数组定义完成后，类型确定、长度固定。<br>适合元素的个数和类型确定的业务场景，不适合做需要增删数据操作。</p>
+<ul>
+<li>集合的特点</li>
+</ul>
+<p>集合的大小不固定，启动后可以动态变化，类型也可以选择不固定<br>集合非常适合做元素的增删操作</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/Collection1与数据结构与List与泛型深入/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/Set与Collections与Map与集合嵌套/">
+        <h2>
+            Set与Collections与Map与集合嵌套
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/27
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="Set系列集合的特点"><a href="#Set系列集合的特点" class="headerlink" title="Set系列集合的特点"></a><strong>Set</strong>系列集合的特点</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013369.png" alt="image-20220826184606933"></p>
+<hr>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/Set与Collections与Map与集合嵌套/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/不可变集合与Stream流与异常/">
+        <h2>
+            不可变集合与Stream流与异常
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="不可变集合"><a href="#不可变集合" class="headerlink" title="不可变集合"></a>不可变集合</h2><ul>
+<li>概念</li>
+</ul>
+<p>不可变集合，就是不可被修改的集合。<br>集合的数据项在创建的时候提供，并且在整个生命周期中都不可改变。否则报错。</p>
+<ul>
+<li>作用</li>
+</ul>
+<p>如果某个数据不能被修改，把它防御性地拷贝到不可变集合中是个很好的实践。<br>或者当集合对象被不可信的库调用时，不可变形式是安全的</p>
+<ul>
+<li><p><strong>如何创建不可变集合？</strong></p>
+<p>在List、Set、Map接口中，都存在of方法，可以创建一个不可变的集合  【since 1.9】<br>这个集合不能添加，不能删除，不能修改。</p>
+</li>
+</ul>
             
         </div>
     </div>
@@ -694,15 +1653,15 @@
         </span>
         
     </div>
-    <a href="/2022/08/25/方法/" class="go-post">
+    <a href="/2022/08/27/不可变集合与Stream流与异常/" class="go-post">
         阅读全文
     </a>
 </div>
 
 <div class="post">
-    <a href="/2022/08/25/数组/">
+    <a href="/2022/08/27/File-递归，IO/">
         <h2>
-            数组
+            File,递归，IO
         </h2>
     </a>
     <div class="category-and-date">
@@ -719,16 +1678,23 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/24
+            2022/8/26
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h2 id="一、定义数组存储数据"><a href="#一、定义数组存储数据" class="headerlink" title="一、定义数组存储数据"></a>一、定义数组存储数据</h2><ul>
-<li>数组的概念</li>
+            <h3 id="File类的使用"><a href="#File类的使用" class="headerlink" title="File类的使用"></a>File类的使用</h3><ul>
+<li>概述</li>
 </ul>
-<p>​		用来存储一批同种类型数据（可以理解成容器）                                   </p>
+<p>File类在包java.io.File下、代表操作系统的文件对象（文件、文件夹）</p>
+<p>File类提供了诸如：定位文件，获取文件本身的信息、删除文件、创建文件（文件夹）等功能</p>
+<p>File对象可以定位文件和文件夹</p>
+<p>File封装的对象仅仅是一个路径名，这个路径可以是存在的，也可以是不存在的</p>
+<ul>
+<li><strong>绝对路径和相对路径</strong></li>
+</ul>
+<p>绝对路径是带盘符的，依赖当前系统<br>相对路径：不带盘符，默认直接到当前工程下的目录寻找文件<br>当前工程是空工程，就 模块名&#x2F;src&#x2F;… 【如果你书写的代码正位于项目下，就不用模块名，直接src&#x2F;】</p>
             
         </div>
     </div>
@@ -747,7 +1713,117 @@
         </span>
         
     </div>
-    <a href="/2022/08/25/数组/" class="go-post">
+    <a href="/2022/08/27/File-递归，IO/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/JAVA-IO-下/">
+        <h2>
+            JAVA-IO(下)
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h3 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h3><p>缓冲流也称为高效流、或者高级流。之前学习的字节流可以称为原始流。<br>作用：缓冲流自带缓冲区、可以提高原始字节流、字符流读写数据的性能</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838986.png"></p>
+<hr>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/JAVA-IO-下/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/多线程/">
+        <h2>
+            多线程
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="初识线程"><a href="#初识线程" class="headerlink" title="初识线程"></a>初识线程</h2><ul>
+<li>什么是线程</li>
+</ul>
+<p>线程(thread)是一个程序内部的一条执行路径。是CPU调度和分派的基本单位<br>我们之前启动程序执行后，main方法的执行其实就是一条单独的执行路<br>程序中如果只有一条执行路径，那么这个程序就是单线程的程序。</p>
+<h2 id="多线程的创建"><a href="#多线程的创建" class="headerlink" title="多线程的创建"></a>多线程的创建</h2><h3 id="方式一：继承Thread类"><a href="#方式一：继承Thread类" class="headerlink" title="方式一：继承Thread类"></a>方式一：继承Thread类</h3><ul>
+<li>概念</li>
+</ul>
+<p>Thread类<br>    Java是通过java.lang.Thread 类来代表线程的。<br>    按照面向对象的思想，Thread类应该提供了实现多线程的方式</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/多线程/" class="go-post">
         阅读全文
     </a>
 </div>
@@ -778,9 +1854,9 @@
             
             
             <span class="page-omit">...</span>
-            <a href="/page/4">
+            <a href="/page/5">
                 <span class="page-num">
-                    4
+                    5
                 </span>
             </a>
             
