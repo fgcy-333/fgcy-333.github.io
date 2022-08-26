@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>JAVA-IO(下) | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/微信图片_20220820001611.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>JAVA-IO(下) </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h3 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h3><p>缓冲流也称为高效流、或者高级流。之前学习的字节流可以称为原始流。<br>作用：缓冲流自带缓冲区、可以提高原始字节流、字符流读写数据的性能</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838986.png"></p>
+<hr>
+<span id="more"></span>
+
+<p>字节缓冲流<br>    字节缓冲输入流： BufferedInputStream<br>    字节缓冲输出流： BufferedOutputStream<br>字符缓冲流<br>    字符缓冲输入流： BufferedReader<br>    字符缓冲输出流： BufferedWriter</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838365.png"></p>
+<hr>
+<p>只是提高了读写数据的性能，其读写功能没有变化</p>
+<ul>
+<li><strong>缓冲流拷贝案例</strong></li>
+</ul>
+<pre><code class="java">    @Test
+    public void testStream() &#123;
+        try (
+                InputStream is = new FileInputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\day08、阶段项目.pptx&quot;);
+                OutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\2day08、阶段项目.pptx&quot;);
+                InputStream bis = new BufferedInputStream(is);//自带8kb的缓冲区，可以提高原始流的性能（装饰）
+                OutputStream bos = new BufferedOutputStream(os);//自带8kb的缓冲区，可以提高原始流的性能（装饰）
+        ) &#123;
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = bis.read(buffer)) != -1) &#123;
+                bos.write(buffer, 0, length);
+            &#125;
+            System.out.println(&quot;复制完成！&quot;);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<p>字节缓冲流性能优化原理：<br>    字节缓冲输入流自带了8KB缓冲池，以后我们直接从缓冲池读取数据，所以性能较好。<br>    字节缓冲输出流自带了8KB缓冲池，数据就直接写入到缓冲池中去，写数据性能极高了</p>
+<ul>
+<li><strong>拷贝性能对比</strong></li>
+</ul>
+<pre><code class="java">    /**
+     * 一滴一滴（报废）
+     */
+    private static void copy4() &#123;
+        final long start = System.currentTimeMillis();
+        try (
+                InputStream is = new FileInputStream(old);
+                OutputStream os = new FileOutputStream(&quot;D:\\Temp\\演示视频2.mp4&quot;);
+        ) &#123;
+            int info;
+            while ((info = is.read()) != -1) &#123;
+                os.write(info);
+                os.flush();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+        final long end = System.currentTimeMillis();
+        System.out.println(&quot;一滴一滴耗时：&quot; + (end - start) + &quot;ms&quot;);
+    &#125;
+</code></pre>
+<pre><code class="java">    /**
+     * 一桶一桶
+     */
+    private static void copy3() &#123;
+        final long start = System.currentTimeMillis();
+        try (
+                InputStream is = new FileInputStream(old);
+                OutputStream os = new FileOutputStream(&quot;D:\\Temp\\演示视频3.mp4&quot;);
+        ) &#123;
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) != -1) &#123;
+                os.write(buffer, 0, length);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+        final long end = System.currentTimeMillis();
+        System.out.println(&quot;一桶一桶耗时：&quot; + (end - start) + &quot;ms&quot;);
+    &#125;
+</code></pre>
+<pre><code class="java">    /**
+     * 缓冲池一滴一滴
+     */
+    private static void copy2() &#123;
+        final long start = System.currentTimeMillis();
+
+        try (
+                InputStream is = new FileInputStream(old);
+                OutputStream os = new FileOutputStream(&quot;D:\\Temp\\演示视频4.mp4&quot;);
+
+                InputStream bis = new BufferedInputStream(is);
+                OutputStream bos = new BufferedOutputStream(os);
+        ) &#123;
+            int info;
+            while ((info = bis.read()) != -1) &#123;
+                bos.write(info);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+        final long end = System.currentTimeMillis();
+        System.out.println(&quot;缓冲池一滴一滴耗时：&quot; + (end - start) + &quot;ms&quot;);
+    &#125;
+</code></pre>
+<pre><code class="java">    /**
+     * 缓冲池一桶一桶
+     */
+    private static void copy1() &#123;
+        final long start = System.currentTimeMillis();
+
+        try (
+                InputStream is = new FileInputStream(old);
+                OutputStream os = new FileOutputStream(&quot;D:\\Temp\\演示视频5.mp4&quot;);
+
+                InputStream bis = new BufferedInputStream(is);
+                OutputStream bos = new BufferedOutputStream(os);
+        ) &#123;
+            int length;
+            byte[] buffer = new byte[1024];
+            while ((length = bis.read(buffer)) != -1) &#123;
+                bos.write(buffer, 0, length);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+        final long end = System.currentTimeMillis();
+        System.out.println(&quot;缓冲池一桶一桶耗时：&quot; + (end - start) + &quot;ms&quot;);
+    &#125;
+</code></pre>
+<p>总结：<br>    字节缓冲输出流，结合字节数组的方式，目前来看是性能最优的组合</p>
+<ul>
+<li>缓冲字符流实现文本拷贝排序</li>
+</ul>
+<pre><code class="java">    @Test
+    public void test1() &#123;
+        try (
+                Reader fr = new FileReader(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\代码\\io-app2\\src\\csb.txt&quot;);
+
+                Writer fw = new FileWriter(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\代码\\io-app2\\src\\csb2.txt&quot;);
+                final BufferedReader br = new BufferedReader(fr);
+                final BufferedWriter bw = new BufferedWriter(fw);
+        ) &#123;
+            final List&lt;String&gt; lists = new ArrayList&lt;&gt;();
+            String data;
+            while ((data = br.readLine()) != null) &#123;//只有这个字符缓冲输入流读完数据为null作为退出循环的条件
+                lists.add(data);
+            &#125;
+            final List&lt;String&gt; sortData = new ArrayList&lt;&gt;();
+            Collections.addAll(sortData, &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;陆&quot;, &quot;柒&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;, &quot;十一&quot;);
+            Collections.sort(lists, new Comparator&lt;String&gt;() &#123;
+                @Override
+                public int compare(String o1, String o2) &#123;
+              return sortData.indexOf(o1.substring(0, o1.indexOf(&quot;.&quot;))) - 
+                  sortData.indexOf(o2.substring(0, o2.indexOf(&quot;.&quot;)));
+                &#125;
+            &#125;);
+            for (String list : lists) &#123;
+                bw.write(list);
+                bw.newLine();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<pre><code class="java">    @Test
+    public void testList() &#123;
+        try (
+                final Reader fr = new FileReader(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\代码\\io-app2\\src\\csb.txt&quot;);
+                final Writer fw = new FileWriter(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\代码\\io-app2\\src\\csb2.txt&quot;);
+                final BufferedWriter bw = new BufferedWriter(fw);
+                final BufferedReader br = new BufferedReader(fr);
+        ) &#123;
+            List&lt;String&gt; lists = new ArrayList&lt;&gt;();
+            List&lt;String&gt; sorts = new ArrayList&lt;&gt;();
+            String line;
+            while ((line = br.readLine()) != null) &#123;
+                lists.add(line);
+            &#125;
+            Collections.addAll(sorts, &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;陆&quot;, &quot;柒&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;, &quot;十一&quot;);
+            Collections.sort(lists, (o1, o2) -&gt; &#123;
+                return sorts.indexOf(o1.substring(0, o1.indexOf(&quot;.&quot;))) - sorts.indexOf(o2.substring(0, o2.indexOf(&quot;.&quot;)));
+            &#125;);
+            for (String list : lists) &#123;
+                bw.write(list);
+                bw.newLine();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h3><p>1问：之前我们使用字符流读取中文是否有乱码？<br>    没有的，因为代码编码和文件编码都是UTF-8。</p>
+<p>2问：如果代码编码和文件编码不一致，使用字符流直接读取还能不乱码吗？<br>    会乱码。<br>    文件编码和读取的编码必须一致才不会乱码。<br>    字符流直接读取文本内容，必须文件和代码编码（Idea默认UTF-8）一致才不会乱码</p>
+<ul>
+<li>粗糙解决乱码</li>
+</ul>
+<pre><code class="java">    /**
+     * ClassName: TransferIoDemo
+     * Description: 在Idea上读取，GBK的文件；
+     * 目标文件必须与字节管道接通，把以GBK编码的字节用GBK的形式解码成字符
+     * 但必须确保读取到全部的字节，否则乱码
+     * date:2022/3/9
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    @Test
+    public void test1() &#123;
+        try (
+
+                //字节流与目标文件接通
+                final FileInputStream is = new FileInputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\amnb.txt&quot;);
+        ) &#123;
+            //须确保读取到全部的字节
+            final byte[] buffer = new byte[1024];//用字节桶装数据，一次装完，不然乱码
+            int len;
+            while ((len = is.read(buffer)) != -1) &#123;
+                System.out.println(new String(buffer, 0, len, &quot;GBK&quot;));//以GBK的解码方式获取字符
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<pre><code class="java">    /**
+     * ClassName: TransferIoDemo
+     * Description:将Idea中的文件写到GBK文件中(操作目标文件)
+     * 这里是想要将UTF-8的文件写到GBK文件中，因此目标文件必须连接字节管道，将UTF-8的字符串转为GBK类型的字节编码
+     * date:2022/3/9
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    @Test
+    public void test2() &#123;
+        try (
+                //不是空项目的模式，所以是src下的
+                final FileReader fr = new FileReader(&quot;src/resource/a.txt&quot;);
+
+                //与目标文件接通的是字节流
+                final FileOutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\amnb.txt&quot;, true);
+        ) &#123;
+            //必须确保将字符全部装完
+            final char[] buffer = new char[1024];
+            int len;
+            while ((len = fr.read(buffer)) != -1) &#123;
+                //将字符转为GBK编码的字节
+                os.write(new String(buffer, 0, len).getBytes(&quot;GBK&quot;));
+            &#125;
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<ul>
+<li>完美解决乱码问题：</li>
+</ul>
+<p>使用字符输入转换流 InputStreamReader<br>以读取GBK的文件为例：<br>    1.提取以GBK编码的文件的原始字节流<br>    2.然后把字节流以指定编码（GBK）转换成字符输入流，这样字符输入流中的字符就不乱码了</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838546.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838719.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void testRead() &#123;
+        try (
+                final InputStream is = new FileInputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\ayu.txt&quot;);
+                final Reader isr = new InputStreamReader(is, &quot;GBK&quot;);//代码以GBK的方式编码，文件以Gbk编码，不会乱码
+//                final Reader isr = new InputStreamReader(is);//代码以默认的方式编码（UTF-8），文件以Gbk编码，会乱码
+                final BufferedReader br = new BufferedReader(isr);
+        ) &#123;
+            String line;
+            while ((line = br.readLine()) != null) &#123;
+                System.out.println(line);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<p>字符输入转换流InputStreamReader作用：<br>    可以解决字符流读取不同编码乱码的问题<br>    public InputStreamReader(InputStream is,String charset):<br>    可以指定编码把原始字节流转换成字符流，如此字符流中的字符不乱码。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838692.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void testRead2() &#123;
+        try (
+                final OutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\outputstreamwriter.txt&quot;);
+                final Writer osw = new OutputStreamWriter(os, &quot;GBK&quot;);//将字符转换成以GBK编码的字节
+                final BufferedWriter bw = new BufferedWriter(osw);
+        ) &#123;
+            bw.write(&quot;今明后核辐射大半年么&quot;);
+            bw.newLine();
+            bw.write(&quot;佛挡杀佛的速度辅导费发来了解决&quot;);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<p>字符输出转换流OutputStreamWriter的作用？<br>    public OutputStreamWriter(OutputStream os，String charset)<br>    可以指定编码把将字符转为与目标文件一致编码</p>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><ul>
+<li>定义</li>
+</ul>
+<p>以内存为基准，把内存中的对象存储到磁盘文件中去，称为对象序列化<br>使用到的流是对象字节输出流：ObjectOutputStream</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838871.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838462.png"></p>
+<hr>
+<pre><code class="java">    public static void main(String[] args) throws Exception &#123;
+        final Student student = new Student(&quot;fgcy&quot;, &quot;qwe3211126&quot;, &#39;男&#39;, 18);
+        final OutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\serializable.txt&quot;);
+        final ObjectOutputStream oos = new ObjectOutputStream(os);
+        oos.writeObject(student);
+        oos.close();
+    &#125;
+</code></pre>
+<pre><code> �� sr serializable.Student (���d�U I ageC sexL namet Ljava/lang/String;L passwordq ~ xp   u7t 	张伟健t 
+qwe3211126   
+</code></pre>
+<p>对象序列化的含义是什么？<br>    把对象数据存入到文件中去。<br>对象序列化用到了哪个流？<br>    对象字节输出流ObjectOutputStram<br>    public void writeObject(Object obj)<br>序列化对象的要求是怎么样的？<br>    <strong>对象必须实现序列化接口</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261837154.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void testSerial() throws Exception &#123;
+        final InputStream is = new FileInputStream(&quot;D:\\learn\\Idea\\basis\\src\\serializable.txt&quot;);
+        final ObjectInputStream ois = new ObjectInputStream(is);
+        final Student student = (Student) ois.readObject();
+        System.out.println(student);
+    &#125;
+</code></pre>
+<p>对象反序列化的含义是什么？<br>    把磁盘中的对象数据恢复到内存的Java对象中。<br>对象反序列化用到了哪个流？<br>    对象字节输入流ObjectInputStram<br>某个字段不想序列化</p>
+<pre><code class="java">private transient String password;//transient修饰的字段不会进行反序列化
+</code></pre>
+<pre><code>Student&#123;name=&#39;fgcy&#39;, password=&#39;null&#39;, sex=男, age=18&#125;
+</code></pre>
+<pre><code class="javas">private static final long serialVersionUID = 620462426732525268L;
+</code></pre>
+<pre><code class="java">当javaBean中的数据改变时或手动改变serialVersionUID，需要从新序列化更新文件中的对象，否则从文件中反序列化会失效
+</code></pre>
+<h3 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h3><p>打印流可以实现方便(|)、高效(有缓冲流)的打印数据到文件中去。打印流一般是指：PrintStream（字节流），PrintWriter（字符流）两个类。<br>可以实现打印什么数据就是什么数据，例如打印整数97写出去就是97，打印boolean的true，写出去就是true。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261837149.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void test() throws Exception &#123;
+//        final OutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\printStream.txt&quot;);
+//        final PrintStream ps = new PrintStream(os, true, &quot;GBK&quot;);///包装了bufferedStream所以也属于高级流,而且包装了字符输出转换流，写完一个字节数组后自动刷新，将字符通过字符输出转换流转为字节，通过底层字节流写出
+        final PrintStream ps = new PrintStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\printStream.txt&quot;, &quot;UTF-8&quot;);
+        //print（）做了重载，将类型转换成同等字符串然后输出，所以才有打印什么就是什么
+        ps.println(&quot;闪避&quot;);
+        ps.println(111);
+        ps.println(true);
+        ps.println(&#39;a&#39;);
+        ps.write(48);//输出字节48，以utf8的字符编码，兼容ascii所以字符是0
+        ps.close();
+    &#125;
+</code></pre>
+<p>PrintStream和PrintWriter的区别<br>    打印数据功能上是一模一样的，都是使用方便，性能高效（核心优势）<br>    PrintStream继承自字节输出流OutputStream，支持写字节数据的方法。<br>    PrintWriter继承自字符输出流Writer，支持写字符数据出去。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261837228.png"></p>
+<hr>
+<ul>
+<li>打印流实现重定向</li>
+</ul>
+<pre><code class="java">    @Test
+    public void test2() throws Exception &#123;
+        final PrintStream ps = new PrintStream(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\relocation.txt&quot;, &quot;UTF-8&quot;);
+        System.setOut(ps);
+        ps.println(&quot;儿时望星空&quot;);
+        ps.println(&quot;举手若能摘&quot;);
+        ps.println(&quot;而今七尺身&quot;);
+        ps.println(&quot;天高不可及&quot;);
+        ps.close();
+    &#125;
+</code></pre>
+<p>将输出的内容流向文件而不是控制台</p>
+<ul>
+<li>Properties</li>
+</ul>
+<p>其实就是一个Map集合，但是我们一般不会当集合使用，因为HashMap更好用<br>Properties代表的是一个属性文件，可以把自己对象中的键值对信息存入到一个属性文件中去。<br>属性文件：后缀是.properties结尾的文件,里面的内容都是 key&#x3D;value，后续做系统配置信息的</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261837755.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261837252.png"></p>
+<hr>
+<pre><code class="java">    //存
+    @Test
+    public void test3() throws Exception &#123;
+        final Properties properties = new Properties();
+        properties.setProperty(&quot;admin&quot;, &quot;123456&quot;);
+        properties.put(&quot;dlei&quot;, &quot;56789&quot;);//使用父类的方法
+        properties.setProperty(&quot;ben&quot;, &quot;545589&quot;);
+        properties.store(new FileWriter(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\user.properties&quot;), &quot;this is user information!&quot;);
+
+    &#125;
+</code></pre>
+<pre><code class="java">    //取
+    @Test
+    public void test4() throws Exception &#123;
+        final Properties properties = new Properties();
+        properties.load(new FileReader(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\user.properties&quot;));
+        System.out.println(properties.getProperty(&quot;admin&quot;));
+        System.out.println(properties.get(&quot;dlei&quot;));
+        final Enumeration&lt;?&gt; enumeration = properties.propertyNames();//相当于获取keyset
+        while (enumeration.hasMoreElements()) &#123;
+            System.out.println(enumeration.nextElement());
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="IO框架"><a href="#IO框架" class="headerlink" title="IO框架"></a>IO框架</h3><p>commons-io概述<br>    commons-io是apache开源基金组织提供的一组有关IO操作的类库，可以提高IO功能开发的效率。<br>    commons-io工具包提供了很多有关io操作的类。有两个主要的类FileUtils, IOUtils</p>
+<pre><code class="java">    @Test
+    public void test1() throws IOException &#123;
+        //文件复制
+    /*    FileUtils.copyFile(new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\day08、阶段项目.pptx&quot;),
+                new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\day08、阶段项目2.pptx&quot;));*/
+
+        //文件复制到文件夹
+
+   /*     FileUtils.copyFileToDirectory(new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\day08、阶段项目.pptx&quot;)
+                , new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\代码&quot;),true);*/
+
+
+        //复制文件夹到文件夹
+     /*   FileUtils.copyDirectoryToDirectory(new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\新建文件夹&quot;),
+                new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT&quot;));*/
+
+
+        //删除文件
+//        FileUtils.delete(new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\新建文件夹\\D.txt&quot;));
+ 
+        //删除文件夹
+//        FileUtils.deleteDirectory(new File(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\新建文件夹&quot;));
+    &#125;
+</code></pre>
+<ul>
+<li>NIO</li>
+</ul>
+<pre><code class="java">    @Test
+    public void test2() throws IOException &#123;
+        //文件复制
+       /* Files.copy(Paths.get(&quot;D:\\\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\新建文件夹\\D.txt&quot;),
+                Paths.get(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\新建文件夹\\D2.txt&quot;));*/
+
+
+        //删除文件
+//        Files.delete(Paths.get(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\新建文件夹\\D2.txt&quot;));
+
+
+        //删除空文件夹
+//        Files.delete(Paths.get(&quot;D:\\learn\\黑马程序员\\java基础\\day20、IO流二\\PPT\\新建文件夹&quot;));
+
+
+    &#125;
+</code></pre>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

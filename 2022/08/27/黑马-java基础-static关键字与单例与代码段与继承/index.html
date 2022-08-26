@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Static关键字与单例与代码段与继承 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/微信图片_20220820001611.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Static关键字与单例与代码段与继承 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/27
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="static概述"><a href="#static概述" class="headerlink" title="static概述"></a>static概述</h3><p>static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；<br>static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。</p>
+<h3 id="成员变量可以分为两种"><a href="#成员变量可以分为两种" class="headerlink" title="成员变量可以分为两种"></a>成员变量可以分为两种</h3><ol>
+<li>实例成员变量：类内方法外，无static修饰，属于每一个对象</li>
+<li>静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问</li>
+</ol>
+<span id="more"></span>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107897.png"></p>
+<hr>
+<ol>
+<li>加载User.class文件进入方法区内存</li>
+<li>将静态成员变量加载进堆内存</li>
+<li>将方法区中的main方法加载进栈内存中运行</li>
+<li>通过类名操作静态成员变量</li>
+<li>在栈内存中开辟一块存储User类型的空间，再到堆内存中开辟一块存放User实例的空间，并为成员变量赋初始值；然后把实例的地址交给栈中的user变量</li>
+<li>通过实例的地址操作实例的成员变量</li>
+<li>通过实例的地址找到实例再操作静态成员变量</li>
+</ol>
+<ul>
+<li>两种成员方法</li>
+</ul>
+<p>实例成员方法：(无static修饰，属于对象），只能用对象触发访问 表示对象自己的行为的，且方法中需要访问实例成员的，则该方法必须申明成实例方法或者实例一个对象，通过对象访问；<br>静态成员方法：（有static修饰，属于类），建议用类名访问【子类类名也可以】，也可以用对象访问。如果该方法是以执行一个共用功能为目的，或者想要方便访问则可以申明成静态方法；</p>
+<pre><code class="java">package static_demo;
+
+/**
+ * ClassName: StaticDemo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 17:19&lt;br/&gt;
+ */
+public class StaticDemo &#123;
+    private String ip;
+    private String time;
+    //静态成员变量属于类,可以被所有该类的实例访问
+    private static int onlineNumber;
+
+    /**
+     * 实例成员方法可以访问本类中全部的成员变量和成员方法
+     */
+    public void say() &#123;
+        ip = &quot;123&quot;;
+        time = &quot;123&quot;;
+        onlineNumber = 123;
+        test1();
+        StaticDemo.test2();
+        System.out.println(&quot;实例成员方法&quot;);
+    &#125;
+
+    /**
+     * 静态成员方法只能访问静态成员变量和静态成员方法
+     */
+    public static void funcSay() &#123;
+        //ip = &quot;1 你你 23&quot;;   //报错
+        //time = &quot;123&quot;;//报错
+        onlineNumber = 123;
+        //test1();//报错
+        StaticDemo.test2();
+        System.out.println(&quot;静态成员方法&quot;);
+    &#125;
+
+
+    public void test1() &#123;
+    &#125;
+
+    public static void test2() &#123;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        final StaticDemo staticDemo = new StaticDemo();
+        System.out.println(StaticDemo.onlineNumber);//访问静态成员变量
+        System.out.println(onlineNumber);//访问静态成员变量（在本类中可以这么写）
+        StaticDemo.funcSay();//访问静态成员方法
+        funcSay();//访问静态方法（在本类中可以这么写）
+        staticDemo.onlineNumber = 222;//可以通过实例访问静态成员变量（不推荐）
+        staticDemo.funcSay();//可以通过实例访问静态成员方法（不推荐）
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>static成员方法内存原理</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107422.png"></p>
+<hr>
+<ol>
+<li>加载Student.class文件到方法区，此时会暴露静态方法的访问入口</li>
+<li>提取main方法到栈内存中运行</li>
+<li>通过类名访问该类的静态方法，从方法区中提取到栈中运行</li>
+<li>在该类中调用该类的静态方法，可以省略不写 类名. ；从方法区中提取到栈中运行；编译后会不写</li>
+<li>在栈中开辟一快存储Student类型的空间，用于存储在堆中开辟Student实例的空间的地址</li>
+<li>通过句柄（Student实例的地址）对该实例的实例成员变量进行操作</li>
+<li>通过实例地址，找到实例中的方法引用，从方法区中提取到占内存中运行</li>
+</ol>
+<ul>
+<li>工具类</li>
+</ul>
+<ol>
+<li>工具类中定义的都是一些静态方法，每个方法都是以完成一个共用的功能为目的。</li>
+<li>工具类既可方便调用，又可提高了代码复用（一次编写，处处可用）<br>为什么工具类中的方法不用实例方法做？<br>     实例方法需要创建对象调用，此时用对象只是为了调用方法，这样只会浪费内存</li>
+<li>建议将工具类的构造器进行私有，工具类无需创建对象。</li>
+<li>工具类里面都是静态方法，直接用类名访问即可</li>
+</ol>
+<ul>
+<li>注意点</li>
+</ul>
+<ol>
+<li>静态方法只能访问静态的成员，不可以直接访问实例成员。可以间接—》通过构造器获取一个实例，再通过句柄调用实例方法</li>
+<li>实例方法可以访问静态的成员，也可以访问实例成员。（属性和方法）</li>
+<li>静态方法中是不可以出现this关键字和super</li>
+</ol>
+<ul>
+<li>代码块</li>
+</ul>
+<ol>
+<li>代码块是类的5大成分之一（成员变量、构造器，成员方法，代码块，内部类），定义在类中方法外。</li>
+<li>在Java类下，使用 {} 括起来的代码被称为代码块</li>
+</ol>
+<ul>
+<li>静态代码块</li>
+</ul>
+<p>格式：static{}<br>特点：需要通过static关键字修饰，随着类的加载而加载，并且自动触发、只执行一次；优先执行，比main还早<br>使用场景：在类加载的时候做一些静态数据初始化的操作，以便后续使用</p>
+<pre><code class="java">public class StaticDemo2 &#123;
+    private static String name;
+
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;===============main=================&quot;);
+        System.out.println(name);
+    &#125;
+
+    /**
+     * 随类一起加载，优先执行 用于对静态变量的初始化
+     */
+    static &#123;
+        System.out.println(&quot;静态代码块执行&quot;);
+        name = &quot;fgcy&quot;;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>静态代码块执行
+===============main=================
+fgcy
+</code></pre>
+<ul>
+<li>构造(实例 )代码块</li>
+</ul>
+<p>格式：{}<br>特点：每次创建对象，调用构造器执行时，都会执行该代码块中的代码，并且在构造器执行前执行（相当于把实例代码块中的代码放到构造器最开始）<br>使用场景：初始化实例资源</p>
+<pre><code class="java">package static_demo;
+
+/**
+ * ClassName: StaticDemo3 &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 20:18&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class StaticDemo3 &#123;
+    private String name;
+
+    public StaticDemo3() &#123;
+        System.out.println(&quot;构造器执行&quot;);
+        System.out.println(name);
+    &#125;
+
+    /**
+     * 优先于构造器执行，调用构造器先执行该代码段
+     */ &#123;
+        System.out.println(&quot;构造代码块执行&quot;);
+        name = &quot;123&quot;;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        new StaticDemo3();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>构造代码块执行
+构造器执行
+123
+</code></pre>
+<ul>
+<li>一副扑克牌</li>
+</ul>
+<pre><code class="java">package static_demo;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * ClassName: StaticDemo4 &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 20:31&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class StaticDemo4 &#123;
+    private static List&lt;String&gt; cards = new ArrayList&lt;&gt;();
+
+    static &#123;
+        String[] colors = &#123;&quot;♠&quot;, &quot;♥&quot;, &quot;♣&quot;, &quot;♦&quot;&#125;;
+        // 5、定义点数
+        String[] sizes = &#123;&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;J&quot;, &quot;Q&quot;, &quot;K&quot;, &quot;A&quot;, &quot;2&quot;&#125;;
+        for (int i = 0; i &lt; sizes.length; i++) &#123;
+            for (int j = 0; j &lt; colors.length; j++) &#123;
+                cards.add(sizes[i] + colors[j]);
+            &#125;
+        &#125;
+        cards.add(&quot;大王&quot;);
+        cards.add(&quot;小王&quot;);
+
+    &#125;
+
+    public static void main(String[] args) &#123;
+        System.out.println(cards);
+        Collections.shuffle(cards);
+        System.out.println(cards);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>[3♠, 3♥, 3♣, 3♦, 4♠, 4♥, 4♣, 4♦, 5♠, 5♥, 5♣, 5♦, 6♠, 6♥, 6♣, 6♦, 7♠, 7♥, 7♣, 7♦, 8♠, 8♥, 8♣, 8♦, 9♠, 9♥, 9♣, 9♦, 10♠, 10♥, 10♣, 10♦, J♠, J♥, J♣, J♦, Q♠, Q♥, Q♣, Q♦, K♠, K♥, K♣, K♦, A♠, A♥, A♣, A♦, 2♠, 2♥, 2♣, 2♦, 大王, 小王]
+[小王, 10♣, 3♦, J♦, A♠, 4♥, 6♠, J♥, J♣, 7♦, 3♣, Q♦, 5♥, 6♦, 5♠, A♥, 10♥, K♠, J♠, Q♣, 大王, Q♠, 3♠, 8♥, 9♦, 9♠, K♣, 8♠, K♥, 2♠, Q♥, 5♣, 4♠, 10♦, 4♦, 2♣, 9♥, 10♠, 6♥, A♦, 7♣, 4♣, 2♥, 8♦, 2♦, 9♣, 3♥, K♦, 7♠, A♣, 7♥, 6♣, 5♦, 8♣]
+</code></pre>
+<p>在启动系统时对数据进行初始化。<br>使用静态代码块完成数据的初始化操作，代码优雅。</p>
+<h3 id="设计模式之单例"><a href="#设计模式之单例" class="headerlink" title="设计模式之单例"></a>设计模式之单例</h3><ul>
+<li>什么是设计模式</li>
+</ul>
+<p>设计模式是一套被前人反复使用，多数人知晓，经过分类编目的代码设计经验总结，后来者可以直接拿来解决问题<br>好的设计模式能够提高代码的重用性</p>
+<ul>
+<li>单例模式</li>
+</ul>
+<p>可以保证系统中，应用该模式的这个类永远只有一个实例，即一个类永远只能创建一个对象。<br>例如任务管理器对象我们只需要一个就可以解决问题了，这样可以节省内存空间。</p>
+<ul>
+<li>饿汉单例</li>
+</ul>
+<pre><code class="java">package static_demo;
+
+/**
+ * ClassName: SingleInstanceDemo1 &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 20:48&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class SingleInstanceDemo1 &#123;
+    
+    public static SingleInstanceDemo1 singleInstanceDemo1 = new SingleInstanceDemo1();
+    private SingleInstanceDemo1() &#123;
+
+    &#125;
+
+    public static void main(String[] args) &#123;
+        SingleInstanceDemo1 s1 = singleInstanceDemo1;
+        SingleInstanceDemo1 s2 = singleInstanceDemo1;
+        SingleInstanceDemo1 s3 = singleInstanceDemo1;
+        System.out.println(s1==s2);//true
+        System.out.println(s1==s3);//true
+    &#125;
+&#125;
+</code></pre>
+<p>在用类获取对象的时候，对象已经提前为你创建好了</p>
+<ul>
+<li>懒汉单例</li>
+</ul>
+<pre><code class="java">package static_demo;
+
+/**
+ * ClassName: SingleInstanceDemo1 &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 20:48&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class SingleInstanceDemo2 &#123;
+
+    private static SingleInstanceDemo2 singleInstanceDemo2;
+
+    private SingleInstanceDemo2() &#123;
+
+    &#125;
+
+    public static SingleInstanceDemo2 getInstance() &#123;
+        if (singleInstanceDemo2 == null) &#123;
+            singleInstanceDemo2 = new SingleInstanceDemo2();
+        &#125;
+        return singleInstanceDemo2;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        SingleInstanceDemo2 s1 = getInstance();
+        SingleInstanceDemo2 s2 = getInstance();
+        SingleInstanceDemo2 s3 = getInstance();
+        System.out.println(s1 == s2);//true
+        System.out.println(s1 == s3);//true
+    &#125;
+&#125;
+</code></pre>
+<p>在真正需要该对象的时候，才去创建一个对象(延迟加载对象)。</p>
+<h3 id="面向对象三大特征之继承"><a href="#面向对象三大特征之继承" class="headerlink" title="面向对象三大特征之继承"></a>面向对象三大特征之继承</h3><ul>
+<li>继承概念</li>
+</ul>
+<ol>
+<li>Java中提供一个关键字extends，用这个关键字，我们可以让一个类和另一个类建立起父子关系。<br>public class Student extends People {}<br>Student称为子类（派生类），People称为父类(基类 或超类)   子类 extends父类</li>
+<li>当子类继承父类后，就可以直接使用父类公共的属性和方法了。因此，用好这个技术可以很好的我们提高代码的复用性</li>
+<li>子类 继承父类，子类可以得到父类的公开属性和行为，子类可以使用。</li>
+<li>Java中子类更强大</li>
+</ol>
+<ul>
+<li>初始继承</li>
+</ul>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Son &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 21:12&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Son extends Father &#123;
+    public void say() &#123;
+        System.out.println(getName() + &quot;张开嘴巴啊啊啊&quot;);//调用父类的公共方法
+    &#125;
+
+    public static void main(String[] args) &#123;
+        final Son son = new Son();
+        son.setName(&quot;苏未晓&quot;);//调用父类的公共方法,初始化父类的成员变量
+        son.say();
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>继承设计规范</li>
+</ul>
+<p>子类们相同特征（共性属性，共性方法）放在父类中定义，子类独有的的属性和行为应该定义在子类自己里面</p>
+<ul>
+<li>继承内存图</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107522.png"></p>
+<hr>
+<ol>
+<li>将Test.class文件加载进方法区，并暴露main方法的访问入口</li>
+<li>在栈内存中开辟一块Student类型的空间，用于存储在堆内存中开辟的存放Student实例相关信息的空间，（其中包含成员属性和方法的引用）</li>
+<li>通过句柄访问实例空间中的父类空间的方法</li>
+<li>通过句柄访问实例空间中的子类空间的方法<br>……</li>
+</ol>
+<ul>
+<li>继承的特点</li>
+</ul>
+<ol>
+<li>子类可以继承父类的属性和行为，但是子类不能继承父类的构造器。子类有自己的构造器，父类构造器用于初始化父类对象</li>
+<li>Java是单继承模式：一个类只能继承一个直接父类。当多个父类中有相同名字的方法时引起二义性</li>
+<li>Java不支持多继承、但是支持多层继承，家族体系（当祖宗们有相同的方法时，使用离自己最近的，可以是自己）</li>
+<li>Java中所有的类都是Object类的子类</li>
+<li>子类可以继承父类私有成员，只是不能直接访问（未证实）</li>
+<li>子类可以直接使用父类的静态成员（共享），但子类不能继承父类的静态成员。因为静态成员随类加载一次，其并不存在于子类空间中；</li>
+</ol>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Father &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 21:12&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Father &#123;
+
+    public static void test()&#123;
+        System.out.println(&quot;父类的静态方法&quot;);
+    &#125;
+
+&#125;
+
+
+
+
+
+
+package inherit;
+
+/**
+ * ClassName: Son &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 21:12&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Son extends Father &#123;
+
+    public static void main(String[] args) &#123;
+        Son.test();//这里可以通过子类类名调父类的静态方法
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>在子类中访问成员（成员属性，成员方法）满足就近原则</li>
+</ul>
+<p>先子类局部范围找<br>然后子类成员范围找<br>然后父类成员范围找，如果父类范围还没有找到则报错<br>如果子父类中，出现了重名的成员，会优先使用子类的，此时如果一定要在子类中使用父类的怎么办？<br>可以通过super关键字，指定访问父类的成员，this关键字访问当前的成员变量</p>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Demo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 22:47&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        final Student student = new Student();
+        student.say();
+    &#125;
+&#125;
+
+class People &#123;
+    public String name = &quot;父类名字&quot;;
+
+    public void say() &#123;
+        System.out.println(name);
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+&#125;
+
+class Student extends People &#123;
+    public String name = &quot;子类名字&quot;;
+
+    @Override
+    public void say() &#123;
+        String name = &quot;子类局部名字&quot;;
+        System.out.println(name);//子类局部名字 就近原则
+        System.out.println(this.name);//实例成员变量
+        System.out.println(super.name);//父类实例成员
+    &#125;
+&#125;
+</code></pre>
+<pre><code>子类局部名字
+子类名字
+父类名字
+</code></pre>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Demo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 22:47&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        final Student student = new Student();
+        student.go();
+    &#125;
+&#125;
+
+class People &#123;
+    public void run() &#123;
+        System.out.println(&quot;父类跑&quot;);
+    &#125;
+&#125;
+
+class Student extends People &#123;
+    public void go() &#123;//中转方法
+        run();//就近原则
+        super.run();
+    &#125;
+
+    @Override
+    public void run() &#123;
+        System.out.println(&quot;子类跑&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>子类跑
+父类跑
+</code></pre>
+<ul>
+<li>方法重写</li>
+</ul>
+<p>在继承体系中，子类出现了和父类中一模一样的方法声明，我们就称子类这个方法是重写的方法</p>
+<p>方法重写的应用场景<br>    当子类需要父类的功能，但父类的该功能不完全满足自己的需求时。<br>    子类可以重写父类中的方法</p>
+<p>@Override重写注解<br>    @Override是放在重写后的方法上，作为重写是否正确的校验注解。<br>    加上该注解后如果重写错误，编译阶段会出现错误提示。<br>    建议重写方法都加@Override注解，代码安全，优雅！</p>
+<p>方法重写注意事项和要求<br>    重写方法的名称、形参列表必须与被重写方法的名称和参数列表一致。(方法名，形参列表，返回值类型【全部与父类一致】，修饰符【子类大于等于父类】)<br>    私有方法不能被重写。（子类无法访问）<br>    子类重写父类方法时，访问权限必须 大于或者等于 父类 （暂时了解 ：缺省 &lt; protected &lt; public）<br>    子类不能重写父类的静态方法，如果重写会报错的；（子类没有继承父类的静态方法）</p>
+<ul>
+<li>子类构造器特点</li>
+</ul>
+<p>子类中 所有的 构造器默认都会先访问父类中 无参 的构造器，再执行自己</p>
+<p>为什么？<br>    子类在初始化的时候，有可能会使用到父类中的数据，如果父类没有完成初始化，子类将无法使用父类的数据。<br>    子类初始化之前，一定要调用父类构造器先完成父类数据空间的初始化</p>
+<p>子类构造器的第一行语句默认都是：super()，不写也存在</p>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Demo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 22:47&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        new Student();
+        System.out.println(&quot;--------------------------------------------&quot;);
+        new Student(&quot;jjj&quot;);
+    &#125;
+&#125;
+
+class People &#123;
+    public People() &#123;
+        System.out.println(&quot;父类构造器&quot;);
+    &#125;
+&#125;
+
+class Student extends People &#123;
+    private String name;
+
+    public Student(String name) &#123;
+        this.name = name;
+        System.out.println(&quot;子类有参构造&quot;);
+    &#125;
+
+    public Student() &#123;
+        System.out.println(&quot;子类构造器&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>父类构造器
+子类构造器
+--------------------------------------------
+父类构造器
+子类有参构造
+</code></pre>
+<ul>
+<li>子类构造器访问父类有参构造</li>
+</ul>
+<p>super调用父类有参数构造器的作用：<br>   初始化继承自父类的数据。</p>
+<p>如果父类中没有无参数构造器，只有有参构造器，会出现什么现象呢？<br>    会报错。因为子类默认是调用父类无参构造器的。</p>
+<p>如何解决？<br>    子类构造器中可以通过书写 super(…)，手动调用父类的有参数构造器</p>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Demo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 22:47&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        final Student student = new Student(&quot;苏未晓&quot;, &quot;睡觉&quot;, true);
+        System.out.println(student.getName());
+        System.out.println(student.getHobbies());
+        System.out.println(student.isYoungster());
+    &#125;
+&#125;
+
+class People &#123;
+    private String name;
+    private String hobbies;
+
+    public People() &#123;//会被子类默认调用
+    &#125;
+
+    public People(String name, String hobbies) &#123;
+        this.name = name;
+        this.hobbies = hobbies;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public String getHobbies() &#123;
+        return hobbies;
+    &#125;
+
+    public void setHobbies(String hobbies) &#123;
+        this.hobbies = hobbies;
+    &#125;
+&#125;
+
+class Student extends People &#123;
+    private boolean youngster;
+
+    public Student(String name, String hobbies, boolean youngster) &#123;
+        super(name, hobbies);//这里用父类的有参构造代替了默认的父类无参构造
+        this.youngster = youngster;
+    &#125;
+
+    public Student() &#123;//默认在所有子类构造器的第一行调用父类无参构造器
+    &#125;
+
+    public boolean isYoungster() &#123;
+        return youngster;
+    &#125;
+
+    public void setYoungster(boolean youngster) &#123;
+        this.youngster = youngster;
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>this与super</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107284.png"></p>
+<hr>
+<ul>
+<li>通过this()调用本类的兄弟构造器</li>
+</ul>
+<p>this(…)和super(…)使用注意点：<br>子类通过 this (…）去调用本类的其他构造器，本类其他构造器会通过 super 去手动调用父类的构造器，最终还是会调用父类构造器的。<br>注意：this(…) super(…) 都只能放在构造器的第一行，所以二者不能共存在同一个构造器中</p>
+<pre><code class="java">package inherit;
+
+/**
+ * ClassName: Demo &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/6 22:47&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        final People people = new People(&quot;苏未晓&quot;);
+        System.out.println(people.getHobbies());
+        System.out.println(people.getName());
+    &#125;
+&#125;
+
+class People &#123;
+    private String name;
+    private String hobbies;
+
+    public People() &#123;
+    &#125;
+
+    public People(String name) &#123;
+        //super();//这里不需要调用父类的构造器，因为兄弟构造器中已经调用了，不需要重复调用 this和super都只能放在构造器的第一行，所以两者不能共存于同一个构造器中
+        this(name, &quot;睡觉&quot;);//调用本类的其他构造器
+    &#125;
+
+    public People(String name, String hobbies) &#123;
+        this.name = name;
+        this.hobbies = hobbies;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public String getHobbies() &#123;
+        return hobbies;
+    &#125;
+
+    public void setHobbies(String hobbies) &#123;
+        this.hobbies = hobbies;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>睡觉
+苏未晓
+</code></pre>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>方法 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/微信图片_20220820001611.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>方法 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h2 id="一、什么是方法"><a href="#一、什么是方法" class="headerlink" title="一、什么是方法"></a>一、什么是方法</h2><h3 id="1-0-方法概念"><a href="#1-0-方法概念" class="headerlink" title="1.0 方法概念"></a>1.0 方法概念</h3><p>它可以把一段代码封装成一个功能，以方便重复调用</p>
+<h3 id="2-0-好处"><a href="#2-0-好处" class="headerlink" title="2.0 好处"></a>2.0 好处</h3><ol>
+<li>提高代码复用</li>
+<li>逻辑清晰</li>
+</ol>
+<span id="more"></span>
+
+<h3 id="3-0-定义格式"><a href="#3-0-定义格式" class="headerlink" title="3.0 定义格式"></a>3.0 定义格式</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_10-48-19.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_10-54-15.png"></p>
+<hr>
+<ol>
+<li>权限修饰符：pulic 所有类都可以访问，protected同一个包下的类一级该类的子类，不写（缺省）包权限同一个包内有效，private本类有效</li>
+<li>static修饰代表这是一个静态方法，随类加载一次</li>
+<li>如果方法申明了具体的返回值类型，内部必须使用return返回对应类型的数据。</li>
+<li>如果是void 就直接return; 方法中看到return就会结束方法(会先返回返回值)</li>
+<li>return语句下面，不能编写代码，因为永远执行不到，属于无效的代码。</li>
+<li>形参列表可以有多个，甚至可以没有； 如果有多个形参，多个形参必须用”,”隔开，且不能给初始化值。</li>
+<li>同一个类中的同名方法的不同形参列表构成的两个以上的方法称为方法重载（方法名，形参列表）</li>
+<li>用final修饰的入参不赋初始值，入参不能赋初值</li>
+</ol>
+<h3 id="4-0-方法常见问题"><a href="#4-0-方法常见问题" class="headerlink" title="4.0 方法常见问题"></a>4.0 方法常见问题</h3><ol>
+<li>方法的编写顺序无所谓。</li>
+<li>方法与方法之间是平级关系，不能嵌套定义。可以嵌套使用</li>
+<li>方法不调用就不执行, 调用时必须严格匹配方法的参数情况。</li>
+<li>有返回值的方法调用时可以选择定义变量接收结果，或者直接输出调用，甚至直接调用；无返回值方法的调用只能直接调用。</li>
+<li>有static修饰符修饰的是静态成员方法，一般通过类名调用；也可以通过该类实例调用(不推荐)</li>
+</ol>
+<h2 id="二、方法内存图"><a href="#二、方法内存图" class="headerlink" title="二、方法内存图"></a>二、方法内存图</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_11-12-56.png"></p>
+<hr>
+<p>字节码文件存放在方法区中，在字节码文件中会暴露访问静态方法的入口<br>但方法是运行在栈内存中的，存放在方法中的局部变量也是存放在栈中</p>
+<h2 id="三、方法参数转递机制（都是值传递）"><a href="#三、方法参数转递机制（都是值传递）" class="headerlink" title="三、方法参数转递机制（都是值传递）"></a>三、方法参数转递机制（都是值传递）</h2><ul>
+<li>基本类型的参数传递形式</li>
+</ul>
+<p>​    传输实参给方法的形参的时候，并不是传输实参变量本身， 而是传输实参变量中存储的数据值，这就是值传递</p>
+<ul>
+<li>引用数据类型的参数传递形式</li>
+</ul>
+<p>​    传输实参给方法的形参的时候，并不是传输实参变量本身， 而是传输实参变量中存储的地址值，这就是值传递</p>
+<ul>
+<li>Java的参数传递机制是什么</li>
+</ul>
+<p>​	值传递，传输的是实参存储的值。</p>
+<ul>
+<li>打印整型数组内容</li>
+</ul>
+<pre><code class="java">    /**
+     * 数组打印
+     */
+    @Test
+    public void test5() &#123;
+        int[] array = &#123;&#125;;
+        System.out.println(toString(array));
+    &#125;
+
+    public String toString(int[] array) &#123;
+        String temp = &quot;&quot;;
+        if (array == null) &#123;
+            return null;
+        &#125; else &#123;
+            temp += &quot;[&quot;;
+            if (array.length &gt; 0) &#123;
+                for (int i = 0; i &lt; array.length; i++) &#123;
+                    temp += i == array.length - 1 ? array[i] : array[i] + &quot;,&quot;;
+                &#125;
+            &#125;
+            temp += &quot;]&quot;;
+        &#125;
+        return temp;
+    &#125;
+</code></pre>
+<ul>
+<li>从数组中查询指定元素的索引</li>
+</ul>
+<pre><code class="java">    /**
+     * 返回索引
+     */
+    @Test
+    public void test6() &#123;
+//        int[] array = &#123;4,2,1,4&#125;;
+        int[] array = null;
+        System.out.println(indexOf(array, 4));
+    &#125;
+
+    public Integer indexOf(int[] ints, int target) &#123;
+        if (ints == null) &#123;
+            return null;
+        &#125; else &#123;
+            for (int i = 0; i &lt; ints.length; i++) &#123;
+                if (ints[i] == target) &#123;
+                    return i;
+                &#125;
+            &#125;
+            return -1;
+        &#125;
+    &#125;
+</code></pre>
+<ul>
+<li>比较两个数组内容是否一致</li>
+</ul>
+<pre><code class="java">    /**
+     * 比较数组是否一致
+     */
+    @Test
+    public void test7() &#123;
+        int[] array = &#123;4, 2, 1, 4&#125;;
+        int[] array1 = &#123;4, 2, 4&#125;;
+        System.out.println(equals(array, array1));
+    &#125;
+
+    public boolean equals(int[] ints1, int[] ints2) &#123;
+        if (ints1 == null || ints2 == null) &#123;
+            return false;
+        &#125;
+        if (ints1.length != ints2.length) &#123;
+            return false;
+        &#125;
+        for (int i = 0; i &lt; ints1.length; i++) &#123;
+            if (ints1[i] != ints2[i]) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+</code></pre>
+<h2 id="四、方法的其他形势、技术"><a href="#四、方法的其他形势、技术" class="headerlink" title="四、方法的其他形势、技术"></a>四、方法的其他形势、技术</h2><h3 id="1-0-方法重载"><a href="#1-0-方法重载" class="headerlink" title="1.0 方法重载"></a>1.0 方法重载</h3><ol>
+<li>同一个类中，出现多个方法名称相同，但是形参列表是不同的，那么这些方法就是重载方法</li>
+<li>调用方法的时候,会通过参数的不同来区分调用的是哪个方法</li>
+<li>方法重载的作用<br>可读性好，方法名称相同提示是同一类型的功能，通过形参不同实现功能差异化的选择，这是一种专业的代码设计.(同一功能的差异化实现)</li>
+<li>提高开发效率（调用兄弟方法）</li>
+</ol>
+<ul>
+<li>代码体现</li>
+</ul>
+<pre><code class="java">    public static void main(String[] args) &#123;
+        fire();
+        fire(&quot;中国&quot;);
+        fire(&quot;一百&quot;, &quot;中国&quot;);
+    &#125;
+
+    public static void fire(String numbers, String location) &#123;
+        System.out.println(&quot;发射&quot; + numbers + &quot;枚导弹给&quot; + location);
+    &#125;
+
+    public static void fire(String location) &#123;
+        fire(&quot;一&quot;, location);
+    &#125;
+
+
+    public static void fire() &#123;
+        fire(&quot;美国&quot;);
+    &#125;
+</code></pre>
+<h3 id="2-0-方法重载的识别技巧"><a href="#2-0-方法重载的识别技巧" class="headerlink" title="2.0 方法重载的识别技巧"></a>2.0 方法重载的识别技巧</h3><ol>
+<li>形参列表不同指的是：形参的个数、类型、顺序不同，不关心形参的名称 (顺序 个数 类型)</li>
+<li>只要是同一个类中，方法名称相同、形参列表不同，那么他们就是重载的方法，其他都不管！（如：修饰符，返回值类型都无所谓）</li>
+</ol>
+<pre><code class="java">private void open()&#123;&#125;
+
+protece void open(int a)&#123;&#125;
+
+public void open(int a,int b)&#123;&#125;
+
+void open(int a,int b)&#123;&#125;//不是
+
+public void open(double a,int b)&#123;&#125;
+
+public void open(int a,double b)&#123;&#125;
+</code></pre>
+<h3 id="3-0-return关键字"><a href="#3-0-return关键字" class="headerlink" title="3.0 return关键字"></a>3.0 return关键字</h3><p>作用:结束当前方法</p>
+<h2 id="五、综合案例"><a href="#五、综合案例" class="headerlink" title="五、综合案例"></a>五、综合案例</h2><h3 id="1-0-买飞机票"><a href="#1-0-买飞机票" class="headerlink" title="1.0 买飞机票"></a>1.0 买飞机票</h3><pre><code class="java">public static void main(String[] args) &#123;
+        final Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;请输入月份：&quot;);
+        final int month = sc.nextInt();
+        System.out.print(&quot;请输入飞机票类型（头等舱，经济舱）：&quot;);
+        final String type = sc.next();
+        System.out.print(&quot;请输入飞机票价格：&quot;);
+        final double price = sc.nextDouble();
+        System.out.println(calc(month, type, price));
+    &#125; 
+
+    private static double calc(int month, String type, double price) &#123;
+        if (month &gt;= 5 &amp;&amp; month &lt;= 10) &#123;
+            switch (type) &#123;
+                case &quot;头等舱&quot;:
+                    price *= 0.9;
+                    break;
+
+                case &quot;经济舱&quot;:
+                    price *= 0.85;
+                    break;
+                default:
+                    System.out.println(&quot;机票类型输入有误！&quot;);
+                    price = -1;
+            &#125;
+        &#125; else if (month == 11 || month == 12 || month &gt;= 1 &amp;&amp; month &lt;= 4) &#123;
+            switch (type) &#123;
+                case &quot;头等舱&quot;:
+                    price *= 0.7;
+                    break;
+
+                case &quot;经济舱&quot;:
+                    price *= 0.65;
+                    break;
+                default:
+                    System.out.println(&quot;机票类型输入有误！&quot;);
+                    price = -1;
+            &#125;
+        &#125; else &#123;
+            System.out.println(&quot;月份输入有误&quot;);
+            price = -1;
+        &#125;
+        return price;
+    &#125;
+</code></pre>
+<h3 id="2-0-找素数"><a href="#2-0-找素数" class="headerlink" title="2.0 找素数"></a>2.0 找素数</h3><pre><code class="java">  /**
+     * ClassName: MethodDemo2
+     * Description:素数判断
+     * date:2022/3/4
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    @Test
+    public void test1() &#123;
+        for (int i = 101; i &lt;= 200; i++) &#123;
+            //标志位，默认判断这个数是素数，当有一个数（范围2-sqrt（数））可以被这个数整除，则这个数不是素数
+            boolean flags = true;
+            for (int j = 2; j &lt;= Math.sqrt(i); j++) &#123;
+                if (i % j == 0) &#123;
+                    //这个数不是素数
+                    flags = false;
+                    //可以判断下一个数
+                    break;
+                &#125;
+            &#125;
+            if (flags) &#123;
+                System.out.print(i + &quot; &quot;);
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 
+</code></pre>
+<h3 id="3-0-验证码"><a href="#3-0-验证码" class="headerlink" title="3.0 验证码"></a>3.0 验证码</h3><pre><code class="java">    /**
+     * ClassName: MethodDemo2
+     * Description:验证码
+     * date:2022/3/4
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    @Test
+    public void test2() &#123;
+        System.out.println(createCode(5));
+    &#125;
+
+    private String createCode(int i) &#123;
+        final Random random = new Random();
+        String code = &quot;&quot;;
+        for (int j = 0; j &lt; i; j++) &#123;
+            final int type = random.nextInt(3);
+            switch (type) &#123;
+                //大写字母
+                case 0:
+                    code += (char) (random.nextInt(26) + 65);//65-----&gt;65+25
+                    break;
+                //小写字母
+                case 1:
+                    code += (char) (random.nextInt(26) + 97);//97-----&gt;97+25
+                //0----9数字
+                case 2:
+                    code += random.nextInt(10);
+            &#125;
+        &#125;
+        return code;
+    &#125;
+</code></pre>
+<pre><code>0Dp34C
+</code></pre>
+<h3 id="4-0-数组数据加密"><a href="#4-0-数组数据加密" class="headerlink" title="4.0 数组数据加密"></a>4.0 数组数据加密</h3><pre><code class="java">    @Test
+    public void test3() &#123;
+        int[] arrays = &#123;1, 9, 8, 3&#125;;
+        System.out.println(&quot;原始数据：&quot; + printAray(arrays));
+        System.out.println(&quot;加密后数据：&quot; + md5(arrays));
+    &#125;
+
+    /**
+     * Description:数据加密
+     * date:2022/3/4
+     */
+
+    private String md5(int[] arrays) &#123;
+        for (int i = 0; i &lt; arrays.length; i++) &#123;
+            arrays[i] = (arrays[i] + 5) % 10;
+        &#125;
+        return printAray(arrays);
+    &#125;
+
+    /**
+     * Description:int类型数组反转
+     * date:2022/3/4
+     */
+    private int[] reverce(int[] arrays) &#123;
+        for (int i = 0, j = arrays.length - 1;
+             i &lt; j;
+             i++, j--) &#123;
+            int temp = arrays[i];
+            arrays[i] = arrays[j];
+            arrays[j] = temp;
+        &#125;
+        return arrays;
+    &#125;
+
+
+    /**
+     * Description:数组打印
+     * date:2022/3/4
+     */
+
+    public String printAray(int[] arrays) &#123;
+        String s = &quot;&quot;;
+        if (arrays == null) &#123;
+            return null;
+        &#125; else &#123;
+            s += &quot;[&quot;;
+            for (int i = 0; i &lt; arrays.length; i++) &#123;
+                s += i == arrays.length - 1 ? arrays[i] : arrays[i] + &quot;,&quot;;
+            &#125;
+            s += &quot;]&quot;;
+        &#125;
+        return s;
+    &#125;
+</code></pre>
+<h3 id="5-0-抽奖"><a href="#5-0-抽奖" class="headerlink" title="5.0 抽奖"></a>5.0 抽奖</h3><pre><code class="java">    /**
+     * Description: 抽奖
+     * date:2022/3/4
+     */
+
+    @Test
+    public void test6() &#123;
+        int[] arrays = &#123;2, 588, 888, 1000, 10000&#125;;
+        int[] indexs = &#123;-1, -1, -1, -1, -1&#125;;
+        final Random r = new Random();
+
+        while (true) &#123;
+            boolean flag = true;
+            final int index = r.nextInt(5);
+            for (int i = 0; i &lt; indexs.length; i++) &#123;
+                if (indexs[i] == index) &#123;
+                    flag = false;//有人抽到过
+                    break;
+                &#125;
+            &#125;
+            if (flag) &#123;//没人抽到过
+                for (int i = 0; i &lt; indexs.length; i++) &#123;
+                    if (indexs[i] == -1) &#123;
+                        indexs[i] = index;
+                        System.out.println(&quot;已经抽取&quot; + arrays[index] + &quot;￥的红包&quot;);
+                        break;
+                    &#125;
+                &#125;
+            &#125;
+            if (indexs[indexs.length - 1] != -1) &#123;
+                break;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="6-0-双色球"><a href="#6-0-双色球" class="headerlink" title="6.0 双色球"></a>6.0 双色球</h3><pre><code class="java"> public static void main(String[] args) &#123;
+        judge(createLuckNumbers(), userNumber());
+    &#125;
+
+
+    /**
+     * ClassName: MethodDemo3
+     * Description:判断是否中奖
+     * date:2022/3/4
+     */
+
+    private static void judge(int[] luckNumbers, int[] userNumber) &#123;
+        int blue = 0;
+        int red = 0;
+
+        //0 1 2 3 4 5
+
+        for (int i = 0; i &lt; userNumber.length - 1; i++) &#123;
+            for (int i1 = 0; i1 &lt; luckNumbers.length - 1; i1++) &#123;
+                if (userNumber[i] == luckNumbers[i1]) &#123;
+                    red++;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        blue = luckNumbers[luckNumbers.length - 1] == userNumber[userNumber.length - 1] ? 1 : 0;
+
+        System.out.print(&quot;您的号码：&quot;);
+        printAray(userNumber);
+        System.out.print(&quot;中奖号码:&quot;);
+        printAray(luckNumbers);
+        if (blue == 1 &amp;&amp; red &lt;= 2) &#123;
+            System.out.println(&quot;五鸡&quot;);
+        &#125; else if (red == 4 &amp;&amp; blue == 0 || red == 3 &amp;&amp; blue == 1) &#123;
+            System.out.println(&quot;十鸡&quot;);
+        &#125; else if (red == 5 &amp;&amp; blue == 0 || red == 4 &amp;&amp; blue == 1) &#123;
+            System.out.println(&quot;两百&quot;);
+        &#125; else if (red == 5 &amp;&amp; blue == 1) &#123;
+            System.out.println(&quot;三千&quot;);
+        &#125; else if (red == 6 &amp;&amp; blue == 0) &#123;
+            System.out.println(&quot;五百万&quot;);
+        &#125; else if (red == 6 &amp;&amp; blue == 1) &#123;
+            System.out.println(&quot;一百万&quot;);
+        &#125; else &#123;
+            System.out.println(&quot;恭喜，又没中奖！&quot;);
+        &#125;
+    &#125;
+
+    /**
+     * ClassName: MethodDemo2
+     * Description:从键盘中获取数据
+     */
+
+    private static int[] userNumber() &#123;
+        final int[] ints = new int[7];
+        final Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;请输入六个红球号码（1--33）用逗号隔开：&quot;);
+        final String s = sc.nextLine();
+        final String[] strings = s.split(&quot;,&quot;);
+        for (int i = 0; i &lt; ints.length - 1; i++) &#123;
+            ints[i] = Integer.valueOf(strings[i]);
+        &#125;
+        System.out.print(&quot;请输入一个蓝球（1----16）:&quot;);
+        ints[ints.length - 1] = sc.nextInt();
+        return ints;
+    &#125;
+
+
+    /**
+     * ClassName: MethodDemo20
+     * Description: 生成双色球
+     */
+
+    private static int[] createLuckNumbers() &#123;
+        final int[] luckNumbers = new int[7];
+        final Random r = new Random();
+        for (int i = 0; i &lt; luckNumbers.length - 1; i++) &#123;
+            while (true) &#123;
+                boolean flag = true;
+                final int tempNumber = r.nextInt(33) + 1;
+                for (int j = 0; j &lt; i; j++) &#123;
+                    if (luckNumbers[j] == tempNumber) &#123;
+                        flag = false;
+                        break;
+                    &#125;
+                &#125;
+                if (flag) &#123;
+                    luckNumbers[i] = tempNumber;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        luckNumbers[luckNumbers.length - 1] = r.nextInt(17) + 1;
+        return luckNumbers;
+    &#125;
+
+
+    /**
+     * ClassName: MethodDemo2
+     * Description:数组打印
+     */
+
+    public static void printAray(int[] arrays) &#123;
+        String s = &quot;&quot;;
+        if (arrays == null) &#123;
+            System.out.println(&quot;null&quot;);
+            return;
+        &#125; else &#123;
+            s += &quot;[&quot;;
+            for (int i = 0; i &lt; arrays.length; i++) &#123;
+                s += i == arrays.length - 1 ? arrays[i] : arrays[i] + &quot;,&quot;;
+            &#125;
+            s += &quot;]&quot;;
+        &#125;
+        System.out.println(s);
+    &#125;
+</code></pre>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>
