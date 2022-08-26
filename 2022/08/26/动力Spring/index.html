@@ -135,14 +135,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/动力节点/" style="color: #ff7d73">
+                <a href="/tags/动力节点/" style="color: #00bcd4">
                     动力节点
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Spring/" style="color: #ffa2c4">
+                <a href="/tags/Spring/" style="color: #00a596">
                     Spring
                 </a>
             </span>
@@ -983,7 +983,7 @@ public class UsersMapperImpl implements UsersMappr &#123;
 <p>​				但不建议使用顶级的父包，扫描的路径比较多，导致容器启动时间变慢。</p>
 <p>​				指定到目标包和合适的。也就是注解所在包全路径。例如注解的类在 com.bjpowernode.beans 包中</p>
 <hr>
-<p><img src="C:/Users/fgcy/AppData/Roaming/Typora/typora-user-images/image-20220825224535006.png" alt="image-20220825224535006"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220825224535006.png" alt="image-20220825224535006"></p>
 <hr>
 <h2 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h2><h3 id="创建对象注解"><a href="#创建对象注解" class="headerlink" title="创建对象注解"></a>创建对象注解</h3><p>​	 	    @Component :创建所有对象都可以使用此注解,除了控制器,业务逻辑层,数据访问层的对象</p>
 <p>​			@Controller:创建控制器层的对象,此对象可以接收用户请求,返回处理结果</p>
@@ -1052,14 +1052,14 @@ Student&#123;name=&#39;张三&#39;, age=22&#125;
 <p>​			<strong>使用该注解完成属性注入时，类中无需 setter</strong>。@Value()也不用</p>
 <p>​			当然，若属性有 setter，则也可将其加到 setter 上。</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220512153040034.png" alt="image-20220512153040034">	</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512153040034.png" alt="image-20220512153040034">	</p>
 <hr>
 <p>​	注意：</p>
 <p>​		<strong>@Autowired 还有一个属性 required，默认值为 true，表示当匹配失败后，会终止程序运行</strong>。</p>
 <p>​		若将其值设置为 false，则匹配失败，将被忽略，未匹配的属性值为 null。</p>
 <p>​		<strong>如果可注入的类型多于一个【有父子类型，或接口与实现类类型】,则 按名称 进行二次匹配.如果有匹配到则注入,如果没有匹配到,则报错</strong>。</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220512153104017.png" alt="image-20220512153104017"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512153104017.png" alt="image-20220512153104017"></p>
 <hr>
 <h3 id="byName自动注入-Qualifier-了解"><a href="#byName自动注入-Qualifier-了解" class="headerlink" title="byName自动注入@Qualifier(了解)"></a>byName自动注入@Qualifier(了解)</h3><p>​			需要在引用属性上<strong>联合使用</strong>注解**@Autowired 与@Qualifier**。</p>
 <p>​			@Qualifier 的 value 属性用于<strong>指定要匹配的 Bean 的 id 值</strong>，<strong>如果不指定，那么就用 变量名 去匹配bean的id值</strong>。</p>
@@ -1067,7 +1067,7 @@ Student&#123;name=&#39;张三&#39;, age=22&#125;
 <p>​			当有同源类型时，使用@qualifier就可以确定是哪个实现类了。</p>
 <p>​		<strong>如果可注入的类型多于一个,则按名称进行匹配.如果有匹配到则注入,如果没有匹配到,则报错</strong></p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220512153134009.png" alt="image-20220512153134009"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512153134009.png" alt="image-20220512153134009"></p>
 <hr>
 <h1 id="注解-Resource-自动注入-了解"><a href="#注解-Resource-自动注入-了解" class="headerlink" title="注解@Resource 自动注入(了解)"></a>注解@Resource 自动注入(了解)</h1><p>Spring 提供了对jdk 中@Resource 注解的支持。</p>
 <p>@Resource 注解既可以按名称匹配Bean， 也可以按类型匹配 Bean。</p>
@@ -1076,11 +1076,11 @@ Student&#123;name=&#39;张三&#39;, age=22&#125;
 <h2 id="byType-注入引用类型属性"><a href="#byType-注入引用类型属性" class="headerlink" title="byType 注入引用类型属性"></a>byType 注入引用类型属性</h2><p>@Resource 注解若不带任何参数，采用默认按名称的方式注入，按名称不能注入 bean， 则会按照类型进行 Bean 的匹配注入。</p>
 <p><strong>注意：上述与@AutoWired相反【互斥】</strong></p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220512153602560.png" alt="image-20220512153602560"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512153602560.png" alt="image-20220512153602560"></p>
 <hr>
 <h2 id="byName-注入引用类型属性"><a href="#byName-注入引用类型属性" class="headerlink" title="byName 注入引用类型属性"></a>byName 注入引用类型属性</h2><p>@Resource 注解指定其 name 属性，则 name 的值即为按照名称进行匹配的 Bean 的 id。</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220512153710561.png" alt="image-20220512153710561"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512153710561.png" alt="image-20220512153710561"></p>
 <hr>
 <h1 id="注解与-XML-的对比"><a href="#注解与-XML-的对比" class="headerlink" title="注解与 XML 的对比"></a>注解与 XML 的对比</h1><h2 id="注解优点是："><a href="#注解优点是：" class="headerlink" title="注解优点是："></a>注解优点是：</h2><ul>
 <li>方便</li>
@@ -1144,7 +1144,7 @@ Student&#123;name=&#39;张三&#39;, age=22&#125;
 <p>2.专注业务；</p>
 <p>注意：面向切面编程只是<strong>面向对象编程的一种补充</strong>。用 AOP 减少重复代码，专注业务实现。</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220512155600613.png" alt="image-20220512155600613"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512155600613.png" alt="image-20220512155600613"></p>
 <hr>
 <h1 id="模拟AOP框架实现"><a href="#模拟AOP框架实现" class="headerlink" title="模拟AOP框架实现"></a>模拟AOP框架实现</h1><ul>
 <li><p>业务:图书购买业务</p>
@@ -1262,7 +1262,7 @@ public class Agent implements Service &#123;
     &#125;
 </code></pre>
 <h2 id="4-第四个版本-使用静态代理拆分业务和业务接口-切面和切面接口"><a href="#4-第四个版本-使用静态代理拆分业务和业务接口-切面和切面接口" class="headerlink" title="4)第四个版本:使用静态代理拆分业务和业务接口,切面和切面接口."></a>4)第四个版本:使用静态代理拆分业务和业务接口,切面和切面接口.</h2><hr>
-<p><img src="http://img.fgcy.xyz/image-20220507211056504.png" alt="image-20220507211056504"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220507211056504.png" alt="image-20220507211056504"></p>
 <hr>
 <pre><code class="java">/**
  *切面接口
@@ -1568,7 +1568,7 @@ public  void test01()&#123;
 &#125;
 </code></pre>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508102530745.png" alt="image-20220508102530745"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508102530745.png" alt="image-20220508102530745"></p>
 <hr>
 <p>Spring的AOP利用一种称为“横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的<strong>公共行为封装到一个可重用模块</strong>，并将其名为“Aspect”【方面】</p>
 <p>便于<strong>减少系统的重复代码</strong>，<strong>降低模块间的耦合度</strong>，并有利于未来的可操作性和可维护性。</p>
@@ -1596,7 +1596,7 @@ public  void test01()&#123;
 <p>​		<strong>execution(访问权限 方法返回值 方法声明(参数) 异常类型)</strong></p>
 <p>注意，<strong>表达式中 访问权限、异常类型 可省略</strong>，<strong>各部分间用空格分开</strong>。在其中可以使用以下符号：</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508104555025.png" alt="image-20220508104555025"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508104555025.png" alt="image-20220508104555025"></p>
 <hr>
 <ul>
 <li>示例</li>
@@ -1618,7 +1618,7 @@ public  void test01()&#123;
 <p>​			5)必须使用**@Before注解来声明切入的时机是前切功能和切入点**</p>
 <p>​					<strong>参数:value  指定切入点表达式</strong></p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508141953931.png" alt="image-20220508141953931"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508141953931.png" alt="image-20220508141953931"></p>
 <hr>
 <pre><code class="java">/**
  *  业务接口
@@ -1794,7 +1794,7 @@ public void test02()&#123;
 &#125;
 </code></pre>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508141801419.png" alt="image-20220508141801419"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508141801419.png" alt="image-20220508141801419"></p>
 <hr>
 <p><strong>通过AspectJ切换JDK动态代理与CGLib动态代理</strong></p>
 <pre><code class="xml">    &lt;aop:aspectj-autoproxy &gt;&lt;/aop:aspectj-autoproxy&gt;  ===&gt;默认是JDK动态代理,取时必须使用接口类型
@@ -1905,7 +1905,7 @@ public void test02()&#123;
 &#125;
 </code></pre>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508150525607.png" alt="image-20220508150525607"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508150525607.png" alt="image-20220508150525607"></p>
 <hr>
 <h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><p>​	<strong>环绕通知方法的规范</strong></p>
 <p>​		1)访问权限是public</p>
@@ -1921,7 +1921,7 @@ public void test02()&#123;
 <p>​		value:指定切入点表达式</p>
 <p>  它是通过拦截目标方法的方式 ,在目标方法前后增强功能的通知.它是功能最强大的通知,一般事务使用此通知.它可以轻易的改变目标方法的返回值.</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508151059018.png" alt="image-20220508151059018"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508151059018.png" alt="image-20220508151059018"></p>
 <hr>
 <ul>
 <li>案例</li>
@@ -1989,7 +1989,7 @@ public void test01()&#123;
 &#125;
 </code></pre>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508152025454.png" alt="image-20220508152025454"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508152025454.png" alt="image-20220508152025454"></p>
 <hr>
 <h3 id="定义切入点别名"><a href="#定义切入点别名" class="headerlink" title="定义切入点别名"></a>定义切入点别名</h3><p><strong>@Pointcut【切入点】</strong></p>
 <p>当较多的通知增强方法使用相同的 execution 切入点表达式时，编写、维护均较为麻烦。</p>
@@ -2094,7 +2094,7 @@ public void test01()&#123;
 &#125;
 </code></pre>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508153415333.png" alt="image-20220508153415333"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508153415333.png" alt="image-20220508153415333"></p>
 <hr>
 <h2 id="多个通知间执行顺序"><a href="#多个通知间执行顺序" class="headerlink" title="多个通知间执行顺序"></a>多个通知间执行顺序</h2><p>环绕通知中的前置通知</p>
 <p>前置通知</p>
@@ -2107,7 +2107,7 @@ public void test01()&#123;
 <p>大大减少重复代码；是功能业务更加专一，降低耦合；</p>
 <p>底层使用动态代理</p>
 <h1 id="SpringAOP与AspectJ的区别"><a href="#SpringAOP与AspectJ的区别" class="headerlink" title="SpringAOP与AspectJ的区别"></a>SpringAOP与AspectJ的区别</h1><hr>
-<p><img src="http://img.fgcy.xyz/image-20220512191441810.png" alt="image-20220512191441810"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512191441810.png" alt="image-20220512191441810"></p>
 <hr>
 <h1 id="Spring-集成-MyBatis"><a href="#Spring-集成-MyBatis" class="headerlink" title="Spring 集成 MyBatis"></a>Spring 集成 MyBatis</h1><h2 id="1-0-概念"><a href="#1-0-概念" class="headerlink" title="1.0 概念"></a>1.0 概念</h2><p>将 MyBatis 与 Spring 进行整合，主要解决的问题就是。</p>
 <p>所以，该整合只需要<strong>将</strong> <strong>SqlSessionFactory 的对象生成器 SqlSessionFactoryBean 注册在 Spring 容器中</strong></p>
@@ -2136,7 +2136,7 @@ public void test01()&#123;
 </li>
 </ol>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508224110080.png" alt="image-20220508224110080"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508224110080.png" alt="image-20220508224110080"></p>
 <hr>
 <h2 id="4-0-不同数据库的隔离级别（面试点）"><a href="#4-0-不同数据库的隔离级别（面试点）" class="headerlink" title="4.0 不同数据库的隔离级别（面试点）"></a>4.0 不同数据库的隔离级别（面试点）</h2><ul>
 <li>MySQL：mysql默认的事务处理级别是’REPEATABLE-READ’,也就是<strong>可重复读</strong></li>
@@ -2145,10 +2145,10 @@ public void test01()&#123;
 <h2 id="5-0-Spring事务的传播特性"><a href="#5-0-Spring事务的传播特性" class="headerlink" title="5.0 Spring事务的传播特性"></a>5.0 Spring事务的传播特性</h2><p><strong>多个事务之间的合并,互斥等都可以通过设置事务的传播特性来解决.</strong></p>
 <p>  常用<br>  PROPAGATION_REQUIRED：必被包含事务<br>  PROPAGATION_REQUIRES_NEW：自己新开事务，不管之前是否有事务<br>  PROPAGATION_SUPPORTS：支持事务，如果加入的方法有事务，则支持事务，如果没有，不单开事务<br>  PROPAGATION_NEVER：不能运行中事务中，如果<strong>包在事务中，抛异常</strong><br>  PROPAGATION_NOT_SUPPORTED：不支持事务，运行在非事务的环境<strong>【即使外边有事务，自己也不受影响】</strong><br>  不常用<br>  PROPAGATION_MANDATORY：必须包在事务中，没有事务则抛异常<br>  PROPAGATION_NESTED：嵌套事务</p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508224231315.png" alt="image-20220508224231315"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508224231315.png" alt="image-20220508224231315"></p>
 <hr>
 <h2 id="6-0-Transactional的参数讲解"><a href="#6-0-Transactional的参数讲解" class="headerlink" title="6.0 @Transactional的参数讲解"></a>6.0 @Transactional的参数讲解</h2><hr>
-<p><img src="http://img.fgcy.xyz/image-20220508224527951.png" alt="image-20220508224527951"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508224527951.png" alt="image-20220508224527951"></p>
 <hr>
 <pre><code class="java">@Transactional(propagation = Propagation.REQUIRED,//事务的传播特性 常用五种
         noRollbackForClassName = &quot;ArithmeticException&quot;, //指定发生什么异常不回滚,使用的是异常的名称 多个用&#123;“”，“”&#125;
@@ -2298,15 +2298,15 @@ public void test01()&#123;
 <li>引入aop名称空间</li>
 </ul>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508225812560.png" alt="image-20220508225812560"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508225812560.png" alt="image-20220508225812560"></p>
 <hr>
 <ul>
 <li>引入tx名称空间</li>
 </ul>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508225852944.png" alt="image-20220508225852944"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508225852944.png" alt="image-20220508225852944"></p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508225920281.png" alt="image-20220508225920281"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508225920281.png" alt="image-20220508225920281"></p>
 <hr>
 <ul>
 <li>配置事务</li>
@@ -2380,7 +2380,7 @@ public void test01()&#123;
 public class UsersServiceImpl implements UsersService &#123;
 </code></pre>
 <h1 id="编程式事务与声明式事务的区别"><a href="#编程式事务与声明式事务的区别" class="headerlink" title="编程式事务与声明式事务的区别"></a>编程式事务与声明式事务的区别</h1><hr>
-<p><img src="http://img.fgcy.xyz/image-20220512204019825.png" alt="image-20220512204019825"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220512204019825.png" alt="image-20220512204019825"></p>
 <hr>
 <h1 id="Spring-MyBatis整合案例"><a href="#Spring-MyBatis整合案例" class="headerlink" title="Spring+MyBatis整合案例"></a>Spring+MyBatis整合案例</h1><h2 id="SM整合的必要依赖"><a href="#SM整合的必要依赖" class="headerlink" title="SM整合的必要依赖"></a>SM整合的必要依赖</h2><pre><code class="xml">      &lt;!--单元测试--&gt;
         &lt;dependency&gt;
@@ -2615,12 +2615,12 @@ jdbc.password=123
 <li>加入事务的注解驱动就行</li>
 </ul>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508202815034.png" alt="image-20220508202815034"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508202815034.png" alt="image-20220508202815034"></p>
 <hr>
 <ul>
 <li>如果想要让注解式事务覆盖声明式事务 就多加一个order属性，值越大；越优先</li>
 </ul>
-<p><img src="http://img.fgcy.xyz/image-20220508202837258.png" alt="image-20220508202837258"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508202837258.png" alt="image-20220508202837258"></p>
 <h2 id="6-0-实体类"><a href="#6-0-实体类" class="headerlink" title="6.0 实体类"></a>6.0 实体类</h2><pre><code class="java">/**
  *用户实体
  */
@@ -2717,9 +2717,11 @@ public class AccountsServiceImpl implements AccountsService &#123;
 <li>测试结果</li>
 </ul>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220508201355415.png" alt="image-20220508201355415"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26image-20220508201355415.png" alt="image-20220508201355415"></p>
 <hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="http://img.fgcy.xyz/Spring.png" alt="Spring"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/26Spring.png"></p>
+<hr>
 
     </div>
     
