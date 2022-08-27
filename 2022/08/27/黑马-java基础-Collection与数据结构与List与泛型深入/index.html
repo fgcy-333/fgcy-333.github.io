@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
                     黑马程序员-徐磊-java基础
                 </a>
             </span>
@@ -436,7 +436,7 @@ mysql
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270017572.png"></p>
 <hr>
 <p>List系列集合特点:<br>  ArrayList、LinekdList ：有序，可重复，有索引。<br>    有序：存储和取出的元素顺序一致<br>    有索引：可以通过索引操作元素<br>    可重复：存储的元素可以重复</p>
-<p>List的实现类的底层原理<br>    ArrayList底层是基于数组实现的，根据查询元素快，增删相对慢。(随机存储存取)<br>    LinkedList底层基于双链表实现的，查询元素慢，增删首尾元素是非常快的。</p>
+<p>List的实现类的底层原理<br>    ArrayList底层是基于数组实现的，根据索引查询元素快，增删相对慢。(随机存储存取)<br>    LinkedList底层基于双链表实现的，查询元素慢，增删首尾元素是非常快的。</p>
 <p>List集合因为支持索引，所以多了很多索引操作的独特api，其他Collection的功能List也都继承了</p>
 <ul>
 <li><strong>List集合特有API</strong></li>
@@ -562,7 +562,7 @@ ObjectOrientedProgram
 redis
 tomcat
 </code></pre>
-<h3 id="ArrayList集合的底层原理"><a href="#ArrayList集合的底层原理" class="headerlink" title="ArrayList集合的底层原理"></a>ArrayList集合的底层原理</h3><p>ArrayList底层是基于数组实现的：根据索引定位元素快，增删需要做元素的移位操作。<br>第一次创建集合并添加第一个元素的时候，在底层创建一个默认长度为10的数组。<br>List集合的size和下一个元素插入的位置———-》当前元素的下一个位置（当前元素索引加一）<br>当插入元素的位置与当前集合大小相等，就会扩容 &gt;&gt;1;</p>
+<h3 id="ArrayList集合的底层原理"><a href="#ArrayList集合的底层原理" class="headerlink" title="ArrayList集合的底层原理"></a>ArrayList集合的底层原理</h3><p>ArrayList底层是基于数组实现的：根据索引定位元素快，增删需要做元素的移位操作。<br>第一次创建集合并添加第一个元素的时候，在底层创建一个默认长度为10的数组。既是：调用ArrayList的空参构造时，并不会创建数组，而是等添加第一个元素时，才创建。<br>List集合的size()函数获取到的数字，就是下一个元素插入的索引，也即是当前元素的下一个位置（当前元素索引加一）<br>当插入元素的位置与当前集合大小相等，就会扩容  右移一位<code>&gt;&gt;1</code>;</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270018633.png"></p>
 <hr>
@@ -648,8 +648,14 @@ tomcat
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270018868.png"></p>
 <hr>
-<h3 id="集合的并发修改异常问题"><a href="#集合的并发修改异常问题" class="headerlink" title="集合的并发修改异常问题"></a><strong>集合的并发修改异常问题</strong></h3><p>问题引出：<br>    当我们从集合中找出某个元素并删除的时候可能出现一种并发修改异常问题<br>如：<br>    迭代器遍历集合且直接用集合删除元素的时候可能出现。<br>    增强for循环遍历集合且直接用集合删除元素的时候可能出现（底层是foreach）</p>
-<p>哪种遍历且删除元素不出问题:<br>    迭代器遍历集合但是用迭代器自己的删除方法操作可以解决。<br>    使用for循环遍历并删除元素不会存在这个问题</p>
+<h3 id="集合的并发修改异常问题"><a href="#集合的并发修改异常问题" class="headerlink" title="集合的并发修改异常问题"></a><strong>集合的并发修改异常问题</strong></h3><p>问题引出：<br>    当我们从集合中找出某个元素并删除的时候可能出现一种并发修改异常问题</p>
+<p>如：<br>       1. 迭代器遍历集合且直接用集合删除元素的时候可能出现。<br>       2. 增强for循环遍历集合且直接用集合删除元素的时候可能出现（底层是迭代器）<br>       3.  Lambda表达式底层使用的是增强for，底层使用的是迭代器</p>
+<p>注意：</p>
+<p>在使用迭代器迭代的过程中，修改集合时，就会报错。并发修改异常。</p>
+<pre><code>   1. 哪种遍历且删除元素不出问题:
+          迭代器遍历集合但是用迭代器自己的删除方法操作可以解决。
+          使用for循环遍历并删除元素不会存在这个问题
+</code></pre>
 <ol>
 <li>迭代器</li>
 </ol>
@@ -763,6 +769,44 @@ tomcat
 </code></pre>
 <pre><code>[spring, spring, jpa, oracle, mongodb]
 [jpa, oracle, mongodb]
+</code></pre>
+<p>单列集合Collection remove方法源码如下：</p>
+<pre><code class="java">public boolean remove(Object o) &#123;
+  if (o == null) &#123;
+    for (int index = 0; index &lt; size; index++)
+      if (elementData[index] == null) &#123;
+        fastRemove(index);
+        return true;
+      &#125;
+  &#125; else &#123;
+    for (int index = 0; index &lt; size; index++)
+      if (o.equals(elementData[index])) &#123;
+        fastRemove(index);
+        return true;
+      &#125;
+  &#125;
+  return false;
+&#125;
+</code></pre>
+<pre><code class="java">/*
+ * Private remove method that skips bounds checking and does not
+ * return the value removed.
+ */
+private void fastRemove(int index) &#123;
+  modCount++;
+  int numMoved = size - index - 1;
+  if (numMoved &gt; 0)
+    //remove会导致之后的元素往前移动，而下标不改变时就会出现bug
+      //把从索引 index+1 开始的numMoved个数字复制到索引为index的位置上  
+    System.arraycopy(elementData, index+1, elementData, index,
+             numMoved);
+  elementData[--size] = null; // clear to let GC do its work
+&#125;
+</code></pre>
+<p>本地方法arrayCopy参数列表如下：</p>
+<pre><code class="java">    public static native void arraycopy(Object src,  int  srcPos,
+                                        Object dest, int destPos,
+                                        int length);
 </code></pre>
 <h2 id="泛型深入"><a href="#泛型深入" class="headerlink" title="泛型深入"></a>泛型深入</h2><h3 id="泛型的概述和优势"><a href="#泛型的概述和优势" class="headerlink" title="泛型的概述和优势"></a>泛型的概述和优势</h3><p>泛型概述：<br>    泛型：是JDK5中引入的特性，可以在编译阶段约束操作的数据类型，并进行检查。<br>    泛型的格式：&lt;数据类型&gt;; 注意：泛型只能支持引用数据类型。<br>    集合体系的全部接口和实现类都是支持泛型的使用的。</p>
 <p>泛型的好处：<br>    统一数据类型。<br>    把运行时期的问题提前到了编译期间，避免了强制类型转换可能出现的异常，因为编译阶段类型就能确定下来    </p>
