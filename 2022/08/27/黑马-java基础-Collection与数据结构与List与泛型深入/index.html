@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
                     黑马程序员-徐磊-java基础
                 </a>
             </span>
@@ -867,7 +867,7 @@ true
 </ul>
 <p>定义方法时同时定义了泛型的方法就是泛型方法。</p>
 <p>泛型方法的格式：修饰符 &lt;泛型变量&gt; 方法返回值 方法名称(形参列表){}<br>   泛型变量定义在返回值之前</p>
-<p>范例：<br>    public <T> void show(T t) {}</p>
+<p>范例：<br><code>	public &lt;T&gt; void show(T t) &#123;&#125;</code></p>
 <p>作用：<br>    方法中可以使用泛型接收一切实际类型的参数，方法更具备通用性</p>
 <p>泛型方法的原理：<br>    把出现泛型变量的地方全部替换成传输的真实数据类型</p>
 <pre><code class="java">public class GenericMethodDemo &#123;
@@ -988,7 +988,7 @@ true
 <h3 id="泛型通配符、上下限"><a href="#泛型通配符、上下限" class="headerlink" title="泛型通配符、上下限"></a>泛型通配符、上下限</h3><p>通配符: ?<br>    ? 可以在“使用泛型”的时候代表一切类型。 使用<br>    E T K V 是在定义泛型的时候使用的。	 定义</p>
 <p>泛型的上下限：<br>    ? extends Car: ?必须是Car或者其子类   泛型上限<br>     ? super Car ： ?必须是Car或者其父类   泛型下限</p>
 <ul>
-<li>问题1：ArrayList&lt;Car&gt;类型与ArrayList&lt;BMW&gt;的类型没有关系</li>
+<li>问题1：ArrayList&lt;Car&gt;类型与ArrayList&lt;BMW&gt;的类有关系嘛？</li>
 </ul>
 <pre><code class="java">public class GenericDemo3 &#123;
 
@@ -1020,7 +1020,7 @@ class BMW extends Car &#123;
 &#125;
 </code></pre>
 <ul>
-<li>问题2：使用了 ？通配符 出现了新的问题</li>
+<li>问题2：使用了 ？通配符 可以完美解决问题嘛？</li>
 </ul>
 <pre><code class="java">package generic_demo;
 
@@ -1047,7 +1047,7 @@ public class GenericDemo3 &#123;
 
         final ArrayList&lt;Dog&gt; list3 = new ArrayList&lt;&gt;();
         Collections.addAll(list3, new Dog(), new Dog(), new Dog());
-        go(list3);//不报错,有问题：因为狗类与汽车类没有关系，不符合逻辑
+        go(list3);//不报错,  有问题：因为狗类与汽车类没有关系，不符合逻辑
     &#125;
 &#125;
 </code></pre>
