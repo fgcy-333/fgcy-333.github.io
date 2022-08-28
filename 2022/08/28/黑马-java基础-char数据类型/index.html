@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
                     黑马程序员-徐磊-java基础
                 </a>
             </span>
@@ -154,7 +154,7 @@
 <li>用单引号括起来的字符</li>
 <li>作为字符转义序列</li>
 <li>作为Unicode转义序列</li>
-<li>作为八进制转义序列</li>
+<li>作为整数的转义序列</li>
 </ul>
 <ol>
 <li>字符可以通过用单引号括起来表示。</li>
@@ -181,26 +181,22 @@ char   c2  = &quot;\&quot;&quot;; // 将双引号分配给c2
 //Java中只有八个字符转义序列。我们不能定义你自己的字符转义序列
 char   c3  = &quot;\a&quot;; //编译时错误。无效的字符转义序列
 </code></pre>
-<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>字符字面量可以表示为“\ uxxxx”形式的Unicode转义序列。</p>
-<p>这里，<code>\u</code>表示Unicode转义序列的开始，xxxx正好表示四个十六进制数字。</p>
-<p>由xxxx表示的值是字符的Unicode值。</p>
-<p>字符’A’有65 65十进制可以用十六进制表示为41的值的Unicode值。</p>
-<p>因此，字符’A’可以用Unicode转义序列表示为’\ u0041’。</p>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>字符字面量可以表示为<code>“\uxxxx”</code>形式的Unicode转义序列。</p>
+<p>这里，<code>\u</code>表示Unicode转义序列的开始，xxxx正好表示四个十六进制数字。由xxxx表示的值是字符的Unicode值。</p>
+<p>字符’A’对应的码点为65，十进制65可以用十六进制41表示因此，字符’A’可以用Unicode转义序列表示为<code>&#39;\u0041&#39;</code>。</p>
 <p>以下代码将相同的字符“A”分配给char变量c1和c2： </p>
 <pre><code class="java">char c1  = &#39;A&#39;;
 char c2  = &#39;\u0041&#39;; // 与c1=&#39;A&#39;相同
 </code></pre>
-<p>字符文字可以表示为形式为<code>&#39;\ nnn&#39;</code>的八进制转义序列。</p>
-<p>这里，n是八进制数（0-7）。八进制转义序列的范围是<code>&#39;\ 000&#39;到&#39;\ 377&#39;</code>。</p>
+<p>八进制转义序列的范围是<code>&#39;\000&#39;到&#39;\377&#39;</code>。</p>
 <p>八进制数377与十进制数255相同。因此，使用八进制转义序列，我们可以表示Unicode代码范围从0到255个十进制整数的字符。</p>
-<p>Unicode字符集（代码范围0到65535）可以表示为Unicode转义序列（’\ uxxxx’）。</p>
-<p>当为<strong>字符变量</strong>分配一个<strong>int字面量</strong>时，char变量表示其Unicode代码等于该字符串表示的值的字符。</p>
-<p>字符’a’的Unicode代码是97,十进制值97，八进制141，十六进制61。</p>
-<p>下面的代码显示了如何使用int字面值97来表示Unicode字符’a’：</p>
+<p>Unicode字符集（代码范围0到65535）可以表示为Unicode转义序列（’\uxxxx’）。</p>
+<p>当为 <strong>字符变量</strong>分配一个<strong>int字面量</strong>  时，以该整数作为码点找到Unicode字符集中该码点对应的字符。</p>
+<p>下面的代码显示了如何使用int字面值97来表示Unicode字符’a’：字符’a’的Unicode代码是97,十进制值97，八进制141，十六进制61。</p>
 <pre><code class="java">char   c1  = 97;  // Same as  
-c1  = &quot;a&quot;; 
-c1  = &quot;\141&quot;; 
-c1  = &quot;\u0061&quot;;
+c1  = &#39;a&#39;; 
+c1  = &#39;\141&#39;; 
+c1  = &#39;\u0061&#39;;
 </code></pre>
 <p>举例：</p>
 <pre><code class="java">public class Main &#123;
@@ -267,7 +263,7 @@ ch1 is now 	Y
 </ul>
 <p><code>GB18030</code>：全称为《信息技术中文编码字符集》。GB18030<strong>完全兼容GB2312-80内码</strong>，<strong>基本兼容GBK内码</strong>，是目前最新的中国国家编码字符集标准，共收录了70244个字符，增加了对CJK统一汉字扩充A、CJK统一汉字扩充B以及少数民族文字等字符的支持。windows对应的代码页为CP54936。</p>
 <ul>
-<li><p>编码方式：GB18030编码**采用  变长 ** <strong>多字节</strong>  编码方式，包括1字节、2字节或4字节编码。</p>
+<li><p>编码方式：GB18030编码<strong>采用  变长</strong>    <strong>多字节</strong>  编码方式，包括1字节、2字节或4字节编码。</p>
 <p>单字节编码与ASCII码相同，双字节编码与GBK编码相同并增加了一些扩展，四字节用于扩充汉字的编码</p>
 <p>第一、三字节的编码范围为：0x81—0xFE</p>
 <p>第二、四字节的编码范围为：0x30—0x39。</p>
