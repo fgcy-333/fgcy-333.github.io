@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
                     黑马程序员-徐磊-java基础
                 </a>
             </span>
@@ -230,8 +230,7 @@ a 4 A c 0
 </code></pre>
 <h3 id="4-0-去掉做高最低的平均分"><a href="#4-0-去掉做高最低的平均分" class="headerlink" title="4.0 去掉做高最低的平均分"></a>4.0 去掉做高最低的平均分</h3><pre><code class="java">    @Test
     public void testArray4() &#123;
-        //简化静态初始化
-        final int[] arrs = &#123;32, 3, 55, 1, 39, 54, 0&#125;;
+         final int[] arrs = &#123;32, 3, 55, 1, 39, 54, 0&#125;;
         int max, min, sum = 0;
         max = min = arrs[0];
         for (int arr : arrs) &#123;
@@ -243,8 +242,18 @@ a 4 A c 0
             &#125;
             sum += arr;
         &#125;
+        sum = sum - max - min;
+        System.out.println(&quot;最高分：&quot; + max);
+        System.out.println(&quot;最低分：&quot; + min);
+        System.out.println(&quot;去掉最高最低的总分：&quot; + sum);
         System.out.println(&quot;去掉最高最低的平均分为：&quot; + sum / (arrs.length - 2));
     &#125;
+    &#125;
+</code></pre>
+<pre><code>最高分：55
+最低分：0
+去掉最高最低的总分：129
+去掉最高最低的平均分为：25
 </code></pre>
 <h3 id="5-0-猜数游戏"><a href="#5-0-猜数游戏" class="headerlink" title="5.0 猜数游戏"></a>5.0 猜数游戏</h3><pre><code class="java">    public static void main(String[] args) &#123;
         final int[] ints = new int[4];
@@ -253,6 +262,7 @@ a 4 A c 0
             ints[i] = r.nextInt(6) + 45;//45----50
         &#125;
         final Scanner sc = new Scanner(System.in);
+        
         //外层循环标志
         OUT:
         //死循环
@@ -296,7 +306,7 @@ a 4 A c 0
 打乱后数组：[3, 55, 54, 32, 0, 1, 39]
 </code></pre>
 <h3 id="7-0-冒泡排序"><a href="#7-0-冒泡排序" class="headerlink" title="7.0 冒泡排序"></a>7.0 冒泡排序</h3><ul>
-<li>1</li>
+<li>一开始学的</li>
 </ul>
 <pre><code class="java">    /**
      * 没有优化
@@ -325,12 +335,9 @@ a 4 A c 0
 结果:[-3, 1, 4, 12, 33, 90]
 </code></pre>
 <ul>
-<li>2</li>
+<li>优化一：没有进行过交换就退出循环</li>
 </ul>
-<pre><code class="java">    /**
-     * 优化一
-     */
-    @Test
+<pre><code class="java">    @Test
     public void bubbleSortedArray() &#123;
         int[] array = &#123;12, 33, 4, -3, 1, 90&#125;;
         for (int i = 0; i &lt; array.length - 1; i++) &#123;
@@ -344,7 +351,7 @@ a 4 A c 0
                 &#125;
             &#125;
             System.out.println(&quot;第&quot; + (i + 1) + &quot;轮&quot; + Arrays.toString(array));
-            //没有尽心过交换就退出
+            //没有进行过交换就退出
             if (!flag) break;
         &#125;
         System.out.println(&quot;长度为:&quot; + array.length);
@@ -359,12 +366,9 @@ a 4 A c 0
 结果:[-3, 1, 4, 12, 33, 90]
 </code></pre>
 <ul>
-<li>3</li>
+<li>优化二：记录每一次最后一次交换元素的索引下标，下一次循环只需要循环到上一次记录的最后一次的索引下标就行。且当没有进行交换时就直接退出排序。</li>
 </ul>
-<pre><code class="java">    /**
-     * 优化二
-     */
-    @Test
+<pre><code class="java">     @Test
     public void bubbleSortedArray2() &#123;
         int[] array = &#123;12, 33, 4, -3, 1, 90&#125;;
         int count = 0;
@@ -402,12 +406,19 @@ a 4 A c 0
 <li>说明</li>
 </ul>
 <ol>
-<li>java源代码通过javac.exe编译成字节码文件再通过java.exe将字节码文件加载进jvm中</li>
-<li>字节码文件会加载进方法区，字节码文件会暴露静态方法的访问地址</li>
-<li>栈内存用来运行方法的(方法中又包含局部变量)，局部变量的引用在栈中</li>
-<li>基本数据类型的变量直接存储值</li>
-<li>引用数据类型的变量存储地址</li>
-<li>对象存在于堆内存中</li>
+<li><p>java源代码通过<code>javac.exe</code>编译成字节码文件再通过<code>java.exe</code>将字节码文件加载进jvm中</p>
+</li>
+<li><p>字节码文件会加载进方法区，字节码文件会暴露静态方法的访问地址</p>
+</li>
+<li><p>栈内存用来运行方法的(方法中又包含局部变量)，局部变量的引用在栈中。</p>
+<p>因为栈提供线程运行所需的内存。栈帧为方法的运行提供内存空间，栈帧存放于栈中，即局部变量存在于栈中。</p>
+</li>
+<li><p>基本数据类型的变量<strong>直接存储值</strong></p>
+</li>
+<li><p>引用数据类型的变量<strong>存储地址</strong></p>
+</li>
+<li><p>对象存在于堆内存中</p>
+</li>
 </ol>
 <h2 id="四、java参数的传递方式【值传递】"><a href="#四、java参数的传递方式【值传递】" class="headerlink" title="四、java参数的传递方式【值传递】"></a>四、java参数的传递方式【值传递】</h2><pre><code class="java">    /**
      * java参数传递方式都是值传递（数组地址值）
@@ -436,8 +447,8 @@ a 4 A c 0
 变化后的值：[8, 8, 8, 8, 8, 8]
 </code></pre>
 <h3 id="1-0-地址交换"><a href="#1-0-地址交换" class="headerlink" title="1.0 地址交换"></a>1.0 地址交换</h3><pre><code class="java"> /**
-     * java参数传递方式都是值传递（字符串地址值）
-     两个局部变量交换地址，对成员变量没有半毛钱影响
+     java参数传递方式都是值传递（字符串地址值）
+     两个局部变量交换地址，对另一个方法的局部变量没有半毛钱影响
      */
     @Test
     public void test2() &#123;
@@ -461,14 +472,14 @@ a 4 A c 0
 更改后：a=aaa b=bbb
 </code></pre>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_12-44-12.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208281943407.png" alt="image-20220828194322556"></p>
 <hr>
 <h2 id="五、数组使用注意点"><a href="#五、数组使用注意点" class="headerlink" title="五、数组使用注意点"></a>五、数组使用注意点</h2><ol>
-<li>为了吸引c语言的使用者，数组也可以定义为 数据类型 变量名[] &#x3D;new 数据类型[x]</li>
+<li>为了吸引c语言的使用者，数组也可以定义为 数据类型 变量名[] &#x3D;new 数据类型[num]</li>
 <li>什么类型的数组就存放什么类型的数据</li>
 <li>数组一但定义出来，其长度，类型就固定了（无论动静）</li>
 <li>动态初始化时，数组中各个元素都有默认值</li>
-<li>数组有两种遍历的方法:for、foreach(增强for)</li>
+<li>数组有两种遍历的方法:for、foreach(增强for)。注意：迭代器属于集合，数组没有这东西。</li>
 <li>动静初始化数组不可以混着用</li>
 <li>java.lang.ArrayIndexOutOfBoundsException</li>
 </ol>
@@ -478,7 +489,7 @@ a 4 A c 0
 <pre><code class="java">    @Test
     public void test3() &#123;
         final int[] ints = new int[4];
-        System.out.println(ints[3]);
+        System.out.println(ints[3]);//0
         System.out.println(ints[4]);//java.lang.ArrayIndexOutOfBoundsException: 4 
         System.out.println(&quot;程序结束！&quot;);//(如果不处理异常)以下代码不会执行
     &#125;
@@ -495,8 +506,10 @@ a 4 A c 0
         System.out.println(&quot;程序结束！&quot;);//如果不处理异常，将无法执行此代码
     &#125;
 </code></pre>
-<p>问题1：如果访问的元素位置超过最大索引，执行时会出现ArrayIndexOutOfBoundsException(数组索引越界异常)</p>
-<p>问题2：如果数组变量中没有存储数组的地址，而是null, 在访问数组信息时会出现NullPointerException(空指针异常)</p>
+<p>问题1：</p>
+<p>如果访问的元素位置超过最大索引，执行时会出现<code>ArrayIndexOutOfBoundsException</code>(数组索引越界异常)</p>
+<p>问题2：</p>
+<p>如果数组变量中没有存储数组的地址，而是<code>null</code>, 在访问数组信息时会出现<code>NullPointerException</code>(空指针异常)</p>
 <h2 id="六、IDEA-DEBUG"><a href="#六、IDEA-DEBUG" class="headerlink" title="六、IDEA DEBUG"></a>六、IDEA DEBUG</h2><hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_10-29-46.png"></p>
 <hr>
