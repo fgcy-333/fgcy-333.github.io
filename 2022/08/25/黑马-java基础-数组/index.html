@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
                     黑马程序员-徐磊-java基础
                 </a>
             </span>
@@ -147,21 +147,24 @@
         <h2 id="一、定义数组存储数据"><a href="#一、定义数组存储数据" class="headerlink" title="一、定义数组存储数据"></a>一、定义数组存储数据</h2><ul>
 <li>数组的概念</li>
 </ul>
-<p>​		用来存储一批同种类型数据（可以理解成容器）                                   </p>
+<p>​		用来存储一批同种类型数据（可以理解成容器）                       </p>
+<p>​		在初始化的时候，就已经确定了数组中存放元素的类型和数量。            </p>
 <span id="more"></span> 
 
 <h3 id="1-0-静态初始化数组"><a href="#1-0-静态初始化数组" class="headerlink" title="1.0 静态初始化数组"></a>1.0 静态初始化数组</h3><pre><code class="java">    //数据类型[] 变量名 = new 数据类型[]&#123;数据.......&#125;
+    //基本数据类型没有对象的概念，所以只能是new 数组  即：	new 数据类型[]
     int[] arr =new int[]&#123;1,2,3,4&#125;
     //简化
     //数据类型[] 变量名 =&#123;数据.......&#125;
-    int[] arr =&#123;1,2,3,4,5&#125;
+    int[] arr =&#123;1,2,3,4,5&#125;、
+        
     //c语言
     //数据类型 变量名[] =new 数据类型[]&#123;数据.......&#125;
     //类型 变量名[] = &#123;数据.......&#125;
     int a[] = new int[]&#123;12, 3, 4, 5&#125;;
     int b[] = &#123;12, 3, 4, 5&#125;;
-
-    @Test
+</code></pre>
+<pre><code class="java">    @Test
     public void testArray1() &#123;
         final int[] arrays = &#123;1, 2, 3, 4, 5&#125;;
         final double[] arrays2 = &#123;1.0, 2.0, 3, 4, 5&#125;;
@@ -174,26 +177,27 @@
 <pre><code>[I@ba8a1dc
 [D@4f8e5cde
 [F@504bae78
-  [----&gt;数组
-  @之后的是十六进制地址
-  数组是引用数据类型，句柄(变量名)放在栈中，引用放在堆中
 </code></pre>
+<p><code>  [</code>   —-&gt;数组<br><code> @ </code>   之后的是十六进制地址<br><strong>数组</strong>是<strong>引用数据类型</strong>，句柄(变量名)放在栈中，引用放在堆中,变量存放的是地址</p>
+<p>注意：</p>
+<p>hashcode与内存地址不是一 一对应的。</p>
 <h3 id="2-0-动态初始化数组"><a href="#2-0-动态初始化数组" class="headerlink" title="2.0 动态初始化数组"></a>2.0 动态初始化数组</h3><ol>
-<li><p>先确定元素的类型和数组的长度，之后再存入具体数据（会默认初始化数组中的数据)</p>
+<li><p>先确定元素的类型和数组的长度，之后再存入具体数据（会<strong>默认初始化数组中的数据</strong>)</p>
 </li>
 <li><p>默认类型初始值：</p>
-<pre><code class="java">    byte short int long 0
-    char &#39;/u0000&#39;转为int是0
+<pre><code class="java">    byte short int long 0  
+    char &#39;/u0000&#39;转为int是0  【/u0000~/u65535】两个字节
     boolean false
     double float 0.0
     String Object null
 </code></pre>
+<p>整数是0，小数0.0，布尔false，引用数据类型null</p>
 </li>
-<li><p>格式：<br>   <code>数据类型[] 变量名 =new 数据类型[数组长度];</code></p>
+<li><p>格式：<br><code>数据类型[] 变量名 =new 数据类型[数组长度];</code></p>
 </li>
-<li><p>使用场景：<br> 当前已经知道存入的元素值，用静态初始化。<br> 当前还不清楚要存入哪些数据，用动态初始化</p>
+<li><p>使用场景：<br> 当前<strong>已经知道存入的元素值</strong>，用静态初始化。<br> 当前<strong>还不清楚要存入哪些数据</strong>，用动态初始化</p>
 </li>
-<li><p>注意：<br>两种类型的写法是独立的，不能两边都用<br><code>int[] arrs new int[3]&#123;1,2,3&#125;</code>———–&gt;是错误的写法</p>
+<li><p>注意：<br>两种类型的写法是独立的，不能两边都用<br><code>int[] arrs new int[3]&#123;1,2,3&#125;</code>———–&gt;是<strong>错误的写法</strong></p>
 </li>
 </ol>
 <hr>
