@@ -130,6 +130,351 @@
             
 
 <div class="post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第05章-存储引擎/">
+        <h2>
+            第05章_存储引擎
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="存储引擎（表处理器）"><a href="#存储引擎（表处理器）" class="headerlink" title="存储引擎（表处理器）"></a>存储引擎（表处理器）</h1><p>为了管理方便,人们把  <code>连接管理</code>、<code>查询缓存</code>  、<code>语法解析</code>  、<code>查询优化</code>    这些并不涉及  <strong>真实数据存储</strong>  的功能划分为  <strong>MySQL server 的功能</strong></p>
+<p>把  <strong>真实存取数据</strong>   的功能划分为  <strong>存储引擎的功能</strong></p>
+<p>所以在    <code>MySQL server完成了</code>   <strong>查询优化后</strong>   ,只需按照生成的   <code>执行计划   </code>   <strong>调用</strong>     <code>底层存储引擎提供的API </code>  ,获取到数据后返回给客户端就好了</p>
+<p>MySQL中提到了存储引擎的概念。简而言之,<strong>存储引擎就是指表的类型</strong></p>
+<p>其实存储引擎以前叫做 <code>表处理器</code> ,后来改名为存储引擎</p>
+<p>它的功能就是接收上层传下来的指令,然后对表中的数据进行提取或写入操作。</p>
+<h2 id="1、查看存储引擎-查看mysql提供什么存储引擎："><a href="#1、查看存储引擎-查看mysql提供什么存储引擎：" class="headerlink" title="1、查看存储引擎 查看mysql提供什么存储引擎："></a>1、查看存储引擎 查看mysql提供什么存储引擎：</h2><p>查看mysql提供什么存储引擎：</p>
+<blockquote>
+<p>SHOW ENGINES;</p>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第05章-存储引擎/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第04章-逻辑架构/">
+        <h2>
+            第04章_逻辑架构
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1-逻辑架构剖析"><a href="#1-逻辑架构剖析" class="headerlink" title="1. 逻辑架构剖析"></a>1. 逻辑架构剖析</h1><h2 id="1-1服务器处理客户端请求"><a href="#1-1服务器处理客户端请求" class="headerlink" title="1.1服务器处理客户端请求"></a>1.1服务器处理客户端请求</h2><p>首先MySQL是典型的C&#x2F;s架构, 即 <code>Client/Server</code> 架构,服务器端程序使用的<code>mysqld</code></p>
+<p>不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是:</p>
+<p>客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ffa2c4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第04章-逻辑架构/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第03章-用户与权限管理/">
+        <h2>
+            第03章_用户与权限管理
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1-用户管理"><a href="#1-用户管理" class="headerlink" title="1. 用户管理"></a>1. 用户管理</h1><p>MySQL用户可以分为<strong>普通用户</strong>和<strong>root</strong>用户</p>
+<p>root用户是超级管理员,拥有所有权限,包括创建用户、删除用户和修改用户的密码等管理权限;</p>
+<p>普通用户只拥有被授予的各种权限</p>
+<p><code>MySQL提供了许多语句用来管理用户账号</code>,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容</p>
+<p><code>MySQL数据库的安全性需要通过账户管理来保证</code></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第03章-用户与权限管理/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第02章-MySQL的数据目录/">
+        <h2>
+            第02章_MySQL的数据目录
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1-目录结构"><a href="#1-目录结构" class="headerlink" title="1.目录结构"></a>1.目录结构</h1><h2 id="1、MySQL8的主要目录结构"><a href="#1、MySQL8的主要目录结构" class="headerlink" title="1、MySQL8的主要目录结构"></a>1、MySQL8的主要目录结构</h2><p>安装好MySQL 之后，我们查看与之相关的目录结构：</p>
+<pre><code class="shell">find / -name mysql
+
+/etc/logrotate.d/mysql
+/var/lib/mysql
+/var/lib/mysql/mysql
+/usr/bin/mysql
+/usr/lib64/mysql
+/usr/share/mysql
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第02章-MySQL的数据目录/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第01章-Linux下MySQL的安装与使用/">
+        <h2>
+            第01章_Linux下MySQL的安装与使用
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1、安装前说明"><a href="#1、安装前说明" class="headerlink" title="1、安装前说明"></a>1、安装前说明</h1><h2 id="1-1-Linux系统及工具的准备"><a href="#1-1-Linux系统及工具的准备" class="headerlink" title="1.1 Linux系统及工具的准备"></a>1.1 Linux系统及工具的准备</h2><p>安装并启动好两台虚拟机： CentOS 7<br>掌握克隆虚拟机的操作</p>
+<ul>
+<li>mac地址</li>
+<li>主机名</li>
+<li>ip地址</li>
+<li>UUID</li>
+</ul>
+<p>1、安装有 Xshell 和 Xftp 等访问CentOS系统的工具</p>
+<p>2、CentOS6和CentOS7在MySQL的使用中的区别</p>
+<ul>
+<li>防火墙：6是iptables，7是firewalld </li>
+<li>启动服务的命令：6是service，7是systemctl</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第01章-Linux下MySQL的安装与使用/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第00章虚拟机克隆/">
+        <h2>
+            第零章虚拟机克隆
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <blockquote>
+<p>本文以centos为例</p>
+</blockquote>
+<p>vmware中的完整克隆是基于指定的虚拟机克隆出相同的一份出来，不必再安装</p>
+<p>但是我们要保证几个地方不能一样</p>
+<p>1、主机名称（hostname）</p>
+<p>2、虚拟网卡设备mac地址</p>
+<p>3、ip地址</p>
+<p>4、UUID</p>
+<p>所以我们在克隆后要对这四个地方进行修改</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第00章虚拟机克隆/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/08/29/宋红康-MySQL-第17章-存储过程与函数/">
         <h2>
             第17章_存储过程与函数
@@ -225,7 +570,7 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00a596">
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #ff7d73">
                 尚硅谷-宋红康-MySQL
             </a>
         </span>
@@ -280,7 +625,7 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #ff7d73">
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL
             </a>
         </span>
@@ -372,353 +717,13 @@
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00bcd4">
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #03a9f4">
                 尚硅谷-宋红康-MySQL
             </a>
         </span>
         
     </div>
     <a href="/2022/08/29/宋红康-MySQL-第14章-视图/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/28/黑马-java基础-char数据类型/">
-        <h2>
-            Char数据类型
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/28
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="Java数据类型教程-Java-char数据类型"><a href="#Java数据类型教程-Java-char数据类型" class="headerlink" title="Java数据类型教程 - Java char数据类型"></a>Java数据类型教程 - Java char数据类型</h2><p>char数据类型是16位无符号Java基元数据类型。它表示Unicode字符。</p>
-<p>请注意，char是无符号数据类型。因此，char变量不能为负值。</p>
-<p>字符数据类型的范围为0到65535，这与Unicode集的范围相同。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/28/黑马-java基础-char数据类型/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/黑马-java基础-Collection与数据结构与List与泛型深入/">
-        <h2>
-            Collection与数据结构与List与泛型深入
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/27
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="集合概述体系、常用API"><a href="#集合概述体系、常用API" class="headerlink" title="集合概述体系、常用API"></a>集合概述体系、常用API</h2><h3 id="前提引入"><a href="#前提引入" class="headerlink" title="前提引入"></a>前提引入</h3><ul>
-<li>数组特点</li>
-</ul>
-<p>数组定义完成后，类型确定、长度固定。<br>适合元素的个数和类型确定的业务场景，不适合做需要增删数据操作。</p>
-<ul>
-<li>集合的特点</li>
-</ul>
-<p>集合的大小不固定，启动后可以动态变化，类型也可以选择不固定<br>集合非常适合做元素的增删操作</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/黑马-java基础-Collection与数据结构与List与泛型深入/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/黑马-java基础-static关键字与单例与代码段与继承/">
-        <h2>
-            Static关键字与单例与代码段与继承
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/27
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="static概述"><a href="#static概述" class="headerlink" title="static概述"></a>static概述</h3><p>static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；<br>static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。</p>
-<h3 id="成员变量可以分为两种"><a href="#成员变量可以分为两种" class="headerlink" title="成员变量可以分为两种"></a>成员变量可以分为两种</h3><ol>
-<li>实例成员变量：类内方法外，无static修饰，属于每一个对象</li>
-<li>静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问</li>
-</ol>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/黑马-java基础-static关键字与单例与代码段与继承/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/黑马-java基础-包与修饰符与抽象类与接口/">
-        <h2>
-            包与修饰符与抽象类与接口
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/27
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="一、包"><a href="#一、包" class="headerlink" title="一、包"></a>一、包</h1><h2 id="1-0-概念"><a href="#1-0-概念" class="headerlink" title="1.0 概念"></a>1.0 概念</h2><ol>
-<li><p>包是用来分门别类的管理各种不同类的、建包利于程序的管理和维护</p>
-</li>
-<li><p>建包的语法格式：package 公司域名倒写.技术名称。报名建议全部英文小写，且具备意义</p>
-</li>
-<li><p>建包语句必须在第一行，一般IDEA工具会帮助创建</p>
-<pre><code class="java">    package com.itheima.javabean;//建包语句
-    public class Student &#123;
-    &#125;
-</code></pre>
-<p> <strong>注意：</strong></p>
-<p>带包编译某个目录下的全部java文件</p>
-<blockquote>
-<p>javac -d . *.java</p>
-</blockquote>
-</li>
-</ol>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/黑马-java基础-包与修饰符与抽象类与接口/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/黑马-java基础-多态与内部类与常用API/">
-        <h2>
-            多态与内部类与常用API
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/27
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="一、面向对象的三大特征之多态"><a href="#一、面向对象的三大特征之多态" class="headerlink" title="一、面向对象的三大特征之多态"></a>一、面向对象的三大特征之多态</h1><h2 id="1-0-什么是多态？"><a href="#1-0-什么是多态？" class="headerlink" title="1.0 什么是多态？"></a>1.0 什么是多态？</h2><ul>
-<li>同类型的对象，执行同一个行为，会表现出不同的行为特征。</li>
-</ul>
-<h2 id="2-0-多态的常见形式"><a href="#2-0-多态的常见形式" class="headerlink" title="2.0 多态的常见形式"></a>2.0 多态的常见形式</h2><ol>
-<li>父类类型 对象名称 &#x3D; new 子类构造器;</li>
-<li>接口 对象名称 &#x3D; new 实现类构造器;</li>
-</ol>
-<h2 id="3-0-多态中成员访问特点"><a href="#3-0-多态中成员访问特点" class="headerlink" title="3.0 多态中成员访问特点"></a>3.0 多态中成员访问特点</h2><ul>
-<li>方法调用：编译看左边，运行看右边。</li>
-<li>变量调用：编译看左边，运行也看左边。（多态侧重行为多态）</li>
-</ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/黑马-java基础-多态与内部类与常用API/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/27/黑马-java基础-常用API与Lambda表达式与常见算法/">
-        <h2>
-            常用API与Lambda表达式与常见算法
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/27
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="一、处理时间"><a href="#一、处理时间" class="headerlink" title="一、处理时间"></a>一、处理时间</h1><h3 id="1-0-Date概念"><a href="#1-0-Date概念" class="headerlink" title="1.0 Date概念"></a>1.0 Date概念</h3><p>Date类代表当前所在系统的日期时间信息</p>
-<hr>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/27/黑马-java基础-常用API与Lambda表达式与常见算法/" class="go-post">
         阅读全文
     </a>
 </div>
@@ -749,9 +754,9 @@
             
             
             <span class="page-omit">...</span>
-            <a href="/page/5">
+            <a href="/page/6">
                 <span class="page-num">
-                    5
+                    6
                 </span>
             </a>
             
