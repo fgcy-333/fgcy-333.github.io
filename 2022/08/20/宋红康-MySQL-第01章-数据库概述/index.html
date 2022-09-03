@@ -157,35 +157,36 @@
 <h2 id="2-数据库与数据库管理系统"><a href="#2-数据库与数据库管理系统" class="headerlink" title="2. 数据库与数据库管理系统"></a>2. 数据库与数据库管理系统</h2><h3 id="2-1-数据库的相关概念"><a href="#2-1-数据库的相关概念" class="headerlink" title="2.1 数据库的相关概念"></a>2.1 数据库的相关概念</h3><ul>
 <li><strong>DB：数据库（Database）</strong></li>
 </ul>
-<p>就是一堆集合在一起的数据；也可以称为数据库文件</p>
+<p>就是一堆集合在一起的数据；也可以称为	数据库文件</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220619204142195.png" alt="image-20220619204142195"></p>
 <hr>
 <ul>
 <li><strong>DBMS：数据库管理系统（Database Management System）</strong></li>
 </ul>
-<p>是一种<strong>操纵和管理数据库</strong>的软件,用于建立、使用和维护数据库,对数据库进行统一管理和控制</p>
-<p>用户通过数据库管理系统访问数据库中表内的数据（Mysql、Oracle）</p>
+<p>是一种	<strong>操纵	和	管理	数据库</strong>的	软件,用于	<code>建立、使用 和 维护</code>	数据库,对数据库进行统一管理和控制</p>
+<p>用户	通过	<strong>数据库管理系统</strong>	访问	<strong>数据库中表内的数据</strong>（Mysql、Oracle）</p>
 <blockquote>
 <p>即是：xxx.doc文档文件是数据库；wps是数据库管理系统；用数据库管理系统去操作处理数据库（数据库文件）</p>
 </blockquote>
 <ul>
 <li><strong>SQL：结构化查询语言（Structured Query Language）</strong></li>
 </ul>
-<p>专门用来<strong>与数据库通信</strong>的<strong>语言</strong></p>
+<p>专门用来<strong>与	数据库管理系统	通信</strong>	的	<strong>语言</strong></p>
 <blockquote>
 <p>SQL语言运行在DBMS中，让DBMS去对数据库文件进行操作</p>
 </blockquote>
-<h3 id="2-2-数据库与数据库管理系统的关系"><a href="#2-2-数据库与数据库管理系统的关系" class="headerlink" title="2.2 数据库与数据库管理系统的关系"></a>2.2 数据库与数据库管理系统的关系</h3><p>数据库管理系统(DBMS)可以管理多个数据库，一般开发人员会针对每一个应用创建一个数据库</p>
-<p>为保存应用中实体的数据，一般会在数据库创建多个表，以保存程序中实体用户的数据。</p>
-<p>数据库管理系统、数据库和表的关系如图所示：</p>
+<h3 id="2-2-数据库与数据库管理系统的关系"><a href="#2-2-数据库与数据库管理系统的关系" class="headerlink" title="2.2 数据库与数据库管理系统的关系"></a>2.2 数据库与数据库管理系统的关系</h3><p>数据库管理系统(DBMS)	可以管理	<strong>多个数据库</strong>	，一般开发人员会针对每一个应用创建一个数据库</p>
+<p>为保存应用中实体的数据，一般会在	<strong>数据库创建多个表</strong>	，以保存程序中实体用户的数据。</p>
+<p>客户、web服务器 、·数据库管理系统	、	数据库	和		表的关系如图所示：</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211013202511233.png" alt="image-20211013202511233"></p>
 <hr>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20210915112546261.png" alt="image-20210915112546261"></p>
 <hr>
-<h3 id="2-3-常见的数据库管理系统排名-DBMS"><a href="#2-3-常见的数据库管理系统排名-DBMS" class="headerlink" title="2.3 常见的数据库管理系统排名(DBMS)"></a>2.3 常见的数据库管理系统排名(DBMS)</h3><p>目前互联网上常见的数据库管理软件有Oracle、MySQL、MS SQL Server、DB2、PostgreSQL、Access、Sybase、Informix这几种</p>
+<p>客户端通过网络向DBMS发送SQL（可以运行在DBMS中的语言），由DBMS操纵具体的数据库文件。</p>
+<h3 id="2-3-常见的数据库管理系统排名-DBMS"><a href="#2-3-常见的数据库管理系统排名-DBMS" class="headerlink" title="2.3 常见的数据库管理系统排名(DBMS)"></a>2.3 常见的数据库管理系统排名(DBMS)</h3><p>目前互联网上常见的数据库管理软件有Oracle、MySQL、SQL Server、DB2、PostgreSQL、Access、Sybase、Informix这几种</p>
 <p>以下是2021年<strong>DB-Engines Ranking</strong> 对各数据库受欢迎程度进行调查后的统计结果：</p>
 <blockquote>
 <p>查看数据库最新排名:<a target="_blank" rel="noopener" href="https://db-engines.com/en/ranking">https://db-engines.com/en/ranking</a></p>
@@ -269,17 +270,18 @@
 <h2 id="4-RDBMS-与-非RDBMS"><a href="#4-RDBMS-与-非RDBMS" class="headerlink" title="4. RDBMS 与 非RDBMS"></a>4. RDBMS 与 非RDBMS</h2><p>从排名中我们能看出来，<strong>关系型数据库</strong>绝对是 DBMS 的主流，其中使用最多的 DBMS 分别是 Oracle、MySQL 和 SQL Server</p>
 <p>这些都是关系型数据库（RDBMS）关系型数据库</p>
 <h3 id="4-1-关系型数据库-RDBMS"><a href="#4-1-关系型数据库-RDBMS" class="headerlink" title="4.1 关系型数据库(RDBMS)"></a>4.1 关系型数据库(RDBMS)</h3><h4 id="4-1-1-实质"><a href="#4-1-1-实质" class="headerlink" title="4.1.1 实质"></a>4.1.1 实质</h4><ul>
-<li><p>关系型数据库模型是把复杂的数据结构归结为简单的二维表格形式</p>
+<li><p>关系型数据库模型是把	<strong>复杂的数据结构</strong>	归结为简单的	<strong>二维表格形式</strong></p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211020145811031.png" alt="image-20211020145811031"></p>
 <hr>
 </li>
-<li><p>关系型数据库以<code>行(row)</code>和<code>列(column)</code>的形式存储数据。这一系列的行和列被称为<code>表(table)</code>，一组表组成了一个库(database)</p>
+<li><p>关系型数据库以<code>行(row)</code>和<code>列(column)</code>的形式存储数据。这一系列的行和列被称为<code>表(table)</code>，一个库(database)中至少有一张表</p>
 </li>
 </ul>
 <p>​	即：关系型数据库以行列的组织数据，由此形成一张表；一组表组成一个数据库；</p>
 <ul>
-<li><p>表与表之间的数据记录有关系；现实世界中的各种实体以及实体之间的各种联系均用<code>关系模型</code>来表示。关系型数据库，就是建立在<code>关系模型</code>基础上的数据库</p>
+<li><p><strong>表与表之间的数据记录</strong>	有关系；现实世界中的各种	<strong>实体	以及	实体之间</strong>	的各种联系均用	<code>关系模型</code>	来表示。</p>
+<p><strong>关系型数据库</strong>，就是建立在	<code>关系模型</code>	基础上的数据库</p>
 </li>
 <li><p>SQL 就是关系型数据库的查询语言。</p>
 </li>
@@ -288,40 +290,37 @@
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20210914235413708.png" alt="image-20210914235413708"></p>
 <hr>
 <h4 id="4-1-2-优势"><a href="#4-1-2-优势" class="headerlink" title="4.1.2 优势"></a>4.1.2 优势</h4><ul>
-<li><p><strong>复杂查询</strong><br>可以用SQLa个表之间做非常复杂的数据查询</p>
+<li><p><strong>复杂查询</strong><br>可以用<code>SQL</code>对 	a个表之间	做非常复杂的数据查询</p>
 </li>
 <li><p><strong>事务支持</strong><br>使得对于安全性能很高的数据访问要求得以实现</p>
 </li>
 </ul>
-<h3 id="4-2-非关系型数据库-非RDBMS"><a href="#4-2-非关系型数据库-非RDBMS" class="headerlink" title="4.2 非关系型数据库(非RDBMS)"></a>4.2 非关系型数据库(非RDBMS)</h3><h4 id="4-2-1-介绍"><a href="#4-2-1-介绍" class="headerlink" title="4.2.1 介绍"></a>4.2.1 介绍</h4><p><strong>非关系型数据库</strong>，可看成传统关系型数据库的功能<code>阉割版本</code>，基于键值对存储数据，不需要经过SQL层的解析，<code>性能非常高</code></p>
+<h3 id="4-2-非关系型数据库-非RDBMS"><a href="#4-2-非关系型数据库-非RDBMS" class="headerlink" title="4.2 非关系型数据库(非RDBMS)"></a>4.2 非关系型数据库(非RDBMS)</h3><h4 id="4-2-1-介绍"><a href="#4-2-1-介绍" class="headerlink" title="4.2.1 介绍"></a>4.2.1 介绍</h4><p><strong>非关系型数据库</strong>，可看成传统关系型数据库的功能<code>阉割版本</code>，基于键值对存储数据，不需要经过	<strong>SQL层的解析</strong>	，<code>性能非常高</code></p>
 <p>同时，通过减少不常用的功能，进一步提高性能</p>
 <p>目前基本上大部分主流的非关系型数据库都是免费的</p>
 <blockquote>
 <p>非关系型数据库不能存储复杂类型的数据；不能有复杂查询；但性能贼高</p>
 </blockquote>
-<h4 id="4-2-2-有哪些非关系型数据库"><a href="#4-2-2-有哪些非关系型数据库" class="headerlink" title="4.2.2 有哪些非关系型数据库"></a>4.2.2 有哪些非关系型数据库</h4><p>相比于 SQL，NoSQL 泛指非关系型数据库，包括了榜单上的<strong>键值型数据库</strong>、<strong>文档型数据库</strong>、搜索引擎和<strong>列存储</strong>等，除此以外还包括<strong>图形数据库</strong>。</p>
+<h4 id="4-2-2-有哪些非关系型数据库"><a href="#4-2-2-有哪些非关系型数据库" class="headerlink" title="4.2.2 有哪些非关系型数据库"></a>4.2.2 有哪些非关系型数据库</h4><p>相比于 SQL，NoSQL 泛指非关系型数据库，包括了榜单上的	<strong>键值型数据库(redis)</strong>	、	<strong>文档型数据库(mongodb)</strong>	、	<strong>搜索引擎(ES)</strong>	和	<strong>列存储(HBase)</strong>	等，除此以外还包括**图形数据库(Neo4J)**。</p>
 <p><strong>键值型数据库</strong></p>
-<p>键值型数据库通过 Key-Value 键值的方式来存储数据，其中 Key 和 Value 可以是简单的对象，也可以是复杂的对象</p>
-<p>Key 作为唯一的标识符，优点是查找速度快，在这方面明显优于关系型数据库，缺点是无法像关系型数据库一样使用条件过滤（比如 WHERE）</p>
+<p>键值型数据库	通过 <code>Key-Value</code> 键值的方式来存储数据，其中 <strong>Key 和 Value</strong> 可以是	简单的对象，也可以是	复杂的对象</p>
+<p>Key 作为唯一的标识符，优点是查找速度快，在这方面明显优于关系型数据库，缺点是	<strong>无法</strong>	像关系型数据库一样	<strong>使用条件过滤</strong>（比如 WHERE）</p>
 <p>如果你不知道去哪里找数据，就要遍历所有的键，这就会消耗大量的计算</p>
-<p>键值型数据库典型的使用场景是作为<code>内存缓存</code>。<code>Redis </code>是最流行的键值型数据库。</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211020172958427.png" alt="image-20211020172958427"></p>
-<hr>
+<p>键值型数据库典型的使用场景是作为	<code>内存缓存</code>	。	<code>Redis </code>	是最流行的<strong>键值型数据库</strong>。</p>
 <p><strong>文档型数据库</strong></p>
-<p>此类数据库可存放并获取文档，可以是XML、JSON等格式</p>
+<p>此类数据库可存放并获取文档，可以是	<code>XML、JSON</code>	等格式</p>
 <p>在数据库中文档作为处理信息的基本单位，一个文档就相当于一条记录</p>
 <p>文档数据库所存放的文档，就相当于键值数据库所存放的“值”</p>
-<p>MongoDB 是最流行的文档型数据库。此外，还有CouchDB等</p>
+<p><code>MongoDB </code>是最流行的文档型数据库。此外，还有CouchDB等</p>
 <p><strong>搜索引擎数据库</strong></p>
-<p>虽然关系型数据库采用了索引提升检索效率，但是针对全文索引效率却较低</p>
-<p>搜索引擎数据库是应用在搜索引擎领域的数据存储形式，由于搜索引擎会爬取大量的数据，并以特定的格式进行存储，这样在检索的时候才能保证性能最优</p>
-<p>核心原理是“倒排索引”</p>
+<p>虽然	<strong>关系型数据库</strong>	采用了	<strong>索引提升检索效率</strong>	，但是针对	<strong>全文索引</strong>	<strong>效率却较低</strong></p>
+<p>搜索引擎数据库是	应用在	<strong><code>搜索引擎领域的数据	</code>	存储形式</strong>，由于搜索引擎会爬取大量的数据，并以特定的格式进行存储，这样在检索的时候才能保证性能最优</p>
+<p><strong>核心原理是“倒排索引”</strong></p>
 <p>典型产品：<strong>Solr</strong>、<strong>Elasticsearch</strong>、Splunk 等</p>
 <p><strong>列式数据库</strong></p>
 <p>列式数据库是相对于行式存储的数据库，Oracle、MySQL、SQL Server 等数据库都是采用的行式存储（Row-based）</p>
 <p>而列式数据库是将数据按照列存储到数据库中，这样做的好处是可以大量降低系统的 I&#x2F;O，适合于分布式文件系统，不足在于功能相对有限</p>
-<p>典型产品：HBase等。</p>
+<p>典型产品：<strong>HBase</strong>等。</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211020173921726.png" alt="image-20211020173921726"></p>
 <hr>
@@ -376,8 +375,8 @@
 </li>
 <li><p>两种建表原则： </p>
 <ul>
-<li>外键唯一：主表的主键和从表的外键（唯一），形成主外键关系，外键唯一</li>
-<li>外键是主键：主表的主键和从表的主键，形成主外键关系</li>
+<li>外键唯一：主表的主键和从表的外键（唯一），形成主外键关系，外键是另一张表的主键，所以外键唯一</li>
+<li>外键是主键：主表的主键和    <strong>从表的主键</strong>  ，形成主外键关系</li>
 </ul>
 </li>
 </ul>
@@ -430,11 +429,11 @@
 <li><p><strong>举例2：产品-订单</strong></p>
 <p>“订单”表和“产品”表有一种多对多的关系，这种关系是通过与“订单明细”表建立两个一对多关系来定义的</p>
 <p>一个订单可以有多个产品</p>
-<p>每个产品可以出现在多个订单中 &#x3D;&#x3D;产品表中一行记录代表一种产品&#x3D;&#x3D;</p>
+<p>每个产品可以出现在多个订单中 	<strong>产品表中一行记录代表一种产品</strong></p>
 <ul>
-<li><code>产品表</code>：“产品”表中的每条记录表示一个产品。</li>
+<li><code>产品表</code>：“产品”表中的每条记录表示一种产品。</li>
 <li><code>订单表</code>：“订单”表中的每条记录表示一个订单。</li>
-<li><code>订单明细表</code>：每个产品可以与“订单”表中的多条记录对应，即出现在多个订单中。一个订单可以与“产品”表中的多条记录对应，即包含多个产品。</li>
+<li><code>订单明细表</code>：每种产品可以与“订单”表中的多条记录对应，即出现在多个订单中。一个订单可以与“产品”表中的多条记录对应，即包含多种产品。</li>
 </ul>
 </li>
 </ul>
