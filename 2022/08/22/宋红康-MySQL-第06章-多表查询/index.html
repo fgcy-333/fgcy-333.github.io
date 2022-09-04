@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #ffa2c4">
+                <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00a596">
                     尚硅谷-宋红康-MySQL
                 </a>
             </span>
@@ -145,7 +145,9 @@
     </div>
     <div class="content" v-pre>
         <h1 id="第06章-多表查询"><a href="#第06章-多表查询" class="headerlink" title="第06章_多表查询"></a>第06章_多表查询</h1><p>多表查询，也称为关联查询，指两个或更多个表一起完成查询操作。</p>
-<p>前提条件：这些一起查询的表之间是有关系的（一对一、一对多），它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。比如：员工表和部门表，这两个表依靠“部门编号”进行关联。</p>
+<p>前提条件：这些一起查询的表之间是有关系的（一对一、一对多）</p>
+<p>​					它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。</p>
+<p>比如：员工表和部门表，这两个表依靠“部门编号”进行关联。</p>
 <span id="more"></span>
 
 
@@ -174,6 +176,9 @@
 | department_id  | int(4)      | YES  | MUL | NULL    |       |
 +----------------+-------------+------+-----+---------+-------+
 </code></pre>
+<p><code>PRI:</code>代表该列有主键约束</p>
+<p><code>UNI:</code>代表该列有唯一约束。</p>
+<p><code>MUL:</code> 该列存在多个相同的值.</p>
 <ol start="2">
 <li><strong>departments</strong></li>
 </ol>
@@ -221,13 +226,16 @@ FROM employees, departments;
 | King      | Administration       |
 | King      | Marketing            |
 | Gietz     | Retail Sales         |
+....................................
+....................................
 | Gietz     | Recruiting           |
 | Gietz     | Payroll              |
 +-----------+----------------------+
 2889 rows in set (0.01 sec)
 </code></pre>
+<p>2889 rows</p>
 <p><strong>分析错误情况：</strong></p>
-<pre><code class="mysql">#错误的原因：缺少了多表的连接条件
+<pre><code class="mysql">-- 错误的原因：缺少了多表的连接条件
 
 select count(*) from employees;
 +----------+
@@ -243,9 +251,9 @@ select count(*) from employees;
 |       27 |
 +----------+
 
-#错误的原因：每个员工都与每个部门匹配了一遍。
+-- 错误的原因：每个员工都与每个部门匹配了一遍。
 SELECT employee_id,department_name
-FROM employees,departments;  #查询出2889条记录 【笛卡尔积】
+FROM employees,departments;  -- 查询出2889条记录 【笛卡尔积】
 
 select 27*107 from dual;
 +--------+
@@ -254,21 +262,42 @@ select 27*107 from dual;
 |   2889 |
 +--------+
 </code></pre>
-<pre><code class="mysql">#错误的方式
+<hr>
+<pre><code class="mysql">-- 错误的方式
 SELECT employee_id,department_name
-FROM employees CROSS JOIN departments;#【笛卡尔积，也称为交叉连接】
-#查询出2889条记录
+FROM employees CROSS JOIN departments;-- 【笛卡尔积，也称为交叉连接】
+
+2889 rows in set (0.00 sec)
+
+
+
 
 SELECT *
 FROM employees;  #107条记录
 
+107 rows in set (0.00 sec)
+
+
+
 SELECT 2889 / 107
-FROM DUAL;
+FROM DUAL; 
+
++------------+
+| 2889 / 107 |
++------------+
+|    27.0000 |
++------------+
+1 row in set (0.00 sec)
+
+
+
 
 SELECT *
 FROM departments; # 27条记录
+
+27 rows in set (0.00 sec)
 </code></pre>
-<p>我们把上述多表查询中出现的问题称为：关系型数据库中的<strong>笛卡尔积的错误</strong>。</p>
+<p>我们把上述多表查询中出现的问题称为：<strong>关系型数据库中</strong>的	<strong>笛卡尔积的错误</strong>。</p>
 <h3 id="1-2-笛卡尔积（或交叉连接）的理解"><a href="#1-2-笛卡尔积（或交叉连接）的理解" class="headerlink" title="1.2 笛卡尔积（或交叉连接）的理解"></a>1.2 笛卡尔积（或交叉连接）的理解</h3><p>笛卡尔乘积是一个数学运算。假设我有两个集合 X 和 Y，那么 X 和 Y 的笛卡尔积就是 X 和 Y 的所有可能组合，也就是第一个对象来自于 X，第二个对象来自于 Y 的所有可能。</p>
 <p>组合的个数即为两个集合中元素个数的乘积数</p>
 <hr>
@@ -280,16 +309,17 @@ FROM departments; # 27条记录
 <p>在MySQL中如下情况会出现笛卡尔积：</p>
 <pre><code class="mysql">#查询员工姓名和所在部门名称
 SELECT last_name,department_name FROM employees,departments;
-SELECT last_name,department_name FROM employees CROSS JOIN departments;
-SELECT last_name,department_name FROM employees INNER JOIN departments;
-SELECT last_name,department_name FROM employees JOIN departments;
+SELECT last_name,department_name FROM employees CROSS JOIN departments;-- 交叉连接
+SELECT last_name,department_name FROM employees INNER JOIN departments;-- 内连接
+SELECT last_name,department_name FROM employees JOIN departments; -- 内连接
 </code></pre>
+<p>无论是那种多表连接,第一步都是先交叉连接,之后再根据多表连接条件进行过滤.</p>
 <h3 id="1-3-案例分析与问题解决"><a href="#1-3-案例分析与问题解决" class="headerlink" title="1.3 案例分析与问题解决"></a>1.3 案例分析与问题解决</h3><ul>
 <li><p><strong>笛卡尔积的错误会在下面条件下产生</strong>：</p>
 <ul>
-<li>省略多个表的连接条件（或关联条件）</li>
-<li>连接条件（或关联条件）无效</li>
-<li>所有表中的所有行互相连接</li>
+<li><strong>缺少多个表的连接条件</strong>（或关联条件）</li>
+<li>连接条件（或<strong>关联条件）无效</strong></li>
+<li>所有表中的  <strong>所有行互相连接</strong></li>
 </ul>
 </li>
 <li><p>为了避免笛卡尔积， 可以<strong>在 WHERE 加入有效的连接条件。</strong></p>
@@ -297,7 +327,7 @@ SELECT last_name,department_name FROM employees JOIN departments;
 <li><p>加入连接条件后，查询语法：</p>
 <pre><code class="mysql">SELECT	table1.column, table2.column
 FROM	table1, table2
-WHERE	table1.column1 = table2.column2;  #连接条件
+WHERE	table1.column1 = table2.column2;  -- 连接条件
 </code></pre>
 <ul>
 <li><strong>在 WHERE子句中写入连接条件。</strong></li>
@@ -308,6 +338,7 @@ WHERE	table1.column1 = table2.column2;  #连接条件
 SELECT last_name, department_name
 FROM employees, departments
 WHERE employees.department_id = departments.department_id;
+
 +-------------+------------------+
 | last_name   | department_name  |
 +-------------+------------------+
@@ -316,22 +347,25 @@ WHERE employees.department_id = departments.department_id;
 | Urman       | Finance          |
 +-------------+------------------+
 106 rows in set (0.01 sec)
-#员工表一共有107个员工，但是有一个员工部门id为null；有null参与的运算结果为null；而过滤需要条件为1才会有结果
+
+-- 员工表一共有107个员工，但是有一个员工部门id为null；有null参与的运算结果为null；而过滤需要条件为1才会有结果
 </code></pre>
 </li>
-<li><p><strong>在表中有相同列时，在列名之前加上表名前缀</strong></p>
+<li><p>**在  表中  有  相同列时，在  列名之前  加上  表名前缀  **</p>
 </li>
 </ul>
 <pre><code class="mysql">SELECT last_name, department_name,department_id
 FROM employees, departments
 WHERE employees.department_id = departments.department_id;
 
-# ERROR 1052 (23000): Column &#39;department_id&#39; in field list is ambiguous
+-- ERROR 1052 (23000): Column &#39;department_id&#39; in field list is ambiguous
+
 
 
 SELECT last_name, department_name,departments.department_id
 FROM employees, departments
 WHERE employees.department_id = departments.department_id;
+
 +-------------+------------------+
 | last_name   | department_name  |
 +-------------+------------------+
@@ -343,11 +377,13 @@ WHERE employees.department_id = departments.department_id;
 </code></pre>
 <p>注意：</p>
 <p>1、从SQL优化的角度，建议多表查询时，每个字段都指明其所在的表</p>
-<p>​	如果不指定，就会查询两个表确保没有两个表中没有相同的字段</p>
-<p>2、如果给表起了别名，一旦在SELECT 或WHERE中使用表名时，则必须使用表的别名，而不能再使用表的原名</p>
+<p>​	  如果不指定，就会查询两个表确保没有两个表中没有相同的字段 (影响效率)</p>
+<p>2、如果  <strong>给表起了别名</strong>，一旦在SELECT 或WHERE中使用表名时，则   <strong>必须使用表的别名</strong>，而   <strong>不能再使用表的原名</strong></p>
+<p>举例:</p>
 <pre><code class="mysql">SELECT emp.employee_id,dept.department_name,emp.department_id
 FROM employees emp,departments dept
 WHERE emp.`department_id` = dept.department_id;
+
 +-------------+------------------+---------------+
 | employee_id | department_name  | department_id |
 +-------------+------------------+---------------+
@@ -356,20 +392,21 @@ WHERE emp.`department_id` = dept.department_id;
 |         206 | Accounting       |           110 |
 +-------------+------------------+---------------+
 </code></pre>
-<pre><code class="mysql">#如下的操作是错误的：
+<pre><code class="mysql">-- 如下的操作是错误的：
 SELECT emp.employee_id,departments.department_name,emp.department_id
 FROM employees emp,departments dept
 WHERE emp.`department_id` = departments.department_id;
 
 -- ERROR 1054 (42S22): Unknown column &#39;departments.department_name&#39; in &#39;field list&#39;
 </code></pre>
-<p>3、如果有n个表实现多表的查询，则需要【至少】n-1个连接条件</p>
-<pre><code class="mysql">#练习：查询员工的employee_id,last_name,department_name,city
+<p>3、如果有   <strong>n个表</strong>  实现多表的查询，则需要<strong>【至少】n-1个</strong>连接条件</p>
+<pre><code class="mysql">-- 练习：查询员工的employee_id,last_name,department_name,city
 --  此处三张表应该有两个条件
 SELECT e.employee_id,e.last_name,d.department_name,l.city,e.department_id,l.location_id
 FROM employees e,departments d,locations l
 WHERE e.`department_id` = d.`department_id`
-AND d.`location_id` = l.`location_id`;
+AND 
+d.`location_id` = l.`location_id`;
 
 +-------------+-------------+------------------+---------------------+---------------+-------------+
 | employee_id | last_name   | department_name  | city                | department_id | location_id |
@@ -380,8 +417,8 @@ AND d.`location_id` = l.`location_id`;
 +-------------+-------------+------------------+---------------------+---------------+-------------+
 106 rows in set (0.01 sec)
 </code></pre>
-<p>4、新加入的表，等值连接时，连接字段是要与已经参与连接的其中一张表的字段相同</p>
-<p>类似一种神秘组织，需要有人认识才能进入；如果组织·内没有人认识你，那么就不能加入</p>
+<p>4、新加入的表，等值连接时，   <strong>连接字段</strong>  是要与  <strong>已经</strong>  参与连接的其中一张表的 <strong>字段相同</strong></p>
+<p>​	   类似一种神秘组织，需要有人认识才能进入；如果组织·内没有人认识你，那么就不能加入</p>
 <h2 id="2-多表查询分类讲解"><a href="#2-多表查询分类讲解" class="headerlink" title="2. 多表查询分类讲解"></a>2. 多表查询分类讲解</h2><h3 id="分类1：等值连接-vs-非等值连接"><a href="#分类1：等值连接-vs-非等值连接" class="headerlink" title="分类1：等值连接 vs 非等值连接"></a>分类1：等值连接 vs 非等值连接</h3><h4 id="等值连接"><a href="#等值连接" class="headerlink" title="等值连接"></a>等值连接</h4><hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554975496900.png" alt="1554975496900"></p>
 <hr>
@@ -433,7 +470,7 @@ WHERE  e.department_id = d.department_id;
 <p><code>阿里开发规范</code>：</p>
 <p>【<code>强制</code>】对于数据库中表记录的查询和变更，只要涉及多个表，都需要在列名前加表的别名（或 表名）进行限定。 </p>
 <p><code>说明</code>：对多表进行查询记录、更新记录、删除记录时，如果对操作列没有限定表的别名（或表名），并且操作列在多个表中存在时，就会抛异常。 </p>
-<p><code>正例</code>：select t1.name from table_first as t1 , table_second as t2 where t1.id&#x3D;t2.id; </p>
+<p><code>正例</code>：<code>select t1.name from table_first as t1 , table_second as t2 where t1.id=t2.id; </code></p>
 <p><code>反例</code>：在某业务中，由于多表关联查询语句没有加表的别名（或表名）的限制，正常运行两年后，最近在 某个表中增加一个同名字段，在预发布环境做数据库变更后，线上查询语句出现出 1052 异常：Column  ‘name’ in field list is ambiguous。</p>
 </blockquote>
 <p><strong>拓展4：连接多个表</strong></p>
@@ -441,12 +478,12 @@ WHERE  e.department_id = d.department_id;
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978354431.png" alt="1554978354431"></p>
 <hr>
 <p><strong>总结：连接 n个表,至少需要n-1个连接条件。</strong>比如，连接三个表，至少需要两个连接条件。</p>
-<p>练习：查询出公司员工的 last_name,department_name, city</p>
 <h4 id="非等值连接"><a href="#非等值连接" class="headerlink" title="非等值连接"></a>非等值连接</h4><hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978442447.png" alt="1554978442447"></p>
 <hr>
 <p>job_grades的表结构：</p>
-<pre><code class="msyql">desc job_grades;
+<pre><code class="mysql">desc job_grades;
+
 +-------------+------------+------+-----+---------+-------+
 | Field       | Type       | Null | Key | Default | Extra |
 +-------------+------------+------+-----+---------+-------+
@@ -457,7 +494,7 @@ WHERE  e.department_id = d.department_id;
 </code></pre>
 <pre><code class="mysql">SELECT e.last_name, e.salary, j.grade_level
 FROM   employees e, job_grades j
-#WHERE  e.salary BETWEEN j.lowest_sal AND j.highest_sal;
+-- WHERE  e.salary BETWEEN j.lowest_sal AND j.highest_sal;
 where e.salary&gt;=j.lowest_sal AND e.salary&lt;=j.highest_sal;
 
 +-------------+----------+-------------+
@@ -475,7 +512,8 @@ where e.salary&gt;=j.lowest_sal AND e.salary&lt;=j.highest_sal;
 107 rows in set (0.01 sec)
 </code></pre>
 <p>注意：</p>
-<p>非等值连接，指的是连接条件不是**&#x3D;**的  <strong>&gt;&#x3D;</strong>    <strong>&lt;&#x3D;</strong> 也可以</p>
+<p>非等值连接，指的是连接条件不是**&#x3D;**          </p>
+<p><strong>&gt;&#x3D;</strong>    <strong>&lt;&#x3D;</strong> 是可以的</p>
 <h3 id="分类2：自连接-vs-非自连接"><a href="#分类2：自连接-vs-非自连接" class="headerlink" title="分类2：自连接 vs 非自连接"></a>分类2：自连接 vs 非自连接</h3><p><strong>自连接</strong></p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978514321-16558825769401.png" alt="1554978514321"></p>
@@ -483,8 +521,10 @@ where e.salary&gt;=j.lowest_sal AND e.salary&lt;=j.highest_sal;
 <blockquote>
 <p> <strong>table1和table2本质上是同一张表</strong>，<strong>只是用取别名的方式虚拟成两张表以代表不同的意义</strong></p>
 </blockquote>
-<pre><code class="mysql">#自连接的例子：
-#练习：查询员工id,员工姓名及其管理者的id和姓名
+<ul>
+<li><strong>自连接的例子：</strong></li>
+</ul>
+<pre><code class="mysql">-- 练习：查询员工id,员工姓名及其管理者的id和姓名
 
 SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name
 FROM employees emp ,employees mgr
@@ -497,7 +537,9 @@ WHERE emp.`manager_id` = mgr.`employee_id`;
 |         206 | Gietz       |         205 | Higgins   |
 +-------------+-------------+-------------+-----------+
 </code></pre>
-<p><strong>题目：查询employees表，返回“Xxx  works for Xxx”</strong></p>
+<ul>
+<li><strong>题目：查询employees表，返回“Xxx  works for Xxx”</strong></li>
+</ul>
 <pre><code class="mysql">SELECT CONCAT(worker.last_name ,&#39; works for &#39; 
        , manager.last_name)
 FROM   employees worker, employees manager
@@ -505,15 +547,22 @@ WHERE  worker.manager_id = manager.employee_id ;
 
 +---------------------------------------------------------------------+
 | Kochhar works for King                                              |
+........................................................................
 | Vishney works for Errazuriz                                         |
 +---------------------------------------------------------------------+
 106 rows in set (0.00 sec)
 </code></pre>
-<p>练习：查询出last_name为 ‘Chen’ 的员工的 manager 的信息</p>
-<pre><code class="mysql">SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name
+<ul>
+<li><p><strong>练习：查询出last_name为 ‘Chen’ 的员工的 manager 的信息</strong></p>
+<p>这里使用的是多表连接,也可以使用子查询</p>
+</li>
+</ul>
+<pre><code class="mysql">-- 多表连接
+SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name
 FROM employees emp ,employees mgr
 WHERE emp.`manager_id` = mgr.`employee_id`
-and emp.last_name like &quot;Chen&quot;;
+AND
+emp.last_name like &quot;Chen&quot;;
 
 +-------------+-----------+-------------+-----------+
 | employee_id | last_name | employee_id | last_name |
@@ -522,31 +571,47 @@ and emp.last_name like &quot;Chen&quot;;
 +-------------+-----------+-------------+-----------+
 1 row in set (0.00 sec)
 </code></pre>
+<pre><code class="mysql">-- 子查询
+SELECT last_name,salary,employee_id
+FROM employees
+WHERE employee_id=(
+    SELECT manager_id from employees
+    WHERE last_name LIKE &#39;Chen&#39;
+);
+
++-----------+----------+-------------+
+| last_name | salary   | employee_id |
++-----------+----------+-------------+
+| Greenberg | 12000.00 |         108 |
++-----------+----------+-------------+
+1 row in set (0.00 sec)
+</code></pre>
+<p>大多数的多表连接都是非自连接</p>
 <h3 id="分类3：内连接-vs-外连接"><a href="#分类3：内连接-vs-外连接" class="headerlink" title="分类3：内连接 vs 外连接"></a>分类3：内连接 vs 外连接</h3><p>注意：</p>
-<p>1、外连接除了查询满足条件的记录以外，外连接还可以查询某一方不满足条件的记录</p>
-<p>2、内连接仅仅查询满足条件的记录</p>
+<p>1、外连接除了	<strong>查询满足条件的记录以外</strong>，外连接还可以查询	<strong>某一方不满足条件的记录</strong></p>
+<p>2、内连接	<strong>仅仅查询满足条件的记录</strong></p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978955659.png" alt="1554978955659"></p>
 <hr>
 <p><strong>内连接与外连接的详解：</strong></p>
 <ul>
-<li>内连接: 合并具有同一列的两个以上的表的行, <strong>结果集中不包含一个表与另一个表不匹配的行</strong></li>
+<li>内连接: 合并   具有同一列   的   两个以上的表的行  , <strong>结果集中   不包含   一个表与另一个表不匹配的行</strong></li>
 <li>外连接: 两个表在连接过程中除了返回满足连接条件的行以外</li>
 </ul>
-<p>​		<strong>还返回左（或右）表中不满足条件的行</strong> <strong>，这种连接称为左（或右） 外连接</strong>。没有匹配的行时, 结果表中相应的列为空(NULL)。</p>
+<p>​		<strong>还返回左（或右）表中不满足条件的行</strong> <strong>，这种连接称为左（或右） 外连接</strong>。没有匹配的行时, 结果表中相应的列为<code>空(NULL)</code>。</p>
 <ul>
-<li><p>如果是左外连接，则连接条件中左边的表也称为<code>主表</code>，右边的表称为<code>从表</code>。</p>
-<p>如果是右外连接，则连接条件中右边的表也称为<code>主表</code>，左边的表称为<code>从表</code>。</p>
+<li><p>如果是左外连接，则连接条件中左边的表也称为  <code>主表</code>，右边的表称为  <code>从表</code>。</p>
+<p>如果是右外连接，则连接条件中右边的表也称为  <code>主表</code>，左边的表称为  <code>从表</code>。</p>
 </li>
-<li><p>除了左外连接和右外连接外，还有一个叫满外连接</p>
+<li><p>除了左外连接和右外连接外，还有一个叫<strong>满外连接</strong></p>
 </li>
 </ul>
 <p>外连接总结：</p>
 <p>1、外连接：合并具有同一列的两个以上的表的行, 结果集中除了包含一个表与另一个表匹配的行之外，还查询到【保留】左表 或 右表中不匹配的行。</p>
 <p>2、外连接的分类：左外连接、右外连接、满外连接</p>
-<p>3、左外连接：两个表在连接过程中除了返回满足连接条件的行以外还返回左表中不满足条件的行，这种连接称为左外连接。</p>
-<p>4、右外连接：两个表在连接过程中除了返回满足连接条件的行以外还返回右表中不满足条件的行，这种连接称为右外连接。</p>
-<h4 id="SQL92：使用-创建连接（外连接）"><a href="#SQL92：使用-创建连接（外连接）" class="headerlink" title="SQL92：使用(+)创建连接（外连接）"></a>SQL92：使用(+)创建连接（外连接）</h4><p>SQL92内连接如下：</p>
+<p>3、左外连接：两个表在连接过程中除了返回满足连接条件的行以外还返回	<strong>左表中不满足条件的行</strong>	，这种连接称为<code>左外连接</code>。</p>
+<p>4、右外连接：两个表在连接过程中除了返回满足连接条件的行以外还返回	<strong>右表中不满足条件的行</strong>	，这种连接称为<code>右外连接</code>。</p>
+<h4 id="SQL92：使用-创建连接（外连接）"><a href="#SQL92：使用-创建连接（外连接）" class="headerlink" title="SQL92：使用(+)创建连接（外连接）"></a>SQL92：使用(+)创建连接（外连接）</h4><p>SQL92<strong>内连接</strong>如下：</p>
 <pre><code class="mysql">SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name
 FROM employees emp ,employees mgr
 WHERE emp.`manager_id` = mgr.`employee_id` #92内连接语法
@@ -572,7 +637,7 @@ FROM employees ,departments
 WHERE employees.department_id(+) = departments.department_id;
 </code></pre>
 <ul>
-<li>而且在 SQL92 中，只有左外连接和右外连接，没有满（或全）外连接</li>
+<li>而且在 <code>SQL92 </code>中，<strong>只有左外连接和右外连接</strong>，<strong>没有</strong>   满（或全）外连接</li>
 </ul>
 <h2 id="3-SQL99语法实现多表查询"><a href="#3-SQL99语法实现多表查询" class="headerlink" title="3. SQL99语法实现多表查询"></a>3. SQL99语法实现多表查询</h2><h3 id="3-1-基本语法"><a href="#3-1-基本语法" class="headerlink" title="3.1 基本语法"></a>3.1 基本语法</h3><ul>
 <li><strong>SQL99语法中使用 JOIN …ON 的方式实现多表的查询</strong></li>
@@ -593,12 +658,14 @@ FROM table1
 </code></pre>
 <p>SQL99 采用的这种嵌套结构非常清爽、层次性更强、可读性更强，即使再多的表进行连接也都清晰可见。如果你采用 SQL92，可读性就会大打折扣。</p>
 <ul>
-<li>语法说明：<ul>
+<li><p>语法说明：</p>
+<ul>
 <li><strong>可以使用</strong> <strong>ON</strong> <strong>子句指定额外的连接条件</strong>。</li>
 <li>这个连接条件是与其它条件分开的。</li>
 <li><strong>ON</strong> <strong>子句使语句具有更高的易读性</strong>。</li>
-<li>关键字 JOIN、INNER JOIN、CROSS JOIN 的含义是一样的，都表示内连接</li>
+<li>关键字 <code>JOIN</code>、<code>INNER JOIN</code>、<code>CROSS JOIN </code>的含义是一样的，都表示内连接</li>
 </ul>
+<p>任何的多表连接,第一步都是交叉连接</p>
 </li>
 </ul>
 <h3 id="3-2-内连接-INNER-JOIN-的实现"><a href="#3-2-内连接-INNER-JOIN-的实现" class="headerlink" title="3.2 内连接(INNER JOIN)的实现"></a>3.2 内连接(INNER JOIN)的实现</h3><ul>
@@ -610,7 +677,7 @@ ON 关联条件
 WHERE 等其他子句;
 </code></pre>
 <p>题目1：</p>
-<pre><code class="mysql">#SQL99语法实现【内连接】：INNER JOIN
+<pre><code class="mysql">-- SQL99语法实现【内连接】：INNER JOIN
 SELECT last_name,department_name
 FROM employees e INNER JOIN departments d
 ON e.`department_id` = d.`department_id`;
@@ -622,6 +689,7 @@ ON e.`department_id` = d.`department_id`;
 | Hartstein   | Marketing        |
 | Philtanker  | Shipping         |
 | Lorentz     | IT               |
+..................................
 | Baer        | Public Relations |
 | Zlotkey     | Sales            |
 | Tucker      | Sales            |
@@ -644,6 +712,7 @@ ON     d.location_id = l.location_id;
 |         200 | Seattle             | Administration   |
 |         203 | London              | Human Resources  |
 |         120 | South San Francisco | Shipping         |
+........................................................
 |         104 | Southlake           | IT               |
 |         158 | Oxford              | Sales            |
 |         113 | Seattle             | Finance          |
@@ -673,6 +742,7 @@ ON   (e.department_id = d.department_id) ;
 +-------------+---------------+------------------+
 | King        |            90 | Executive        |
 | Grant       |          NULL | NULL             |
+..................................................
 | Johnson     |            80 | Sales            |
 | Gietz       |           110 | Accounting       |
 +-------------+---------------+------------------+
@@ -727,40 +797,46 @@ SELECT column,... FROM table2
 </code></pre>
 <p><strong>UNION操作符</strong></p>
 <hr>
-<img src="../tem/images/1554979317187.png" alt="1554979317187" style="zoom: 67%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209042334451.png" alt="image-20220904233419349"></p>
 <hr>
 <p>UNION 操作符返回两个查询的结果集的并集，<strong>去除重复记录</strong></p>
-<p>完整的B+去重的A</p>
+<p>完整的B  +  去重的A</p>
 <p><strong>UNION ALL操作符</strong></p>
 <hr>
 <img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979343634.png" alt="1554979343634" style="zoom: 67%;" />
 
 <hr>
-<p>UNION ALL操作符返回两个查询的结果集的并集。对于两个结果集的重复部分，不去重</p>
+<p>UNION ALL操作符返回两个查询的结果集的并集。对于两个结果集的重复部分，<strong>不去重</strong></p>
 <blockquote>
 <p>注意：执行UNION ALL语句时所需要的资源比UNION语句少</p>
 <p>如果明确知道合并数据后的结果数据不存在重复数据，或者不需要去除重复的数据，则尽量使用UNION ALL语句，以提高数据查询的效率</p>
 </blockquote>
 <p>举例：查询部门编号&gt;90或邮箱包含a的员工信息</p>
 <pre><code class="mysql">#方式1
-SELECT * FROM employees WHERE email LIKE &#39;%a%&#39; OR department_id&gt;90;
+SELECT * FROM employees
+WHERE email LIKE &#39;%a%&#39; 
+OR 
+department_id&gt;90;
 </code></pre>
+<hr>
 <pre><code class="mysql">#方式2
-SELECT * FROM employees  WHERE email LIKE &#39;%a%&#39;
+SELECT * FROM employees  
+    WHERE email LIKE &#39;%a%&#39;
 UNION
-SELECT * FROM employees  WHERE department_id&gt;90;
+    SELECT * FROM employees  
+WHERE department_id&gt;90;
 </code></pre>
 <p>举例：查询中国用户中男性的信息以及美国用户中年男性的用户信息</p>
-<pre><code class="mysql">SELECT id,cname FROM t_chinamale WHERE csex=&#39;男&#39;
+<pre><code class="mysql">SELECT id,cname FROM t_chinamale 
+    WHERE csex=&#39;男&#39;
 UNION ALL
-SELECT id,tname FROM t_usmale WHERE tGender=&#39;male&#39;;
+SELECT id,tname FROM t_usmale
+    WHERE tGender=&#39;male&#39;;
 </code></pre>
 <p>小结：</p>
 <p>1、UNION：会执行去重操作</p>
 <p>2、UNION ALL:不会执行去重操作</p>
-<p>3、如果明确知道合并数据后的结果数据不存在重复数据，或者不需要去除重复的数据</p>
-<p>4、则尽量使用UNION ALL语句，以提高数据查询的效率。</p>
+<p>3、如果明确知道合并数据后的结果数据不存在重复数据，或者不需要去除重复的数据  则尽量使用UNION ALL语句，以提高数据查询的效率。</p>
 <h2 id="5-7种SQL-JOINS的实现"><a href="#5-7种SQL-JOINS的实现" class="headerlink" title="5. 7种SQL JOINS的实现"></a>5. 7种SQL JOINS的实现</h2><hr>
 <img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979255233.png" alt="1554979255233" style="zoom:80%;" />
 
@@ -791,40 +867,288 @@ where e.`department_id` = d.`department_id`;
 SELECT employee_id,department_name
 FROM employees e LEFT JOIN departments d
 ON e.`department_id` = d.`department_id`;
+
 +-------------+------------------+
 | employee_id | department_name  |
 +-------------+------------------+
 |         178 | NULL             |
 |         200 | Administration   |
 |         201 | Marketing        |
+|         202 | Marketing        |
+|         114 | Purchasing       |
+|         115 | Purchasing       |
+|         116 | Purchasing       |
+|         117 | Purchasing       |
+|         118 | Purchasing       |
+|         119 | Purchasing       |
+|         203 | Human Resources  |
+|         120 | Shipping         |
+|         121 | Shipping         |
+|         122 | Shipping         |
+|         123 | Shipping         |
+|         124 | Shipping         |
+|         125 | Shipping         |
+|         126 | Shipping         |
+|         127 | Shipping         |
+|         128 | Shipping         |
+|         129 | Shipping         |
+|         130 | Shipping         |
+|         131 | Shipping         |
+|         132 | Shipping         |
+|         133 | Shipping         |
+|         134 | Shipping         |
+|         135 | Shipping         |
+|         136 | Shipping         |
+|         137 | Shipping         |
+|         138 | Shipping         |
+|         139 | Shipping         |
+|         140 | Shipping         |
+|         141 | Shipping         |
+|         142 | Shipping         |
+|         143 | Shipping         |
+|         144 | Shipping         |
+|         180 | Shipping         |
+|         181 | Shipping         |
+|         182 | Shipping         |
+|         183 | Shipping         |
+|         184 | Shipping         |
+|         185 | Shipping         |
+|         186 | Shipping         |
+|         187 | Shipping         |
+|         188 | Shipping         |
+|         189 | Shipping         |
+|         190 | Shipping         |
+|         191 | Shipping         |
+|         192 | Shipping         |
+|         193 | Shipping         |
+|         194 | Shipping         |
+|         195 | Shipping         |
+|         196 | Shipping         |
+|         197 | Shipping         |
+|         198 | Shipping         |
+|         199 | Shipping         |
+|         103 | IT               |
+|         104 | IT               |
+|         105 | IT               |
+|         106 | IT               |
+|         107 | IT               |
+|         204 | Public Relations |
+|         145 | Sales            |
+|         146 | Sales            |
+|         147 | Sales            |
+|         148 | Sales            |
+|         149 | Sales            |
+|         150 | Sales            |
+|         151 | Sales            |
+|         152 | Sales            |
+|         153 | Sales            |
+|         154 | Sales            |
+|         155 | Sales            |
+|         156 | Sales            |
+|         157 | Sales            |
+|         158 | Sales            |
+|         159 | Sales            |
+|         160 | Sales            |
+|         161 | Sales            |
+|         162 | Sales            |
+|         163 | Sales            |
+|         164 | Sales            |
+|         165 | Sales            |
+|         166 | Sales            |
+|         167 | Sales            |
+|         168 | Sales            |
+|         169 | Sales            |
+|         170 | Sales            |
+|         171 | Sales            |
+|         172 | Sales            |
+|         173 | Sales            |
+|         174 | Sales            |
+|         175 | Sales            |
+|         176 | Sales            |
+|         177 | Sales            |
+|         179 | Sales            |
+|         100 | Executive        |
+|         101 | Executive        |
+|         102 | Executive        |
+|         108 | Finance          |
+|         109 | Finance          |
+|         110 | Finance          |
+|         111 | Finance          |
+|         112 | Finance          |
+|         113 | Finance          |
+|         205 | Accounting       |
 |         206 | Accounting       |
 +-------------+------------------+
+107 rows in set (0.00 sec)
+
+-- 有一个职工没有部门id 如果是内连接就是106条记录
+-- 但这个是左外连接,在内连接的基础上,再找到左边表不满足连接条件的记录
 </code></pre>
 <h3 id="3-0-右上图：右外连接"><a href="#3-0-右上图：右外连接" class="headerlink" title="3.0 右上图：右外连接"></a>3.0 右上图：右外连接</h3><pre><code class="mysql">SELECT employee_id,department_name
 FROM employees e RIGHT JOIN departments d
 ON e.`department_id` = d.`department_id`;
+
+
 +-------------+----------------------+
 | employee_id | department_name      |
 +-------------+----------------------+
 |         200 | Administration       |
+|         201 | Marketing            |
+|         202 | Marketing            |
+|         114 | Purchasing           |
+|         115 | Purchasing           |
+|         116 | Purchasing           |
+|         117 | Purchasing           |
+|         118 | Purchasing           |
+|         119 | Purchasing           |
+|         203 | Human Resources      |
+|         120 | Shipping             |
+|         121 | Shipping             |
+|         122 | Shipping             |
+|         123 | Shipping             |
+|         124 | Shipping             |
+|         125 | Shipping             |
+|         126 | Shipping             |
+|         127 | Shipping             |
+|         128 | Shipping             |
+|         129 | Shipping             |
+|         130 | Shipping             |
+|         131 | Shipping             |
+|         132 | Shipping             |
+|         133 | Shipping             |
+|         134 | Shipping             |
+|         135 | Shipping             |
+|         136 | Shipping             |
+|         137 | Shipping             |
+|         138 | Shipping             |
+|         139 | Shipping             |
+|         140 | Shipping             |
+|         141 | Shipping             |
+|         142 | Shipping             |
+|         143 | Shipping             |
+|         144 | Shipping             |
+|         180 | Shipping             |
+|         181 | Shipping             |
+|         182 | Shipping             |
+|         183 | Shipping             |
+|         184 | Shipping             |
+|         185 | Shipping             |
+|         186 | Shipping             |
+|         187 | Shipping             |
+|         188 | Shipping             |
+|         189 | Shipping             |
+|         190 | Shipping             |
+|         191 | Shipping             |
+|         192 | Shipping             |
+|         193 | Shipping             |
+|         194 | Shipping             |
+|         195 | Shipping             |
+|         196 | Shipping             |
+|         197 | Shipping             |
+|         198 | Shipping             |
+|         199 | Shipping             |
+|         103 | IT                   |
+|         104 | IT                   |
+|         105 | IT                   |
+|         106 | IT                   |
+|         107 | IT                   |
+|         204 | Public Relations     |
+|         145 | Sales                |
+|         146 | Sales                |
+|         147 | Sales                |
+|         148 | Sales                |
+|         149 | Sales                |
+|         150 | Sales                |
+|         151 | Sales                |
+|         152 | Sales                |
+|         153 | Sales                |
+|         154 | Sales                |
+|         155 | Sales                |
+|         156 | Sales                |
+|         157 | Sales                |
+|         158 | Sales                |
+|         159 | Sales                |
+|         160 | Sales                |
+|         161 | Sales                |
+|         162 | Sales                |
+|         163 | Sales                |
+|         164 | Sales                |
+|         165 | Sales                |
+|         166 | Sales                |
+|         167 | Sales                |
+|         168 | Sales                |
+|         169 | Sales                |
+|         170 | Sales                |
+|         171 | Sales                |
+|         172 | Sales                |
+|         173 | Sales                |
+|         174 | Sales                |
+|         175 | Sales                |
+|         176 | Sales                |
+|         177 | Sales                |
+|         179 | Sales                |
+|         100 | Executive            |
+|         101 | Executive            |
+|         102 | Executive            |
+|         108 | Finance              |
+|         109 | Finance              |
+|         110 | Finance              |
+|         111 | Finance              |
+|         112 | Finance              |
+|         113 | Finance              |
+|         205 | Accounting           |
+|         206 | Accounting           |
+|        NULL | Treasury             |
+|        NULL | Corporate Tax        |
+|        NULL | Control And Credit   |
+|        NULL | Shareholder Services |
+|        NULL | Benefits             |
+|        NULL | Manufacturing        |
+|        NULL | Construction         |
+|        NULL | Contracting          |
+|        NULL | Operations           |
+|        NULL | IT Support           |
+|        NULL | NOC                  |
+|        NULL | IT Helpdesk          |
+|        NULL | Government Sales     |
 |        NULL | Retail Sales         |
 |        NULL | Recruiting           |
 |        NULL | Payroll              |
 +-------------+----------------------+
+122 rows in set (0.00 sec)
+
+
+
+-- 有一个职工没有部门id 如果是内连接就是106条记录
+-- 但这个是右外连接,在内连接的基础上,再找到右表中不满足连接条件的记录(只有部门记录,没有员工记录的记录)
 </code></pre>
+<pre><code class="mysql">SELECT * FROM departments d LEFT JOIN employees e 
+ON d.`department_id`=e.`department_id`
+WHERE e.`department_id`&lt;=&gt;NULL;
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209050015258.png" alt="image-20220905001532559"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979255233.png" alt="1554979255233"></p>
+<hr>
 <h3 id="4-0-左中图"><a href="#4-0-左中图" class="headerlink" title="4.0 左中图"></a>4.0 左中图</h3><pre><code class="mysql">#左中图：A - A∩B
 SELECT employee_id,department_name
 FROM employees e LEFT JOIN departments d
 ON e.`department_id` = d.`department_id`
-WHERE d.`department_id` IS NULL;   #注意：不要使用 WHERE d.`department_id` = NULL 有null参与的运算结果为null，一条都没有
+WHERE d.`department_id` IS NULL;   -- 注意：不要使用 WHERE d.`department_id` = NULL 有null参与的运算结果为null，一条都没有
+
 +-------------+-----------------+
 | employee_id | department_name |
 +-------------+-----------------+
 |         178 | NULL            |
 +-------------+-----------------+
+
+-- 首先走FROM,再走WHERE. 所以此时的记录是107条,员工表与部门表内连接得到106条,再加上一条没有部门的员工记录
+-- 左中图就是想要 那一条记录,那条记录中部门信息为空,以此为条件.
 </code></pre>
 <p>解释：</p>
-<p>左外连接就是，多个表中所有符合的记录 + 左表（员工表）中不满足连接条件的记录</p>
+<p>左外连接就是，多个表中所有  <strong>符合的记录</strong>   +    左表（员工表）<strong>中不满足连接条件的记录</strong></p>
 <p>SQL执行是从FROM开始的，所以一开始有 多个表中所有符合的记录 + 左表（员工表）中不满足连接条件的记录</p>
 <p>再通过WHERE 过滤掉满足连接条件的记录，只剩下左表（员工表）中不满足连接条件的记录 （目标）</p>
 <h3 id="5-0-右中图"><a href="#5-0-右中图" class="headerlink" title="5.0 右中图"></a>5.0 右中图</h3><pre><code class="mysql">-- 原理 同左中图 略
@@ -886,9 +1210,6 @@ ON e.`department_id` = d.`department_id`;
 +-------------+----------------------+
 123 rows in set (0.00 sec)
 </code></pre>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979255233.png" alt="1554979255233"></p>
-<hr>
 <h3 id="7-0-右下图"><a href="#7-0-右下图" class="headerlink" title="7.0 右下图"></a>7.0 右下图</h3><pre><code class="mysql">#左中图 + 右中图  A ∪B- A∩B 或者 (A -  A∩B) ∪ （B - A∩B）
 SELECT employee_id,last_name,department_name
 FROM employees e LEFT JOIN departments d
