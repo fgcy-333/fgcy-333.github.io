@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>第零章虚拟机克隆 | 风格差异的博客</title>
+        <title>基础网络知识 | 风格差异的博客</title>
         <meta name="author" content="fgcy">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -108,14 +108,14 @@
                         
 <div class="article">
     <div>
-        <h1>第零章虚拟机克隆 </h1>
+        <h1>基础网络知识 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/8/28
+            2022/9/6
         </span>
         
         <span class="category">
@@ -135,8 +135,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
-                    尚硅谷-宋红康-MySQL(高级)
+                <a href="/tags/马士兵/" style="color: #03a9f4">
+                    马士兵
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/网络基础/" style="color: #ffa2c4">
+                    网络基础
                 </a>
             </span>
             
@@ -144,74 +151,71 @@
         
     </div>
     <div class="content" v-pre>
-        <blockquote>
-<p>本文以centos为例</p>
-</blockquote>
-<p>vmware中的完整克隆是基于指定的虚拟机克隆出相同的一份出来，不必再安装</p>
-<p>但是我们要保证几个地方不能一样</p>
-<p>1、主机名称（hostname）</p>
-<p>2、虚拟网卡设备mac地址</p>
-<p>3、ip地址</p>
-<p>4、UUID</p>
-<p>所以我们在克隆后要对这四个地方进行修改</p>
+        <h2 id="TCP-与IP与Java中的什么东西相关？"><a href="#TCP-与IP与Java中的什么东西相关？" class="headerlink" title="TCP 与IP与Java中的什么东西相关？"></a>TCP 与IP与Java中的什么东西相关？</h2><p>1、高并发，负载均衡</p>
+<p>2、集群</p>
+<p>3、IO模型（文件IO,网络IO）</p>
+<p>​	 网络IO本质是内核给程序暴露API，源于C写的socket</p>
+<p>4、分布式，微服务，服务网格，大数据，云计算</p>
 <span id="more"></span>
 
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-首先进行完全克隆，注意（要克隆的虚拟机在克隆前是需要处于关闭状态）"><a href="#1-首先进行完全克隆，注意（要克隆的虚拟机在克隆前是需要处于关闭状态）" class="headerlink" title="1.首先进行完全克隆，注意（要克隆的虚拟机在克隆前是需要处于关闭状态）"></a>1.首先进行完全克隆，注意（要克隆的虚拟机在克隆前是需要处于关闭状态）</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282044147.png" alt="image-20220704132255622"></p>
+
+
+<h2 id="OSI-七层模型-【理论-尚未实现】"><a href="#OSI-七层模型-【理论-尚未实现】" class="headerlink" title="OSI 七层模型 【理论 尚未实现】"></a>OSI 七层模型 【理论 尚未实现】</h2><p>涉及软件工程学–&gt;层与层之间可以解耦</p>
+<p>七层模型：</p>
 <hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052341353.png" alt="image-20220905234122294"></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282044012.png" alt="image-20220704132529106"></p>
+<p>应用层</p>
+<p>表示层</p>
+<p>会话层</p>
+<p>连接层</p>
+<p>网络层</p>
+<p>数据链路层</p>
+<p>物理层</p>
+<h2 id="什么是长连接？"><a href="#什么是长连接？" class="headerlink" title="什么是长连接？"></a>什么是长连接？</h2><ul>
+<li><p>所谓的<code>Http/1.1</code>(长链接)，就是一个TCP连接中可以有多个请求。那么相对的短链接就是一个TCP连接中只能有一个请求。该请求结束后，就会断开TCP连接。</p>
+</li>
+<li><p>所谓的<code>Http/1.1</code>就是在服务器端与客户端建立好TCP连接后，用一个死循环不断接收IO消息。一次IO（一个请求）就会调用一个线程处理。</p>
+<p>其中可以使用线程池实现线程复用。</p>
+</li>
+<li><p>长连接是处于应用层的 <code>keep alive</code></p>
+</li>
+<li><p>HTTP&#x2F;1.0是短链接。</p>
+</li>
+</ul>
+<h2 id="什么是连接？"><a href="#什么是连接？" class="headerlink" title="什么是连接？"></a>什么是连接？</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052220174.png" alt="image-20220905222055922"></p>
 <hr>
+<p>通过三次握手建立所谓的连接</p>
+<p>三次握手流程图</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282044150.png" alt="image-20220704132555698"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052227560.png" alt="image-20220905222701962"></p>
 <hr>
-<p>这一步选择完整克隆</p>
-<p>注意：链接克隆是指在一些资源上两个虚拟机会共用，这里不做详细介绍，完整克隆是完全独立出来的一个新虚拟机</p>
+<p>这一步只是建立连接。没有输出任何东西。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282044113.png" alt="image-20220704132631922"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052346523.png" alt="image-20220905234556135"></p>
 <hr>
-<p>注意，克隆完之后所有信息与原虚拟机一样，所以下面我们进行一些信息的修改</p>
-<h2 id="2-开机前修改mac地址"><a href="#2-开机前修改mac地址" class="headerlink" title="2.开机前修改mac地址"></a>2.开机前修改mac地址</h2><p>注意：</p>
-<p>如果是动态生成IP地址，请在启动前先启动被克隆的虚拟机，以保证原来虚拟机的ip不会变</p>
-<p>否则原来虚拟机ip会变，克隆后的虚拟机ip是原来的虚拟机ip</p>
-<p>点击编辑虚拟机设置,选择网络适配器，点击右下角高级然后下边就是mac地址，这个mac地址和被克隆的是一样的，我们点击生成，重新生成一个新的：—</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282044357.png" alt="image-20220704132939738"></p>
-<hr>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282044269.png" alt="image-20220704133057357"></p>
-<hr>
-<h2 id="3-开机后修改主机名称-这步不用改也可以"><a href="#3-开机后修改主机名称-这步不用改也可以" class="headerlink" title="3.开机后修改主机名称(这步不用改也可以)"></a>3.开机后修改主机名称(这步不用改也可以)</h2><p>修改主机名可能不同linux版本不同，修改方法也不同</p>
-<p>centos7就是vim &#x2F;etc&#x2F;hostname 命令来编辑主机名</p>
-<p>需要重启（reboot）</p>
-<h2 id="4-修改IP地址"><a href="#4-修改IP地址" class="headerlink" title="4.修改IP地址"></a>4.修改IP地址</h2><p>此处需要注意的是：如果虚拟机使用的是动态ip分配，那么不需要更改ip</p>
-<p>如果想改为静态ip，请修改：</p>
-<blockquote>
-<p>vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33 </p>
-</blockquote>
-<h2 id="5-修改UUID"><a href="#5-修改UUID" class="headerlink" title="5.修改UUID"></a>5.修改UUID</h2><p>同样在修改IP地址的路径中修改即可</p>
-<pre><code class="shell">TYPE=&quot;Ethernet&quot;
-PROXY_METHOD=&quot;none&quot;
-BROWSER ONLY=&quot; no
-DEFROUTE=&quot;yes&quot;
-IPV4_FAILURE_FATAL=&quot;no&quot;
-IPV6INIT=&quot;yes&quot;
-IPV6_AUTOCONF=&quot;yes&quot;
-IPV6_DEFROUTE=&quot;yes&quot;
-IPV6_FAILURE_FATAL=&quot;no&quot;
-IPV6_ADDR_GEN_MODE=&quot;stable-privacy&quot;
-NAME=&quot;ens33&quot;
-UUID=&quot;34e4484b-b5b0-5b97-lf2c-3a9e7f51e079&quot;     # 修改UUID
-DEVICE=&quot;ens33&quot;
-ONBOOT=&quot;yes&quot;
-DNS1=192.168.1.2
+<pre><code>nc：是一个小程序，与其他机器建立连接。
 </code></pre>
-<blockquote>
-<p> 保存退出    Esc  +  :   + wq</p>
-</blockquote>
-<blockquote>
-<p> 重启网络：systemctl restart network</p>
-</blockquote>
+<p>这里可以看到有一条条目表示这个nc的程序有在使用。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052350487.png" alt="image-20220905234632133"></p>
+<hr>
+<p><code>192.168.150.11:36008 &lt;--------&gt;  220.181.38.150:80</code> 这个东西可以理解为一次连接。</p>
+<p>nc是一个程序，<code>4714</code>是它的进程id，<code>ESTABLISHED</code>表示是一种连通的状态。</p>
+<p><code>192.168.150.11:36008</code>是本地的IP地址和一个随机端口</p>
+<p><code>220.181.38.150:80</code>是百度的ip和端口</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060008048.png" alt="image-20220906000852938"></p>
+<hr>
+<p>建立连接后，还需要使用某种协议才可以进行通信。这里使用的是HTTP协议.</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060012440.png" alt="image-20220906001159563"></p>
+<hr>
+<p>请求行,请求头,请求空行,请求体</p>
+<p>请求行格式:</p>
+<pre><code>请求方式 请求的URI HTTP协议 
+</code></pre>
 
     </div>
     
