@@ -135,14 +135,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/马士兵/" style="color: #03a9f4">
+                <a href="/tags/马士兵/" style="color: #ffa2c4">
                     马士兵
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/网络基础/" style="color: #ffa2c4">
+                <a href="/tags/网络基础/" style="color: #03a9f4">
                     网络基础
                 </a>
             </span>
@@ -173,10 +173,12 @@
 <p>数据链路层</p>
 <p>物理层</p>
 <h2 id="什么是长连接？"><a href="#什么是长连接？" class="headerlink" title="什么是长连接？"></a>什么是长连接？</h2><ul>
-<li><p>所谓的<code>Http/1.1</code>(长链接)，就是一个TCP连接中可以有多个请求。那么相对的短链接就是一个TCP连接中只能有一个请求。该请求结束后，就会断开TCP连接。</p>
+<li><p>所谓的<code>Http/1.1</code>(长链接)，就是一个TCP连接中可以有多个请求。</p>
+<p>那么相对的短链接就是一个TCP连接中只能有一个请求。该请求结束后，就会断开TCP连接。</p>
+<p>这个长短的概念是在应用层实现的</p>
 </li>
 <li><p>所谓的<code>Http/1.1</code>就是在服务器端与客户端建立好TCP连接后，用一个死循环不断接收IO消息。一次IO（一个请求）就会调用一个线程处理。</p>
-<p>其中可以使用线程池实现线程复用。</p>
+<p>短连接时，服务器端在接收到一次IO（请求）后，就断开连接。其中可以使用线程池实现线程复用。</p>
 </li>
 <li><p>长连接是处于应用层的 <code>keep alive</code></p>
 </li>
@@ -187,17 +189,31 @@
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052220174.png" alt="image-20220905222055922"></p>
 <hr>
 <p>通过三次握手建立所谓的连接</p>
-<p>三次握手流程图</p>
+<p><strong>三次握手流程图</strong></p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052227560.png" alt="image-20220905222701962"></p>
 <hr>
-<p>这一步只是建立连接。没有输出任何东西。</p>
+<p>应用层不能发送消息，需要通过调用内核完成该功能。</p>
+<p>客户端想要建立一个连接，它会调用传输层。此时，传输层会创建一个syn的数据包，通过下层传输出去给服务器。</p>
+<p>服务器收到这个包后，就会生成一个 <code>syn+ack</code> 的包给客户端。此时，客户端可以确认C–&gt;S的通信是正常的。</p>
+<p>客户端收到包后，回一个<code>ack</code> 的包，此时服务器端确认S—&gt;C的通信是正常的。</p>
+<blockquote>
+<p>如果哪一步发送包后，没有收到包，就会有重试机制。所以连接是可靠的。</p>
+</blockquote>
+<p>那什么是连接呢？</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209062310182.png" alt="image-20220906231046326"></p>
+<hr>
+<p>三次握手后，在各自的内存中开辟一块资源。</p>
+<p>只要确保对方发送队列中的包会到达自己接受队列中，且自己发送队列中的包会到达对方接受队列中。</p>
+<p><strong>使用Linux的小程序，对其他服务器进行连接</strong></p>
+<p>1、这一步只是建立连接。没有输出任何东西。</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052346523.png" alt="image-20220905234556135"></p>
 <hr>
 <pre><code>nc：是一个小程序，与其他机器建立连接。
 </code></pre>
-<p>这里可以看到有一条条目表示这个nc的程序有在使用。</p>
+<p>第五条  <strong>条目</strong>   表示这个nc的程序有在使用。</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052350487.png" alt="image-20220905234632133"></p>
 <hr>
@@ -205,6 +221,27 @@
 <p>nc是一个程序，<code>4714</code>是它的进程id，<code>ESTABLISHED</code>表示是一种连通的状态。</p>
 <p><code>192.168.150.11:36008</code>是本地的IP地址和一个随机端口</p>
 <p><code>220.181.38.150:80</code>是百度的ip和端口</p>
+<p><strong>这里介绍一些程序员接触到的概念:</strong></p>
+<p><code>socket</code> (套接字)，对资源接收队列和发送队列的封装。有四个部分组成：源ip，端口 &lt;—–&gt;目标ip，端口  【绝对唯一的连接】</p>
+<p><code>端口范围</code>：0~65535</p>
+<p>如下图：（理论上客户端可以与服务器建立多少个连接）</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080007091.png" alt="image-20220908000751529"></p>
+<hr>
+<pre><code>65535
+</code></pre>
+<p>如下图：（理论上客户端可以与服务器建立多少个连接）</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080011762.png" alt="image-20220908001126493"></p>
+<hr>
+<pre><code>65535 * 65535
+</code></pre>
+<p>经行单机压测时，怎么利用一条客户端对一台服务器产生12万级别的连接。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080014174.png" alt="image-20220908001451745"></p>
+<hr>
+<pre><code>客户端开两个网卡，理论上每个ip + 端口有65536种组合。两个网卡就是12万。
+</code></pre>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060008048.png" alt="image-20220906000852938"></p>
 <hr>
