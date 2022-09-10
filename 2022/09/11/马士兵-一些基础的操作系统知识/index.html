@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags | 风格差异的博客</title>
+        <title>一些基础的操作系统知识 | 风格差异的博客</title>
         <meta name="author" content="fgcy">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -105,175 +105,105 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
+                        
+<div class="article">
+    <div>
+        <h1>一些基础的操作系统知识 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/9/10
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/马士兵/" style="color: #00bcd4">
+                    马士兵
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/操作系统基础/" style="color: #ffa2c4">
+                    操作系统基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h2 id="汇编语言的执行过程"><a href="#汇编语言的执行过程" class="headerlink" title="汇编语言的执行过程"></a>汇编语言的执行过程</h2><p>汇编语言的本质：助记符。【将某些单词与一些01串关联起来，用这些单词来代表01串】</p>
+<p>汇编语言本质就是机器语言。</p>
+<p>计算机通电—&gt; CPU到固定的地方读取内存中程序(电信号输入)-&gt;**时钟发生器	**不断震荡通断电-&gt;</p>
+<p>推动CPU内部一步一步执行(执行多少步取决于指令需要的	<strong>时钟周期</strong>）</p>
+<p>计算完成-&gt;写回(电信号)-&gt;写给显卡输出(sout,或者图形)</p>
+<p>时钟周期 : 时钟发生器每断一次电和没通一次电成为一次时钟周期（circle）。</p>
+<p>现在计算机的时钟周期：达到了xxxGHz(几十亿次)</p>
+<p>C语言编写的程序经过编译后，直接变成cpu可执行的机器码。</p>
+<p>Java语言编写的程序经过编译后变成字节码文件，字节码文件经过JVM中的解释器解释后才会变成cpu可以直接运行的机器码。</p>
+<p>内存中的数据到显示到显示器的过程：</p>
+<p>内存中的数据，通过DMA机制（可以理解为不经过cpu直接从内存到显卡，通过总线传输到显卡中的缓冲区）</p>
+<h2 id="计算机组成"><a href="#计算机组成" class="headerlink" title="计算机组成"></a>计算机组成</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209102239896.png" alt="image-20220910223909375"></p>
+<hr>
+<p><code>PC</code> : Programme  Counter 程序计数器，用于记录指令的地址（一般是下一条指令的地址）</p>
+<p><code>Register</code>  ：寄存器  暂时存储CPU运算所需数据。（从内存中拷贝一份数据）</p>
+<p><code>ALU</code> :  Arithmetic &amp; logic Unit 算术逻辑单元  从寄存器中取数据进行运算，写回到寄存器中，由寄存器写回到内存中</p>
+<p><code>CU</code>: Control Unit 控制单元 对中断信号和一些需要控制的东西进行控制。</p>
+<p><code>MMU</code> :  Memory Management Unit 内存管理单元，之后涉及。</p>
+<pre><code>主板：用于连接计算机的各个元器件
+cpu插在主板上的
+内存条插在主板上的
+磁盘控制器插在主板上的
+网卡驱动插在主板上的
+
+在IO总线中可以插入各种各样的外设
+</code></pre>
+<h2 id="超线程"><a href="#超线程" class="headerlink" title="超线程"></a>超线程</h2><p>概念：一个ALU对应多个<code>PC &amp; Registers</code>所谓的四核八线程</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110056120.png" alt="image-20220911005550288"></p>
+<hr>
+<pre><code>原来的多线程，进行上下文切换，需要将当前线程的数据，以及下一条该执行的指令都存储在寄存器中。
+再获取另一个线程的数据到寄存器和程序计数器中，然后通过ALU进行计算。
+
+超线程进行上下文切换，直接将从另一套寄存器和程序计数器中获取数据，然后执行即可。
+</code></pre>
+<h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110106783.png" alt="image-20220911010539539"></p>
+<hr>
+<p>CPU与各级缓存进行交互，所达到的时间级别：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110107944.png" alt="image-20220911010731991"></p>
+<hr>
+<p>各级缓存结构位置图：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110110128.png" alt="image-20220911011040210"></p>
+<hr>
+<h2 id="字长"><a href="#字长" class="headerlink" title="字长"></a>字长</h2><p><strong>64位CPU和32位CPU中64和32的含义：</strong><br>64和32指的是CPU中的寄存器(通用)的字长，字长就是一个字的位数。这里说的字的含义是：处理器（CPU）进行数据处理时，一次存取，加工，和传送的数据长度。</p>
+<p>现在CPU大多是64位的，但如果操作系统以32位字长运行，都没能展示它的字长的优越性。也就是说，字长受软件系统的制约</p>
+<p>例如，在32位软件系统中64位字长的CPU只能当32位用</p>
+
+    </div>
     
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/动力节点-张啊荣-动态代理/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                动力节点-张啊荣-动态代理
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/java/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                java
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                尚硅谷-宋红康-MySQL(高级)
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/尚硅谷-宋红康-MySQL/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                尚硅谷-宋红康-MySQL
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                黑马程序员-徐磊-java基础
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/马士兵/" style="background: #ff7d73">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                马士兵
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/网络基础/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                网络基础
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/黑马程序员-dubbo/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                黑马程序员-dubbo
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/院校帮-面试/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                院校帮-面试
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/动力节点-张啊荣-Mybatis/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                动力节点-张啊荣-Mybatis
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/动力节点-张啊荣-SpringMVC/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                动力节点-张啊荣-SpringMVC
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/动力节点-王鹤-SpringBoot/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                动力节点-王鹤-SpringBoot
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/动力节点-张啊荣-Spring/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                动力节点-张啊荣-Spring
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/动力节点-老杜-javaWeb/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                动力节点-老杜-javaWeb
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/黑马程序员-JVM/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                黑马程序员-JVM
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/操作系统基础/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                操作系统基础
-            </a>
-        </span>
-        
-    </div>
-    <div id="archives">
-        
-    </div>
 </div>
                          
 <footer id="footer">
