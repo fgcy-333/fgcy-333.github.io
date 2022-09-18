@@ -8,7 +8,7 @@
         <meta name="author" content="fgcy">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://raw.githubusercontent.com/fgcy-333/gitnote-images/master/202209171541992.png">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
         
@@ -128,6 +128,132 @@
     <div id="home-posts">
         <div id="posts">
             
+
+<div class="post">
+    <a href="/2022/08/27/动力节点-张啊荣-Mybatis/">
+        <h2>
+            Mybatis
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、框架概述"><a href="#一、框架概述" class="headerlink" title="一、框架概述"></a>一、框架概述</h1><h2 id="1-软件开发常用结构"><a href="#1-软件开发常用结构" class="headerlink" title="1.软件开发常用结构"></a>1.软件开发常用结构</h2><h3 id="1-1-三层架构"><a href="#1-1-三层架构" class="headerlink" title="1.1.三层架构"></a>1.1.三层架构</h3><p>什么是三层架构<br>  在项目开发中,遵循的一种形式模式.分为三层.<br>  界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer)<br>      1)界面层表示层，视图层):用来接收客 户端的输入,调用业务逻辑层进行功能处理,返回结果给客户端.过去的servlet就是界面层的功能.<br>      2)业务逻辑层:用来进行整个项目的业务逻辑处理,向上为界面层提供处理结果,向下问数据访问层要数据.<br>      3)数据访问层:专门用来进行数据库的增删改查操作,向上为业务逻辑层提供数据.</p>
+<ul>
+<li><strong>三层的处理请求的交互：</strong></li>
+</ul>
+<pre><code>客户端&lt;---&gt;界面层&lt;---&gt;业务逻辑层&lt;---&gt;数据访问层&lt;---&gt;数据库。
+</code></pre>
+<p>  各层之间的调用顺序是固定的,不允许跨层访问</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-张啊荣-Mybatis/" style="color: #03a9f4">
+                动力节点-张啊荣-Mybatis
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/动力节点-张啊荣-Mybatis/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/动力节点-老杜-javaweb-servlet-jsp-tomcat/">
+        <h2>
+            Javaweb-Servlet-Jsp-Tomcat
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、系统架构"><a href="#一、系统架构" class="headerlink" title="一、系统架构"></a>一、系统架构</h1><h2 id="1-0-C-x2F-S架构"><a href="#1-0-C-x2F-S架构" class="headerlink" title="1.0 C&#x2F;S架构"></a>1.0 C&#x2F;S<strong>架构</strong></h2><p>1.0 Client &#x2F; Server（客户端 &#x2F; 服务器）</p>
+<p>2.0 C&#x2F;S架构的特点</p>
+<ul>
+<li>需要   <strong>安装</strong>   特定的   <strong>客户端软件</strong>   。</li>
+</ul>
+<p>3.0    <strong>C&#x2F;S架构   的系统</strong>   优点和缺点分别是什么？</p>
+<ul>
+<li><p>优点：</p>
+<ul>
+<li>速度快（软件中的   <strong>数据大部分</strong>    都是   集成到<strong>客户端软件</strong>当中    的，    <strong>很少量的数据</strong>     <code> 从服务器端传送过来</code>，所以C&#x2F;S结构的系统速度快）</li>
+<li>界面酷炫（专门的语言去实现界面的，不仅是HTML &#x2F; CSS &#x2F; JS。）</li>
+<li>体验好（速度又快，界面又酷炫，当然体验好了。）</li>
+<li>服务器压力小（因为大量的数据都是集成在客户端软件当中，所以     <code>  服务器</code>      只需要传送      <strong>很少的数据量</strong>，当然服务器压力小。）</li>
+<li>安全（因为大量的数据是集成在客户端软件当中的，并且客户端有很多个，服务器虽然只有一个，就算服务器那边地震了，火灾了，服务器受损了，问题也不大，因为大量的数据在多个    <strong>客户端上有缓  存</strong>   ，有存储，所以从这个方面来说，<strong>C&#x2F;S结构的系统比较安全 数据安全</strong>）</li>
+<li>…..</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li><strong>升级维护</strong>    比较差劲。（升级维护比较麻烦。成本比较高。每一个客户端软件都需要升级。有一些软件不是那么容易安装的）</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-老杜-javaWeb/" style="color: #ffa2c4">
+                动力节点-老杜-javaWeb
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/动力节点-老杜-javaweb-servlet-jsp-tomcat/" class="go-post">
+        阅读全文
+    </a>
+</div>
 
 <div class="post">
     <a href="/2022/08/26/动力节点-张啊荣-动力Spring/">
@@ -327,7 +453,7 @@
         
         <span class="tag">
             
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
                 黑马程序员-徐磊-java基础
             </a>
         </span>
@@ -381,7 +507,7 @@
         
         <span class="tag">
             
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
                 黑马程序员-徐磊-java基础
             </a>
         </span>
@@ -435,7 +561,7 @@
         
         <span class="tag">
             
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
                 黑马程序员-徐磊-java基础
             </a>
         </span>
@@ -487,7 +613,7 @@
         
         <span class="tag">
             
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
                 黑马程序员-徐磊-java基础
             </a>
         </span>
@@ -542,7 +668,7 @@
         
         <span class="tag">
             
-            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
                 黑马程序员-徐磊-java基础
             </a>
         </span>
@@ -592,127 +718,13 @@
         
         <span class="tag">
             
-            <a href="/tags/院校帮-面试/" style="color: #ffa2c4">
+            <a href="/tags/院校帮-面试/" style="color: #03a9f4">
                 院校帮-面试
             </a>
         </span>
         
     </div>
     <a href="/2022/08/24/传智播客-面试-虚拟机/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/24/传智播客-面试-框架篇/">
-        <h2>
-            框架篇
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/23
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="ApplicationContext-refresh"><a href="#ApplicationContext-refresh" class="headerlink" title="ApplicationContext refresh"></a>ApplicationContext refresh</h2><h2 id="refresh-12-个步骤"><a href="#refresh-12-个步骤" class="headerlink" title="refresh 12 个步骤"></a>refresh 12 个步骤</h2><p><code>1</code>是做一些准备工作<br><code>2-6</code>创建和准备beanfactory对象 bean的创建 bean的依赖注入 bean的初始化都是由beanfactory对象完成的<br><code>7-12</code>为applicationContext特有的功能作准备<br><code>11</code>是创建的单例bean的创建和初始化</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/院校帮-面试/" style="color: #00a596">
-                院校帮-面试
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/24/传智播客-面试-框架篇/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/24/传智播客-面试-基础篇/">
-        <h2>
-            基础篇
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/23
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="一、二分查找"><a href="#一、二分查找" class="headerlink" title="一、二分查找"></a>一、二分查找</h1><h3 id="1-0算法描述"><a href="#1-0算法描述" class="headerlink" title="1.0算法描述"></a>1.0<strong>算法描述</strong></h3><ol>
-<li><p>前提：有已排序数组 A（假设已经做好）</p>
-</li>
-<li><p>定义左边界 L、右边界 R，确定搜索范围，循环执行二分查找（3、4两步）</p>
-</li>
-<li><p>获取中间索引 M &#x3D; Floor((L+R) &#x2F;2)</p>
-</li>
-<li><p>中间索引的值  A[M] 与待搜索的值 T 进行比较</p>
-<p>① A[M] &#x3D;&#x3D; T 表示找到，返回中间索引</p>
-<p>② A[M] &gt; T，中间值右侧的其它元素都大于 T，无需比较，中间索引左边去找，M - 1 设置为右边界，重新查找</p>
-<p>③ A[M] &lt; T，中间值左侧的其它元素都小于 T，无需比较，中间索引右边去找， M + 1 设置为左边界，重新查找</p>
-</li>
-<li><p>当 L &gt; R 时，表示没有找到，应结束循环</p>
-</li>
-</ol>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/院校帮-面试/" style="color: #00a596">
-                院校帮-面试
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/24/传智播客-面试-基础篇/" class="go-post">
         阅读全文
     </a>
 </div>
@@ -790,7 +802,7 @@
         <div id="card-div">
     <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="https://raw.githubusercontent.com/fgcy-333/gitnote-images/master/202209171541992.png " alt="avatar">
+            <img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png " alt="avatar">
         </div>
         <div class="name">
             fgcy
