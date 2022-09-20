@@ -130,6 +130,167 @@
             
 
 <div class="post">
+    <a href="/2022/09/21/宋红康-MySQL-[高级]-第07章-InnoDB数据存储结构-1/">
+        <h2>
+            第07章_InnoDB数据存储结构
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/9/20
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1-数据库的存储结构：页"><a href="#1-数据库的存储结构：页" class="headerlink" title="1.数据库的存储结构：页"></a>1.数据库的存储结构：页</h1><p>索引结构给我们提供了高效的索引方式,不过索引信息以及数据记录都是保存在文件上的,确切说是存储在页结构中。</p>
+<p>在MySQL中，B+Tree中所有的节点称为数据页。其中可以把非叶子节点称为目录页。</p>
+<p><strong>索引</strong>  是在 <strong>存储引擎</strong> 中实现的,MySQL服务器上的  <strong>存储引擎</strong>  负责对  <strong>表中数据  的读取和写入</strong>   工作。</p>
+<p> <strong>不同存储引擎</strong> 中存放的	<strong>格式一般是不同的</strong>	,甚至有的存储引擎,比如  <strong><code>Memory</code>  都不用磁盘来存储数据</strong>。</p>
+<blockquote>
+<p>由于InnoDB 是MySQL的默认存储引擎,所以本章剖析InnoDB存储引擎的数据存储结构。</p>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/09/21/宋红康-MySQL-[高级]-第07章-InnoDB数据存储结构-1/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/09/21/宋红康-MySQL-[高级]-第06章-索引的数据结构-1/">
+        <h2>
+            第06章_索引的数据结构
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/9/20
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1-为什么使用索引"><a href="#1-为什么使用索引" class="headerlink" title="1. 为什么使用索引"></a>1. 为什么使用索引</h1><p><code>索引</code>  是存储引擎用于   <code>快速找到数据记录</code>   的一种  <code>数据结构</code>   </p>
+<p>就好比一本教课书的目录部分,通过目录中找到对应文章的页码,便可快速定位到需要的文章</p>
+<p>MySQL中也是一样的道理,进行数据查找时,</p>
+<p> 首先   查看   <code>查询条件</code>    是否   <code>命中某条索引</code>    </p>
+<p>符合则  <code> 通过索引查找相关数据</code>   </p>
+<p>如果不符合则  <code> 需要全表扫描</code>   ,即需要一条一条地查找记录,直到找到与条件符合的记录。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/09/21/宋红康-MySQL-[高级]-第06章-索引的数据结构-1/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/09/21/宋红康-MySQL-[高级]-第08章-索引的创建与设计原则/">
+        <h2>
+            第08章_索引的创建与设计原则
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/9/20
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/09/21/宋红康-MySQL-[高级]-第08章-索引的创建与设计原则/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/09/19/第07章-InnoDB数据存储结构/">
         <h2>
             第07章_InnoDB数据存储结构
@@ -1033,7 +1194,7 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -1091,7 +1252,7 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ffa2c4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -1151,14 +1312,14 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/马士兵/" style="color: #00bcd4">
+            <a href="/tags/马士兵/" style="color: #00a596">
                 马士兵
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/操作系统基础/" style="color: #00bcd4">
+            <a href="/tags/操作系统基础/" style="color: #ff7d73">
                 操作系统基础
             </a>
         </span>
@@ -1212,14 +1373,14 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/马士兵/" style="color: #ffa2c4">
+            <a href="/tags/马士兵/" style="color: #03a9f4">
                 马士兵
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/网络基础/" style="color: #03a9f4">
+            <a href="/tags/网络基础/" style="color: #ff7d73">
                 网络基础
             </a>
         </span>
@@ -1278,7 +1439,7 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -1330,7 +1491,7 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -1384,193 +1545,13 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ffa2c4">
-                尚硅谷-宋红康-MySQL(高级)
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第03章-用户与权限管理/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第02章-MySQL的数据目录/">
-        <h2>
-            第02章_MySQL的数据目录
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/28
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="1-目录结构"><a href="#1-目录结构" class="headerlink" title="1.目录结构"></a>1.目录结构</h1><h2 id="1、MySQL8的主要目录结构"><a href="#1、MySQL8的主要目录结构" class="headerlink" title="1、MySQL8的主要目录结构"></a>1、MySQL8的主要目录结构</h2><p>安装好MySQL 之后，我们查看与之相关的目录结构：</p>
-<pre><code class="shell">find / -name mysql
-
-/etc/logrotate.d/mysql
-/var/lib/mysql
-/var/lib/mysql/mysql
-/usr/bin/mysql
-/usr/lib64/mysql
-/usr/share/mysql
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
-                尚硅谷-宋红康-MySQL(高级)
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第02章-MySQL的数据目录/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第01章-Linux下MySQL的安装与使用/">
-        <h2>
-            第01章_Linux下MySQL的安装与使用
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/28
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="1、安装前说明"><a href="#1、安装前说明" class="headerlink" title="1、安装前说明"></a>1、安装前说明</h1><h2 id="1-1-Linux系统及工具的准备"><a href="#1-1-Linux系统及工具的准备" class="headerlink" title="1.1 Linux系统及工具的准备"></a>1.1 Linux系统及工具的准备</h2><p>安装并启动好两台虚拟机： CentOS 7<br>掌握克隆虚拟机的操作</p>
-<ul>
-<li>mac地址</li>
-<li>主机名</li>
-<li>ip地址</li>
-<li>UUID</li>
-</ul>
-<p>1、安装有 Xshell 和 Xftp 等访问CentOS系统的工具</p>
-<p>2、CentOS6和CentOS7在MySQL的使用中的区别</p>
-<ul>
-<li>防火墙：6是iptables，7是firewalld </li>
-<li>启动服务的命令：6是service，7是systemctl</li>
-</ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
             <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
         
     </div>
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第01章-Linux下MySQL的安装与使用/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第00章虚拟机克隆/">
-        <h2>
-            第零章虚拟机克隆
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                视频学习笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/28
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <blockquote>
-<p>本文以centos为例</p>
-</blockquote>
-<p>vmware中的完整克隆是基于指定的虚拟机克隆出相同的一份出来，不必再安装</p>
-<p>但是我们要保证几个地方不能一样</p>
-<p>1、主机名称（hostname）</p>
-<p>2、虚拟网卡设备mac地址</p>
-<p>3、ip地址</p>
-<p>4、UUID</p>
-<p>所以我们在克隆后要对这四个地方进行修改</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ffa2c4">
-                尚硅谷-宋红康-MySQL(高级)
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/08/29/宋红康-MySQL-[高级]-第00章虚拟机克隆/" class="go-post">
+    <a href="/2022/08/29/宋红康-MySQL-[高级]-第03章-用户与权限管理/" class="go-post">
         阅读全文
     </a>
 </div>
@@ -1601,9 +1582,9 @@ mysql&gt; show tables like &#39;innodb_sys%&#39;;
             
             
             <span class="page-omit">...</span>
-            <a href="/page/6">
+            <a href="/page/7">
                 <span class="page-num">
-                    6
+                    7
                 </span>
             </a>
             
