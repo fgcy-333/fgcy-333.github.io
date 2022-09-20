@@ -115,7 +115,7 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/9/20
+            2022/9/19
         </span>
         
         <span class="category">
@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
+                <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
                     尚硅谷-宋红康-MySQL(高级)
                 </a>
             </span>
@@ -150,11 +150,11 @@
 <p> 首先   查看   <code>查询条件</code>    是否   <code>命中某条索引</code>    </p>
 <p>符合则  <code> 通过索引查找相关数据</code>   </p>
 <p>如果不符合则  <code> 需要全表扫描</code>   ,即需要一条一条地查找记录,直到找到与条件符合的记录。</p>
-<span id="more"></span>
-
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028287.png" alt="image-20220709093410182"></p>
 <hr>
+<span id="more"></span>
+
 <p>如上图(左图)所示：数据库没有索引的情况下,数据分布在硬盘不同的位置上面,读取数据时,摆臂需要前后摆动查找数据,这样操作非常消耗时间</p>
 <p>如上图(右图)所示：如果数据顺序摆放,那么也需要从1到6行按顺序读取,这样就相当于进行了 <code> 6次 IO 操作</code>,依旧非常耗时</p>
 <p>​	如果我们不借助任何索引结构帮助我们快速定位数据的话,我们查找Col 2&#x3D;89这条记录,就要逐行去查找、去比较</p>
