@@ -135,7 +135,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #03a9f4">
+                <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00bcd4">
                     尚硅谷-宋红康-MySQL
                 </a>
             </span>
@@ -144,19 +144,22 @@
         
     </div>
     <div class="content" v-pre>
-        <h1 id="第15章-存储过程与函数"><a href="#第15章-存储过程与函数" class="headerlink" title="第15章_存储过程与函数"></a>第15章_存储过程与函数</h1><p>讲师：尚硅谷-宋红康（江湖人称：康师傅）</p>
-<p>官网：<a target="_blank" rel="noopener" href="http://www.atguigu.com/">http://www.atguigu.com</a></p>
-<hr>
-<p>MySQL从5.0版本开始支持存储过程和函数。存储过程和函数能够将复杂的SQL逻辑封装在一起，应用程序无须关注存储过程和函数内部复杂的SQL逻辑，而只需要简单地调用存储过程和函数即可。</p>
+        <h1 id="第15章-存储过程与函数"><a href="#第15章-存储过程与函数" class="headerlink" title="第15章_存储过程与函数"></a>第15章_存储过程与函数</h1><p>MySQL从5.0版本开始支持存储过程和函数。</p>
+<p>存储过程和函数能够将复杂的SQL逻辑封装在一起，应用程序无须关注存储过程和函数内部复杂的SQL逻辑，而只需要 <strong>简单地调用存储过程和函数</strong> 即可。</p>
+<p>这里所讲的函数为自定义函数。</p>
+<p>函数与存储过程的区别：</p>
+<p>函数一定有返回值</p>
 <span id="more"></span>
 
-<h2 id="1-存储过程概述"><a href="#1-存储过程概述" class="headerlink" title="1. 存储过程概述"></a>1. 存储过程概述</h2><h3 id="1-1-理解"><a href="#1-1-理解" class="headerlink" title="1.1 理解"></a>1.1 理解</h3><p><strong>含义</strong>：存储过程的英文是 <code>Stored Procedure</code>。它的思想很简单，就是一组经过<code>预先编译</code>的 SQL 语句的封装。</p>
-<p>执行过程：存储过程预先存储在 MySQL 服务器上，需要执行的时候，客户端只需要向服务器端发出调用存储过程的命令，服务器端就可以把预先存储好的这一系列 SQL 语句全部执行。</p>
+<h2 id="1-存储过程概述"><a href="#1-存储过程概述" class="headerlink" title="1. 存储过程概述"></a>1. 存储过程概述</h2><h3 id="1-1-理解"><a href="#1-1-理解" class="headerlink" title="1.1 理解"></a>1.1 理解</h3><p><strong>含义</strong>：存储过程的英文是 <code>Stored Procedure</code>。它的思想很简单，就是一组经过 <code>预先编译</code> 的 SQL 语句的封装。</p>
+<p>执行过程：存储过程预先存储在 MySQL 服务器上且该存储过程已经编译好了，需要执行的时候，客户端只需要向服务器端发出调用存储过程的命令，服务器端就可以把预先存储好的这一系列 SQL 语句全部执行。</p>
 <p><strong>好处</strong>：</p>
 <p>1、简化操作，提高了sql语句的重用性，减少了开发程序员的压力<br>2、减少操作过程中的失误，提高效率<br>3、减少网络传输量（客户端不需要把所有的 SQL 语句通过网络发给服务器）<br>4、减少了 SQL 语句暴露在网上的风险，也提高了数据查询的安全性</p>
 <p><strong>和视图、函数的对比</strong>：</p>
-<p>它和视图有着同样的优点，清晰、安全，还可以减少网络传输量。不过它和视图不同，视图是<code>虚拟表</code>，通常不对底层数据表直接操作，而存储过程是程序化的 SQL，可以<code>直接操作底层数据表</code>，相比于面向集合的操作方式，能够实现一些更复杂的数据处理。</p>
-<p>一旦存储过程被创建出来，使用它就像使用函数一样简单，我们直接通过调用存储过程名即可。相较于函数，存储过程是<code>没有返回值</code>的。</p>
+<p>它和视图有着同样的优点，清晰、安全，还可以减少网络传输量。</p>
+<p>不过它和视图不同，视图是<code>虚拟表</code>，一般不会对视图进行增删改的操作，即通常不对底层数据表直接操作</p>
+<p>而存储过程是程序化的 SQL，可以<code>直接操作底层数据表</code>，相比于面向集合的操作方式，能够实现一些更复杂的数据处理。</p>
+<p>一旦存储过程被创建出来，使用它就像使用函数一样简单，我们直接通过调用存储过程名即可。<strong>相较于函数，存储过程是<code>没有返回值</code>的</strong>。</p>
 <h3 id="1-2-分类"><a href="#1-2-分类" class="headerlink" title="1.2 分类"></a>1.2 分类</h3><p>存储过程的参数类型可以是IN、OUT和INOUT。根据这点分类如下：</p>
 <p>1、没有参数（无参数无返回）<br>2、仅仅带 IN 类型（有参数无返回）<br>3、仅仅带 OUT 类型（无参数有返回）<br>4、既带 IN 又带 OUT（有参数有返回）<br>5、带 INOUT（有参数有返回）</p>
 <p>注意：IN、OUT、INOUT 都可以在一个存储过程中带多个。</p>
@@ -237,7 +240,24 @@ BEGIN
 
 END $
 </code></pre>
-<h3 id="2-2-代码举例"><a href="#2-2-代码举例" class="headerlink" title="2.2 代码举例"></a>2.2 代码举例</h3><p>举例1：创建存储过程select_all_data()，查看 emps 表的所有数据</p>
+<h3 id="2-2-代码举例"><a href="#2-2-代码举例" class="headerlink" title="2.2 代码举例"></a>2.2 代码举例</h3><p>准备工作：</p>
+<pre><code class="mysql">CREATE DATABASE dbtest15;
+
+
+USE dbtest15;
+
+
+CREATE TABLE employees 
+AS 
+SELECT * FROM atguigudb.employees;
+
+
+
+CREATE TABLE departments 
+AS 
+SELECT * FROM atguigudb.departments;
+</code></pre>
+<p>举例1：创建存储过程select_all_data()，查看 emps 表的所有数据</p>
 <pre><code class="mysql">DELIMITER $
 
 CREATE PROCEDURE select_all_data()
@@ -248,6 +268,15 @@ END $
 
 DELIMITER ;
 </code></pre>
+<hr>
+<p><strong><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209260025499.png" alt="image-20220926002532107"></strong></p>
+<hr>
+<p>存储过程的调用：【这里是无参的】</p>
+<pre><code class="mysql">CALL select_all_data();
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209260027007.png" alt="image-20220926002739921"></p>
+<hr>
 <p>举例2：创建存储过程avg_employee_salary()，返回所有员工的平均工资</p>
 <pre><code class="mysql">DELIMITER //
 
@@ -272,6 +301,26 @@ DELIMITER ;
 DELIMITER ;
 </code></pre>
 <p>举例4：创建存储过程show_min_salary()，查看“emps”表的最低薪资值。并将最低薪资通过OUT参数“ms”输出</p>
+<p>确定返回值类型：</p>
+<pre><code class="mysql">DESC employees;
+
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| employee_id    | int         | NO   |     | 0       |       |
+| first_name     | varchar(20) | YES  |     | NULL    |       |
+| last_name      | varchar(25) | NO   |     | NULL    |       |
+| email          | varchar(25) | NO   |     | NULL    |       |
+| phone_number   | varchar(20) | YES  |     | NULL    |       |
+| hire_date      | date        | NO   |     | NULL    |       |
+| job_id         | varchar(10) | NO   |     | NULL    |       |
+| salary         | double(8,2) | YES  |     | NULL    |       |
+| commission_pct | double(2,2) | YES  |     | NULL    |       |
+| manager_id     | int         | YES  |     | NULL    |       |
+| department_id  | int         | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+11 rows in set (0.01 sec)
+</code></pre>
 <pre><code class="mysql">DELIMITER //
 
 CREATE PROCEDURE show_min_salary(OUT ms DOUBLE)
@@ -280,6 +329,19 @@ CREATE PROCEDURE show_min_salary(OUT ms DOUBLE)
     END //
 
 DELIMITER ;
+</code></pre>
+<p>调用：</p>
+<pre><code class="mysql">CALL show_min_salary(@ms);
+</code></pre>
+<p>查看：【@ms 是一个用户会话变量】</p>
+<pre><code class="mysql">SELECT @ms;
+
++------+
+| @ms  |
++------+
+| 2100 |
++------+
+1 row in set (0.00 sec)
 </code></pre>
 <p>举例5：创建存储过程show_someone_salary()，查看“emps”表的某个员工的薪资，并用IN参数empname输入员工姓名。</p>
 <pre><code class="mysql">DELIMITER //
@@ -291,6 +353,18 @@ CREATE PROCEDURE show_someone_salary(IN empname VARCHAR(20))
 
 DELIMITER ;
 </code></pre>
+<p>调用：</p>
+<pre><code class="mysql">-- 方式一：
+CALL show_someone_salary(&#39;Abel&#39;);
+
+
+-- 方式二：
+set @empname :=&#39;Abel&#39;;
+CALL show_someone_salary(@empname);
+</code></pre>
+<blockquote>
+<p>&#x3D;在SQL中表示相等逻辑判断，用:&#x3D;表示赋值</p>
+</blockquote>
 <p>举例6：创建存储过程show_someone_salary2()，查看“emps”表的某个员工的薪资，并用IN参数empname输入员工姓名，用OUT参数empsalary输出员工薪资。</p>
 <pre><code class="mysql">DELIMITER //
 
@@ -300,6 +374,11 @@ CREATE PROCEDURE show_someone_salary2(IN empname VARCHAR(20),OUT empsalary DOUBL
     END //
 
 DELIMITER ;
+</code></pre>
+<p>调用：</p>
+<pre><code class="mysql">CALL show_someone_salary2(&#39;Abel&#39;,@empsalary);
+
+select @empsalary;
 </code></pre>
 <p>举例7：创建存储过程show_mgr_name()，查询某个员工领导的姓名，并用INOUT参数“empname”输入员工姓名，输出领导的姓名。</p>
 <pre><code class="mysql">DELIMITER //
@@ -311,6 +390,13 @@ CREATE PROCEDURE show_mgr_name(INOUT empname VARCHAR(20))
     END //
 
 DELIMITER ;
+</code></pre>
+<p>调用：</p>
+<pre><code class="mysql">SET @empname ：=&#39;Abel&#39;;
+
+CALL show_mgr_name(@empname);
+
+SELECT @empname;
 </code></pre>
 <h2 id="3-调用存储过程"><a href="#3-调用存储过程" class="headerlink" title="3. 调用存储过程"></a>3. 调用存储过程</h2><h3 id="3-1-调用格式"><a href="#3-1-调用格式" class="headerlink" title="3.1 调用格式"></a>3.1 调用格式</h3><p>存储过程有多种调用方法。存储过程必须使用CALL语句调用，并且存储过程和数据库相关，如果要执行其他数据库中的存储过程，需要指定数据库名称，例如CALL dbname.procname。</p>
 <pre><code class="mysql">CALL 存储过程名(实参列表)
@@ -367,7 +453,12 @@ DELIMITER ;
 </code></pre>
 <p>如果你用的是 Navicat 工具，那么在编写存储过程的时候，Navicat 会自动设置 DELIMITER 为其他符号，我们不需要再进行 DELIMITER 的操作。</p>
 <p>直接使用 <code>CALL add_num(50);</code>即可。这里我传入的参数为 50，也就是统计 1+2+…+50 的积累之和。</p>
-<h3 id="3-3-如何调试"><a href="#3-3-如何调试" class="headerlink" title="3.3 如何调试"></a>3.3 如何调试</h3><p>在 MySQL 中，存储过程不像普通的编程语言（比如 VC++、Java 等）那样有专门的集成开发环境。因此，你可以通过 SELECT 语句，把程序执行的中间结果查询出来，来调试一个 SQL 语句的正确性。调试成功之后，把 SELECT 语句后移到下一个 SQL 语句之后，再调试下一个 SQL 语句。这样<code>逐步推进</code>，就可以完成对存储过程中所有操作的调试了。当然，你也可以把存储过程中的 SQL 语句复制出来，逐段单独调试。</p>
+<h3 id="3-3-如何调试"><a href="#3-3-如何调试" class="headerlink" title="3.3 如何调试"></a>3.3 如何调试</h3><p>在 MySQL 中，存储过程不像普通的编程语言（比如 VC++、Java 等）那样有专门的集成开发环境。</p>
+<p>因此，你可以通过 SELECT 语句，把程序执行的中间结果查询出来，来调试一个 SQL 语句的正确性。调试成功之后，把 SELECT 语句后移到下一个 SQL 语句之后，再调试下一个 SQL 语句。</p>
+<p>这样<code>逐步推进</code>，就可以完成对存储过程中所有操作的调试了。当然，你也可以把存储过程中的 SQL 语句复制出来，逐段单独调试。</p>
+<blockquote>
+<p>所以，阿里并不建议使用存储过程。</p>
+</blockquote>
 <h2 id="4-存储函数的使用"><a href="#4-存储函数的使用" class="headerlink" title="4. 存储函数的使用"></a>4. 存储函数的使用</h2><p>前面学习了很多函数，使用这些函数可以对数据进行的各种处理操作，极大地提高用户对数据库的管理效率。MySQL支持自定义函数，定义好之后，调用方式与调用MySQL预定义的系统函数一样。</p>
 <h3 id="4-1-语法分析"><a href="#4-1-语法分析" class="headerlink" title="4.1 语法分析"></a>4.1 语法分析</h3><p>学过的函数：LENGTH、SUBSTR、CONCAT等</p>
 <p>语法格式：</p>
