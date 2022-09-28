@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>风格差异的博客</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2022-09-27T15:51:51.163Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>fgcy</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第09章_性能分析工具的使用</title>
+    <link href="http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/"/>
+    <id>http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/</id>
+    <published>2022-09-26T22:50:59.000Z</published>
+    <updated>2022-09-27T15:51:51.163Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在数据库调优中，我们的目标就是响应时间更快，吞吐量更大、利用  **宏观的监控工且 ** 和 &lt;strong&gt;微观的日志分析&lt;/strong&gt;  可以帮我们快速找到调优的思路和方式&lt;/p&gt;
+&lt;h1 id=&quot;1-数据库服务器的优化步骤&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第08章_索引的创建与设计原则</title>
+    <link href="http://example.com/2022/09/21/song-hong-kang-mysql-gao-ji-di-08-zhang-suo-yin-de-chuang-jian-yu-she-ji-yuan-ze/"/>
+    <id>http://example.com/2022/09/21/song-hong-kang-mysql-gao-ji-di-08-zhang-suo-yin-de-chuang-jian-yu-she-ji-yuan-ze/</id>
+    <published>2022-09-20T22:02:14.000Z</published>
+    <updated>2022-09-26T14:49:38.046Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-索引的声明与使用&quot;&gt;&lt;a href=&quot;#1-索引的声明与使用&quot; class=&quot;headerlink&quot; title=&quot;1. 索引的声明与使用&quot;&gt;&lt;/a&gt;1. 索引的声明与使用&lt;/h1&gt;&lt;h2 id=&quot;1-1-索引的分类&quot;&gt;&lt;a href=&quot;#1-1-索引的分类&quot; class=&quot;headerlink&quot; title=&quot;1.1 索引的分类&quot;&gt;&lt;/a&gt;1.1 索引的分类&lt;/h2&gt;&lt;p&gt;MySQL的索引包括普通索引、唯一性索引、全文索引、单列索引、多列索引和空间索引等。 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;从 功能逻辑 上说，索引主要有 4 种，分别是普通索引、唯一索引、主键索引、全文索引。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;按照 物理实现方式 ，索引可以分为 2 种：聚簇索引 和 非聚簇索引。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;按照 作用字段个数 进行划分，分成单列索引和联合索引。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第07章_InnoDB数据存储结构</title>
+    <link href="http://example.com/2022/09/19/di-07-zhang-innodb-shu-ju-cun-chu-jie-gou/"/>
+    <id>http://example.com/2022/09/19/di-07-zhang-innodb-shu-ju-cun-chu-jie-gou/</id>
+    <published>2022-09-19T00:26:09.000Z</published>
+    <updated>2022-09-20T14:14:15.787Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-数据库的存储结构：页&quot;&gt;&lt;a href=&quot;#1-数据库的存储结构：页&quot; class=&quot;headerlink&quot; title=&quot;1.数据库的存储结构：页&quot;&gt;&lt;/a&gt;1.数据库的存储结构：页&lt;/h1&gt;&lt;p&gt;索引结构给我们提供了高效的索引方式,不过索引信息以及数据记录都是保存在文件上的,确切说是存储在页结构中。&lt;/p&gt;
+&lt;p&gt;在MySQL中，B+Tree中所有的节点称为数据页。其中可以把非叶子节点称为目录页。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;索引&lt;/strong&gt;  是在 &lt;strong&gt;存储引擎&lt;/strong&gt; 中实现的,MySQL服务器上的  &lt;strong&gt;存储引擎&lt;/strong&gt;  负责对  &lt;strong&gt;表中数据  的读取和写入&lt;/strong&gt;   工作。&lt;/p&gt;
+&lt;p&gt; &lt;strong&gt;不同存储引擎&lt;/strong&gt; 中存放的	&lt;strong&gt;格式一般是不同的&lt;/strong&gt;	,甚至有的存储引擎,比如  &lt;strong&gt;&lt;code&gt;Memory&lt;/code&gt;  都不用磁盘来存储数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于InnoDB 是MySQL的默认存储引擎,所以本章剖析InnoDB存储引擎的数据存储结构。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-1磁盘与内存交互基本单位-页&quot;&gt;&lt;a href=&quot;#1-1磁盘与内存交互基本单位-页&quot; class=&quot;headerlink&quot; title=&quot;1.1磁盘与内存交互基本单位:页&quot;&gt;&lt;/a&gt;1.1磁盘与内存交互基本单位:页&lt;/h2&gt;&lt;p&gt;InnoDB将  数据  划分为  &lt;strong&gt;若干个页&lt;/strong&gt;  , &lt;strong&gt;InnoDB中页的大小默认为16KB&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;以页作为磁盘和内存之间交互的  **基本单位 **,也就是  &lt;strong&gt;一次最少&lt;/strong&gt;  从磁盘中读取16KB的内容到内存中,一次最少把内存中的16KB内容刷新到磁盘中。&lt;/p&gt;
+&lt;p&gt;也就是说,在数据库中,不论读一行,还是读多行,都是将这些行所在的页进行加载。&lt;/p&gt;
+&lt;p&gt;也就是说,  数据库  &lt;strong&gt;管理存储空间&lt;/strong&gt;  的基本单位  是页(Page),数据库   &lt;strong&gt;I&amp;#x2F;O操作的最小单位&lt;/strong&gt;  是页。一个页中可以存储多个行记录。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记录是按照行来存储的，但是数据库的读取并不以行为单位，否则一次读取(也就是一次I&amp;#x2F;0操作)只能处理一行数据,效率会非常低。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第06章_索引的数据结构</title>
+    <link href="http://example.com/2022/09/19/song-hong-kang-mysql-gao-ji-di-06-zhang-suo-yin-de-shu-ju-jie-gou/"/>
+    <id>http://example.com/2022/09/19/song-hong-kang-mysql-gao-ji-di-06-zhang-suo-yin-de-shu-ju-jie-gou/</id>
+    <published>2022-09-19T00:25:52.000Z</published>
+    <updated>2022-09-18T16:38:29.521Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-为什么使用索引&quot;&gt;&lt;a href=&quot;#1-为什么使用索引&quot; class=&quot;headerlink&quot; title=&quot;1. 为什么使用索引&quot;&gt;&lt;/a&gt;1. 为什么使用索引&lt;/h1&gt;&lt;p&gt;&lt;code&gt;索引&lt;/code&gt;  是存储引擎用于   &lt;code&gt;快速找到数据记录&lt;/code&gt;   的一种  &lt;code&gt;数据结构&lt;/code&gt;   &lt;/p&gt;
+&lt;p&gt;就好比一本教课书的目录部分,通过目录中找到对应文章的页码,便可快速定位到需要的文章&lt;/p&gt;
+&lt;p&gt;MySQL中也是一样的道理,进行数据查找时,&lt;/p&gt;
+&lt;p&gt; 首先   查看   &lt;code&gt;查询条件&lt;/code&gt;    是否   &lt;code&gt;命中某条索引&lt;/code&gt;    &lt;/p&gt;
+&lt;p&gt;符合则  &lt;code&gt; 通过索引查找相关数据&lt;/code&gt;   &lt;/p&gt;
+&lt;p&gt;如果不符合则  &lt;code&gt; 需要全表扫描&lt;/code&gt;   ,即需要一条一条地查找记录,直到找到与条件符合的记录。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028287.png&quot; alt=&quot;image-20220709093410182&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一些基础的操作系统知识</title>
+    <link href="http://example.com/2022/09/11/ma-shi-bing-yi-xie-ji-chu-de-cao-zuo-xi-tong-zhi-shi/"/>
+    <id>http://example.com/2022/09/11/ma-shi-bing-yi-xie-ji-chu-de-cao-zuo-xi-tong-zhi-shi/</id>
+    <published>2022-09-10T22:15:57.000Z</published>
+    <updated>2022-09-18T16:42:48.975Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;汇编语言的执行过程&quot;&gt;&lt;a href=&quot;#汇编语言的执行过程&quot; class=&quot;headerlink&quot; title=&quot;汇编语言的执行过程&quot;&gt;&lt;/a&gt;汇编语言的执行过程&lt;/h2&gt;&lt;p&gt;汇编语言的本质：助记符。【将某些单词与一些01串关联起来，用这些单词来代表01串】&lt;/p&gt;
+&lt;p&gt;汇编语言本质就是机器语言。&lt;/p&gt;
+&lt;p&gt;计算机通电—&amp;gt; CPU到固定的地方读取内存中程序(电信号输入)-&amp;gt;**时钟发生器	**不断震荡通断电-&amp;gt;&lt;/p&gt;
+&lt;p&gt;推动CPU内部一步一步执行(执行多少步取决于指令需要的	&lt;strong&gt;时钟周期&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;计算完成-&amp;gt;写回(电信号)-&amp;gt;写给显卡输出(sout,或者图形)&lt;/p&gt;
+&lt;p&gt;时钟周期 : 时钟发生器每断一次电和没通一次电成为一次时钟周期（circle）。&lt;/p&gt;
+&lt;p&gt;现在计算机的时钟周期：达到了xxxGHz(几十亿次)&lt;/p&gt;
+&lt;p&gt;C语言编写的程序经过编译后，直接变成cpu可执行的机器码。&lt;/p&gt;
+&lt;p&gt;Java语言编写的程序经过编译后变成字节码文件，字节码文件经过JVM中的解释器解释后才会变成cpu可以直接运行的机器码。&lt;/p&gt;
+&lt;p&gt;内存中的数据到显示到显示器的过程：&lt;/p&gt;
+&lt;p&gt;内存中的数据，通过DMA机制（可以理解为不经过cpu直接从内存到显卡，通过总线传输到显卡中的缓冲区）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="马士兵" scheme="http://example.com/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/"/>
+    
+    <category term="操作系统基础" scheme="http://example.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基础网络知识</title>
+    <link href="http://example.com/2022/09/07/ma-shi-bing-yi-xie-ji-chu-de-wang-luo-zhi-shi/"/>
+    <id>http://example.com/2022/09/07/ma-shi-bing-yi-xie-ji-chu-de-wang-luo-zhi-shi/</id>
+    <published>2022-09-06T18:53:48.000Z</published>
+    <updated>2022-09-10T14:12:56.812Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;TCP-与IP与Java中的什么东西相关？&quot;&gt;&lt;a href=&quot;#TCP-与IP与Java中的什么东西相关？&quot; class=&quot;headerlink&quot; title=&quot;TCP 与IP与Java中的什么东西相关？&quot;&gt;&lt;/a&gt;TCP 与IP与Java中的什么东西相关？&lt;/h2&gt;&lt;p&gt;1、高并发，负载均衡&lt;/p&gt;
+&lt;p&gt;2、集群&lt;/p&gt;
+&lt;p&gt;3、IO模型（文件IO,网络IO）&lt;/p&gt;
+&lt;p&gt;​	 网络IO本质是内核给程序暴露API，源于C写的socket&lt;/p&gt;
+&lt;p&gt;4、分布式，微服务，服务网格，大数据，云计算&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="马士兵" scheme="http://example.com/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/"/>
+    
+    <category term="网络基础" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第05章_存储引擎</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-05-zhang-cun-chu-yin-qing/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-05-zhang-cun-chu-yin-qing/</id>
+    <published>2022-08-28T20:59:49.000Z</published>
+    <updated>2022-08-28T13:01:33.794Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;存储引擎（表处理器）&quot;&gt;&lt;a href=&quot;#存储引擎（表处理器）&quot; class=&quot;headerlink&quot; title=&quot;存储引擎（表处理器）&quot;&gt;&lt;/a&gt;存储引擎（表处理器）&lt;/h1&gt;&lt;p&gt;为了管理方便,人们把  &lt;code&gt;连接管理&lt;/code&gt;、&lt;code&gt;查询缓存&lt;/code&gt;  、&lt;code&gt;语法解析&lt;/code&gt;  、&lt;code&gt;查询优化&lt;/code&gt;    这些并不涉及  &lt;strong&gt;真实数据存储&lt;/strong&gt;  的功能划分为  &lt;strong&gt;MySQL server 的功能&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;把  &lt;strong&gt;真实存取数据&lt;/strong&gt;   的功能划分为  &lt;strong&gt;存储引擎的功能&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以在    &lt;code&gt;MySQL server完成了&lt;/code&gt;   &lt;strong&gt;查询优化后&lt;/strong&gt;   ,只需按照生成的   &lt;code&gt;执行计划   &lt;/code&gt;   &lt;strong&gt;调用&lt;/strong&gt;     &lt;code&gt;底层存储引擎提供的API &lt;/code&gt;  ,获取到数据后返回给客户端就好了&lt;/p&gt;
+&lt;p&gt;MySQL中提到了存储引擎的概念。简而言之,&lt;strong&gt;存储引擎就是指表的类型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其实存储引擎以前叫做 &lt;code&gt;表处理器&lt;/code&gt; ,后来改名为存储引擎&lt;/p&gt;
+&lt;p&gt;它的功能就是接收上层传下来的指令,然后对表中的数据进行提取或写入操作。&lt;/p&gt;
+&lt;h2 id=&quot;1、查看存储引擎-查看mysql提供什么存储引擎：&quot;&gt;&lt;a href=&quot;#1、查看存储引擎-查看mysql提供什么存储引擎：&quot; class=&quot;headerlink&quot; title=&quot;1、查看存储引擎 查看mysql提供什么存储引擎：&quot;&gt;&lt;/a&gt;1、查看存储引擎 查看mysql提供什么存储引擎：&lt;/h2&gt;&lt;p&gt;查看mysql提供什么存储引擎：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SHOW ENGINES;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第04章_逻辑架构</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-04-zhang-luo-ji-jia-gou/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-04-zhang-luo-ji-jia-gou/</id>
+    <published>2022-08-28T20:54:44.000Z</published>
+    <updated>2022-08-28T12:59:22.114Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-逻辑架构剖析&quot;&gt;&lt;a href=&quot;#1-逻辑架构剖析&quot; class=&quot;headerlink&quot; title=&quot;1. 逻辑架构剖析&quot;&gt;&lt;/a&gt;1. 逻辑架构剖析&lt;/h1&gt;&lt;h2 id=&quot;1-1服务器处理客户端请求&quot;&gt;&lt;a href=&quot;#1-1服务器处理客户端请求&quot; class=&quot;headerlink&quot; title=&quot;1.1服务器处理客户端请求&quot;&gt;&lt;/a&gt;1.1服务器处理客户端请求&lt;/h2&gt;&lt;p&gt;首先MySQL是典型的C&amp;#x2F;s架构, 即 &lt;code&gt;Client/Server&lt;/code&gt; 架构,服务器端程序使用的&lt;code&gt;mysqld&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是:&lt;/p&gt;
+&lt;p&gt;客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第03章_用户与权限管理</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-03-zhang-yong-hu-yu-quan-xian-guan-li/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-03-zhang-yong-hu-yu-quan-xian-guan-li/</id>
+    <published>2022-08-28T20:50:53.000Z</published>
+    <updated>2022-08-28T12:54:23.481Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-用户管理&quot;&gt;&lt;a href=&quot;#1-用户管理&quot; class=&quot;headerlink&quot; title=&quot;1. 用户管理&quot;&gt;&lt;/a&gt;1. 用户管理&lt;/h1&gt;&lt;p&gt;MySQL用户可以分为&lt;strong&gt;普通用户&lt;/strong&gt;和&lt;strong&gt;root&lt;/strong&gt;用户&lt;/p&gt;
+&lt;p&gt;root用户是超级管理员,拥有所有权限,包括创建用户、删除用户和修改用户的密码等管理权限;&lt;/p&gt;
+&lt;p&gt;普通用户只拥有被授予的各种权限&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MySQL提供了许多语句用来管理用户账号&lt;/code&gt;,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MySQL数据库的安全性需要通过账户管理来保证&lt;/code&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第02章_MySQL的数据目录</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-02-zhang-mysql-de-shu-ju-mu-lu/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-02-zhang-mysql-de-shu-ju-mu-lu/</id>
+    <published>2022-08-28T20:48:57.000Z</published>
+    <updated>2022-08-28T12:50:20.035Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1-目录结构&quot;&gt;&lt;a href=&quot;#1-目录结构&quot; class=&quot;headerlink&quot; title=&quot;1.目录结构&quot;&gt;&lt;/a&gt;1.目录结构&lt;/h1&gt;&lt;h2 id=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;a href=&quot;#1、MySQL8的主要目录结构&quot; class=&quot;headerlink&quot; title=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;/a&gt;1、MySQL8的主要目录结构&lt;/h2&gt;&lt;p&gt;安装好MySQL 之后，我们查看与之相关的目录结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;find / -name mysql
+
+/etc/logrotate.d/mysql
+/var/lib/mysql
+/var/lib/mysql/mysql
+/usr/bin/mysql
+/usr/lib64/mysql
+/usr/share/mysql
+&lt;/code&gt;&lt;/pre&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第01章_Linux下MySQL的安装与使用</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-01-zhang-linux-xia-mysql-de-an-zhuang-yu-shi-yong/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-01-zhang-linux-xia-mysql-de-an-zhuang-yu-shi-yong/</id>
+    <published>2022-08-28T20:46:46.000Z</published>
+    <updated>2022-08-28T12:48:22.601Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;1、安装前说明&quot;&gt;&lt;a href=&quot;#1、安装前说明&quot; class=&quot;headerlink&quot; title=&quot;1、安装前说明&quot;&gt;&lt;/a&gt;1、安装前说明&lt;/h1&gt;&lt;h2 id=&quot;1-1-Linux系统及工具的准备&quot;&gt;&lt;a href=&quot;#1-1-Linux系统及工具的准备&quot; class=&quot;headerlink&quot; title=&quot;1.1 Linux系统及工具的准备&quot;&gt;&lt;/a&gt;1.1 Linux系统及工具的准备&lt;/h2&gt;&lt;p&gt;安装并启动好两台虚拟机： CentOS 7&lt;br&gt;掌握克隆虚拟机的操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mac地址&lt;/li&gt;
+&lt;li&gt;主机名&lt;/li&gt;
+&lt;li&gt;ip地址&lt;/li&gt;
+&lt;li&gt;UUID&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1、安装有 Xshell 和 Xftp 等访问CentOS系统的工具&lt;/p&gt;
+&lt;p&gt;2、CentOS6和CentOS7在MySQL的使用中的区别&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;防火墙：6是iptables，7是firewalld &lt;/li&gt;
+&lt;li&gt;启动服务的命令：6是service，7是systemctl&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第零章虚拟机克隆</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/</id>
+    <published>2022-08-28T20:44:10.000Z</published>
+    <updated>2022-08-29T14:24:37.629Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文以centos为例&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;vmware中的完整克隆是基于指定的虚拟机克隆出相同的一份出来，不必再安装&lt;/p&gt;
+&lt;p&gt;但是我们要保证几个地方不能一样&lt;/p&gt;
+&lt;p&gt;1、主机名称（hostname）&lt;/p&gt;
+&lt;p&gt;2、虚拟网卡设备mac地址&lt;/p&gt;
+&lt;p&gt;3、ip地址&lt;/p&gt;
+&lt;p&gt;4、UUID&lt;/p&gt;
+&lt;p&gt;所以我们在克隆后要对这四个地方进行修改&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第17章_存储过程与函数</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-di-17-zhang-cun-chu-guo-cheng-yu-han-shu/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-di-17-zhang-cun-chu-guo-cheng-yu-han-shu/</id>
+    <published>2022-08-28T20:25:41.000Z</published>
+    <updated>2022-09-25T16:55:56.873Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;第15章-存储过程与函数&quot;&gt;&lt;a href=&quot;#第15章-存储过程与函数&quot; class=&quot;headerlink&quot; title=&quot;第15章_存储过程与函数&quot;&gt;&lt;/a&gt;第15章_存储过程与函数&lt;/h1&gt;&lt;p&gt;MySQL从5.0版本开始支持存储过程和函数。&lt;/p&gt;
+&lt;p&gt;存储过程和函数能够将复杂的SQL逻辑封装在一起，应用程序无须关注存储过程和函数内部复杂的SQL逻辑，而只需要 &lt;strong&gt;简单地调用存储过程和函数&lt;/strong&gt; 即可。&lt;/p&gt;
+&lt;p&gt;这里所讲的函数为自定义函数。&lt;/p&gt;
+&lt;p&gt;函数与存储过程的区别：&lt;/p&gt;
+&lt;p&gt;函数一定有返回值&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第16章_变量、流程控制与游标</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-di-16-zhang-bian-liang-liu-cheng-kong-zhi-yu-you-biao/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-di-16-zhang-bian-liang-liu-cheng-kong-zhi-yu-you-biao/</id>
+    <published>2022-08-28T20:25:29.000Z</published>
+    <updated>2022-09-25T15:59:08.441Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;第16章-变量、流程控制与游标&quot;&gt;&lt;a href=&quot;#第16章-变量、流程控制与游标&quot; class=&quot;headerlink&quot; title=&quot;第16章_变量、流程控制与游标&quot;&gt;&lt;/a&gt;第16章_变量、流程控制与游标&lt;/h1&gt;&lt;p&gt;讲师：尚硅谷-宋红康（江湖人称：康师傅）&lt;/p&gt;
+&lt;p&gt;官网：&lt;a href=&quot;http://www.atguigu.com/&quot;&gt;http://www.atguigu.com&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;1-变量&quot;&gt;&lt;a href=&quot;#1-变量&quot; class=&quot;headerlink&quot; title=&quot;1. 变量&quot;&gt;&lt;/a&gt;1. 变量&lt;/h2&gt;&lt;p&gt;在MySQL数据库的存储过程和函数中，可以使用变量来存储查询或计算的中间结果数据，或者输出最终的结果数据。&lt;/p&gt;
+&lt;p&gt;在 MySQL 数据库中，变量分为&lt;code&gt;系统变量&lt;/code&gt;以及&lt;code&gt;用户自定义变量&lt;/code&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第15章_触发器</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-di-15-zhang-hong-fa-qi/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-di-15-zhang-hong-fa-qi/</id>
+    <published>2022-08-28T20:25:17.000Z</published>
+    <updated>2022-08-28T12:37:55.426Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;第17章-触发器&quot;&gt;&lt;a href=&quot;#第17章-触发器&quot; class=&quot;headerlink&quot; title=&quot;第17章_触发器&quot;&gt;&lt;/a&gt;第17章_触发器&lt;/h1&gt;&lt;p&gt;讲师：尚硅谷-宋红康（江湖人称：康师傅）&lt;/p&gt;
+&lt;p&gt;官网：&lt;a href=&quot;http://www.atguigu.com/&quot;&gt;http://www.atguigu.com&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在实际开发中，我们经常会遇到这样的情况：有 2 个或者多个相互关联的表，如&lt;code&gt;商品信息&lt;/code&gt;和&lt;code&gt;库存信息&lt;/code&gt;分别存放在 2 个不同的数据表中，我们在添加一条新商品记录的时候，为了保证数据的完整性，必须同时在库存表中添加一条库存记录。&lt;/p&gt;
+&lt;p&gt;这样一来，我们就必须把这两个关联的操作步骤写到程序里面，而且要用&lt;code&gt;事务&lt;/code&gt;包裹起来，确保这两个操作成为一个&lt;code&gt;原子操作&lt;/code&gt;，要么全部执行，要么全部不执行。要是遇到特殊情况，可能还需要对数据进行手动维护，这样就很&lt;code&gt;容易忘记其中的一步&lt;/code&gt;，导致数据缺失。&lt;/p&gt;
+&lt;p&gt;这个时候，咱们可以使用触发器。&lt;strong&gt;你可以创建一个触发器，让商品信息数据的插入操作自动触发库存数据的插入操作。&lt;/strong&gt;这样一来，就不用担心因为忘记添加库存数据而导致的数据缺失了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第14章_视图</title>
+    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-di-14-zhang-shi-tu/"/>
+    <id>http://example.com/2022/08/29/song-hong-kang-mysql-di-14-zhang-shi-tu/</id>
+    <published>2022-08-28T20:25:02.000Z</published>
+    <updated>2022-08-28T12:40:01.738Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;第14章-视图&quot;&gt;&lt;a href=&quot;#第14章-视图&quot; class=&quot;headerlink&quot; title=&quot;第14章_视图&quot;&gt;&lt;/a&gt;第14章_视图&lt;/h1&gt;&lt;p&gt;讲师：尚硅谷-宋红康（江湖人称：康师傅）&lt;/p&gt;
+&lt;p&gt;官网：&lt;a href=&quot;http://www.atguigu.com/&quot;&gt;http://www.atguigu.com&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;1-常见的数据库对象&quot;&gt;&lt;a href=&quot;#1-常见的数据库对象&quot; class=&quot;headerlink&quot; title=&quot;1. 常见的数据库对象&quot;&gt;&lt;/a&gt;1. 常见的数据库对象&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;对象&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;表(TABLE)&lt;/td&gt;
+&lt;td&gt;表是存储数据的逻辑单元，以行和列的形式存在，列就是字段，行就是记录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据字典&lt;/td&gt;
+&lt;td&gt;就是系统表，存放数据库相关信息的表。系统表的数据通常由数据库系统维护，程序员通常不应该修改，只可查看&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;约束(CONSTRAINT)&lt;/td&gt;
+&lt;td&gt;执行数据校验的规则，用于保证数据完整性的规则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;视图(VIEW)&lt;/td&gt;
+&lt;td&gt;一个或者多个数据表里的数据的逻辑显示，视图并不存储数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;索引(INDEX)&lt;/td&gt;
+&lt;td&gt;用于提高查询性能，相当于书的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;存储过程(PROCEDURE)&lt;/td&gt;
+&lt;td&gt;用于完成一次完整的业务处理，没有返回值，但可通过传出参数将多个值传给调用环境&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;存储函数(FUNCTION)&lt;/td&gt;
+&lt;td&gt;用于完成一次特定的计算，具有一个返回值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;触发器(TRIGGER)&lt;/td&gt;
+&lt;td&gt;相当于一个事件监听器，当数据库发生特定事件后，触发器被触发，完成相应的处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>char数据类型</title>
+    <link href="http://example.com/2022/08/28/hei-ma-java-ji-chu-char-shu-ju-lei-xing/"/>
+    <id>http://example.com/2022/08/28/hei-ma-java-ji-chu-char-shu-ju-lei-xing/</id>
+    <published>2022-08-28T11:58:45.000Z</published>
+    <updated>2022-08-28T12:20:38.413Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Java数据类型教程-Java-char数据类型&quot;&gt;&lt;a href=&quot;#Java数据类型教程-Java-char数据类型&quot; class=&quot;headerlink&quot; title=&quot;Java数据类型教程 - Java char数据类型&quot;&gt;&lt;/a&gt;Java数据类型教程 - Java char数据类型&lt;/h2&gt;&lt;p&gt;char数据类型是16位无符号Java基元数据类型。它表示Unicode字符。&lt;/p&gt;
+&lt;p&gt;请注意，char是无符号数据类型。因此，char变量不能为负值。&lt;/p&gt;
+&lt;p&gt;字符数据类型的范围为0到65535，这与Unicode集的范围相同。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="黑马程序员-徐磊-java基础" scheme="http://example.com/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Collection与数据结构与List与泛型深入</title>
+    <link href="http://example.com/2022/08/27/hei-ma-java-ji-chu-collection-yu-shu-ju-jie-gou-yu-list-yu-fan-xing-shen-ru/"/>
+    <id>http://example.com/2022/08/27/hei-ma-java-ji-chu-collection-yu-shu-ju-jie-gou-yu-list-yu-fan-xing-shen-ru/</id>
+    <published>2022-08-27T01:17:24.000Z</published>
+    <updated>2022-08-27T16:13:02.124Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;集合概述体系、常用API&quot;&gt;&lt;a href=&quot;#集合概述体系、常用API&quot; class=&quot;headerlink&quot; title=&quot;集合概述体系、常用API&quot;&gt;&lt;/a&gt;集合概述体系、常用API&lt;/h2&gt;&lt;h3 id=&quot;前提引入&quot;&gt;&lt;a href=&quot;#前提引入&quot; class=&quot;headerlink&quot; title=&quot;前提引入&quot;&gt;&lt;/a&gt;前提引入&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;数组特点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;数组定义完成后，类型确定、长度固定。&lt;br&gt;适合元素的个数和类型确定的业务场景，不适合做需要增删数据操作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;集合的特点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;集合的大小不固定，启动后可以动态变化，类型也可以选择不固定&lt;br&gt;集合非常适合做元素的增删操作&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="黑马程序员-徐磊-java基础" scheme="http://example.com/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>static关键字与单例与代码段与继承</title>
+    <link href="http://example.com/2022/08/27/hei-ma-java-ji-chu-static-guan-jian-zi-yu-dan-li-yu-dai-ma-duan-yu-ji-cheng/"/>
+    <id>http://example.com/2022/08/27/hei-ma-java-ji-chu-static-guan-jian-zi-yu-dan-li-yu-dai-ma-duan-yu-ji-cheng/</id>
+    <published>2022-08-27T01:07:03.000Z</published>
+    <updated>2022-08-26T17:08:42.199Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;static关键字&quot;&gt;&lt;a href=&quot;#static关键字&quot; class=&quot;headerlink&quot; title=&quot;static关键字&quot;&gt;&lt;/a&gt;static关键字&lt;/h2&gt;&lt;h3 id=&quot;static概述&quot;&gt;&lt;a href=&quot;#static概述&quot; class=&quot;headerlink&quot; title=&quot;static概述&quot;&gt;&lt;/a&gt;static概述&lt;/h3&gt;&lt;p&gt;static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；&lt;br&gt;static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。&lt;/p&gt;
+&lt;h3 id=&quot;成员变量可以分为两种&quot;&gt;&lt;a href=&quot;#成员变量可以分为两种&quot; class=&quot;headerlink&quot; title=&quot;成员变量可以分为两种&quot;&gt;&lt;/a&gt;成员变量可以分为两种&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;实例成员变量：类内方法外，无static修饰，属于每一个对象&lt;/li&gt;
+&lt;li&gt;静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="黑马程序员-徐磊-java基础" scheme="http://example.com/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>包与修饰符与抽象类与接口</title>
+    <link href="http://example.com/2022/08/27/hei-ma-java-ji-chu-bao-yu-xiu-shi-fu-yu-chou-xiang-lei-yu-jie-kou/"/>
+    <id>http://example.com/2022/08/27/hei-ma-java-ji-chu-bao-yu-xiu-shi-fu-yu-chou-xiang-lei-yu-jie-kou/</id>
+    <published>2022-08-27T01:00:19.000Z</published>
+    <updated>2022-08-26T17:02:03.979Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一、包&quot;&gt;&lt;a href=&quot;#一、包&quot; class=&quot;headerlink&quot; title=&quot;一、包&quot;&gt;&lt;/a&gt;一、包&lt;/h1&gt;&lt;h2 id=&quot;1-0-概念&quot;&gt;&lt;a href=&quot;#1-0-概念&quot; class=&quot;headerlink&quot; title=&quot;1.0 概念&quot;&gt;&lt;/a&gt;1.0 概念&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;包是用来分门别类的管理各种不同类的、建包利于程序的管理和维护&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;建包的语法格式：package 公司域名倒写.技术名称。报名建议全部英文小写，且具备意义&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;建包语句必须在第一行，一般IDEA工具会帮助创建&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;java&quot;&gt;    package com.itheima.javabean;//建包语句
+    public class Student &amp;#123;
+    &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; &lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;带包编译某个目录下的全部java文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;javac -d . *.java&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="黑马程序员-徐磊-java基础" scheme="http://example.com/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+</feed>

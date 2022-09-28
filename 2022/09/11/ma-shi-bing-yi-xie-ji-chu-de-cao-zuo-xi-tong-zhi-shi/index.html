@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>一些基础的操作系统知识 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>一些基础的操作系统知识 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/9/10
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/马士兵/" style="color: #ff7d73">
+                    马士兵
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/操作系统基础/" style="color: #00a596">
+                    操作系统基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h2 id="汇编语言的执行过程"><a href="#汇编语言的执行过程" class="headerlink" title="汇编语言的执行过程"></a>汇编语言的执行过程</h2><p>汇编语言的本质：助记符。【将某些单词与一些01串关联起来，用这些单词来代表01串】</p>
+<p>汇编语言本质就是机器语言。</p>
+<p>计算机通电—&gt; CPU到固定的地方读取内存中程序(电信号输入)-&gt;**时钟发生器	**不断震荡通断电-&gt;</p>
+<p>推动CPU内部一步一步执行(执行多少步取决于指令需要的	<strong>时钟周期</strong>）</p>
+<p>计算完成-&gt;写回(电信号)-&gt;写给显卡输出(sout,或者图形)</p>
+<p>时钟周期 : 时钟发生器每断一次电和没通一次电成为一次时钟周期（circle）。</p>
+<p>现在计算机的时钟周期：达到了xxxGHz(几十亿次)</p>
+<p>C语言编写的程序经过编译后，直接变成cpu可执行的机器码。</p>
+<p>Java语言编写的程序经过编译后变成字节码文件，字节码文件经过JVM中的解释器解释后才会变成cpu可以直接运行的机器码。</p>
+<p>内存中的数据到显示到显示器的过程：</p>
+<p>内存中的数据，通过DMA机制（可以理解为不经过cpu直接从内存到显卡，通过总线传输到显卡中的缓冲区）</p>
+<span id="more"></span>
+
+
+
+<h2 id="计算机组成"><a href="#计算机组成" class="headerlink" title="计算机组成"></a>计算机组成</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209102239896.png" alt="image-20220910223909375"></p>
+<hr>
+<p><code>PC</code> : Programme  Counter 程序计数器，用于记录指令的地址（一般是下一条指令的地址）</p>
+<p><code>Register</code>  ：寄存器  暂时存储CPU运算所需数据。（从内存中拷贝一份数据）</p>
+<p><code>ALU</code> :  Arithmetic &amp; logic Unit 算术逻辑单元  从寄存器中取数据进行运算，写回到寄存器中，由寄存器写回到内存中</p>
+<p><code>CU</code>: Control Unit 控制单元 对中断信号和一些需要控制的东西进行控制。</p>
+<p><code>MMU</code> :  Memory Management Unit 内存管理单元，之后涉及。</p>
+<pre><code>主板：用于连接计算机的各个元器件
+cpu插在主板上的
+内存条插在主板上的
+磁盘控制器插在主板上的
+网卡驱动插在主板上的
+
+在IO总线中可以插入各种各样的外设
+</code></pre>
+<p>内核与用户程序：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112129043.png" alt="image-20220911212943742"></p>
+<hr>
+<p>内核：本质上也是一堆程序，可以管理硬件，用户程序不用写管理硬件的代码。</p>
+<p>内核空间：内存中，运行内核程序所提供的空间。</p>
+<p>用户空间：内存中，除了内核空间的空间。</p>
+<p>保护模式：用户空间中的程序不能内核空间中的数据的地址。CPU中的某些寄存器只能由内核程序使用，用户空间中的程序无法访问。</p>
+<p>​					目的：为了防止用户程序对系统的破坏。</p>
+<p>内核程序可以提供系统调用给用户程序</p>
+<p>时钟中断：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112138961.png" alt="image-20220911213827376"></p>
+<hr>
+<p>第一种中断：</p>
+<pre><code>晶振的左边一直通电，右边按固定的频率通电放电。通过这一部件，实现按固定频率进行时钟中断。
+时钟中断发生后，会调用内核程序中的回调函数。进行线程的切换。
+此时会将当前CPU中该线程的数据保存到内存中，然后加载另一个线程的数据中的数据到CPU中，开始执行程序。
+涉及到 线程上下文切换，线程的恢复与线程的保护，内存与CPU之间数据的相互拷贝。
+</code></pre>
+<pre><code>当计算机中的进程过多，而CPU又要保证每个进程都可以得到执行，那么晶振的频率就会变高，每秒中之内进行上下文切换的次数会变多。那么CPU执行用户程序的时间就会变短。
+</code></pre>
+<p>第二种中断：</p>
+<pre><code>当用户程序需要调用到内核程序时，也会用到中断。
+因为存在一个保护模式，保护用户空间不能访问内核空间的东西。所以用户程序需要调用到内核程序时，需要用到中断，这个中断也称为软中断。
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112217932.png" alt="image-20220911221658402"></p>
+<hr>
+<pre><code>假设一个用户程序，需要使用网卡向外发送一个请求，此时需要使用内核程序中的一个函数。但因为内核空间受保护模式，用户程序一定不能通过函数调用直接调用，内核程序。
+此时提出一个概念：需要系统调用。
+获取所需要调用内核函数的标识和参数，将此时运行的用户程序的数据保存回内存中。然后将运行所需内核函数所需的数据加载到CPU中，运行内核程序。切换回用户态。
+</code></pre>
+<h2 id="超线程"><a href="#超线程" class="headerlink" title="超线程"></a>超线程</h2><p>概念：一个ALU对应多个<code>PC &amp; Registers</code>所谓的四核八线程</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110056120.png" alt="image-20220911005550288"></p>
+<hr>
+<pre><code>原来的多线程，进行上下文切换，需要将当前线程的数据，以及下一条该执行的指令都存储在 缓存 或是 内存中。
+    再获取另一个线程的数据到寄存器和程序计数器中，然后通过ALU进行计算。
+
+超线程进行上下文切换，直接将从另一套寄存器和程序计数器中获取数据，然后执行即可。
+</code></pre>
+<h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110106783.png" alt="image-20220911010539539"></p>
+<hr>
+<p>CPU与各级缓存进行交互，所达到的时间级别：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110107944.png" alt="image-20220911010731991"></p>
+<hr>
+<p>各级缓存结构位置图：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209110110128.png" alt="image-20220911011040210"></p>
+<hr>
+<h2 id="字长"><a href="#字长" class="headerlink" title="字长"></a>字长</h2><p><strong>64位CPU和32位CPU中64和32的含义：</strong><br>64和32指的是CPU中的寄存器(通用)的字长，字长就是一个字的位数。这里说的字的含义是：处理器（CPU）进行数据处理时，一次存取，加工，和传送的数据长度。</p>
+<p>现在CPU大多是64位的，但如果操作系统以32位字长运行，都没能展示它的字长的优越性。也就是说，字长受软件系统的制约</p>
+<p>例如，在32位软件系统中64位字长的CPU只能当32位用</p>
+<h2 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112229920.png" alt="image-20220911222924702"></p>
+<hr>
+<p>什么是非阻塞？</p>
+<blockquote>
+<p>man  2  socket</p>
+</blockquote>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112230188.png" alt="image-20220911223022479"></p>
+<hr>
+<p>用<code>JDK1.4</code>去编译 含<code>NIO </code>API的类 会报错：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112328169.png" alt="image-20220911232829328"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209112330184.png" alt="image-20220911233042804"></p>
+<hr>
+<p>进入VI编辑器后，输入：</p>
+<blockquote>
+<p>: set nu</p>
+</blockquote>
+<p>可以看到行号</p>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

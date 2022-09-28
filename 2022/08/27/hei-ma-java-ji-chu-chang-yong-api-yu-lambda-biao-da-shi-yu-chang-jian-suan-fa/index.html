@@ -1,0 +1,1037 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>常用API与Lambda表达式与常见算法 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>常用API与Lambda表达式与常见算法 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/27
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="一、处理时间"><a href="#一、处理时间" class="headerlink" title="一、处理时间"></a>一、处理时间</h1><h3 id="1-0-Date概念"><a href="#1-0-Date概念" class="headerlink" title="1.0 Date概念"></a>1.0 Date概念</h3><p>Date类代表当前所在系统的日期时间信息</p>
+<hr>
+<span id="more"></span>
+
+<h3 id="Date的构造器"><a href="#Date的构造器" class="headerlink" title="Date的构造器"></a>Date的构造器</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035906.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035806.png"></p>
+<hr>
+<h3 id="Date的常用方法"><a href="#Date的常用方法" class="headerlink" title="Date的常用方法"></a>Date的常用方法</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035535.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035355.png"></p>
+<hr>
+<pre><code class="java">    /**
+     * ClassName: DateDemo
+     * Description:从现在开始向前走了一小时两分钟1秒
+     * date:2022/3/10
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    @Test
+    public void test1() &#123;
+        final Date now = new Date();//通过无参构造获得当前日期对象
+        System.out.println(now);
+        final long nowTime = now.getTime();//将当前的日期对象转成时间毫秒值
+        //将当前的时间毫秒值加【一小时两分钟1秒】毫秒，将值注入到之前的日期对象中，此时日期对象的值已经改变
+        now.setTime(nowTime + (3600 + 121) * 1000);
+        System.out.println(now);
+    &#125;
+</code></pre>
+<pre><code>Thu Mar 10 18:00:42 CST 2022
+Thu Mar 10 19:02:43 CST 2022
+</code></pre>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>日期对象如何创建，如何获取时间毫秒值？</p>
+<p>​    public  Date();&#x2F;&#x2F;获得一个当前时间的日期对象</p>
+<p>​    public long getTime();&#x2F;&#x2F;获得当前日期对象的时间毫秒值</p>
+<p>​    public Date(long time);&#x2F;&#x2F;获得一个指定时间毫秒值时间的日期对象</p>
+<p>时间毫秒值怎么恢复成日期对象<br>    public Date(long time);&#x2F;&#x2F;构造器，根据时间毫秒值获得一个日期对象</p>
+<p>​    public void setTime(long time);&#x2F;&#x2F;通过当前对象设置时间毫秒值，改变日期对象</p>
+<h3 id="2-0-SimpleDateFormat"><a href="#2-0-SimpleDateFormat" class="headerlink" title="2.0 SimpleDateFormat"></a>2.0 SimpleDateFormat</h3><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035332.png"></p>
+<hr>
+<h3 id="格式化方法"><a href="#格式化方法" class="headerlink" title="格式化方法"></a>格式化方法</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035088.png"></p>
+<hr>
+<h3 id="解析方法"><a href="#解析方法" class="headerlink" title="解析方法"></a>解析方法</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034991.png"></p>
+<hr>
+<h3 id="格式化字符"><a href="#格式化字符" class="headerlink" title="格式化字符"></a>格式化字符</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034662.png"></p>
+<hr>
+<p>a表示上午或下午</p>
+<pre><code class="java">    @Test
+    public void test2() throws Exception&#123;
+        final SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH点mm分ss秒 EEE a&quot;);
+        final Date date = sdf.parse(&quot;2021年08月06日 11点11分11秒 星期五 上午&quot;);
+        System.out.println(sdf.format(date));
+        final long targetTime = date.getTime() + (3600L * 24 * 2 + 14 * 3600 + 49 * 60 + 6) * 1000;
+        date.setTime(targetTime);
+        System.out.println(sdf.format(date));
+    &#125;
+</code></pre>
+<pre><code>2021年08月06日 11点11分11秒 星期五 上午
+2021年08月09日 02点00分17秒 星期一 上午
+</code></pre>
+<h3 id="案例-秒杀活动"><a href="#案例-秒杀活动" class="headerlink" title="案例 秒杀活动"></a>案例 秒杀活动</h3><pre><code class="java">@Test
+    public void test3() throws Exception &#123;
+        String begin = &quot;2020年11月11日 0:00:00&quot;;
+        String end = &quot;2020年11月11日 0:10:00&quot;;
+        String jia = &quot;2020年11月11日 0:03:47&quot;;
+        String pi = &quot;2020年11月11日 0:10:11&quot;;
+
+        final SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 H:mm:ss&quot;);
+        final Date begins = sdf.parse(begin);
+        final Date ends = sdf.parse(end);
+        final Date jias = sdf.parse(jia);
+        final Date pis = sdf.parse(pi);
+        if (pis.after(begins) &amp;&amp; pis.before(ends)) &#123;
+            System.out.println(&quot;小皮秒杀成功&quot;);
+        &#125; else &#123;
+            System.out.println(&quot;小皮秒杀失败&quot;);
+        &#125;
+
+        if (jias.after(begins) &amp;&amp; jias.before(ends)) &#123;
+            System.out.println(&quot;小甲秒杀成功&quot;);
+        &#125; else &#123;
+
+            System.out.println(&quot;小甲秒杀失败&quot;);
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>小皮秒杀失败
+小甲秒杀成功
+</code></pre>
+<h1 id="二、Calendar"><a href="#二、Calendar" class="headerlink" title="二、Calendar"></a>二、Calendar</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Calendar代表了系统此刻日期对应的日历对象。日期类有年月日时分秒星期等；日历的范围更广；</p>
+<p>Calendar是一个抽象类，不能直接创建对象。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034127.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034028.png"></p>
+<hr>
+<pre><code class="JAVA">    @Test
+    public void test1() &#123;
+        final Calendar cal = Calendar.getInstance();//该类是抽象类，getInstance是通过调用该类的子类来获取实例
+        System.out.println(cal);
+        System.out.println(cal.get(Calendar.YEAR) + &quot;年&quot;);
+        System.out.println(cal.get(Calendar.MONTH) + 1 + &quot;月&quot;);
+        System.out.println(&quot;今年第&quot; + cal.get(Calendar.WEEK_OF_YEAR) + &quot;周&quot;);
+        System.out.println(&quot;本月第&quot; + cal.get(Calendar.WEEK_OF_MONTH) + &quot;周&quot;);
+        System.out.println(cal.get(Calendar.DAY_OF_MONTH) + &quot;日&quot;);
+        System.out.println(&quot;今年第&quot; + cal.get(Calendar.DAY_OF_YEAR) + &quot;天&quot;);
+        System.out.println(&quot;本周第&quot; + cal.get(Calendar.DAY_OF_WEEK) + &quot;天&quot;);
+        System.out.println(cal.get(Calendar.HOUR_OF_DAY) + &quot;点&quot;);
+        System.out.println(cal.get(Calendar.MINUTE) + &quot;分&quot;);
+        System.out.println(cal.get(Calendar.SECOND) + &quot;秒&quot;);
+    &#125;
+</code></pre>
+<pre><code>java.util.GregorianCalendar[time=1646915482381,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id=&quot;Asia/Shanghai&quot;,offset=28800000,dstSavings=0,useDaylight=false,transitions=29,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2022,MONTH=2,WEEK_OF_YEAR=11,WEEK_OF_MONTH=2,DAY_OF_MONTH=10,DAY_OF_YEAR=69,DAY_OF_WEEK=5,DAY_OF_WEEK_IN_MONTH=2,AM_PM=1,HOUR=8,HOUR_OF_DAY=20,MINUTE=31,SECOND=22,MILLISECOND=381,ZONE_OFFSET=28800000,DST_OFFSET=0]
+2022年
+3月
+今年第11周
+本月第2周
+10日
+今年第69天
+本周第5天
+20点
+31分
+22秒
+</code></pre>
+<pre><code class="java">    @Test
+    public void test2() &#123;
+        final Calendar cal = Calendar.getInstance();//获取一个日历对象
+        System.out.println(cal.get(Calendar.HOUR_OF_DAY));//获取日历对象中本月第几天
+        cal.add(Calendar.HOUR_OF_DAY, 3);//将日历对象中的小时数加三
+        System.out.println(cal.get(Calendar.HOUR_OF_DAY));//
+        cal.set(Calendar.HOUR_OF_DAY, 0);//将日历对象中的小时数设置为零
+        System.out.println(cal.get(Calendar.HOUR_OF_DAY));
+        final Date date = cal.getTime();//根据该日历对象信息获取日期对象
+        System.out.println(date);
+        final long timeInMillis = cal.getTimeInMillis();//根据日历信息获取时间毫秒值
+        System.out.println(timeInMillis);
+    &#125;
+</code></pre>
+<pre><code>20
+23
+0
+Thu Mar 10 00:37:30 CST 2022
+1646843850105
+</code></pre>
+<p>​    注意：calendar是可变日期对象，一旦修改后其对象本身表示的时间将产生变化。</p>
+<h1 id="三、JDK8新增日期类"><a href="#三、JDK8新增日期类" class="headerlink" title="三、JDK8新增日期类"></a>三、JDK8新增日期类</h1><ol>
+<li><p>从Java 8开始，java.time包提供了新的日期和时间API</p>
+</li>
+<li><p>新增的API严格区分了时刻、本地日期、本地时间，并且，对日期和时间进行运算更加方便</p>
+</li>
+<li><p>新API的类型几乎全部是不变类型（和String的使用类似），可以放心使用不必担心被修改。</p>
+</li>
+</ol>
+<h3 id="jdk新增的七个处理日期类"><a href="#jdk新增的七个处理日期类" class="headerlink" title="jdk新增的七个处理日期类"></a>jdk新增的七个处理日期类</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035622.png"></p>
+<hr>
+<h3 id="LocalDate、LocalTime、LocalDateTime"><a href="#LocalDate、LocalTime、LocalDateTime" class="headerlink" title="LocalDate、LocalTime、LocalDateTime"></a><strong>LocalDate、LocalTime、LocalDateTime</strong></h3><p>​				他们 分别表示日期，时间，日期时间对象，他们的类的实例是不可变的对象</p>
+<p>​				他们三者构建对象和API都是通用的</p>
+<h3 id="通用获取对象方法"><a href="#通用获取对象方法" class="headerlink" title="通用获取对象方法"></a>通用获取对象方法</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034772.png"></p>
+<hr>
+<h3 id="LocalDate-LocalTime-LocalDateTime获取信息的API"><a href="#LocalDate-LocalTime-LocalDateTime获取信息的API" class="headerlink" title="LocalDate, LocalTime, LocalDateTime获取信息的API."></a>LocalDate, LocalTime, LocalDateTime获取信息的API.</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270035972.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034831.png"></p>
+<hr>
+<pre><code class="java">/**
+     * ClassName: NewDemo
+     * Description:LocalDate
+     * date:2022/3/10
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    
+    @Test
+    public void test1() &#123;
+        final LocalDate localDate = LocalDate.now();
+        System.out.println(localDate);
+        System.out.println(localDate.getYear() + &quot;年&quot;);
+        System.out.println(localDate.getMonth());//MARCH
+        System.out.println(localDate.getMonthValue() + &quot;月&quot;);
+        System.out.println(localDate.getDayOfMonth() + &quot;日&quot;);
+        System.out.println(&quot;今年第&quot; + localDate.getDayOfYear() + &quot;天&quot;);
+        System.out.println(localDate.getDayOfWeek());//THURSDAY
+        System.out.println(&quot;----------------&quot;);
+        final LocalDate localDate1 = LocalDate.of(2023, 11, 11);
+        System.out.println(localDate1);
+        final LocalDate localDate2 = LocalDate.of(2023, Month.NOVEMBER, 11);//枚举
+        System.out.println(localDate2);
+    &#125;
+</code></pre>
+<pre><code>2022-03-10
+2022年
+MARCH
+3月
+10日
+今年第69天
+THURSDAY
+---------------
+2023-11-11
+2023-11-11
+</code></pre>
+<pre><code class="java">    /**
+     * ClassName: NewDemo
+     * Description:localTime
+     * date:2022/3/10
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    @Test
+    public void test2() &#123;
+        final LocalTime localTime = LocalTime.now();
+        System.out.println(localTime);
+        System.out.println(localTime.getHour() + &quot;时&quot;);
+        System.out.println(localTime.getMinute() + &quot;分&quot;);
+        System.out.println(localTime.getSecond() + &quot;秒&quot;);
+        System.out.println(localTime.getNano() + &quot;纳秒&quot;);
+        System.out.println(&quot;---------------------&quot;);
+        final LocalTime of = LocalTime.of(21, 21, 21, 21);
+        System.out.println(of);
+        System.out.println(LocalTime.of(21, 12));
+        System.out.println(LocalTime.of(21, 21, 21));
+    &#125;
+</code></pre>
+<pre><code>21:51:08.416
+21时
+51分
+8秒
+416000000纳秒
+-----------------
+21:21:21.000000021
+21:12
+21:21:21
+</code></pre>
+<pre><code class="java"> /**
+     * ClassName: NewDemo
+     * Description:LocalDateTime
+     * date:2022/3/10
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    @Test
+    public void test3() &#123;
+        final LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
+        System.out.println(localDateTime.getYear() + &quot;年&quot;);
+        System.out.println(localDateTime.getMonthValue() + &quot;月&quot;);
+        System.out.println(localDateTime.getDayOfMonth() + &quot;日&quot;);
+        System.out.println(localDateTime.getDayOfWeek());
+        System.out.println(&quot;今年第&quot; + localDateTime.getDayOfYear() + &quot;天&quot;);
+        System.out.println(localDateTime.getHour() + &quot;时&quot;);
+        System.out.println(localDateTime.getMinute() + &quot;分&quot;);
+        System.out.println(localDateTime.getSecond() + &quot;秒&quot;);
+        System.out.println(localDateTime.getNano() + &quot;纳秒&quot;);
+        System.out.println(&quot;--------------------------&quot;);
+        final LocalDate localDate = localDateTime.toLocalDate();
+        System.out.println(localDate);
+
+        final LocalTime localTime = localDateTime.toLocalTime();
+        System.out.println(localTime);
+
+        System.out.println(&quot;------------------------&quot;);
+        final LocalDateTime of = LocalDateTime.of(2021, 11, 11, 11, 11, 11);
+        System.out.println(of);
+    &#125;
+</code></pre>
+<pre><code>2022-03-10T21:54:29.027
+2022年
+3月
+10日
+THURSDAY
+今年第69天
+21时
+54分
+29秒
+27000000纳秒
+-------------------
+2022-03-10
+21:54:29.027
+--------------------
+2021-11-11T11:11:11
+</code></pre>
+<h3 id="修改相关的API"><a href="#修改相关的API" class="headerlink" title="修改相关的API"></a>修改相关的API</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034090.png"></p>
+<hr>
+<p>修改相关的API<br>    LocalDateTime 综合了 LocalDate 和 LocalTime 里面的方法，所以只用 LocalDate 和 LocalTime 来举例。<br>    这些方法返回的是一个新的实例引用，因为LocalDateTime 、LocalDate 、LocalTime 都是不可变的。 </p>
+<pre><code class="java">    /**
+     * ClassName: NewDemo
+     * 日期时间比较操作
+     * Description:
+     * date:2022/3/10
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    @Test
+    public void test4() &#123;
+        final LocalTime localTime = LocalTime.now();
+        System.out.println(localTime);
+        System.out.println(localTime.minusHours(1));
+        System.out.println(localTime.minusMinutes(1));
+        System.out.println(localTime.minusSeconds(1));
+        System.out.println(localTime.minusNanos(1));
+        System.out.println(&quot;---------------------&quot;);
+        System.out.println(localTime.plusHours(1));
+        System.out.println(localTime.plusMinutes(1));
+        System.out.println(localTime.plusSeconds(1));
+        System.out.println(localTime.plusNanos(1));
+        System.out.println(localTime);
+        System.out.println(&quot;---------------------&quot;);
+        final LocalDate of = LocalDate.of(2023, 11, 5);
+        final LocalDate now = LocalDate.now();
+        System.out.println(&quot;今天是2023-11-5吗？&quot; + of.equals(now));
+        System.out.println(&quot;今天在2023-11-5之前？&quot; + now.isBefore(of));
+        System.out.println(&quot;今天在2023-11-5之后？&quot; + now.isAfter(of));
+        System.out.println(&quot;---------------------&quot;);
+        final LocalDate birthDate = LocalDate.of(2021, 3, 10);
+        final MonthDay birthMonthDay = MonthDay.of(birthDate.getMonthValue(), birthDate.getDayOfMonth());//通过月日的数值获取月日对象
+        final MonthDay nowMonthDay = MonthDay.from(now);//通过LocalDate对象获得月日对象
+        System.out.println(&quot;今天是你的生日吗？&quot; + birthMonthDay.equals(nowMonthDay));
+    &#125;
+</code></pre>
+<pre><code>23:02:54.866
+22:02:54.866
+23:01:54.866
+23:02:53.866
+23:02:54.865999999
+---------------------
+00:02:54.866
+23:03:54.866
+23:02:55.866
+23:02:54.866000001
+23:02:54.866
+---------------------
+今天是2023-11-5吗？false
+今天在2023-11-5之前？true
+今天在2023-11-5之后？false
+---------------------
+今天是你的生日吗？true
+</code></pre>
+<h3 id="Instant时间戳"><a href="#Instant时间戳" class="headerlink" title="Instant时间戳"></a><strong>Instant时间戳</strong></h3><ol>
+<li>JDK8获取时间戳特别简单，且功能更丰富。Instant类由一个静态的工厂方法now()可以返回当前时间戳</li>
+<li>时间戳是包含日期和时间的，与java.util.Date很类似，事实上Instant就是类似JDK8 以前的Date。</li>
+<li>Instant和Date这两个类可以进行转换;Date.from(instant); date.toInstant();</li>
+</ol>
+<pre><code class="java">    @Test
+    public void test1() &#123;
+        final Instant instant = Instant.now();
+        System.out.println(instant);//重写了toString方法，输出默认世界时间
+        System.out.println(instant.atZone(ZoneId.systemDefault()));//改为系统默认时区，输出上海时间(返回值类型：ZonedDateTime)
+        System.out.println(Instant.ofEpochMilli(System.currentTimeMillis()));//根据时间毫秒值获取Instant对象
+
+        final Date date = Date.from(instant);//将Instant对象转为Date对象
+        System.out.println(date);
+        final Instant toInstant = date.toInstant();//将Date对象转为Instant对象
+        System.out.println(toInstant);
+    &#125;
+</code></pre>
+<pre><code>2022-03-10T15:22:37.686Z
+2022-03-10T23:22:37.686+08:00[Asia/Shanghai]
+2022-03-10T15:22:37.728Z
+Thu Mar 10 23:22:37 CST 2022
+2022-03-10T15:22:37.686Z
+</code></pre>
+<h3 id="DateTimeFormatter"><a href="#DateTimeFormatter" class="headerlink" title="DateTimeFormatter"></a><strong>DateTimeFormatter</strong></h3><pre><code class="java">    @Test
+    public void test2() &#123;
+        final DateTimeFormatter ofPattern = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss EEE a&quot;);
+        final LocalDateTime localDateTime = LocalDateTime.now();
+        final String format = ofPattern.format(localDateTime);//正向
+        System.out.println(format);
+        System.out.println(localDateTime.format(ofPattern));//反向
+
+        final LocalDateTime localDateTime1 = LocalDateTime.parse(&quot;2022-03-10 23:35:12 星期四 下午&quot;, ofPattern);
+        System.out.println(&quot;今天是今年的第&quot; + localDateTime1.getDayOfYear() + &quot;天&quot;);
+    &#125;
+</code></pre>
+<pre><code>2022-03-10 23:36:31 星期四 下午
+2022-03-10 23:36:31 星期四 下午
+今天是今年的第69天
+</code></pre>
+<h3 id="Period"><a href="#Period" class="headerlink" title="Period"></a><strong>Period</strong></h3><ol>
+<li>在Java8中，我们可以使用以下类来计算日期间隔差异：java.time.Period</li>
+<li>主要是 Period 类方法 getYears()，getMonths() 和 getDays() 来计算,只能精确到年月日。</li>
+<li>用于 LocalDate 之间的比较</li>
+</ol>
+<pre><code class="java">    @Test
+    public void test3() &#123;
+        final LocalDate now = LocalDate.now();
+        final LocalDate birthday = LocalDate.of(2000, 3, 2);
+        final Period period = Period.between(birthday, now);//前小后大
+        //模板字符串 类C printf()
+        System.out.printf(&quot;到目前为止，你已经活了%d年零%d个月零%d天&quot;, period.getYears(), period.getMonths(), period.getDays());
+    &#125;
+</code></pre>
+<pre><code>    到目前为止，你已经活了22年零0个月零8天
+</code></pre>
+<h3 id="Duration"><a href="#Duration" class="headerlink" title="Duration"></a><strong>Duration</strong></h3><ol>
+<li>在Java8中，我们可以使用以下类来计算时间间隔差异：java.time.Duration</li>
+<li>提供了使用基于时间的值测量时间量的方法。</li>
+<li>用于 LocalDateTime 之间的比较。也可用于 Instant 之间的比较</li>
+</ol>
+<pre><code class="java">    @Test
+    public void test4() &#123;
+        final LocalDateTime localDateTime = LocalDateTime.now();
+        final LocalDateTime birthDateTime = LocalDateTime.of(2000, 3, 2, 14, 0, 0);
+        final Duration duration = Duration.between(birthDateTime, localDateTime);
+        System.out.printf(&quot;你到目前为止已经活了%d天即%d分钟即%d毫秒&quot;, duration.toDays(), duration.toMinutes(), duration.toMillis());
+    &#125;
+</code></pre>
+<pre><code>    你到目前为止已经活了8043天即11582522分钟即694951364440毫秒
+</code></pre>
+<pre><code>1、 Duration:  用于计算两个“时间”间隔。 
+2、 Period:      用于计算两个“日期”间隔
+</code></pre>
+<h3 id="ChronoUnit"><a href="#ChronoUnit" class="headerlink" title="ChronoUnit"></a><strong>ChronoUnit</strong></h3><pre><code>ChronoUnit类可用于在单个时间单位内测量一段时间，这个工具类是最全的了，可以用于比较所有的时间单位
+java.time.temporal.ChronoUnit
+</code></pre>
+<pre><code class="java">  @Test
+    public void test5() &#123;
+        final LocalDateTime today = LocalDateTime.now();
+        final LocalDateTime birthDate = LocalDateTime.of(2000, 3, 2, 14, 0, 0);
+        System.out.println(&quot;相差的年数：&quot; + ChronoUnit.YEARS.between(birthDate, today));
+        System.out.println(&quot;相差的月数：&quot; + ChronoUnit.MONTHS.between(birthDate, today));
+        System.out.println(&quot;相差的周数：&quot; + ChronoUnit.WEEKS.between(birthDate, today));
+        System.out.println(&quot;相差的天数：&quot; + ChronoUnit.DAYS.between(birthDate, today));
+        System.out.println(&quot;相差的时数：&quot; + ChronoUnit.HOURS.between(birthDate, today));
+        System.out.println(&quot;相差的分数：&quot; + ChronoUnit.MINUTES.between(birthDate, today));
+        System.out.println(&quot;相差的秒数：&quot; + ChronoUnit.SECONDS.between(birthDate, today));
+        System.out.println(&quot;相差的毫秒数：&quot; + ChronoUnit.MILLIS.between(birthDate, today));
+        System.out.println(&quot;相差的微秒数：&quot; + ChronoUnit.MICROS.between(birthDate, today));
+        System.out.println(&quot;相差的纳秒数：&quot; + ChronoUnit.NANOS.between(birthDate, today));
+        System.out.println(&quot;相差的半天数：&quot; + ChronoUnit.HALF_DAYS.between(birthDate, today));
+        System.out.println(&quot;相差的十年数：&quot; + ChronoUnit.DECADES.between(birthDate, today));
+        System.out.println(&quot;相差的世纪（百年）数：&quot; + ChronoUnit.CENTURIES.between(birthDate, today));
+        System.out.println(&quot;相差的千年数：&quot; + ChronoUnit.MILLENNIA.between(birthDate, today));
+        System.out.println(&quot;相差的纪元数：&quot; + ChronoUnit.ERAS.between(birthDate, today));
+    &#125;
+</code></pre>
+<h2 id="四、包装类"><a href="#四、包装类" class="headerlink" title="四、包装类"></a>四、包装类</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>​			就是8种基本数据类型对应的引用类型。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270033116.png"></p>
+<hr>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>​		1.Java<strong>为了实现一切皆对象</strong>，为8种基本类型提供了对应的引用类型。<br>​		2.后面的<strong>集合和泛型其实也只能支持包装类型</strong>，不支持基本数据类型.<br>​		3.<strong>自动拆箱</strong>：包装类型的变量可以直接赋值给基本数据类型的变量<br>​		4.<strong>自动装箱</strong>：基本类型的数据和变量可以直接赋值给包装类型的变量</p>
+<h3 id="独有功能"><a href="#独有功能" class="headerlink" title="独有功能"></a>独有功能</h3><p>1.包装类的变量的<strong>默认值可以是null</strong>，<strong>容错率更高</strong></p>
+<p>2.可以把基本类型的数据转换成字符串类型(用处不大)<br>    调用toString()方法得到字符串结果。<br>    调用Integer.toString(基本类型的数据)</p>
+<p>3.可以<strong>把字符串类型的数值转换成真实的数据类型</strong>（真的很有用）<br>    Integer.parseInt(“字符串类型的整数”)<br>    Double.parseDouble(“字符串类型的小数”)<br>    Integer.valueOf(“字符串类型的整数”)<br>    Double.valueOf(“字符串类型的小数”)</p>
+<pre><code class="java">    /**
+     * ClassName: WrapDemo
+     * Description:z自动装箱，拆箱
+     * date:2022/3/11
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    @Test
+    public void test1() &#123;
+        Integer a = 1;
+        int b = a;//自动拆箱
+        System.out.println(b);
+        System.out.println(&quot;----------------&quot;);
+        int c = 2;
+        Integer d = c;//自动装箱
+        System.out.println(d);
+    &#125;   
+</code></pre>
+<pre><code>1
+----------------
+2
+</code></pre>
+<pre><code class="java">    @Test
+    public void test2() &#123;
+        //int a=null;基本数据类型不能为null
+        Integer b = null;//包装类时对象可以为null
+        Integer integer = 12;
+        System.out.println(integer.toString() + 1);//数字转字符串1
+        System.out.println(Integer.toString(integer) + 1);//数字转字符串2
+        System.out.println(integer + &quot;&quot; + 1);//数字转字符串3
+        System.out.println(&quot;-----------------------&quot;);
+        System.out.println(Integer.parseInt(&quot;123&quot;) + 1);//字符串转数字1
+        System.out.println(Integer.valueOf(&quot;123&quot;) + 1);//字符串转数字2
+        System.out.println(Double.valueOf(&quot;3.14&quot;) + 0.01);//字符串转小数1
+        System.out.println(Double.parseDouble(&quot;3.14&quot;) + 0.01);//字符串转小数2
+    &#125;
+</code></pre>
+<pre><code>121
+121
+121
+-----------------------
+124
+124
+3.15
+3.15
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1、包装类是什么，作用是什么？<br>    基本数据类型对应的引用类型，实现了一切皆对象。<br>    后期集合和泛型不支持基本类型，只能使用包装类。</p>
+<p>2、包装类有哪些特殊功能？<br>    可以把基本类型的数据转换成字符串类型(用处不大)<br>    <strong>可以把字符串类型的数值转换成真实的数据类型</strong>（真的很有用）</p>
+<p>注意：<code>(String)</code> <code> String.valueOf()</code>   <code> toString</code>区别</p>
+<h2 id="五、正则表达式"><a href="#五、正则表达式" class="headerlink" title="五、正则表达式"></a>五、正则表达式</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>正则表达式可以用一些规定的字符来制定规则，并用来校验数据格式的合法性</p>
+<p><strong>匹配字符的规则</strong></p>
+<h3 id="使用详解"><a href="#使用详解" class="headerlink" title="使用详解"></a>使用详解</h3><p><strong>字符串对象提供了匹配正则表达式的方法</strong></p>
+<pre><code class="jaVA">  public boolean matches(String regex)
+</code></pre>
+<p>  判断是否匹配正则表达式，匹配返回true，不匹配返回false</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270033392.png"></p>
+<hr>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h3><pre><code class="java">    private static void checkMail() &#123;
+        final Scanner sc = new Scanner(System.in);
+        while (true) &#123;
+            System.out.print(&quot;请输入邮箱号:&quot;);
+            final String mail = sc.nextLine();
+            //zwj1061499050@126.com
+            if (mail.matches(&quot;\\w&#123;1,20&#125;@[a-zA-Z0-9]&#123;2,4&#125;(\\.[a-z]&#123;2,3&#125;)&#123;1,2&#125;&quot;)) &#123;
+                System.out.println(&quot;邮箱验证成功！&quot;);
+                break;
+            &#125; else &#123;
+                System.out.println(&quot;邮箱格式有误&quot;);
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>请输入邮箱号:@qq.com
+邮箱格式有误
+请输入邮箱号:132.fffd@fff.co
+邮箱格式有误
+请输入邮箱号:zwj1061499050@126.com.cn
+邮箱验证成功！
+</code></pre>
+<pre><code class="java">        private static void checkPhone() &#123;
+        final Scanner sc = new Scanner(System.in);
+        while (true) &#123;
+            System.out.print(&quot;请输入手机号:&quot;);
+            final String phone = sc.nextLine();
+            if (phone.matches(&quot;1[3-9]\\d&#123;9&#125;&quot;)) &#123;
+                System.out.println(&quot;手机验证成功！&quot;);
+                break;
+            &#125; else &#123;
+                System.out.println(&quot;手机格式有误&quot;);
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>请输入手机号:123456789111
+手机格式有误
+请输入手机号:12345678911
+手机格式有误
+请输入手机号:aaaaaaaaaaa
+手机格式有误
+请输入手机号:17665661294
+手机验证成功！
+</code></pre>
+<h3 id="正则表达式在字符串中的使用"><a href="#正则表达式在字符串中的使用" class="headerlink" title="正则表达式在字符串中的使用"></a><strong>正则表达式在字符串中的使用</strong></h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270033944.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void test1() &#123;
+        final String data = &quot;闪避908_呼叫544ffff你爸妈14jkl吧那&quot;;
+        final String[] strings = data.split(&quot;\\w+&quot;);
+        for (String string : strings) &#123;
+            System.out.println(string);
+        &#125;
+        final String s = data.replaceAll(&quot;\\w+&quot;, &quot;,&quot;);
+        System.out.println(s);
+    &#125;
+</code></pre>
+<pre><code>闪避
+呼叫
+你爸妈
+吧那
+闪避,呼叫,你爸妈,吧那
+</code></pre>
+<h3 id="正则表达式爬取信息"><a href="#正则表达式爬取信息" class="headerlink" title="正则表达式爬取信息"></a><strong>正则表达式爬取信息</strong></h3><pre><code class="java">    @Test
+    public void test2() &#123;
+        final String data = &quot;来黑马程序学习Java,电话020-43422424，或者联系邮箱&quot; +
+                &quot;itcast@itcast.cn,电话18762832633，0203232323&quot; +
+                &quot;邮箱bozai@itcast.cn，400-100-3233 ，4001003232&quot;;
+
+        final Pattern pattern = Pattern.compile(&quot;(\\w&#123;1,20&#125;@[a-zA-Z0-9]&#123;2,10&#125;(\\.[a-z]&#123;2,3&#125;)&#123;1,2&#125;)|&quot; +
+                &quot;(1[3-9]\\d&#123;9&#125;)|&quot; +
+                &quot;(0\\d&#123;2,5&#125;-?\\d&#123;5,15&#125;)|(400-?\\d&#123;3,8&#125;-?\\d&#123;3,8&#125;)&quot;);
+
+        final Matcher matcher = pattern.matcher(data);
+        while (matcher.find())&#123;
+            System.out.println(matcher.group());
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>020-43422424
+itcast@itcast.cn
+18762832633
+0203232323
+bozai@itcast.cn
+400-100-3233
+4001003232
+</code></pre>
+<h2 id="操作数组元素"><a href="#操作数组元素" class="headerlink" title="操作数组元素"></a>操作数组元素</h2><h3 id="Arrays概念"><a href="#Arrays概念" class="headerlink" title="Arrays概念"></a>Arrays概念</h3><p>数组操作工具类，专门用于操作数组元素的</p>
+<h3 id="Arrays类的常用api"><a href="#Arrays类的常用api" class="headerlink" title="Arrays类的常用api"></a>Arrays类的常用api</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270033880.png"></p>
+<hr>
+<h3 id="Arrays类常用功能演示"><a href="#Arrays类常用功能演示" class="headerlink" title="Arrays类常用功能演示"></a>Arrays类常用功能演示</h3><pre><code class="java">    @Test
+    public void test1() &#123;
+        final double[] doubles = &#123;1.0, 42.5, 5, 4.21, 55, 17.5, 11.33&#125;;
+        System.out.println(Arrays.toString(doubles));//将数组转为字符串
+        Arrays.sort(doubles);//默认升序排序
+        System.out.println(doubles);
+        System.out.println(Arrays.toString(doubles));
+        //二分排序，前提有序，找到返回索引，找不到返回它应该插入的位置+1，然后总体取负数
+        System.out.println(Arrays.binarySearch(doubles, 12));
+        final int[] ints = &#123;12, 44, 5, 32, 84, -4, 122&#125;;
+        //如果二分查找前，数组并没有排好序，也不会报错，就是结果不准确
+        System.out.println(Arrays.binarySearch(ints, 44));//应该时1，结果是-7
+    &#125;
+</code></pre>
+<pre><code>[1.0, 42.5, 5.0, 4.21, 55.0, 17.5, 11.33]
+[D@3d82c5f3
+[1.0, 4.21, 5.0, 11.33, 17.5, 42.5, 55.0]
+-5
+-7
+</code></pre>
+<h3 id="Arrays类的排序"><a href="#Arrays类的排序" class="headerlink" title="Arrays类的排序"></a>Arrays类的排序</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270034314.png"></p>
+<hr>
+<p>自定义排序规则<br>    设置Comparator接口对应的比较器对象，来定制比较规则<br>    如果认为左边数据 大于 右边数据 返回正整数<br>    如果认为左边数据 小于 右边数据  返回负整数<br>    如果认为左边数据  等于 右边数据  返回0<br>    <strong>(o1-o2)升序排序，(o2-o1)降序排序</strong></p>
+<pre><code class="java">        class Student &#123;
+        private String name;
+        private double height;
+        private int age;
+
+
+        public Student() &#123;
+        &#125;
+
+        public Student(String name, double height, int age) &#123;
+            this.name = name;
+            this.height = height;
+            this.age = age;
+        &#125;
+    &#125;
+</code></pre>
+<pre><code class="java">    @Test
+    public void test2() &#123;
+        final Integer[] ints = &#123;12, 55, 3, -7, 54, 34, 91, 4&#125;;
+/*        Arrays.sort(ints, new Comparator&lt;Integer&gt;() &#123;
+            @Override
+            public int compare(Integer o1, Integer o2) &#123;
+                return o2 - o1;
+            &#125;
+        &#125;);*/
+        Arrays.sort(ints, (o1, o2) -&gt; o2 - o1);
+        System.out.println(Arrays.toString(ints));
+</code></pre>
+<pre><code>[91, 55, 54, 34, 12, 4, 3, -7]
+</code></pre>
+<pre><code class="JAVA">    @Test
+    public void test4() &#123;
+        final Student[] students = new Student[3];
+        students[0] = new Student(&quot;张三&quot;, 177, 15);
+        students[1] = new Student(&quot;未晓&quot;, 175, 18);
+        students[2] = new Student(&quot;初沐&quot;, 165, 20);
+        Arrays.sort(students, (o1, o2) -&gt; o2.getAge() - o1.getAge());
+        System.out.println(Arrays.toString(students));
+    &#125;
+</code></pre>
+<pre><code>[Student&#123;name=&#39;初沐&#39;, height=165.0, age=20&#125;, 
+ Student&#123;name=&#39;未晓&#39;, height=175.0, age=18&#125;,
+ Student&#123;name=&#39;张三&#39;, height=177.0, age=15&#125;]
+</code></pre>
+<h2 id="常见算法"><a href="#常见算法" class="headerlink" title="常见算法"></a>常见算法</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>冒泡排序的思想<br>    每次从数组中找出最大值放在数组的后面去</p>
+<p>实现步骤：<br>    确定总共需要做几轮： 数组的长度-1.<br>    每轮比较几次<br>    当前位置大于后一个位置则交换数据</p>
+<pre><code class="java">    /*
+     * 0 1 2 3
+     * 0   012
+     * 1   01
+     * 2   0
+     *
+     * 一共有四个数，经过每轮比较得到一个最大或最小的数；一共需要比较4-1次
+     * 每次比较都要确保除了已经比较完的最值外，其他所有数都要比较一次
+     * */
+    public void bubbleSorted(int[] arr) &#123;
+        if (arr == null) &#123;
+            System.out.println(&quot;null&quot;);
+            return;
+        &#125;
+        if (arr.length &lt;= 0) &#123;
+            System.out.println(&quot;空数组&quot;);
+            return;
+        &#125;
+        for (int i = 0; i &lt; arr.length - 1; i++) &#123;
+            for (int j = 0; j &lt; arr.length - i - 1; j++) &#123;
+                if (arr[j] &gt; arr[j + 1]) &#123;
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                &#125;
+            &#125;
+        &#125;
+        System.out.println(Arrays.toString(arr));
+    &#125;
+
+
+    @Test
+    public void test1() &#123;
+        final int[] ints = &#123;12, 21, 43, 6, 94, -4, 0, 33&#125;;
+        bubbleSorted(ints);
+        bubbleSorted(null);
+        bubbleSorted(new int[0]);
+    &#125;
+</code></pre>
+<pre><code>[-4, 0, 6, 12, 21, 33, 43, 94]
+null
+空数组
+</code></pre>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>选择排序的思想<br>    每轮选择当前位置，开始找出后面的较小值与该位置交换<br>实现步骤：<br>    确定总共需要选择几轮： 数组的长度-1.<br>    控制每轮从以前位置为基准，与后面元素选择几次</p>
+<pre><code class="java">    /*
+     *
+     * 0 1 2 3 4
+     *
+     *
+     * 0 1234
+     * 1 234
+     * 2 34
+     * 3 4
+     * */
+    public void selectSorted(int[] arr) &#123;
+        if (arr == null) &#123;
+            System.out.println(&quot;null&quot;);
+            return;
+        &#125;
+        if (arr.length &lt;= 0) &#123;
+            System.out.println(&quot;空数组&quot;);
+            return;
+        &#125;
+        for (int i = 0; i &lt; arr.length - 1; i++) &#123;
+            for (int j = i + 1; j &lt; arr.length; j++) &#123;
+                if (arr[i] &gt; arr[j]) &#123;
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                &#125;
+            &#125;
+        &#125;
+        System.out.println(Arrays.toString(arr));
+    &#125;
+
+
+    @Test
+    public void test1() &#123;
+        final int[] ints = &#123;12, 21, 43, 6, 94, -4, 0, 33&#125;;
+        selectSorted(ints);
+        selectSorted(null);
+        selectSorted(new int[0]);
+    &#125;
+</code></pre>
+<pre><code>[-4, 0, 6, 12, 21, 33, 43, 94]
+null
+空数组
+</code></pre>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>1.在数据量特别大的时候，基本查找从前往后寻找的性能是很差的<br>2.二分查询性能好，二分查找的前提是必须是排好序的数据<br>3.二分查找相当于每次去掉一半的查找范围</p>
+<h3 id="二分查找实现步骤"><a href="#二分查找实现步骤" class="headerlink" title="二分查找实现步骤"></a>二分查找实现步骤</h3><p>定义变量记录左边和右边位置。<br>使用while循环控制查询（条件是左边位置&lt;&#x3D;右边位置）<br>循环内部获取中间元素索引<br>判断当前要找的元素如果大于中间元素，左边位置&#x3D;中间索引+1<br>判断当前要找的元素如果小于中间元素，右边位置&#x3D;中间索引-1<br>判断当前要找的元素如果等于中间元素，返回当前中间元素索引。</p>
+<pre><code class="java">    @Test
+    public void test5() &#123;
+        final int[] ints = &#123;11, 13, 23, 27, 34, 65, 88&#125;;
+        System.out.println(binarySearch(ints, 27));
+    &#125;
+
+    public int binarySearch(int[] arr, int target) &#123;
+        if (arr == null || arr.length &lt;= 0) &#123;
+            return -1;
+        &#125;
+        int left = 0;
+        int right = arr.length - 1;
+        while (left &lt;= right) &#123;
+            int mid = (left + right) / 2;
+            if (target &gt; arr[mid]) &#123;
+                left = mid + 1;
+            &#125; else if (target &lt; arr[mid]) &#123;
+                right = mid - 1;
+            &#125; else &#123;
+                return mid;
+            &#125;
+        &#125;
+        return -1;
+    &#125;
+</code></pre>
+<pre><code>3
+</code></pre>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><h3 id="Lambda表达式的概述"><a href="#Lambda表达式的概述" class="headerlink" title="Lambda表达式的概述"></a>Lambda表达式的概述</h3><p>​	Lambda表达式是JDK 8开始后的一种新语法形式</p>
+<p>​	作用：<strong>简化匿名内部类的代码写法</strong></p>
+<h3 id="Lambda表达式的简化格式"><a href="#Lambda表达式的简化格式" class="headerlink" title="Lambda表达式的简化格式"></a><strong>Lambda</strong>表达式的简化格式</h3><pre><code class="java">(匿名内部类被重写方法的形参列表) -&gt; &#123;
+    被重写方法的方法体代码。
+&#125;
+</code></pre>
+<p>注：-&gt; 是语法形式，无实际含义</p>
+<p>注意：Lambda表达式<strong>只能简化函数式接口的匿名内部类</strong>的写法形式</p>
+<p>什么是函数式接口<br>    首先必须是接口、其次<strong>接口中有且仅有一个抽象方法</strong>的形式</p>
+<p>代码更少，关注点更加明确了</p>
+<p>注意：通常我们见到的函数式接口上都有一个**@FunctionalInterface注解**，标记该接口必须是满足函数式接口</p>
+<pre><code class="java">//该注解代表该接口时函数式接口即只有一个抽象方法，多写一个方法就会报错；Lambda表达式可以简化函数式接口；
+//不加注解也可以简化，前提是，该接口只有一个抽象方法
+@FunctionalInterface
+interface Swimming &#123;
+    void swim();
+&#125;
+</code></pre>
+<pre><code class="java">package lambda_demo;
+
+
+public class LambdaDemo &#123;
+    public static void main(String[] args) &#123;
+        Swimming s1 = new Swimming() &#123;
+            @Override
+            public void swim() &#123;
+                System.out.println(&quot;老师游泳&quot;);
+            &#125;
+        &#125;;
+        Swimming s2 = () -&gt; System.out.println(&quot;学生游泳&quot;);
+        go(s1);
+        go(s2);
+    &#125;
+
+    public static void go(Swimming swimming) &#123;
+        System.out.println(&quot;开始&quot;);
+        swimming.swim();
+        System.out.println(&quot;结束&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>开始
+老师游泳
+结束
+开始
+学生游泳
+结束
+</code></pre>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>Lambda表达式的基本作用：<br>    简化匿名内部类的写法</p>
+<p>Lambda表达式的使用前提：<br>    1.函数式接口，即是一个对象且对象中只有一个抽象方法<br>    2.通过匿名内部类的方式创建对象</p>
+<p>Lambda表达式的好处：<br>    简化代码，使得java语言的表达能力得到提高</p>
+<ul>
+<li>Lambda表达式的省略规则</li>
+</ul>
+<p>​		参数类型可以省略不写。<br>​		如果只有一个参数，参数类型可以省略，同时()也可以省略。<br>​		如果Lambda表达式的方法体代码只有一行代码。可以省略大括号不写,同时要省略分号！<br>​		如果Lambda表达式的方法体代码只有一行代码。可以省略大括号不写。</p>
+<p>​		此时，如果这行代码是return语句，【必须】省略return不写，同时也必须省略 “;”</p>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

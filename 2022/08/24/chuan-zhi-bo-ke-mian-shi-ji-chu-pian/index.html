@@ -1,0 +1,2056 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>基础篇 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>基础篇 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/23
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/院校帮-面试/" style="color: #ffa2c4">
+                    院校帮-面试
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="一、二分查找"><a href="#一、二分查找" class="headerlink" title="一、二分查找"></a>一、二分查找</h1><h3 id="1-0算法描述"><a href="#1-0算法描述" class="headerlink" title="1.0算法描述"></a>1.0<strong>算法描述</strong></h3><ol>
+<li><p>前提：有已排序数组 A（假设已经做好）</p>
+</li>
+<li><p>定义左边界 L、右边界 R，确定搜索范围，循环执行二分查找（3、4两步）</p>
+</li>
+<li><p>获取中间索引 M &#x3D; Floor((L+R) &#x2F;2)</p>
+</li>
+<li><p>中间索引的值  A[M] 与待搜索的值 T 进行比较</p>
+<p>① A[M] &#x3D;&#x3D; T 表示找到，返回中间索引</p>
+<p>② A[M] &gt; T，中间值右侧的其它元素都大于 T，无需比较，中间索引左边去找，M - 1 设置为右边界，重新查找</p>
+<p>③ A[M] &lt; T，中间值左侧的其它元素都小于 T，无需比较，中间索引右边去找， M + 1 设置为左边界，重新查找</p>
+</li>
+<li><p>当 L &gt; R 时，表示没有找到，应结束循环</p>
+</li>
+</ol>
+<span id="more"></span>
+
+<p><strong>算法实现</strong></p>
+<pre><code class="java">public static int binarySearch(int[] a, int t) &#123;
+    int l = 0, r = a.length - 1, m;
+    while (l &lt;= r) &#123;
+        m = (l + r) / 2;
+        if (a[m] == t) &#123;
+            return m;
+        &#125; else if (a[m] &gt; t) &#123;
+            r = m - 1;
+        &#125; else &#123;
+            l = m + 1;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+</code></pre>
+<h3 id="2-0-解决溢出问题方式一："><a href="#2-0-解决溢出问题方式一：" class="headerlink" title="2.0 解决溢出问题方式一："></a>2.0 解决溢出问题方式一：</h3><ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">    /**
+     * ClassName: binarySearchDemo
+     * Description:解决整数溢出的二分查找 方式一 数学运算
+     * date:2022/3/18
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    public int binarySearch1(int[] array, int target) &#123;
+        int left = 0;
+        int right = array.length - 1;
+        int counter = 0;
+        while (left &lt;= right) &#123;
+            System.out.println(&quot;比较&quot; + ++counter + &quot;次&quot;);
+            //int middle = (left + right)/2;//如果两个很大的数相加，有可能溢出
+            int middle = left + (right - left) / 2;
+            if (target &gt; array[middle]) &#123;
+                left = middle + 1;
+            &#125; else if (target &lt; array[middle]) &#123;
+                right = middle - 1;
+            &#125; else &#123;
+                return middle;
+            &#125;
+        &#125;
+        return -1;//等跳出循环还没退出方法，说明没找到
+    &#125;
+
+    @Test
+    public void test1() &#123;
+        int[] ints = &#123;12, 33, 45, 46, 47, 88, 90, 99&#125;;
+        System.out.println(binarySearch1(ints, 99));
+    &#125;
+=============================================
+比较1次
+比较2次
+比较3次
+比较4次
+7
+</code></pre>
+<h3 id="3-0-解决整数溢出方式二"><a href="#3-0-解决整数溢出方式二" class="headerlink" title="3.0 解决整数溢出方式二"></a>3.0 解决整数溢出方式二</h3><ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">    /**
+     * ClassName: binarySearchDemo
+     * Description:解决整数溢出的二分查找 方式二 使用无符号右移一位【效率更高】
+     * date:2022/3/18
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+
+    public int binarySearch2(int[] array, int target) &#123;
+        int left = 0;
+        int right = array.length - 1;
+        int counter = 0;
+        while (left &lt;= right) &#123;
+            System.out.println(&quot;比较&quot; + ++counter + &quot;次&quot;);
+            int middle = (left + right) &gt;&gt;&gt; 1;//无符号右移一位，相当于除以二且处于最高位的必为零
+            if (target &gt; array[middle]) &#123;
+                left = middle + 1;
+            &#125; else if (target &lt; array[middle]) &#123;
+                right = middle - 1;
+            &#125; else &#123;
+                return middle;
+            &#125;
+        &#125;
+        return -1;//等跳出循环还没退出方法，说明没找到
+    &#125;
+    @Test
+    public void test1() &#123;
+        int[] ints = &#123;12, 33, 45, 46, 47, 88, 90, 99&#125;;
+        System.out.println(binarySearch2(ints, 99));
+    &#125;
+==================================================
+比较1次
+比较2次
+比较3次
+比较4次
+7
+</code></pre>
+<h3 id="4-0-其它考法"><a href="#4-0-其它考法" class="headerlink" title="4.0 其它考法"></a>4.0 <strong>其它考法</strong></h3><ol>
+<li><p>有一个有序表为 1,5,8,11,19,22,31,35,40,45,48,49,50 当二分查找值为 48 的结点时，查找成功需要比较的次数 </p>
+</li>
+<li><p>使用二分法在序列 1,4,6,7,15,33,39,50,64,78,75,81,89,96 中查找元素 81 时，需要经过（   ）次比较</p>
+</li>
+<li><p>在拥有128个元素的数组中二分查找一个数，需要比较的次数最多不超过多少次</p>
+</li>
+</ol>
+<p>对于前两个题目，记得一个简要判断口诀：奇数二分取中间，偶数二分取中间靠左。对于后一道题目，需要知道公式：</p>
+<p>$$n &#x3D; log_2N &#x3D; log_{10}N&#x2F;log_{10}2$$</p>
+<p>其中 n 为查找次数，N 为元素个数</p>
+<h1 id="二、冒泡排序"><a href="#二、冒泡排序" class="headerlink" title="二、冒泡排序"></a>二、冒泡排序</h1><h3 id="0-0-算法描述"><a href="#0-0-算法描述" class="headerlink" title="0.0 算法描述"></a>0.0 <strong>算法描述</strong></h3><ol>
+<li>依次比较数组中相邻两个元素大小，若 a[j] &gt; a[j+1]，则交换两个元素，两两都比较一遍称为一轮冒泡，结果是让最大的元素排至最后</li>
+<li>重复以上步骤，直到整个数组有序</li>
+</ol>
+<p><strong>算法实现</strong></p>
+<pre><code class="java">public static void bubble(int[] a) &#123;
+    for (int j = 0; j &lt; a.length - 1; j++) &#123;
+        // 一轮冒泡
+        boolean swapped = false; // 是否发生了交换
+        for (int i = 0; i &lt; a.length - 1 - j; i++) &#123;
+            System.out.println(&quot;比较次数&quot; + i);
+            if (a[i] &gt; a[i + 1]) &#123;
+                Utils.swap(a, i, i + 1);
+                swapped = true;
+            &#125;
+        &#125;
+        System.out.println(&quot;第&quot; + j + &quot;轮冒泡&quot;
+                           + Arrays.toString(a));
+        if (!swapped) &#123;
+            break;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>优化点1：每经过一轮冒泡，内层循环就可以减少一次</li>
+<li>优化点2：如果某一轮冒泡没有发生交换，则表示所有数据有序，可以结束外层循环</li>
+</ul>
+<h3 id="1-0-方式一"><a href="#1-0-方式一" class="headerlink" title="1.0 方式一"></a>1.0 方式一</h3><ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">     /**
+     * 优化一冒泡排序：
+     */
+    @Test
+    public void test() &#123;
+        int[] arr = &#123;12, 3, 22, 7, 33, 44, 45, 55, 66, 77&#125;;
+        System.out.println(&quot;原始数组是:&quot; + Arrays.toString(arr));
+        System.out.println(&quot;数组长度是&quot; + arr.length + &quot;,理论上跑&quot; + (arr.length - 1) + &quot;轮&quot;);
+        for (int i = 0; i &lt; arr.length - 1; i++) &#123;
+            //数组是否可以提前停止排序
+            boolean stop = true;
+            for (int j = 0; j &lt; arr.length - 1 - i; j++) &#123;
+                if (arr[j] &gt; arr[j + 1]) &#123;
+                    swap(arr, j, j + 1);
+                    //当本轮没有发生过交换时说明已经有序可以提前结束，但本轮有交换，所以时不能停止
+                    stop = false;
+                &#125;
+            &#125;
+            System.out.println(&quot;第&quot; + (i + 1) + &quot;轮：&quot; + Arrays.toString(arr));
+            //只要这一轮没有交换过顺序，说明可以提前停止
+            if (stop) break;
+        &#125;
+        System.out.println(&quot;排序结果:&quot; + Arrays.toString(arr));
+    &#125;
+=========================================================
+原始数组是:[12, 3, 22, 7, 33, 44, 45, 55, 66, 77]
+数组长度是10,理论上跑9轮
+第1轮：[3, 12, 7, 22, 33, 44, 45, 55, 66, 77]
+第2轮：[3, 7, 12, 22, 33, 44, 45, 55, 66, 77]
+第3轮：[3, 7, 12, 22, 33, 44, 45, 55, 66, 77]
+排序结果:[3, 7, 12, 22, 33, 44, 45, 55, 66, 77]
+</code></pre>
+<h3 id="2-0-方式二"><a href="#2-0-方式二" class="headerlink" title="2.0 方式二"></a>2.0 方式二</h3><ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">    /**
+     * 优化二冒泡排序：
+     */
+    @Test
+    public void test1() &#123;
+        int[] arr = &#123;12, 3, 22, 7, 33, 44, 45, 55, 66, 77&#125;;
+        System.out.println(&quot;原始数组是:&quot; + Arrays.toString(arr));
+        System.out.println(&quot;数组长度是&quot; + arr.length + &quot;,理论上跑&quot; + (arr.length - 1) + &quot;轮&quot;);
+        //第一轮需要比较全部的元素
+        int n = arr.length - 1;
+        int counter = 0;
+        while (true) &#123;
+            //当本轮已经有序了，不需要再进行排序了，此时通过将last的值0赋给n让排序终止
+            int last = 0;
+            for (int i = 0; i &lt; n; i++) &#123;
+                if (arr[i] &gt; arr[i + 1]) &#123;
+                    swap(arr, i, i + 1);
+                    //记录每次交换后的索引
+                    last = i;
+                &#125;
+            &#125;
+            System.out.println(&quot;第&quot; + (++counter) + &quot;轮：&quot; + Arrays.toString(arr));
+            //将【最后】交换的索引给n，该索引往左的都是未排序的，右边都是已经有序的
+            n = last;
+            //n会向0靠拢，当数组提前有序时，会有last=0赋给n，让其提前终止循环
+            if (n == 0) break;
+        &#125;
+        System.out.println(&quot;排序结果:&quot; + Arrays.toString(arr));
+    &#125;
+===================================================
+原始数组是:[12, 3, 22, 7, 33, 44, 45, 55, 66, 77]
+数组长度是10,理论上跑9轮
+第1轮：[3, 12, 7, 22, 33, 44, 45, 55, 66, 77]
+第2轮：[3, 7, 12, 22, 33, 44, 45, 55, 66, 77]
+第3轮：[3, 7, 12, 22, 33, 44, 45, 55, 66, 77]
+排序结果:[3, 7, 12, 22, 33, 44, 45, 55, 66, 77] 
+</code></pre>
+<h3 id="3-0-冒泡排序总结"><a href="#3-0-冒泡排序总结" class="headerlink" title="3.0 冒泡排序总结"></a>3.0 冒泡排序总结</h3><p>文字描述冒泡排序（以升序为例）<br>    依次比较数组中相邻的两个元素的大小，若arr[i]&gt;arr[i+1]，则交换两个元素；<br>    两两都比较一遍称为一轮冒泡，结果是让最大的元素拍到最后<br>    重复上述步骤，直至整个数组有序</p>
+<p>优化方式<br>    每轮冒泡时，最后一次交换的索引作为下一轮冒泡的比较次数；若这个值为零时，表示整个数组有序，直接退出外层循环即可</p>
+<h1 id="三、选择排序"><a href="#三、选择排序" class="headerlink" title="三、选择排序"></a>三、选择排序</h1><h3 id="1-0-算法描述"><a href="#1-0-算法描述" class="headerlink" title="1.0 算法描述"></a>1.0 <strong>算法描述</strong></h3><ol>
+<li><p>将数组分为两个子集，排序的和未排序的，每一轮从未排序的子集中选出最小的元素，放入排序子集</p>
+</li>
+<li><p>重复以上步骤，直到整个数组有序</p>
+</li>
+</ol>
+<ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">     @Test
+    public void selectedSort() &#123;
+        int[] array = &#123;21, 1, 65, 3, 9, 55, 0, -5&#125;;
+        //i代表每轮所选择出的最小元素要交换到的目标索引【要把当前轮未排序区域的最小值放到该索引上】
+        for (int i = 0; i &lt; array.length - 1; i++) &#123;
+            //记录最小元素的索引
+            int s = i;
+            for (int j = s + 1; j &lt; array.length; j++) &#123;
+                //用当前轮目前的最小值，和未排序区的元素进行比较【是s不能是i】
+                if (array[s] &gt; array[j]) &#123;
+                    //得到每轮中比较出的最小值的索引
+                    s = j;
+                &#125;
+            &#125;
+            //最小索引值与每轮想要交换到的目标索引相同时，说明不需要交换
+            if (i != s) swap(array, i, s);
+            System.out.println(&quot;每轮所得到的数组：&quot; + Arrays.toString(array));
+        &#125;
+        System.out.println(Arrays.toString(array));
+    &#125;
+=========================================================
+每轮所得到的数组：[-5, 1, 65, 3, 9, 55, 0, 21]
+每轮所得到的数组：[-5, 0, 65, 3, 9, 55, 1, 21]
+每轮所得到的数组：[-5, 0, 1, 3, 9, 55, 65, 21]
+每轮所得到的数组：[-5, 0, 1, 3, 9, 55, 65, 21]
+每轮所得到的数组：[-5, 0, 1, 3, 9, 55, 65, 21]
+每轮所得到的数组：[-5, 0, 1, 3, 9, 21, 65, 55]
+每轮所得到的数组：[-5, 0, 1, 3, 9, 21, 55, 65]
+[-5, 0, 1, 3, 9, 21, 55, 65] 
+</code></pre>
+<ul>
+<li>选择排序思路</li>
+</ul>
+<p>将数组分为两个子集，已排序的与未排序的，每轮从未排序的自己中选出最小的元素，放在已排序的子集中<br>重复以上步骤，直至数组有序</p>
+<ul>
+<li>优化方式</li>
+</ul>
+<p>为减少交换次数，可以先记录最先元素的索引，再在每一轮的最后进行交换</p>
+<h3 id="2-0与冒泡排序比较"><a href="#2-0与冒泡排序比较" class="headerlink" title="2.0与冒泡排序比较"></a>2.0与冒泡排序比较</h3><ol>
+<li><p>二者平均时间复杂度都是 $O(n^2)$</p>
+</li>
+<li><p>选择排序一般要快于冒泡，因为其交换次数少</p>
+</li>
+<li><p>但如果集合有序度高，冒泡优于选择</p>
+</li>
+<li><p>冒泡属于稳定排序算法，而选择属于不稳定排序</p>
+<ul>
+<li>稳定排序指，按对象中不同字段进行多次排序，不会打乱同值元素的顺序</li>
+<li>不稳定排序则反之</li>
+</ul>
+</li>
+</ol>
+<h1 id="四、插入排序"><a href="#四、插入排序" class="headerlink" title="四、插入排序"></a>四、插入排序</h1><h3 id="1-0-算法描述-1"><a href="#1-0-算法描述-1" class="headerlink" title="1.0 算法描述"></a>1.0 <strong>算法描述</strong></h3><ol>
+<li><p>将数组分为两个区域，排序区域和未排序区域，每一轮从未排序区域中取出第一个元素，插入到排序区域（需保证顺序）</p>
+</li>
+<li><p>重复以上步骤，直到整个数组有序</p>
+</li>
+</ol>
+<ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">    @Test
+    public void insertSorted() &#123;
+        int[] arr = &#123;21, 18, 9, 22, 0, -2, 11&#125;;
+        for (int i = 1; i &lt; arr.length; i++) &#123;
+            int t = arr[i];//待插入的元素值
+            int j = i - 1;//已排序区域的索引
+            while (j &gt;= 0) &#123;
+                if (t &lt; arr[j]) &#123;
+                    //已取出的值，与有序区间的值进行比较，若有序区间的值较大则后移一位,直到有序值小于拿出的值，
+                    // 一旦发现取出的值大于有序的值则退出循环，如果一直没找到，就会空出索引为0的有序空间
+                    arr[j + 1] = arr[j];
+                &#125; else &#123;
+                    //必须打破，有效率问题有算法问题（当没有移位时，不能索引减一）
+                    break;
+                &#125;
+                j--;
+            &#125;
+            arr[j + 1] = t;//将取出的值赋给空出的部分
+            System.out.println(&quot;每轮排序的数组:&quot; + Arrays.toString(arr));
+        &#125;
+        System.out.println(Arrays.toString(arr));
+    &#125;
+===========================================
+每轮排序的数组:[18, 21, 9, 22, 0, -2, 11]
+每轮排序的数组:[9, 18, 21, 22, 0, -2, 11]
+每轮排序的数组:[9, 18, 21, 22, 0, -2, 11]
+每轮排序的数组:[0, 9, 18, 21, 22, -2, 11]
+每轮排序的数组:[-2, 0, 9, 18, 21, 22, 11]
+每轮排序的数组:[-2, 0, 9, 11, 18, 21, 22]
+[-2, 0, 9, 11, 18, 21, 22]
+
+进程已结束，退出代码为 0
+</code></pre>
+<pre><code class="java">    public void insertSorted(int[] arr) &#123;
+        for (int i = 1; i &lt; arr.length; i++) &#123;
+            int t = arr[i];
+            int j = i;
+            while (j &gt;= 1) &#123;
+                if (t &lt; arr[j - 1]) &#123;
+                    arr[j] = arr[j - 1];
+                    j--;
+                &#125; else &#123;
+                    break;
+                &#125;
+            &#125;
+            arr[j] = t;
+            System.out.println(&quot;每轮排序结果：&quot; + Arrays.toString(arr));
+        &#125;
+        System.out.println(&quot;最终排序结果：&quot; + Arrays.toString(arr));
+    &#125;
+
+    @Test
+    public void test1() &#123;
+        int[] arr = &#123;12, 18, 2, 34, 21, 11, 4&#125;;
+        insertSorted(arr);
+    &#125;
+每轮排序结果：[12, 18, 2, 34, 21, 11, 4]
+每轮排序结果：[2, 12, 18, 34, 21, 11, 4]
+每轮排序结果：[2, 12, 18, 34, 21, 11, 4]
+每轮排序结果：[2, 12, 18, 21, 34, 11, 4]
+每轮排序结果：[2, 11, 12, 18, 21, 34, 4]
+每轮排序结果：[2, 4, 11, 12, 18, 21, 34]
+最终排序结果：[2, 4, 11, 12, 18, 21, 34]
+</code></pre>
+<h3 id="2-0-与选择排序比较"><a href="#2-0-与选择排序比较" class="headerlink" title="2.0 与选择排序比较"></a>2.0 <strong>与选择排序比较</strong></h3><ol>
+<li><p>二者平均时间复杂度都是 $O(n^2)$</p>
+</li>
+<li><p>大部分情况下，插入都略优于选择</p>
+</li>
+<li><p>有序集合插入的时间复杂度为 $O(n)$</p>
+</li>
+<li><p>插入属于稳定排序算法，而选择属于不稳定排序</p>
+</li>
+</ol>
+<p><strong>提示</strong></p>
+<blockquote>
+<p><em>插入排序通常被同学们所轻视，其实它的地位非常重要。小数据量排序，都会优先选择插入排序</em></p>
+</blockquote>
+<h3 id="3-0-总结"><a href="#3-0-总结" class="headerlink" title="3.0 总结"></a>3.0 总结</h3><p>文字描述<br>    将数组分为两个区域，已排序与未排序，每一轮从未排序中取第一个元素，插入到有序区中（需要保证顺序）<br>    重复上述步骤，直至整个数组有序</p>
+<p>优化方式<br>    在与待插入元素进行比较时，若发现有序区的元素比待插入元素小，就代表找到了插入元素，无需进行后续比较<br>    插入时直接移动元素，而不是交换元素</p>
+<p>与选择相比较<br>    两者的平均复杂度都是O(n)的平方<br>    大部分情况下，插入优于选择<br>    有序插入的时间复杂度为O(n)的平方，有序冒泡也是O(n)的平方<br>    插入排序属于稳定排序，选择属于不稳定</p>
+<h1 id="五、希尔排序"><a href="#五、希尔排序" class="headerlink" title="五、希尔排序"></a>五、希尔排序</h1><pre><code class="java"> @Test
+    public void test1() &#123;
+        int[] arr = &#123;12, 18, 2, 34, 21, 11, 4&#125;;
+        XierSort(arr);
+    &#125;
+
+    public void XierSort(int[] arr) &#123;
+        int n = arr.length;
+        int h = 1;
+        while (h &lt; n / 2) &#123;
+            h = h * 2 + 1;
+        &#125;
+
+        for (; h &gt; 0; h /= 2) &#123;
+            for (int i = h; i &lt; n; i++) &#123;
+                int t = arr[i];
+                int j = i;
+                while (j &gt;= h) &#123;
+                    if (arr[j - h] &gt; t) &#123;
+                        arr[j] = arr[j - h];
+                        j -= h;
+                    &#125; else &#123;
+                        break;
+                    &#125;
+                &#125;
+                arr[j] = t;
+            &#125;
+            System.out.println(&quot;每轮间隔下：&quot; + Arrays.toString(arr));
+        &#125;
+
+        System.out.println(&quot;最终结果：&quot; + Arrays.toString(arr));
+    &#125;
+
+每轮间隔下：[4, 18, 2, 12, 21, 11, 34]
+每轮间隔下：[2, 4, 11, 12, 18, 21, 34]
+最终结果：[2, 4, 11, 12, 18, 21, 34]
+</code></pre>
+<pre><code class="java">package day01.sort;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class ShellSort &#123;
+    public static void main(String[] args) &#123;
+        int[] a = &#123;7, 5, 19, 8, 4, 1&#125;;
+        shell_2(a);
+    &#125;
+
+   
+    public static void shell_(int[] arr) &#123;
+        int N = arr.length;
+        int h = 1;
+        while (h &lt; N / 2) &#123;
+            h = 2 * h + 1;
+        &#125;
+
+        while (h &gt;= 1) &#123;
+            for (int i = h; i &lt; N; i++) &#123;
+                for (int j = i; j &gt;= h; j -= h) &#123;
+                    if (arr[j - h] &gt; arr[j]) &#123;
+                        swap(arr, j, j - h);
+                    &#125; else &#123;
+                        break;
+                    &#125;
+                &#125;
+            &#125;
+            h /= 2;
+        &#125;
+        System.out.println(Arrays.toString(arr));
+    &#125;
+
+    public static void shell_2(int[] arr) &#123;
+        int N = arr.length;
+        int h = 1;
+        while (h &lt; N / 2) &#123;
+            h = h * 2 + 1;
+        &#125;
+        while (h &gt;= 1) &#123;
+            for (int i = h; i &lt; N; i++) &#123;
+                //j &gt;= h保证最小为零，不为负数                
+                for (int j = i; j &gt;= h; j -= h) &#123;
+                    if (arr[j - h] &gt; arr[j]) &#123;
+                        swap(arr, j - h, j);
+                    &#125;
+                &#125;
+            &#125;
+            h /= 2;
+        &#125;
+        System.out.println(Arrays.toString(arr));
+    &#125;
+
+    public static void swap(int[] arr, int i, int j) &#123;
+        int t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    &#125;
+&#125;
+</code></pre>
+<h1 id="六、快速排序"><a href="#六、快速排序" class="headerlink" title="六、快速排序"></a>六、快速排序</h1><h3 id="1-0-算法描述-2"><a href="#1-0-算法描述-2" class="headerlink" title="1.0 算法描述"></a>1.0 <strong>算法描述</strong></h3><ol>
+<li>每一轮排序选择一个基准点（pivot）进行分区<ol>
+<li>让小于基准点的元素的进入一个分区，大于基准点的元素的进入另一个分区</li>
+<li>当分区完成时，基准点元素的位置就是其最终位置</li>
+</ol>
+</li>
+<li>在子分区内重复以上过程，直至子分区元素个数少于等于 1，这体现的是分而治之的思想 （<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm">divide-and-conquer</a>）</li>
+<li>从以上描述可以看出，一个关键在于分区算法，常见的有洛穆托分区方案、双边循环分区方案、霍尔分区方案</li>
+</ol>
+<h3 id="2-0-单边循环快排"><a href="#2-0-单边循环快排" class="headerlink" title="2.0 单边循环快排"></a>2.0 单边循环快排</h3><ol>
+<li>选择最右边的元素作为基准点</li>
+<li>j指针负责找到比基准点小的元素，一旦找到就与i进行交换</li>
+<li>i指针维护小于基准点元素的边界，预计是每次交换的目标索引</li>
+<li>最后基准点与i交换，i即为分区位置</li>
+</ol>
+<ul>
+<li><p><strong>单边循环快排（lomuto 洛穆托分区方案）</strong></p>
+<ol>
+<li><p>选择最右元素作为基准点元素</p>
+</li>
+<li><p>j 指针负责找到比基准点小的元素，一旦找到则与 i 进行交换</p>
+</li>
+<li><p>i 指针维护小于基准点元素的边界，也是每次交换的目标索引</p>
+</li>
+<li><p>最后基准点与 i 交换，i 即为分区位置</p>
+</li>
+</ol>
+</li>
+<li><p>代码实现</p>
+</li>
+</ul>
+<pre><code class="java">package com.itheima.find;
+
+import org.junit.Test;
+
+import java.util.Arrays;
+
+public class QuickSortDemo &#123;
+
+
+    public static void swap(int[] array, int t1, int t2) &#123;
+        int temp = array[t1];
+        array[t1] = array[t2];
+        array[t2] = temp;
+    &#125;
+
+    //每次调用都会两边都找一下
+    public static void quick(int[] arr, int l, int h) &#123;
+        if (l &gt;= h) return;
+        final int i = quickSort(arr, l, h);
+        quick(arr, l, i - 1);
+        quick(arr, i + 1, h);
+    &#125;
+
+    public static int quickSort(int[] arr, int l, int h) &#123;
+        //基准点元素(最后一个元素)
+        int pv = arr[h];
+        
+        //i,j一开始都是区间最左边的元素，i负责维护小于基准点的元素的边界
+        int i = l;
+        
+        //j的范围是从区间最左边到基准点元素(区间最右)，找到比基准点元素小的就与i的值进行交换
+        for (int j = l; j &lt; h; j++) &#123;
+            if (arr[j] &lt; pv) &#123;
+                if (i != j) &#123;
+                    swap(arr, i, j);
+                &#125;
+                //更换边界值索引，往右移是因为当前索引所知的值已经与j的值进行交换比基准点小
+                i++;
+            &#125;
+        &#125;
+        if (i != h) &#123;//当边界值与基准元素是同一个时，不交换
+            swap(arr, i, h);
+        &#125;
+        System.out.println(Arrays.toString(arr));
+        return i;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        int[] arr = &#123;5, 3, 7, 2, 9, 8, 1, 4&#125;;
+        quick(arr, 0, arr.length - 1);
+    &#125;
+&#125;
+==================================
+[3, 2, 1, 4, 9, 8, 7, 5]
+[1, 2, 3, 4, 9, 8, 7, 5]
+[1, 2, 3, 4, 9, 8, 7, 5]
+[1, 2, 3, 4, 5, 8, 7, 9]
+[1, 2, 3, 4, 5, 8, 7, 9]
+[1, 2, 3, 4, 5, 7, 8, 9]
+</code></pre>
+<h3 id="3-0-双边快排"><a href="#3-0-双边快排" class="headerlink" title="3.0 双边快排"></a>3.0 双边快排</h3><p><strong>双边循环快排（不完全等价于 hoare 霍尔分区方案）</strong></p>
+<ol>
+<li>选择最左元素作为基准点元素</li>
+<li>j 指针负责从右向左找比基准点小的元素，i 指针负责从左向右找比基准点大的元素，一旦找到二者交换，直至 i，j 相交</li>
+<li>最后基准点与 i（此时 i 与 j 相等）交换，i 即为分区位置</li>
+</ol>
+<p>要点</p>
+<ol>
+<li><p>基准点在左边，并且要先 j 后 i</p>
+</li>
+<li><p>while( <strong>i</strong> **&lt; j** &amp;&amp; a[j] &gt; pv ) j– </p>
+</li>
+<li><p>while ( <strong>i</strong> <strong>&lt; j</strong> &amp;&amp; a[i] <strong>&lt;&#x3D;</strong> pv ) i++</p>
+</li>
+<li><p>选择最左边元素作为基准点元素</p>
+</li>
+<li><p>j指针负责从右向左找比基准点小的元素，i指针负责从右往左找比基准点大的元素，一旦找到两者交换，直至i，j相交</p>
+</li>
+<li><p>最后基准点与i（此时i与j相等）交换，i极为分区位置</p>
+</li>
+</ol>
+<ul>
+<li>几个要点</li>
+</ul>
+<ol>
+<li>基准点在左边，并且要先j后i</li>
+<li>while(i&lt;j &amp;&amp; a[j]&gt;pv) j–;</li>
+<li>while(i&lt;j &amp;&amp; a[i]&gt;&#x3D;pv) i++;</li>
+</ol>
+<ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">package com.itheima.sort;
+
+import java.util.Arrays;
+
+public class QuickSortDemo2 &#123;
+
+
+    public static void swap(int[] array, int t1, int t2) &#123;
+        int temp = array[t1];
+        array[t1] = array[t2];
+        array[t2] = temp;
+    &#125;
+
+    //每次调用都会两边都找一下
+    public static void quick(int[] arr, int l, int h) &#123;
+        //当区间中只有一个元素时
+        if (l &gt;= h) return;
+        final int i = quickSort(arr, l, h);
+        //对左边分区进行排序
+        quick(arr, l, i - 1);
+        //对右边分区进行排序
+        quick(arr, i + 1, h);
+    &#125;
+
+    public static int quickSort(int[] arr, int l, int h) &#123;
+        //取区间最左边的值作为基准值
+        int pv = arr[l];
+        //i为区间左边第一个
+        int i = l;
+        //j为区间右边第一个
+        int j = h;
+
+        /*
+         *先从j开始找，找到比基准值小的就记录下索引值；否则j--
+         * 再从i开始找，找到比基准值大的就记录下索引；否则i++
+         * 交换i，j两个索引处的值当他们相遇时，就退出循环
+         * 交换基准值和i所对应的值
+         * */
+        while (i &lt; j) &#123;
+            while (i &lt; j &amp;&amp; arr[j] &gt; pv) j--;
+            while (i &lt; j &amp;&amp; arr[i] &lt;= pv) i++;
+            swap(arr, i, j);
+        &#125;
+        swap(arr, j, l);
+        System.out.println(Arrays.toString(arr));
+        return j;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        int[] arr = &#123;5, 3, 7, 2, 9, 8, 1, 4&#125;;
+        quick(arr, 0, arr.length - 1);
+    &#125;
+&#125;
+======================================================
+[1, 3, 4, 2, 5, 8, 9, 7]
+[1, 3, 4, 2, 5, 8, 9, 7]
+[1, 2, 3, 4, 5, 8, 9, 7]
+[1, 2, 3, 4, 5, 7, 8, 9]
+</code></pre>
+<ul>
+<li>快速排序特点</li>
+</ul>
+<ol>
+<li>平均时间复杂度：O(n log2 n次方)，最坏时间复杂度：O(n 2平方)</li>
+<li>数据量大时，优势特别明显</li>
+<li>属于不稳定排序（选择排序）</li>
+</ol>
+<p><strong>快排特点</strong></p>
+<ol>
+<li><p>平均时间复杂度是 $O(nlog_2⁡n )$，最坏时间复杂度 $O(n^2)$</p>
+</li>
+<li><p>数据量较大时，优势非常明显</p>
+</li>
+<li><p>属于不稳定排序</p>
+</li>
+</ol>
+<h1 id="七、集合"><a href="#七、集合" class="headerlink" title="七、集合"></a>七、集合</h1><h2 id="1-0-ArrayList的扩容机制"><a href="#1-0-ArrayList的扩容机制" class="headerlink" title="1.0 ArrayList的扩容机制"></a>1.0 ArrayList的扩容机制</h2><ul>
+<li>​	<strong>扩容规则</strong></li>
+</ul>
+<ol>
+<li><p>ArrayList() 会使用长度为零的数组</p>
+</li>
+<li><p>ArrayList(int initialCapacity) 会使用指定容量的数组，扩容机制&gt;&gt;&gt;1.5</p>
+</li>
+<li><p>public ArrayList(Collection&lt;? extends E&gt; c) 会使用 c 的大小作为数组容量</p>
+</li>
+<li><p>add(Object o) 首次扩容为 10，再次扩容为上次容量的 1.5 倍</p>
+</li>
+<li><p>addAll(Collection c) 没有元素时，扩容为 Math.max(10, 实际元素个数)，有元素时为 Math.max(原容量 1.5 倍, 实际元素个数)</p>
+</li>
+</ol>
+<p>其中第 4 点必须知道，其它几点视个人情况而定</p>
+<ul>
+<li>ArrayList的初始容量</li>
+</ul>
+<p>使用无参构造的方法:容量是零(长度为零的对象数组)<br>使用一个int类型作为入参的构造方法:容量是入参(长度为入参长的对象数组)<br>使用一个集合类型作为入参的构造方法：容量是集合的大小</p>
+<ul>
+<li>add()扩容</li>
+</ul>
+<p>当使用ArrayList的无参构造创建对象时，会给分配一个长度为零的数组，当加入第一个元素时，会创建一个长度为10的数组(扩容)，这个数组会替换掉原来的空数组； </p>
+<p>当加入第十个元素时【要插入的元素下标等于数组大小】，ArrayList又进行扩容，为原来的1.5倍(创建一个长度为15的数组，将原来数组的元素拷贝到新数组中)，原来的数组因为没有引用指向，会被gc干掉；</p>
+<p>当加入第十5个元素时，ArrayList又进行扩容，将15&gt;&gt;&gt;1 &#x3D;7,15+7&#x3D;22;创建一个长度为22的数组，将原来数组的元素拷贝到新数组中，原来的数组因为没有引用指向，会被gc干掉；</p>
+<ul>
+<li>addAll()扩容</li>
+</ul>
+<ol>
+<li>现在集合中元素个数为零，下一次会扩容为10，添加一个元素个数小于等于10的集合，此时该集合扩容为10；</li>
+<li>现在集合中元素个数为零，下一次会扩容为10，添加一个元素个数为22的集合，此时该集合扩容为22；Math.max(22,22)</li>
+<li>现在集合中元素个数为11个，下一次会扩容为22 ，添加一个元素个数为10的集合（此时所有元素个数为21《22），此时该集合扩容为22；Math.max(21,22)</li>
+</ol>
+<ul>
+<li>扩容机制</li>
+</ul>
+<ol>
+<li>ArrayList() 无参构造会使用长度为零的数组</li>
+<li>ArrayList(int initialCapacity)会使用指定容量的数组，但是扩容是懒惰式的的，即在没有添加元素前，即使制定了长度，也不会创建数组</li>
+<li>public ArrayList(Collection&lt;? extends E&gt; c)会使用c的大小作为数组容量</li>
+<li>add(Object o)首次扩容为十，再次扩容为原来的1.5倍（先右移一位，再加上原来数组的长度）</li>
+<li>addAll(Conllection c)没有元素时，扩容为Math.max(10,实际元素个数)，有元素时为Math.max(原容量的1.5倍，实际元素个数)</li>
+</ol>
+<h2 id="2-0-Iterator的fail-fast、fail-safe"><a href="#2-0-Iterator的fail-fast、fail-safe" class="headerlink" title="2.0 Iterator的fail-fast、fail-safe"></a>2.0 Iterator的fail-fast、fail-safe</h2><p>Fail-Fast 与 Fail-Safe</p>
+<ul>
+<li><p>ArrayList 是 fail-fast 的典型代表，遍历的同时不能修改，尽快失败</p>
+</li>
+<li><p>CopyOnWriteArrayList 是 fail-safe 的典型代表，遍历的同时可以修改，原理是读写分离</p>
+</li>
+</ul>
+<p><strong>fail-fast</strong></p>
+<p>ArrayList时fail-fast的典型代表，遍历的同时不能修改，否则抛错，尽快失败<br>一旦发现遍历的时候别人来修改，立即抛异常</p>
+<pre><code class="java">    @Test
+    public void test1()&#123;
+        final ArrayList&lt;Student&gt; list = new ArrayList&lt;&gt;();
+        list.add(new Student(&quot;A&quot;));
+        list.add(new Student(&quot;B&quot;));
+        list.add(new Student(&quot;C&quot;));
+        list.add(new Student(&quot;D&quot;));
+        //调用增强for循环时，底层调用的是iterator迭代器
+        for (Student student : list) &#123;
+            //java.util.ConcurrentModificationException
+            System.out.println(student);
+        &#125;
+    &#125;   
+
+
+//通过方法返回一个迭代器对象给增强for
+public Iterator&lt;E&gt; iterator() &#123;
+        return new Itr();//会调用成员内部类的无参构造
+&#125;
+
+ private class Itr implements Iterator&lt;E&gt; &#123;
+        int cursor;       // index of next element to return
+        int lastRet = -1; // index of last element returned; -1 if no such
+         //modCount是ArrayList的实例成员变量，记录当前ArrayList实例被修改的次数
+         //expectedModCount是迭代器实例维护的实例成员变量，记录一开始获得数组时，数组被修改的次数；
+        int expectedModCount = modCount;
+
+        Itr() &#123;&#125;
+
+        public boolean hasNext() &#123;
+            return cursor != size;
+        &#125;
+
+        @SuppressWarnings(&quot;unchecked&quot;)
+        public E next() &#123;
+            checkForComodification();
+            int i = cursor;
+            if (i &gt;= size)
+                throw new NoSuchElementException();
+            Object[] elementData = ArrayList.this.elementData;
+            if (i &gt;= elementData.length)
+                throw new ConcurrentModificationException();
+            cursor = i + 1;
+            return (E) elementData[lastRet = i];
+        &#125;
+     //每次取出元素时都会查看集合是否被修改了，若改了就抛异常
+        final void checkForComodification() &#123;
+            if (modCount != expectedModCount)
+                throw new ConcurrentModificationException();
+        &#125;
+</code></pre>
+<p><strong>fail-save</strong></p>
+<p>发现遍历的时候有人来修改，会采取一些策略，例如：牺牲一致性来让整个遍历完成<br>CopyOnWriteArrayList是fail-safe的典型代表，遍历的同时可以修改，原理是读写分离</p>
+<pre><code class="java">    @Test
+    public void test2()&#123;
+        final CopyOnWriteArrayList&lt;Student&gt; list = new CopyOnWriteArrayList&lt;&gt;();
+        list.add(new Student(&quot;A&quot;));
+        list.add(new Student(&quot;B&quot;));
+        list.add(new Student(&quot;C&quot;));
+        list.add(new Student(&quot;D&quot;));
+        //增强for底层调用迭代器
+        for (Student student : list) &#123;
+            System.out.println(student);
+        &#125;
+        System.out.println(list);
+    &#125;
+
+
+    public Iterator&lt;E&gt; iterator() &#123;
+        return new COWIterator&lt;E&gt;(getArray(), 0);
+    &#125;
+
+    //返回当前实例的数组，用于在迭代器中也维护一份（集合中每次添加新的元素就会创建一个长度+1的数组，将原数组的值复制到新数组中，并将新数组作为底层数组），这		样修改集合中的元素，对迭代器没有影响
+    final Object[] getArray() &#123;
+        return array;
+    &#125;
+
+    public boolean add(E e) &#123;
+        final ReentrantLock lock = this.lock;
+        lock.lock();
+        try &#123;
+            Object[] elements = getArray();
+            int len = elements.length;
+            Object[] newElements = Arrays.copyOf(elements, len + 1);
+            newElements[len] = e;
+            setArray(newElements);
+            return true;
+        &#125; finally &#123;
+            lock.unlock();
+        &#125;
+    &#125;
+</code></pre>
+<h2 id="3-0-LinkedList和ArrayList"><a href="#3-0-LinkedList和ArrayList" class="headerlink" title="3.0 LinkedList和ArrayList"></a>3.0 LinkedList和ArrayList</h2><p><strong>LinkedList</strong></p>
+<ol>
+<li>基于双向链表，无需连续内存</li>
+<li>随机访问慢（要沿着链表遍历）</li>
+<li>头尾插入删除性能高</li>
+<li>占用内存多</li>
+</ol>
+<p><strong>ArrayList</strong></p>
+<ol>
+<li>基于数组，需要连续内存</li>
+<li>随机访问快（指根据下标访问）</li>
+<li>尾部插入、删除性能可以，其它部分插入、删除都会移动数据，因此性能会低</li>
+<li>可以利用 cpu 缓存，局部性原理</li>
+</ol>
+<p>两者比较：<br>    ArrayList</p>
+<pre><code> 1. 基于数组，需要连续内存
+  2. 随机访问快【根据下标访问】（根据数组地址，元素类型，索引综合计算）直接得到想要访问元素的地址
+  3. 尾部插入、删除性能尚可；其他地方插入、删除需要移动元素，性能较低(尤其是头部)【综合性能ArrayList要优于LinkedList】
+  4. 可以利用cpu缓存(cpu与内存之间访问所需的时间较长，所以使用cpu缓存，来提升读写性能)，局部性原理(访问一个数据的时候，cpu会默认认为它附近的元素有很大概	   率会被访问，所以一并加载进cpu缓存)
+</code></pre>
+<p>LinkedList</p>
+<ol>
+<li>基于双向链表，无需连续内存</li>
+<li>随机访问慢（需要沿着链表遍历）</li>
+<li>头尾插入性能较高，容易查到【查询中间元素，性能略低于ArrayList】</li>
+<li>内存占用多（除了要存储对象地址外，还需要存储头节点地址，尾节点地址，头部节点和尾部节点）</li>
+</ol>
+<h1 id="八、HashMap"><a href="#八、HashMap" class="headerlink" title="八、HashMap"></a>八、HashMap</h1><h2 id="1-0-基本数据结构"><a href="#1-0-基本数据结构" class="headerlink" title="1.0 基本数据结构"></a>1.0 基本数据结构</h2><ul>
+<li>1.7 数组 + 链表</li>
+<li>1.8 数组 + （链表 | 红黑树）</li>
+</ul>
+<blockquote>
+<p>更形象的演示，见资料中的 hash-demo.jar，运行需要 jdk14 以上环境，进入 jar 包目录，执行下面命令</p>
+</blockquote>
+<h2 id="2-0-树化与退化"><a href="#2-0-树化与退化" class="headerlink" title="2.0 树化与退化"></a>2.0 树化与退化</h2><p><strong>树化意义</strong></p>
+<ul>
+<li>红黑树用来避免 DoS 攻击，防止链表超长时性能下降，树化应当是偶然情况，是保底策略</li>
+<li>hash 表的查找，更新的时间复杂度是 $O(1)$，而红黑树的查找，更新的时间复杂度是 $O(log_2⁡n )$，TreeNode 占用空间也比普通 Node 的大，如非必要，尽量还是使用链表</li>
+<li>hash 值如果足够随机，则在 hash 表内按泊松分布，在负载因子 0.75 的情况下，长度超过 8 的链表出现概率是 0.00000006，树化阈值选择 8 就是为了让树化几率足够小</li>
+</ul>
+<p><strong>树化规则</strong></p>
+<ul>
+<li>当链表长度超过树化阈值 8 时，先尝试扩容来减少链表长度，如果数组容量已经 &gt;&#x3D;64，才会进行树化</li>
+</ul>
+<p><strong>退化规则</strong></p>
+<ul>
+<li>情况1：在扩容时如果拆分树时，树元素个数 &lt;&#x3D; 6 则会退化链表</li>
+<li>情况2：remove 树节点时，若 root、root.left、root.right、root.left.left 有一个为 null ，也会退化为链表</li>
+</ul>
+<h2 id="3-0-索引计算"><a href="#3-0-索引计算" class="headerlink" title="3.0 索引计算"></a>3.0 索引计算</h2><p><strong>索引计算方法</strong></p>
+<ul>
+<li>首先，计算对象的 hashCode()</li>
+<li>再进行调用 HashMap 的 hash() 方法进行二次哈希<ul>
+<li>二次 hash() 是为了综合高位数据，让哈希分布更为均匀</li>
+</ul>
+</li>
+<li>最后 二次hash值 &amp; (capacity – 1) 得到索引</li>
+</ul>
+<p><strong>数组容量为何是 2 的 n 次幂</strong></p>
+<ol>
+<li>计算索引时效率更高：如果是 2 的 n 次幂可以使用位与运算代替取模</li>
+<li>扩容时重新计算索引效率更高： <strong>hash &amp; oldCap</strong> &#x3D;&#x3D; 0 的元素留在原来位置 ，否则新位置 &#x3D; 旧位置 + oldCap</li>
+</ol>
+<p><strong>注意</strong></p>
+<ul>
+<li>二次 hash 是为了配合 <strong>容量是 2 的 n 次幂</strong> 这一设计前提，如果 hash 表的容量不是 2 的 n 次幂，则不必二次 hash</li>
+<li><strong>容量是 2 的 n 次幂</strong> 这一设计计算索引效率更好，但 hash 的分散性就不好，需要二次 hash 来作为补偿，没有采用这一设计的典型例子是 Hashtable</li>
+</ul>
+<h2 id="4-0-put-与扩容"><a href="#4-0-put-与扩容" class="headerlink" title="4.0 put 与扩容"></a>4.0 put 与扩容</h2><p><strong>put 流程</strong></p>
+<ol>
+<li>HashMap 是懒惰创建数组的，首次使用才创建数组</li>
+<li>计算索引（桶下标）</li>
+<li>如果桶下标还没人占用，创建 Node 占位返回</li>
+<li>如果桶下标已经有人占用<ol>
+<li>已经是 TreeNode 走红黑树的添加或更新逻辑</li>
+<li>是普通 Node，走链表的添加或更新逻辑，如果链表长度超过树化阈值，走树化逻辑</li>
+</ol>
+</li>
+<li>返回前检查容量是否超过阈值，一旦超过进行扩容</li>
+</ol>
+<p><strong>1.7 与 1.8 的区别</strong></p>
+<ol>
+<li><p>链表插入节点时，1.7 是头插法，1.8 是尾插法</p>
+</li>
+<li><p>1.7 是大于等于阈值且没有空位时才扩容，而 1.8 是大于阈值就扩容</p>
+</li>
+<li><p>1.8 在扩容计算 Node 索引时，会优化</p>
+</li>
+</ol>
+<p><strong>扩容（加载）因子为何默认是 0.75f</strong></p>
+<ol>
+<li>在空间占用与查询时间之间取得较好的权衡</li>
+<li>大于这个值，空间节省了，但链表就会比较长影响性能</li>
+<li>小于这个值，冲突减少了，但扩容就会更频繁，空间占用也更多</li>
+</ol>
+<h2 id="5-0-并发问题"><a href="#5-0-并发问题" class="headerlink" title="5.0 并发问题"></a>5.0 并发问题</h2><p><strong>扩容死链（1.7 会存在）</strong></p>
+<p>1.7 源码如下：</p>
+<pre><code class="java">void transfer(Entry[] newTable, boolean rehash) &#123;
+    int newCapacity = newTable.length;
+    for (Entry&lt;K,V&gt; e : table) &#123;
+        while(null != e) &#123;
+            Entry&lt;K,V&gt; next = e.next;
+            if (rehash) &#123;
+                e.hash = null == e.key ? 0 : hash(e.key);
+            &#125;
+            int i = indexFor(e.hash, newCapacity);
+            e.next = newTable[i];
+            newTable[i] = e;
+            e = next;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li><strong>数据错乱（1.7，1.8 都会存在）</strong></li>
+</ul>
+<p>​		多线程下put();元素导致元素缺失</p>
+<h2 id="6-0-key-的设计"><a href="#6-0-key-的设计" class="headerlink" title="6.0 key 的设计"></a>6.0 key 的设计</h2><ul>
+<li><strong>key 的设计要求</strong></li>
+</ul>
+<ol>
+<li>HashMap 的 key 可以为 null，但 Map 的其他实现则不然</li>
+<li>作为 key 的对象，必须实现 hashCode 和 equals，并且 key 的内容不能修改（不可变）</li>
+<li>key 的 hashCode 应该有良好的散列性</li>
+</ol>
+<ul>
+<li><p><strong>String 对象的 hashCode() 设计</strong></p>
+<ul>
+<li>目标是达到较为均匀的散列效果，每个字符串的 hashCode 足够独特</li>
+<li>字符串中的每个字符都可以表现为一个数字，称为 $S_i$，其中 i 的范围是 0 ~ n - 1 </li>
+<li>散列公式为： $S_0∗31^{(n-1)}+ S_1∗31^{(n-2)}+ … S_i ∗ 31^{(n-1-i)}+ …S_{(n-1)}∗31^0$</li>
+<li>31 代入公式有较好的散列特性，并且 31 * h 可以被优化为 <ul>
+<li>即 $32 ∗h -h $</li>
+<li>即 $2^5  ∗h -h$</li>
+<li>即 $h≪5  -h$</li>
+</ul>
+</li>
+<li>想要散列效果较好就选择，是奇数的素数</li>
+</ul>
+</li>
+<li><p>底层结构，1.7与1.8有什么不同</p>
+</li>
+</ul>
+<p>1.7: </p>
+<pre><code> 1. 数组 + 链表
+  2. 链表插入节点时使用头插法
+  3. 当前元素个数大于等于阈值(当前数组长度的四分之三)且要插入的元素的桶下标对应的位置有元素时，才进行扩容；
+  4. 扩容后，要迁移元素；计算Node桶下标时没有优化（二次hash值 &amp; oldCapacity == 0则不用移动；否则移动到新的桶下标位置去 新位置=当前桶下标					+oldCacity）
+</code></pre>
+<p>1.8: </p>
+<pre><code> 1.  数组 + 链表(或红黑树)
+ 2.  链表插入节点时使用尾插法
+ 3.  当前元素个数大于等于阈值【当前数组长度的四分之三】时，扩容；
+ 4.  扩容后，要迁移元素；计算Node桶下标时有优化（二次hash值 &amp; oldCapacity == 0则不用移动；否则移动到新的桶下标位置去 新位置=当前桶下+oldCacity）
+</code></pre>
+<ul>
+<li><p><strong>modecount的作用</strong></p>
+<p>HashMap时线程不安全的<br>每修改一次hashMap对象，modcount就会+1；</p>
+<p>当使用迭代器遍历时，它会记录下当前的modcount数量【expextedModcount】，每次取下一个元素时就会，就会判断expectModcount与modcount是否相等，不相等，就并发修改异常</p>
+</li>
+<li><p>1.7</p>
+</li>
+</ul>
+<pre><code class="java">1. 算桶下标
+    static int indexFor(int h, int length) &#123;
+        // assert Integer.bitCount(length) == 1 : &quot;length must be a non-zero power of 2&quot;;
+        //HashMap的Entry数组长度必须是  non-zero power of 2
+        //hashCode和数组长度减一按位与；数组长度减一是桶下标范围；
+        return h &amp; (length-1);
+    &#125;
+2. 使用无参构造实例HashMap
+        public HashMap() &#123;
+        //默认初始化长度1&lt;&lt;4,加载因子0.75
+        this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR);
+    &#125;
+
+3. put方法
+        public V put(K key, V value) &#123;
+        //判读数组是不是之前的空数组
+        //static final Entry&lt;?,?&gt;[] EMPTY_TABLE = &#123;&#125;;数组一开始是长度为0的数组
+        // transient Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;
+        if (table == EMPTY_TABLE) &#123;
+            //数组是长度为0的数组，就创建一个长度不为零的数组
+            inflateTable(threshold);
+        &#125;
+        if (key == null)
+            return putForNullKey(value);
+        //二次hash
+        int hash = hash(key);
+        //算桶下标
+        int i = indexFor(hash, table.length);
+         //遍历链表，添加元素时，如果发现链表中的键与新加的键相同时，旧值返回，新值替换旧值
+        for (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) &#123;
+            Object k;
+            if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;
+                V oldValue = e.value;
+                e.value = value;
+                e.recordAccess(this);
+                return oldValue;
+            &#125;
+        &#125;
+        //修改次数
+        modCount++;
+        addEntry(hash, key, value, i);
+        return null;
+    &#125;
+
+4. 头插法
+        void createEntry(int hash, K key, V value, int bucketIndex) &#123;
+        Entry&lt;K,V&gt; e = table[bucketIndex];
+        //创建一个新的Entry对象，它的next是当前桶下标的数组中的引用，接着将将自己的引用赋给当前桶下标的数组
+        table[bucketIndex] = new Entry&lt;&gt;(hash, key, value, e);
+        //当前总元素个数+1
+        size++;
+    &#125;
+    
+5. 初始化数组大小 【当put元素时，才会创建有大小的数组】
+        private void inflateTable(int toSize) &#123;
+        // Find a power of 2 &gt;= toSize
+        //找到一个大于等于2的n次方数的数
+        //toSize是调用构造时传入的初始化参数，无参时默认16
+        //数组长度一定时 2的幂次方数
+        int capacity = roundUpToPowerOf2(toSize);
+        //扩容阈值
+        threshold = (int) Math.min(capacity * loadFactor, MAXIMUM_CAPACITY + 1);
+        table = new Entry[capacity];
+        initHashSeedAsNeeded(capacity);
+    &#125;
+    
+6. hashMap扩容
+    
+    void addEntry(int hash, K key, V value, int bucketIndex) &#123;
+        //threshold通过加载因子和数组长度计算出的扩容阈值
+        //如果插入的桶下标中为null，即使现在已经满了阈值也不扩容【1.7】
+        if ((size &gt;= threshold) &amp;&amp; (null != table[bucketIndex])) &#123;
+            //扩容为原来的两倍
+            resize(2 * table.length);
+            hash = (null != key) ? hash(key) : 0;
+            bucketIndex = indexFor(hash, table.length);
+        &#125;
+
+        createEntry(hash, key, value, bucketIndex);
+    &#125;
+
+7. 扩容
+    
+        void resize(int newCapacity) &#123;
+        Entry[] oldTable = table;
+        int oldCapacity = oldTable.length;
+        if (oldCapacity == MAXIMUM_CAPACITY) &#123;
+            threshold = Integer.MAX_VALUE;
+            return;
+        &#125;
+        //两倍长度数组
+        Entry[] newTable = new Entry[newCapacity];
+        //元素转移
+        transfer(newTable, initHashSeedAsNeeded(newCapacity));
+        table = newTable;
+        threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
+    &#125;
+
+
+8. 元素转移
+    /*
+    新数组下标有两种情况： 原来的桶下标；原来的桶下标+原来数组长度
+    */
+        void transfer(Entry[] newTable, boolean rehash) &#123;
+        int newCapacity = newTable.length;
+        //遍历Entry数组
+        for (Entry&lt;K,V&gt; e : table) &#123;
+            while(null != e) &#123;
+                Entry&lt;K,V&gt; next = e.next;
+                if (rehash) &#123;
+                    e.hash = null == e.key ? 0 : hash(e.key);
+                &#125;
+                
+                //得到新的桶下标，原来的hashCode新的数组长度
+                int i = indexFor(e.hash, newCapacity);
+                //【1.7】头插法，新数组桶下标中的引用作为要转移元素的下一个元素
+                e.next = newTable[i];
+                //要转移的元素作为桶下标中的引用
+                newTable[i] = e;
+                //在链表中下移
+                e = next;
+            &#125;
+        &#125;
+    &#125;
+9. 判断是否要rehash
+    
+        final boolean initHashSeedAsNeeded(int capacity) &#123;
+        //hashSeed默认为零
+        boolean currentAltHashing = hashSeed != 0;//false
+        //jvm是否启动
+        boolean useAltHashing = sun.misc.VM.isBooted() &amp;&amp;
+                //当前数组容量是否大于某个值 默认整形最大 可以通过配置jvm参数改变
+                (capacity &gt;= Holder.ALTERNATIVE_HASHING_THRESHOLD);
+        //异或 不同为真 useAltHashing一定为真
+        boolean switching = currentAltHashing ^ useAltHashing;
+        if (switching) &#123;
+            hashSeed = useAltHashing
+                ? sun.misc.Hashing.randomHashSeed(this)
+                : 0;
+        &#125;
+        return switching;
+    &#125;
+
+10 
+    
+    
+11. 多线程扩容时形成死链
+</code></pre>
+<ul>
+<li>为什么要用红黑树</li>
+</ul>
+<p>当链表过长时，访问的效率会变低；而红黑树增删查改性能较高，当链表长度过长时，对查询性能的影星不大</p>
+<ul>
+<li>为什么不直接红黑树</li>
+</ul>
+<p>一般情况下，元素在哈希表中存储呈现泊松分布，很少有较长的链表；<br>在链表较短的情况下，查询的性能要优于红黑树；只有在链表很长的情况下，性能才远远不如红黑树<br>红黑树较于链表来说需要花费更大的存储空间；TressNode占用的空间比Node要大，所以，如非必要，尽量不要使用红黑树<br>树化是一种特殊情况，使用红黑树是为了避免被DOS攻击后导致链表过长使得查询性能降低；</p>
+<ul>
+<li>红黑树的阈为什么是8</li>
+</ul>
+<p>当hash值足够随机时，元素在hash表内呈现泊松分布，在负载因子0.75的情况下，长度超过8的链表出现的概率为0.00000006<br>选择8是为了让树化的概率足够小</p>
+<ul>
+<li>什么时候会转成红黑树</li>
+</ul>
+<p>当链表的长度大于8时，会先判断当前数组长度，如果数组长度小于64，则进行扩容；<br>当链表的长度大于8时，且数组长度大于等于64，此时会将链表转化为红黑树</p>
+<ul>
+<li>什么时候会退化成链表</li>
+</ul>
+<p>​	两种情况：</p>
+<ol>
+<li>在扩容时，如果发生拆分树的情况，当树元素个数小于等于6时，就会退化成链表<br>【当当前的数组所有元素个数大于当前数组长度的四分之三时，数组会扩容为原来的两倍】当移除树的节点时，若root、root.left、root.right、root.left.left有一个为null时，会退化成链表</li>
+</ol>
+<ul>
+<li>索引值如何计算</li>
+</ul>
+<ol>
+<li>首先调用对象的hashCode方法得到原始hash，再通过HashMap的hash方法对原始hash进行计算得到二次hash;</li>
+<li>最后通过二次hash的值对当前数组长度取模获取索引值（桶下标）【这种是方便人计算，当数组容量是2的n次幂时，走的是下面 按位与的方式，效率更高】<br>97 % 16 &#x3D;1  97&amp;(16-1)&#x3D;1<br>二次hash值 &amp; （capacity-1）；注意：capacity的值必须是二的几次幂的形式</li>
+</ol>
+<ul>
+<li>HashMap中的hash</li>
+</ul>
+<pre><code class="java">    //当hashCode非空时，将原来的hashcode右移十六位取高位十六位，再与原来的hashCode作异或运算    
+    //二次hash的好处，使得元素在数组中的分布尽可能随机
+    static final int hash(Object key) &#123;
+        int h;
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+    &#125;
+</code></pre>
+<ul>
+<li>二次hash的目的</li>
+</ul>
+<p>​		二次hash是为了综合高位数据，使得元素分布更加均匀</p>
+<ul>
+<li>数组容量为何是2的n次幂</li>
+</ul>
+<ol>
+<li><p>计算索引时，如果使用的是2的n次幂的形式，那么取模运算可以用按位与来替代，效率更高；</p>
+</li>
+<li><p>扩容时，如果 (hash &amp; oldCapacity) &#x3D;&#x3D;  ，否则到新的位置（新位置&#x3D;旧位置+oldCapacity）</p>
+</li>
+<li><p>如果数组采用的是2的n次幂作为容量时，说明更加看重性能（与上面的1 2配合使用);如果采用质数作为数组容量，则hash分布更加均匀；不能说那种设计更优，这是设计者综	合各种因素最终选择使用2的n次幂作为数组容量</p>
+</li>
+</ol>
+<ul>
+<li>put方法流程，1.7、1.8有何不同</li>
+</ul>
+<ol>
+<li>HashMap是懒惰创建数组，首次使用put添加元素时才创建数组；</li>
+<li>计算索引（桶下标）【通过key的值得到hashCode，再通过HashMap的hash方法对hashCode进行计算得到二次hash的值，将 二次hash值 &amp; (capacity-1)】</li>
+<li>如果桶下标没人占用，创建Node节点占用</li>
+<li>如果桶下标已经有人占用，分两种情况：<br>一：已经是TreeNode，走红黑树的添加或更新逻辑(equals比较相同)<br>二：是普通Node节点，走链表的更新(equals比较相同)或添加逻辑，当链表过长时就进行树化(链表长度是否大于8 &amp;&amp; 数组长度是否大于等于16)</li>
+<li>添加元素后判断当前总元素个数是否大于当前数组长度的四分之三，一旦超过就扩容</li>
+</ol>
+<ul>
+<li>加载因子为何默认是0.75f</li>
+</ul>
+<ol>
+<li>在空间占用与查询时间之间取得了较好的平衡</li>
+<li>大于这个值，空间节省了，但不能即时扩容会导致链表可能过长，影响查询性能；</li>
+<li>小于这个值，冲突减少了(链表长度可能会减少)，但空间频繁扩容，空间占用多</li>
+</ol>
+<ul>
+<li>Key是否能为null，作为key的对象有什么要求？</li>
+</ul>
+<ol>
+<li>HashMap的key可以为null，但Map的其他实现类则不然 concurrentHashMap、HashTable、TreeMap；</li>
+<li>作为key的对象必须实现hashCode和equals</li>
+<li>key的内容不可以修改</li>
+</ol>
+<ul>
+<li>String对象的hashCode如何设计？为什么每次乘以31？</li>
+</ul>
+<p>任何对象的hashCode都应该足够独特，目标为达到较为均匀的散列效果<br> hashCode设计：</p>
+<pre><code>1. 字符串中的每个字符都可以表现为一个数字，称为Si，i的范围是 0到n-1，n是元素个数
+2. 代入散列公式： 
+
+S0*31^ n-1+S1*31^ n-2+s3*31^N-3+...&quot;123456&quot; 49*31^5 + 50*31^4 + 51*31^3 + 52*31^2 + 53*31^1 + 54*31^0
+
+3. `  31`  代入公式有较好的散列特性，并且算数可以优化 31x = (32-1)x = 32x-x = 2^5x-x = x&lt;&lt;5-x
+</code></pre>
+<ul>
+<li><p>多线程下操作HahMap</p>
+</li>
+<li><ul>
+<li>问题一（数据错乱）：并发丢失数据</li>
+</ul>
+</li>
+<li><ul>
+<li>问题二：死链</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-19_20-05-04.png"></p>
+<hr>
+<h1 id="九、设计模式"><a href="#九、设计模式" class="headerlink" title="九、设计模式"></a>九、设计模式</h1><h2 id="1-0-饿汉懒汉区别"><a href="#1-0-饿汉懒汉区别" class="headerlink" title="1.0 饿汉懒汉区别"></a>1.0 饿汉懒汉区别</h2><p>饿汉本质是在静态代码块中调用私有构造；所以一碰到类就会初始化</p>
+<p>懒汉本质就是不在静态代码块中，调用私有构造</p>
+<h2 id="2-0-饿汉单例"><a href="#2-0-饿汉单例" class="headerlink" title="2.0 饿汉单例"></a>2.0 饿汉单例</h2><h3 id="2-1-饿汉单例-反射破坏单例-预防"><a href="#2-1-饿汉单例-反射破坏单例-预防" class="headerlink" title="2.1 饿汉单例 (反射破坏单例+预防)"></a>2.1 饿汉单例 (反射破坏单例+预防)</h3><pre><code class="java">package com.itheima.design_pattern;
+
+import org.junit.Test;
+
+import java.lang.reflect.Constructor;
+
+/**
+ * ClassName: SingletonDemo1
+ * Description:饿汉式单例
+ * date:2022/3/19
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class SingletonDemo1 &#123;
+    private static final SingletonDemo1 INSTANCE = new SingletonDemo1();
+
+    private SingletonDemo1() &#123;
+
+        //预防反射破坏单例
+        if (INSTANCE != null) &#123;
+            throw new RuntimeException(&quot;the instance is already exist&quot;);
+        &#125;
+        System.out.println(&quot;无参构造&quot;);
+    &#125;
+
+    public static void otherMethod() &#123;
+        System.out.println(&quot;otherMethods()&quot;);
+    &#125;
+
+
+    public static SingletonDemo1 getInstance() &#123;
+        return INSTANCE;
+    &#125;
+&#125;
+
+class TestSingleton &#123;
+
+    public static void main(String[] args) &#123;
+        //调用类的静态方法，使得SingletonDemo1这个类 加载、连接、初始化
+        //也就是静态常量SingletonDemo1对象被创建
+        SingletonDemo1.otherMethod();
+        System.out.println(SingletonDemo1.getInstance());
+        System.out.println(SingletonDemo1.getInstance());
+
+
+        //1. 反射破坏单例
+        try &#123;
+            reflection(SingletonDemo1.class);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+    private static void reflection(Class&lt;SingletonDemo1&gt; clazz) throws Exception &#123;
+        final Constructor&lt;SingletonDemo1&gt; constructor = clazz.getDeclaredConstructor();
+        //暴力反射
+        constructor.setAccessible(true);
+        System.out.println(&quot;通过反射获取的实例&quot; + constructor.newInstance());
+    &#125;
+&#125;
+==================反射破坏单例===============
+无参构造
+otherMethods()
+com.itheima.design_pattern.SingletonDemo1@330bedb4
+com.itheima.design_pattern.SingletonDemo1@330bedb4
+无参构造//反射调用构造器获取对象
+通过反射获取的实例com.itheima.design_pattern.SingletonDemo1@2503dbd3
+=====================预防反射破坏单例==================
+无参构造
+otherMethods()
+com.itheima.design_pattern.SingletonDemo1@330bedb4
+com.itheima.design_pattern.SingletonDemo1@330bedb4
+java.lang.reflect.InvocationTargetException
+Caused by: java.lang.RuntimeException: the instance is already exist
+</code></pre>
+<h3 id="2-2-饿汉单例-反序列化破坏单例-预防"><a href="#2-2-饿汉单例-反序列化破坏单例-预防" class="headerlink" title="2.2 饿汉单例 (反序列化破坏单例+预防)"></a>2.2 饿汉单例 (反序列化破坏单例+预防)</h3><pre><code class="java">package com.itheima.design_pattern;
+
+import java.io.*;
+import java.lang.reflect.Constructor;
+
+/**
+ * ClassName: SingletonDemo1
+ * Description:饿汉式单例
+ * date:2022/3/19
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+//当希望该类的对象可以转为字节保存在磁盘中或进行网络传输时，实现序列化接口
+public class SingletonDemo2 implements Serializable &#123;
+    private static final SingletonDemo2 INSTANCE = new SingletonDemo2();
+
+    private SingletonDemo2() &#123;
+
+        //预防反射破坏单例
+        if (INSTANCE != null) &#123;
+            throw new RuntimeException(&quot;the instance is already exist&quot;);
+        &#125;
+        System.out.println(&quot;无参构造&quot;);
+    &#125;
+
+    public static void otherMethod() &#123;
+        System.out.println(&quot;otherMethods()&quot;);
+    &#125;
+
+
+    public static SingletonDemo2 getInstance() &#123;
+        return INSTANCE;
+    &#125;
+
+    //预防反序列化破化单例
+    public Object readResolve() &#123;
+        return INSTANCE;
+    &#125;
+&#125;
+
+class TestSingleton &#123;
+
+    public static void main(String[] args) &#123;
+        //调用类的静态方法，使得SingletonDemo1这个类 加载、连接、初始化
+        //也就是静态常量SingletonDemo1对象被创建
+        SingletonDemo1.otherMethod();
+        System.out.println(SingletonDemo2.getInstance());
+        System.out.println(SingletonDemo2.getInstance());
+
+        //2.反序列化破坏单例
+        try &#123;
+            serializable(SingletonDemo2.getInstance());
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    //2.反序列化破坏单例
+    private static void serializable(SingletonDemo2 instance) throws Exception &#123;
+        //字节数组输出流在内存中创建一个字节数组缓冲区，所有发送到输出流的数据保存在该字节数组缓冲区中
+        final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        final ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(instance);
+        //字节数组输入流在内存中创建一个字节数组缓冲区，从输入流读取的数据保存在该字节数组缓冲区中
+        final ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
+        //反序列化创建对象，不走构造器，直接从文件中生成
+        System.out.println(ois.readObject());
+    &#125;
+
+&#125;
+
+====================反序列化破坏单例======================
+无参构造
+otherMethods()
+无参构造
+com.itheima.design_pattern.SingletonDemo2@330bedb4
+com.itheima.design_pattern.SingletonDemo2@330bedb4
+com.itheima.design_pattern.SingletonDemo2@7b23ec81//不通过构造器获得新对象
+====================预防反序列化破坏单例======================
+无参构造
+otherMethods()
+无参构造
+com.itheima.design_pattern.SingletonDemo2@330bedb4
+com.itheima.design_pattern.SingletonDemo2@330bedb4
+com.itheima.design_pattern.SingletonDemo2@330bedb4    
+</code></pre>
+<h3 id="2-3-unSave破坏单例"><a href="#2-3-unSave破坏单例" class="headerlink" title="2.3 unSave破坏单例"></a>2.3 unSave破坏单例</h3><pre><code class="java">package com.itheima.design_pattern;
+
+/**
+ * ClassName: SingletonDemo1
+ * Description:饿汉式单例
+ * date:2022/3/19
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class SingletonDemo3 &#123;
+    private static final SingletonDemo3 INSTANCE = new SingletonDemo3();
+
+    public static void otherMethod() &#123;
+        System.out.println(&quot;otherMethods()&quot;);
+    &#125;
+
+    public static SingletonDemo3 getInstance() &#123;
+        return INSTANCE;
+    &#125;
+&#125;
+
+
+class TestSingleton &#123;
+
+    public static void main(String[] args) &#123;
+        //调用类的静态方法，使得SingletonDemo1这个类 加载、连接、初始化
+        //也就是静态常量SingletonDemo1对象被创建
+        SingletonDemo1.otherMethod();
+        System.out.println(SingletonDemo3.getInstance());
+        System.out.println(SingletonDemo3.getInstance());
+
+        //unsave破坏单例
+        try &#123;
+            final Object instance = getUnsafe().allocateInstance(SingletonDemo3.class);
+            System.out.println(instance);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+    /**
+     * ClassName: TestSingleton
+     * Description:通过反射获取Unsave实例
+     * date:2022/3/19
+     *
+     * @author fgcy
+     * @since JDK 1.8
+     */
+    public static Unsafe getUnsafe() &#123;
+        try &#123;
+            Field field = Unsafe.class.getDeclaredField(&quot;theUnsafe&quot;);
+            //因为 Unsafe 的 theUnsafe 字段是private 的，所以这里需要设置成可访问的
+            field.setAccessible(true);
+            //Unsafe 的这个属性 theUnsafe 是静态的所以这里的get参数就是null
+            //因为get(Object obj))是获取某个实例的属性，类属性属于类不属于实例，实例只是共享
+            Unsafe unsafe = (Unsafe) field.get(null);
+            return unsafe;
+        &#125; catch (Exception e) &#123;
+        &#125;
+        return null;
+    &#125;
+&#125;
+===============Unsave破坏单例（无解）========================
+无参构造
+otherMethods()
+无参构造
+com.itheima.design_pattern.SingletonDemo3@330bedb4
+com.itheima.design_pattern.SingletonDemo3@330bedb4
+com.itheima.design_pattern.SingletonDemo3@4b67cf4d
+</code></pre>
+<h2 id="3-0-枚举饿汉式"><a href="#3-0-枚举饿汉式" class="headerlink" title="3.0 枚举饿汉式"></a>3.0 枚举饿汉式</h2><h3 id="3-1-认识枚举类"><a href="#3-1-认识枚举类" class="headerlink" title="3.1 认识枚举类"></a>3.1 认识枚举类</h3><pre><code class="java">package com.itheima.design_pattern;
+
+
+public enum Sex &#123;
+    MALE, FEMALE;
+&#125;
+----------------------------------
+final class Sex extends Enum&lt;Sex&gt; &#123;
+    public static final Sex MALE;
+    public static final Sex FEMALE;
+
+    private Sex(String name, int ordinal) &#123;
+        super(name, ordinal);
+    &#125;
+
+    static &#123;
+        MALE = new Sex(&quot;MALE&quot;, 0);
+        FEMALE = new Sex(&quot;FEMALE&quot;, 1);
+    &#125;
+    ........
+&#125;
+</code></pre>
+<h3 id="3-2枚举类实现饿汉式单例"><a href="#3-2枚举类实现饿汉式单例" class="headerlink" title="3.2枚举类实现饿汉式单例"></a>3.2枚举类实现饿汉式单例</h3><pre><code class="java">package com.itheima.design_pattern;
+
+import sun.misc.Unsafe;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+
+
+//枚举实现饿汉式单例
+public enum EnumSingletonTest &#123;
+    INSTANCE;
+
+    //枚举的构造都是私有的，所以这里可以省略private，但不是包权限
+    //java语言的内置规范.枚举类没有&lt;init&gt;无参构造
+    EnumSingletonTest() &#123;
+        System.out.println(&quot;private EnumSingletonTest()&quot;);
+    &#125;
+
+    public static void otherMethod() &#123;
+        System.out.println(&quot;public static void otherMethod()&quot;);
+    &#125;
+    
+    //需要重写toString；不然会打印 ”INSTANCE“
+    @Override
+    public String toString() &#123;
+        return this.getClass().getName() + &quot;@&quot; + Integer.toHexString(this.hashCode());
+    &#125;
+
+    public static EnumSingletonTest getInstance() &#123;
+        return INSTANCE;
+    &#125;
+&#125;
+
+class TestEnum &#123;
+
+    public static void main(String[] args) throws Exception &#123;
+        EnumSingletonTest.otherMethod();
+        System.out.println(EnumSingletonTest.getInstance());
+        System.out.println(EnumSingletonTest.getInstance());
+        System.out.println(&quot;Unsave破坏单例&quot; + getUnsafe().allocateInstance(EnumSingletonTest.class));
+        
+        //反序列化破坏单例
+        //失败--》【ObjectInputStream会对枚举类做出识别，不会从文件中生成对象】
+        serializable(EnumSingletonTest.getInstance());
+
+        //反射破坏单例
+        //失败
+        // com.itheima.design_pattern.EnumSingletonTest.&lt;init&gt;()没有无参构造报错
+        // Cannot reflectively create enum objects枚举类不能通过反射获取对象
+        reflection(EnumSingletonTest.class);
+    &#125;
+
+
+  
+    public static Unsafe getUnsafe() &#123;
+        try &#123;
+            Field field = Unsafe.class.getDeclaredField(&quot;theUnsafe&quot;);
+            //因为 Unsafe 的 theUnsafe 字段是private 的，所以这里需要设置成可访问的
+            field.setAccessible(true);
+            //Unsafe 的这个属性 theUnsafe 是静态的所以这里的get参数就是null
+            //因为get(Object obj))是获取某个实例的属性，类属性属于类不属于实例，实例只是共享
+            Unsafe unsafe = (Unsafe) field.get(null);
+            return unsafe;
+        &#125; catch (Exception e) &#123;
+        &#125;
+        return null;
+    &#125;
+
+    //通过反序列化获取EnumSingletonTest实例方法
+    private static void serializable(EnumSingletonTest instance) throws Exception &#123;
+        //字节数组输出流在内存中创建一个字节数组缓冲区，所有发送到输出流的数据保存在该字节数组缓冲区中
+        final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        final ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(instance);
+        //字节数组输入流在内存中创建一个字节数组缓冲区，从输入流读取的数据保存在该字节数组缓冲区中
+        //ObjectOutputStream会特殊处理枚举类，返回的式枚举类的实例，而不是文件中的字节数组生成的实例
+        final ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
+        System.out.println(&quot;反序列化破坏单例&quot; + ois.readObject());
+    &#125;
+
+    //通过反射获取EnumSingletonTest实例方法
+    private static void reflection(Class&lt;EnumSingletonTest&gt; clazz) throws Exception &#123;
+        final Constructor&lt;EnumSingletonTest&gt; constructor = clazz.getDeclaredConstructor(String.class, int.class);
+        //暴力反射
+        constructor.setAccessible(true);
+        //没有无参构造报错
+//        System.out.println(&quot;通过反射获取的实例&quot; + constructor.newInstance());
+        //枚举类不能通过反射获取对象
+//        System.out.println(&quot;通过反射获取的实例&quot; + constructor.newInstance(&quot;OTHER&quot;, 3));
+    &#125;
+&#125;
+=====================================================
+private EnumSingletonTest()
+public static void otherMethod()//运行静态方法前先跑静态代码块的内容，即先创建对象（饿汉式）
+com.itheima.design_pattern.EnumSingletonTest@330bedb4
+com.itheima.design_pattern.EnumSingletonTest@330bedb4
+Unsave破坏单例com.itheima.design_pattern.EnumSingletonTest@4b67cf4d//可以破坏
+反序列化破坏单例com.itheima.design_pattern.EnumSingletonTest@330bedb4//不可以破坏
+</code></pre>
+<h2 id="4-0-懒汉单例"><a href="#4-0-懒汉单例" class="headerlink" title="4.0 懒汉单例"></a>4.0 懒汉单例</h2><h3 id="4-1-双检锁懒汉式"><a href="#4-1-双检锁懒汉式" class="headerlink" title="4.1 双检锁懒汉式"></a>4.1 双检锁懒汉式</h3><pre><code class="java">package com.itheima.design_pattern;
+
+import com.sun.org.apache.regexp.internal.RE;
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
+
+
+public class Sluggard &#123;
+
+    //静态变量，属于类
+    //private static Sluggard INSTANCE;
+    //volatile 共享变量，可见性，有序性
+    private static volatile Sluggard INSTANCE;
+
+
+    private Sluggard() &#123;
+        System.out.println(&quot;private Sluggard()&quot;);
+    &#125;
+
+    /*
+     * 这种方式获取实例，没有线程安全性
+     *
+     * */
+    public static Sluggard getInstance1() &#123;
+        if (INSTANCE == null) &#123;
+            //当多个线程第一次在还没有创建实例时就都来到这一步时，就会创建多个实例，破坏单例
+            INSTANCE = new Sluggard();
+        &#125;
+        return INSTANCE;
+    &#125;
+
+    /*
+     * 通过加锁的方式实现线程安全
+     * 这里的锁对象时Sluggard.class
+     * 当多个线程同时到达这个方法的外部时，只有一个线程可以获得锁进入方法，其他线程挂起
+     * 当混进方法的线程执行完逻辑后，其他线程再竞争锁，进入方法，就会发现已有实例，不需要创建
+     * 但这个方法有问题:每个线程调用该方法都要等待锁（即使此时，已有实例）
+     * */
+    public static synchronized Sluggard getInstance2() &#123;
+        if (INSTANCE == null) &#123;
+            INSTANCE = new Sluggard();
+        &#125;
+        return INSTANCE;
+    &#125;
+
+    /*
+     * 解决上面方法的效率问题
+     *
+     * 双检锁懒汉式
+     * */
+    public static Sluggard getInstance() &#123;
+        //4.此时实例不为空，就不会存在线程不安全的问题
+        if (INSTANCE == null) &#123;
+            //1.当多个线程第一次在还没有创建实例时就都来到这一步时
+            //2.多个线程竞争锁
+            synchronized (Sluggard.class) &#123;
+                //3.第一个竞争到锁的线程创建了实例，在外面等锁的线程，进来之后就不会创建实例
+                if (INSTANCE == null) &#123;
+                    INSTANCE = new Sluggard();
+                &#125;
+            &#125;
+        &#125;
+        return INSTANCE;
+    &#125;
+
+    public static void otherMethod() &#123;
+        System.out.println(&quot; public static void otherMethod()&quot;);
+    &#125;
+&#125;
+
+class TestSingleton1 &#123;
+
+    public static void main(String[] args) &#123;
+        //先调用静态方法，如果是饿汉式，就会调用无参构造获取实例【加载 连接初 始化】
+        Sluggard.otherMethod();
+        System.out.println(Sluggard.getInstance());
+        System.out.println(Sluggard.getInstance());
+    &#125;
+&#125;
+===================================================================
+public static void otherMethod()//懒汉式，调用静态方法没有触发初始化
+private Sluggard()
+com.itheima.design_pattern.Sluggard@330bedb4
+com.itheima.design_pattern.Sluggard@330bedb4
+</code></pre>
+<h3 id="4-2-为什么要添加valatile修饰符"><a href="#4-2-为什么要添加valatile修饰符" class="headerlink" title="4.2 为什么要添加valatile修饰符"></a>4.2 为什么要添加valatile修饰符</h3><pre><code class="java">//主要是为了防止指令重排
+
+//反编译字节码文件查看文件执行指令顺序
+D:\learn\tencentClass\interview\ChanzPodcast\base\Project\out\production\one\com\itheima\design_pattern&gt;javap -c -v -p Sluggard.class
+
+         17: new           #6                  // class com/itheima/design_pattern/Sluggard
+        20: dup
+        21: invokespecial #7                  // Method &quot;&lt;init&gt;&quot;:()V
+        24: putstatic     #5                  // Field INSTANCE:Lcom/itheima/design_pattern/Sluggard;
+    //第17指令，创建对象；在堆内存中开辟出一块空间，根据Sluggard实例的成员变量和方法引用，计算出空间大小；【创建对象就是分配空间】
+    //第21指令，调用构造器，为成员变量初始化(没有就赋默认值)
+    //第24指令，给静态变量赋值，将创建好的Sluggard对象赋值给静态变量        
+</code></pre>
+<hr>
+<p><img src="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-20_09-13-07.png"></p>
+<hr>
+<p><img src="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-20_09-24-34.png"></p>
+<ul>
+<li>小结</li>
+</ul>
+<p>为什么懒汉单例没有线程安全问题<br>    静态成员变量在定义的同时赋值，这个赋值操作(给静态成员变量赋值)是会放在该类的静态代码块中；<br>    静态代码块中的线程安全，是由jvm负责的</p>
+<h3 id="4-3-内部类实现懒汉单例"><a href="#4-3-内部类实现懒汉单例" class="headerlink" title="4.3 内部类实现懒汉单例"></a>4.3 内部类实现懒汉单例</h3><ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">package com.itheima.design_pattern;
+
+import org.junit.Test;
+
+/**
+ * ClassName: InnerClassSingleton
+ * Description:内部类实现懒汉单例
+ * date:2022/3/20
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class InnerClassSingleton &#123;
+    
+    //私有构造
+    private InnerClassSingleton() &#123;
+        System.out.println(&quot;private InnerClassSingleton()&quot;);
+    &#125;
+    //静态方法
+    private static void otherMethod() &#123;
+        System.out.println(&quot;private static void otherMethod()&quot;);
+    &#125;
+    //内部类
+    public static class InnerClass &#123;
+        //内部类可以访问外部类的所有成员（本类中）
+        private static final InnerClassSingleton INSTANCE = new InnerClassSingleton();
+    &#125;
+
+    public static InnerClassSingleton getInstance() &#123;
+        //静态内部类属于外部类，所以通过外部类类名调用，又因为是在本类，所以可以省略外部类类名
+        //return InnerClassSingleton.InnerClass.INSTANCE;
+        //碰到类的时候，就会加载静态代码块中的内容（又由于是在静态代码块中，线程是安全的）
+        return InnerClass.INSTANCE;
+    &#125;
+
+
+    public static void main(String[] args) &#123;
+        InnerClassSingleton.otherMethod();
+        System.out.println(&quot;..........................&quot;);
+        System.out.println(InnerClassSingleton.getInstance());
+        System.out.println(InnerClassSingleton.getInstance());
+    &#125;
+&#125;
+=======================================
+private static void otherMethod()//InnerClassSingleton实例的创建在内部类中，这里只是调用了外部类的方法，没有碰到内部类，所以不会调用无参构造
+..........................
+private InnerClassSingleton()
+com.itheima.design_pattern.InnerClassSingleton@330bedb4
+com.itheima.design_pattern.InnerClassSingleton@330bedb4
+</code></pre>
+<h2 id="5-0-jdk有哪些地方体现单例"><a href="#5-0-jdk有哪些地方体现单例" class="headerlink" title="5.0 jdk有哪些地方体现单例"></a>5.0 jdk有哪些地方体现单例</h2><ul>
+<li>双检锁懒汉式</li>
+</ul>
+<pre><code class="java">    System.java
+    private static volatile Console cons = null;
+     public static Console console() &#123;
+         if (cons == null) &#123;
+             synchronized (System.class) &#123;
+                 cons = sun.misc.SharedSecrets.getJavaIOAccess().console();
+             &#125;
+         &#125;
+         return cons;
+     &#125;
+</code></pre>
+<ul>
+<li>饿汉式单例</li>
+</ul>
+<pre><code class="java">public class Runtime &#123;
+    //在静态代码块中实例
+    private static Runtime currentRuntime = new Runtime();
+    //提供一个对外访问的入口
+    public static Runtime getRuntime() &#123;
+        return currentRuntime;
+    &#125;
+    //私有构造
+    private Runtime() &#123;&#125;
+    
+    //退出虚拟机的方法，非零代表异常退出
+    public void exit(int status) &#123;
+      SecurityManager security = System.getSecurityManager();
+        if (security != null) &#123;
+            security.checkExit(status);
+        &#125;
+        Shutdown.exit(status);
+    &#125;
+    //告诉虚拟机要做一次垃圾回收
+    public native void gc();
+</code></pre>
+<ul>
+<li>内部类懒汉式单例</li>
+</ul>
+<pre><code class="java"> public class Collections &#123;
+    static class &lt;E&gt;&#123;
+        //内部类的内部类
+        private static class EmptyNavigableSet&lt;E&gt; extends UnmodifiableNavigableSet&lt;E&gt;
+            implements Serializable &#123;
+               //防止反序列化破坏单例
+            private Object readResolve()&#123; return EMPTY_NAVIGABLE_SET; &#125;
+        &#125;
+        
+        //当有人碰到UnmodifiableNavigableSet时，才会触发初始化
+        //EmptyNavigableSet的静态成员变量
+        @SuppressWarnings(&quot;rawtypes&quot;)
+        private static final NavigableSet&lt;?&gt; EMPTY_NAVIGABLE_SET =
+                new EmptyNavigableSet&lt;&gt;();
+    
+     //UnmodifiableNavigableSet类返回EmptyNavigableSet单例的方法
+     //EmptyNavigableSet的静态成员方法
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;E&gt; NavigableSet&lt;E&gt; emptyNavigableSet() &#123;
+        return (NavigableSet&lt;E&gt;) UnmodifiableNavigableSet.EMPTY_NAVIGABLE_SET;
+    &#125;   
+&#125;
+     //Collections的静态成员方法
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;E&gt; SortedSet&lt;E&gt; emptySortedSet() &#123;
+        return (SortedSet&lt;E&gt;) UnmodifiableNavigableSet.EMPTY_NAVIGABLE_SET;
+    &#125;
+ &#125;
+</code></pre>
+<ul>
+<li>饿汉单例</li>
+</ul>
+<pre><code class="java">public class Collections &#123;
+    //在外部类中创建内部类对象不用带类名
+    public static final Set EMPTY_SET = new EmptySet&lt;&gt;();
+    
+        @SuppressWarnings(&quot;unchecked&quot;)
+        public static final &lt;T&gt; Set&lt;T&gt; emptySet() &#123;
+            return (Set&lt;T&gt;) EMPTY_SET;
+     &#125;
+    
+    //静态内部类（使用默认的公开无参构造，但外部类无法访问，私有的内部类）
+    private static class EmptySet&lt;E&gt;&#123;&#125;
+        
+ &#125;
+</code></pre>
+<ul>
+<li>枚举饿汉式</li>
+</ul>
+<pre><code class="java">public interface Comparator&lt;T&gt; &#123;   
+    public static &lt;T extends Comparable&lt;? super T&gt;&gt; Comparator&lt;T&gt; naturalOrder() &#123;
+        //调用枚举方法创造的实例
+        return (Comparator&lt;T&gt;) Comparators.NaturalOrderComparator.INSTANCE;
+    &#125;  
+&#125;
+
+
+class Comparators &#123;
+enum NaturalOrderComparator implements Comparator&lt;Comparable&lt;Object&gt;&gt; &#123;
+        INSTANCE;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>JDK 中单例的体现</strong></p>
+<ul>
+<li><code>Runtime </code>   体现了饿汉式单例</li>
+<li><code>Console </code>  体现了双检锁懒汉式单例</li>
+<li><code>Collections </code> 中的 EmptyNavigableSet 内部类懒汉式单例</li>
+<li><code>ReverseComparator.REVERSE_ORDER</code> 内部类懒汉式单例</li>
+<li><code>Comparators.NaturalOrderComparator.INSTANCE</code> 枚举饿汉式单例</li>
+</ul>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>类型转换&amp;常见运算符 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>类型转换&amp;常见运算符 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h2 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h2><h3 id="1-0-自动类型转换"><a href="#1-0-自动类型转换" class="headerlink" title="1.0 自动类型转换"></a>1.0 自动类型转换</h3><p>类型范围小的变量，可以直接赋值给类型范围大的变量</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-01-43.png"></p>
+<hr>
+<span id="more"></span>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225336185.png" alt="image-20220824225336185"></p>
+<hr>
+<h3 id="2-0-自动类型转换运算"><a href="#2-0-自动类型转换运算" class="headerlink" title="2.0 自动类型转换运算"></a>2.0 自动类型转换运算</h3><ol>
+<li>在表达式中，小范围类型的变量会自动转换成当前较大范围的类型再运算。</li>
+<li>表达式的最终结果类型由表达式中的最高类型决定。</li>
+<li>在表达式中，byte、short、char 是直接转换成int类型参与运算的</li>
+<li><strong>字面量</strong>是整数且没有后缀L、l的当成是int来运算</li>
+<li><strong>字面量</strong>是小数且没有F、f作为后缀的当成是double运算</li>
+</ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225314235.png" alt="image-20220824225314235"></p>
+<hr>
+<pre><code class="java">        byte a = 100;
+        byte b = 90;
+         //byte short char 其中一个或多个在进行运算时自动转成int，再运算
+        int i = a + b; 
+        System.out.println(i);
+</code></pre>
+<h3 id="3-0-强制类型转换"><a href="#3-0-强制类型转换" class="headerlink" title="3.0 强制类型转换"></a>3.0 强制类型转换</h3><p>可以 强行将类型范围大的变量、数据赋值给类型范围小的变量</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-41-14.png"></p>
+<hr>
+<p>强制类型转换可能造成数据(丢失)溢出；<br>浮点型强转成整型，直接丢掉小数部分，保留整数部分返回</p>
+<h2 id="二、toString、valueOf、-String-的区别"><a href="#二、toString、valueOf、-String-的区别" class="headerlink" title="二、toString、valueOf、(String)的区别"></a>二、toString、valueOf、(String)的区别</h2><ul>
+<li>代码体现</li>
+</ul>
+<pre><code class="java">package api_object;
+
+import java.util.Calendar;
+
+/**
+ * ClassName: StringDemo1 &lt;br/&gt;
+ * Description: &lt;br/&gt;
+ * date: 2022/3/21 16:40&lt;br/&gt;
+ *
+ * @author fgcy&lt;br /&gt;
+ * @since JDK 1.8
+ */
+public class StringDemo1 &#123;
+    public static void main(String[] args) &#123;
+        int a1 = 10;
+        Integer a2 = 10;
+        byte b1 = 12;
+        Byte b2 = 12;
+        short ss1 = 2;
+        Short ss2 = 2;
+        Long l1 = 888L;
+        long l2 = 888L;
+        char c1 = &#39;a&#39;;
+        Character c2 = &#39;a&#39;;
+        Float f1 = 1.29f;
+        float f2 = 1.29f;
+        double d1 = 9.9;
+        Double d2 = 9.8;
+
+        //编译报错，基本数据类型及其包装类不能强转为String类
+        //同样的的String类也不能强转为基本数据类型及其包装类
+//        String s1 = (String) a1;
+//        String s1 = (String) a2;
+//        String s1 = (String) b1;
+//        String s1 = (String) b2;
+//        String s1 = (String) ss1;
+//        String s1 = (String) ss2;
+//        String s1 = (String) l1;
+//        String s1 = (String) l2;
+//        String s1 = (String) c1;
+//        String s1 = (String) c2;
+//        String s1 = (String) f1;
+//        String s1 = (String)f2;
+//        String s1 = (String) d1;
+//        String s1 = (String) d2;
+
+        //基本数据类型没有toString方法
+//      a1.toString();
+        System.out.println(a2.toString());//10
+
+        //null.toString()会报错
+        a2 = null;
+        //println()底层使用了String.valueOf()方法，源码如下：
+            //return (obj == null) ? &quot;null&quot; : obj.toString();
+        System.out.println(a2);//null
+//      System.out.println(a2.toString());
+
+        //基本数据类型及其包装类转String类型推荐做法是String.valueOf()
+        //如果是null会返回字符串null
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(a1));//10
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(a2));//null
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(b1));//12
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(b2));//12
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(c2));//a
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(c1));//a
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(ss1));//2
+        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(ss2));//2
+
+        //通过拼接字符串的方法，将基本数据类型及其包装类变为String
+        //基本数据类型转String除了拼接空字符就是String.valueOf(x)
+        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + b1 + &quot;&quot;);//12
+        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + b2 + &quot;&quot;);//12
+        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + ss2 + &quot;&quot;);//2
+        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + ss1 + &quot;&quot;);//2
+
+
+        //包装类型与String 无论谁强转转谁 都报错，编译就出错
+//        Integer integer = (Integer) &quot;aaa&quot;;
+
+
+        //用Object类型的变量(接基本数据类型的字面值)，强制转换为String(向下转型)，编译不报错
+        Object o = 12;
+        //用Object类型的变量接包装类(向上转型)，强制转换为String(向下转型)，编译不报错
+        Object object = a2;
+        //运行的时候就报错，类型转换异常
+        //java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+//      String rs = (String) o;
+        Object obj = &quot;a&quot;;
+        Integer r = obj instanceof Integer ? (Integer) obj : -1;
+        System.out.println(&quot;String类与包装类强制类型转换：&quot; + r);//-1
+    &#125;
+&#125;
+=================================================
+10
+null
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：10
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：null
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：12
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：12
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：2
+通过String.valueOf(x)，使得基本数据类型及其包装类变为String：2
+通过拼接空字符串将基本数据类型及其包装类变为String：12
+通过拼接空字符串将基本数据类型及其包装类变为String：12
+通过拼接空字符串将基本数据类型及其包装类变为String：2
+通过拼接空字符串将基本数据类型及其包装类变为String：2
+String类与包装类强制类型转换：-1
+</code></pre>
+<ul>
+<li>总结</li>
+</ul>
+<ol>
+<li><p>toString()，可能会抛空指针异常</p>
+<p>在这种使用方法中，因为<code>java.lang.Object类</code>里已有<code>public方法toString()</code>，所以java对象都可以调用此方法。</p>
+<p>但在使用时要注意，必须保证object不是null值，否则将抛出NullPointerException异常。</p>
+<p>采用这种方法时，通常<strong>派生类会覆盖</strong>Object里的toString()方法。</p>
+</li>
+<li><p>String.valueOf()，推荐使用，因为当对象为null时，返回字符串“null”</p>
+<p><code>String.valueOf()方法</code>是推荐使用的，因为<strong>它不会出现空指针异常</strong>，而且是静态的方法，直接通过String调用即可，只是有一点需要注意，就是上面提到的，如果为对象为null，<code>String.valueOf() </code>返回结果是 <strong>字符串“null”</strong>。而不是null。</p>
+</li>
+<li><p>(String)强转，不推荐使用</p>
+<p>（String）是标准的类型转换，将Object类型转为String类型，使用(String)强转时，最好使用instanceof做一个类型检查，以判断是否可以进行强转，否则容易抛出<code> ClassCastException异常</code>。需要注意的是编写的时候，编译器并不会提示有语法错误，所以这个方法要谨慎的使用</p>
+</li>
+<li><p><strong>基本数据类型 及其包装类</strong> 与  <strong>String</strong> 无论谁【强转】转谁 都报错，编译就出错</p>
+</li>
+<li><p>基本数据类型没有toString方法，对象独有</p>
+</li>
+<li><p><code>println()底层</code> 使用了<code>String.valueOf()方法</code>，源码如下：</p>
+<pre><code class="java">return (obj == null) ? &quot;null&quot; : obj.toString();
+</code></pre>
+</li>
+</ol>
+<h2 id="三、常见运算符"><a href="#三、常见运算符" class="headerlink" title="三、常见运算符"></a>三、常见运算符</h2><h3 id="1-0-算数运算符"><a href="#1-0-算数运算符" class="headerlink" title="1.0 算数运算符"></a>1.0 算数运算符</h3><pre><code>*  /  %
++  -
+如果两个整数做除法，其结果一定是整数，因为最高类型是整数。10/3=3  10*1.0/3=3.333335
+</code></pre>
+<ul>
+<li>数值拆分</li>
+</ul>
+<pre><code class="java">    @Test
+    public void testBasic() &#123;
+        int score = 123;
+        //取模运算符可以得到最尾端的数字
+        System.out.println(&quot;个位：&quot; + score % 10 + &quot; 十位:&quot; + score / 10 % 10 + &quot; 百位&quot; + score / 100);
+    &#125;
+</code></pre>
+<h3 id="2-0-做连接符"><a href="#2-0-做连接符" class="headerlink" title="2.0 + 做连接符"></a>2.0 <strong>+</strong> 做连接符</h3><pre><code class="java">能算则算，不能算就在一起。（计算机很聪明）
+int a = 5 ;
+System.out.println(“abc” + ‘a’); // abca   
+System.out.println(&quot;abc&quot; + a);  // abc5
+System.out.println(5 + a);   // 10
+System.out.println(&quot;abc&quot; + 5 + ‘a’);//abc5a
+System.out.println(15 + &quot;abc&quot; + 15);//15abc15
+System.out.println(a + &#39;a’);//102
+System.out.println(a + &quot;&quot; +&#39;a’);//5a
+System.out.println(a + &#39;a&#39;+&quot; itheima &quot;);//102itheima
+System.out.println(&quot;itheima&quot;+ a + &#39;a’);//itheima5a
+System.out.println(&quot;itheima&quot;+ ( a + &#39;a&#39; ));//itheima102
+</code></pre>
+<h3 id="3-0-自增自减运算符"><a href="#3-0-自增自减运算符" class="headerlink" title="3.0 自增自减运算符"></a>3.0 自增自减运算符</h3><ul>
+<li>概念</li>
+</ul>
+<ol>
+<li>++ 、– 只能操作变量，不能操作字面量的</li>
+<li>放在变量的前面，先对变量进行+1、-1，再拿变量的值进行运算。 </li>
+<li>放在变量的后面，先拿变量的值进行运算，再对变量的值进行+1、-1</li>
+</ol>
+<ul>
+<li>代码体现</li>
+</ul>
+<pre><code class="java"> @Test
+    public void testBasic1() &#123;
+        int c = 10;
+        int d = 5;
+        int rs3 = c++ + ++c - --d - ++d + 1 + c--;
+        System.out.println(rs3);
+    &#125;
+</code></pre>
+<pre><code>26
+</code></pre>
+<h3 id="4-0-赋值运算符"><a href="#4-0-赋值运算符" class="headerlink" title="4.0 赋值运算符"></a>4.0 赋值运算符</h3><ul>
+<li>基本赋值运算符</li>
+</ul>
+<pre><code>=
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-28_21-50-48.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void testBasic2() &#123;
+        int c = 10;
+        int d = 5;
+        c = c + d;
+        c += d;//等价于 c = (int)(c + d)
+
+        byte a = 30;
+        byte b = 120;
+        a += b;//等价于  a = (byte)(a + b)
+        System.out.println(a);//精度丢失
+    &#125;
+</code></pre>
+<pre><code>15
+-106
+</code></pre>
+<h3 id="5-0-关系运算符"><a href="#5-0-关系运算符" class="headerlink" title="5.0 关系运算符"></a>5.0 关系运算符</h3><ul>
+<li>概念</li>
+</ul>
+<p>​		是对数据进行条件判断的符号，最终会返回一个比较的布尔结果（false,true）</p>
+<ul>
+<li>形式</li>
+</ul>
+<pre><code>== &lt; &lt;= &gt;= !=
+</code></pre>
+<h3 id="6-0逻辑运算符"><a href="#6-0逻辑运算符" class="headerlink" title="6.0逻辑运算符"></a>6.0<strong>逻辑运算符</strong></h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-03-58.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-05-26.png"></p>
+<hr>
+<ul>
+<li>代码体现</li>
+</ul>
+<pre><code class="java">    @Test
+    public void testBasic3() &#123;
+        int c = 10;
+        int d = 5;
+        System.out.println(&quot;短路与：&quot; + (c &gt;= 99 &amp;&amp; d++ &lt; 100) + &quot; d=&quot; + d);
+        System.out.println(&quot;逻辑与：&quot; + (c &gt;= 99 &amp; d++ &lt; 100) + &quot; d=&quot; + d);
+        System.out.println(&quot;----------------------------------------&quot;);
+        System.out.println(&quot;短路或：&quot; + (c &lt;= 99 || d++ &lt; 100) + &quot; d=&quot; + d);
+        System.out.println(&quot;逻辑或：&quot; + (c &gt;= 99 | d++ &lt; 100) + &quot; d=&quot; + d);
+    &#125;
+</code></pre>
+<pre><code>短路与：false d=5
+逻辑与：false d=6
+----------------------------------------
+短路或：true d=6
+逻辑或：true d=7
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<ol>
+<li>逻辑与：同真为真</li>
+<li>逻辑异或：不同为真</li>
+<li>逻辑或：同假为假</li>
+<li>短路性能更好</li>
+</ol>
+<h3 id="7-0三元运算符（嵌套）"><a href="#7-0三元运算符（嵌套）" class="headerlink" title="7.0三元运算符（嵌套）"></a>7.0三元运算符（嵌套）</h3><pre><code class="java">    @Test
+    public void testBasic4() &#123;
+        int c = 120;
+        int d = 5;
+        int b = 78;
+        System.out.println(c &gt; d ? (c &gt; b ? c : b ):( d &gt; b ? d : b));
+    &#125;
+</code></pre>
+<pre><code>120
+</code></pre>
+<h3 id="8-0运算符优先级"><a href="#8-0运算符优先级" class="headerlink" title="8.0运算符优先级"></a>8.0运算符优先级</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-02_15-01-07.png"></p>
+<hr>
+<pre><code>()
+! - ++ --
+* / %
++ -
+&lt;&lt; &gt;&gt; &gt;&gt;&gt;
+&lt; &lt;= &gt; &gt;= instanceof
+== !=
+&amp; 
+^
+|
+&amp;&amp;
+||
+?:
+= += =+ *= /= %= &amp;=
+</code></pre>
+<pre><code>算数运算符 》 位移运算符 》 关系运算符 》 逻辑运算符 》 三元运算符 》 赋值运算符
+</code></pre>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

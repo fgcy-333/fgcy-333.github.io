@@ -1,0 +1,1478 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>网络编程 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>网络编程 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>网络编程</p>
+<ul>
+<li>概念</li>
+</ul>
+<p>网络编程可以让程序与网络上的其他设备中的程序进行数据交互</p>
+<ul>
+<li>网络通信基本模式</li>
+</ul>
+<p>常见的通信模式有如下2种形式：Client-Server(CS) 、 Browser&#x2F;Server(BS)<br>c&#x2F;s: 需要程序员开发实现客户端和服务端，并且需要客户下载安装客户端<br>b&#x2F;s: 需要程序员开发实现服务端，并且需要客户下载安装浏览器</p>
+<span id="more"></span>
+
+<h2 id="网络通信三要素"><a href="#网络通信三要素" class="headerlink" title="网络通信三要素"></a><strong>网络通信三要素</strong></h2><ul>
+<li>概念</li>
+</ul>
+<p>IP地址：设备在网络中的地址，是唯一的标识。</p>
+<p>端口：应用程序在设备中唯一的标识。</p>
+<p>协议:数据在网络中传输的规则，常见的协议有UDP协议和TCP协议</p>
+<ul>
+<li>IP地址</li>
+</ul>
+<p>IP（Internet Protocol）：全称”互联网协议地址”，是分配给上网设备的唯一标志。<br>常见的IP分类为：IPv4和IPv6</p>
+<ul>
+<li>IPV4</li>
+</ul>
+<p>目前正在使用的网络协议地址，4字节，32位；采用点分十进制表示法</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829576.png"></p>
+<hr>
+<ul>
+<li>IPV6</li>
+</ul>
+<p>16个字节，128位，冒分十六进制，分为八个整数用 ： 隔开</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261830205.png" alt="Snipaste_2022-03-15_23-36-54"></p>
+<hr>
+<ul>
+<li><strong>IP</strong>地址基本寻路</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829908.png"></p>
+<hr>
+<ul>
+<li><strong>IP</strong>地址形式：</li>
+</ul>
+<p>公网地址、和私有地址(局域网使用)。<br>192.168. 开头的就是常见的局域网地址，范围即为192.168.0.0–192.168.255.255，专门为组织机构内部使用</p>
+<ul>
+<li><strong>IP</strong>常用命令：</li>
+</ul>
+<p>ipconfig：查看本机IP地址<br>ping IP地址：检查网络是否连通</p>
+<ul>
+<li><strong>特殊</strong>IP地址</li>
+</ul>
+<p>本机IP: 127.0.0.1或者localhost：称为回送地址也可称本地回环地址，只会寻找当前所在本机</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>说说网络通信至少需要几个要素<br>    IP、端口、协议。<br>IP地址是做什么的，具体有几种<br>    定位网络上的设备的，有IPv4 , IPv6.<br>如何查看本机IP地址，如何看是否与对方互通<br>    ipcofig<br>    ping 192.168.10.23<br>本机IP是谁？<br>    127.0.0.1或者是localhost</p>
+<h3 id="IP地址操作类-InetAddress"><a href="#IP地址操作类-InetAddress" class="headerlink" title="IP地址操作类-InetAddress"></a>IP地址操作类-InetAddress</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829669.png"></p>
+<hr>
+<ul>
+<li>使用</li>
+</ul>
+<pre><code class="java">    public static void main(String[] args) throws Exception &#123;
+        final InetAddress localHost = InetAddress.getLocalHost();
+        System.out.println(&quot;该IP的主机名：&quot; + localHost.getHostName());
+        System.out.println(&quot;该IP值：&quot; + localHost.getHostAddress());
+        System.out.println(&quot;InetAddress实例：&quot; + localHost);
+        System.out.println(&quot;----------------------------&quot;);
+        final InetAddress baidu = InetAddress.getByName(&quot;www.baidu.com&quot;);
+        System.out.println(&quot;InetAddress实例(百度)：&quot; + baidu);
+        System.out.println(&quot;该IP的主机名：&quot; + baidu.getHostName());
+        System.out.println(&quot;该IP值：&quot; + baidu.getHostAddress());
+        System.out.println(&quot;----------------------------&quot;);
+        final InetAddress baidu2 = InetAddress.getByName(&quot;14.215.177.39&quot;);
+        System.out.println(&quot;InetAddress实例(百度)：&quot; + baidu2);
+        System.out.println(&quot;该IP的主机名：&quot; + baidu2.getHostName());
+        System.out.println(&quot;----------------------------&quot;);
+        System.out.println(baidu.isReachable(5000));
+    &#125;
+</code></pre>
+<pre><code>该IP的主机名：LAPTOP-KH07R9VQ
+该IP值：192.168.175.1
+InetAddress实例：LAPTOP-KH07R9VQ/192.168.175.1
+----------------------------
+InetAddress实例(百度)：www.baidu.com/14.215.177.39
+该IP的主机名：www.baidu.com
+该IP值：14.215.177.39
+----------------------------
+InetAddress实例(百度)：/14.215.177.39
+该IP的主机名：14.215.177.39
+----------------------------
+true
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>IP地址的代表类是谁？<br>    InetAddress类<br>如何获取本机IP对象<br>    public static InetAddress getLocalHost()<br>如何判断与该IP地址对象是否互通？<br>    public boolean isReachable(int timeout)</p>
+<h3 id="要素二：端口号"><a href="#要素二：端口号" class="headerlink" title="要素二：端口号"></a>要素二：端口号</h3><ul>
+<li>概念</li>
+</ul>
+<p>标识正在计算机设备上运行的进程（程序），被规定为一个 16 位的二进制，范围是 0~65535</p>
+<ul>
+<li>端口类型</li>
+</ul>
+<p>周知端口：0~1023，被预先定义的知名应用占用（如：HTTP占用 80，FTP占用21）</p>
+<p>注册端口：1024~49151，分配给用户进程或某些应用程序。（如：Tomcat占 用8080，MySQL占用3306）</p>
+<p>动态端口：49152到65535，之所以称为动态端口，是因为它 一般不固定分配某种进程，而是动态分配。</p>
+<ul>
+<li>注意</li>
+</ul>
+<p>我们自己开发的程序选择注册端口，且一个设备中不能出现两个程序的端口号一样，否则出错<br>但同一个应用，在不同设备上的端口应该是要一致的</p>
+<h3 id="要素三：协议"><a href="#要素三：协议" class="headerlink" title="要素三：协议"></a>要素三：协议</h3><ul>
+<li><strong>通信协议</strong></li>
+</ul>
+<p>连接和通信数据的规则被称为网络通信协议</p>
+<ul>
+<li><strong>网络通信协议有两套参考模型</strong></li>
+</ul>
+<p>OSI参考模型：世界互联协议标准，全球通信规范，由于此模型过于理想化，未能在因特网上进行广泛推广。<br>TCP&#x2F;IP参考模型(或TCP&#x2F;IP协议)：事实上的国际标准；实际应用中</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829209.png"></p>
+<hr>
+<ul>
+<li><strong>传输层的</strong>2个常见协议</li>
+</ul>
+<p>TCP(Transmission Control Protocol) ：传输控制协议<br>UDP(User Datagram Protocol)：用户数据报协议</p>
+<ul>
+<li><strong>TCP</strong>协议特点</li>
+</ul>
+<p>使用TCP协议，必须双方先建立连接，它是一种面向连接的可靠通信协议。<br>传输前，采用“三次握手”方式建立连接，所以是可靠的 。<br>在连接中可进行大数据量的传输 。<br>连接、发送数据都需要确认，且传输完毕后，还需释放已建立的连接，通信效率较低</p>
+<ul>
+<li><strong>TCP</strong>协议通信场景</li>
+</ul>
+<p>对信息安全要求较高的场景，例如：文件下载、金融等数据通信。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829430.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261830609.png"></p>
+<hr>
+<ul>
+<li>UDP协议</li>
+</ul>
+<p>UDP是一种无连接、不可靠传输的协议。<br>将数据源IP、目的地IP和端口封装成数据包，不需要建立连接<br>每个数据包的大小限制在64KB内<br>发送不管对方是否准备好，接收方收到也不确认，故是不可靠的<br>可以广播发送 ，发送数据结束时无需释放资源，开销小，速度快</p>
+<ul>
+<li><strong>UDP</strong>协议通信场景</li>
+</ul>
+<p>语音通话，视频会话等</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>通信协议是什么？<br>    计算机网络中，连接和通信数据的规则被称为网络通信协议。</p>
+<p>TCP通信协议的特点是什么样的?<br>    它是一种面向连接的可靠通信协议。<br>    传输前，采用“三次握手”方式建立连接，点对点的通信，所以可靠。<br>    在连接中可进行大数据量的传输。<br>    通信效率较低。</p>
+<p>UDP协议的特点是什么<br>    用户数据报协议(User Datagram Protocol)<br>    UDP是面向无连接，不可靠传输的通信协议。<br>    速度快，有大小限制一次最多发送64K，数据不安全，易丢失数据。</p>
+<h2 id="UDP通信"><a href="#UDP通信" class="headerlink" title="UDP通信"></a>UDP通信</h2><h3 id="实现一收一发"><a href="#实现一收一发" class="headerlink" title="实现一收一发"></a>实现一收一发</h3><ul>
+<li>UDP协议特点</li>
+</ul>
+<p>UDP是一种无连接、不可靠传输的协议。<br>将数据源IP、目的地IP和端口以及数据封装成数据包，大小限制在64KB内，直接发送出去即可。</p>
+<ul>
+<li><p>UDP的数据包对象</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829864.png"></p>
+<hr>
+</li>
+<li><p>数据包的常用方法</p>
+</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829065.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829185.png"></p>
+<hr>
+<ul>
+<li>收发端常用方法</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829428.png"></p>
+<hr>
+<ul>
+<li>使用UDP通信实现步骤</li>
+</ul>
+<p>客户端实现步骤<br>    1创建DatagramSocket对象（发送端对象）<br>    2创建DatagramPacket对象封装需要发送的数据（数据包对象）<br>    3使用DatagramSocket对象的send方法传入DatagramPacket对象<br>    4释放资源</p>
+<p>接收端实现步骤<br>    1创建DatagramSocket对象并指定端口（接收端对象）<br>    2创建DatagramPacket对象接收数据（数据包对象）<br>    3使用3DatagramSocket对象的receive方法传入DatagramPacket对象<br>    4释放资源</p>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+/**
+ * ClassName: ClientDemo1
+ * Description:客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo1 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============客户端启动=============&quot;);
+        final DatagramSocket socket = new DatagramSocket();//发送端使用默认端口
+        final byte[] data = &quot;韭菜无敌，冲冲冲！！！！&quot;.getBytes();
+        /*
+         public DatagramPacket(byte buf[], int length,
+                          InetAddress address, int port)
+             参数一:要发送的数据，需要转化为字节数组
+             参数二:字节数组的长度，可以指定发送数据的长度
+             参数三:向那个ip的主机发送数据
+             参数四:向哪个主机的进程(端口号)发送数据
+        指定向主机ip为localhost，端口为1111的进程发送，字节长度为data.length的数组
+        * */
+        final DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getLocalHost(), 1111);
+        socket.send(packet);
+         socket.close();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>    =============客户端启动=============
+</code></pre>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo1 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============服务端启动=============&quot;);
+        final DatagramSocket socket = new DatagramSocket(1111);//服务端使用指定端口
+        final byte[] data = new byte[1024 * 64];//udp数据包默认64kb
+        final DatagramPacket packet = new DatagramPacket(data, data.length);//新建一个数据包用来接数据
+        socket.receive(packet);
+
+        //韭菜无敌，冲冲冲！！！！ ///、/、/、、/、/、/一堆utf-8没有对应的字符
+//        System.out.println(new String(data, 0, data.length));//数组的长度是数组有多长就取多长（出事）
+
+        final int length = packet.getLength();//通过数据包获取数据长度
+        System.out.println(new String(data, 0, length));//一收一发 实现
+
+        System.out.println(packet.getAddress());//获取对方的ip
+        System.out.println(packet.getPort());//获取对方端口
+        System.out.println(packet.getSocketAddress());//获取对方端口和ip
+         socket.close();
+    &#125;
+&#125;
+</code></pre>
+<pre><code>=============服务端启动=============
+韭菜无敌，冲冲冲！！！！
+/192.168.175.1
+57397
+/192.168.175.1:57397
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>UDP发送端和接收端的对象是哪个？<br>    public DatagramSocket()：创建发送端的Socket对象<br>    public DatagramSocket(int port)：创建接收端的Socket对象</p>
+<p>数据包对象是哪个？<br>    DatagramPacket</p>
+<p>如何发送、接收数据包<br>    使用DatagramSocket的如下方法：<br>    public void send(DatagramPacket dp)：发送数据包<br>    public void receive(DatagramPacket dp) ：接收数据包</p>
+<h3 id="UDP通信：多发多收"><a href="#UDP通信：多发多收" class="headerlink" title="UDP通信：多发多收"></a>UDP通信：多发多收</h3><ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.Objects;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description:客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo2 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============客户端启动=============&quot;);
+        
+        //当指定端口号，想要将这个这个程序开两个进程时，第二个会报错 java.net.BindException: Address already in use: Cannot bind
+//        final DatagramSocket socket = new DatagramSocket(5555);
+
+        final DatagramSocket socket = new DatagramSocket();//使用无参构造，使用注册端口四万多到65536
+        final Scanner sc = new Scanner(System.in);
+        while (true) &#123;
+            System.out.print(&quot;请说：&quot;);
+            final String line = sc.nextLine();
+            if (Objects.equals(&quot;exit&quot;, line)) &#123;
+                System.out.println(&quot;告辞&quot;);
+                socket.close();
+                break;
+            &#125;
+            final byte[] data = line.getBytes();//字节数组，toCharArray();是字符数组
+
+            //指定想要连接的主机和端口号
+            final DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getLocalHost(), 1111);
+            socket.send(packet);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo2 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============服务端启动=============&quot;);
+        final DatagramSocket socket = new DatagramSocket(1111);//服务端使用指定端口
+        final byte[] data = new byte[1024 * 64];//udp数据包默认64kb
+        final DatagramPacket packet = new DatagramPacket(data, data.length);//新建一个数据包用来接数据【可以重复利用的工具包】
+        while (true) &#123;
+            socket.receive(packet);
+            final int length = packet.getLength();//接完数据后才能知到包中数据的长度
+            System.out.println(&quot;收到来自[&quot; + packet.getSocketAddress() + &quot;]的消息：&quot; + new String(data, 0, length));//取多少，输出多少
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code> =============服务端启动=============
+收到来自[/192.168.175.1:50997]的消息：说你妹夫
+收到来自[/192.168.175.1:50996]的消息：狗看了都摇头
+</code></pre>
+<pre><code>=============客户端启动=============
+请说：狗看了都摇头
+请说：
+</code></pre>
+<pre><code>=============客户端启动=============
+请说：说你妹夫
+请说：
+</code></pre>
+<p>​    </p>
+<ul>
+<li>UDP的接收端为什么可以接收很多发送端的消息</li>
+</ul>
+<p>接收端只负责接收数据包，无所谓是哪个发送端的数据包</p>
+<h3 id="程序多开"><a href="#程序多开" class="headerlink" title="程序多开"></a>程序多开</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829907.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829708.png"></p>
+<hr>
+<h2 id="UDP通信广播、组播"><a href="#UDP通信广播、组播" class="headerlink" title="UDP通信广播、组播"></a>UDP通信广播、组播</h2><ul>
+<li>UDP的三种通信方式</li>
+</ul>
+<p>单播：单台主机与单台主机之间的通信。<br>组播：当前主机与选定的一组主机的通信。<br>广播：当前主机与所在网络中的所有主机通信</p>
+<ul>
+<li>形式</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829722.png"></p>
+<hr>
+<ul>
+<li><strong>UDP如何实现广播</strong></li>
+</ul>
+<p>发送端发送的数据包的目的地写的是广播地址、且指定端口。 （255.255.255.255  ,   9999）<br>本机所在网段的其他主机的程序只要注册对应端口就可以收到消息了。（9999）</p>
+<ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.Objects;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description:客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo3 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============客户端启动=============&quot;);
+
+        final DatagramSocket socket = new DatagramSocket();//使用无参构造，使用注册端口四万多到65536
+        final Scanner sc = new Scanner(System.in);
+        while (true) &#123;
+            System.out.print(&quot;请说：&quot;);
+            final String line = sc.nextLine();
+            if (Objects.equals(&quot;exit&quot;, line)) &#123;
+                System.out.println(&quot;告辞&quot;);
+                socket.close();
+                break;
+            &#125;
+            final byte[] data = line.getBytes();//字节数组，toCharArray();是字符数组
+
+            //指定端口号，使用代表广播的地址
+            final DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName(&quot;255.255.255.255&quot;), 9999);
+            socket.send(packet);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo3 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============服务端启动=============&quot;);
+        final DatagramSocket socket = new DatagramSocket(9999);//服务端使用指定端口
+        final byte[] data = new byte[1024 * 64];//udp数据包默认64kb
+        final DatagramPacket packet = new DatagramPacket(data, data.length);//新建一个数据包用来接数据
+        while (true) &#123;
+            socket.receive(packet);
+            final int length = packet.getLength();//接完数据后才能知到包中数据的长度
+            System.out.println(&quot;收到来自[&quot; + packet.getSocketAddress() + &quot;]的消息：&quot; + new String(data, 0, length));//取多少，输出多少
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code>=============服务端启动=============
+收到来自[/192.168.152.1:59460]的消息：122
+收到来自[/192.168.152.1:59460]的消息：傻狗
+</code></pre>
+<pre><code class="java">=============客户端启动=============
+请说：122
+请说：傻狗
+请说：
+</code></pre>
+<ul>
+<li><strong>UDP如何实现组播</strong></li>
+</ul>
+<p>发送端的数据包的目的地是组播IP  (例如：224.0.1.1,  端口：9999)<br>使用组播地址：224.0.0.0 ~ 239.255.255.255<br>接收端必须绑定该组播IP(224.0.1.1)，端口还要注册发送端的目的端口9999 ，这样即可接收该组播消息。<br>只有被服务端添加进组的组播地址，客户端一起作为目的主机地址才能被服务器接收到；<br>DatagramSocket的子类MulticastSocket可以在接收端绑定组播IP</p>
+<ul>
+<li>组播代码实现</li>
+</ul>
+<pre><code class="java">import javax.xml.soap.SOAPMessage;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:服务端 组播 
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo4 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============服务端启动=============&quot;);
+        final MulticastSocket socket = new MulticastSocket(9999);//服务端使用指定端口
+        socket.joinGroup(InetAddress.getByName(&quot;224.0.1.1&quot;));
+        socket.joinGroup(InetAddress.getByName(&quot;224.0.1.2&quot;));
+//        socket.joinGroup(InetAddress.getByName(&quot;224.0.0.3&quot;));
+        final byte[] data = new byte[1024 * 64];//udp数据包默认64kb
+        final DatagramPacket packet = new DatagramPacket(data, data.length);//新建一个数据包用来接数据
+        while (true) &#123;
+            socket.receive(packet);
+            final int length = packet.getLength();//接完数据后才能知到包中数据的长度
+            System.out.println(&quot;收到来自[&quot; + packet.getSocketAddress() + &quot;]的消息：&quot; + new String(data, 0, length));//取多少，输出多少
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.Objects;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description:组播
+ * 开三个进程去连客户端，224.0.1.1 224.0.1.2 224.0.1.3【客户端没有添加组】
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo4 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;=============客户端启动=============&quot;);
+
+        final DatagramSocket socket = new DatagramSocket();//使用无参构造，使用注册端口四万多到65536
+        final Scanner sc = new Scanner(System.in);
+        while (true) &#123;
+            System.out.print(&quot;请说：&quot;);
+            final String line = sc.nextLine();
+            if (Objects.equals(&quot;exit&quot;, line)) &#123;
+                System.out.println(&quot;告辞&quot;);
+                socket.close();
+                break;
+            &#125;
+            final byte[] data = line.getBytes();//字节数组，toCharArray();是字符数组
+            //
+            final DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName(&quot;224.0.1.2&quot;), 9999);
+            socket.send(packet);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>=============服务端启动=============
+收到来自[/192.168.152.1:49990]的消息：我你么个
+收到来自[/192.168.152.1:57577]的消息：deal late no doubt   
+</code></pre>
+<pre><code>=============客户端启动=============
+请说：132134654  //这个的地址是224.0.1.3，服务器没有添加组，所以客户端发了没用
+请说：
+</code></pre>
+<pre><code>=============客户端启动=============
+请说：我你么个
+请说：
+</code></pre>
+<pre><code>=============客户端启动=============
+请说：deal late no doubt
+请说：
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>如何实现广播，具体怎么操作？<br>    发送端目的IP使用广播IP： 255.255.255.255  9999。<br>    所在网段的其他主机对应了端口（9999）即可接收消息。<br>如何实现组播，具体怎么操作？<br>    发送端目的IP使用组播IP，且指定端口。<br>    所在网段的其他主机注册了该组播IP和对应端口即可接收消息</p>
+<h2 id="TCP通信快速入门"><a href="#TCP通信快速入门" class="headerlink" title="TCP通信快速入门"></a>TCP通信快速入门</h2><h3 id="编写客户端代码"><a href="#编写客户端代码" class="headerlink" title="编写客户端代码"></a>编写客户端代码</h3><ul>
+<li><strong>TCP协议回顾</strong></li>
+</ul>
+<p>TCP是一种面向连接，安全、可靠的传输数据的协议<br>传输前，采用“三次握手”方式，点对点通信，是可靠的<br>在连接中可进行大数据量的传输(面向连接) </p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829916.png" alt="Snipaste_2022-03-16_23-25-43"></p>
+<hr>
+<ul>
+<li>注意</li>
+</ul>
+<p>在java中只要是使用java.net.Socket类实现通信，底层即是使用了TCP协议</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829032.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261828759.png"></p>
+<hr>
+<ul>
+<li>一收一发代码实现</li>
+</ul>
+<pre><code class="java">import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.*;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:TCP连接服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo5 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;------------SERVER RUNNING----------------&quot;);
+        final ServerSocket serverSocket = new ServerSocket(2222);
+
+        //等待客户端向这里发送建立连接请求
+        //得到一个socket对象，建立点对点连接
+        final Socket socket = serverSocket.accept();
+        final InputStream is = socket.getInputStream();
+        final BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String msg;
+
+        // java.net.SocketException: Connection reset
+ /*       while ((msg = br.readLine()) != null) &#123;//这里是读一行，但是客户端发送完数据后没有换行；所以处于等待状态，客户端跑完了，这里就会外抛异常
+            System.out.println(msg);
+        &#125;*/
+
+        if ((msg = br.readLine()) != null) &#123;
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 发送了：&quot; + msg);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.Objects;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description: TCP连接客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo5 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        try &#123;
+            System.out.println(&quot;=============客户端启动=============&quot;);
+
+            /*
+               public Socket(String host, int port)
+               服务端主机和端口
+            * */
+            final Socket socket = new Socket(&quot;127.0.0.1&quot;, 2222);
+            final OutputStream os = socket.getOutputStream();
+            final PrintStream ps = new PrintStream(os);
+
+            //需要换行，因为读取是使用BufferedReader读一行；没有读完，服务端会等着，但此时客户端已经跑完了；
+            // 又由于TCP是面向连接的，其中一端没了，另一端会直接外抛连接重置异常
+//            ps.print(&quot;我是一个调理农务系的学生&quot;);
+            ps.println(&quot;我是一个调理农务系的学生&quot;);//这里换行了，服务端可以接收到这行数据；但因为使用了while循环，这里又快快跑完了，服务端又会外抛异常
+            ps.flush();
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">------------SERVER RUNNING----------------
+/127.0.0.1:50942 发送了：我是一个调理农务系的学生
+    
+</code></pre>
+<pre><code>=============客户端启动=============
+</code></pre>
+<ul>
+<li>实现步骤</li>
+</ul>
+<p>服务端实现接收消息<br>    需求：服务端实现步骤<br>    创建ServerSocket对象，注册服务端端口。<br>    调用ServerSocket对象的accept()方法，等待客户端的连接，并得到Socket管道对象。<br>    通过Socket对象调用getInputStream()方法得到字节输入流、完成数据的接收。<br>    释放资源：关闭socket管道</p>
+<p>客户端发送消息<br>    需求：客户端实现步骤<br>    创建客户端的Socket对象，请求与服务端的连接。<br>    使用socket对象调用getOutputStream()方法得到字节输出流。<br>    使用字节输出流完成数据的发送。<br>    释放资源：关闭socket管道。</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>TCP通信的客户端的代表类是谁？<br>    Socket类<br>    public Socket(String host , int port)</p>
+<p>TCP通信如何使用Socket管道发送、接收数据。<br>    OutputStream getOutputStream()：获得字节输出流对象（发）<br>    InputStream getInputStream()：获得字节输入流对象（收）</p>
+<p>TCP通信服务端用的代表类？<br>    ServerSocket类,注册端口。<br>    调用accept()方法阻塞等待接收客户端连接。得到Socket对象。</p>
+<p>TCP通信的基本原理？<br>    客户端怎么发，服务端就应该怎么收。<br>    客户端如果没有消息，服务端会进入阻塞等待。<br>    Socket一方关闭或者出现异常、对方Socket也会失效或者出错</p>
+<h2 id="TCP通信多发多收消息"><a href="#TCP通信多发多收消息" class="headerlink" title="TCP通信多发多收消息"></a>TCP通信多发多收消息</h2><ul>
+<li>一个客户端与一个服务端的多发多收</li>
+</ul>
+<pre><code class="java">import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.*;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:TCP连接服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo5 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;------------SERVER RUNNING----------------&quot;);
+        final ServerSocket serverSocket = new ServerSocket(2222);
+
+        //等待客户端向这里发送建立连接请求
+        //得到一个socket对象，建立点对点连接
+        final Socket socket = serverSocket.accept();
+        final InputStream is = socket.getInputStream();
+        final BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String msg;
+        while ((msg = br.readLine()) != null) &#123;
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 发送消息:&quot; + msg);
+        &#125;
+
+    /*    if ((msg = br.readLine()) != null) &#123;
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 发送了：&quot; + msg);
+        &#125;*/
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.Objects;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description: TCP连接客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo5 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        try &#123;
+            System.out.println(&quot;=============客户端启动=============&quot;);
+
+            /*
+               public Socket(String host, int port)
+               服务端主机和端口
+            * */
+            final Socket socket = new Socket(&quot;127.0.0.1&quot;, 2222);
+            final OutputStream os = socket.getOutputStream();
+            final PrintStream ps = new PrintStream(os);
+
+            while (true) &#123;
+                final Scanner sc = new Scanner(System.in);
+                System.out.print(&quot;请说:&quot;);
+                ps.println(sc.nextLine());
+                ps.flush();
+            &#125;
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:莫听传林打叶声
+请说:和方孝祥且徐行
+请说:天王盖地虎
+请说:
+</code></pre>
+<pre><code>------------SERVER RUNNING----------------
+/127.0.0.1:50317 发送消息:莫听传林打叶声
+/127.0.0.1:50317 发送消息:和方孝祥且徐行
+/127.0.0.1:50317 发送消息:天王盖地虎
+</code></pre>
+<ul>
+<li>本案例实现了多发多收，那么是否可以同时接收多个客户端的消息</li>
+</ul>
+<p>不可以的。<br>因为服务端现在只有一个线程，只能与一个客户端进行通信</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>本次多发多收是如何实现的<br>    客户端使用循环反复地发送消息。<br>    服务端使用循环反复地接收消息。<br>现在服务端为什么不可以同时接收多个客户端的消息。<br>    目前服务端是单线程的，每次只能处理一个客户端的消息</p>
+<h2 id="TCP通信同时接受多个客户端消息"><a href="#TCP通信同时接受多个客户端消息" class="headerlink" title="TCP通信同时接受多个客户端消息"></a>TCP通信同时接受多个客户端消息</h2><ul>
+<li>问题引入</li>
+</ul>
+<p>之前我们的通信是否可以同时与多个客户端通信，为什么？<br>    不可以的<br>    单线程每次只能处理一个客户端的Socket通信<br>2、如何才可以让服务端可以处理多个客户端的通信需求？<br>    引入多线程</p>
+<ul>
+<li>代码实现</li>
+</ul>
+<pre><code class="java">import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:TCP连接服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo6 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;------------SERVER RUNNING----------------&quot;);
+        //注册端口
+        final ServerSocket serverSocket = new ServerSocket(2222);
+        //定义一个死循环负责不断接收客户端的socket连接（由main线程负责）
+        while (true) &#123;
+            final Socket socket = serverSocket.accept();
+            //客户端下线提醒
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 他来了，他来了！！&quot;);
+            new ServerReaderThread(socket).start();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class ServerReaderThread extends Thread &#123;
+
+    private Socket socket;
+
+    public ServerReaderThread(Socket socket) &#123;
+        this.socket = socket;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        try &#123;
+            final InputStream is = socket.getInputStream();
+            final BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String msg;
+            while ((msg = br.readLine()) != null) &#123;
+                System.out.println(socket.getRemoteSocketAddress() + &quot; 发送消息:&quot; + msg);
+            &#125;
+        &#125; catch (IOException e) &#123;
+            //客户端下线提醒
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 它走了！！&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.io.OutputStream;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description: TCP连接客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo6 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        try &#123;
+            System.out.println(&quot;=============客户端启动=============&quot;);
+
+            final Socket socket = new Socket(&quot;127.0.0.1&quot;, 2222);
+            final OutputStream os = socket.getOutputStream();
+            final PrintStream ps = new PrintStream(os);
+
+            while (true) &#123;
+                final Scanner sc = new Scanner(System.in);
+                System.out.print(&quot;请说:&quot;);
+                ps.println(sc.nextLine());
+                ps.flush();
+            &#125;
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>------------SERVER RUNNING----------------
+/127.0.0.1:64658 他来了，他来了！！
+/127.0.0.1:64658 发送消息:1
+/127.0.0.1:64658 发送消息:告辞！
+/127.0.0.1:64658 它走了！！
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:1
+请说:告辞！
+请说:
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>本次是如何实现服务端接收多个客户端的消息的。<br>    主线程定义了循环负责接收客户端Socket管道连接<br>    每接收到一个Socket通信管道后分配一个独立的线程负责处理它。</p>
+<h2 id="TCP通信使用线程池优化"><a href="#TCP通信使用线程池优化" class="headerlink" title="TCP通信使用线程池优化"></a>TCP通信使用线程池优化</h2><ul>
+<li>目前的架构存在什么问题</li>
+</ul>
+<p>客户端与服务端的线程模型是： N-N的关系。<br>客户端并发越多，系统瘫痪的越快</p>
+<pre><code class="java">import java.io.OutputStream;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description: TCP连接客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo7 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        try &#123;
+            System.out.println(&quot;=============客户端启动=============&quot;);
+
+            final Socket socket = new Socket(&quot;127.0.0.1&quot;, 2222);
+            final OutputStream os = socket.getOutputStream();
+            final PrintStream ps = new PrintStream(os);
+
+            while (true) &#123;
+                final Scanner sc = new Scanner(System.in);
+                System.out.print(&quot;请说:&quot;);
+                ps.println(sc.nextLine());
+                ps.flush();
+            &#125;
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.*;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:TCP连接服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo7 &#123;
+
+    private static ExecutorService pool = new ThreadPoolExecutor(2, 3, 6, TimeUnit.SECONDS
+            , new ArrayBlockingQueue&lt;&gt;(2), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;------------SERVER RUNNING----------------&quot;);
+        final ServerSocket serverSocket = new ServerSocket(2222);
+        while (true) &#123;
+            final Socket socket = serverSocket.accept();
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 他来了&quot;);
+            pool.execute(new DealServerThread(socket));
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class DealServerThread implements Runnable &#123;
+    private Socket socket;
+
+    public DealServerThread(Socket socket) &#123;
+        this.socket = socket;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        try &#123;
+            final InputStream is = socket.getInputStream();
+            final BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String msg;
+            while ((msg = br.readLine()) != null) &#123;
+                System.out.println(socket.getRemoteSocketAddress() + &quot; 发送消息:&quot; + msg);
+            &#125;
+        &#125; catch (Exception e) &#123;
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 他下线了！！&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">------------SERVER RUNNING----------------
+/127.0.0.1:65169 他来了
+/127.0.0.1:65169 发送消息:客户端1，核心线程1
+/127.0.0.1:65177 他来了
+/127.0.0.1:65177 发送消息:客户端2，核心线程2
+/127.0.0.1:65187 他来了    //进入了等待队列
+/127.0.0.1:65195 他来了	//进入了等待队列
+/127.0.0.1:65202 他来了
+/127.0.0.1:65202 发送消息:客户端5 //分配一个临时线程
+/127.0.0.1:65213 他来了
+Exception in thread &quot;main&quot; java.util.concurrent.RejectedExecutionException: Task net_demo.DealServerThread@29453f44 rejected from java.util.concurrent.ThreadPoolExecutor@5cad8086[Running, pool size = 3, active threads = 3, queued tasks = 2, completed tasks = 0]
+    at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2063)
+    at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:830)
+    at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1379)
+    at net_demo.ServerDemo7.main(ServerDemo7.java:29)//所有线程在忙，队列已满，还未达到最大线程，分配一个临时线程
+/127.0.0.1:65169 发送消息:客户端下线，归还线程
+/127.0.0.1:65169 他下线了！！
+/127.0.0.1:65187 发送消息:客户端3
+/127.0.0.1:65177 发送消息:客户端2下线，归还线程
+/127.0.0.1:65177 他下线了！！
+/127.0.0.1:65195 发送消息:客户端4
+进程已结束，退出代码为 -1    
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:客户端1，核心线程1
+请说:客户端下线，归还线程
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:客户端2，核心线程2
+请说:客户端2下线，归还线程
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:客户端3
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:客户端4
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:客户端5
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:客户端6
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>本次使用线程池的优势在哪里？<br>    服务端可以复用线程处理多个客户端，可以避免系统瘫痪。<br>    适合客户端通信时长较短的场景。</p>
+<h2 id="TCP通信实战案例即时通信"><a href="#TCP通信实战案例即时通信" class="headerlink" title="TCP通信实战案例即时通信"></a>TCP通信实战案例即时通信</h2><ul>
+<li>即时通信是什么含义，要实现怎么样的设计</li>
+</ul>
+<p>即时通信，是指一个客户端的消息发出去，其他客户端可以接收到。<br>之前我们的消息都是发给服务端的。<br>即时通信需要进行端口转发的设计思想。</p>
+<ul>
+<li>TCP广播实现</li>
+</ul>
+<pre><code class="java">import java.io.*;
+import java.net.Socket;
+import java.util.Scanner;
+
+/**
+ * ClassName: ClientDemo1
+ * Description: TCP连接客户端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ClientDemo8 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        try &#123;
+            System.out.println(&quot;=============客户端启动=============&quot;);
+            final Socket socket = new Socket(&quot;127.0.0.1&quot;, 2222);
+            //开启一个线程用来接收消息
+            new DealClientThread(socket).start();
+
+            //通过主线程来发送消息
+            final OutputStream os = socket.getOutputStream();
+            final PrintStream ps = new PrintStream(os);
+            final Scanner sc = new Scanner(System.in);
+            while (true) &#123;
+                System.out.print(&quot;请说:&quot;);
+                ps.println(sc.nextLine());
+                System.out.println();
+                ps.flush();
+            &#125;
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class DealClientThread extends Thread &#123;
+    private Socket socket;
+
+    public DealClientThread(Socket socket) &#123;
+        this.socket = socket;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        try &#123;
+            final InputStream is = socket.getInputStream();
+            final InputStreamReader isr = new InputStreamReader(is);
+            final BufferedReader br = new BufferedReader(isr);
+            String msg;
+            while ((msg = br.readLine()) != null) &#123;
+                System.out.println(&quot;收到广播消息：&quot; + msg);
+            &#125;
+        &#125; catch (IOException e) &#123;
+            System.out.println(&quot;服务端把你移除群聊！！&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * ClassName: ServerDemo1
+ * Description:TCP连接服务端
+ * date:2022/3/16
+ *
+ * @author fgcy
+ * @since JDK 1.8
+ */
+public class ServerDemo8 &#123;
+    public static List&lt;Socket&gt; allSockets = new ArrayList&lt;&gt;();
+
+    public static void main(String[] args) throws Exception &#123;
+        System.out.println(&quot;------------SERVER RUNNING----------------&quot;);
+        final ServerSocket serverSocket = new ServerSocket(2222);
+        while (true) &#123;
+            final Socket socket = serverSocket.accept();
+            System.out.println(socket.getRemoteSocketAddress() + &quot; 上线了！！&quot;);
+            allSockets.add(socket);//上线
+            new MyServerDeal(socket).start();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class MyServerDeal extends Thread &#123;
+    private Socket socket;
+
+    public MyServerDeal(Socket socket) &#123;
+        this.socket = socket;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        try &#123;
+            final InputStream is = socket.getInputStream();
+            final BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String msg;
+            while ((msg = br.readLine()) != null) &#123;
+                System.out.println(socket.getRemoteSocketAddress() + &quot; 发送消息:&quot; + msg);
+                //去除当前自己的管道，不给自己发消息
+                ServerDemo8.allSockets.remove(socket);
+                sendToAllSockets(msg);
+                //将自己的管道再次添加进去
+                ServerDemo8.allSockets.add(socket);
+            &#125;
+        &#125; catch (IOException e) &#123;
+            ServerDemo8.allSockets.remove(socket);
+            System.out.println(socket.getRemoteSocketAddress() + &quot;下线了！！！&quot;);
+        &#125;
+    &#125;
+
+    private void sendToAllSockets(String msg) &#123;
+        ServerDemo8.allSockets.forEach(socket1 -&gt; &#123;
+            try &#123;
+                final OutputStream os = socket1.getOutputStream();
+                final PrintStream pw = new PrintStream(os);//要用字节输出打印流
+                pw.println(msg);
+            &#125; catch (Exception e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>------------SERVER RUNNING----------------
+/127.0.0.1:50201 上线了！！
+/127.0.0.1:50207 上线了！！
+/127.0.0.1:50207 发送消息:1
+/127.0.0.1:50201 发送消息:2
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:收到广播消息：1
+2
+
+请说:
+进程已结束，退出代码为 -1
+</code></pre>
+<pre><code>=============客户端启动=============
+请说:1
+
+请说:收到广播消息：2
+
+进程已结束，退出代码为 -1
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>即时通信是什么含义，要实现怎么样的设计？<br>即时通信，是指一个客户端的消息发出去，其他客户端可以接收到<br>即时通信需要进行端口转发的设计思想。<br>服务端需要把在线的Socket管道存储起来<br>一旦收到一个消息要推送给其他管道</p>
+<h2 id="TCP通信实战案例模拟BS系统"><a href="#TCP通信实战案例模拟BS系统" class="headerlink" title="TCP通信实战案例模拟BS系统"></a>TCP通信实战案例模拟BS系统</h2><ul>
+<li>问题引出</li>
+</ul>
+<p>之前的客户端都是什么样的<br>    其实就是CS架构，客户端实需要我们自己开发实现的。<br>BS结构是什么样的，需要开发客户端吗？<br>    浏览器访问服务端，不需要开发客户端</p>
+<ul>
+<li><strong>HTTP响应数据的协议格式：就是给浏览器显示的网页信息</strong></li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261828004.png"></p>
+<hr>
+<ul>
+<li><strong>实现BS开发</strong>（多线程）</li>
+</ul>
+<pre><code class="java">package net_bs;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class BSDemo &#123;
+    public static void main(String[] args) &#123;
+        try &#123;
+            final ServerSocket serverSocket = new ServerSocket(5421);
+            while (true) &#123;
+                final Socket socket = serverSocket.accept();
+                new DealBSThread(socket).start();
+            &#125;
+
+        &#125; catch (IOException e) &#123;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class DealBSThread extends Thread &#123;
+    private Socket socket;
+
+    public DealBSThread(Socket socket) &#123;
+        this.socket = socket;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        try &#123;
+            final PrintStream ps = new PrintStream(socket.getOutputStream());
+            ps.println(&quot;HTTP/1.1 200 OK&quot;);//请求头 协议类型和版本相应信息
+            ps.println(&quot;Content-Type:text/html;charset=UTF-8&quot;);//请求行 相应格式类型字符集
+            ps.println();//请求空行
+            ps.println(&quot;&lt;h1 style=&#39;color:red&#39;&gt;调理农务系的&lt;/h1&gt;&quot;);
+            socket.close();
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>&lt;h1 style=&#39;color:red&#39;&gt;调理农务系的&lt;/h1&gt;//http请求格式被浏览器解析，剩下的是文本数据
+</code></pre>
+<ul>
+<li>BS代码实现（线程池）</li>
+</ul>
+<pre><code class="java">import java.io.IOException;
+import java.io.PrintStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.*;
+
+public class BSDemo2 &#123;
+    private static ExecutorService pool = new ThreadPoolExecutor(3, 5, 6, TimeUnit.SECONDS,
+            new ArrayBlockingQueue&lt;&gt;(2), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
+    public static void main(String[] args) &#123;
+        try &#123;
+            final ServerSocket serverSocket = new ServerSocket(5555);
+            while (true) &#123;
+                final Socket socket = serverSocket.accept();
+                pool.execute(new MyServerTask(socket));
+            &#125;
+
+        &#125; catch (IOException e) &#123;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class MyServerTask implements Runnable &#123;
+    private Socket socket;
+
+    public MyServerTask(Socket socket) &#123;
+        this.socket = socket;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        try &#123;
+            final PrintStream ps = new PrintStream(socket.getOutputStream());
+            ps.println(&quot;HTTP/1.1 200 OK&quot;);
+            ps.println(&quot;Content-Type:text/html;charset=UTF-8&quot;);
+            ps.println();
+            ps.println(&quot;&lt;div style=&#39;background-color:grey;color:white;margin-top:200px&#39;&gt;个个个等待&lt;/div&gt;&quot;);
+            System.out.println(socket.getRemoteSocketAddress() + &quot;访问&quot;);
+            ps.close();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code>/0:0:0:0:0:0:0:1:58354访问//浏览器发出一次请求，显示了四次访问
+/0:0:0:0:0:0:0:1:58355访问
+/0:0:0:0:0:0:0:1:58356访问
+/0:0:0:0:0:0:0:1:58358访问
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>TCP通信如何实现BS请求网页信息回来呢？<br>客户端使用浏览器发起请求（不需要开发客户端）<br>服务端必须按照浏览器的协议规则响应数据。<br>浏览器使用什么协议规则呢？<br>HTTP协议（简单了解下）</p>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>
