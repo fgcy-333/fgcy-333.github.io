@@ -159,314 +159,6 @@
             <p>在数据库调优中，我们的目标就是响应时间更快，吞吐量更大、利用  **宏观的监控工且 ** 和 <strong>微观的日志分析</strong>  可以帮我们快速找到调优的思路和方式</p>
 <h1 id="1-数据库服务器的优化步骤"><a href="#1-数据库服务器的优化步骤" class="headerlink" title="1. 数据库服务器的优化步骤"></a>1. 数据库服务器的优化步骤</h1><p>当我们遇到数据库调优问题的时候，该如何思考呢？这里把思考的流程整理成下面这张图。</p>
 <p> 整个流程划分成了 观察（Show status） 和 行动（Action） 两个部分。字母 S 的部分代表观察（会使 用相应的分析工具），字母 A 代表的部分是行动（对应分析可以采取的行动）。</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209262304432.png" alt="image-20220926225919083"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209262304921.png" alt="image-20220926225823285"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209262304836.png" alt="image-20220926230451341"></p>
-<hr>
-<p>我们可以通过观察了解数据库整体的运行状态，通过性能分析工具可以让我们了解执行慢的SOL都有哪些，查看具体的SOL执行计划，甚至是SOL执行中的每一步的成本代价，这样才能定位问题所在，找到了问题，再采取相应的行动.</p>
-<p>详细解释一下这张图<br>首先在S1部分，我们需要观察服务器的状态是否存在周期性的波动。如果存在周期性波动，有可能是周期性节点的原因，比如双十一、促销活动等。这样的话，我们可以通过A1这一步骤解决，也就是加缓存，或者更改缓存失效策略</p>
-<p>如果缓存策略没有解决，或者不是周期性波动的原因，我们就需要进一步分析查询延迟和卡顿的原因。接下来进入S2这一步，我们需要开启慢查询。</p>
-<p>慢查询可以帮我们定位执行慢的SOL语句。我们可以通讨设置<code>Long_query_tIme </code>参数定义”慢”的阈值，如果SQL执行时间超过了 <code>Iong_query_time</code>，则会认为是慢查询。当收集上来这些慢查询之后，我们就可以通过分析工具对慢查询日志进行分析</p>
-<p>在S3这一步骤中，我们就知道了执行慢的SOL，这样就可以针对性地用<code>EXPLAIN </code>查看对应SOL语句的执行计划，或者使用 <strong>show profile</strong>查看 SQL中每一个步骤的时间成本。这样我们就可以了解SQL查询慢是因为执行时间长，还是等待时间长。</p>
-<p>如果是SOL等待时间长，我们进入A2步骤。在这一步骤中，我们可以调优服务器的参数，比如活当增加数据库缓冲池等。如果是SOL执行时间长，就进入A3 步骤，这一步中我们需要考虑是索引设计的问题？还是查询关联的数据表过多？还是因为数据表的字段设计问题导致了这一现象。然后在这些维度上讲行对应的调整</p>
-<p>如果A2和A3都不能解决问题，我们需要考虑数据库自身的 SOL查询性能是否已经达到了瓶颈，如果确认没有达到性能瓶颈，就需要重新检查，重复以上的步骤。如果已经达到了性能瓶颈，进入A4阶段，需要考虑增加服务器，采用读写分离的架构，或者考虑对数据库进行分库分表，比如垂直分库、垂直分表和水平分表等。</p>
-<p>6</p>
-<p>以上就是数据库调优的流程思路。如果我们发现执行SOL时存在不规则延迟或卡顿的时候，就可以采用分析工具帮我们定位有问题的SQL，这三种分析工具你可以理解是SOL调优的三个步骤：<strong>慢查询</strong>、<strong>EXPLAIN</strong> 和 <strong>SHOW PROFILING</strong></p>
-<p>小结：</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209262326721.png" alt="image-20220926232655526"></p>
-<hr>
-<h1 id="2-查看系统性能参数"><a href="#2-查看系统性能参数" class="headerlink" title="2. 查看系统性能参数"></a>2. 查看系统性能参数</h1><p>在MySQL中，可以使用 SHOW STATUS 语句查询一些MySQL数据库服务器的 性能参数 、 执行频率 。</p>
-<p>SHOW STATUS语句语法如下：</p>
-<pre><code class="mysql">SHOW [GLOBAL|SESSION] STATUS LIKE &#39;参数&#39;;
-</code></pre>
-<p>一些常用的性能参数如下：</p>
-<ul>
-<li>Connections：连接MySQL服务器的次数。</li>
-</ul>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272252693.png" alt="image-20220927225231660"></p>
-<hr>
-<ul>
-<li>Uptime：MySQL服务器的上 线时间。</li>
-</ul>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272253183.png" alt="image-20220927225338548"></p>
-<hr>
-<pre><code class="shell"># 重启mysql服务
-systemctl restart mysqld; 
-</code></pre>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272257574.png" alt="image-20220927225702219"></p>
-<hr>
-<ul>
-<li>Slow_queries：慢查询的次数。</li>
-</ul>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272257484.png" alt="image-20220927225733586"></p>
-<hr>
-<blockquote>
-<p>查询超过10s以上的就是慢查询 </p>
-<p>默认是是10s</p>
-</blockquote>
-<p>慢查询次数参数可以结合慢查询日志找出慢查询语句，然后针对慢查询语句进行表结构优化或者查询语句优化再比如，如下的指令可以查看相关的指令情况:</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272302256.png" alt="image-20220927230232098"></p>
-<hr>
-<p>进行两次查询</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272303182.png" alt="image-20220927230330273"></p>
-<hr>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272304314.png" alt="image-20220927230404993"></p>
-<hr>
-<ul>
-<li><p>Innodb_rows_read：Select查询返回的行数 </p>
-</li>
-<li><p>Innodb_rows_inserted：执行INSERT操作插入的行数 </p>
-</li>
-<li><p>Innodb_rows_updated：执行UPDATE操作更新的 行数 </p>
-</li>
-<li><p>Innodb_rows_deleted：执行DELETE操作删除的行数 </p>
-</li>
-<li><p>Com_select：查询操作的次数。</p>
-</li>
-<li><p>Com_insert：插入操作的次数。对于批量插入的 INSERT 操作，只累加一次。 </p>
-</li>
-<li><p>Com_update：更新操作 的次数。</p>
-</li>
-<li><p>Com_delete：删除操作的次数。</p>
-</li>
-</ul>
-<h1 id="3-统计SQL的查询成本：last-query-cost"><a href="#3-统计SQL的查询成本：last-query-cost" class="headerlink" title="3. 统计SQL的查询成本：last_query_cost"></a>3. 统计SQL的查询成本：last_query_cost</h1><p>一条SOL查询语句在执行前需要确定查询执行计划，如果存在多种执行计划的话，MySOL会计算每个执行计划所需要的成本，从中选择成本最小的一个作为最终执行的执行计划。<br>如果我们想要查看某条 SOL语句的 <strong>查询成本</strong> ，可以在执行完这条SOL语句之后，通过查看当前会话中的 <code>last-query-cost </code>变量值来得到当前查询的成本。</p>
-<p>它通常也是我们评价一个查询的执行效率的一个常用指标。</p>
-<p>这个查询成本对应的是   <strong>SOL语句</strong>  所需要  <strong>读取的页的数量</strong></p>
-<p>我们依然使用第8章的 student_info 表为例：</p>
-<pre><code class="mysql"> show create table student_info;
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Table        | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| student_info | CREATE TABLE `student_info` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `student_id` int NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `course_id` int NOT NULL,
-  `class_id` int DEFAULT NULL,
-  `create_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `idx_sid` (`student_id`),
-  KEY `idx_cre_time` (`create_time`),
-  KEY `idx_sid_cre_time` (`student_id`,`create_time` DESC)
-) ENGINE=InnoDB AUTO_INCREMENT=1000001 DEFAULT CHARSET=utf8mb3 |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-1 row in set (0.00 sec)
-</code></pre>
-<p>如果我们想要查询 id&#x3D;900001 的记录，然后看下查询成本，我们可以直接在聚簇索引上进行查找：</p>
-<pre><code class="mysql">SELECT student_id, class_id, NAME, create_time FROM student_info
-WHERE id = 900001;
-
-+------------+----------+--------+---------------------+
-| student_id | class_id | NAME   | create_time         |
-+------------+----------+--------+---------------------+
-|      68890 |    10148 | AyTXiX | 2022-09-25 18:16:39 |
-+------------+----------+--------+---------------------+
-1 row in set (0.01 sec)
-</code></pre>
-<p>然后再看下查询优化器的查询成本，实际上我们只需要检索一个页即可：</p>
-<pre><code class="mysql"> show status like &#39;last_query_cost&#39;;
- 
-+-----------------+----------+
-| Variable_name   | Value    |
-+-----------------+----------+
-| Last_query_cost | 1.000000 | -- 使用一个数据页
-+-----------------+----------+
-1 row in set (0.01 sec)
-</code></pre>
-<p>如果我们想要查询 id 在 900001 到 9000100 之间的学生记录呢？</p>
-<pre><code class="mysql">SELECT student_id, class_id, NAME, create_time FROM student_info
-WHERE id BETWEEN 900001 AND 900100;
-
-100 rows in set (0.00 sec)
-</code></pre>
-<p>然后再看下查询优化器的查询成本，实际上我们只需要检索21个页即可：</p>
-<pre><code class="mysql">show status like &#39;last_query_cost&#39;;
- 
-+-----------------+-----------+
-| Variable_name   | Value     |
-+-----------------+-----------+
-| Last_query_cost | 21.135463 |
-+-----------------+-----------+
-1 row in set (0.00 sec)
-</code></pre>
-<blockquote>
-<p> select * from student_info where student_id &gt; 199900;</p>
-</blockquote>
-<pre><code class="mysql">66 rows in set (0.01 sec)
-
-mysql&gt; show status like &#39;last_query_cost&#39;;
-+-----------------+-----------+
-| Variable_name   | Value     |
-+-----------------+-----------+
-| Last_query_cost | 76.158136 |
-+-----------------+-----------+
-</code></pre>
-<blockquote>
-<p> select * from student_info where student_id&gt;199000;</p>
-</blockquote>
-<pre><code class="mysql">4922 rows in set (0.12 sec)
-
-mysql&gt; show status like &#39;last_query_cost&#39;;
-+-----------------+-------------+
-| Variable_name   | Value       |
-+-----------------+-------------+
-| Last_query_cost | 4756.799866 |
-+-----------------+-------------+
-</code></pre>
-<p>你能看到页的数量是刚才的62倍，但是查询的效率相差12倍，实际上这两个SOL查询的时间基本上一样，就是因为采用了顺序读取的方式将页面一次性加载到缓冲池中，然后再进行查找。虽然页数量（astquery_cost）增加了不少，但是通过缓冲池的机制，并没有增加多少查询时间</p>
-<p>使用场量：它对千比较开销是非常有用的，特别是我们有好几种查询方式可选的时候</p>
-<blockquote>
-<p>SOL查询是一个动态的过程，从页加载的角度来看，我们可以得到以下两点结论：</p>
-<p>1、位置决定效率。如果页就在数据库缓神池中，那么效率是最高的，否则还需要从内存或者磁盘中进行读取，当然针对单个页的读取来说，如果页存在于内存中，会比在磁盘中读取效率高很多</p>
-<p>2、批量决定效率。如果我们从磁盘中对单一页进行随机读，那么效率是很低的（差不多10ms），而采用顺序读取的方式，批量对页进行读取，平均一页的读取效率就会提升很多，甚至要快于单个页面在内存中的随机读取</p>
-<p>所以说，遇到I&#x2F;0并不用担心，方法找对了，效率还是很高的。我们首先要考虑数据存放的位置，如果是经常使用的数据就要尽量放到 缓冲池 中，其次我们可以充分利用磁盘的吞吐能力，一次性批量读取数据，这样单个页的读取效率也就得到了提升</p>
-</blockquote>
-<h1 id="4-定位执行慢的-SQL：慢查询日志"><a href="#4-定位执行慢的-SQL：慢查询日志" class="headerlink" title="4. 定位执行慢的 SQL：慢查询日志"></a>4. 定位执行慢的 SQL：慢查询日志</h1><p>MySOL的慢查询日志，用来记录在MySQL中响应时间超过阀值的语句，具体指运行时间超过<code> long_query-tame</code> 值的SQL，则会被记录到慢查询日志中。long_queryLtime的默认值为10，意思是运行10秒以上（不含10秒）的语句、认为是超出了我们的最大忍耐时间值。</p>
-<p>它的主要作用是，帮助我们发现那些执行时间特别长的SOL查询，并且有针对性地进行优化，从而提高系统的整体效率、当我们的数据库服务器发生阻塞、运行变慢的时候，检查一下慢查询日志，找到那些慢查询，对解决问题很有帮助。</p>
-<p>比如一条sql执行超过5秒钟，我们就算慢SQL，希望能收集超过5秒的sql，结合explain进行全面分析</p>
-<p>默认情况下，MySQL数据库没有开启慢查询日志，需要我们手动来设置这个参数。</p>
-<p><strong>如果不是调优需要的话，一般不建议启动该参数</strong>，因为开启慢查询日志会或多或少带来一定的性能影响</p>
-<p>慢查询日志支持将日志记录写入文件</p>
-<h2 id="4-1-开启慢查询日志参数"><a href="#4-1-开启慢查询日志参数" class="headerlink" title="4.1 开启慢查询日志参数"></a>4.1 开启慢查询日志参数</h2><h3 id="1-开启slow-query-log"><a href="#1-开启slow-query-log" class="headerlink" title="1. 开启slow_query_log"></a>1. 开启slow_query_log</h3><pre><code class="mysql">set global slow_query_log=&#39;ON&#39;;
-</code></pre>
-<p>查询慢查询阈值：</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272335285.png" alt="image-20220927233545830"></p>
-<hr>
-<p>修改阈值：</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272336115.png" alt="image-20220927233636610"></p>
-<hr>
-<p>这里介绍另一个参数，慢查询日志文件</p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272337290.png" alt="image-20220927233723625"></p>
-<hr>
-<p>你能看到这时慢查询分析已经开启，同时文件保存在<code> /var/lib/mysql/atguigu05-slow.1og</code>  文件中</p>
-<h3 id="2-修改long-query-time阈值"><a href="#2-修改long-query-time阈值" class="headerlink" title="2. 修改long_query_time阈值"></a>2. 修改long_query_time阈值</h3><p>接下来我们来看下慢查询的时间阈值设置，使用如下命令：</p>
-<blockquote>
-<p> show variables like ‘%long_query_time%’;</p>
-</blockquote>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272340327.png" alt="image-20220927234035391"></p>
-<hr>
-<p>这里如果我们想把时间缩短，比如设置为 1 秒，可以这样设置：</p>
-<pre><code class="mysql">set global long_query_time = 1;
-
-show global variables like &#39;%long_query_time%&#39;;
-
-
-set long_query_time=1;
-
-show variables like &#39;%long_query_time%&#39;;
-</code></pre>
-<blockquote>
-<p> 测试发现：设置global的方式对当前session的long_query_time失效。对新连接的客户端有效。所以一并设置系统会话变量</p>
-</blockquote>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272343702.png" alt="image-20220927234334885"></p>
-<hr>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272344875.png" alt="image-20220927234359581"></p>
-<hr>
-<blockquote>
-<p>补充：配置文件中一并设置参数<br>如下的方式相较于前面的命令行方式，可以看作是永久设置的方式<br>修改my.cnf 文件，[mysqld]下增加或修改参数long_query_time、slow_query_log 和slow.query_1og-file 后，然后重启MySQL服务器。T</p>
-</blockquote>
-<pre><code class="ini">[mysq1d]
-s1ow_query_1og=ON#开启慢查询日志的开关
-s1ow-query_1og_f1le= /var/1ib/mysql/atguigu-slow.log #慢查询日志的日录和文件名信息
-1ong-query-tame=3 #设置慢查询的闭值为3秒，超出此设定值的SOL即被记录到慢杏询日志
-1og_output=FILE
-</code></pre>
-<p>如果不指定存储路径，慢查询日志将默认存储到MvSOL数据库的数据文件夹下。如果不指定文件名，默认文件名为hostname-slow.Iog。</p>
-<h2 id="4-2-查看慢查询数目"><a href="#4-2-查看慢查询数目" class="headerlink" title="4.2 查看慢查询数目"></a>4.2 查看慢查询数目</h2><p> 查询当前系统中有多少条慢查询记录</p>
-<pre><code class="mysql">SHOW GLOBAL STATUS LIKE &#39;%Slow_queries%&#39;;
-</code></pre>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209272347546.png" alt="image-20220927234752516"></p>
-<hr>
-<h2 id="4-3-案例演示"><a href="#4-3-案例演示" class="headerlink" title="4.3 案例演示"></a>4.3 案例演示</h2><p>步骤1. 建表</p>
-<pre><code class="mysql">CREATE TABLE `student` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `stuno` INT NOT NULL ,
-    `name` VARCHAR(20) DEFAULT NULL,
-    `age` INT(3) DEFAULT NULL,
-    `classId` INT(11) DEFAULT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-</code></pre>
-<p>步骤2：设置参数 log_bin_trust_function_creators</p>
-<p>创建函数，假如报错：</p>
-<pre><code class="mysql">This function has none of DETERMINISTIC......
-</code></pre>
-<p>命令开启：允许创建函数设置：</p>
-<pre><code class="mysql">set global log_bin_trust_function_creators=1; # 不加global只是当前窗口有效。
-</code></pre>
-<p>步骤3：创建函数 </p>
-<p>随机产生字符串：（同上一章）</p>
-<pre><code class="mysql">DELIMITER //
-CREATE FUNCTION rand_string(n INT)
-    RETURNS VARCHAR(255) #该函数会返回一个字符串
-    BEGIN
-        DECLARE chars_str VARCHAR(100) DEFAULT
-        &#39;abcdefghijklmnopqrstuvwxyzABCDEFJHIJKLMNOPQRSTUVWXYZ&#39;;
-        DECLARE return_str VARCHAR(255) DEFAULT &#39;&#39;;
-        DECLARE i INT DEFAULT 0;
-        WHILE i &lt; n DO
-        SET return_str =CONCAT(return_str,SUBSTRING(chars_str,FLOOR(1+RAND()*52),1));
-        SET i = i + 1;
-        END WHILE;
-        RETURN return_str;
-    END //
-DELIMITER ;
-
-
-# 调用函数
-SELECT rand_string(10);
-</code></pre>
-<p>产生随机数值：（同上一章）</p>
-<pre><code class="mysql">DELIMITER //
-CREATE FUNCTION rand_num (from_num INT ,to_num INT) RETURNS INT(11)
-    BEGIN
-        DECLARE i INT DEFAULT 0;
-        SET i = FLOOR(from_num +RAND()*(to_num - from_num+1)) ;
-        RETURN i;
-    END //
-DELIMITER ;
-
-#调用函数：
-SELECT rand_num(10,100);
-</code></pre>
-<p>步骤4：创建存储过程</p>
-<pre><code class="mysql">DELIMITER //
-CREATE PROCEDURE insert_stu1( START INT , max_num INT )
-    BEGIN
-        DECLARE i INT DEFAULT 0;
-        SET autocommit = 0; #设置手动提交事务
-        REPEAT #循环
-        SET i = i + 1; #赋值
-        INSERT INTO student (stuno, NAME ,age ,classId ) VALUES
-        ((START+i),rand_string(6),rand_num(10,100),rand_num(10,1000));
-        UNTIL i = max_num
-        END REPEAT;
-        COMMIT; #提交事务
-    END //
-DELIMITER ;
-</code></pre>
-<p>步骤5：调用存储过程</p>
-<pre><code class="mysql">#调用刚刚写好的函数, 4000000条记录,从100001号开始
-CALL insert_stu1(100001,4000000);
-</code></pre>
-
             
         </div>
     </div>
@@ -479,7 +171,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ffa2c4">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -537,7 +229,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -600,7 +292,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -658,7 +350,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -725,7 +417,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/操作系统基础/" style="color: #ff7d73">
+            <a href="/tags/操作系统基础/" style="color: #ffa2c4">
                 操作系统基础
             </a>
         </span>
@@ -786,7 +478,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/网络基础/" style="color: #ff7d73">
+            <a href="/tags/网络基础/" style="color: #03a9f4">
                 网络基础
             </a>
         </span>
@@ -845,7 +537,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -951,7 +643,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ffa2c4">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>
@@ -1010,7 +702,7 @@ CALL insert_stu1(100001,4000000);
         
         <span class="tag">
             
-            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00bcd4">
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #ff7d73">
                 尚硅谷-宋红康-MySQL(高级)
             </a>
         </span>

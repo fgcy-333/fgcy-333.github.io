@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-09-27T15:51:51.163Z</updated>
+  <updated>2022-09-28T08:28:36.468Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/"/>
     <id>http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/</id>
     <published>2022-09-26T22:50:59.000Z</published>
-    <updated>2022-09-27T15:51:51.163Z</updated>
+    <updated>2022-09-28T08:28:36.468Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;在数据库调优中，我们的目标就是响应时间更快，吞吐量更大、利用  **宏观的监控工且 ** 和 &lt;strong&gt;微观的日志分析&lt;/strong&gt;  可以帮我们快速找到调优的思路和方式&lt;/p&gt;
-&lt;h1 id=&quot;1-数据库服务器的优化步骤&quot;&gt;&lt;a</summary>
-        
-      
+&lt;h1 id=&quot;1-数据库服务器的优化步骤&quot;&gt;&lt;a href=&quot;#1-数据库服务器的优化步骤&quot; class=&quot;headerlink&quot; title=&quot;1. 数据库服务器的优化步骤&quot;&gt;&lt;/a&gt;1. 数据库服务器的优化步骤&lt;/h1&gt;&lt;p&gt;当我们遇到数据库调优问题的时候，该如何思考呢？这里把思考的流程整理成下面这张图。&lt;/p&gt;
+&lt;p&gt; 整个流程划分成了 观察（Show status） 和 行动（Action） 两个部分。字母 S 的部分代表观察（会使 用相应的分析工具），字母 A 代表的部分是行动（对应分析可以采取的行动）。&lt;/p&gt;</summary>
     
     
     
