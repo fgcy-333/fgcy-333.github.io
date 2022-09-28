@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        <div id="home-head">
+    <div id="home-background" style="background-image: url(https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/wallhaven-pkqgx9.jpg)"></div>
+    
+    <div id="home-info" class="home-info" @click="home_click">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>风格差异的博客</h1>
+                <h3></h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+
+<div id="home-posts-wrap" class=>
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2022/08/27/dong-li-jie-dian-zhang-a-rong-springmvc/">
+        <h2>
+            SpringMVC
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="SpringMVC概述"><a href="#SpringMVC概述" class="headerlink" title="SpringMVC概述"></a>SpringMVC概述</h1><h2 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h2><p>  它是<strong>基于MVC开发模式</strong>的<strong>框架</strong>,用来优化控制器.它是Spring家族的一员.它也具备IOC和AOP.</p>
+<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC?"></a>什么是MVC?</h2><p>  它是一种<strong>开发模式</strong>,它是模型 视图 控制器的简称.所有的<strong>web应用都是基于MVC开发</strong>.</p>
+<ul>
+<li>M:模型层,包含实体类,业务逻辑层,数据访问层</li>
+<li>V:视图层,html,javaScript,vue等都是视图层,用来显现数据</li>
+<li>C:控制器,它是用来接收客户端的请求,并返回响应到客户端的组件,Servlet就是组件</li>
+</ul>
+<p><strong>图解MVC</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261738023.png" alt="image-20220509122947011"></p>
+<hr>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-张啊荣-SpringMVC/" style="color: #00bcd4">
+                动力节点-张啊荣-SpringMVC
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/dong-li-jie-dian-zhang-a-rong-springmvc/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/dong-li-jie-dian-zhang-a-rong-dong-tai-dai-li/">
+        <h2>
+            动态代理
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="一、什么是代理模式"><a href="#一、什么是代理模式" class="headerlink" title="一、什么是代理模式"></a>一、什么是代理模式</h2><ul>
+<li>代理模式是指，为<strong>目标对象</strong>提供一种代理<strong>以控制对这个对象的访问</strong></li>
+<li>在某些情况下， 一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户和目标对象之间起到中介的作用；</li>
+<li>使用代理对象，是<strong>为了在不修改目标对象的基础上，增强主业务逻辑</strong>。</li>
+</ul>
+<p>客户类<strong>真正的想要访问的对象是目标对象</strong>，但客户类真正可以访问的对象是代理对象。</p>
+<p><strong>客户类对目标对象的访问是通过访问代理对象来实现的</strong></p>
+<h2 id="二、代理模式的作用"><a href="#二、代理模式的作用" class="headerlink" title="二、代理模式的作用"></a>二、代理模式的作用</h2><p>1.控制目标对象【被代理对象】的访问<br>2.使用代理对象，是<strong>为了在不修改目标对象的基础上，增强主业务逻辑</strong>。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-张啊荣-动态代理/" style="color: #ffa2c4">
+                动力节点-张啊荣-动态代理
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/java/" style="color: #03a9f4">
+                java
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/dong-li-jie-dian-zhang-a-rong-dong-tai-dai-li/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/dong-li-jie-dian-zhang-a-rong-mybatis/">
+        <h2>
+            Mybatis
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、框架概述"><a href="#一、框架概述" class="headerlink" title="一、框架概述"></a>一、框架概述</h1><h2 id="1-软件开发常用结构"><a href="#1-软件开发常用结构" class="headerlink" title="1.软件开发常用结构"></a>1.软件开发常用结构</h2><h3 id="1-1-三层架构"><a href="#1-1-三层架构" class="headerlink" title="1.1.三层架构"></a>1.1.三层架构</h3><p>什么是三层架构<br>  在项目开发中,遵循的一种形式模式.分为三层.<br>  界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer)<br>      1)界面层表示层，视图层):用来接收客 户端的输入,调用业务逻辑层进行功能处理,返回结果给客户端.过去的servlet就是界面层的功能.<br>      2)业务逻辑层:用来进行整个项目的业务逻辑处理,向上为界面层提供处理结果,向下问数据访问层要数据.<br>      3)数据访问层:专门用来进行数据库的增删改查操作,向上为业务逻辑层提供数据.</p>
+<ul>
+<li><strong>三层的处理请求的交互：</strong></li>
+</ul>
+<pre><code>客户端&lt;---&gt;界面层&lt;---&gt;业务逻辑层&lt;---&gt;数据访问层&lt;---&gt;数据库。
+</code></pre>
+<p>  各层之间的调用顺序是固定的,不允许跨层访问</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-张啊荣-Mybatis/" style="color: #ff7d73">
+                动力节点-张啊荣-Mybatis
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/dong-li-jie-dian-zhang-a-rong-mybatis/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/dong-li-jie-dian-lao-du-javaweb-servlet-jsp-tomcat/">
+        <h2>
+            Javaweb-Servlet-Jsp-Tomcat
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、系统架构"><a href="#一、系统架构" class="headerlink" title="一、系统架构"></a>一、系统架构</h1><h2 id="1-0-C-x2F-S架构"><a href="#1-0-C-x2F-S架构" class="headerlink" title="1.0 C&#x2F;S架构"></a>1.0 C&#x2F;S<strong>架构</strong></h2><p>1.0 Client &#x2F; Server（客户端 &#x2F; 服务器）</p>
+<p>2.0 C&#x2F;S架构的特点</p>
+<ul>
+<li>需要   <strong>安装</strong>   特定的   <strong>客户端软件</strong>   。</li>
+</ul>
+<p>3.0    <strong>C&#x2F;S架构   的系统</strong>   优点和缺点分别是什么？</p>
+<ul>
+<li><p>优点：</p>
+<ul>
+<li>速度快（软件中的   <strong>数据大部分</strong>    都是   集成到<strong>客户端软件</strong>当中    的，    <strong>很少量的数据</strong>     <code> 从服务器端传送过来</code>，所以C&#x2F;S结构的系统速度快）</li>
+<li>界面酷炫（专门的语言去实现界面的，不仅是HTML &#x2F; CSS &#x2F; JS。）</li>
+<li>体验好（速度又快，界面又酷炫，当然体验好了。）</li>
+<li>服务器压力小（因为大量的数据都是集成在客户端软件当中，所以     <code>  服务器</code>      只需要传送      <strong>很少的数据量</strong>，当然服务器压力小。）</li>
+<li>安全（因为大量的数据是集成在客户端软件当中的，并且客户端有很多个，服务器虽然只有一个，就算服务器那边地震了，火灾了，服务器受损了，问题也不大，因为大量的数据在多个    <strong>客户端上有缓  存</strong>   ，有存储，所以从这个方面来说，<strong>C&#x2F;S结构的系统比较安全 数据安全</strong>）</li>
+<li>…..</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li><strong>升级维护</strong>    比较差劲。（升级维护比较麻烦。成本比较高。每一个客户端软件都需要升级。有一些软件不是那么容易安装的）</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-老杜-javaWeb/" style="color: #ffa2c4">
+                动力节点-老杜-javaWeb
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/dong-li-jie-dian-lao-du-javaweb-servlet-jsp-tomcat/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/26/dong-li-jie-dian-zhang-a-rong-dong-li-spring/">
+        <h2>
+            动力Spring
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/25
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="Spring框架是什么"><a href="#Spring框架是什么" class="headerlink" title="Spring框架是什么"></a>Spring框架是什么</h1><ul>
+<li><p>Spring是于2003年兴起的一个<strong>轻量级</strong>的Java开发框架,它是为了<strong>解决企业应用开发的复杂性而创建的</strong>。</p>
+</li>
+<li><p>Spring的<strong>核心是控制反转(loc)和面向切面编程(AOP)</strong> </p>
+</li>
+<li><p>Spring是可以在Java SE&#x2F;EE中使用的轻量级开源框架。 </p>
+</li>
+<li><p>Spring 的主要作用就是为代码“解耦”，降低代码间的耦合度。</p>
+</li>
+<li><p>就是让<strong>对象和对象（模块和模块）之间关系不是使用代码关联</strong>，而是<strong>通过配置来说明</strong>。即在 Spring 中说明对象（模块）的关系。</p>
+</li>
+<li><p>Spring 根据代码的功能特点，使用 <strong>Ioc 降低业务对象之间耦合度</strong>。</p>
+</li>
+<li><p>Ioc使得主业务在相互调用过程中，不用再自己维护关系了，即<strong>不用再自己创建要使用的对象</strong>了。</p>
+</li>
+<li><p>而是由 <strong>Spring 容器统一管理</strong>，自动“注入”,注入即赋值。</p>
+</li>
+<li><p>而 AOP 使得系统级服务得到了最大复用，且不用再由程序员手工<strong>将系统级服务“混杂”到主业务逻辑中</strong>了，而是<strong>由 Spring 容器统一完成“织入”</strong>。</p>
+</li>
+<li><p>它是整合其它框架的框架.</p>
+</li>
+<li><p>Spring 是存储对象的容器.</p>
+</li>
+<li><p>它的核心是IOC和AOP.</p>
+</li>
+<li><p>它由20多个模块构成.它在很多领域都提供优秀的解决方案</p>
+</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/动力节点-张啊荣-Spring/" style="color: #00a596">
+                动力节点-张啊荣-Spring
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/26/dong-li-jie-dian-zhang-a-rong-dong-li-spring/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/25/hei-ma-java-ji-chu-string-yu-arraylist-de-ji-ben-shi-yong/">
+        <h2>
+            String与ArrayList的基本使用
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、String定义变量存储字符串"><a href="#一、String定义变量存储字符串" class="headerlink" title="一、String定义变量存储字符串"></a>一、String定义变量存储字符串</h1><ul>
+<li>API （Application Programming Interface,应用程序编程接口）</li>
+</ul>
+<ol>
+<li>Java写好的技术(功能代码)，咱们可以直接调用。</li>
+<li>Oracle 也为Java提供的这些功能代码提供了相应的 API文档(程序使用说明书) 。</li>
+</ol>
+<ul>
+<li>String类的概述</li>
+</ul>
+<ol>
+<li><p>java.lang.String 类代表字符串，<strong>String类定义的变量</strong> 可以用于指向  <strong>字符串对象</strong> ，同时String类提供了很多操作字符串的功能</p>
+</li>
+<li><p>Java 程序中的所有字符串文字（例如“abc”）都为此类的对象。<br>这种是存放于字符串常量池中;</p>
+<p>new String(“xx”)是存放于堆中的,产生了两个对象，一个在字符串常量池中，一个在堆中</p>
+</li>
+</ol>
+<ul>
+<li>一些特点</li>
+</ul>
+<ol>
+<li><p>String其实常被称为<strong>不可变字符串类型</strong>，它的对象在创建后不能被更改。String变量每次的修改其实都是产生并指向了新的字符串对象。</p>
+<p>原来的字符串对象 都是没有改变的，所以称不可变字符串</p>
+</li>
+<li><p>字符串常量池中的字符通过拼接(运算)，产生一个新的字符串，存放于堆中</p>
+<p>先创建StringBuilder实例用于拼接字符串，然后再把StringBuilder转换成字符串</p>
+</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/25/hei-ma-java-ji-chu-string-yu-arraylist-de-ji-ben-shi-yong/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/25/hei-ma-java-ji-chu-mian-xiang-dui-xiang-ji-chu/">
+        <h2>
+            面向对象基础
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="一、初识面向对象"><a href="#一、初识面向对象" class="headerlink" title="一、初识面向对象"></a>一、初识面向对象</h2><ol>
+<li>面向对象并不是一个技术，而是一种编程指导思想</li>
+<li>面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题</li>
+<li>生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。</li>
+</ol>
+<h2 id="二、类、对象"><a href="#二、类、对象" class="headerlink" title="二、类、对象"></a>二、类、对象</h2><p>对象: 是对现实世界具体事物的抽象,是类的具体实例 。<br>类(可以看成是设计图)：同类事物的共性，是对对象的抽象。<br>在Java中，必须先设计类，才能获得对象</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/25/hei-ma-java-ji-chu-mian-xiang-dui-xiang-ji-chu/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/25/hei-ma-java-ji-chu-fang-fa/">
+        <h2>
+            方法
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="一、什么是方法"><a href="#一、什么是方法" class="headerlink" title="一、什么是方法"></a>一、什么是方法</h2><h3 id="1-0-方法概念"><a href="#1-0-方法概念" class="headerlink" title="1.0 方法概念"></a>1.0 方法概念</h3><p>它可以把一段代码封装成一个功能，以方便重复调用</p>
+<h3 id="2-0-好处"><a href="#2-0-好处" class="headerlink" title="2.0 好处"></a>2.0 好处</h3><ol>
+<li>提高代码复用</li>
+<li>逻辑清晰</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/25/hei-ma-java-ji-chu-fang-fa/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/25/hei-ma-java-ji-chu-shu-zu/">
+        <h2>
+            数组
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="一、定义数组存储数据"><a href="#一、定义数组存储数据" class="headerlink" title="一、定义数组存储数据"></a>一、定义数组存储数据</h2><ul>
+<li>数组的概念</li>
+</ul>
+<p>​		用来存储一批同种类型数据（可以理解成容器）                       </p>
+<p>​		在初始化的时候，就已经确定了数组中存放元素的类型和数量。            </p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/25/hei-ma-java-ji-chu-shu-zu/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/25/hei-ma-java-ji-chu-liu-cheng-kong-zhi/">
+        <h2>
+            流程控制
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、程序流程"><a href="#一、程序流程" class="headerlink" title="一、程序流程"></a>一、程序流程</h1><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-02_15-40-32.png"></p>
+<hr>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/25/hei-ma-java-ji-chu-liu-cheng-kong-zhi/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+             
+<div class="page-current">
+    <div class="prev">
+        
+        <a href="/page/3/">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-left fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            <a href="/"><span class="page-num">1</span></a>
+            <span class="page-omit">...</span>
+            
+            
+                
+                
+                <a href="/page/2">
+                    <span class="page-num">
+                        2
+                    </span>
+                </a>
+                
+            
+            <a href="/page/3/">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+        </span>
+        
+        <span class="current">
+            4
+        </span>
+        
+        <span>
+            <a href="/page/5/">
+                <span class="page-num">
+                    5
+                </span>
+            </a>
+            
+            <a href="/page/6">
+                <span class="page-num">
+                    6
+                </span>
+            </a>
+            
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a href="/page/5/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+</div>
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png " alt="avatar">
+        </div>
+        <div class="name">
+            fgcy
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                每一个不曾起舞的日子都是对生命的辜负
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/fgcy-333">
+                    <i class="fa-brands fa-github fa-fw"></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=1061499050&site=qq&menu=yes">
+                    <i class="fa-brands fa-qq fa-fw"></i>
+                </a>
+            </span>
+            
+        </div>
+        <div class="friend-links">
+            
+        </div>
+    </div>
+</div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+  
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+
+   
+   
+     <div class="music-player">
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=530 height=86 src="//music.163.com/outchain/player?type=2&id=572328440&auto=1&height=66"></iframe>
+     </div>
+  
+
+   
+
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

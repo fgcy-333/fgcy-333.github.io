@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>面向对象基础 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>面向对象基础 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ffa2c4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h2 id="一、初识面向对象"><a href="#一、初识面向对象" class="headerlink" title="一、初识面向对象"></a>一、初识面向对象</h2><ol>
+<li>面向对象并不是一个技术，而是一种编程指导思想</li>
+<li>面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题</li>
+<li>生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。</li>
+</ol>
+<h2 id="二、类、对象"><a href="#二、类、对象" class="headerlink" title="二、类、对象"></a>二、类、对象</h2><p>对象: 是对现实世界具体事物的抽象,是类的具体实例 。<br>类(可以看成是设计图)：同类事物的共性，是对对象的抽象。<br>在Java中，必须先设计类，才能获得对象</p>
+<span id="more"></span>
+
+<h3 id="1-0-类的定义"><a href="#1-0-类的定义" class="headerlink" title="1.0 类的定义"></a>1.0 类的定义</h3><pre><code class="java">public class 类名&#123;
+    //类中四大金刚
+    //1.属性
+        成员变量:实例成员变量、静态成员变量
+        局部变量:方法中的变量、代码块中的变量、入参
+    //2.构造器
+            有参构造器
+            无参构造器
+            私有构造器
+            公有构造器
+    //3.方法
+            静态方法
+            实例方法
+    //4.代码块
+            静态代码块
+            实例代码块
+    //5.内部类
+            成员内部类
+            静态内部类
+            局部内部类
+            匿名内部类
+&#125;
+</code></pre>
+<h3 id="2-0-注意事项"><a href="#2-0-注意事项" class="headerlink" title="2.0 注意事项"></a>2.0 注意事项</h3><ol>
+<li><p>成员变量的完整定义格式是：修饰符 数据类型 变量名称 &#x3D; 初始化值； 一般无需指定初始化值，存在默认值。</p>
+</li>
+<li><p>类名大驼峰模式,方法名小驼峰</p>
+</li>
+<li><p>一个Java文件中可以定义多个class类，且只能一个类是public修饰，而且public修饰的类名必须成为代码文件名。该java文件编译后	 会生成多个字节码文件</p>
+</li>
+<li><p>实际开发中建议还是一个文件定义一个class类。</p>
+</li>
+<li><p>成员变量 不同数据类型的默认初始值</p>
+<pre><code class="java">byte short int char=&#39;\u0000&#39;     0
+float double 					  0.0
+boolean                          false
+类 接口 数组 String                null
+</code></pre>
+</li>
+</ol>
+<h2 id="三、Java对象内存图"><a href="#三、Java对象内存图" class="headerlink" title="三、Java对象内存图"></a>三、Java对象内存图</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_22-47-20.png"></p>
+<hr>
+<ul>
+<li>内存图说明</li>
+</ul>
+<ol>
+<li>加载Test的字节码文件进入方法区，其中字节码文件包括成员方法和成员变量(这里没有)</li>
+<li>将Test字节码中的main方法提取到栈中，开始执行main方法里面的内容</li>
+<li>将Car的字节码文件加载进方法区，其中包括成员变量name、price和成员方法start()、run(),<br>在堆内存中开辟一块内存空间代表汽车对象，其中会开辟一些区域用来存放属性信息（有默认值），还会汽车对象区域中开辟一些空间用于    存储属于该对象的存放在方法区中的	成员方法引用地址</li>
+<li>在（main方法中）栈内存中开辟一块空间作为main方法的局部变量，用于存放汽车对象的地址</li>
+<li>通过局部变量中存放的汽车对象地址找到汽车对象，然后对其name属性进行赋值操作<br>………</li>
+<li>通过局部变量c1存储的对象地址找到汽车对象，再通过汽车对象中的成员方法引用地址找到方法区中的方法提取到栈中运行，因为该方法	知到是哪个对象调用自己的，所以可以获取该对象的成员属性进行操作<br>………………..</li>
+</ol>
+<ul>
+<li>垃圾回收</li>
+</ul>
+<ol>
+<li>注意：当堆内存中的类对象或数组对象，没有被任何变量引用（指向）时，就会被判定为内存中的“垃圾”。</li>
+<li>Java存在自动垃圾回收器，会定期进行清理。</li>
+</ol>
+<h2 id="四、构造器"><a href="#四、构造器" class="headerlink" title="四、构造器"></a>四、构造器</h2><ul>
+<li>构造器定义</li>
+</ul>
+<p>​		构造器的作用用于初始化一个类的对象，并返回对象的地址</p>
+<ul>
+<li>构造器定义格式：</li>
+</ul>
+<pre><code>修饰符 类名(形参列表)&#123;
+
+&#125;
+
+不同修饰符的权限
+private         本类有效
+缺省			   包权限
+protected	    包权限+子类有效
+public          所有类皆有效
+</code></pre>
+<ul>
+<li>构造器分类</li>
+</ul>
+<ol>
+<li>无参数构造器（默认存在的）：初始化的对象时，成员变量的数据均采用默认值。</li>
+<li>有参数构造器：在初始化对象的时候，同时可以为对象进行赋值</li>
+</ol>
+<ul>
+<li>注意</li>
+</ul>
+<ol>
+<li>任何类定义出来，默认就自带了无参数构造器，写不写都有。</li>
+<li>一旦定义了有参数构造器，默认的无参数构造器就没有了，此时就需要自己写一个无参数构造器了</li>
+</ol>
+<h2 id="五、this关键字"><a href="#五、this关键字" class="headerlink" title="五、this关键字"></a>五、this关键字</h2><ol>
+<li>this关键字可以出现在成员方法、构造器中，代表当前对象的地址。</li>
+<li>作用：访问当前对象的成员变量、成员方法。</li>
+</ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-05_10-30-38.png"></p>
+<hr>
+<h2 id="六、封装"><a href="#六、封装" class="headerlink" title="六、封装"></a>六、封装</h2><ul>
+<li>概念</li>
+</ul>
+<ol>
+<li>将同一类事物共性（属性和方法）归到一个类中</li>
+<li>对象代表什么，就封装对应的数据，并提供相应的方法</li>
+<li>使用一些修饰符尽可能的隐藏内部细节，只暴露一些接口与外界发生联系</li>
+</ol>
+<ul>
+<li>好处</li>
+</ul>
+<ol>
+<li>实现专业化分工（有事，找对象，调方法）</li>
+<li>隐藏信息，实现细节</li>
+</ol>
+<ul>
+<li>JavaBean</li>
+</ul>
+<p>​		也可以称为实体类，其对象用于在程序中封装数据</p>
+<ul>
+<li>格式</li>
+</ul>
+<ol>
+<li>成员变量使用 private 修饰。</li>
+<li>提供每一个成员变量对应的 setXxx() &#x2F; getXxx()。</li>
+<li>必须提供一个无参构造器。</li>
+</ol>
+<h3 id="1-0-成员变量与局部变量"><a href="#1-0-成员变量与局部变量" class="headerlink" title="1.0 成员变量与局部变量"></a>1.0 成员变量与局部变量</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-05_11-03-05.png"></p>
+<hr>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+  
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+
+   
+   
+     <div class="music-player">
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=530 height=86 src="//music.163.com/outchain/player?type=2&id=572328440&auto=1&height=66"></iframe>
+     </div>
+  
+
+   
+
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

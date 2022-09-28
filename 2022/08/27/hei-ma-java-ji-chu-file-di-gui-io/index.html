@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>File,递归，IO | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>File,递归，IO </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/26
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
+                    黑马程序员-徐磊-java基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h3 id="File类的使用"><a href="#File类的使用" class="headerlink" title="File类的使用"></a>File类的使用</h3><ul>
+<li>概述</li>
+</ul>
+<p>File类在包java.io.File下、代表操作系统的文件对象（文件、文件夹）</p>
+<p>File类提供了诸如：定位文件，获取文件本身的信息、删除文件、创建文件（文件夹）等功能</p>
+<p>File对象可以定位文件和文件夹</p>
+<p>File封装的对象仅仅是一个路径名，这个路径可以是存在的，也可以是不存在的</p>
+<ul>
+<li><strong>绝对路径和相对路径</strong></li>
+</ul>
+<p>绝对路径是带盘符的，依赖当前系统<br>相对路径：不带盘符，默认直接到当前工程下的目录寻找文件<br>当前工程是空工程，就 模块名&#x2F;src&#x2F;… 【如果你书写的代码正位于项目下，就不用模块名，直接src&#x2F;】</p>
+<span id="more"></span>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841748.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void test1() &#123;
+        //D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\File、递归、IO.pdf
+        //可以加杠
+        //final File file = new File(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\PPT\\&quot;, &quot;File、递归、IO.pdf&quot;);
+        //可以不加杠
+        final File file = new File(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\PPT&quot;, &quot;File、递归、IO.pdf&quot;);
+        //可以加杠 可以不加杠
+        final File file1 = new File(new File(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\PPT\\&quot;), 
+                                    &quot;File、递归、IO.pdf&quot;);
+        final File file2 = new File(&quot;src/logback.xml&quot;);
+        final File file3 = new File(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\PPT\\File、递归、IO.pdf&quot;);
+        System.out.println(file.getName());
+        System.out.println(file1.getName());
+        System.out.println(file2.getName());
+        System.out.println(file3.getName());
+    &#125;
+</code></pre>
+<pre><code>File、递归、IO.pdf
+File、递归、IO.pdf
+logback.xml
+File、递归、IO.pdf
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841099.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void tester1() &#123;
+        File file = new File(&quot;D:&quot;, &quot;\\learn\\黑马程序员\\java基础\\《Java面试手册》.pdf&quot;);
+        System.out.println(&quot;该路径是否存在文件：&quot; + file.exists());
+        System.out.println(&quot;文件？：&quot; + file.isFile());
+        System.out.println(&quot;文件夹？：&quot; + file.isDirectory());
+        System.out.println(&quot;绝对路径：&quot; + file.getAbsolutePath());
+        System.out.println(&quot;文件定义时使用的路径：&quot; + file.getPath());
+        System.out.println(&quot;文件名：&quot; + file.getName());
+        System.out.println(&quot;文件大小：&quot; + file.length());
+        System.out.println(&quot;最后修改时间：&quot; + new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;).format(file.lastModified()));
+        System.out.println(&quot;------------------------------------------------------------------&quot;);
+    &#125;
+
+    @Test
+    public void testFile02() &#123;
+        File file = new File(&quot;src/Contacts2.xml&quot;);
+        boolean exists = file.exists();
+        boolean file1 = file.isFile();
+        boolean directory = file.isDirectory();
+        String name = file.getName();
+        String absolutePath = file.getAbsolutePath();
+        String path = file.getPath();
+        long length = file.length();
+        long l = file.lastModified();
+        System.out.println(&quot;该路径是否存在文件：&quot; + exists);
+        System.out.println(&quot;文件？：&quot; + file1);
+        System.out.println(&quot;文件夹？：&quot; + directory);
+        System.out.println(&quot;绝对路径：&quot; + absolutePath);
+        System.out.println(&quot;文件定义时使用的路径：&quot; + path);
+        System.out.println(&quot;文件名：&quot; + name);
+        System.out.println(&quot;文件大小：&quot; + length);
+        System.out.println(&quot;最后修改时间：&quot; + new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;).format(l));
+    &#125;
+
+    @Test
+    public void testFile03() &#123;
+        File file = new File(&quot;src/ntacts2.xml&quot;);
+        boolean exists = file.exists();
+        boolean file1 = file.isFile();
+        boolean directory = file.isDirectory();
+        String name = file.getName();
+        String absolutePath = file.getAbsolutePath();
+        String path = file.getPath();
+        long length = file.length();
+        long l = file.lastModified();
+        System.out.println(&quot;该路径是否存在文件：&quot; + exists);
+        System.out.println(&quot;文件？：&quot; + file1);
+        System.out.println(&quot;文件夹？：&quot; + directory);
+        System.out.println(&quot;绝对路径：&quot; + absolutePath);
+        System.out.println(&quot;文件定义时使用的路径：&quot; + path);
+        System.out.println(&quot;文件名：&quot; + name);
+        System.out.println(&quot;文件大小：&quot; + length);
+        System.out.println(&quot;最后修改时间：&quot; + new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;).format(l));
+    &#125;
+</code></pre>
+<pre><code>该路径是否存在文件：true
+文件？：true
+文件夹？：false
+绝对路径：D:\learn\黑马程序员\java基础\《Java面试手册》.pdf
+文件定义时使用的路径：D:\learn\黑马程序员\java基础\《Java面试手册》.pdf
+文件名：《Java面试手册》.pdf
+文件大小：11086731
+最后修改时间：2022-01-12 10:34:49
+------------------------------------------------------------------
+该路径是否存在文件：true
+文件？：true
+文件夹？：false
+绝对路径：D:\learn\Idea\basis\src\Contacts2.xml
+文件定义时使用的路径：src\Contacts2.xml
+文件名：Contacts2.xml
+文件大小：683
+最后修改时间：2021-10-15 09:15:23
+---------------------------------------------------------------------
+该路径是否存在文件：false
+文件？：false
+文件夹？：false
+绝对路径：D:\learn\Idea\basis\src\ntacts2.xml
+文件定义时使用的路径：src\ntacts2.xml
+文件名：ntacts2.xml
+文件大小：0
+最后修改时间：1970-01-01 08:00:00
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841153.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841682.png"></p>
+<hr>
+<pre><code class="java">        File file = new File(&quot;src/aaa.txt&quot;);
+        System.out.println(file.createNewFile()); //当该文件存在时，false；否则true
+
+        File file = new File(&quot;src/a/a&quot;);
+        System.out.println(file.mkdir());//mkdir()是创建一级目录，当超过一级就会返回false；已经存在也会返回false
+
+        File file = new File(&quot;src/c/c/c/c&quot;);
+        System.out.println(file.mkdirs());//mkdirs()是创建多级目录，一级也可以；已经存在也会返回false
+
+        File file = new File(&quot;src/c/a.txt&quot;);
+        System.out.println(file.delete());//只能删除空文件夹或文件，文件夹非空返回false
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841844.png"></p>
+<hr>
+<pre><code class="java">@Test
+public void testFile4() throws Exception &#123;
+    File file = new File(&quot;D:\\learn\\Idea\\basis\\src&quot;);
+    String[] list = file.list();//获取该文件夹一级目录的所有文件名
+    for (String s : list) &#123;
+        System.out.println(s);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>aaa.txt
+array
+bbb.txt
+books.xml
+branch
+ccc.txt
+collection
+commonlyUsedApi
+Contacts.xml
+Contacts2.xml
+file_io_demo
+inherit
+lib
+logback
+logback.xml
+loop
+method
+operator_type
+outputstreamwriter.txt
+serializable
+serializable.txt
+static_demo
+student.txt
+xml_demo
+</code></pre>
+<pre><code class="java">    @Test
+    public void test2() &#123;
+        //D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\资源
+        File file = new File(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\资源&quot;);
+        File[] files = file.listFiles();//获取该文件夹一级目录的所有文件对象(当这个文件对象是空文件夹时，返回一个空数组)
+        System.out.println(Arrays.toString(files));
+
+        final File file2 = new File(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\PPT&quot;);
+        File[] files1 = file2.listFiles();//获取该文件夹一级目录的所有文件对象
+        for (File file1 : files1) &#123;
+            System.out.println(file1.getAbsolutePath());
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>[]
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\18、File、递归、IO一.pptx
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\218、File、递归、IO一.pptx
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\day08、阶段项目.pptx
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\File、递归、IO.html
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\File、递归、IO.md
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\File、递归、IO.pdf
+D:\learn\黑马程序员\java基础\day19、File、递归、IO流(一)\PPT\IO二.pdf
+</code></pre>
+<p>listFiles方法注意事项：</p>
+<p>​    当调用者不存在时，返回null</p>
+<p>​    当调用者是一个文件时，返回null</p>
+<p>​    当调用者是一个空文件夹时，返回一个长度为0的数组</p>
+<p>​    当调用者是一个有内容的文件夹时，将里面所有文件和文件夹的路径放在File数组中返回</p>
+<p>​    当调用者是一个有隐藏文件的文件夹时，将里面所有文件和文件夹的路径放在File数组中返回，包含隐藏内容</p>
+<p>​    当调用者是一个需要权限才能进入的文件夹时，返回null</p>
+<h3 id="方法递归"><a href="#方法递归" class="headerlink" title="方法递归"></a>方法递归</h3><ul>
+<li>定义</li>
+</ul>
+<p>方法直接调用自己或者间接调用自己的形式称为方法递归（recursion）</p>
+<ul>
+<li>问题</li>
+</ul>
+<p>递归如果没有控制好终止（边界），会出现递归死循环，导致栈内存溢出现象。</p>
+<ul>
+<li>总结</li>
+</ul>
+<p>递归算法三要素大体可以总结为：<br>    递归的公式： f(n) &#x3D;  f(n-1) * n;<br>    递归的终结点：f(1)<br>    递归的方向必须走向终结点<br>核心思想：<br>    递深归回</p>
+<ul>
+<li>递归查找文件</li>
+</ul>
+<pre><code class="JAVA">    public static void main(String[] args) &#123;
+        long l1 = System.currentTimeMillis();
+        search(new File(&quot;D:\\&quot;), &quot;JAVA&quot;);
+        long l2 = System.currentTimeMillis();
+        long l3 = l2 - l1;
+        System.out.println(l3 / 1000 + &quot;s&quot;);
+    &#125;
+
+
+    public static void search(File target, String name) &#123;
+        //是一个文件夹
+        if (target != null &amp;&amp; target.isDirectory()) &#123;
+            //搜寻一级目录
+            File[] listFiles = target.listFiles();
+              
+            //调用者存在，调用者不是文件，有权限，目录不为空
+            if (listFiles != null &amp;&amp; listFiles.length &gt; 0) &#123;
+                for (File file : listFiles) &#123;
+                    if (file.isFile()) &#123;
+                        if (file.getName().contains(name)) &#123;
+                            System.out.println(&quot;所寻找的文件位于：&quot; + file.getAbsolutePath());
+                            //如果打破就是找到一个就不找，不打破就是找该文件夹的所有文件
+                        &#125;
+                        //是文件夹
+                    &#125; else &#123;
+                        search(file, name);
+                    &#125;
+                &#125;
+            &#125;
+                  //null []
+            
+        &#125;
+    &#125;
+</code></pre>
+<ul>
+<li>啤酒问题</li>
+</ul>
+<pre><code class="java">需求：啤酒2元1瓶，4个盖子可以换一瓶，2个空瓶可以换一瓶，
+请问10元钱可以喝多少瓶酒，剩余多少空瓶和盖子。
+答案：15瓶 3盖子 1瓶子
+    
+    private static final int price = 2;
+    private static int lastBottleCover;
+    private static int lastNullBottle;
+    private static int allBottle;
+
+    public static void main(String[] args) &#123;
+        buy(10);
+        System.out.println(allBottle);
+        System.out.println(lastBottleCover);
+        System.out.println(lastNullBottle);
+    &#125;
+
+    public static void buy(int money) &#123;
+        int bottle = money / price;
+        allBottle += bottle;
+        int bottleCover = bottle + lastBottleCover;
+        int nullBottle = bottle + lastNullBottle;
+        int allMoney = bottleCover / 4 * price + nullBottle / 2 * price;
+        lastNullBottle = nullBottle % 2;
+        lastBottleCover = bottleCover % 4;
+        if (allMoney &gt;= price) &#123;
+            buy(allMoney);
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h3><ul>
+<li>定义</li>
+</ul>
+<p>计算机底层只能存储010101二进制数</p>
+<p>计算机对字符进行编号，编号的规则就是字符集</p>
+<p>Unicode会先通过UTF-8，UTF-16，以及 UTF-32的编码成二进制后再存储到计算机，其中最为常见的就是UTF-8</p>
+<p>Unicode是万国码一个汉字两个字节，以UTF-8编码后一个中文 一般 以三个字节的形式存储</p>
+<p>UTF-8也要兼容ASCII编码表</p>
+<p>技术人员都应该使用UTF-8的字符集编码。<br>编码前和编码后的字符集需要一致，否则会出现中文乱码。<br>英文和数字等在任何国家的字符集中都占1个字节<br>GBK字符中一个中文字符占2个字节</p>
+<p>UTF-8就是在互联网上使用最广的一种unicode的实现方式，这是为传输而设计的编码，并使编码无国界，这样就可以显示全世界上所有文化的字符了。UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度，当字符在ASCII码的范围时，就用一个字节表示，保留了ASCII字符一个字节的编码做为它的一部分，注意的是unicode一个中文字符占2个字节，而UTF-8一个中文字符占3个字节</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841828.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841957.png"></p>
+<hr>
+<pre><code class="java">        String name = &quot;ab十六分公交卡&quot;;
+         //以GBK的字符编码方式，将字符串转为字节数组
+        byte[] bytes = name.getBytes(&quot;GBK&quot;);   //[97, 98, -54, -82, -63, -7, -73, -42, -71, -85, -67, -69, -65, -88]
+
+//        byte[] bytes = name.getBytes();//以平台默认的字符编码方式，将字符串转为字节数组
+//[97, 98, -27, -115, -127, -27, -123, -83, -27, -120, -122, -27, -123, -84, -28, -70, -92, -27, -115, -95]
+ 
+        String s=new String(bytes,&quot;GBK&quot;);
+        System.out.println(s);
+</code></pre>
+<h3 id="IO流的作用、分类"><a href="#IO流的作用、分类" class="headerlink" title="IO流的作用、分类"></a>IO流的作用、分类</h3><ul>
+<li>IO流的分类</li>
+</ul>
+<p>按流向分为：<br>    输入流：流入内存<br>    输出流：流出内存</p>
+<p>按数据的最小单位：<br>    字节流：可以读取任何数据，尤其适合音频视频图片等<br>    字符流：仅适合读取文本文件</p>
+<p>总结流的四大类：<br>    字节输入流：以内存为基准，来自磁盘文件&#x2F;网络中的数据以字节的形式读入到内存中去的流称为字节输入流。<br>    字节输出流：以内存为基准，把内存中的数据以字节写出到磁盘文件或者网络中去的流称为字节输出流。<br>    字符输入流：以内存为基准，来自磁盘文件&#x2F;网络中的数据以字符的形式读入到内存中去的流称为字符输入流。<br>    字符输出流：以内存为基准，把内存中的数据以字符写出到磁盘文件或者网络介质中去的流称为字符输出流</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841661.png"></p>
+<hr>
+<h3 id="字符流、字节流"><a href="#字符流、字节流" class="headerlink" title="字符流、字节流"></a>字符流、字节流</h3><ul>
+<li>定义</li>
+</ul>
+<p>​	内存到文件的一条 管道</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841883.png"></p>
+<hr>
+<ul>
+<li>低效，乱码</li>
+</ul>
+<pre><code class="java">/**
+*	//字节输入流 之 一次读取一滴    
+*/
+public static void main(String[] args) throws Exception &#123;
+        InputStream is = new FileInputStream(&quot;src/aaa.txt&quot;);
+        int i;//读到的字节存在这里
+        while ((i = is.read()) != -1) &#123;//每次读取一个字节，当没有数据时返回-1;性能低，乱码
+            System.out.print((char)i);
+        &#125;
+    &#125;
+</code></pre>
+<pre><code class="java">/**
+*	字节输入流 之 一次读取一桶
+*/
+          
+    //  1绿2
+    @Test
+    public void testInStream() throws Exception &#123;
+        InputStream is = new FileInputStream(&quot;src/aaa.txt&quot;);
+        byte[] buffer = new byte[3];//读到的数据存在这里
+        int length;//这里记录独到的数据的字节长度
+        while ((length = is.read(buffer)) != -1) &#123;
+            System.out.println(Arrays.toString(buffer));
+            System.out.println(new String(buffer, 0, length));
+        &#125;
+    &#125;
+</code></pre>
+<pre><code class="java">[49, -25, -69]
+1�
+[-65, 50, -69]//-69是上一次的数据，如果没有被覆盖掉，会一直存在；所以要取多少，读多少
+ �2
+</code></pre>
+<ul>
+<li>解决乱码（傻狗方式）</li>
+</ul>
+<pre><code class="java">字节输入流 之 一次读取一桶,一桶有文件那么大
+    @Test
+    public void testInStream3() throws Exception &#123;
+        File file = new File(&quot;src/aaa.txt&quot;);
+        InputStream is = new FileInputStream(file);
+        byte[] bytes = new byte[(int) file.length()];//桶大小与文件大小一致
+        int read = is.read(bytes);//一次读完
+        System.out.println(new String(bytes, 0, read));//有多少读取多少
+    &#125;
+</code></pre>
+<ul>
+<li>小结</li>
+</ul>
+<p>一次性读取完全部字节。<br>可以定义与文件一样大的字节数组读取<br>如果文件过大，定义的字节数组可能引起内存溢出</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841087.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841782.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841878.png"></p>
+<hr>
+<pre><code class="java">    一次写一个字节
+    @Test
+    public void testStream1() throws Exception &#123;
+        FileOutputStream os = new FileOutputStream(&quot;D:\\learn\\Idea\\basis\\src\\bbb.txt&quot;, true);//追加数据
+        os.write(&#39;a&#39;);//一次写一个字节，英文字母 byte，short，char，int可以相互转换
+        os.write(48);//转为二进制的48，此时还在Ascii的范围中，会被转成0
+        os.write(&#39;徐&#39;);//用utf-8编码会编成三个字节，但只能写一个字节
+        os.flush();//刷新数据，管道还在链接着
+        os.close();//关闭管道，并刷新管道
+    &#125;
+</code></pre>
+<pre><code>a0?
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841039.png"></p>
+<pre><code class="java">一次写一桶字节
+    @Test
+    public void testStream3() throws Exception &#123;
+        FileOutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\资源\\ccc.txt&quot;);
+        os.write(&quot;为天地立心，&quot;.getBytes());//一次写一个字节数组
+        os.write(&quot;\r\n&quot;.getBytes());//回车+换行
+        os.write(&quot;为生民立命，&quot;.getBytes());
+        os.write(&quot;\r\n&quot;.getBytes());
+        os.write(&quot;为往圣继绝学，&quot;.getBytes());
+        os.write(&quot;\r\n&quot;.getBytes());
+        os.write(&quot;为万世开太平.啊&quot;.getBytes(), 0, 19);//这是字节数组的起始位置，和长度
+        os.write(&quot;\r\n&quot;.getBytes());
+        os.flush();//刷新数据，管道还在链接着
+        os.close();//关闭管道，并刷新管道
+    &#125;
+</code></pre>
+<pre><code>为天地立心，
+为生民立命，
+为往圣继绝学，
+为万世开太平.
+</code></pre>
+<ul>
+<li>回车与换行</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841896.png"></p>
+<hr>
+<p>机械打字机有回车和换行两个键作用分别是:<br>换行就是把滚筒卷一格，不改变水平位置。<br>回车就是把水平位置复位，不卷动滚筒</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841052.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void testStream4() throws Exception &#123;
+        FileInputStream is = new FileInputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\
+                                                 PPT\\18、File、递归、IO一.pptx&quot;);
+        FileOutputStream os = new FileOutputStream(&quot;D:\\learn\\黑马程序员\\java基础\\day19、File、递归、IO流(一)\\
+                                                   PPT\\218、File、递归、IO一.pptx&quot;);
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = is.read(buffer)) != -1) &#123;
+            os.write(buffer, 0, length);//注意：读取多少倒出多少
+            os.flush();//刷新数据，管道还在链接着
+        &#125;
+        is.close();//关闭管道
+        os.close();//关闭管道，并刷新管道
+    &#125;
+
+任何文件的底层都是字节，拷贝是一字不漏的转移字节，只要前后文件格式、编码一致没有任何问题
+</code></pre>
+<ul>
+<li>（管道）流的关闭</li>
+</ul>
+<pre><code class="java">//异常处理标准格式：try….catch…finally
+    @Test
+    public void test_1() &#123;
+        InputStream is = null;
+        try &#123;
+            is = new FileInputStream(&quot;aaaaa&quot;);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            System.out.println(&quot;最终执行======&quot;);//无论是否发生异常都会执行
+            try &#123;       //麻烦
+                if (is != null) &#123;//防止空指针
+                    is.close();//关闭会抛异常
+                &#125;
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<p>finally：在异常处理时提供finally块来执行所有清除操作，比如说IO流中的释放资源<br>特点：被finally控制的语句最终一定会执行，除非JVM退出</p>
+<pre><code class="java">//   try....catch...resource 
+    @Test
+    public void test_2() &#123;
+        try (
+                //把资源放在try括号内部，在使用完成资源后会自动释放资源，即使出现异常也会
+                Myconnection myconnection = new Myconnection();
+        ) &#123;
+            System.out.println(10 / 0);
+            System.out.println(&quot;此处代码不会执行&quot;);
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+class Myconnection implements Closeable&#123;
+    @Override
+    public void close() throws IOException &#123;
+        System.out.println(&quot;关闭连接------------------------------&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>关闭连接------------------------------
+java.lang.ArithmeticException: / by zero
+进程已结束，退出代码为 0
+</code></pre>
+<ul>
+<li><p>小结</p>
+<p>try….catch…resource 只能放置资源对象，否则报错</p>
+</li>
+</ul>
+<p>资源对象：</p>
+<p>​	都是实现了Closeable&#x2F;AutoCloseable接口的类对象</p>
+<pre><code class="java">public abstract class InputStream implements Closeable &#123;&#125;
+public abstract class OutputStream implements Closeable, Flushable&#123;&#125; 
+</code></pre>
+<p>自动释放资源、代码简洁</p>
+<ul>
+<li>字符流</li>
+</ul>
+<p>字节流读取中文输出会存在乱码。或者内存溢出。<br>读取中文输出，字符流更合适，最小单位是按照单个字符读取的。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261841568.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261840675.png"></p>
+<hr>
+<pre><code class="java">一次读取一个字符
+    @Test
+    public void test1() &#123;
+        try (
+                Reader reader = new FileReader(&quot;src/ccc.txt&quot;);
+        ) &#123;
+            int flag;//把一个字符放到这里
+            while ((flag = reader.read()) != -1) &#123;
+                System.out.print((char) flag);//0---65534
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+读取中文字符不会出现乱码（如果代码文件编码一致）
+性能较慢
+</code></pre>
+<pre><code class="java">一次读取一桶字符
+    @Test
+    public void test2() &#123;
+        try (
+                Reader reader = new FileReader(&quot;src/ccc.txt&quot;);
+
+        ) &#123;
+            int length;//记录字符数组长度
+            char[] buffer = new char[3];//存取数据
+            while ((length = reader.read(buffer)) != -1) &#123;
+                System.out.print(new String(buffer, 0, length));
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+
+读取的性能得到了提升
+读取中文字符输出不会乱码
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261840139.png"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261840622.png"></p>
+<hr>
+<pre><code class="java">    @Test
+    public void test3() &#123;
+        try (Writer fw = new FileWriter(&quot;src/ccc.txt&quot;);) &#123;
+            fw.write(48);//每次写一个字符
+            fw.write(&#39;a&#39;);
+            fw.write(&#39;张&#39;);
+            fw.write(&quot;\r\n&quot;);//写一个字符串
+
+            fw.write(&quot;什么玩意的狗比东西&quot;, 5, 4);
+            fw.write(&quot;\r\n&quot;);
+            fw.write(&quot;无敌的女帝&quot;.toCharArray());//写一个字符数组
+            fw.write(&quot;\r\n&quot;);//写一个字符串
+
+            fw.write(&quot;无敌的女帝&quot;.toCharArray(), 0, 3);//写一个字符数组,有范围
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<pre><code>0a张
+狗比东西
+无敌的女帝
+无敌的    
+</code></pre>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+  
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+
+   
+   
+     <div class="music-player">
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=530 height=86 src="//music.163.com/outchain/player?type=2&id=572328440&auto=1&height=66"></iframe>
+     </div>
+  
+
+   
+
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>

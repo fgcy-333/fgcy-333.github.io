@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        <div id="home-head">
+    <div id="home-background" style="background-image: url(https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/wallhaven-pkqgx9.jpg)"></div>
+    
+    <div id="home-info" class="home-info" @click="home_click">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>风格差异的博客</h1>
+                <h3></h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+
+<div id="home-posts-wrap" class=>
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2022/08/29/song-hong-kang-mysql-gao-ji-di-01-zhang-linux-xia-mysql-de-an-zhuang-yu-shi-yong/">
+        <h2>
+            第01章_Linux下MySQL的安装与使用
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="1、安装前说明"><a href="#1、安装前说明" class="headerlink" title="1、安装前说明"></a>1、安装前说明</h1><h2 id="1-1-Linux系统及工具的准备"><a href="#1-1-Linux系统及工具的准备" class="headerlink" title="1.1 Linux系统及工具的准备"></a>1.1 Linux系统及工具的准备</h2><p>安装并启动好两台虚拟机： CentOS 7<br>掌握克隆虚拟机的操作</p>
+<ul>
+<li>mac地址</li>
+<li>主机名</li>
+<li>ip地址</li>
+<li>UUID</li>
+</ul>
+<p>1、安装有 Xshell 和 Xftp 等访问CentOS系统的工具</p>
+<p>2、CentOS6和CentOS7在MySQL的使用中的区别</p>
+<ul>
+<li>防火墙：6是iptables，7是firewalld </li>
+<li>启动服务的命令：6是service，7是systemctl</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/song-hong-kang-mysql-gao-ji-di-01-zhang-linux-xia-mysql-de-an-zhuang-yu-shi-yong/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/">
+        <h2>
+            第零章虚拟机克隆
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <blockquote>
+<p>本文以centos为例</p>
+</blockquote>
+<p>vmware中的完整克隆是基于指定的虚拟机克隆出相同的一份出来，不必再安装</p>
+<p>但是我们要保证几个地方不能一样</p>
+<p>1、主机名称（hostname）</p>
+<p>2、虚拟网卡设备mac地址</p>
+<p>3、ip地址</p>
+<p>4、UUID</p>
+<p>所以我们在克隆后要对这四个地方进行修改</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
+                尚硅谷-宋红康-MySQL(高级)
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/song-hong-kang-mysql-di-17-zhang-cun-chu-guo-cheng-yu-han-shu/">
+        <h2>
+            第17章_存储过程与函数
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="第15章-存储过程与函数"><a href="#第15章-存储过程与函数" class="headerlink" title="第15章_存储过程与函数"></a>第15章_存储过程与函数</h1><p>MySQL从5.0版本开始支持存储过程和函数。</p>
+<p>存储过程和函数能够将复杂的SQL逻辑封装在一起，应用程序无须关注存储过程和函数内部复杂的SQL逻辑，而只需要 <strong>简单地调用存储过程和函数</strong> 即可。</p>
+<p>这里所讲的函数为自定义函数。</p>
+<p>函数与存储过程的区别：</p>
+<p>函数一定有返回值</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00bcd4">
+                尚硅谷-宋红康-MySQL
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/song-hong-kang-mysql-di-17-zhang-cun-chu-guo-cheng-yu-han-shu/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/song-hong-kang-mysql-di-16-zhang-bian-liang-liu-cheng-kong-zhi-yu-you-biao/">
+        <h2>
+            第16章_变量、流程控制与游标
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="第16章-变量、流程控制与游标"><a href="#第16章-变量、流程控制与游标" class="headerlink" title="第16章_变量、流程控制与游标"></a>第16章_变量、流程控制与游标</h1><p>讲师：尚硅谷-宋红康（江湖人称：康师傅）</p>
+<p>官网：<a target="_blank" rel="noopener" href="http://www.atguigu.com/">http://www.atguigu.com</a></p>
+<hr>
+<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h2><p>在MySQL数据库的存储过程和函数中，可以使用变量来存储查询或计算的中间结果数据，或者输出最终的结果数据。</p>
+<p>在 MySQL 数据库中，变量分为<code>系统变量</code>以及<code>用户自定义变量</code>。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00bcd4">
+                尚硅谷-宋红康-MySQL
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/song-hong-kang-mysql-di-16-zhang-bian-liang-liu-cheng-kong-zhi-yu-you-biao/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/song-hong-kang-mysql-di-15-zhang-hong-fa-qi/">
+        <h2>
+            第15章_触发器
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="第17章-触发器"><a href="#第17章-触发器" class="headerlink" title="第17章_触发器"></a>第17章_触发器</h1><p>讲师：尚硅谷-宋红康（江湖人称：康师傅）</p>
+<p>官网：<a target="_blank" rel="noopener" href="http://www.atguigu.com/">http://www.atguigu.com</a></p>
+<hr>
+<p>在实际开发中，我们经常会遇到这样的情况：有 2 个或者多个相互关联的表，如<code>商品信息</code>和<code>库存信息</code>分别存放在 2 个不同的数据表中，我们在添加一条新商品记录的时候，为了保证数据的完整性，必须同时在库存表中添加一条库存记录。</p>
+<p>这样一来，我们就必须把这两个关联的操作步骤写到程序里面，而且要用<code>事务</code>包裹起来，确保这两个操作成为一个<code>原子操作</code>，要么全部执行，要么全部不执行。要是遇到特殊情况，可能还需要对数据进行手动维护，这样就很<code>容易忘记其中的一步</code>，导致数据缺失。</p>
+<p>这个时候，咱们可以使用触发器。<strong>你可以创建一个触发器，让商品信息数据的插入操作自动触发库存数据的插入操作。</strong>这样一来，就不用担心因为忘记添加库存数据而导致的数据缺失了。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #00a596">
+                尚硅谷-宋红康-MySQL
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/song-hong-kang-mysql-di-15-zhang-hong-fa-qi/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/29/song-hong-kang-mysql-di-14-zhang-shi-tu/">
+        <h2>
+            第14章_视图
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="第14章-视图"><a href="#第14章-视图" class="headerlink" title="第14章_视图"></a>第14章_视图</h1><p>讲师：尚硅谷-宋红康（江湖人称：康师傅）</p>
+<p>官网：<a target="_blank" rel="noopener" href="http://www.atguigu.com/">http://www.atguigu.com</a></p>
+<hr>
+<h2 id="1-常见的数据库对象"><a href="#1-常见的数据库对象" class="headerlink" title="1. 常见的数据库对象"></a>1. 常见的数据库对象</h2><table>
+<thead>
+<tr>
+<th>对象</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表(TABLE)</td>
+<td>表是存储数据的逻辑单元，以行和列的形式存在，列就是字段，行就是记录</td>
+</tr>
+<tr>
+<td>数据字典</td>
+<td>就是系统表，存放数据库相关信息的表。系统表的数据通常由数据库系统维护，程序员通常不应该修改，只可查看</td>
+</tr>
+<tr>
+<td>约束(CONSTRAINT)</td>
+<td>执行数据校验的规则，用于保证数据完整性的规则</td>
+</tr>
+<tr>
+<td>视图(VIEW)</td>
+<td>一个或者多个数据表里的数据的逻辑显示，视图并不存储数据</td>
+</tr>
+<tr>
+<td>索引(INDEX)</td>
+<td>用于提高查询性能，相当于书的目录</td>
+</tr>
+<tr>
+<td>存储过程(PROCEDURE)</td>
+<td>用于完成一次完整的业务处理，没有返回值，但可通过传出参数将多个值传给调用环境</td>
+</tr>
+<tr>
+<td>存储函数(FUNCTION)</td>
+<td>用于完成一次特定的计算，具有一个返回值</td>
+</tr>
+<tr>
+<td>触发器(TRIGGER)</td>
+<td>相当于一个事件监听器，当数据库发生特定事件后，触发器被触发，完成相应的处理</td>
+</tr>
+</tbody></table>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #03a9f4">
+                尚硅谷-宋红康-MySQL
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/29/song-hong-kang-mysql-di-14-zhang-shi-tu/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/28/hei-ma-java-ji-chu-char-shu-ju-lei-xing/">
+        <h2>
+            Char数据类型
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="Java数据类型教程-Java-char数据类型"><a href="#Java数据类型教程-Java-char数据类型" class="headerlink" title="Java数据类型教程 - Java char数据类型"></a>Java数据类型教程 - Java char数据类型</h2><p>char数据类型是16位无符号Java基元数据类型。它表示Unicode字符。</p>
+<p>请注意，char是无符号数据类型。因此，char变量不能为负值。</p>
+<p>字符数据类型的范围为0到65535，这与Unicode集的范围相同。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #03a9f4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/28/hei-ma-java-ji-chu-char-shu-ju-lei-xing/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/hei-ma-java-ji-chu-collection-yu-shu-ju-jie-gou-yu-list-yu-fan-xing-shen-ru/">
+        <h2>
+            Collection与数据结构与List与泛型深入
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/27
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="集合概述体系、常用API"><a href="#集合概述体系、常用API" class="headerlink" title="集合概述体系、常用API"></a>集合概述体系、常用API</h2><h3 id="前提引入"><a href="#前提引入" class="headerlink" title="前提引入"></a>前提引入</h3><ul>
+<li>数组特点</li>
+</ul>
+<p>数组定义完成后，类型确定、长度固定。<br>适合元素的个数和类型确定的业务场景，不适合做需要增删数据操作。</p>
+<ul>
+<li>集合的特点</li>
+</ul>
+<p>集合的大小不固定，启动后可以动态变化，类型也可以选择不固定<br>集合非常适合做元素的增删操作</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/hei-ma-java-ji-chu-collection-yu-shu-ju-jie-gou-yu-list-yu-fan-xing-shen-ru/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/hei-ma-java-ji-chu-static-guan-jian-zi-yu-dan-li-yu-dai-ma-duan-yu-ji-cheng/">
+        <h2>
+            Static关键字与单例与代码段与继承
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/27
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="static概述"><a href="#static概述" class="headerlink" title="static概述"></a>static概述</h3><p>static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；<br>static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。</p>
+<h3 id="成员变量可以分为两种"><a href="#成员变量可以分为两种" class="headerlink" title="成员变量可以分为两种"></a>成员变量可以分为两种</h3><ol>
+<li>实例成员变量：类内方法外，无static修饰，属于每一个对象</li>
+<li>静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #ff7d73">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/hei-ma-java-ji-chu-static-guan-jian-zi-yu-dan-li-yu-dai-ma-duan-yu-ji-cheng/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/08/27/hei-ma-java-ji-chu-bao-yu-xiu-shi-fu-yu-chou-xiang-lei-yu-jie-kou/">
+        <h2>
+            包与修饰符与抽象类与接口
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                视频学习笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/8/27
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="一、包"><a href="#一、包" class="headerlink" title="一、包"></a>一、包</h1><h2 id="1-0-概念"><a href="#1-0-概念" class="headerlink" title="1.0 概念"></a>1.0 概念</h2><ol>
+<li><p>包是用来分门别类的管理各种不同类的、建包利于程序的管理和维护</p>
+</li>
+<li><p>建包的语法格式：package 公司域名倒写.技术名称。报名建议全部英文小写，且具备意义</p>
+</li>
+<li><p>建包语句必须在第一行，一般IDEA工具会帮助创建</p>
+<pre><code class="java">    package com.itheima.javabean;//建包语句
+    public class Student &#123;
+    &#125;
+</code></pre>
+<p> <strong>注意：</strong></p>
+<p>带包编译某个目录下的全部java文件</p>
+<blockquote>
+<p>javac -d . *.java</p>
+</blockquote>
+</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
+                黑马程序员-徐磊-java基础
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/08/27/hei-ma-java-ji-chu-bao-yu-xiu-shi-fu-yu-chou-xiang-lei-yu-jie-kou/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+             
+<div class="page-current">
+    <div class="prev">
+        
+        <a href="/">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-left fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            
+            <a href="/">
+                <span class="page-num">
+                    1
+                </span>
+            </a>
+        </span>
+        
+        <span class="current">
+            2
+        </span>
+        
+        <span>
+            <a href="/page/3/">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+            
+            <a href="/page/4">
+                <span class="page-num">
+                    4
+                </span>
+            </a>
+            
+            
+            <span class="page-omit">...</span>
+            <a href="/page/6">
+                <span class="page-num">
+                    6
+                </span>
+            </a>
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a href="/page/3/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+</div>
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png " alt="avatar">
+        </div>
+        <div class="name">
+            fgcy
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                每一个不曾起舞的日子都是对生命的辜负
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/fgcy-333">
+                    <i class="fa-brands fa-github fa-fw"></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=1061499050&site=qq&menu=yes">
+                    <i class="fa-brands fa-qq fa-fw"></i>
+                </a>
+            </span>
+            
+        </div>
+        <div class="friend-links">
+            
+        </div>
+    </div>
+</div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+  
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+
+   
+   
+     <div class="music-player">
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=530 height=86 src="//music.163.com/outchain/player?type=2&id=572328440&auto=1&height=66"></iframe>
+     </div>
+  
+
+   
+
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>
