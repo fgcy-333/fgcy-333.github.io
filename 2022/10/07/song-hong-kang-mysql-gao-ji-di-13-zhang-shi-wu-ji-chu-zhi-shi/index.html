@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>第13章_事务基础知识 | 风格差异的博客</title>
+        <meta name="author" content="fgcy">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+</head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">风格差异的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;风格差异的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>第13章_事务基础知识 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/7
+        </span>
+        
+        <span class="category">
+            <a href="/categories/视频学习笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                视频学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #00a596">
+                    尚硅谷-宋红康-MySQL(高级)
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="1-数据库事务概述"><a href="#1-数据库事务概述" class="headerlink" title="1. 数据库事务概述"></a>1. 数据库事务概述</h1><p>事务 是 <strong>数据库</strong> 区别于 <strong>文件系统</strong> 的重要特性之一，当我们有了事务就会让数据库始终保持 <strong>一致性</strong>，同时我们还能通讨事务的机制 <strong>恢复到某个时间点</strong>，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失</p>
+<span id="more"></span>
+
+<h2 id="1-1-存储引擎支持情况"><a href="#1-1-存储引擎支持情况" class="headerlink" title="1.1 存储引擎支持情况"></a>1.1 存储引擎支持情况</h2><p><code>SHOW ENGINES </code>命令来查看当前 MySQL 支持的存储引擎都有哪些，以及这些存储引擎是否支持事务。</p>
+<pre><code class="mysql">show engines;
+
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+9 rows in set (0.00 sec)
+</code></pre>
+<p>能看出在 MySQL 中，只有InnoDB 是支持事务的。 </p>
+<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2 基本概念"></a>1.2 基本概念</h2><p>事务：一组逻辑操作单元，使数据从一种状态变换到另一种状态。 </p>
+<p>事务处理的原则：保证所有事务都作为 一个工作单元 来执行，即使出现了故障，都不能改变这种执行方式。</p>
+<p>当在一个事务中执行多个操作时，要么所有的事务都被提交( commit )，那么这些修改就 永久 地保 存下来；</p>
+<p>要么数据库管理系统将 放弃 所作的所有 修改 ，整个事务回滚( rollback )到最初状态。 </p>
+<p>案例：AA用户给BB用户转账100</p>
+<pre><code class="mysql">update account set money = money-100 where name =&#39;AA&#39;
+-- --------------
+-- 服务器宕机
+-- --------------
+update account set money = money + 100 where name =&#39;BB&#39;
+</code></pre>
+<h2 id="1-3-事务的ACID特性"><a href="#1-3-事务的ACID特性" class="headerlink" title="1.3 事务的ACID特性"></a>1.3 事务的ACID特性</h2><ul>
+<li>原子性（atomicity）：</li>
+</ul>
+<p>​		原子性是指事务是一个不可分割的工作单位，要么全部提交，要么全部失败回滚。即要么转账成功，要么转账失败，是不存在中间的状态。</p>
+<p>​		如果无法保证原子性会怎么样？就会出现数据不一致的情形，A账户减去100元，而B账户增加100元操作失败，系统将无故丢失100元。</p>
+<ul>
+<li>一致性（consistency）：</li>
+</ul>
+<p>​	（国内很多网站上对一致性的阐述有误，具体你可以参考 Wikipedia 对Consistency的阐述） </p>
+<p>​		根据定义，一致性是指事务执行前后，数据从一个<code>合 法性状态</code>变换到另外一个<code>合法性状态</code>。这种状态 是 语义上 的而不是语法上的，跟具体的业务有关。</p>
+<p>​		 那什么是合法的数据状态呢？满足 预定的约束 的状态就叫做合法的状态。通俗一点，这状态是由你自己 来定义的（比如满足现实世界中的约束）。</p>
+<p>​		满足这个状态，数据就是一致的，不满足这个状态，数据就 是不一致的！如果事务中的某个操作失败了，系统就会自动撤销当前正在执行的事务，返回到事		务操作 之前的状态。</p>
+<p>举例1：</p>
+<pre><code>A账户有200元，转账300元出去，此时A账户余额为-100元。你自然就发现了此时数据是不一致的，为什么呢？因为你定义了一个状态，余额这列必须&gt;=0
+</code></pre>
+<p>举例2：</p>
+<pre><code>A账户200元，转账50元给B账户，A账户的钱扣了，但是B账户因为各种意外，余额并没有增加。
+你也知道此时数据是不一致的，为什么呢？因为你定义了一个状态，要求A+B的总余额必须不变
+</code></pre>
+<p>举例3：</p>
+<pre><code>在数据表中我们将姓名字段设置为唯一性约束，这时当事务进行提交或者事务发生回滚的时候，如果数据表中的姓名不唯一，就破坏了事务的一致性要求
+</code></pre>
+<ul>
+<li>隔离型（isolation）：</li>
+</ul>
+<p>​		事务的隔离性是指一个事务的执行 <strong>不能被其他事务干扰</strong> ，即一个事务内部的操作及使用的数据对 <strong>并发</strong> 的 其他事务是隔离的，并发执行的各个事务之间不能		互相干扰【涉及隔离级别】。 </p>
+<p>如果无法保证隔离性会怎么样？假设A账户有200元，B账户0元。A账户往B账户转账两次，每次金额为50 元，分别在两个事务中执行。</p>
+<p>如果无法保证隔离性，会出现下面的情形：</p>
+<pre><code class="mysql">UPDATE accounts SET money = money - 50 WHERE NAME = &#39;AA&#39;;
+
+UPDATE accounts SET money = money + 50 WHERE NAME = &#39;BB&#39;;
+</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210071156055.png" alt="image-20221007115647666"></p>
+<hr>
+<ul>
+<li>持久性（durability）：</li>
+</ul>
+<p>​		持久性是指一个事务一旦被提交，它对数据库中数据的改变就是 永久性的 ，接下来的其他操作和数据库 故障不应该对其有任何影响。 </p>
+<p>​		持久性是通过 事务日志 来保证的。日志包括了 重做日志 和 回滚日志 。当我们通过事务对数据进行修改 的时候，首先会将数据库的变化信息记录到重做日志		中，然后再对数据库中对应的行进行修改。这样做 的好处是，即使数据库系统崩溃，数据库重启后也能找到没有更新到数据库系统中的重做日志，重新执 		行，从而使事务具有持久性。</p>
+<blockquote>
+<p>总结<br>ACID是事务的四大特性，在这四个特性中，原子性是基础，隔离性是手段，一致性是约束条件，而持久性是我们的目的<br>数据库事务，其实就是数据库设计者为了方便起见，把  需要保证  原子性、隔离性、一致性和持久性的一个<strong>或多个数据库操作称为一个事务</strong></p>
+</blockquote>
+<h2 id="1-4-事务的状态"><a href="#1-4-事务的状态" class="headerlink" title="1.4 事务的状态"></a>1.4 事务的状态</h2><p>我们现在知道 事务 是一个抽象的概念，它其实对应着一个或多个数据库操作，MySQL根据这些操作所执 行的不同阶段把 事务 大致划分成几个状态： </p>
+<ul>
+<li><p>活动的（active） </p>
+<p>事务对应的数据库操作正在执行过程中时，我们就说该事务处在 活动的 状态。 </p>
+</li>
+<li><p>部分提交的（partially committed） </p>
+<p>当事务中的最后一个操作执行完成，但由于操作都在内存中执行，所造成的影响并 <strong>没有刷新到磁盘</strong> 时，我们就说该事务处在 部分提交的 状态。 </p>
+</li>
+<li><p>失败的（failed） </p>
+<p>当事务处在 活动的 或者 部分提交的 状态时，可能遇到了某些错误（数据库自身的错误、操作系统 错误或者直接断电等）而无法继续执行，或者人为的停止当前事务的执行，我们就说该事务处在 失 败的 状态。</p>
+</li>
+<li><p>中止的（aborted） </p>
+<p>如果事务执行了一部分而变为 失败的 状态，那么就需要把已经修改的事务中的操作  <strong>还原到</strong> 事务执 行前的状态。换句话说，就是要撤销失败事务对当前数据库造成的影响。我们把这个撤销的过程称 之为 回滚 。当 回滚 操作执行完毕时，也就是数据库  <strong>恢复到了执行事务之前的状态</strong>，我们就说该事 务处在了 中止的 状态。</p>
+</li>
+</ul>
+<p> 举例：</p>
+<pre><code class="mysql">UPDATE accounts SET money = money - 50 WHERE NAME = &#39;AA&#39;;
+
+UPDATE accounts SET money = money + 50 WHERE NAME = &#39;BB&#39;;
+</code></pre>
+<ul>
+<li><p>提交的（committed）</p>
+<p> 当一个处在 部分提交的 状态的事务将修改过的数据都 <strong>同步到磁盘 上之后</strong>，我们就可以说该事务处 在了 提交的 状态。</p>
+</li>
+</ul>
+<p>一个基本的状态转换图如下所示：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210071214344.png" alt="image-20221007121452978"></p>
+<hr>
+<blockquote>
+<p>图中可见，只有当事务处于提交的或者中止的状态时，一个事务的生命周期才算是结束了。</p>
+<p>对于已经提交的事务来说，该事务对数据库所做的修改将永久生效</p>
+<p>对于处于中止状态的事务，该事务对数据库所做的所有修改都会被回滚到没执行该事务之前的状态，</p>
+</blockquote>
+<h1 id="2-如何使用事务"><a href="#2-如何使用事务" class="headerlink" title="2. 如何使用事务"></a>2. 如何使用事务</h1><p>使用事务有两种方式，分别为 显式事务 和 隐式事务 。</p>
+<p>使用事务的过程：</p>
+<pre><code>步骤1：开启事务
+
+步骤2：一系列的DML操作
+
+步骤3：事务结束的状态：提交的状态（COMMIT）中止的状态（ROLLBACK)
+</code></pre>
+<h2 id="2-1-显式事务"><a href="#2-1-显式事务" class="headerlink" title="2.1 显式事务"></a>2.1 显式事务</h2><p>步骤1：使用关键字 <code>START TRANSACTION </code> 或者 <code>BEGIN </code>，作用是显式开启一个事务。</p>
+<pre><code class="mysql">BEGIN;
+
+-- 或者
+
+START TRANSACTION;
+</code></pre>
+<p>START TRANSACTION 语句相较于 BEGIN 特别之处在于，后边能跟随几个 修饰符 ：</p>
+<p>① <code>READ ONLY </code>：标识当前事务是一个 只读事务 ，也就是属于该事务的数据库操作只能读取数据，而不 能修改数据。</p>
+<blockquote>
+<p>补充：只读事务中只是不允许修改那些其他事务也能访问到的表中的数据，对于临时表来说（我们使用CREATETMEPORARYTABLE创建的表），由于它们只能在当前会话中可见，所以以只读事务其实也是可以对临时表讲行增，邢，改操作的</p>
+</blockquote>
+<p>② <code>READ WRITE </code>：标识当前事务是一个 读写事务 ，也就是属于该事务的数据库操作既可以读取数据， 也可以修改数据。 【默认】</p>
+<p>③<code>WITH CONSISTENT SNAPSHOT</code>：启动一致性读。 </p>
+<p>比如：</p>
+<pre><code class="mysql">-- 开启一个只读事务
+START TRANSACTION READ ONLY;
+</code></pre>
+<pre><code class="mysql">-- 开启只读事务和一致性读
+START TRANSACTION READ ONLY，WITH CONSISTENT SNAPSHOT; 
+</code></pre>
+<p>步骤2：一系列事务中的操作（主要是DML，不含DDL） </p>
+<p>步骤3：提交事务 或 中止事务（即回滚事务）</p>
+<pre><code class="mysql">-- 提交事务。当提交事务后，对数据库的修改是永久性的
+COMMIT;
+</code></pre>
+<pre><code class="mysql">-- 回滚事务。即撤销正在进行的所有没有提交的修改
+ROLLBACK;
+</code></pre>
+<pre><code class="mysql">-- 将事务回滚到某个保存点
+ROLLBACK TO [SAVEPOINT];
+</code></pre>
+<p>其中关于<code>SAVEPOINT</code>相关操作有:</p>
+<pre><code class="mysql">-- 在事务中创建保存点，方便后续针对保存点进行回滚。一个事务中可以存在多个保存点。
+SAVEPOINT 保存点名称
+</code></pre>
+<pre><code class="mysql">-- 删除某个保存点、
+RELEASE SAVEPOINT 保存点名称
+</code></pre>
+<h2 id="2-2-隐式事务"><a href="#2-2-隐式事务" class="headerlink" title="2.2 隐式事务"></a>2.2 隐式事务</h2><p>MySQL中有一个系统变量autocommit</p>
+<p>关键字  <code>autocommit</code> 默认是开启的</p>
+<pre><code class="mysql">SHOW VARIABLES LIKE &#39;autocommit&#39;;
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| autocommit    | ON    |
++---------------+-------+
+1 row in set, 1 warning (0.01 sec)
+</code></pre>
+<p>默认情况下，如果我们不显式的使用<code>START TRANSACTION</code>或者BEGIN语句开启一个事务，那么每一条语句都算是一个独立的事务，这种特性称之为事务的自动提交。也就是说，不以START TRANSACTION或者BEGIN语句显式的开启一个事务，那么下边这两条语句就相当于放到两个独立的事务中去执行</p>
+<pre><code class="mysql">UPDATE account SET balance = balanle - 10 WHERE 1d = 1;-- 比时这条DML操作是一个独立的事务
+
+UPDATE account SET balance = balance + 10 WHERE id = 2;-- 比时这条DML操作是一个独立的事务
+</code></pre>
+<p>关闭这种 自动提交 的功能可以使用下边两种方法之一：</p>
+<p>方式一：把系统变量 autocommit 的值设置为 OFF</p>
+<pre><code class="mysql">SET AUTOCOMMIT = FALSE; -- 针对DML的操作是有效的 对DDL操作是无效的
+
+Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+<pre><code class="mysql">UPDATE account SET balance = balance-10 WHERE id-1;
+
+UPDATE account SET balance = balance + 10 WHERE id =2;
+
+COMMIT; -- 或rol1back；
+</code></pre>
+<p>这样的话，我们写入的多条语句就算是属于同一个事务了，直到我们显式的写出COMMIT语句来把这个事务提交掉，或者显式的写出ROLLBACK语句来把这个事务回滚掉</p>
+<blockquote>
+<p>补充：Oracle 默认不自动提交，需要手写COMMIT命令，而MySQL默认自动提交.</p>
+</blockquote>
+<p>方式2：我们在 <code>autocommit </code>为 <code>true </code>的情况下，使用 <code>start transaction </code>或 <code>begin</code>开启事务，那么DML 操作就不会自动提交数据</p>
+<pre><code class="MYSQL">START TRANSACTION;
+
+UPDATE account sET balance = balance-10 WHERE id = 1;
+
+UPDATE account sET balance = balance + 10 WHERE id = 2;
+
+COMMIT; -- 或rollback;
+</code></pre>
+<h2 id="2-3-隐式提交数据的情况"><a href="#2-3-隐式提交数据的情况" class="headerlink" title="2.3 隐式提交数据的情况"></a>2.3 隐式提交数据的情况</h2><ul>
+<li>数据定义语言（Data definition language，缩写为：DDL）</li>
+</ul>
+<p>​		数据库对象，指的就是 <strong>数据库</strong>、<strong>表</strong>、<strong>视图</strong>、<strong>存储过程</strong>等结构。</p>
+<p>​		当我们使用 <code>CREATE、ALTER、DROP</code> 等语句去修改数据库对象时，就会隐式的提交前边语句所属于的事务。即</p>
+<pre><code class="mysql">BEGIN;
+
+SELECT ... -- 事务中的一条语句
+UPDATE...  -- 事务中的一条语句
+.... -- 事务中的其它语句
+
+CREATE TABLE..,, -- 此语句会隐式的提交前边语句所属于的事务
+</code></pre>
+<ul>
+<li>隐式使用或修改mysql数据库中的表</li>
+</ul>
+<p>​		当我们使用ALTER USER、CREATE USER、DROP USER、GRANT、RENAME USER、REVOKE、SET PASSWORD等语句时也会隐式的提交前边语句所属于的		事务</p>
+<ul>
+<li>事务控制或关于锁定的语句</li>
+</ul>
+<p>① 当我们在一个事务还没提交或者回滚时就又使用 START TRANSACTION 或者 BEGIN 语句开启了 另一个事务时，会 隐式的提交 上一个事务。即：</p>
+<pre><code class="mysql">BEGIN ;
+
+SELECT..... -- 事务中的一条语句
+UPDATE.... -- 事务中的一条语句
+...... -- 事务中的其它语句
+BEGIN; -- 此语句会隐式的提交前边语句所属于的事务
+</code></pre>
+<p>② 当前的 <code>autocommit </code>系统变量的值为 OFF ，我们手动把它调为 ON 时，也会 隐式的提交 前边语 句所属的事务。</p>
+<p>③ 使用 LOCK TABLES 、 UNLOCK TABLES 等关于锁定的语句也会 隐式的提交 前边语句所属的事务。</p>
+<ul>
+<li>加载数据的语句</li>
+</ul>
+<p>​		使用 LOAD DATA语句来批量往数据库中导入数据时，也会隐式的提交前边语句所属的事务</p>
+<ul>
+<li>关于MySQL复制的一些语句</li>
+</ul>
+<p>​		使用START SLAVE、STOP SLAVE、RESET SLAVE、CHANGE MASTER TO等语句时会隐式的提交前边语句所属的事务。</p>
+<ul>
+<li>其它的一些语句</li>
+</ul>
+<p>​		使用ANALYZE TABLE、CACHE INDEX、CHECK TABLE、FLUSH、LOAD INDEX INTO CACHE OPTIMIZE TABLE、REPAIR TABLE、RESET等语句也会 隐式的		提交 前边语句所属的事务</p>
+<p>案例分析：</p>
+<p>举例一：体会commit 与 rollback的使用</p>
+<pre><code class="mysql">-- 情况一：
+
+ -- 保证是自动提交事务
+ SET AUTOCOMMIT =TRUE; 
+ -- 切换数据库
+ USE atguigudb1;
+ 
+ -- 新建表
+ CREATE TABLE use3(NAME VARCHAR(15) PRIMARY KEY );
+ 
+ 
+ SELECT * FROM use3;
+ 
+ 
+ -- 开启事务
+ BEGIN ;
+ 
+ INSERT INTO use3 VALUES(&#39;fgcy&#39;); -- 此时不会自动提交事务 但有记录 ‘fgcy’
+ 
+ -- 结束事务
+ COMMIT;
+ 
+ 
+ 
+BEGIN ;
+
+INSERT INTO use3 VALUES(&#39;张三&#39;); -- 此时不会自动提交事务 但有记录 ‘张三’
+  
+INSERT INTO use3 VALUES(&#39;张三&#39;); -- 受主键影响 不会插入 ‘张三’
+ 
+ROLLBACK; -- 回滚后 只有记录 ‘fgcy’
+</code></pre>
+<pre><code class="mysql"> -- 情况二：
+ 
+ TRUNCATE TABLE use3; -- DDL操作 会自动提交数据 不受系统变量autocommit的影响
+ 
+ 
+ SELECT * FROM use3; -- 表为空
+ 
+ 
+ BEGIN ;-- 开启事务
+ 
+ INSERT INTO use3 VALUES(&#39;fgcy&#39;); -- 此时不会自动提交事务 但有记录 ‘fgcy’
+ 
+ COMMIT;-- 结束事务
+ 
+ 
+ -- 默认情况下 DML 会自动提交事务 直接插入数据
+ INSERT INTO use3 VALUES(&#39;张三&#39;); 
+ 
+ -- 受主键影响 不会插入 ‘张三’
+ INSERT INTO use3 VALUES(&#39;张三&#39;); -- 事务是失败的状态
+ 
+ 
+ ROLLBACK; -- 回滚后还是 fgcy 张三 事务是中止的状态
+</code></pre>
+<p>举例二：体会 Innodb 与 Myisam的区别</p>
+<pre><code class="mysql">CREATE TABLE test1(i INT )ENGINE=INNODB;
+ 
+ 
+CREATE TABLE test2(i INT )ENGINE=MYISAM;
+
+
+
+-- 针对 innodb
+BEGIN;
+INSERT INTO test1 VALUES (1); -- 有记录 1
+ROLLBACK; -- 没有记录
+
+SELECT * FROM test1;
+
+
+
+-- 针对 Myisam MyISAM不支持事务
+BEGIN;
+INSERT INTO test2 VALUES (1); -- 有记录 1
+ROLLBACK; -- 有记录 1
+</code></pre>
+<p>举例三：体会savePoint</p>
+<pre><code class="mysql">
+</code></pre>
+<h2 id="2-4-使用举例1："><a href="#2-4-使用举例1：" class="headerlink" title="2.4 使用举例1："></a>2.4 使用举例1：</h2><p>提交与回滚 我们看下在 MySQL 的默认状态下，下面这个事务最后的处理结果是什么。 </p>
+<p>情况1：</p>
+<p>当我们设置 autocommit&#x3D;0 时，不论是否采用 START TRANSACTION 或者 BEGIN 的方式来开启事 务，都需要用 COMMIT 进行提交，让事务生效，使用 ROLLBACK 对事务进行回滚。 当我们设置 autocommit&#x3D;1 时，每条 SQL 语句都会自动进行提交。 不过这时，如果你采用 START TRANSACTION 或者 BEGIN 的方式来显式地开启事务，那么这个事务只有在 COMMIT 时才会生效， 在 ROLLBACK 时才会回滚。</p>
+<p>你能看到相同的SQL代码，只是在事务开始之前设置了SET@@completion_type&#x3D; 1；，结果就和我们第一次处理的一样，只有一个”张三”。这是为什么呢？<br>这里讲解下 MySQL 中completion_type 参数的作用，实际上这个参数有3 种可能：</p>
+<ul>
+<li>completion&#x3D;0，这是默认情况。当我们执行 COMMIT的时候会提交事务，在执行下一个事务时，还需要使用START TRANSACTION或者 BEGIN来开启。</li>
+<li>completion&#x3D;1，这种情况下，当我们提交事务后，相当于执行了 COMMIT AND CHAIN，也就是开启一个链式事务，即当我们提交事务之后会开启一个相同隔离级别的事务</li>
+<li>completion&#x3D;2，这种情况下 COMMIT&#x3D;COMMIT AND RELEASE，也就是当我们提交后，会自动与服务器断开连接。</li>
+</ul>
+<h1 id="4-事务的常见分类"><a href="#4-事务的常见分类" class="headerlink" title="4. 事务的常见分类"></a>4. 事务的常见分类</h1><p>从事务理论的角度来看，可以把事务分为以下几种类型：</p>
+<ul>
+<li>扁平事务（Flat Transactions）</li>
+</ul>
+<p>​		扁平事务是事务类型中最简单的一种，但是在实际生产环境中，这可能是使用最频繁的事务，在扁平事务中，所有操作都处于同一层次，其由BEGIN WORK开		始，由COMMIT WORK或ROLLBACK WORK结束，其间的操作是原子的，要么都执行，要么都回滚，因此，扁平事务是应用程序成为原子操作的基本组成模		块。扁平事务虽然简单，但是在实际环境中使用最为频繁，也正因为其简单，使用频繁，故每个数据库系统都实现了对扁平事务的支持、扁平事务的丰要限制		是不能提衣或者回滚事务的某一部分，或分几个步骤提交</p>
+<ul>
+<li>带有保存点的扁平事务（Flat Transactions with Savepoints）</li>
+</ul>
+<p>​		带有保存点的扁平事务除了支持扁平事务支持的操作外，还允许在事务执行过程中回滚到同一事务中较早的一个状态。这是因为某些事务可能在执行过程中出		现的错误并不会导致所有的操作都无效，放弃整个事务不合乎要求，开销太大</p>
+<p>​		保存点 Savepoint 用来通知事务系统应该记住事务当前的状态，以便当之后发生错误时，事务能回到保存点当时的状态。对于扁平的事务来说，隐式的设置了		一个保存点，然而在整个事务中，只有这一个保存点，因此回滚只能会滚到事务开始时的状态</p>
+<ul>
+<li>链事务（Chained Transactions）</li>
+</ul>
+<p>​		链事务是指一个事务由多个子事务链式组成，它可以被视为保存点模式的一个变种。带有保存点的扁平事务，当发牛系统崩溃时，所有的保存点都将消失，这		意味着当进行恢复时，事务需要从开始处重新执行，而不能从最近的一个保存点继续执行。</p>
+<p>​		链事务的思想是：在提交一个事务时，释放不需要的数据对象，将必要的处理上下文隐式地传给下一个要开始的事务，前一个子事务的提交操作和下一个子事		务的开始操作合并成一个原子操作，这意味着下一个事务将看到上一个事务的结果，就好像在一个事务中进行一样。这样，在提交子事务时就可以释放不需要		的数据对象，而不必等到整个事务完成后才释放。</p>
+<p>其工作方式如下：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210072328047.png" alt="image-20221007232833618"></p>
+<hr>
+<p>1、链事务与带有保存点的扁平事务的不同之处体现在：带有保存点的扁平事务能回滚到任意正确的保存点，而链事务中的回滚仅限于当前事务，即只能恢复到最近的一个保存点。<br>2、对于锁的处理，两者也不相同，链事务在执行COMMIT后即程放了当前所持有的锁，而带有保存点的扁平事务不影响迄今为止所持有的锁，</p>
+<ul>
+<li>嵌套事务（Nested Transactions）</li>
+</ul>
+<p>​		嵌套事务是一个层次结构框架，由一个顶层事务（Top-LevelTransaction）控制着各个层次的事务，顶层事务之下嵌套的事务被称为子事务							       （Subtransaction），其控制着每一个局部的变换，子事务本身也可以是嵌套事务因此，嵌套事务的层次结构可以看成是一棵树</p>
+<ul>
+<li>分布式事务（Distributed Transactions）</li>
+</ul>
+<p>​		分布式事务通常是在一个分布式环境下运行的扁平事务，因此，需要根据数据所在位置访问网络中不同节点的数据库资源。</p>
+<p>​		例如，一个银行用户从招商银行的账户向工商银行的账户转账1000元，这里需要用到分布式事务，因为不能仅调用某一家银行的数据库就完成任务</p>
+
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2022 风格差异的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @fgcy
+        </div>
+  
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+    </body>
+</html>
