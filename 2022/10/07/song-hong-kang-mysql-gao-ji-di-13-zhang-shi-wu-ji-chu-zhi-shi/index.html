@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210102232558.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210072328047.png">
 <meta property="article:published_time" content="2022-10-07T10:15:13.000Z">
-<meta property="article:modified_time" content="2022-10-10T14:39:09.968Z">
+<meta property="article:modified_time" content="2022-10-11T14:59:15.297Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
 <meta name="twitter:card" content="summary_large_image">
@@ -828,7 +828,8 @@
 <p>更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行inser时发现此记录已存在，无法插入，此时就发生了幻读</p>
 <p>在RR隔离级别下，step1、step2 是会正常执行的，step3 则会报错主键冲突，对于事务1的业务来说是执行失败的，这里事务1就是发生了幻读，因为事务1在step1中读取的数据状态并不能支撑后续的业务操作，事务1：“见鬼了，我刚才读到的结果应该可以支持我这样操作才对啊，为什么现在不可以”。事务1不敢相信的又执行了step4，发现和setp1 读取的结果是一样的（RR下的MVCC机制）。此时，幻读无疑已经发生，事务1无论读取多少次，都查不到id&#x3D;3的记录，但它的确无法插入这条他通过读取来认定不存在的记录（此数据已被事务2插入），对于事务1来说，它幻读了</p>
 <p>其实 RR 也是可以避免幻读的，通过对select 操作动加行X锁（独占锁）（SELECTFOR UPDATE 这也正是SERIALIZABLE隔离级别下会隐式为你做的事情）。同时，即便当前记录不存在，比如id&#x3D;3是不存在的，当前事务也会获得一把记录锁（因为InnoDB的行锁锁定的是索引，故记录实体存在与否没关系，存在就加行X锁，不存在就加间隙锁》，其他事务则无法插入此素引的记录，故杜绝了幻读</p>
-<p>在 SERIALIZABLE 隔离级别下，step1 执行时是会隐式的添加 行（X）锁&#x2F;gap（X）锁的，从而step2会被阻塞step3会正常执行，待事务1提交后，事务2才能继续执行（主键冲突执行失败），对于事务1来说业务是正确的，成功的阳塞扼杀了扰乱，业务的事务2，对于事务1来说他前期读取的结果是可以支撑其后续业务的所以MySOL的幻读并非读取两次返回的结果集不同，而是事务在插入事先检测不到记录时，惊奇的发现这些数据已经存在了，之前的检测做据如同鬼影一般.</p>
+<p>在 <code>SERIALIZABLE 隔离级别</code> 下，step1 执行时是会隐式的添加<code> 行（X）锁</code> &#x2F; <code>gap（X）锁</code> 的，从而step2会被阻塞step3会正常执行，待事务1提交后，事务2才能继续执行（主键冲突执行失败），对于事务1来说业务是正确的，成功的阳塞扼杀了扰乱业务的事务2，对于事务1来说他前期读取的结果是可以支撑其后续业务的</p>
+<p>所以MySOL的幻读并非读取两次返回的结果集不同，而是 <strong>事务在插入事先检测不到记录时</strong> ，然后放心大胆地进行插入，惊奇的发现这些数据已经存在了，之前的检测做据如同鬼影一般。</p>
 <h1 id="4-事务的常见分类"><a href="#4-事务的常见分类" class="headerlink" title="4. 事务的常见分类"></a>4. 事务的常见分类</h1><p>从事务理论的角度来看，可以把事务分为以下几种类型：</p>
 <ul>
 <li>扁平事务（Flat Transactions）</li>
@@ -838,7 +839,7 @@
 <li>带有保存点的扁平事务（Flat Transactions with Savepoints）</li>
 </ul>
 <p>​		带有保存点的扁平事务除了支持扁平事务支持的操作外，还允许在事务执行过程中回滚到同一事务中较早的一个状态。这是因为某些事务可能在执行过程中出		现的错误并不会导致所有的操作都无效，放弃整个事务不合乎要求，开销太大</p>
-<p>​		保存点 <code>Savepoint </code>用来通知事务系统应该记住事务当前的状态，以便当之后发生错误时，事务能回到保存点当时的状态。对于扁平的事务来说，隐式的设置了		一个保存点，然而在整个事务中，只有这一个保存点，因此回滚只能会滚到事务开始时的状态</p>
+<p>​		保存点 <code>Savepoint </code>用来通知事务系统应该记住事务当前的状态，以便当之后发生错误时，事务能回到保存点当时的状态。对于扁平的事务来说，隐式的设置		了一个保存点，然而在整个事务中，只有这一个保存点，因此回滚只能会滚到事务开始时的状态</p>
 <ul>
 <li>链事务（Chained Transactions）</li>
 </ul>
@@ -947,6 +948,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/12/song-hong-kang-mysql-gao-ji-di-14-zhang-mysql-shi-wu-ri-zhi/" title="第14章_MySQL事务日志">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第14章_MySQL事务日志</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

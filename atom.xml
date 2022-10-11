@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-10T14:39:09.968Z</updated>
+  <updated>2022-10-11T16:06:51.750Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,43 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第14章_MySQL事务日志</title>
+    <link href="http://example.com/2022/10/12/song-hong-kang-mysql-gao-ji-di-14-zhang-mysql-shi-wu-ri-zhi/"/>
+    <id>http://example.com/2022/10/12/song-hong-kang-mysql-gao-ji-di-14-zhang-mysql-shi-wu-ri-zhi/</id>
+    <published>2022-10-11T23:33:55.000Z</published>
+    <updated>2022-10-11T16:06:51.750Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;事务有4种特性：原子性、一致性、隔离性和持久性。&lt;/p&gt;
+&lt;p&gt;那么事务的四种特性到底是基于什么机制实现呢？ 事务的隔离性由 锁机制 实现。 &lt;/p&gt;
+&lt;p&gt;而事务的原子性、一致性和持久性由事务的 redo 日志和undo 日志来保证。 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;REDO LOG 称为 重做日志 ，提供再写入操作，恢复提交事务修改的页操作，用来保证事务的持 久性。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;UNDO LOG 称为 回滚日志 ，回滚行记录到某个特定版本，用来保证事务的原子性、一致性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有的DBA或许会认为UNDO是REDO.的逆过程，其实不然。REDO 和 UNDO都可以视为是一种恢复操作，但是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;redo log：是存储引擎层（innodb）生成的日志，记录的是”物理级别”上的页修改操作，比如页号xx、偏移量y写入了’zz”数据。主要为了保证数据的可靠性；&lt;/li&gt;
+&lt;li&gt;undo log：是存储引擎层（innodb）生成的日志，记录的是逻辑操作日志，比如对某一行数据进行了INSERT语句操作，那么undo log就记录一条与之相反的DELETE操作。主要用于事务的回滚（undo log 记录的是每个修改操作的逆操作）和 &lt;strong&gt;一致性非锁定读&lt;/strong&gt; （undo log 回滚行记录到某种特定的版本—MVCC，即多版本并发控制）&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第13章_事务基础知识</title>
     <link href="http://example.com/2022/10/07/song-hong-kang-mysql-gao-ji-di-13-zhang-shi-wu-ji-chu-zhi-shi/"/>
     <id>http://example.com/2022/10/07/song-hong-kang-mysql-gao-ji-di-13-zhang-shi-wu-ji-chu-zhi-shi/</id>
     <published>2022-10-07T10:15:13.000Z</published>
-    <updated>2022-10-10T14:39:09.968Z</updated>
+    <updated>2022-10-11T14:59:15.297Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-数据库事务概述&quot;&gt;&lt;a href=&quot;#1-数据库事务概述&quot; class=&quot;headerlink&quot; title=&quot;1. 数据库事务概述&quot;&gt;&lt;/a&gt;1. 数据库事务概述&lt;/h1&gt;&lt;p&gt;事务 是 &lt;strong&gt;数据库&lt;/strong&gt; 区别于 &lt;strong&gt;文件系统&lt;/strong&gt; 的重要特性之一，当我们有了事务就会让数据库始终保持 &lt;strong&gt;一致性&lt;/strong&gt;，同时我们还能通讨事务的机制 &lt;strong&gt;恢复到某个时间点&lt;/strong&gt;，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失&lt;/p&gt;</summary>
@@ -470,67 +502,6 @@
 &lt;p&gt;在实际开发中，我们经常会遇到这样的情况：有 2 个或者多个相互关联的表，如&lt;code&gt;商品信息&lt;/code&gt;和&lt;code&gt;库存信息&lt;/code&gt;分别存放在 2 个不同的数据表中，我们在添加一条新商品记录的时候，为了保证数据的完整性，必须同时在库存表中添加一条库存记录。&lt;/p&gt;
 &lt;p&gt;这样一来，我们就必须把这两个关联的操作步骤写到程序里面，而且要用&lt;code&gt;事务&lt;/code&gt;包裹起来，确保这两个操作成为一个&lt;code&gt;原子操作&lt;/code&gt;，要么全部执行，要么全部不执行。要是遇到特殊情况，可能还需要对数据进行手动维护，这样就很&lt;code&gt;容易忘记其中的一步&lt;/code&gt;，导致数据缺失。&lt;/p&gt;
 &lt;p&gt;这个时候，咱们可以使用触发器。&lt;strong&gt;你可以创建一个触发器，让商品信息数据的插入操作自动触发库存数据的插入操作。&lt;/strong&gt;这样一来，就不用担心因为忘记添加库存数据而导致的数据缺失了。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="尚硅谷-宋红康-MySQL" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第14章_视图</title>
-    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-di-14-zhang-shi-tu/"/>
-    <id>http://example.com/2022/08/29/song-hong-kang-mysql-di-14-zhang-shi-tu/</id>
-    <published>2022-08-28T20:25:02.000Z</published>
-    <updated>2022-08-28T12:40:01.738Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;第14章-视图&quot;&gt;&lt;a href=&quot;#第14章-视图&quot; class=&quot;headerlink&quot; title=&quot;第14章_视图&quot;&gt;&lt;/a&gt;第14章_视图&lt;/h1&gt;&lt;p&gt;讲师：尚硅谷-宋红康（江湖人称：康师傅）&lt;/p&gt;
-&lt;p&gt;官网：&lt;a href=&quot;http://www.atguigu.com/&quot;&gt;http://www.atguigu.com&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;1-常见的数据库对象&quot;&gt;&lt;a href=&quot;#1-常见的数据库对象&quot; class=&quot;headerlink&quot; title=&quot;1. 常见的数据库对象&quot;&gt;&lt;/a&gt;1. 常见的数据库对象&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;对象&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td&gt;表(TABLE)&lt;/td&gt;
-&lt;td&gt;表是存储数据的逻辑单元，以行和列的形式存在，列就是字段，行就是记录&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;数据字典&lt;/td&gt;
-&lt;td&gt;就是系统表，存放数据库相关信息的表。系统表的数据通常由数据库系统维护，程序员通常不应该修改，只可查看&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;约束(CONSTRAINT)&lt;/td&gt;
-&lt;td&gt;执行数据校验的规则，用于保证数据完整性的规则&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;视图(VIEW)&lt;/td&gt;
-&lt;td&gt;一个或者多个数据表里的数据的逻辑显示，视图并不存储数据&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;索引(INDEX)&lt;/td&gt;
-&lt;td&gt;用于提高查询性能，相当于书的目录&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;存储过程(PROCEDURE)&lt;/td&gt;
-&lt;td&gt;用于完成一次完整的业务处理，没有返回值，但可通过传出参数将多个值传给调用环境&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;存储函数(FUNCTION)&lt;/td&gt;
-&lt;td&gt;用于完成一次特定的计算，具有一个返回值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;触发器(TRIGGER)&lt;/td&gt;
-&lt;td&gt;相当于一个事件监听器，当数据库发生特定事件后，触发器被触发，完成相应的处理&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;</summary>
     
     
     
