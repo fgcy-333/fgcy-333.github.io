@@ -1,157 +1,295 @@
 
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>第10章_创建和管理表 | 风格差异的博客</title>
-        <meta name="author" content="fgcy">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
-        
-        <link rel="stylesheet" href="/css/fonts.min.css">
-        <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
-    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="fgcy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第10章_创建和管理表1. 基础知识1.1 一条数据存储的过程存储数据是处理数据的第一步。只有正确地把数据存储起来，我们才能进行有效的处理和分析。否则，只能是一团乱麻，无从下手。 那么，怎样才能把用户各种经营相关的、纷繁复杂的数据，有序、高效地存储起来呢？  在 MySQL 中，一个完整的数据存储过程总共有 4 步，分别是创建数据库、确认字段、创建数据表、插入数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第10章_创建和管理表">
+<meta property="og:url" content="http://example.com/2022/08/22/song-hong-kang-mysql-di-10-zhang-chuang-jian-he-guan-li-biao/index.html">
+<meta property="og:site_name" content="风格差异的博客">
+<meta property="og:description" content="第10章_创建和管理表1. 基础知识1.1 一条数据存储的过程存储数据是处理数据的第一步。只有正确地把数据存储起来，我们才能进行有效的处理和分析。否则，只能是一团乱麻，无从下手。 那么，怎样才能把用户各种经营相关的、纷繁复杂的数据，有序、高效地存储起来呢？  在 MySQL 中，一个完整的数据存储过程总共有 4 步，分别是创建数据库、确认字段、创建数据表、插入数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211007155810920.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625101344527.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625102314551.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625102221237.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625104040317.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554997882872.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211024012735469.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625181802686.png">
+<meta property="article:published_time" content="2022-08-21T19:08:36.000Z">
+<meta property="article:modified_time" content="2022-08-26T08:48:00.518Z">
+<meta property="article:author" content="fgcy">
+<meta property="article:tag" content="尚硅谷-宋红康-MySQL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211007155810920.png">
+  
+  
+  
+  <title>第10章_创建和管理表 - 风格差异的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
 </head>
-    <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
-        <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
-            <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
-    <div class="desktop-menu">
-        <a href="/">
-            <span class="title">风格差异的博客</span>
-        </a>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;风格差异的博客</span>
-        </div>
-        <transition name="slide">
-        <div class="items" v-show="menu_show">
-            
-            <a href="">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
-                </div>
-            </a>
-            
-            <a href="archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
-                </div>
-            </a>
-            
-            <a href="categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
-                </div>
-            </a>
-            
-            <a href="tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
-                </div>
-            </a>
-            
-        </div>
-        </transition>
-    </div>
+  </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
-<div class="article">
-    <div>
-        <h1>第10章_创建和管理表 </h1>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第10章_创建和管理表"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-21 19:08" pubdate>
+          2022年8月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          32k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          264 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
     </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/21
-        </span>
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                视频学习笔记
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-            </span>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第10章_创建和管理表</h1>
             
-            <span class="tag">
+            
+              <div class="markdown-body">
                 
-                <a href="/tags/尚硅谷-宋红康-MySQL/" style="color: #ffa2c4">
-                    尚硅谷-宋红康-MySQL
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
-    <div class="content" v-pre>
-        <h1 id="第10章-创建和管理表"><a href="#第10章-创建和管理表" class="headerlink" title="第10章_创建和管理表"></a>第10章_创建和管理表</h1><h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h2><h3 id="1-1-一条数据存储的过程"><a href="#1-1-一条数据存储的过程" class="headerlink" title="1.1 一条数据存储的过程"></a>1.1 一条数据存储的过程</h3><p><code>存储数据是处理数据的第一步</code>。只有正确地把数据存储起来，我们才能进行有效的处理和分析。否则，只能是一团乱麻，无从下手。</p>
+                <h1 id="第10章-创建和管理表"><a href="#第10章-创建和管理表" class="headerlink" title="第10章_创建和管理表"></a>第10章_创建和管理表</h1><h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h2><h3 id="1-1-一条数据存储的过程"><a href="#1-1-一条数据存储的过程" class="headerlink" title="1.1 一条数据存储的过程"></a>1.1 一条数据存储的过程</h3><p><code>存储数据是处理数据的第一步</code>。只有正确地把数据存储起来，我们才能进行有效的处理和分析。否则，只能是一团乱麻，无从下手。</p>
 <p>那么，怎样才能把用户各种经营相关的、纷繁复杂的数据，有序、高效地存储起来呢？</p>
 <p> 在 MySQL 中，一个完整的数据存储过程总共有 4 步，分别是创建数据库、确认字段、创建数据表、插入数据。</p>
 <span id="more"></span>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211007155810920.png" alt="image-20211007155810920"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211007155810920.png" srcset="/img/loading.gif" lazyload alt="image-20211007155810920"></p>
 <hr>
 <p>我们要先创建一个数据库，而不是直接创建数据表呢？ </p>
 <p>因为从系统架构的层次上看，MySQL 数据库系统从大到小依次是<code>数据库服务器</code>、<code>数据库</code>、<code>数据表</code>、数据表的<code>行与列</code>。 </p>
@@ -171,66 +309,49 @@
 <p>CREATE DATABASE 数据库名; </p>
 </blockquote>
 <p>创建数据库</p>
-<pre><code class="mysql">CREATE DATABASE mytest1; # 这里的数据库使用的是默认的字符集
- 
-Query OK, 1 row affected (0.01 sec)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE DATABASE mytest1; # 这里的数据库使用的是默认的字符集<br> <br>Query OK, 1 row affected (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+
+
 <p>查看所有的数据库</p>
-<pre><code class="MYSQL">SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| atguigudb          |
-| information_schema |
-| mysql              |
-| mytest1            |
-| performance_schema |
-| sys                |
-+--------------------+
-10 rows in set (0.01 sec)
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">SHOW DATABASES;<br>+--------------------+<br>| Database           |<br>+--------------------+<br>| atguigudb          |<br>| information_schema |<br>| mysql              |<br>| mytest1            |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>10 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+
+
 <p>查看创表语句</p>
-<pre><code class="mysql">SHOW CREATE DATABASE mytest1;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW CREATE DATABASE mytest1;<br></code></pre></td></tr></table></figure>
+
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625101344527.png" alt="image-20220625101344527"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625101344527.png" srcset="/img/loading.gif" lazyload alt="image-20220625101344527"></p>
 <hr>
-<pre><code class="MYSQL"> SHOW CREATE DATABASE mytest1\G  -- 注意：大写
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">SHOW CREATE DATABASE mytest1\G  -- 注意：大写<br></code></pre></td></tr></table></figure>
+
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625102314551.png" alt="image-20220625102314551"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625102314551.png" srcset="/img/loading.gif" lazyload alt="image-20220625102314551"></p>
 <hr>
 <p>查看字符集</p>
-<pre><code class="mysql">SHOW VARIABLES LIKE &#39;character_%&#39;;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW VARIABLES LIKE &#x27;character_%&#x27;;<br><br>+--------------------------+----------------------------------------------+<br>| Variable_name            | Value                                        |<br>+--------------------------+----------------------------------------------+<br>| character_set_client     | gbk                                          |<br>| character_set_connection | gbk                                          |<br>| character_set_database   | utf8mb4                                      | # 数据库默认的字符集<br>| character_set_filesystem | binary                                       |<br>| character_set_results    | gbk                                          |<br>| character_set_server     | utf8mb4                                      |<br>| character_set_system     | utf8mb3                                      |<br>| character_sets_dir       | D:\sofeware\Idea\Mysql8.0.26\share\charsets\ |<br>+--------------------------+----------------------------------------------+<br>8 rows in set, 1 warning (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-+--------------------------+----------------------------------------------+
-| Variable_name            | Value                                        |
-+--------------------------+----------------------------------------------+
-| character_set_client     | gbk                                          |
-| character_set_connection | gbk                                          |
-| character_set_database   | utf8mb4                                      | # 数据库默认的字符集
-| character_set_filesystem | binary                                       |
-| character_set_results    | gbk                                          |
-| character_set_server     | utf8mb4                                      |
-| character_set_system     | utf8mb3                                      |
-| character_sets_dir       | D:\sofeware\Idea\Mysql8.0.26\share\charsets\ |
-+--------------------------+----------------------------------------------+
-8 rows in set, 1 warning (0.01 sec)
-</code></pre>
+
+
+
+
+
+
 <ul>
 <li>方式2：创建数据库并指定字符集</li>
 </ul>
 <blockquote>
 <p>CREATE DATABASE 数据库名 CHARACTER SET 字符集;</p>
 </blockquote>
-<pre><code class="MYSQL"> CREATE DATABASE mytest2 CHARACTER SET &#39;gbk&#39;; #显式指明数据库的字符集
- 
- Query OK, 1 row affected (0.00 sec)
-</code></pre>
-<pre><code class="MYSQL">SHOW CREATE DATABASE mytest2;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">CREATE DATABASE mytest2 CHARACTER SET &#x27;gbk&#x27;; #显式指明数据库的字符集<br><br>Query OK, 1 row affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">SHOW CREATE DATABASE mytest2;<br></code></pre></td></tr></table></figure>
+
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625102221237.png" alt="image-20220625102221237"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625102221237.png" srcset="/img/loading.gif" lazyload alt="image-20220625102221237"></p>
 <hr>
 <ul>
 <li>方式3：判断数据库是否已经存在，不存在则创建数据库（<code>推荐</code>）</li>
@@ -238,47 +359,10 @@ Query OK, 1 row affected (0.01 sec)
 <blockquote>
 <p>CREATE DATABASE IF NOT EXISTS 数据库名; </p>
 </blockquote>
-<pre><code class="mysql">-- 查看所有的数据库
-SHOW DATABASES;
-
-+--------------------+
-| Database           |
-+--------------------+
-| atguigudb          |
-| information_schema |
-| mysql              |
-| mytest1            |
-| mytest2            |
-| performance_schema |
-| sys                |
-+--------------------+
-11 rows in set (0.00 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看所有的数据库<br>SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| atguigudb          |<br>| information_schema |<br>| mysql              |<br>| mytest1            |<br>| mytest2            |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>11 rows in set (0.00 sec)<br><br><br><br>-- 执行建表语句（该表已经存在）<br>CREATE DATABASE mytest2 CHARACTER SET &#x27;gbk&#x27;;<br><br>ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;CREATE DATABASE mytest2 CHARACTER SET &#x27;gbk&#x27;&#x27; at line 1<br><br><br><br>-- 建表语句 如果数据库已经存在，则不会执行该建表语句<br>CREATE DATABASE IF NOT EXISTS mytest2 CHARACTER SET &#x27;utf8&#x27;;<br><br>Query OK, 1 row affected, 2 warnings (0.00 sec)<br><br><br>-- 查看建表语句<br><br>SHOW  CREATE DATABASE mytest2;<br>+----------+----------------------------------------------------------------------------------------------------+<br>| Database | Create Database                                                                                    |<br>+----------+----------------------------------------------------------------------------------------------------+<br>| mytest2  | CREATE DATABASE `mytest2` /*!40100 DEFAULT CHARACTER SET gbk */ /*!80016 DEFAULT ENCRYPTION=&#x27;N&#x27; */ |<br>+----------+----------------------------------------------------------------------------------------------------+<br>1 row in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
 
 
 
--- 执行建表语句（该表已经存在）
-CREATE DATABASE mytest2 CHARACTER SET &#39;gbk&#39;;
-
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;CREATE DATABASE mytest2 CHARACTER SET &#39;gbk&#39;&#39; at line 1
-
-
-
--- 建表语句 如果数据库已经存在，则不会执行该建表语句
-CREATE DATABASE IF NOT EXISTS mytest2 CHARACTER SET &#39;utf8&#39;;
-
-Query OK, 1 row affected, 2 warnings (0.00 sec)
-
-
--- 查看建表语句
-
-SHOW  CREATE DATABASE mytest2;
-+----------+----------------------------------------------------------------------------------------------------+
-| Database | Create Database                                                                                    |
-+----------+----------------------------------------------------------------------------------------------------+
-| mytest2  | CREATE DATABASE `mytest2` /*!40100 DEFAULT CHARACTER SET gbk */ /*!80016 DEFAULT ENCRYPTION=&#39;N&#39; */ |
-+----------+----------------------------------------------------------------------------------------------------+
-1 row in set (0.00 sec)
-</code></pre>
 <p>如果MySQL中已经存在相关的数据库，则忽略创建语句，不再创建数据库。</p>
 <h3 id="2-2-使用数据库"><a href="#2-2-使用数据库" class="headerlink" title="2.2 使用数据库"></a>2.2 使用数据库</h3><p>查看当前所有的数据库</p>
 <blockquote>
@@ -308,15 +392,15 @@ SHOW  CREATE DATABASE mytest2;
 <p>ALTER DATABASE 数据库名 CHARACTER SET 字符集;  #比如：gbk、utf8等</p>
 </blockquote>
 <p>更改字符集</p>
-<pre><code class="mysql">ALTER DATABASE mytest2 CHARACTER SET &#39;utf8&#39;;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER DATABASE mytest2 CHARACTER SET &#x27;utf8&#x27;;<br><br>Query OK, 1 row affected, 1 warning (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 1 row affected, 1 warning (0.01 sec)
-</code></pre>
+
+
 <p>查看建表语句</p>
-<pre><code class="mysql">SHOW CREATE DATABASE mytest2;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW CREATE DATABASE mytest2;<br></code></pre></td></tr></table></figure>
+
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625104040317.png" alt="image-20220625104040317"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625104040317.png" srcset="/img/loading.gif" lazyload alt="image-20220625104040317"></p>
 <hr>
 <p>注意：</p>
 <p>DATABASE 不能改名。一些可视化工具可以改名，它是建新库，把所有表复制到新库，再删旧库完成的</p>
@@ -327,34 +411,20 @@ Query OK, 1 row affected, 1 warning (0.01 sec)
 <p>DROP DATABASE 数据库名;</p>
 </blockquote>
 <p>删除数据库</p>
-<pre><code class="mysql">DROP DATABASE mytest1;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP DATABASE mytest1;<br><br>Query OK, 0 rows affected (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 0 rows affected (0.01 sec)
-</code></pre>
+
+
 <p>查看所有数据库</p>
-<pre><code class="mysql">SHOW DATABASES;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| atguigudb          |<br>| blog               |<br>| information_schema |<br>| javaweb            |<br>| mysql              |<br>| mytest2            |<br>| performance_schema |<br>| ssm                |<br>| ssmuser            |<br>| sys                |<br>+--------------------+<br>10 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+--------------------+
-| Database           |
-+--------------------+
-| atguigudb          |
-| blog               |
-| information_schema |
-| javaweb            |
-| mysql              |
-| mytest2            |
-| performance_schema |
-| ssm                |
-| ssmuser            |
-| sys                |
-+--------------------+
-10 rows in set (0.00 sec)
-</code></pre>
+
+
 <p>删除数据库</p>
-<pre><code class="mysql">DROP DATABASE mytest1;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP DATABASE mytest1;<br><br>ERROR 1008 (HY000): Can&#x27;t drop database &#x27;mytest1&#x27;; database doesn&#x27;t exist<br></code></pre></td></tr></table></figure>
 
-ERROR 1008 (HY000): Can&#39;t drop database &#39;mytest1&#39;; database doesn&#39;t exist
-</code></pre>
+
+
 <p>查看</p>
 <ul>
 <li>方式2：删除指定的数据库（<code>推荐</code>）</li>
@@ -363,28 +433,15 @@ ERROR 1008 (HY000): Can&#39;t drop database &#39;mytest1&#39;; database doesn&#3
 <p>DROP DATABASE IF EXISTS 数据库名;</p>
 </blockquote>
 <p>推荐的删除库的方式：</p>
-<pre><code class="mysql">DROP DATABASE IF EXISTS mytest2;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP DATABASE IF EXISTS mytest2;<br><br>Query OK, 0 rows affected (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 0 rows affected (0.01 sec)
-</code></pre>
+
+
 <p>查看数据库</p>
-<pre><code class="mysql">SHOW DATABASES;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| atguigudb          |<br>| blog               |<br>| information_schema |<br>| javaweb            |<br>| mysql              |<br>| performance_schema |<br>| ssm                |<br>| ssmuser            |<br>| sys                |<br>+--------------------+<br>9 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+--------------------+
-| Database           |
-+--------------------+
-| atguigudb          |
-| blog               |
-| information_schema |
-| javaweb            |
-| mysql              |
-| performance_schema |
-| ssm                |
-| ssmuser            |
-| sys                |
-+--------------------+
-9 rows in set (0.00 sec)
-</code></pre>
+
+
 <h2 id="3-创建表"><a href="#3-创建表" class="headerlink" title="3. 创建表"></a>3. 创建表</h2><h3 id="3-1-创建方式1（白手起家）"><a href="#3-1-创建方式1（白手起家）" class="headerlink" title="3.1 创建方式1（白手起家）"></a>3.1 创建方式1（白手起家）</h3><ul>
 <li><p><strong>必须具备：</strong></p>
 <ul>
@@ -395,14 +452,8 @@ Query OK, 0 rows affected (0.01 sec)
 <li><p><strong>语法格式：</strong></p>
 </li>
 </ul>
-<pre><code class="mysql">CREATE TABLE [IF NOT EXISTS] 表名(
-    字段1, 数据类型 [约束条件] [默认值],
-    字段2, 数据类型 [约束条件] [默认值],
-    字段3, 数据类型 [约束条件] [默认值],
-    ……
-    [表约束条件]
-);
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE [IF NOT EXISTS] 表名(<br>	字段1, 数据类型 [约束条件] [默认值],<br>	字段2, 数据类型 [约束条件] [默认值],<br>	字段3, 数据类型 [约束条件] [默认值],<br>	……<br>	[表约束条件]<br>);<br></code></pre></td></tr></table></figure>
+
 <blockquote>
 <p>加上了IF NOT EXISTS关键字，则表示：如果当前数据库中不存在要创建的数据表，则创建数据表；如果当前数据库中已经存在要创建的数据表，则忽略建表语句，不再创建数据表。</p>
 </blockquote>
@@ -525,76 +576,38 @@ Query OK, 0 rows affected (0.01 sec)
 <li>创建表举例1：</li>
 </ul>
 <p>查看建库语句</p>
-<pre><code class="mysql">USE atguigudb;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE atguigudb;<br><br>SHOW CREATE DATABASE atguigudb;<br><br>+-----------+-------------------------------------------------------------------------------------------------------+<br>| Database  | Create Database                                                                                       |<br>+-----------+-------------------------------------------------------------------------------------------------------+<br>| atguigudb | CREATE DATABASE `atguigudb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION=&#x27;N&#x27; */ |<br>+-----------+-------------------------------------------------------------------------------------------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-SHOW CREATE DATABASE atguigudb;
 
-+-----------+-------------------------------------------------------------------------------------------------------+
-| Database  | Create Database                                                                                       |
-+-----------+-------------------------------------------------------------------------------------------------------+
-| atguigudb | CREATE DATABASE `atguigudb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION=&#39;N&#39; */ |
-+-----------+-------------------------------------------------------------------------------------------------------+
-1 row in set (0.00 sec)
-</code></pre>
+
 <p>创表语句</p>
-<pre><code class="mysql">-- 创建表
-CREATE TABLE IF NOT EXISTS emp (
-  -- int类型
-  emp_id INT,
-  -- 最多保存20个中英文字符
-  emp_name VARCHAR(20),
-  -- 总位数不超过15位
-  salary DOUBLE,
-  -- 日期类型
-  birthday DATE
-);
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创建表<br>CREATE TABLE IF NOT EXISTS emp (<br>  -- int类型<br>  emp_id INT,<br>  -- 最多保存20个中英文字符<br>  emp_name VARCHAR(20),<br>  -- 总位数不超过15位<br>  salary DOUBLE,<br>  -- 日期类型<br>  birthday DATE<br>);<br><br>Query OK, 0 rows affected (0.02 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 0 rows affected (0.02 sec)
-</code></pre>
+
+
 <p>查看表结构</p>
-<pre><code class="mysql">DESC emp;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESC emp;<br><br>+----------+-------------+------+-----+---------+-------+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+----------+-------------+------+-----+---------+-------+<br>| emp_id   | int         | YES  |     | NULL    |       |<br>| emp_name | varchar(20) | YES  |     | NULL    |       |<br>| salary   | double      | YES  |     | NULL    |       |<br>| birthday | date        | YES  |     | NULL    |       |<br>+----------+-------------+------+-----+---------+-------+<br>4 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| emp_id   | int         | YES  |     | NULL    |       |
-| emp_name | varchar(20) | YES  |     | NULL    |       |
-| salary   | double      | YES  |     | NULL    |       |
-| birthday | date        | YES  |     | NULL    |       |
-+----------+-------------+------+-----+---------+-------+
-4 rows in set (0.01 sec)
-</code></pre>
+
+
 <p>查看建表语句</p>
-<pre><code class="mysql">SHOW CREATE TABLE emp;  -- 如果创建表时，没有指定字符集，则使用数据库的字符集
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW CREATE TABLE emp;  -- 如果创建表时，没有指定字符集，则使用数据库的字符集<br><br>+-------+-----------------------------------<br>| Table | Create Table                     |<br>+-------+-----------------------------------<br>| emp   | CREATE TABLE `emp` (<br>  `emp_id` int DEFAULT NULL,<br>  `emp_name` varchar(20) DEFAULT NULL,<br>  `salary` double DEFAULT NULL,<br>  `birthday` date DEFAULT NULL<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3    |<br>+-------+-----------------------------------<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+-------+-----------------------------------
-| Table | Create Table                     |
-+-------+-----------------------------------
-| emp   | CREATE TABLE `emp` (
-  `emp_id` int DEFAULT NULL,
-  `emp_name` varchar(20) DEFAULT NULL,
-  `salary` double DEFAULT NULL,
-  `birthday` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3    |
-+-------+-----------------------------------
-1 row in set (0.00 sec)
-</code></pre>
+
+
+
+
 <p>MySQL在执行建表语句时，将id字段的类型设置为int(11)，这里的11实际上是int类型指定的显示宽度，默认的显示宽度为11</p>
 <p>也可以在创建数据表的时候指定数据的显示宽度</p>
 <ul>
 <li>创建表举例2：</li>
 </ul>
-<pre><code class="mysql">CREATE TABLE dept(
-    -- int类型，自增
-    deptno INT(2) AUTO_INCREMENT,
-    dname VARCHAR(14),
-    loc VARCHAR(13),
-    -- 主键
-    PRIMARY KEY (deptno)
-);
-</code></pre>
-<pre><code class="mysql">DESCRIBE dept;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE dept(<br>    -- int类型，自增<br>	deptno INT(2) AUTO_INCREMENT,<br>	dname VARCHAR(14),<br>	loc VARCHAR(13),<br>    -- 主键<br>    PRIMARY KEY (deptno)<br>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESCRIBE dept;<br></code></pre></td></tr></table></figure>
+
+
+
 <blockquote>
 <p>在MySQL 8.x版本中，不再推荐为INT类型指定显示长度，并在未来的版本中可能去掉这样的语法。</p>
 </blockquote>
@@ -603,138 +616,34 @@ Query OK, 0 rows affected (0.02 sec)
 </ul>
 <p>创建表，基于现有的表导入数据</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554997882872.png" alt="1554997882872"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554997882872.png" srcset="/img/loading.gif" lazyload alt="1554997882872"></p>
 <hr>
 <ul>
 <li>指定的列和子查询中的列要一一对应</li>
 <li>通过列名和默认值定义列</li>
 </ul>
 <p>例子一：</p>
-<pre><code class="mysql">-- 基于现有的表 建表的同时插入数据
-CREATE TABLE emp1 
-AS 
-SELECT * FROM employees;
-
-Query OK, 107 rows affected, 2 warnings (0.02 sec)
-Records: 107  Duplicates: 0  Warnings: 2
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 基于现有的表 建表的同时插入数据<br>CREATE TABLE emp1 <br>AS <br>SELECT * FROM employees;<br><br>Query OK, 107 rows affected, 2 warnings (0.02 sec)<br>Records: 107  Duplicates: 0  Warnings: 2<br><br><br>-- 查看新建的表的数据<br>SELECT last_name,email,salary FROM emp1;<br><br>+-------------+----------+----------+<br>| last_name   | email    | salary   |<br>+-------------+----------+----------+<br>| King        | SKING    | 24000.00 |<br>| Mavris      | SMAVRIS  |  6500.00 |<br>| Baer        | HBAER    | 10000.00 |<br>| Higgins     | SHIGGINS | 12000.00 |<br>| Gietz       | WGIETZ   |  8300.00 |<br>+-------------+----------+----------+<br>107 rows in set (0.00 sec)<br><br><br>-- 查看表结构<br>DESC emp1;<br><br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| employee_id    | int         | NO   |     | 0       |       |<br>| first_name     | varchar(20) | YES  |     | NULL    |       |<br>| last_name      | varchar(25) | NO   |     | NULL    |       |<br>| email          | varchar(25) | NO   |     | NULL    |       |<br>| phone_number   | varchar(20) | YES  |     | NULL    |       |<br>| hire_date      | date        | NO   |     | NULL    |       |<br>| job_id         | varchar(10) | NO   |     | NULL    |       |<br>| salary         | double(8,2) | YES  |     | NULL    |       |<br>| commission_pct | double(2,2) | YES  |     | NULL    |       |<br>| manager_id     | int         | YES  |     | NULL    |       |<br>| department_id  | int         | YES  |     | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br>11 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
--- 查看新建的表的数据
-SELECT last_name,email,salary FROM emp1;
 
-+-------------+----------+----------+
-| last_name   | email    | salary   |
-+-------------+----------+----------+
-| King        | SKING    | 24000.00 |
-| Mavris      | SMAVRIS  |  6500.00 |
-| Baer        | HBAER    | 10000.00 |
-| Higgins     | SHIGGINS | 12000.00 |
-| Gietz       | WGIETZ   |  8300.00 |
-+-------------+----------+----------+
-107 rows in set (0.00 sec)
-
-
--- 查看表结构
-DESC emp1;
-
-+----------------+-------------+------+-----+---------+-------+
-| Field          | Type        | Null | Key | Default | Extra |
-+----------------+-------------+------+-----+---------+-------+
-| employee_id    | int         | NO   |     | 0       |       |
-| first_name     | varchar(20) | YES  |     | NULL    |       |
-| last_name      | varchar(25) | NO   |     | NULL    |       |
-| email          | varchar(25) | NO   |     | NULL    |       |
-| phone_number   | varchar(20) | YES  |     | NULL    |       |
-| hire_date      | date        | NO   |     | NULL    |       |
-| job_id         | varchar(10) | NO   |     | NULL    |       |
-| salary         | double(8,2) | YES  |     | NULL    |       |
-| commission_pct | double(2,2) | YES  |     | NULL    |       |
-| manager_id     | int         | YES  |     | NULL    |       |
-| department_id  | int         | YES  |     | NULL    |       |
-+----------------+-------------+------+-----+---------+-------+
-11 rows in set (0.01 sec)
-</code></pre>
 <p>例子二：</p>
-<pre><code class="mysql">-- 基于现有表，多表连接，建表并导入数据
-CREATE TABLE emp3
-AS
-SELECT e.last_name name,e.employee_id id,d.department_name department
-FROM employees e INNER JOIN departments d
-ON e.department_id=d.department_id;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 基于现有表，多表连接，建表并导入数据<br>CREATE TABLE emp3<br>AS<br>SELECT e.last_name name,e.employee_id id,d.department_name department<br>FROM employees e INNER JOIN departments d<br>ON e.department_id=d.department_id;<br><br>Query OK, 106 rows affected (0.01 sec)<br>Records: 106  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查看新建的表<br>SELECT * FROM emp3;<br><br>+-------------+-----+------------------+<br>| name        | id  | department       |<br>+-------------+-----+------------------+<br>| Whalen      | 200 | Administration   |<br>| Hartstein   | 201 | Marketing        |<br>| McCain      | 194 | Shipping         |<br>| Greenberg   | 108 | Finance          |<br>| Higgins     | 205 | Accounting       |<br>| Gietz       | 206 | Accounting       |<br>+-------------+-----+------------------+<br>106 rows in set (0.00 sec)<br><br><br><br>-- 查看表结构<br>DESC emp3;<br>+------------+-------------+------+-----+---------+-------+<br>| Field      | Type        | Null | Key | Default | Extra |<br>+------------+-------------+------+-----+---------+-------+<br>| name       | varchar(25) | NO   |     | NULL    |       |<br>| id         | int         | NO   |     | 0       |       |<br>| department | varchar(30) | NO   |     | NULL    |       |<br>+------------+-------------+------+-----+---------+-------+<br>3 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 106 rows affected (0.01 sec)
-Records: 106  Duplicates: 0  Warnings: 0
-
-
-
--- 查看新建的表
-SELECT * FROM emp3;
-
-+-------------+-----+------------------+
-| name        | id  | department       |
-+-------------+-----+------------------+
-| Whalen      | 200 | Administration   |
-| Hartstein   | 201 | Marketing        |
-| McCain      | 194 | Shipping         |
-| Greenberg   | 108 | Finance          |
-| Higgins     | 205 | Accounting       |
-| Gietz       | 206 | Accounting       |
-+-------------+-----+------------------+
-106 rows in set (0.00 sec)
-
-
-
--- 查看表结构
-DESC emp3;
-+------------+-------------+------+-----+---------+-------+
-| Field      | Type        | Null | Key | Default | Extra |
-+------------+-------------+------+-----+---------+-------+
-| name       | varchar(25) | NO   |     | NULL    |       |
-| id         | int         | NO   |     | 0       |       |
-| department | varchar(30) | NO   |     | NULL    |       |
-+------------+-------------+------+-----+---------+-------+
-3 rows in set (0.00 sec)
-</code></pre>
 <p>说明：</p>
 <p>1、查询语句中字段的别名,可以作为新创建的表的字段的名称</p>
 <p>2、此时的查询语句可以为结构比较丰富,使用前面章节讲过的各种SELECT</p>
 <p>仅要表结构</p>
-<pre><code class="mysql">-- 创建的emp2是空表
--- 仅要表结构
-CREATE TABLE emp2 
-AS 
-SELECT * FROM employees 
-WHERE 1=2; 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创建的emp2是空表<br>-- 仅要表结构<br>CREATE TABLE emp2 <br>AS <br>SELECT * FROM employees <br>WHERE 1=2; <br><br><br><br><br>-- 查看表结构<br>DESC emp2;<br><br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| employee_id    | int         | NO   |     | 0       |       |<br>| first_name     | varchar(20) | YES  |     | NULL    |       |<br>| last_name      | varchar(25) | NO   |     | NULL    |       |<br>| email          | varchar(25) | NO   |     | NULL    |       |<br>| phone_number   | varchar(20) | YES  |     | NULL    |       |<br>| hire_date      | date        | NO   |     | NULL    |       |<br>| job_id         | varchar(10) | NO   |     | NULL    |       |<br>| salary         | double(8,2) | YES  |     | NULL    |       |<br>| commission_pct | double(2,2) | YES  |     | NULL    |       |<br>| manager_id     | int         | YES  |     | NULL    |       |<br>| department_id  | int         | YES  |     | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br>11 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
 
-
--- 查看表结构
-DESC emp2;
-
-+----------------+-------------+------+-----+---------+-------+
-| Field          | Type        | Null | Key | Default | Extra |
-+----------------+-------------+------+-----+---------+-------+
-| employee_id    | int         | NO   |     | 0       |       |
-| first_name     | varchar(20) | YES  |     | NULL    |       |
-| last_name      | varchar(25) | NO   |     | NULL    |       |
-| email          | varchar(25) | NO   |     | NULL    |       |
-| phone_number   | varchar(20) | YES  |     | NULL    |       |
-| hire_date      | date        | NO   |     | NULL    |       |
-| job_id         | varchar(10) | NO   |     | NULL    |       |
-| salary         | double(8,2) | YES  |     | NULL    |       |
-| commission_pct | double(2,2) | YES  |     | NULL    |       |
-| manager_id     | int         | YES  |     | NULL    |       |
-| department_id  | int         | YES  |     | NULL    |       |
-+----------------+-------------+------+-----+---------+-------+
-11 rows in set (0.01 sec)
-</code></pre>
 <h3 id="3-3-查看数据表结构"><a href="#3-3-查看数据表结构" class="headerlink" title="3.3 查看数据表结构"></a>3.3 查看数据表结构</h3><p>在MySQL中创建好数据表之后，可以查看数据表的结构</p>
 <p>1、MySQL支持使用<code>DESCRIBE/DESC</code>语句查看数据表结构</p>
 <p>2、支持使用<code>SHOW CREATE TABLE</code>语句查看数据表结构</p>
 <p>语法格式如下：</p>
-<pre><code class="mysql">SHOW CREATE TABLE 表名\G  -- 大写
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW CREATE TABLE 表名\G  -- 大写<br></code></pre></td></tr></table></figure>
+
 <p>注意：</p>
 <p>使用SHOW CREATE TABLE语句不仅可以查看表创建时的详细语句，还可以查看存储引擎和字符编码</p>
 <h2 id="4-修改表"><a href="#4-修改表" class="headerlink" title="4. 修改表"></a>4. 修改表</h2><p>修改表指的是修改数据库中已经存在的数据表的结构。</p>
@@ -753,73 +662,10 @@ DESC emp2;
 <blockquote>
 <p>ALTER TABLE 表名 ADD 【COLUMN】 字段名 字段类型 【FIRST|AFTER 字段名】;</p>
 </blockquote>
-<pre><code class="mysql">-- 查看表结构
-DESC emp;
-
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| emp_id   | int         | YES  |     | NULL    |       |
-| emp_name | varchar(20) | YES  |     | NULL    |       |
-| salary   | double      | YES  |     | NULL    |       |
-| birthday | date        | YES  |     | NULL    |       |
-+----------+-------------+------+-----+---------+-------+
-4 rows in set (0.00 sec)
-
--- 追加一个列
-ALTER TABLE emp	
-ADD email VARCHAR(12);  -- 默认添加到表中最后一个字段的位置
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看表结构<br>DESC emp;<br><br>+----------+-------------+------+-----+---------+-------+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+----------+-------------+------+-----+---------+-------+<br>| emp_id   | int         | YES  |     | NULL    |       |<br>| emp_name | varchar(20) | YES  |     | NULL    |       |<br>| salary   | double      | YES  |     | NULL    |       |<br>| birthday | date        | YES  |     | NULL    |       |<br>+----------+-------------+------+-----+---------+-------+<br>4 rows in set (0.00 sec)<br><br>-- 追加一个列<br>ALTER TABLE emp	<br>ADD email VARCHAR(12);  -- 默认添加到表中最后一个字段的位置<br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>DESC emp;<br><br>+----------+-------------+------+-----+---------+-------+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+----------+-------------+------+-----+---------+-------+<br>| emp_id   | int         | YES  |     | NULL    |       |<br>| emp_name | varchar(20) | YES  |     | NULL    |       |<br>| salary   | double      | YES  |     | NULL    |       |<br>| birthday | date        | YES  |     | NULL    |       |<br>| email    | varchar(12) | YES  |     | NULL    |       |<br>+----------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br><br><br>-- 在第一个字段的位置中添加一个字段<br>ALTER TABLE emp<br>ADD phone VARCHAR(11) FIRST;<br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 在某个字段的后面添加一个字段<br>ALTER TABLE emp<br>ADD hire_date DATE AFTER emp_name;<br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>DESC emp;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| emp_name  | varchar(20) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | NULL    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>| email     | varchar(12) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>7 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
--- 查看表结构
-DESC emp;
 
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| emp_id   | int         | YES  |     | NULL    |       |
-| emp_name | varchar(20) | YES  |     | NULL    |       |
-| salary   | double      | YES  |     | NULL    |       |
-| birthday | date        | YES  |     | NULL    |       |
-| email    | varchar(12) | YES  |     | NULL    |       |
-+----------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-
-
--- 在第一个字段的位置中添加一个字段
-ALTER TABLE emp
-ADD phone VARCHAR(11) FIRST;
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
--- 在某个字段的后面添加一个字段
-ALTER TABLE emp
-ADD hire_date DATE AFTER emp_name;
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
--- 查看表结构
-DESC emp;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| emp_name  | varchar(20) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | NULL    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-| email     | varchar(12) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
-</code></pre>
 <h3 id="4-2-修改一个列"><a href="#4-2-修改一个列" class="headerlink" title="4.2 修改一个列"></a>4.2 修改一个列</h3><ul>
 <li><p>可以修改列的数据类型，长度、默认值和位置</p>
 </li>
@@ -832,68 +678,12 @@ DESC emp;
 <ul>
 <li>举例：</li>
 </ul>
-<pre><code class="mysql">-- 查看表结构
-DESC emp;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| emp_name  | varchar(20) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | NULL    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-| email     | varchar(12) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看表结构<br>DESC emp;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| emp_name  | varchar(20) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | NULL    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>| email     | varchar(12) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>7 rows in set (0.00 sec)<br><br><br>-- 修改表的某个字段<br>ALTER TABLE emp<br>MODIFY emp_name VARCHAR(30);<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br>-- 查看表结构<br>DESC emp;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| emp_name  | varchar(30) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | NULL    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>| email     | varchar(12) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>7 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
--- 修改表的某个字段
-ALTER TABLE emp
-MODIFY emp_name VARCHAR(30);
 
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 修改某个字段的默认值<br>ALTER TABLE emp<br>MODIFY salary double default 1000; #注意要写上类型，即使不需要修改<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| emp_name  | varchar(30) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | 1000    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>| email     | varchar(12) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>7 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
--- 查看表结构
-DESC emp;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| emp_name  | varchar(30) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | NULL    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-| email     | varchar(12) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
-</code></pre>
-<pre><code class="mysql">-- 修改某个字段的默认值
-ALTER TABLE emp
-MODIFY salary double default 1000; #注意要写上类型，即使不需要修改
-
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
--- 查看表结构
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| emp_name  | varchar(30) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | 1000    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-| email     | varchar(12) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
-</code></pre>
 <ul>
 <li>对默认值的修改只影响今后对表的修改</li>
 <li>此外，还可以通<strong>过此种方式修改列的约束</strong>。这里暂先不讲</li>
@@ -903,137 +693,37 @@ Records: 0  Duplicates: 0  Warnings: 0
 <p><strong>ALTER TABLE 表名 CHANGE 【column】 列名 新列名 新数据类型;</strong></p>
 </blockquote>
 <p>举例：</p>
-<pre><code class="mysql">-- 查看表结构
-DESC emp;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| emp_name  | varchar(30) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | 1000    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-| email     | varchar(12) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看表结构<br>DESC emp;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| emp_name  | varchar(30) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | 1000    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>| email     | varchar(12) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>7 rows in set (0.00 sec)<br><br><br><br><br>-- 重命名字段名<br>ALTER TABLE  emp<br>CHANGE emp_name last_name varchar(15); -- 重命名并修改字段类型<br># 所以说CHANGE 里面是有MODIFY的行为在里面的<br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br><br>-- 查看表结构<br>DESC emp;<br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| last_name | varchar(15) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | 1000    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>| email     | varchar(12) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>7 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
-
--- 重命名字段名
-ALTER TABLE  emp
-CHANGE emp_name last_name varchar(15); -- 重命名并修改字段类型
-# 所以说CHANGE 里面是有MODIFY的行为在里面的
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
-
-
--- 查看表结构
-DESC emp;
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| last_name | varchar(15) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | 1000    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-| email     | varchar(12) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
-</code></pre>
 <h3 id="4-4-删除一个列"><a href="#4-4-删除一个列" class="headerlink" title="4.4 删除一个列"></a>4.4 删除一个列</h3><p>删除表中某个字段的语法格式如下：</p>
 <blockquote>
 <p>ALTER TABLE 表名 DROP 【COLUMN】字段名</p>
 </blockquote>
 <p>举例：</p>
-<pre><code class="mysql">-- 删除某个字段
-ALTER TABLE  emp
-DROP COLUMN  email; 
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 删除某个字段<br>ALTER TABLE  emp<br>DROP COLUMN  email; <br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查看表结构<br>DESC emp;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| phone     | varchar(11) | YES  |     | NULL    |       |<br>| emp_id    | int         | YES  |     | NULL    |       |<br>| last_name | varchar(15) | YES  |     | NULL    |       |<br>| hire_date | date        | YES  |     | NULL    |       |<br>| salary    | double      | YES  |     | 1000    |       |<br>| birthday  | date        | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>6 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看表结构
-DESC emp;
 
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| phone     | varchar(11) | YES  |     | NULL    |       |
-| emp_id    | int         | YES  |     | NULL    |       |
-| last_name | varchar(15) | YES  |     | NULL    |       |
-| hire_date | date        | YES  |     | NULL    |       |
-| salary    | double      | YES  |     | 1000    |       |
-| birthday  | date        | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-6 rows in set (0.00 sec)
-</code></pre>
+
+
+
+
+
 <h2 id="5-重命名表"><a href="#5-重命名表" class="headerlink" title="5. 重命名表"></a>5. 重命名表</h2><ul>
 <li>方式一：使用RENAME</li>
 </ul>
-<pre><code class="mysql">RENAME TABLE emp
-TO myemp;
-
-Query OK, 0 rows affected (0.01 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs mysql">RENAME TABLE emp<br>TO myemp;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br>-- 查看数据库中的表<br>SHOW TABLES;<br>+---------------------+<br>| Tables_in_atguigudb |<br>+---------------------+<br>| countries           |<br>| departments         |<br>| emp1                |<br>| emp2                |<br>| emp3                |<br>| emp_details_view    |<br>| employees           |<br>| job_grades          |<br>| job_history         |<br>| jobs                |<br>| locations           |<br>| myemp               | -- <br>| order               |<br>| regions             |<br>+---------------------+<br>14 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
--- 查看数据库中的表
-SHOW TABLES;
-+---------------------+
-| Tables_in_atguigudb |
-+---------------------+
-| countries           |
-| departments         |
-| emp1                |
-| emp2                |
-| emp3                |
-| emp_details_view    |
-| employees           |
-| job_grades          |
-| job_history         |
-| jobs                |
-| locations           |
-| myemp               | -- 
-| order               |
-| regions             |
-+---------------------+
-14 rows in set (0.00 sec)
-</code></pre>
+
 <ul>
 <li>方式二（推荐）：</li>
 </ul>
-<pre><code class="mysql">ALTER table myemp
-RENAME  emp;  -- [TO]可以省略
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER table myemp<br>RENAME  emp;  -- [TO]可以省略<br><br>+---------------------+<br>| Tables_in_atguigudb |<br>+---------------------+<br>| countries           |<br>| departments         |<br>| emp                 |<br>| emp1                |<br>| emp2                |<br>| emp3                |<br>| emp_details_view    |<br>| employees           |<br>| job_grades          |<br>| job_history         |<br>| jobs                |<br>| locations           |<br>| order               |<br>| regions             |<br>+---------------------+<br>14 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+---------------------+
-| Tables_in_atguigudb |
-+---------------------+
-| countries           |
-| departments         |
-| emp                 |
-| emp1                |
-| emp2                |
-| emp3                |
-| emp_details_view    |
-| employees           |
-| job_grades          |
-| job_history         |
-| jobs                |
-| locations           |
-| order               |
-| regions             |
-+---------------------+
-14 rows in set (0.00 sec)
-</code></pre>
 <ul>
 <li>必须是对象的拥有者</li>
 </ul>
@@ -1057,36 +747,8 @@ RENAME  emp;  -- [TO]可以省略
 <ul>
 <li>举例：</li>
 </ul>
-<pre><code class="mysql">-- 删除表
-DROP TABLE IF EXISTS emp1;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 删除表<br>DROP TABLE IF EXISTS emp1;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br><br>-- 查看表<br>SHOW TABLES;<br><br>+---------------------+<br>| Tables_in_atguigudb |<br>+---------------------+<br>| countries           |<br>| departments         |<br>| emp                 |<br>| emp2                |<br>| emp3                |<br>| emp_details_view    |<br>| employees           |<br>| job_grades          |<br>| job_history         |<br>| jobs                |<br>| locations           |<br>| order               |<br>| regions             |<br>+---------------------+<br>13 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 0 rows affected (0.01 sec)
-
-
-
-
--- 查看表
-SHOW TABLES;
-
-+---------------------+
-| Tables_in_atguigudb |
-+---------------------+
-| countries           |
-| departments         |
-| emp                 |
-| emp2                |
-| emp3                |
-| emp_details_view    |
-| employees           |
-| job_grades          |
-| job_history         |
-| jobs                |
-| locations           |
-| order               |
-| regions             |
-+---------------------+
-13 rows in set (0.00 sec)
-</code></pre>
 <ul>
 <li>DROP TABLE 语句不能回滚</li>
 </ul>
@@ -1100,49 +762,18 @@ SHOW TABLES;
 <li><p>举例：</p>
 </li>
 </ul>
-<pre><code class="mysql">-- 查看表中的数据据
-SELECT * FROM emp3;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看表中的数据据<br>SELECT * FROM emp3;<br><br>+-------------+-----+------------------+<br>| name        | id  | department       |<br>+-------------+-----+------------------+<br>| Whalen      | 200 | Administration   |<br>| Hartstein   | 201 | Marketing        |<br>| Higgins     | 205 | Accounting       |<br>| Gietz       | 206 | Accounting       |<br>+-------------+-----+------------------+<br>106 rows in set (0.00 sec)<br><br><br># 清空表数据<br>TRUNCATE TABLE emp3;<br><br>Query OK, 0 rows affected (0.02 sec)<br><br><br><br>-- 查看表中的数据据<br>SELECT * FROM emp3;<br><br>Empty set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-+-------------+-----+------------------+
-| name        | id  | department       |
-+-------------+-----+------------------+
-| Whalen      | 200 | Administration   |
-| Hartstein   | 201 | Marketing        |
-| Higgins     | 205 | Accounting       |
-| Gietz       | 206 | Accounting       |
-+-------------+-----+------------------+
-106 rows in set (0.00 sec)
-
-
-# 清空表数据
-TRUNCATE TABLE emp3;
-
-Query OK, 0 rows affected (0.02 sec)
-
-
-
--- 查看表中的数据据
-SELECT * FROM emp3;
-
-Empty set (0.01 sec)
-</code></pre>
 <ul>
 <li><p>TRUNCATE语句<strong>不能回滚</strong>，而使用 DELETE 语句删除数据，可以回滚</p>
 </li>
 <li><p>对比：</p>
 </li>
 </ul>
-<pre><code class="mysql">SET autocommit = FALSE;
-  
-DELETE FROM emp2; 
-#TRUNCATE TABLE emp2;
-  
-SELECT * FROM emp2;
-  
-ROLLBACK;
-  
-SELECT * FROM emp2;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET autocommit = FALSE;<br>  <br>DELETE FROM emp2; <br>#TRUNCATE TABLE emp2;<br>  <br>SELECT * FROM emp2;<br>  <br>ROLLBACK;<br>  <br>SELECT * FROM emp2;<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="DCL中COMMIT-和-ROLLBACK"><a href="#DCL中COMMIT-和-ROLLBACK" class="headerlink" title="DCL中COMMIT 和 ROLLBACK"></a>DCL中COMMIT 和 ROLLBACK</h2><p>COMMIT:提交数据；一旦执行了COMMIT，则数据就会被永久地保存在数据库中；意味着数据不能被回滚</p>
 <p>ROLLBACK：一旦指向ROLLBACK，则可以实现数据的回滚；回滚到最近的一次COMMIT之后</p>
 <p>这两个也可以称为TCL，事务控制语言</p>
@@ -1151,123 +782,15 @@ SELECT * FROM emp2;
 <h2 id="DDL与DCL的说明"><a href="#DDL与DCL的说明" class="headerlink" title="DDL与DCL的说明"></a>DDL与DCL的说明</h2><p>1、DDL的操作一旦执行，就不可回滚；指令 SET autocommit&#x3D;FALSE ; 对DDL的操作失效;因为在执行完DDL操作后一定会进行一次提交操作；</p>
 <p>2、DML的操作默认情况下是一旦执行是不可回滚的 ；但是如果在执行DML之前执行了SET autocommit&#x3D;FALSE ; 则执行的DML操作既可以实现回滚；</p>
 <p>示例1：</p>
-<pre><code class="mysql">-- 基于现有表建表并导入数据
-CREATE TABLE emp 
-AS
-SELECT employee_id id,last_name,salary
-FROM employees
-LIMIT 5;
-
-Query OK, 5 rows affected, 1 warning (0.01 sec)
-Records: 5  Duplicates: 0  Warnings: 1
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 基于现有表建表并导入数据<br>CREATE TABLE emp <br>AS<br>SELECT employee_id id,last_name,salary<br>FROM employees<br>LIMIT 5;<br><br>Query OK, 5 rows affected, 1 warning (0.01 sec)<br>Records: 5  Duplicates: 0  Warnings: 1<br><br><br><br>-- 先直接提交一次<br>COMMIT;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br><br>-- 查询表数据<br>SELECT * FROM emp;<br><br>+-----+-----------+----------+<br>| id  | last_name | salary   |<br>+-----+-----------+----------+<br>| 100 | King      | 24000.00 |<br>| 101 | Kochhar   | 17000.00 |<br>| 102 | De Haan   | 17000.00 |<br>| 103 | Hunold    |  9000.00 |<br>| 104 | Ernst     |  6000.00 |<br>+-----+-----------+----------+<br>5 rows in set (0.00 sec)<br><br>-- 设置自动提交为假；则需要手动提交<br>SET autocommit = FALSE;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 删除表中的数据<br>DELETE FROM emp;<br>Query OK, 5 rows affected (0.00 sec)<br><br><br>-- 查询表数据<br>SELECT * FROM emp;<br>Empty set (0.00 sec)<br><br><br>-- 回滚<br>ROLLBACK;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>-- 查询表数据<br>SELECT * FROM emp;<br><br>+-----+-----------+----------+<br>| id  | last_name | salary   |<br>+-----+-----------+----------+<br>| 100 | King      | 24000.00 |<br>| 101 | Kochhar   | 17000.00 |<br>| 102 | De Haan   | 17000.00 |<br>| 103 | Hunold    |  9000.00 |<br>| 104 | Ernst     |  6000.00 |<br>+-----+-----------+----------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 先直接提交一次
-COMMIT;
-
-Query OK, 0 rows affected (0.00 sec)
-
-
-
-
-
--- 查询表数据
-SELECT * FROM emp;
-
-+-----+-----------+----------+
-| id  | last_name | salary   |
-+-----+-----------+----------+
-| 100 | King      | 24000.00 |
-| 101 | Kochhar   | 17000.00 |
-| 102 | De Haan   | 17000.00 |
-| 103 | Hunold    |  9000.00 |
-| 104 | Ernst     |  6000.00 |
-+-----+-----------+----------+
-5 rows in set (0.00 sec)
-
--- 设置自动提交为假；则需要手动提交
-SET autocommit = FALSE;
-Query OK, 0 rows affected (0.00 sec)
-
-
-
--- 删除表中的数据
-DELETE FROM emp;
-Query OK, 5 rows affected (0.00 sec)
-
-
--- 查询表数据
-SELECT * FROM emp;
-Empty set (0.00 sec)
-
-
--- 回滚
-ROLLBACK;
-Query OK, 0 rows affected (0.00 sec)
-
-
--- 查询表数据
-SELECT * FROM emp;
-
-+-----+-----------+----------+
-| id  | last_name | salary   |
-+-----+-----------+----------+
-| 100 | King      | 24000.00 |
-| 101 | Kochhar   | 17000.00 |
-| 102 | De Haan   | 17000.00 |
-| 103 | Hunold    |  9000.00 |
-| 104 | Ernst     |  6000.00 |
-+-----+-----------+----------+
-5 rows in set (0.00 sec)
-</code></pre>
 <p>示例2：</p>
-<pre><code class="mysql">-- 先直接提交一次
-COMMIT;
-Query OK, 0 rows affected (0.00 sec)
-
-
--- 查询表数据
-SELECT * FROM emp;
-
-+-----+-----------+----------+
-| id  | last_name | salary   |
-+-----+-----------+----------+
-| 100 | King      | 24000.00 |
-| 101 | Kochhar   | 17000.00 |
-| 102 | De Haan   | 17000.00 |
-| 103 | Hunold    |  9000.00 |
-| 104 | Ernst     |  6000.00 |
-+-----+-----------+----------+
-5 rows in set (0.00 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 先直接提交一次<br>COMMIT;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>-- 查询表数据<br>SELECT * FROM emp;<br><br>+-----+-----------+----------+<br>| id  | last_name | salary   |<br>+-----+-----------+----------+<br>| 100 | King      | 24000.00 |<br>| 101 | Kochhar   | 17000.00 |<br>| 102 | De Haan   | 17000.00 |<br>| 103 | Hunold    |  9000.00 |<br>| 104 | Ernst     |  6000.00 |<br>+-----+-----------+----------+<br>5 rows in set (0.00 sec)<br><br><br><br>-- 设置自动提交为假；则需要手动提交<br>SET autocommit = FALSE;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 删除表中的数据<br>TRUNCATE TABLE emp;<br>Query OK, 0 rows affected (0.02 sec)<br><br><br>-- 查询表数据<br>SELECT * FROM emp;<br>Empty set (0.00 sec)<br><br><br>-- 回滚<br>ROLLBACK;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>-- 查询表数据<br>SELECT * FROM emp;<br>Empty set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 设置自动提交为假；则需要手动提交
-SET autocommit = FALSE;
-Query OK, 0 rows affected (0.00 sec)
-
-
-
--- 删除表中的数据
-TRUNCATE TABLE emp;
-Query OK, 0 rows affected (0.02 sec)
-
-
--- 查询表数据
-SELECT * FROM emp;
-Empty set (0.00 sec)
-
-
--- 回滚
-ROLLBACK;
-Query OK, 0 rows affected (0.00 sec)
-
-
--- 查询表数据
-SELECT * FROM emp;
-Empty set (0.00 sec)
-</code></pre>
 <p>阿里开发规范：</p>
 <blockquote>
 <p>【参考】TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少，但 TRUNCATE 无事务且不触发 TRIGGER，有可能造成事故，故<strong>不建议</strong>在开发代码中使用此语句。 </p>
@@ -1300,7 +823,7 @@ Empty set (0.00 sec)
 </li>
 <li><p>正例：无符号值可以避免误存负数，且扩大了表示范围。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211024012735469.png" alt="image-20211024012735469"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211024012735469.png" srcset="/img/loading.gif" lazyload alt="image-20211024012735469"></p>
 <hr>
 </li>
 </ul>
@@ -1311,483 +834,501 @@ Empty set (0.00 sec)
 <p>DDL操作回滚日志写入到data dictionary数据字典表mysql.innodb_ddl_log（该表是隐藏的表，通过show tables无法看到）中，用于回滚操作</p>
 <p>通过设置参数，可将DDL操作日志打印输出到MySQL错误日志中</p>
 <p>分别在MySQL 5.7版本和MySQL 8.0版本中创建数据库和数据表，结果如下：</p>
-<pre><code class="mysql">-- 建库、建表
-CREATE DATABASE mytest;
-
-USE mytest;
-
-CREATE TABLE book1(
-book_id INT ,
-book_name VARCHAR(255)
-);
-Query OK, 0 rows affected (0.02 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 建库、建表<br>CREATE DATABASE mytest;<br><br>USE mytest;<br><br>CREATE TABLE book1(<br>book_id INT ,<br>book_name VARCHAR(255)<br>);<br>Query OK, 0 rows affected (0.02 sec)<br><br><br><br>-- 查看当前库中所有的表<br>SHOW TABLES;<br><br>+------------------+<br>| Tables_in_mytest |<br>+------------------+<br>| book1            |<br>+------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看当前库中所有的表
-SHOW TABLES;
-
-+------------------+
-| Tables_in_mytest |
-+------------------+
-| book1            |
-+------------------+
-1 row in set (0.00 sec)
-</code></pre>
 <p>（1）在MySQL 8.0 版本中，测试步骤如下：</p>
 <p>删除数据表book1和数据表book2，结果如下：</p>
-<pre><code class="mysql">DROP TABLE book1,book2;
-ERROR 1051 (42S02): Unknown table &#39;mytest.book2&#39;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP TABLE book1,book2;<br>ERROR 1051 (42S02): Unknown table &#x27;mytest.book2&#x27;<br><br>-- 因为没有book2 所以报错<br></code></pre></td></tr></table></figure>
 
--- 因为没有book2 所以报错
-</code></pre>
+
+
 <p>再次查询数据库中的数据表名称，结果如下：</p>
-<pre><code class="mysql">SHOW TABLES;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW TABLES;<br><br>+------------------+<br>| Tables_in_mytest |<br>+------------------+<br>| book1            |<br>+------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+------------------+
-| Tables_in_mytest |
-+------------------+
-| book1            |
-+------------------+
-1 row in set (0.00 sec)
-</code></pre>
 <p>从结果可以看出，数据表book1并没有被删除</p>
 <p>（2）在MySQL 5.7版本中，测试步骤如下：<br>删除数据表book1和数据表book2，结果如下：</p>
-<pre><code class="mysql">DROP TABLE book1,book2;
-ERROR 1051 (42S02): Unknown table &#39;mytest.book2&#39;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP TABLE book1,book2;<br>ERROR 1051 (42S02): Unknown table &#x27;mytest.book2&#x27;<br><br>-- 因为没有book2 所以报错<br></code></pre></td></tr></table></figure>
 
--- 因为没有book2 所以报错
-</code></pre>
+
+
 <p>再次查询数据库中的数据表名称，结果如下：</p>
-<pre><code class="mysql">SHOW TABLES;
-Empty set (0.00 sec)
-</code></pre>
-<h1 id="课后练习题"><a href="#课后练习题" class="headerlink" title="课后练习题"></a>课后练习题</h1><h2 id="1-创建数据库test01-office-指明字符集为utf8。并在此数据库下执行下述操作"><a href="#1-创建数据库test01-office-指明字符集为utf8。并在此数据库下执行下述操作" class="headerlink" title="1. 创建数据库test01_office,指明字符集为utf8。并在此数据库下执行下述操作"></a>1. 创建数据库test01_office,指明字符集为utf8。并在此数据库下执行下述操作</h2><pre><code class="mysql">-- 指定字符集 建表 character set=&#39;utf8&#39;
-CREATE DATABASE IF NOT EXISTS test01_office CHARACTER SET=&#39;utf8&#39;;
-
-Query OK, 1 row affected, 1 warning (0.00 sec)
-
-
--- 查看表结构
- SHOW CREATE DATABASE test01_office;
-+---------------+-----------------------------------------------------------------------------------------------------------+
-| Database      | Create Database                                                                                           |
-+---------------+-----------------------------------------------------------------------------------------------------------+
-| test01_office | CREATE DATABASE `test01_office` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION=&#39;N&#39; */ |
-+---------------+-----------------------------------------------------------------------------------------------------------+
-1 row in set (0.00 sec)
-</code></pre>
-<h2 id="2-创建表dept01"><a href="#2-创建表dept01" class="headerlink" title="2. 创建表dept01"></a>2. 创建表dept01</h2><pre><code>字段     	类型
-id 		INT(7)
-NAME	VARCHAR(25)
-</code></pre>
-<pre><code class="mysql">USE test01_office;
-Database changed
-
-
-CREATE TABLE IF NOT EXISTS dept01(
-id INT(7),
-`NAME`  VARCHAR(25)
-);
-
-Query OK, 0 rows affected, 1 warning (0.02 sec)
-
-
-DESC dept01;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| id    | int         | YES  |     | NULL    |       |
-| NAME  | varchar(25) | YES  |     | NULL    |       |
-+-------+-------------+------+-----+---------+-------+
-2 rows in set (0.00 sec)
-</code></pre>
-<h2 id="3-将表departments中的数据插入新表dept02中"><a href="#3-将表departments中的数据插入新表dept02中" class="headerlink" title="3. 将表departments中的数据插入新表dept02中"></a>3. 将表departments中的数据插入新表dept02中</h2><pre><code class="mysql">-- 创表
-CREATE TABLE IF NOT EXISTS dept02
-AS
-SELECT * 
-FROM atguigudb.departments;   # 要有访问atguidudb的权限
-
-Query OK, 27 rows affected (0.02 sec)
-Records: 27  Duplicates: 0  Warnings: 0
-
-
-
--- 查看表结构
-DESC dept02;
-
-+-----------------+-------------+------+-----+---------+-------+
-| Field           | Type        | Null | Key | Default | Extra |
-+-----------------+-------------+------+-----+---------+-------+
-| department_id   | int         | NO   |     | 0       |       |
-| department_name | varchar(30) | NO   |     | NULL    |       |
-| manager_id      | int         | YES  |     | NULL    |       |
-| location_id     | int         | YES  |     | NULL    |       |
-+-----------------+-------------+------+-----+---------+-------+
-4 rows in set (0.01 sec)
-</code></pre>
-<h2 id="4-创建表emp01"><a href="#4-创建表emp01" class="headerlink" title="4. 创建表emp01"></a>4. 创建表emp01</h2><pre><code>id INT(7)
-first_name VARCHAR (25)
-last_name VARCHAR(25)
-dept_id INT(7)
-</code></pre>
-<pre><code class="mysql">CREATE TABLE IF NOT EXISTS emp01(
-            id INT(7),
-            first_name VARCHAR (25),
-            last_name VARCHAR(25),
-            dept_id INT(7)
-);
-
-Query OK, 0 rows affected, 2 warnings (0.02 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW TABLES;<br>Empty set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 
--- 查看表结构
-Fdesc emp01;
-+------------+-------------+------+-----+---------+-------+
-| Field      | Type        | Null | Key | Default | Extra |
-+------------+-------------+------+-----+---------+-------+
-| id         | int         | YES  |     | NULL    |       |
-| first_name | varchar(25) | YES  |     | NULL    |       |
-| last_name  | varchar(25) | YES  |     | NULL    |       |
-| dept_id    | int         | YES  |     | NULL    |       |
-+------------+-------------+------+-----+---------+-------+
-4 rows in set (0.01 sec)
-</code></pre>
-<h2 id="5-将列last-name的长度增加到50"><a href="#5-将列last-name的长度增加到50" class="headerlink" title="5. 将列last_name的长度增加到50"></a>5. 将列last_name的长度增加到50</h2><pre><code class="mysql">ALTER TABLE emp01
-MODIFY last_name VARCHAR(50);
 
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
--- 查看表结构
-DESC emp01;
-+------------+-------------+------+-----+---------+-------+
-| Field      | Type        | Null | Key | Default | Extra |
-+------------+-------------+------+-----+---------+-------+
-| id         | int         | YES  |     | NULL    |       |
-| first_name | varchar(25) | YES  |     | NULL    |       |
-| last_name  | varchar(50) | YES  |     | NULL    |       |
-| dept_id    | int         | YES  |     | NULL    |       |
-+------------+-------------+------+-----+---------+-------+
-4 rows in set (0.00 sec)
-</code></pre>
-<h2 id="6-根据表employees创建emp02"><a href="#6-根据表employees创建emp02" class="headerlink" title="6. 根据表employees创建emp02"></a>6. 根据表employees创建emp02</h2><pre><code class="mysql">CREATE TABLE emp02
-AS
-SELECT * 
-FROM atguigudb.employees;
-
-Query OK, 107 rows affected, 2 warnings (0.02 sec)
-Records: 107  Duplicates: 0  Warnings: 2
+<h1 id="课后练习题"><a href="#课后练习题" class="headerlink" title="课后练习题"></a>课后练习题</h1><h2 id="1-创建数据库test01-office-指明字符集为utf8。并在此数据库下执行下述操作"><a href="#1-创建数据库test01-office-指明字符集为utf8。并在此数据库下执行下述操作" class="headerlink" title="1. 创建数据库test01_office,指明字符集为utf8。并在此数据库下执行下述操作"></a>1. 创建数据库test01_office,指明字符集为utf8。并在此数据库下执行下述操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 指定字符集 建表 character set=&#x27;utf8&#x27;<br>CREATE DATABASE IF NOT EXISTS test01_office CHARACTER SET=&#x27;utf8&#x27;;<br><br>Query OK, 1 row affected, 1 warning (0.00 sec)<br><br><br>-- 查看表结构<br> SHOW CREATE DATABASE test01_office;<br>+---------------+-----------------------------------------------------------------------------------------------------------+<br>| Database      | Create Database                                                                                           |<br>+---------------+-----------------------------------------------------------------------------------------------------------+<br>| test01_office | CREATE DATABASE `test01_office` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION=&#x27;N&#x27; */ |<br>+---------------+-----------------------------------------------------------------------------------------------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
-SHOW TABLES FROM test01_office; -- 查看某个库中的所有表
-+-------------------------+
-| Tables_in_test01_office |
-+-------------------------+
-| dept01                  |
-| dept02                  |
-| emp01                   |
-| emp02                   |
-+-------------------------+
-4 rows in set (0.00 sec)
-</code></pre>
-<h2 id="7-删除表emp01"><a href="#7-删除表emp01" class="headerlink" title="7. 删除表emp01"></a>7. 删除表emp01</h2><pre><code class="mysql">DROP TABLE emp01;
-Query OK, 0 rows affected (0.01 sec)
-
--- 注意：DDL语句没有回滚操作
-</code></pre>
-<h2 id="8-将表emp02重命名为emp01"><a href="#8-将表emp02重命名为emp01" class="headerlink" title="8. 将表emp02重命名为emp01"></a>8. 将表emp02重命名为emp01</h2><pre><code class="mysql">RENAME TABLE emp02 TO emp01;
-Query OK, 0 rows affected (0.01 sec)
-
-
-SHOW TABLES FROM test01_office;
-+-------------------------+
-| Tables_in_test01_office |
-+-------------------------+
-| dept01                  |
-| dept02                  |
-| emp01                   |
-+-------------------------+
-3 rows in set (0.00 sec)
-</code></pre>
-<h2 id="9-在表dept02和emp01中添加新列test-column，并检查所作的操作"><a href="#9-在表dept02和emp01中添加新列test-column，并检查所作的操作" class="headerlink" title="9.在表dept02和emp01中添加新列test_column，并检查所作的操作"></a>9.在表dept02和emp01中添加新列test_column，并检查所作的操作</h2><pre><code class="mysql">ALTER TABLE emp01
-ADD test_column VARCHAR(10);
-
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<h2 id="2-创建表dept01"><a href="#2-创建表dept01" class="headerlink" title="2. 创建表dept01"></a>2. 创建表dept01</h2><figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs isbl">字段     	类型<br><span class="hljs-variable">id</span> 		<span class="hljs-function"><span class="hljs-title">INT</span>(<span class="hljs-number">7</span>)</span><br><span class="hljs-variable">NAME</span>	<span class="hljs-function"><span class="hljs-title">VARCHAR</span>(<span class="hljs-number">25</span>)</span><br></code></pre></td></tr></table></figure>
 
 
 
--- 查看表结构
-DESC emp01;
-+----------------+-------------+------+-----+---------+-------+
-| Field          | Type        | Null | Key | Default | Extra |
-+----------------+-------------+------+-----+---------+-------+
-| employee_id    | int         | NO   |     | 0       |       |
-| first_name     | varchar(20) | YES  |     | NULL    |       |
-| last_name      | varchar(25) | NO   |     | NULL    |       |
-| email          | varchar(25) | NO   |     | NULL    |       |
-| phone_number   | varchar(20) | YES  |     | NULL    |       |
-| hire_date      | date        | NO   |     | NULL    |       |
-| job_id         | varchar(10) | NO   |     | NULL    |       |
-| salary         | double(8,2) | YES  |     | NULL    |       |
-| commission_pct | double(2,2) | YES  |     | NULL    |       |
-| manager_id     | int         | YES  |     | NULL    |       |
-| department_id  | int         | YES  |     | NULL    |       |
-| test_column    | varchar(10) | YES  |     | NULL    |       |
-+----------------+-------------+------+-----+---------+-------+
-12 rows in set (0.00 sec)
-</code></pre>
-<pre><code class="mysql">ALTER TABLE dept02
-ADD test_column VARCHAR(10);
-
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE test01_office;<br>Database changed<br><br><br>CREATE TABLE IF NOT EXISTS dept01(<br>id INT(7),<br>`NAME`  VARCHAR(25)<br>);<br><br>Query OK, 0 rows affected, 1 warning (0.02 sec)<br><br><br>DESC dept01;<br>+-------+-------------+------+-----+---------+-------+<br>| Field | Type        | Null | Key | Default | Extra |<br>+-------+-------------+------+-----+---------+-------+<br>| id    | int         | YES  |     | NULL    |       |<br>| NAME  | varchar(25) | YES  |     | NULL    |       |<br>+-------+-------------+------+-----+---------+-------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 
--- 查看表结构
-DESC dept02;
 
-+-----------------+-------------+------+-----+---------+-------+
-| Field           | Type        | Null | Key | Default | Extra |
-+-----------------+-------------+------+-----+---------+-------+
-| department_id   | int         | NO   |     | 0       |       |
-| department_name | varchar(30) | NO   |     | NULL    |       |
-| manager_id      | int         | YES  |     | NULL    |       |
-| location_id     | int         | YES  |     | NULL    |       |
-| test_column     | varchar(10) | YES  |     | NULL    |       |
-+-----------------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-</code></pre>
-<h2 id="10-直接删除表emp01中的列-department-id"><a href="#10-直接删除表emp01中的列-department-id" class="headerlink" title="10.直接删除表emp01中的列 department_id"></a>10.直接删除表emp01中的列 department_id</h2><pre><code class="mysql">ALTER TABLE emp01 
-DROP COLUMN department_id;
-
-Query OK, 0 rows affected (0.04 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<h2 id="3-将表departments中的数据插入新表dept02中"><a href="#3-将表departments中的数据插入新表dept02中" class="headerlink" title="3. 将表departments中的数据插入新表dept02中"></a>3. 将表departments中的数据插入新表dept02中</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创表<br>CREATE TABLE IF NOT EXISTS dept02<br>AS<br>SELECT * <br>FROM atguigudb.departments;   # 要有访问atguidudb的权限<br><br>Query OK, 27 rows affected (0.02 sec)<br>Records: 27  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查看表结构<br>DESC dept02;<br><br>+-----------------+-------------+------+-----+---------+-------+<br>| Field           | Type        | Null | Key | Default | Extra |<br>+-----------------+-------------+------+-----+---------+-------+<br>| department_id   | int         | NO   |     | 0       |       |<br>| department_name | varchar(30) | NO   |     | NULL    |       |<br>| manager_id      | int         | YES  |     | NULL    |       |<br>| location_id     | int         | YES  |     | NULL    |       |<br>+-----------------+-------------+------+-----+---------+-------+<br>4 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 
--- 查看表结构
-DESC emp01;
 
-+----------------+-------------+------+-----+---------+-------+
-| Field          | Type        | Null | Key | Default | Extra |
-+----------------+-------------+------+-----+---------+-------+
-| employee_id    | int         | NO   |     | 0       |       |
-| first_name     | varchar(20) | YES  |     | NULL    |       |
-| last_name      | varchar(25) | NO   |     | NULL    |       |
-| email          | varchar(25) | NO   |     | NULL    |       |
-| phone_number   | varchar(20) | YES  |     | NULL    |       |
-| hire_date      | date        | NO   |     | NULL    |       |
-| job_id         | varchar(10) | NO   |     | NULL    |       |
-| salary         | double(8,2) | YES  |     | NULL    |       |
-| commission_pct | double(2,2) | YES  |     | NULL    |       |
-| manager_id     | int         | YES  |     | NULL    |       |
-| test_column    | varchar(10) | YES  |     | NULL    |       |
-+----------------+-------------+------+-----+---------+-------+
-11 rows in set (0.00 sec)
-</code></pre>
-<h2 id="练习2"><a href="#练习2" class="headerlink" title="练习2"></a>练习2</h2><h2 id="1、创建数据库-test02-market"><a href="#1、创建数据库-test02-market" class="headerlink" title="1、创建数据库 test02_market"></a>1、创建数据库 test02_market</h2><pre><code class="mysql">CREATE DATABASE IF NOT EXISTS test02_market CHARACTER SET &#39;utf8&#39;;
 
-Query OK, 1 row affected, 1 warning (0.00 sec)
-</code></pre>
+
+<h2 id="4-创建表emp01"><a href="#4-创建表emp01" class="headerlink" title="4. 创建表emp01"></a>4. 创建表emp01</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scss">id <span class="hljs-built_in">INT</span>(<span class="hljs-number">7</span>)<br>first_name VARCHAR (<span class="hljs-number">25</span>)<br>last_name <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">25</span>)<br>dept_id <span class="hljs-built_in">INT</span>(<span class="hljs-number">7</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE IF NOT EXISTS emp01(<br>            id INT(7),<br>            first_name VARCHAR (25),<br>            last_name VARCHAR(25),<br>            dept_id INT(7)<br>);<br><br>Query OK, 0 rows affected, 2 warnings (0.02 sec)<br><br><br><br><br>-- 查看表结构<br>Fdesc emp01;<br>+------------+-------------+------+-----+---------+-------+<br>| Field      | Type        | Null | Key | Default | Extra |<br>+------------+-------------+------+-----+---------+-------+<br>| id         | int         | YES  |     | NULL    |       |<br>| first_name | varchar(25) | YES  |     | NULL    |       |<br>| last_name  | varchar(25) | YES  |     | NULL    |       |<br>| dept_id    | int         | YES  |     | NULL    |       |<br>+------------+-------------+------+-----+---------+-------+<br>4 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-将列last-name的长度增加到50"><a href="#5-将列last-name的长度增加到50" class="headerlink" title="5. 将列last_name的长度增加到50"></a>5. 将列last_name的长度增加到50</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE emp01<br>MODIFY last_name VARCHAR(50);<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>DESC emp01;<br>+------------+-------------+------+-----+---------+-------+<br>| Field      | Type        | Null | Key | Default | Extra |<br>+------------+-------------+------+-----+---------+-------+<br>| id         | int         | YES  |     | NULL    |       |<br>| first_name | varchar(25) | YES  |     | NULL    |       |<br>| last_name  | varchar(50) | YES  |     | NULL    |       |<br>| dept_id    | int         | YES  |     | NULL    |       |<br>+------------+-------------+------+-----+---------+-------+<br>4 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="6-根据表employees创建emp02"><a href="#6-根据表employees创建emp02" class="headerlink" title="6. 根据表employees创建emp02"></a>6. 根据表employees创建emp02</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE emp02<br>AS<br>SELECT * <br>FROM atguigudb.employees;<br><br>Query OK, 107 rows affected, 2 warnings (0.02 sec)<br>Records: 107  Duplicates: 0  Warnings: 2<br><br><br><br>SHOW TABLES FROM test01_office; -- 查看某个库中的所有表<br>+-------------------------+<br>| Tables_in_test01_office |<br>+-------------------------+<br>| dept01                  |<br>| dept02                  |<br>| emp01                   |<br>| emp02                   |<br>+-------------------------+<br>4 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-删除表emp01"><a href="#7-删除表emp01" class="headerlink" title="7. 删除表emp01"></a>7. 删除表emp01</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP TABLE emp01;<br>Query OK, 0 rows affected (0.01 sec)<br><br>-- 注意：DDL语句没有回滚操作<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-将表emp02重命名为emp01"><a href="#8-将表emp02重命名为emp01" class="headerlink" title="8. 将表emp02重命名为emp01"></a>8. 将表emp02重命名为emp01</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">RENAME TABLE emp02 TO emp01;<br>Query OK, 0 rows affected (0.01 sec)<br><br><br>SHOW TABLES FROM test01_office;<br>+-------------------------+<br>| Tables_in_test01_office |<br>+-------------------------+<br>| dept01                  |<br>| dept02                  |<br>| emp01                   |<br>+-------------------------+<br>3 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="9-在表dept02和emp01中添加新列test-column，并检查所作的操作"><a href="#9-在表dept02和emp01中添加新列test-column，并检查所作的操作" class="headerlink" title="9.在表dept02和emp01中添加新列test_column，并检查所作的操作"></a>9.在表dept02和emp01中添加新列test_column，并检查所作的操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE emp01<br>ADD test_column VARCHAR(10);<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查看表结构<br>DESC emp01;<br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| employee_id    | int         | NO   |     | 0       |       |<br>| first_name     | varchar(20) | YES  |     | NULL    |       |<br>| last_name      | varchar(25) | NO   |     | NULL    |       |<br>| email          | varchar(25) | NO   |     | NULL    |       |<br>| phone_number   | varchar(20) | YES  |     | NULL    |       |<br>| hire_date      | date        | NO   |     | NULL    |       |<br>| job_id         | varchar(10) | NO   |     | NULL    |       |<br>| salary         | double(8,2) | YES  |     | NULL    |       |<br>| commission_pct | double(2,2) | YES  |     | NULL    |       |<br>| manager_id     | int         | YES  |     | NULL    |       |<br>| department_id  | int         | YES  |     | NULL    |       |<br>| test_column    | varchar(10) | YES  |     | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br>12 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE dept02<br>ADD test_column VARCHAR(10);<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br><br>-- 查看表结构<br>DESC dept02;<br><br>+-----------------+-------------+------+-----+---------+-------+<br>| Field           | Type        | Null | Key | Default | Extra |<br>+-----------------+-------------+------+-----+---------+-------+<br>| department_id   | int         | NO   |     | 0       |       |<br>| department_name | varchar(30) | NO   |     | NULL    |       |<br>| manager_id      | int         | YES  |     | NULL    |       |<br>| location_id     | int         | YES  |     | NULL    |       |<br>| test_column     | varchar(10) | YES  |     | NULL    |       |<br>+-----------------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="10-直接删除表emp01中的列-department-id"><a href="#10-直接删除表emp01中的列-department-id" class="headerlink" title="10.直接删除表emp01中的列 department_id"></a>10.直接删除表emp01中的列 department_id</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE emp01 <br>DROP COLUMN department_id;<br><br>Query OK, 0 rows affected (0.04 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br><br>-- 查看表结构<br>DESC emp01;<br><br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| employee_id    | int         | NO   |     | 0       |       |<br>| first_name     | varchar(20) | YES  |     | NULL    |       |<br>| last_name      | varchar(25) | NO   |     | NULL    |       |<br>| email          | varchar(25) | NO   |     | NULL    |       |<br>| phone_number   | varchar(20) | YES  |     | NULL    |       |<br>| hire_date      | date        | NO   |     | NULL    |       |<br>| job_id         | varchar(10) | NO   |     | NULL    |       |<br>| salary         | double(8,2) | YES  |     | NULL    |       |<br>| commission_pct | double(2,2) | YES  |     | NULL    |       |<br>| manager_id     | int         | YES  |     | NULL    |       |<br>| test_column    | varchar(10) | YES  |     | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br>11 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="练习2"><a href="#练习2" class="headerlink" title="练习2"></a>练习2</h2><h2 id="1、创建数据库-test02-market"><a href="#1、创建数据库-test02-market" class="headerlink" title="1、创建数据库 test02_market"></a>1、创建数据库 test02_market</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE DATABASE IF NOT EXISTS test02_market CHARACTER SET &#x27;utf8&#x27;;<br><br>Query OK, 1 row affected, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="2、创建数据表-customers"><a href="#2、创建数据表-customers" class="headerlink" title="2、创建数据表 customers"></a>2、创建数据表 customers</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625181802686.png" alt="image-20220625181802686"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220625181802686.png" srcset="/img/loading.gif" lazyload alt="image-20220625181802686"></p>
 <hr>
-<pre><code class="mysql">#指定对哪个数据库进行操作
-USE test02_market;
-
-#2、创建数据表 customers
-CREATE TABLE customers(
- c_num INT ,
- c_name VARCHAR(50),
- c_contact VARCHAR(50),
- c_city VARCHAR(50),
- c_birth DATE
-);
-
-Query OK, 0 rows affected (0.02 sec)
-
-
--- 查看表结构
-DESC customers;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| c_num     | int         | YES  |     | NULL    |       |
-| c_name    | varchar(50) | YES  |     | NULL    |       |
-| c_contact | varchar(50) | YES  |     | NULL    |       |
-| c_city    | varchar(50) | YES  |     | NULL    |       |
-| c_birth   | date        | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-</code></pre>
-<h2 id="3、将-c-contact-字段移动到-c-birth-字段后面"><a href="#3、将-c-contact-字段移动到-c-birth-字段后面" class="headerlink" title="3、将 c_contact 字段移动到 c_birth 字段后面"></a>3、将 c_contact 字段移动到 c_birth 字段后面</h2><pre><code class="MYSQL">ALTER TABLE customers
-MODIFY c_contact VARCHAR(50) AFTER c_birth;
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#指定对哪个数据库进行操作<br>USE test02_market;<br><br>#2、创建数据表 customers<br>CREATE TABLE customers(<br> c_num INT ,<br> c_name VARCHAR(50),<br> c_contact VARCHAR(50),<br> c_city VARCHAR(50),<br> c_birth DATE<br>);<br><br>Query OK, 0 rows affected (0.02 sec)<br><br><br>-- 查看表结构<br>DESC customers;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| c_num     | int         | YES  |     | NULL    |       |<br>| c_name    | varchar(50) | YES  |     | NULL    |       |<br>| c_contact | varchar(50) | YES  |     | NULL    |       |<br>| c_city    | varchar(50) | YES  |     | NULL    |       |<br>| c_birth   | date        | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看表结构
-DESC customers;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| c_num     | int         | YES  |     | NULL    |       |
-| c_name    | varchar(50) | YES  |     | NULL    |       |
-| c_city    | varchar(50) | YES  |     | NULL    |       |
-| c_birth   | date        | YES  |     | NULL    |       |
-| c_contact | varchar(50) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-</code></pre>
-<h2 id="4、将-c-name-字段数据类型改为-varchar-70"><a href="#4、将-c-name-字段数据类型改为-varchar-70" class="headerlink" title="4、将 c_name 字段数据类型改为 varchar(70)"></a>4、将 c_name 字段数据类型改为 varchar(70)</h2><pre><code class="MYSQL">ALTER TABLE customers 
-MODIFY c_name VARCHAR(70);
-
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
 
 
--- 查看表结构
-DESC customers;
-
-+-----------+-------------+------+-----+---------+-------+
-| Field     | Type        | Null | Key | Default | Extra |
-+-----------+-------------+------+-----+---------+-------+
-| c_num     | int         | YES  |     | NULL    |       |
-| c_name    | varchar(70) | YES  |     | NULL    |       |
-| c_city    | varchar(50) | YES  |     | NULL    |       |
-| c_birth   | date        | YES  |     | NULL    |       |
-| c_contact | varchar(50) | YES  |     | NULL    |       |
-+-----------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-</code></pre>
-<h2 id="5、将c-contact字段改名为c-phone"><a href="#5、将c-contact字段改名为c-phone" class="headerlink" title="5、将c_contact字段改名为c_phone"></a>5、将c_contact字段改名为c_phone</h2><pre><code class="MYSQL">ALTER TABLE customers 
-CHANGE c_contact c_phone VARCHAR(50);
-
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+<h2 id="3、将-c-contact-字段移动到-c-birth-字段后面"><a href="#3、将-c-contact-字段移动到-c-birth-字段后面" class="headerlink" title="3、将 c_contact 字段移动到 c_birth 字段后面"></a>3、将 c_contact 字段移动到 c_birth 字段后面</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">ALTER TABLE customers<br>MODIFY c_contact VARCHAR(50) AFTER c_birth;<br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查看表结构<br>DESC customers;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| c_num     | int         | YES  |     | NULL    |       |<br>| c_name    | varchar(50) | YES  |     | NULL    |       |<br>| c_city    | varchar(50) | YES  |     | NULL    |       |<br>| c_birth   | date        | YES  |     | NULL    |       |<br>| c_contact | varchar(50) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看表结构
-DESC customers;
-
-+---------+-------------+------+-----+---------+-------+
-| Field   | Type        | Null | Key | Default | Extra |
-+---------+-------------+------+-----+---------+-------+
-| c_num   | int         | YES  |     | NULL    |       |
-| c_name  | varchar(70) | YES  |     | NULL    |       |
-| c_city  | varchar(50) | YES  |     | NULL    |       |
-| c_birth | date        | YES  |     | NULL    |       |
-| c_phone | varchar(50) | YES  |     | NULL    |       |
-+---------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-</code></pre>
-<h2 id="6、增加c-gender字段到c-name后面，数据类型为char-1"><a href="#6、增加c-gender字段到c-name后面，数据类型为char-1" class="headerlink" title="6、增加c_gender字段到c_name后面，数据类型为char(1)"></a>6、增加c_gender字段到c_name后面，数据类型为char(1)</h2><pre><code class="MYSQL">ALTER TABLE customers
-ADD c_gender CHAR(1) AFTER c_name;
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
--- 查看表结构
-DESC customers;
-
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| c_num    | int         | YES  |     | NULL    |       |
-| c_name   | varchar(70) | YES  |     | NULL    |       |
-| c_gender | char(1)     | YES  |     | NULL    |       |
-| c_city   | varchar(50) | YES  |     | NULL    |       |
-| c_birth  | date        | YES  |     | NULL    |       |
-| c_phone  | varchar(50) | YES  |     | NULL    |       |
-+----------+-------------+------+-----+---------+-------+
-6 rows in set (0.00 sec)
-</code></pre>
-<h2 id="7、将表名改为customers-info"><a href="#7、将表名改为customers-info" class="headerlink" title="7、将表名改为customers_info"></a>7、将表名改为customers_info</h2><pre><code class="MYSQL">RENAME TABLE customers TO customers_info;
-
-Query OK, 0 rows affected (0.01 sec)
+<h2 id="4、将-c-name-字段数据类型改为-varchar-70"><a href="#4、将-c-name-字段数据类型改为-varchar-70" class="headerlink" title="4、将 c_name 字段数据类型改为 varchar(70)"></a>4、将 c_name 字段数据类型改为 varchar(70)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">ALTER TABLE customers <br>MODIFY c_name VARCHAR(70);<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>DESC customers;<br><br>+-----------+-------------+------+-----+---------+-------+<br>| Field     | Type        | Null | Key | Default | Extra |<br>+-----------+-------------+------+-----+---------+-------+<br>| c_num     | int         | YES  |     | NULL    |       |<br>| c_name    | varchar(70) | YES  |     | NULL    |       |<br>| c_city    | varchar(50) | YES  |     | NULL    |       |<br>| c_birth   | date        | YES  |     | NULL    |       |<br>| c_contact | varchar(50) | YES  |     | NULL    |       |<br>+-----------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看数据库中的表
-SHOW TABLES FROM test01_office;
-
-+-------------------------+
-| Tables_in_test01_office |
-+-------------------------+
-| dept01                  |
-| dept02                  |
-| emp01                   |
-+-------------------------+
-3 rows in set (0.00 sec)
-</code></pre>
-<h2 id="8、删除字段c-city"><a href="#8、删除字段c-city" class="headerlink" title="8、删除字段c_city"></a>8、删除字段c_city</h2><pre><code class="mysql">ALTER TABLE customers_info 
-DROP COLUMN c_city ;
-
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
 
 
--- 查看表结构
-DESC customers_info;
+<h2 id="5、将c-contact字段改名为c-phone"><a href="#5、将c-contact字段改名为c-phone" class="headerlink" title="5、将c_contact字段改名为c_phone"></a>5、将c_contact字段改名为c_phone</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">ALTER TABLE customers <br>CHANGE c_contact c_phone VARCHAR(50);<br><br>Query OK, 0 rows affected (0.01 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查看表结构<br>DESC customers;<br><br>+---------+-------------+------+-----+---------+-------+<br>| Field   | Type        | Null | Key | Default | Extra |<br>+---------+-------------+------+-----+---------+-------+<br>| c_num   | int         | YES  |     | NULL    |       |<br>| c_name  | varchar(70) | YES  |     | NULL    |       |<br>| c_city  | varchar(50) | YES  |     | NULL    |       |<br>| c_birth | date        | YES  |     | NULL    |       |<br>| c_phone | varchar(50) | YES  |     | NULL    |       |<br>+---------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| c_num    | int         | YES  |     | NULL    |       |
-| c_name   | varchar(70) | YES  |     | NULL    |       |
-| c_gender | char(1)     | YES  |     | NULL    |       |
-| c_birth  | date        | YES  |     | NULL    |       |
-| c_phone  | varchar(50) | YES  |     | NULL    |       |
-+----------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
-</code></pre>
 
-    </div>
-    
-</div>
-                         
-<footer id="footer">
-    <div class="footer-wrap">
-        <div>
-            © 2020 - 2022 风格差异的博客
-            <span class="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            @fgcy
-        </div>
+
+<h2 id="6、增加c-gender字段到c-name后面，数据类型为char-1"><a href="#6、增加c-gender字段到c-name后面，数据类型为char-1" class="headerlink" title="6、增加c_gender字段到c_name后面，数据类型为char(1)"></a>6、增加c_gender字段到c_name后面，数据类型为char(1)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">ALTER TABLE customers<br>ADD c_gender CHAR(1) AFTER c_name;<br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>DESC customers;<br><br>+----------+-------------+------+-----+---------+-------+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+----------+-------------+------+-----+---------+-------+<br>| c_num    | int         | YES  |     | NULL    |       |<br>| c_name   | varchar(70) | YES  |     | NULL    |       |<br>| c_gender | char(1)     | YES  |     | NULL    |       |<br>| c_city   | varchar(50) | YES  |     | NULL    |       |<br>| c_birth  | date        | YES  |     | NULL    |       |<br>| c_phone  | varchar(50) | YES  |     | NULL    |       |<br>+----------+-------------+------+-----+---------+-------+<br>6 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="7、将表名改为customers-info"><a href="#7、将表名改为customers-info" class="headerlink" title="7、将表名改为customers_info"></a>7、将表名改为customers_info</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">RENAME TABLE customers TO customers_info;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br>-- 查看数据库中的表<br>SHOW TABLES FROM test01_office;<br><br>+-------------------------+<br>| Tables_in_test01_office |<br>+-------------------------+<br>| dept01                  |<br>| dept02                  |<br>| emp01                   |<br>+-------------------------+<br>3 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="8、删除字段c-city"><a href="#8、删除字段c-city" class="headerlink" title="8、删除字段c_city"></a>8、删除字段c_city</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE customers_info <br>DROP COLUMN c_city ;<br><br>Query OK, 0 rows affected (0.03 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br>-- 查看表结构<br>DESC customers_info;<br><br>+----------+-------------+------+-----+---------+-------+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+----------+-------------+------+-----+---------+-------+<br>| c_num    | int         | YES  |     | NULL    |       |<br>| c_name   | varchar(70) | YES  |     | NULL    |       |<br>| c_gender | char(1)     | YES  |     | NULL    |       |<br>| c_birth  | date        | YES  |     | NULL    |       |<br>| c_phone  | varchar(50) | YES  |     | NULL    |       |<br>+----------+-------------+------+-----+---------+-------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
         
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-</footer>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL/">#尚硅谷-宋红康-MySQL</a>
+      
+    </div>
+  
+</div>
 
-                    </div>
-                </div>
-            </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
-            </div>
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第10章_创建和管理表</div>
+      <div>http://example.com/2022/08/22/song-hong-kang-mysql-di-10-zhang-chuang-jian-he-guan-li-biao/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>fgcy</div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
-    </body>
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/22/song-hong-kang-mysql-di-11-zhang-shu-ju-chu-li-zhi-zeng-shan-gai/" title="第11章_数据处理之增删改">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第11章_数据处理之增删改</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/22/song-hong-kang-mysql-di-09-zhang-zi-cha-xun/" title="第09章_子查询">
+                        <span class="hidden-mobile">第09章_子查询</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
 </html>

@@ -1,184 +1,299 @@
 
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>数组 | 风格差异的博客</title>
-        <meta name="author" content="fgcy">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
-        
-        <link rel="stylesheet" href="/css/fonts.min.css">
-        <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
-    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="fgcy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、定义数组存储数据 数组的概念  ​		用来存储一批同种类型数据（可以理解成容器）                        ​		在初始化的时候，就已经确定了数组中存放元素的类型和数量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组">
+<meta property="og:url" content="http://example.com/2022/08/25/hei-ma-java-ji-chu-shu-zu/index.html">
+<meta property="og:site_name" content="风格差异的博客">
+<meta property="og:description" content="一、定义数组存储数据 数组的概念  ​		用来存储一批同种类型数据（可以理解成容器）                        ​		在初始化的时候，就已经确定了数组中存放元素的类型和数量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_20-07-02.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_09-22-40.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208281943407.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_10-29-46.png">
+<meta property="article:published_time" content="2022-08-24T23:07:18.000Z">
+<meta property="article:modified_time" content="2022-08-28T11:55:03.926Z">
+<meta property="article:author" content="fgcy">
+<meta property="article:tag" content="黑马程序员-徐磊-java基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_20-07-02.png">
+  
+  
+  
+  <title>数组 - 风格差异的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
 </head>
-    <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
-        <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
-            <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
-    <div class="desktop-menu">
-        <a href="/">
-            <span class="title">风格差异的博客</span>
-        </a>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;风格差异的博客</span>
-        </div>
-        <transition name="slide">
-        <div class="items" v-show="menu_show">
-            
-            <a href="">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
-                </div>
-            </a>
-            
-            <a href="archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
-                </div>
-            </a>
-            
-            <a href="categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
-                </div>
-            </a>
-            
-            <a href="tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
-                </div>
-            </a>
-            
-        </div>
-        </transition>
-    </div>
+  </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
-<div class="article">
-    <div>
-        <h1>数组 </h1>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数组"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-24 23:07" pubdate>
+          2022年8月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          65 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
     </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/24
-        </span>
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                视频学习笔记
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-            </span>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数组</h1>
             
-            <span class="tag">
+            
+              <div class="markdown-body">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00bcd4">
-                    黑马程序员-徐磊-java基础
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
-    <div class="content" v-pre>
-        <h2 id="一、定义数组存储数据"><a href="#一、定义数组存储数据" class="headerlink" title="一、定义数组存储数据"></a>一、定义数组存储数据</h2><ul>
+                <h2 id="一、定义数组存储数据"><a href="#一、定义数组存储数据" class="headerlink" title="一、定义数组存储数据"></a>一、定义数组存储数据</h2><ul>
 <li>数组的概念</li>
 </ul>
 <p>​		用来存储一批同种类型数据（可以理解成容器）                       </p>
 <p>​		在初始化的时候，就已经确定了数组中存放元素的类型和数量。            </p>
 <span id="more"></span> 
 
-<h3 id="1-0-静态初始化数组"><a href="#1-0-静态初始化数组" class="headerlink" title="1.0 静态初始化数组"></a>1.0 静态初始化数组</h3><pre><code class="java">    //数据类型[] 变量名 = new 数据类型[]&#123;数据.......&#125;
-    //基本数据类型没有对象的概念，所以只能是new 数组  即：	new 数据类型[]
-    int[] arr =new int[]&#123;1,2,3,4&#125;
-    //简化
-    //数据类型[] 变量名 =&#123;数据.......&#125;
-    int[] arr =&#123;1,2,3,4,5&#125;、
-        
-    //c语言
-    //数据类型 变量名[] =new 数据类型[]&#123;数据.......&#125;
-    //类型 变量名[] = &#123;数据.......&#125;
-    int a[] = new int[]&#123;12, 3, 4, 5&#125;;
-    int b[] = &#123;12, 3, 4, 5&#125;;
-</code></pre>
-<pre><code class="java">    @Test
-    public void testArray1() &#123;
-        final int[] arrays = &#123;1, 2, 3, 4, 5&#125;;
-        final double[] arrays2 = &#123;1.0, 2.0, 3, 4, 5&#125;;
-        final float[] arrays3 = &#123;1.0f, 2.0f, 3f, 4f, 5f&#125;;
-        System.out.println(arrays);
-        System.out.println(arrays2);
-        System.out.println(arrays3);
-    &#125;
-</code></pre>
-<pre><code>[I@ba8a1dc
-[D@4f8e5cde
-[F@504bae78
-</code></pre>
+<h3 id="1-0-静态初始化数组"><a href="#1-0-静态初始化数组" class="headerlink" title="1.0 静态初始化数组"></a>1.0 静态初始化数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">   <span class="hljs-comment">//数据类型[] 变量名 = new 数据类型[]&#123;数据.......&#125;</span><br><span class="hljs-comment">//基本数据类型没有对象的概念，所以只能是new 数组  即：	new 数据类型[]</span><br>   <span class="hljs-type">int</span>[] arr =<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;<br>   <span class="hljs-comment">//简化</span><br>   <span class="hljs-comment">//数据类型[] 变量名 =&#123;数据.......&#125;</span><br>   <span class="hljs-type">int</span>[] arr =&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;、<br>       <br><span class="hljs-comment">//c语言</span><br><span class="hljs-comment">//数据类型 变量名[] =new 数据类型[]&#123;数据.......&#125;</span><br><span class="hljs-comment">//类型 变量名[] = &#123;数据.......&#125;</span><br>   <span class="hljs-type">int</span> a[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">12</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>   <span class="hljs-type">int</span> b[] = &#123;<span class="hljs-number">12</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testArray1</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] arrays = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">double</span>[] arrays2 = &#123;<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">float</span>[] arrays3 = &#123;<span class="hljs-number">1.0f</span>, <span class="hljs-number">2.0f</span>, <span class="hljs-number">3f</span>, <span class="hljs-number">4f</span>, <span class="hljs-number">5f</span>&#125;;<br>    System.out.println(arrays);<br>    System.out.println(arrays2);<br>    System.out.println(arrays3);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[I<span class="hljs-symbol">@ba8a1dc</span><br>[D<span class="hljs-symbol">@4f8e5cde</span><br>[F<span class="hljs-symbol">@504bae78</span><br></code></pre></td></tr></table></figure>
+
 <p><code>  [</code>   —-&gt;数组<br><code> @ </code>   之后的是十六进制地址<br><strong>数组</strong>是<strong>引用数据类型</strong>，句柄(变量名)放在栈中，引用放在堆中,变量存放的是地址</p>
 <p>注意：</p>
 <p>hashcode与内存地址不是一 一对应的。</p>
@@ -186,12 +301,8 @@
 <li><p>先确定元素的类型和数组的长度，之后再存入具体数据（会<strong>默认初始化数组中的数据</strong>)</p>
 </li>
 <li><p>默认类型初始值：</p>
-<pre><code class="java">    byte short int long 0  
-    char &#39;/u0000&#39;转为int是0  【/u0000~/u65535】两个字节
-    boolean false
-    double float 0.0
-    String Object null
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">byte</span> <span class="hljs-type">short</span> <span class="hljs-type">int</span> <span class="hljs-type">long</span> <span class="hljs-number">0</span>  <br><span class="hljs-type">char</span> <span class="hljs-string">&#x27;/u0000&#x27;</span>转为<span class="hljs-type">int</span>是<span class="hljs-number">0</span>  【/u0000~/u65535】两个字节<br><span class="hljs-type">boolean</span> <span class="hljs-literal">false</span><br><span class="hljs-type">double</span> <span class="hljs-type">float</span> <span class="hljs-number">0.0</span><br>String Object <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+
 <p>整数是0，小数0.0，布尔false，引用数据类型null</p>
 </li>
 <li><p>格式：<br><code>数据类型[] 变量名 =new 数据类型[数组长度];</code></p>
@@ -202,206 +313,66 @@
 </li>
 </ol>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_20-07-02.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_20-07-02.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h2 id="二、操作数组"><a href="#二、操作数组" class="headerlink" title="二、操作数组"></a>二、操作数组</h2><h3 id="1-0-数组的访问"><a href="#1-0-数组的访问" class="headerlink" title="1.0 数组的访问"></a>1.0 数组的访问</h3><p>数组名[索引]<br>通过这种方式寻找数组中的元素的时间复杂度是O(1)<br>因为可以通过简单的计算得到所找元素的地址【目的地址&#x3D;首元素地址+数据类型大小*索引值】</p>
 <h3 id="2-0-数组的长度"><a href="#2-0-数组的长度" class="headerlink" title="2.0 数组的长度"></a>2.0 数组的长度</h3><p>数组名.length   数组属性length<br>当元素个数大于0；数组的最大索引length - 1</p>
 <h3 id="3-0-遍历"><a href="#3-0-遍历" class="headerlink" title="3.0 遍历"></a>3.0 遍历</h3><p>访问数组中的每一个元素</p>
-<pre><code class="java">    @Test
-    public void testArray3() &#123;
-        //存储的是二进制数字，&#39;a&#39;存的是97的二进制数，&#39;4&#39;存的是52的二进制，65存的是65的二进制
-        final char[] ints = new char[]&#123;&#39;a&#39;, &#39;4&#39;, 65, 99, 48&#125;;
-        //这种方法操作比较灵活
-        for (int i = 0; i &lt; ints.length; i++) &#123;
-            System.out.print(i == ints.length - 1 ? ints[i] : ints[i] + &quot;,&quot;);
-        &#125;
-        System.out.println();
-        System.out.println(&quot;----------------------------------------------&quot;);
-        //增强for循环也称为foreach 底层使用的是iterator
-        for (char anInt : ints) &#123;
-            System.out.print(anInt + &quot; &quot;);
-        &#125;
-        System.out.println();
-        System.out.println(&quot;----------------------------------------------&quot;);
-    &#125;
-</code></pre>
-<pre><code>a,4,A,c,0
-----------------------------------------------
-a 4 A c 0 
-</code></pre>
-<h3 id="4-0-去掉做高最低的平均分"><a href="#4-0-去掉做高最低的平均分" class="headerlink" title="4.0 去掉做高最低的平均分"></a>4.0 去掉做高最低的平均分</h3><pre><code class="java">    @Test
-    public void testArray4() &#123;
-         final int[] arrs = &#123;32, 3, 55, 1, 39, 54, 0&#125;;
-        int max, min, sum = 0;
-        max = min = arrs[0];
-        for (int arr : arrs) &#123;
-            if (arr &gt; max) &#123;
-                max = arr;
-            &#125;
-            if (arr &lt; min) &#123;
-                min = arr;
-            &#125;
-            sum += arr;
-        &#125;
-        sum = sum - max - min;
-        System.out.println(&quot;最高分：&quot; + max);
-        System.out.println(&quot;最低分：&quot; + min);
-        System.out.println(&quot;去掉最高最低的总分：&quot; + sum);
-        System.out.println(&quot;去掉最高最低的平均分为：&quot; + sum / (arrs.length - 2));
-    &#125;
-    &#125;
-</code></pre>
-<pre><code>最高分：55
-最低分：0
-去掉最高最低的总分：129
-去掉最高最低的平均分为：25
-</code></pre>
-<h3 id="5-0-猜数游戏"><a href="#5-0-猜数游戏" class="headerlink" title="5.0 猜数游戏"></a>5.0 猜数游戏</h3><pre><code class="java">    public static void main(String[] args) &#123;
-        final int[] ints = new int[4];
-        final Random r = new Random();
-        for (int i = 0; i &lt; 4; i++) &#123;
-            ints[i] = r.nextInt(6) + 45;//45----50
-        &#125;
-        final Scanner sc = new Scanner(System.in);
-        
-        //外层循环标志
-        OUT:
-        //死循环
-        while (true) &#123;
-            System.out.println(&quot;请输入45-----50之间的整数进行猜数&quot;);
-            final int i = sc.nextInt();
-            for (int a = 0; a &lt; ints.length; a++) &#123;
-                if (ints[a] == i) &#123;
-                    System.out.println(&quot;恭喜猜对了，位置位于:&quot; + a);
-                    System.out.println(Arrays.toString(ints));
-                    break OUT;//用于结束外层循环（break循环和switch） continue循环
-                &#125;
-            &#125;
-            System.out.println(&quot;猜错了！&quot;);
-        &#125;
-    &#125;
-</code></pre>
-<pre><code>请输入45-----50之间的整数进行猜数
-45
-恭喜猜对了，位置位于:2
-[48, 50, 45, 45]
-</code></pre>
-<h3 id="6-0-数组打乱"><a href="#6-0-数组打乱" class="headerlink" title="6.0 数组打乱"></a>6.0 数组打乱</h3><pre><code class="java">    @Test
-    public void testArray5() &#123;
-        final int[] arrs = &#123;32, 3, 55, 1, 39, 54, 0&#125;;
-        System.out.println(&quot;原数组：&quot; + Arrays.toString(arrs));
-        final Random random = new Random();
-        //遍历数组中的每一个元素
-        for (int i = 0; i &lt; arrs.length; i++) &#123;
-            //随机一个数组范围内的数字
-            final int r = random.nextInt(arrs.length);
-            //将遍历到的元素与随机索引的元素交换位置
-            int tempAr = arrs[i];
-            arrs[i] = arrs[r];
-            arrs[r] = tempAr;
-        &#125;
-        System.out.println(&quot;打乱后数组：&quot; + Arrays.toString(arrs));
-    &#125;
-</code></pre>
-<pre><code>原数组：[32, 3, 55, 1, 39, 54, 0]
-打乱后数组：[3, 55, 54, 32, 0, 1, 39]
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testArray3</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//存储的是二进制数字，&#x27;a&#x27;存的是97的二进制数，&#x27;4&#x27;存的是52的二进制，65存的是65的二进制</span><br>    <span class="hljs-keyword">final</span> <span class="hljs-type">char</span>[] ints = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[]&#123;<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-number">65</span>, <span class="hljs-number">99</span>, <span class="hljs-number">48</span>&#125;;<br>    <span class="hljs-comment">//这种方法操作比较灵活</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; ints.length; i++) &#123;<br>        System.out.print(i == ints.length - <span class="hljs-number">1</span> ? ints[i] : ints[i] + <span class="hljs-string">&quot;,&quot;</span>);<br>    &#125;<br>    System.out.println();<br>    System.out.println(<span class="hljs-string">&quot;----------------------------------------------&quot;</span>);<br>    <span class="hljs-comment">//增强for循环也称为foreach 底层使用的是iterator</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> anInt : ints) &#123;<br>        System.out.print(anInt + <span class="hljs-string">&quot; &quot;</span>);<br>    &#125;<br>    System.out.println();<br>    System.out.println(<span class="hljs-string">&quot;----------------------------------------------&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">a,4,A,c,0</span><br><span class="hljs-section">----------------------------------------------</span><br>a 4 A c 0 <br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-0-去掉做高最低的平均分"><a href="#4-0-去掉做高最低的平均分" class="headerlink" title="4.0 去掉做高最低的平均分"></a>4.0 去掉做高最低的平均分</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testArray4</span><span class="hljs-params">()</span> &#123;<br>     <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">32</span>, <span class="hljs-number">3</span>, <span class="hljs-number">55</span>, <span class="hljs-number">1</span>, <span class="hljs-number">39</span>, <span class="hljs-number">54</span>, <span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-type">int</span> max, min, sum = <span class="hljs-number">0</span>;<br>    max = min = arrs[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> arr : arrs) &#123;<br>        <span class="hljs-keyword">if</span> (arr &gt; max) &#123;<br>            max = arr;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (arr &lt; min) &#123;<br>            min = arr;<br>        &#125;<br>        sum += arr;<br>    &#125;<br>    sum = sum - max - min;<br>    System.out.println(<span class="hljs-string">&quot;最高分：&quot;</span> + max);<br>    System.out.println(<span class="hljs-string">&quot;最低分：&quot;</span> + min);<br>    System.out.println(<span class="hljs-string">&quot;去掉最高最低的总分：&quot;</span> + sum);<br>    System.out.println(<span class="hljs-string">&quot;去掉最高最低的平均分为：&quot;</span> + sum / (arrs.length - <span class="hljs-number">2</span>));<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs">最高分：55<br>最低分：0<br>去掉最高最低的总分：129<br>去掉最高最低的平均分为：25<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-0-猜数游戏"><a href="#5-0-猜数游戏" class="headerlink" title="5.0 猜数游戏"></a>5.0 猜数游戏</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] ints = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">4</span>];<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">Random</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) &#123;<br>        ints[i] = r.nextInt(<span class="hljs-number">6</span>) + <span class="hljs-number">45</span>;<span class="hljs-comment">//45----50</span><br>    &#125;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>    <br>    <span class="hljs-comment">//外层循环标志</span><br>    OUT:<br>    <span class="hljs-comment">//死循环</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>        System.out.println(<span class="hljs-string">&quot;请输入45-----50之间的整数进行猜数&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> sc.nextInt();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; a &lt; ints.length; a++) &#123;<br>            <span class="hljs-keyword">if</span> (ints[a] == i) &#123;<br>                System.out.println(<span class="hljs-string">&quot;恭喜猜对了，位置位于:&quot;</span> + a);<br>                System.out.println(Arrays.toString(ints));<br>                <span class="hljs-keyword">break</span> OUT;<span class="hljs-comment">//用于结束外层循环（break循环和switch） continue循环</span><br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;猜错了！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">请输入<span class="hljs-number">45</span>-----<span class="hljs-number">50</span>之间的整数进行猜数<br><span class="hljs-number">45</span><br>恭喜猜对了，位置位于:<span class="hljs-number">2</span><br><span class="hljs-string">[48, 50, 45, 45]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-0-数组打乱"><a href="#6-0-数组打乱" class="headerlink" title="6.0 数组打乱"></a>6.0 数组打乱</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testArray5</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">32</span>, <span class="hljs-number">3</span>, <span class="hljs-number">55</span>, <span class="hljs-number">1</span>, <span class="hljs-number">39</span>, <span class="hljs-number">54</span>, <span class="hljs-number">0</span>&#125;;<br>    System.out.println(<span class="hljs-string">&quot;原数组：&quot;</span> + Arrays.toString(arrs));<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>    <span class="hljs-comment">//遍历数组中的每一个元素</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arrs.length; i++) &#123;<br>        <span class="hljs-comment">//随机一个数组范围内的数字</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> random.nextInt(arrs.length);<br>        <span class="hljs-comment">//将遍历到的元素与随机索引的元素交换位置</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">tempAr</span> <span class="hljs-operator">=</span> arrs[i];<br>        arrs[i] = arrs[r];<br>        arrs[r] = tempAr;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;打乱后数组：&quot;</span> + Arrays.toString(arrs));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">原数组：<span class="hljs-string">[32, 3, 55, 1, 39, 54, 0]</span><br>打乱后数组：<span class="hljs-string">[3, 55, 54, 32, 0, 1, 39]</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="7-0-冒泡排序"><a href="#7-0-冒泡排序" class="headerlink" title="7.0 冒泡排序"></a>7.0 冒泡排序</h3><ul>
 <li>一开始学的</li>
 </ul>
-<pre><code class="java">    /**
-     * 没有优化
-     */
-    @Test
-    public void testArrays2() &#123;
-        int[] arrs = &#123;12, 33, 4, -3, 1, 90&#125;;
-        for (int i = 0; i &lt; arrs.length - 1; i++) &#123;
-            for (int j = 0; j &lt; arrs.length - 1; j++) &#123;
-                if (arrs[j] &gt; arrs[j + 1]) &#123;
-                    swap(arrs, j, j + 1);
-                &#125;
-            &#125;
-            System.out.println(&quot;第&quot; + (i + 1) + &quot;轮&quot; + Arrays.toString(arrs));
-        &#125;
-        System.out.println(&quot;长度为:&quot; + arrs.length);
-        System.out.println(&quot;结果:&quot; + Arrays.toString(arrs));
-    &#125;
-</code></pre>
-<pre><code>第1轮[12, 4, -3, 1, 33, 90]
-第2轮[4, -3, 1, 12, 33, 90]
-第3轮[-3, 1, 4, 12, 33, 90]
-第4轮[-3, 1, 4, 12, 33, 90]
-第5轮[-3, 1, 4, 12, 33, 90]
-长度为:6
-结果:[-3, 1, 4, 12, 33, 90]
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 没有优化</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testArrays2</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">12</span>, <span class="hljs-number">33</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">90</span>&#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arrs.length - <span class="hljs-number">1</span>; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; arrs.length - <span class="hljs-number">1</span>; j++) &#123;<br>            <span class="hljs-keyword">if</span> (arrs[j] &gt; arrs[j + <span class="hljs-number">1</span>]) &#123;<br>                swap(arrs, j, j + <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;第&quot;</span> + (i + <span class="hljs-number">1</span>) + <span class="hljs-string">&quot;轮&quot;</span> + Arrays.toString(arrs));<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;长度为:&quot;</span> + arrs.length);<br>    System.out.println(<span class="hljs-string">&quot;结果:&quot;</span> + Arrays.toString(arrs));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs inform7">第1轮<span class="hljs-comment">[12, 4, -3, 1, 33, 90]</span><br>第2轮<span class="hljs-comment">[4, -3, 1, 12, 33, 90]</span><br>第3轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>第4轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>第5轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>长度为:6<br>结果:<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br></code></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li>优化一：没有进行过交换就退出循环</li>
 </ul>
-<pre><code class="java">    @Test
-    public void bubbleSortedArray() &#123;
-        int[] array = &#123;12, 33, 4, -3, 1, 90&#125;;
-        for (int i = 0; i &lt; array.length - 1; i++) &#123;
-            //没有进行过交换
-            boolean flag = false;
-            for (int j = 0; j &lt; array.length - 1 - i; j++) &#123;
-                if (array[j] &gt; array[j + 1]) &#123;
-                    swap(array, j, j + 1);
-                    //有进行过交换
-                    flag = true;
-                &#125;
-            &#125;
-            System.out.println(&quot;第&quot; + (i + 1) + &quot;轮&quot; + Arrays.toString(array));
-            //没有进行过交换就退出
-            if (!flag) break;
-        &#125;
-        System.out.println(&quot;长度为:&quot; + array.length);
-        System.out.println(&quot;结果:&quot; + Arrays.toString(array));
-    &#125;
-</code></pre>
-<pre><code>第1轮[12, 4, -3, 1, 33, 90]
-第2轮[4, -3, 1, 12, 33, 90]
-第3轮[-3, 1, 4, 12, 33, 90]
-第4轮[-3, 1, 4, 12, 33, 90]
-长度为:6
-结果:[-3, 1, 4, 12, 33, 90]
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bubbleSortedArray</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span>[] array = &#123;<span class="hljs-number">12</span>, <span class="hljs-number">33</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">90</span>&#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; array.length - <span class="hljs-number">1</span>; i++) &#123;<br>        <span class="hljs-comment">//没有进行过交换</span><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; array.length - <span class="hljs-number">1</span> - i; j++) &#123;<br>            <span class="hljs-keyword">if</span> (array[j] &gt; array[j + <span class="hljs-number">1</span>]) &#123;<br>                swap(array, j, j + <span class="hljs-number">1</span>);<br>                <span class="hljs-comment">//有进行过交换</span><br>                flag = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;第&quot;</span> + (i + <span class="hljs-number">1</span>) + <span class="hljs-string">&quot;轮&quot;</span> + Arrays.toString(array));<br>        <span class="hljs-comment">//没有进行过交换就退出</span><br>        <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;长度为:&quot;</span> + array.length);<br>    System.out.println(<span class="hljs-string">&quot;结果:&quot;</span> + Arrays.toString(array));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs inform7">第1轮<span class="hljs-comment">[12, 4, -3, 1, 33, 90]</span><br>第2轮<span class="hljs-comment">[4, -3, 1, 12, 33, 90]</span><br>第3轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>第4轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>长度为:6<br>结果:<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br></code></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li>优化二：记录每一次最后一次交换元素的索引下标，下一次循环只需要循环到上一次记录的最后一次的索引下标就行。且当没有进行交换时就直接退出排序。</li>
 </ul>
-<pre><code class="java">     @Test
-    public void bubbleSortedArray2() &#123;
-        int[] array = &#123;12, 33, 4, -3, 1, 90&#125;;
-        int count = 0;
-        int n = array.length - 1;
-        while (true) &#123;
-            //当数组已经有序，不出现交换时，让其退出
-            int last = 0;
-            for (int i = 0; i &lt; n; i++) &#123;
-                if (array[i] &gt; array[i + 1]) &#123;
-                    swap(array, i, i + 1);
-                    //记录每次的交换位置
-                    last = i;
-                &#125;
-            &#125;
-            //记录最后的交换位置，并以此为次数的条件
-            n = last;
-            System.out.println(&quot;第&quot; + (++count) + &quot;轮&quot; + Arrays.toString(array));
-            if (n == 0) break;
-        &#125;
-        System.out.println(&quot;长度为:&quot; + array.length);
-        System.out.println(&quot;结果:&quot; + Arrays.toString(array));
-    &#125;
-</code></pre>
-<pre><code>第1轮[12, 4, -3, 1, 33, 90]
-第2轮[4, -3, 1, 12, 33, 90]
-第3轮[-3, 1, 4, 12, 33, 90]
-第4轮[-3, 1, 4, 12, 33, 90]
-长度为:6
-结果:[-3, 1, 4, 12, 33, 90]
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bubbleSortedArray2</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span>[] array = &#123;<span class="hljs-number">12</span>, <span class="hljs-number">33</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">90</span>&#125;;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> array.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>        <span class="hljs-comment">//当数组已经有序，不出现交换时，让其退出</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">last</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (array[i] &gt; array[i + <span class="hljs-number">1</span>]) &#123;<br>                swap(array, i, i + <span class="hljs-number">1</span>);<br>                <span class="hljs-comment">//记录每次的交换位置</span><br>                last = i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//记录最后的交换位置，并以此为次数的条件</span><br>        n = last;<br>        System.out.println(<span class="hljs-string">&quot;第&quot;</span> + (++count) + <span class="hljs-string">&quot;轮&quot;</span> + Arrays.toString(array));<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;长度为:&quot;</span> + array.length);<br>    System.out.println(<span class="hljs-string">&quot;结果:&quot;</span> + Arrays.toString(array));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs inform7">第1轮<span class="hljs-comment">[12, 4, -3, 1, 33, 90]</span><br>第2轮<span class="hljs-comment">[4, -3, 1, 12, 33, 90]</span><br>第3轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>第4轮<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br>长度为:6<br>结果:<span class="hljs-comment">[-3, 1, 4, 12, 33, 90]</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="三、数组内存原理"><a href="#三、数组内存原理" class="headerlink" title="三、数组内存原理"></a>三、数组内存原理</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_09-22-40.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_09-22-40.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <ul>
 <li>说明</li>
@@ -421,59 +392,18 @@ a 4 A c 0
 <li><p>对象存在于堆内存中</p>
 </li>
 </ol>
-<h2 id="四、java参数的传递方式【值传递】"><a href="#四、java参数的传递方式【值传递】" class="headerlink" title="四、java参数的传递方式【值传递】"></a>四、java参数的传递方式【值传递】</h2><pre><code class="java">    /**
-     * java参数传递方式都是值传递（数组地址值）
-     */
-    @Test
-    public void test1() &#123;
-        int[] arrs = &#123;1, 255, 3, 23, 0, -43&#125;;
-        System.out.println(&quot;原来的值：&quot; + Arrays.toString(arrs));
-        System.out.println(&quot;原来的地址：&quot; + arrs);
-        set(arrs);
-        System.out.println(&quot;变化后的值：&quot; + Arrays.toString(arrs));
+<h2 id="四、java参数的传递方式【值传递】"><a href="#四、java参数的传递方式【值传递】" class="headerlink" title="四、java参数的传递方式【值传递】"></a>四、java参数的传递方式【值传递】</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * java参数传递方式都是值传递（数组地址值）</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">255</span>, <span class="hljs-number">3</span>, <span class="hljs-number">23</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">43</span>&#125;;<br>    System.out.println(<span class="hljs-string">&quot;原来的值：&quot;</span> + Arrays.toString(arrs));<br>    System.out.println(<span class="hljs-string">&quot;原来的地址：&quot;</span> + arrs);<br>    set(arrs);<br>    System.out.println(<span class="hljs-string">&quot;变化后的值：&quot;</span> + Arrays.toString(arrs));<br><br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">set</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arrs)</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;方法获得的地址：&quot;</span> + arrs);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arrs.length; i++) &#123;<br>        arrs[i] = <span class="hljs-number">8</span>;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;方法内部的值：&quot;</span> + Arrays.toString(arrs));<br>&#125;<br></code></pre></td></tr></table></figure>
 
-    &#125;
-    private void set(int[] arrs) &#123;
-        System.out.println(&quot;方法获得的地址：&quot; + arrs);
-        for (int i = 0; i &lt; arrs.length; i++) &#123;
-            arrs[i] = 8;
-        &#125;
-        System.out.println(&quot;方法内部的值：&quot; + Arrays.toString(arrs));
-    &#125;
-</code></pre>
-<pre><code>原来的值：[1, 255, 3, 23, 0, -43]
-原来的地址：[I@61e717c2
-方法获得的地址：[I@61e717c2
-方法内部的值：[8, 8, 8, 8, 8, 8]
-变化后的值：[8, 8, 8, 8, 8, 8]
-</code></pre>
-<h3 id="1-0-地址交换"><a href="#1-0-地址交换" class="headerlink" title="1.0 地址交换"></a>1.0 地址交换</h3><pre><code class="java"> /**
-     java参数传递方式都是值传递（字符串地址值）
-     两个局部变量交换地址，对另一个方法的局部变量没有半毛钱影响
-     */
-    @Test
-    public void test2() &#123;
-        String a = &quot;aaa&quot;;
-        String b = &quot;bbb&quot;;
-        System.out.println(&quot;原值：a=&quot; + a + &quot; b=&quot; + b);
-        swap(a, b);
-        System.out.println(&quot;更改后：a=&quot; + a + &quot; b=&quot; + b);
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs llvm">原来的值：[<span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">255</span><span class="hljs-punctuation">,</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span> <span class="hljs-number">23</span><span class="hljs-punctuation">,</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-number">-43</span>]<br>原来的地址：[I<span class="hljs-title">@61</span>e<span class="hljs-number">717</span><span class="hljs-keyword">c</span><span class="hljs-number">2</span><br>方法获得的地址：[I<span class="hljs-title">@61</span>e<span class="hljs-number">717</span><span class="hljs-keyword">c</span><span class="hljs-number">2</span><br>方法内部的值：[<span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span>]<br>变化后的值：[<span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span> <span class="hljs-number">8</span>]<br></code></pre></td></tr></table></figure>
 
-    &#125;
 
-    private void swap(String a, String b) &#123;
-        String temp = a;
-        a = b;
-        b = temp;
-        System.out.println(&quot;方法内：a=&quot; + a + &quot; b=&quot; + b);
-    &#125;
-</code></pre>
-<pre><code>原值：a=aaa b=bbb
-方法内：a=bbb b=aaa
-更改后：a=aaa b=bbb
-</code></pre>
+
+<h3 id="1-0-地址交换"><a href="#1-0-地址交换" class="headerlink" title="1.0 地址交换"></a>1.0 地址交换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    java参数传递方式都是值传递（字符串地址值）</span><br><span class="hljs-comment">    两个局部变量交换地址，对另一个方法的局部变量没有半毛钱影响</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test2</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;aaa&quot;</span>;<br>       <span class="hljs-type">String</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;bbb&quot;</span>;<br>       System.out.println(<span class="hljs-string">&quot;原值：a=&quot;</span> + a + <span class="hljs-string">&quot; b=&quot;</span> + b);<br>       swap(a, b);<br>       System.out.println(<span class="hljs-string">&quot;更改后：a=&quot;</span> + a + <span class="hljs-string">&quot; b=&quot;</span> + b);<br><br>   &#125;<br><br>   <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(String a, String b)</span> &#123;<br>       <span class="hljs-type">String</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> a;<br>       a = b;<br>       b = temp;<br>       System.out.println(<span class="hljs-string">&quot;方法内：a=&quot;</span> + a + <span class="hljs-string">&quot; b=&quot;</span> + b);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">原值：<span class="hljs-attribute">a</span>=aaa <span class="hljs-attribute">b</span>=bbb<br>方法内：<span class="hljs-attribute">a</span>=bbb <span class="hljs-attribute">b</span>=aaa<br>更改后：<span class="hljs-attribute">a</span>=aaa <span class="hljs-attribute">b</span>=bbb<br></code></pre></td></tr></table></figure>
+
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208281943407.png" alt="image-20220828194322556"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208281943407.png" srcset="/img/loading.gif" lazyload alt="image-20220828194322556"></p>
 <hr>
 <h2 id="五、数组使用注意点"><a href="#五、数组使用注意点" class="headerlink" title="五、数组使用注意点"></a>五、数组使用注意点</h2><ol>
 <li>为了吸引c语言的使用者，数组也可以定义为 数据类型 变量名[] &#x3D;new 数据类型[num]</li>
@@ -487,68 +417,391 @@ a 4 A c 0
 <ul>
 <li>数组下标越界异常</li>
 </ul>
-<pre><code class="java">    @Test
-    public void test3() &#123;
-        final int[] ints = new int[4];
-        System.out.println(ints[3]);//0
-        System.out.println(ints[4]);//java.lang.ArrayIndexOutOfBoundsException: 4 
-        System.out.println(&quot;程序结束！&quot;);//(如果不处理异常)以下代码不会执行
-    &#125;
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test3</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] ints = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">4</span>];<br>    System.out.println(ints[<span class="hljs-number">3</span>]);<span class="hljs-comment">//0</span><br>    System.out.println(ints[<span class="hljs-number">4</span>]);<span class="hljs-comment">//java.lang.ArrayIndexOutOfBoundsException: 4 </span><br>    System.out.println(<span class="hljs-string">&quot;程序结束！&quot;</span>);<span class="hljs-comment">//(如果不处理异常)以下代码不会执行</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li>空指针异常</li>
 </ul>
-<pre><code class="java">    @Test
-    public void test4() &#123;
-        int[] ints = new int[4];
-        System.out.println(ints[1]);
-        ints = null;
-        System.out.println(ints[1]);//java.lang.NullPointerException
-        System.out.println(&quot;程序结束！&quot;);//如果不处理异常，将无法执行此代码
-    &#125;
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test4</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span>[] ints = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">4</span>];<br>    System.out.println(ints[<span class="hljs-number">1</span>]);<br>    ints = <span class="hljs-literal">null</span>;<br>    System.out.println(ints[<span class="hljs-number">1</span>]);<span class="hljs-comment">//java.lang.NullPointerException</span><br>    System.out.println(<span class="hljs-string">&quot;程序结束！&quot;</span>);<span class="hljs-comment">//如果不处理异常，将无法执行此代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 <p>问题1：</p>
 <p>如果访问的元素位置超过最大索引，执行时会出现<code>ArrayIndexOutOfBoundsException</code>(数组索引越界异常)</p>
 <p>问题2：</p>
 <p>如果数组变量中没有存储数组的地址，而是<code>null</code>, 在访问数组信息时会出现<code>NullPointerException</code>(空指针异常)</p>
 <h2 id="六、IDEA-DEBUG"><a href="#六、IDEA-DEBUG" class="headerlink" title="六、IDEA DEBUG"></a>六、IDEA DEBUG</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_10-29-46.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_10-29-46.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <p>F7:进入方法</p>
 <p>F8：下一步</p>
 <p>F9：下一个断点</p>
 
-    </div>
-    
-</div>
-                         
-<footer id="footer">
-    <div class="footer-wrap">
-        <div>
-            © 2020 - 2022 风格差异的博客
-            <span class="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            @fgcy
-        </div>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
         
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-</footer>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/">#黑马程序员-徐磊-java基础</a>
+      
+    </div>
+  
+</div>
 
-                    </div>
-                </div>
-            </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
-            </div>
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数组</div>
+      <div>http://example.com/2022/08/25/hei-ma-java-ji-chu-shu-zu/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>fgcy</div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
-    </body>
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/25/hei-ma-java-ji-chu-fang-fa/" title="方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/25/hei-ma-java-ji-chu-liu-cheng-kong-zhi/" title="流程控制">
+                        <span class="hidden-mobile">流程控制</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
 </html>

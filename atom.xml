@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-07T15:50:23.113Z</updated>
+  <updated>2022-10-10T14:39:09.968Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2022/10/07/song-hong-kang-mysql-gao-ji-di-13-zhang-shi-wu-ji-chu-zhi-shi/"/>
     <id>http://example.com/2022/10/07/song-hong-kang-mysql-gao-ji-di-13-zhang-shi-wu-ji-chu-zhi-shi/</id>
     <published>2022-10-07T10:15:13.000Z</published>
-    <updated>2022-10-07T15:50:23.113Z</updated>
+    <updated>2022-10-10T14:39:09.968Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-数据库事务概述&quot;&gt;&lt;a href=&quot;#1-数据库事务概述&quot; class=&quot;headerlink&quot; title=&quot;1. 数据库事务概述&quot;&gt;&lt;/a&gt;1. 数据库事务概述&lt;/h1&gt;&lt;p&gt;事务 是 &lt;strong&gt;数据库&lt;/strong&gt; 区别于 &lt;strong&gt;文件系统&lt;/strong&gt; 的重要特性之一，当我们有了事务就会让数据库始终保持 &lt;strong&gt;一致性&lt;/strong&gt;，同时我们还能通讨事务的机制 &lt;strong&gt;恢复到某个时间点&lt;/strong&gt;，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失&lt;/p&gt;</summary>
@@ -340,15 +340,7 @@
     
     
     <summary type="html">&lt;h1 id=&quot;1-目录结构&quot;&gt;&lt;a href=&quot;#1-目录结构&quot; class=&quot;headerlink&quot; title=&quot;1.目录结构&quot;&gt;&lt;/a&gt;1.目录结构&lt;/h1&gt;&lt;h2 id=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;a href=&quot;#1、MySQL8的主要目录结构&quot; class=&quot;headerlink&quot; title=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;/a&gt;1、MySQL8的主要目录结构&lt;/h2&gt;&lt;p&gt;安装好MySQL 之后，我们查看与之相关的目录结构：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;find / -name mysql
-
-/etc/logrotate.d/mysql
-/var/lib/mysql
-/var/lib/mysql/mysql
-/usr/bin/mysql
-/usr/lib64/mysql
-/usr/share/mysql
-&lt;/code&gt;&lt;/pre&gt;</summary>
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs shell&quot;&gt;find / -name mysql&lt;br&gt;&lt;br&gt;/etc/logrotate.d/mysql&lt;br&gt;/var/lib/mysql&lt;br&gt;/var/lib/mysql/mysql&lt;br&gt;/usr/bin/mysql&lt;br&gt;/usr/lib64/mysql&lt;br&gt;/usr/share/mysql&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     

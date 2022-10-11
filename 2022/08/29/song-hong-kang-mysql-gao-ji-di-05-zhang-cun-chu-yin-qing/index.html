@@ -1,151 +1,289 @@
 
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>第05章_存储引擎 | 风格差异的博客</title>
-        <meta name="author" content="fgcy">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
-        
-        <link rel="stylesheet" href="/css/fonts.min.css">
-        <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
-    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="fgcy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="存储引擎（表处理器）为了管理方便,人们把  连接管理、查询缓存  、语法解析  、查询优化    这些并不涉及  真实数据存储  的功能划分为  MySQL server 的功能 把  真实存取数据   的功能划分为  存储引擎的功能 所以在    MySQL server完成了   查询优化后   ,只需按照生成的   执行计划      调用     底层存储引擎提供的API   ,获取到数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第05章_存储引擎">
+<meta property="og:url" content="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-05-zhang-cun-chu-yin-qing/index.html">
+<meta property="og:site_name" content="风格差异的博客">
+<meta property="og:description" content="存储引擎（表处理器）为了管理方便,人们把  连接管理、查询缓存  、语法解析  、查询优化    这些并不涉及  真实数据存储  的功能划分为  MySQL server 的功能 把  真实存取数据   的功能划分为  存储引擎的功能 所以在    MySQL server完成了   查询优化后   ,只需按照生成的   执行计划      调用     底层存储引擎提供的API   ,获取到数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100848.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100775.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100496.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100746.png">
+<meta property="og:image" content="http://img.fgcy.xyz/image-20220709092516637.png">
+<meta property="og:image" content="http://img.fgcy.xyz/image-20220709092545605.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282101521.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282101811.png">
+<meta property="article:published_time" content="2022-08-28T20:59:49.000Z">
+<meta property="article:modified_time" content="2022-08-28T13:01:33.794Z">
+<meta property="article:author" content="fgcy">
+<meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100848.png">
+  
+  
+  
+  <title>第05章_存储引擎 - 风格差异的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
 </head>
-    <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
-        <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
-            <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
-    <div class="desktop-menu">
-        <a href="/">
-            <span class="title">风格差异的博客</span>
-        </a>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;风格差异的博客</span>
-        </div>
-        <transition name="slide">
-        <div class="items" v-show="menu_show">
-            
-            <a href="">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
-                </div>
-            </a>
-            
-            <a href="archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
-                </div>
-            </a>
-            
-            <a href="categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
-                </div>
-            </a>
-            
-            <a href="tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
-                </div>
-            </a>
-            
-        </div>
-        </transition>
-    </div>
+  </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
-<div class="article">
-    <div>
-        <h1>第05章_存储引擎 </h1>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第05章_存储引擎"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-28 20:59" pubdate>
+          2022年8月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          111 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
     </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/28
-        </span>
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                视频学习笔记
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-            </span>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第05章_存储引擎</h1>
             
-            <span class="tag">
+            
+              <div class="markdown-body">
                 
-                <a href="/tags/尚硅谷-宋红康-MySQL-高级/" style="color: #03a9f4">
-                    尚硅谷-宋红康-MySQL(高级)
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
-    <div class="content" v-pre>
-        <h1 id="存储引擎（表处理器）"><a href="#存储引擎（表处理器）" class="headerlink" title="存储引擎（表处理器）"></a>存储引擎（表处理器）</h1><p>为了管理方便,人们把  <code>连接管理</code>、<code>查询缓存</code>  、<code>语法解析</code>  、<code>查询优化</code>    这些并不涉及  <strong>真实数据存储</strong>  的功能划分为  <strong>MySQL server 的功能</strong></p>
+                <h1 id="存储引擎（表处理器）"><a href="#存储引擎（表处理器）" class="headerlink" title="存储引擎（表处理器）"></a>存储引擎（表处理器）</h1><p>为了管理方便,人们把  <code>连接管理</code>、<code>查询缓存</code>  、<code>语法解析</code>  、<code>查询优化</code>    这些并不涉及  <strong>真实数据存储</strong>  的功能划分为  <strong>MySQL server 的功能</strong></p>
 <p>把  <strong>真实存取数据</strong>   的功能划分为  <strong>存储引擎的功能</strong></p>
 <p>所以在    <code>MySQL server完成了</code>   <strong>查询优化后</strong>   ,只需按照生成的   <code>执行计划   </code>   <strong>调用</strong>     <code>底层存储引擎提供的API </code>  ,获取到数据后返回给客户端就好了</p>
 <p>MySQL中提到了存储引擎的概念。简而言之,<strong>存储引擎就是指表的类型</strong></p>
@@ -158,7 +296,7 @@
 <span id="more"></span>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100848.png" alt="image-20220708202505149"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100848.png" srcset="/img/loading.gif" lazyload alt="image-20220708202505149"></p>
 <hr>
 <p>查询结果显示, <code>MySQL 8.0</code> 支持  <code>9种存储引擎</code>  </p>
 <p>**<code>Engine </code>**参数表示存储引擎名称</p>
@@ -168,79 +306,19 @@
 <p><code>XA参数</code> 表示代表着该存储引擎是否支持分布式事务:YES表示支持,NO表示不支持。</p>
 <p><code>Savepoints参数</code> 表示存储引擎是否支持事务处理的保存点: YES表示支持,NO表示不支持。也就是说,该存储引擎是否支持<code>  部分事务回滚</code></p>
 <h2 id="2-设置系统默认的存储引擎"><a href="#2-设置系统默认的存储引擎" class="headerlink" title="2. 设置系统默认的存储引擎"></a>2. 设置系统默认的存储引擎</h2><p>查看默认的存储引擎：</p>
-<pre><code class="mysql">show variables like &#39;%storage_engine%&#39;;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show variables like &#x27;%storage_engine%&#x27;;<br><br>+---------------------------------+-----------+<br>| Variable_name                   | Value     |<br>+---------------------------------+-----------+<br>| default_storage_engine          | InnoDB    |<br>| default_tmp_storage_engine      | InnoDB    |<br>| disabled_storage_engines        |           |<br>| internal_tmp_mem_storage_engine | TempTable |<br>+---------------------------------+-----------+<br>4 rows in set (0.14 sec)<br><br>#或<br><br>SELECT @@default_storage_engine; -- 会话级别系统变量<br><br>+--------------------------+<br>| @@default_storage_engine |<br>+--------------------------+<br>| InnoDB                   |<br>+--------------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+---------------------------------+-----------+
-| Variable_name                   | Value     |
-+---------------------------------+-----------+
-| default_storage_engine          | InnoDB    |
-| default_tmp_storage_engine      | InnoDB    |
-| disabled_storage_engines        |           |
-| internal_tmp_mem_storage_engine | TempTable |
-+---------------------------------+-----------+
-4 rows in set (0.14 sec)
 
-#或
 
-SELECT @@default_storage_engine; -- 会话级别系统变量
-
-+--------------------------+
-| @@default_storage_engine |
-+--------------------------+
-| InnoDB                   |
-+--------------------------+
-1 row in set (0.00 sec)
-</code></pre>
 <p>tip:</p>
 <p>MySQL5.5之前，默认是MyISAM存储引擎</p>
 <p>在创建表的时候不指定存储引擎，使用MySQL默认的存储引擎：</p>
-<pre><code class="mysql">show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| atguigudb          |
-| dbtest1            |
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-6 rows in set (0.03 sec)
-
-
-use dbtest1;
-Database changed
-
-
-show tables;
-+-------------------+
-| Tables_in_dbtest1 |
-+-------------------+
-| emp1              |
-| emp2              |
-| student_myisam    |
-+-------------------+
-3 rows in set (0.02 sec)
-
-
--- 不指定存储引擎建表
-create table tem(id int ,name varchar(15));
-Query OK, 0 rows affected (0.04 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show databases;<br>+--------------------+<br>| Database           |<br>+--------------------+<br>| atguigudb          |<br>| dbtest1            |<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>6 rows in set (0.03 sec)<br><br><br>use dbtest1;<br>Database changed<br><br><br>show tables;<br>+-------------------+<br>| Tables_in_dbtest1 |<br>+-------------------+<br>| emp1              |<br>| emp2              |<br>| student_myisam    |<br>+-------------------+<br>3 rows in set (0.02 sec)<br><br><br>-- 不指定存储引擎建表<br>create table tem(id int ,name varchar(15));<br>Query OK, 0 rows affected (0.04 sec)<br><br><br><br>-- 查看建表语句   （存储引擎为InnoDB）<br>show create table tem;<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| Table | Create Table                                                                                                           <br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| tem   | CREATE TABLE `tem` (<br>  `id` int DEFAULT NULL,<br>  `name` varchar(15) DEFAULT NULL<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>1 row in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看建表语句   （存储引擎为InnoDB）
-show create table tem;
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| Table | Create Table                                                                                                           
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| tem   | CREATE TABLE `tem` (
-  `id` int DEFAULT NULL,
-  `name` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-1 row in set (0.01 sec)
-</code></pre>
+
+
 <p>修改默认的存储引擎</p>
 <p>如果在创建表的语句中没有显式指定表的存储引擎的话，那就会默认使用 InnoDB 作为表的存储引擎</p>
 <p> 如果我们想改变表的默认存储引擎的话，可以这样写启动服务器的命令行：</p>
@@ -259,118 +337,47 @@ show create table tem;
 <p> systemctl restart mysqld.service</p>
 </blockquote>
 <p>尝试会话级别修改</p>
-<pre><code class="mysql">SET DEFAULT_STORAGE_ENGINE=MyISAM;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET DEFAULT_STORAGE_ENGINE=MyISAM;<br><br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-Query OK, 0 rows affected (0.00 sec)
-</code></pre>
+
+
 <p>查看当前默认的存储引擎</p>
-<pre><code class="mysql">SELECT @@default_storage_engine;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT @@default_storage_engine;<br><br>+--------------------------+<br>| @@default_storage_engine |<br>+--------------------------+<br>| MyISAM                   |<br>+--------------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-+--------------------------+
-| @@default_storage_engine |
-+--------------------------+
-| MyISAM                   |
-+--------------------------+
-1 row in set (0.00 sec)
-</code></pre>
+
+
 <p>尝试建表</p>
-<pre><code class="mysql">CREATE TABLE temp2(id int,name varchar(15));
-
-Query OK, 0 rows affected (0.01 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE temp2(id int,name varchar(15));<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br>-- 查看建表语句  (存储引擎变为 MyISAM)<br>SHOW CREATE TABLE temp2;<br><br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| Table | Create Table                                                                                                                                         |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| temp2 | CREATE TABLE `temp2` (<br>  `id` int DEFAULT NULL,<br>  `name` varchar(15) DEFAULT NULL<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看建表语句  (存储引擎变为 MyISAM)
-SHOW CREATE TABLE temp2;
-
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| Table | Create Table                                                                                                                                         |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| temp2 | CREATE TABLE `temp2` (
-  `id` int DEFAULT NULL,
-  `name` varchar(15) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-1 row in set (0.00 sec)
-</code></pre>
 <p>查看数据文件</p>
-<pre><code class="shell">cd /var/lib/mysql
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /var/lib/mysql<br><br>cd dbtest1<br><br>-rw-r-----. 1 mysql mysql   2408 7月   8 10:05 temp2_375.sdi<br>-rw-r-----. 1 mysql mysql      0 7月   8 10:05 temp2.MYD<br>-rw-r-----. 1 mysql mysql   1024 7月   8 10:05 temp2.MYI<br></code></pre></td></tr></table></figure>
 
-cd dbtest1
 
--rw-r-----. 1 mysql mysql   2408 7月   8 10:05 temp2_375.sdi
--rw-r-----. 1 mysql mysql      0 7月   8 10:05 temp2.MYD
--rw-r-----. 1 mysql mysql   1024 7月   8 10:05 temp2.MYI
-</code></pre>
+
 <h2 id="3-设置表的存储引擎"><a href="#3-设置表的存储引擎" class="headerlink" title="3. 设置表的存储引擎"></a>3. 设置表的存储引擎</h2><h3 id="3-1-创建表时指定存储引擎"><a href="#3-1-创建表时指定存储引擎" class="headerlink" title="3.1 创建表时指定存储引擎"></a>3.1 创建表时指定存储引擎</h3><p>我们之前创建表的语句都没有指定表的存储引擎，那就会使用默认的存储引擎 InnoDB </p>
 <p>如果我们想显 式的指定一下表的存储引擎，那可以这么写：</p>
-<pre><code>CREATE TABLE 表名(
-建表语句;
-) ENGINE = 存储引擎名称;
-</code></pre>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">CREATE TABLE 表名(<br>建表语句<span class="hljs-comment">;</span><br>) ENGINE <span class="hljs-operator">=</span> 存储引擎名称<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+
+
 <p>当前会话默认存储引擎为MyISAM</p>
 <p>尝试建表时修改：</p>
-<pre><code class="mysql">CREATE TABLE temp3(id int ,name varchar(15)) ENGINE=InnoDb;
-
-Query OK, 0 rows affected (0.01 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE temp3(id int ,name varchar(15)) ENGINE=InnoDb;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br>-- 查看建表语句 (当前表使用的是InnoDb引擎)<br>SHOW CREATE TABLE temp3;<br><br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| Table | Create Table                                                                                                           <br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| temp3 | CREATE TABLE `temp3` (<br>  `id` int DEFAULT NULL,<br>  `name` varchar(15) DEFAULT NULL<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 查看建表语句 (当前表使用的是InnoDb引擎)
-SHOW CREATE TABLE temp3;
 
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| Table | Create Table                                                                                                           
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| temp3 | CREATE TABLE `temp3` (
-  `id` int DEFAULT NULL,
-  `name` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-1 row in set (0.00 sec)
-</code></pre>
+
 <h2 id="3-2-修改表的存储引擎"><a href="#3-2-修改表的存储引擎" class="headerlink" title="3.2 修改表的存储引擎"></a>3.2 修改表的存储引擎</h2><p>如果表已经建好了，我们也可以使用下边这个语句来修改表的存储引擎：</p>
 <blockquote>
 <p>ALTER TABLE 表名 ENGINE &#x3D; 存储引擎名称</p>
 </blockquote>
-<pre><code class="mysql">-- 查询建表语句 (使用的是MyISAM引擎)
-SHOW CREATE TABLE temp2;
-
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| Table | Create Table                                                                                                                                         |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| temp2 | CREATE TABLE `temp2` (
-  `id` int DEFAULT NULL,
-  `name` varchar(15) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-1 row in set (0.00 sec)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询建表语句 (使用的是MyISAM引擎)<br>SHOW CREATE TABLE temp2;<br><br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| Table | Create Table                                                                                                                                         |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| temp2 | CREATE TABLE `temp2` (<br>  `id` int DEFAULT NULL,<br>  `name` varchar(15) DEFAULT NULL<br>) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>1 row in set (0.00 sec)<br><br><br><br><br>-- 修改表的存储引擎<br>ALTER TABLE temp2<br>ENGINE=InnoDb;<br><br>Query OK, 0 rows affected (0.08 sec)<br>Records: 0  Duplicates: 0  Warnings: 0<br><br><br><br>-- 查询建表语句 (使用的是InnoDb引擎)<br>SHOW CREATE TABLE temp2;<br><br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| Table | Create Table                                                                                                                                         |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>| temp2 | CREATE TABLE `temp2` (<br>  `id` int DEFAULT NULL,<br>  `name` varchar(15) DEFAULT NULL<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |<br>+-------+-----------------------------------------------------------------------------------------------------------------------<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
-
--- 修改表的存储引擎
-ALTER TABLE temp2
-ENGINE=InnoDb;
-
-Query OK, 0 rows affected (0.08 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-
-
--- 查询建表语句 (使用的是InnoDb引擎)
-SHOW CREATE TABLE temp2;
-
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| Table | Create Table                                                                                                                                         |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-| temp2 | CREATE TABLE `temp2` (
-  `id` int DEFAULT NULL,
-  `name` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-+-------+-----------------------------------------------------------------------------------------------------------------------
-1 row in set (0.00 sec)
-</code></pre>
 <h2 id="4-引擎介绍"><a href="#4-引擎介绍" class="headerlink" title="4. 引擎介绍"></a>4. 引擎介绍</h2><h3 id="4-1-InnoDB-引擎：具备外键支持功能的事务存储引擎"><a href="#4-1-InnoDB-引擎：具备外键支持功能的事务存储引擎" class="headerlink" title="4.1 InnoDB 引擎：具备外键支持功能的事务存储引擎"></a>4.1 InnoDB 引擎：具备外键支持功能的事务存储引擎</h3><p> <code>MySQL从3.23.34a</code>开始就  <code>包含InnoDB存储引擎</code>，当时默认使用M有ISAM</p>
 <p>MySQL版本 <code>大于 等于 5.5</code> 之后，<code>默认采用InnoDB引擎</code> </p>
 <p>InnoDB是<code>MySQL的 默认事务型引擎</code> ，它被设计用来处理大量的短期(short-lived)事务。可以确保<code>事务 的完整提交(Commit)和回滚(Rollback)</code></p>
@@ -423,82 +430,24 @@ SHOW CREATE TABLE temp2;
 <p>Archive表适合日志和数据采集(档案)类应用;适合存储大量的独立的作为历史记录的数据。拥有很高的插入速度,但是<strong>对查询的支持较差</strong></p>
 <p>下表展示了ARCHIVE 存储引擎功能</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100775.png" alt="image-20220708114358812"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100775.png" srcset="/img/loading.gif" lazyload alt="image-20220708114358812"></p>
 <hr>
 <h3 id="4-4-Blackhole-引擎：丢弃写操作，读操作会返回空内容"><a href="#4-4-Blackhole-引擎：丢弃写操作，读操作会返回空内容" class="headerlink" title="4.4 Blackhole 引擎：丢弃写操作，读操作会返回空内容"></a>4.4 Blackhole 引擎：丢弃写操作，读操作会返回空内容</h3><h3 id="4-5-CSV-引擎：存储数据时，以逗号分隔各个数据项"><a href="#4-5-CSV-引擎：存储数据时，以逗号分隔各个数据项" class="headerlink" title="4.5 CSV 引擎：存储数据时，以逗号分隔各个数据项"></a>4.5 CSV 引擎：存储数据时，以逗号分隔各个数据项</h3><p>CSV引擎 可以   <code>将普通的CSV文件作为MySQL的表来处理</code>   ,但不支持索引</p>
 <p>CSV引擎 可以作为一种   <code>数据交换的机制</code>  ,非常有用</p>
 <p>CSV存储 的数据直接可以在操作系统里,用文本编辑器,或者excel读取</p>
 <p>对于数据的快速导入、导出是有明显优势的</p>
 <p>创建CSV表时,服务器会创建一个纯文本数据文件,其名称以表名开头并带有.CSV扩展名。当你将数据存储到表中时,存储引擎将其以逗号分隔值格式保存到数据文件中</p>
-<pre><code class="mysql">use dbtest1;
-
-Database changed
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use dbtest1;<br><br>Database changed<br><br><br><br>-- 报错 错误原因：不支持空列<br>CREATE TABLE csv_demo(id int ,name char(20)) ENGINE=CSV;<br><br>-- ERROR 1178 (42000): The storage engine for the table doesn&#x27;t support nullable columns<br><br><br>-- 解决：<br>CREATE TABLE csv_demo(id int not null,name char(20) not null) ENGINE=CSV;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 查看建表语句 (存储引擎是CSV)<br>SHOW CREATE TABLE csv_demo;<br><br>+----------+--------------------------------------------------------------------------------------------------------------------<br>| Table    | Create Table                                                                                                                              |<br>+----------+--------------------------------------------------------------------------------------------------------------------<br>| csv_demo | CREATE TABLE `csv_demo` (<br>  `id` int NOT NULL,<br>  `name` char(20) NOT NULL<br>) ENGINE=CSV DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |<br>+----------+--------------------------------------------------------------------------------------------------------------------<br>1 row in set (0.00 sec)<br><br><br><br><br>-- 插入数据<br>INSERT INTO csv_demo VALUES(1,&#x27;atguigudb1&#x27;),(2,&#x27;atguigudb2&#x27;);<br><br>Query OK, 2 rows affected (0.01 sec)<br>Records: 2  Duplicates: 0  Warnings: 0<br><br><br><br><br><br>-- 查看数据<br>SELECT * FROM csv_demo;<br><br>+----+------------+<br>| id | name       |<br>+----+------------+<br>|  1 | atguigudb1 |<br>|  2 | atguigudb2 |<br>+----+------------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
--- 报错 错误原因：不支持空列
-CREATE TABLE csv_demo(id int ,name char(20)) ENGINE=CSV;
-
--- ERROR 1178 (42000): The storage engine for the table doesn&#39;t support nullable columns
-
-
--- 解决：
-CREATE TABLE csv_demo(id int not null,name char(20) not null) ENGINE=CSV;
-
-Query OK, 0 rows affected (0.00 sec)
-
-
-
--- 查看建表语句 (存储引擎是CSV)
-SHOW CREATE TABLE csv_demo;
-
-+----------+--------------------------------------------------------------------------------------------------------------------
-| Table    | Create Table                                                                                                                              |
-+----------+--------------------------------------------------------------------------------------------------------------------
-| csv_demo | CREATE TABLE `csv_demo` (
-  `id` int NOT NULL,
-  `name` char(20) NOT NULL
-) ENGINE=CSV DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-+----------+--------------------------------------------------------------------------------------------------------------------
-1 row in set (0.00 sec)
-
-
-
-
--- 插入数据
-INSERT INTO csv_demo VALUES(1,&#39;atguigudb1&#39;),(2,&#39;atguigudb2&#39;);
-
-Query OK, 2 rows affected (0.01 sec)
-Records: 2  Duplicates: 0  Warnings: 0
-
-
-
-
-
--- 查看数据
-SELECT * FROM csv_demo;
-
-+----+------------+
-| id | name       |
-+----+------------+
-|  1 | atguigudb1 |
-|  2 | atguigudb2 |
-+----+------------+
-2 rows in set (0.00 sec)
-</code></pre>
 <p>查看相关数据库文件</p>
-<pre><code class="shell">cd /var/lib/mysql
-cd dbtest1
-ll
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /var/lib/mysql<br>cd dbtest1<br>ll<br><br>-rw-r-----. 1 mysql mysql   2525 7月   8 11:58 csv_demo_379.sdi<br>-rw-r-----. 1 mysql mysql     35 7月   8 20:33 csv_demo.CSM<br>-rw-r-----. 1 mysql mysql     30 7月   8 20:33 csv_demo.CSV<br></code></pre></td></tr></table></figure>
 
--rw-r-----. 1 mysql mysql   2525 7月   8 11:58 csv_demo_379.sdi
--rw-r-----. 1 mysql mysql     35 7月   8 20:33 csv_demo.CSM
--rw-r-----. 1 mysql mysql     30 7月   8 20:33 csv_demo.CSV
-</code></pre>
 <p>用于 存储表的状态 和 表中存在的行数 。此文件的名称与表的名称相同，后缀为 CSM</p>
 <p>这种格式可以被 Microsoft Excel 等电子表格应用程序读取，甚至写   入。使用Microsoft Excel打开如图所示</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100496.png" alt="image-20220708205212466"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100496.png" srcset="/img/loading.gif" lazyload alt="image-20220708205212466"></p>
 <hr>
 <h3 id="4-6-Memory-引擎：置于内存的表"><a href="#4-6-Memory-引擎：置于内存的表" class="headerlink" title="4.6 Memory 引擎：置于内存的表"></a>4.6 Memory 引擎：置于内存的表</h3><p>概述： </p>
 <p>Memory采用的逻辑介质是 <code>内存</code> ， 响应速度很快 ，但是当mysqld守护进程崩溃的时候 数据会丢失 </p>
@@ -532,9 +481,9 @@ ll
 <h3 id="4-8-Merge引擎：管理多个MyISAM表构成的表集合"><a href="#4-8-Merge引擎：管理多个MyISAM表构成的表集合" class="headerlink" title="4.8 Merge引擎：管理多个MyISAM表构成的表集合"></a>4.8 Merge引擎：管理多个MyISAM表构成的表集合</h3><h3 id="4-9-NDB引擎：MySQL集群专用存储引擎"><a href="#4-9-NDB引擎：MySQL集群专用存储引擎" class="headerlink" title="4.9 NDB引擎：MySQL集群专用存储引擎"></a>4.9 NDB引擎：MySQL集群专用存储引擎</h3><p>也叫做 NDB Cluster 存储引擎，主要用于 <code>MySQL Cluster</code>     <code>分布式集群 环境</code>，类似于 Oracle 的 RAC 集 群</p>
 <h3 id="4-10-引擎对比"><a href="#4-10-引擎对比" class="headerlink" title="4.10 引擎对比"></a>4.10 引擎对比</h3><p>MySQL中同一个数据库，不同的表可以选择不同的存储引擎。如下表对常用存储引擎做出了对比</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100746.png" alt="image-20220709092450211"></p>
-<p><img src="http://img.fgcy.xyz/image-20220709092516637.png" alt="image-20220709092516637"></p>
-<p><img src="http://img.fgcy.xyz/image-20220709092545605.png" alt="image-20220709092545605"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282100746.png" srcset="/img/loading.gif" lazyload alt="image-20220709092450211"></p>
+<p><img src="http://img.fgcy.xyz/image-20220709092516637.png" srcset="/img/loading.gif" lazyload alt="image-20220709092516637"></p>
+<p><img src="http://img.fgcy.xyz/image-20220709092545605.png" srcset="/img/loading.gif" lazyload alt="image-20220709092545605"></p>
 <hr>
 <p>其实这些东西大家没必要立即就给记住，列出来的目的就是想让大家明白不同的存储引擎支持不同的功 能</p>
 <p>其实我们最常用的就是 <code>InnoDB </code>和   <code>MyISAM </code> ，有时会提一下 Memory </p>
@@ -542,10 +491,10 @@ ll
 <h2 id="5-MyISAM和InnoDB"><a href="#5-MyISAM和InnoDB" class="headerlink" title="5. MyISAM和InnoDB"></a>5. MyISAM和InnoDB</h2><p>很多人对 InnoDB 和 MyISAM 的取舍存在疑问，到底选择哪个比较好呢？</p>
 <p>​	 MySQL5.5之前的默认存储引擎是MyISAM，5.5之后改为了InnoDB</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282101521.png" alt="image-20220708111221458"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282101521.png" srcset="/img/loading.gif" lazyload alt="image-20220708111221458"></p>
 <hr>
 <h2 id="6-阿里巴巴、淘宝用哪个"><a href="#6-阿里巴巴、淘宝用哪个" class="headerlink" title="6. 阿里巴巴、淘宝用哪个"></a>6. 阿里巴巴、淘宝用哪个</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282101811.png" alt="image-20220708111410677"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282101811.png" srcset="/img/loading.gif" lazyload alt="image-20220708111410677"></p>
 <hr>
 <p>Percona 为 MySQL 数据库服务器进行了改进，在功能和性能上较 MySQL 有很显著的提升</p>
 <p> 该版本提升了在高负载情况下的 InnoDB 的性能、为 DBA 提供一些非常有用的性能诊断工具；另外 有更多的参数和命令来控制服务器行为</p>
@@ -621,37 +570,369 @@ ll
 <p>重做日志是基于磁盘的数据结构，在崩溃恢复期间使用，用来纠正数据。正常操作期间， 重做日志会将请求数据进行编码，这些请求会改变InnoDB表数据</p>
 <p>遇到意外崩溃后，未完成的更改会自 动在初始化期间重新进行</p>
 
-    </div>
-    
-</div>
-                         
-<footer id="footer">
-    <div class="footer-wrap">
-        <div>
-            © 2020 - 2022 风格差异的博客
-            <span class="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            @fgcy
-        </div>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
         
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-</footer>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/">#尚硅谷-宋红康-MySQL(高级)</a>
+      
+    </div>
+  
+</div>
 
-                    </div>
-                </div>
-            </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
-            </div>
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第05章_存储引擎</div>
+      <div>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-05-zhang-cun-chu-yin-qing/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>fgcy</div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
-    </body>
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/07/ma-shi-bing-yi-xie-ji-chu-de-wang-luo-zhi-shi/" title="基础网络知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基础网络知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/29/song-hong-kang-mysql-gao-ji-di-04-zhang-luo-ji-jia-gou/" title="第04章_逻辑架构">
+                        <span class="hidden-mobile">第04章_逻辑架构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
 </html>

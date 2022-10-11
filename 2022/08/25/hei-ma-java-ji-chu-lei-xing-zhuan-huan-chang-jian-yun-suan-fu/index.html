@@ -1,160 +1,299 @@
 
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>类型转换&amp;常见运算符 | 风格差异的博客</title>
-        <meta name="author" content="fgcy">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <link rel="icon" href="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190047806.png">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
-        
-        <link rel="stylesheet" href="/css/fonts.min.css">
-        <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
-    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="fgcy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、类型转换1.0 自动类型转换类型范围小的变量，可以直接赋值给类型范围大的变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类型转换&amp;常见运算符">
+<meta property="og:url" content="http://example.com/2022/08/25/hei-ma-java-ji-chu-lei-xing-zhuan-huan-chang-jian-yun-suan-fu/index.html">
+<meta property="og:site_name" content="风格差异的博客">
+<meta property="og:description" content="一、类型转换1.0 自动类型转换类型范围小的变量，可以直接赋值给类型范围大的变量">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-01-43.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225336185.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225314235.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-41-14.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-28_21-50-48.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-03-58.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-05-26.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-02_15-01-07.png">
+<meta property="article:published_time" content="2022-08-24T22:41:36.000Z">
+<meta property="article:modified_time" content="2022-08-26T08:51:15.771Z">
+<meta property="article:author" content="fgcy">
+<meta property="article:tag" content="黑马程序员-徐磊-java基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png">
+  
+  
+  
+  <title>类型转换&amp;常见运算符 - 风格差异的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="风格差异的博客" type="application/atom+xml">
 </head>
-    <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
-        <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
-            <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
-    <div class="desktop-menu">
-        <a href="/">
-            <span class="title">风格差异的博客</span>
-        </a>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;风格差异的博客</span>
-        </div>
-        <transition name="slide">
-        <div class="items" v-show="menu_show">
-            
-            <a href="">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
-                </div>
-            </a>
-            
-            <a href="archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
-                </div>
-            </a>
-            
-            <a href="categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
-                </div>
-            </a>
-            
-            <a href="tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
-                </div>
-            </a>
-            
-        </div>
-        </transition>
-    </div>
+  </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
-<div class="article">
-    <div>
-        <h1>类型转换&amp;常见运算符 </h1>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="类型转换&amp;常见运算符"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-24 22:41" pubdate>
+          2022年8月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
     </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/8/24
-        </span>
-        
-        <span class="category">
-            <a href="/categories/视频学习笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                视频学习笔记
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-            </span>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">类型转换&amp;常见运算符</h1>
             
-            <span class="tag">
+            
+              <div class="markdown-body">
                 
-                <a href="/tags/黑马程序员-徐磊-java基础/" style="color: #00a596">
-                    黑马程序员-徐磊-java基础
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
-    <div class="content" v-pre>
-        <h2 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h2><h3 id="1-0-自动类型转换"><a href="#1-0-自动类型转换" class="headerlink" title="1.0 自动类型转换"></a>1.0 自动类型转换</h3><p>类型范围小的变量，可以直接赋值给类型范围大的变量</p>
+                <h2 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h2><h3 id="1-0-自动类型转换"><a href="#1-0-自动类型转换" class="headerlink" title="1.0 自动类型转换"></a>1.0 自动类型转换</h3><p>类型范围小的变量，可以直接赋值给类型范围大的变量</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-01-43.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-01-43.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <span id="more"></span>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225336185.png" alt="image-20220824225336185"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225336185.png" srcset="/img/loading.gif" lazyload alt="image-20220824225336185"></p>
 <hr>
 <h3 id="2-0-自动类型转换运算"><a href="#2-0-自动类型转换运算" class="headerlink" title="2.0 自动类型转换运算"></a>2.0 自动类型转换运算</h3><ol>
 <li>在表达式中，小范围类型的变量会自动转换成当前较大范围的类型再运算。</li>
@@ -164,131 +303,22 @@
 <li><strong>字面量</strong>是小数且没有F、f作为后缀的当成是double运算</li>
 </ol>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225314235.png" alt="image-20220824225314235"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225314235.png" srcset="/img/loading.gif" lazyload alt="image-20220824225314235"></p>
 <hr>
-<pre><code class="java">        byte a = 100;
-        byte b = 90;
-         //byte short char 其中一个或多个在进行运算时自动转成int，再运算
-        int i = a + b; 
-        System.out.println(i);
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">     <span class="hljs-type">byte</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>     <span class="hljs-type">byte</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">90</span>;<br><span class="hljs-comment">//byte short char 其中一个或多个在进行运算时自动转成int，再运算</span><br>     <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> a + b; <br>     System.out.println(i);<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="3-0-强制类型转换"><a href="#3-0-强制类型转换" class="headerlink" title="3.0 强制类型转换"></a>3.0 强制类型转换</h3><p>可以 强行将类型范围大的变量、数据赋值给类型范围小的变量</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-41-14.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-41-14.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <p>强制类型转换可能造成数据(丢失)溢出；<br>浮点型强转成整型，直接丢掉小数部分，保留整数部分返回</p>
 <h2 id="二、toString、valueOf、-String-的区别"><a href="#二、toString、valueOf、-String-的区别" class="headerlink" title="二、toString、valueOf、(String)的区别"></a>二、toString、valueOf、(String)的区别</h2><ul>
 <li>代码体现</li>
 </ul>
-<pre><code class="java">package api_object;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> api_object;<br><br><span class="hljs-keyword">import</span> java.util.Calendar;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: StringDemo1 &lt;br/&gt;</span><br><span class="hljs-comment"> * Description: &lt;br/&gt;</span><br><span class="hljs-comment"> * date: 2022/3/21 16:40&lt;br/&gt;</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy&lt;br /&gt;</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StringDemo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">a1</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">a2</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-type">byte</span> <span class="hljs-variable">b1</span> <span class="hljs-operator">=</span> <span class="hljs-number">12</span>;<br>        <span class="hljs-type">Byte</span> <span class="hljs-variable">b2</span> <span class="hljs-operator">=</span> <span class="hljs-number">12</span>;<br>        <span class="hljs-type">short</span> <span class="hljs-variable">ss1</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">Short</span> <span class="hljs-variable">ss2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">Long</span> <span class="hljs-variable">l1</span> <span class="hljs-operator">=</span> <span class="hljs-number">888L</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-variable">l2</span> <span class="hljs-operator">=</span> <span class="hljs-number">888L</span>;<br>        <span class="hljs-type">char</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;a&#x27;</span>;<br>        <span class="hljs-type">Character</span> <span class="hljs-variable">c2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;a&#x27;</span>;<br>        <span class="hljs-type">Float</span> <span class="hljs-variable">f1</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.29f</span>;<br>        <span class="hljs-type">float</span> <span class="hljs-variable">f2</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.29f</span>;<br>        <span class="hljs-type">double</span> <span class="hljs-variable">d1</span> <span class="hljs-operator">=</span> <span class="hljs-number">9.9</span>;<br>        <span class="hljs-type">Double</span> <span class="hljs-variable">d2</span> <span class="hljs-operator">=</span> <span class="hljs-number">9.8</span>;<br><br>        <span class="hljs-comment">//编译报错，基本数据类型及其包装类不能强转为String类</span><br>        <span class="hljs-comment">//同样的的String类也不能强转为基本数据类型及其包装类</span><br><span class="hljs-comment">//        String s1 = (String) a1;</span><br><span class="hljs-comment">//        String s1 = (String) a2;</span><br><span class="hljs-comment">//        String s1 = (String) b1;</span><br><span class="hljs-comment">//        String s1 = (String) b2;</span><br><span class="hljs-comment">//        String s1 = (String) ss1;</span><br><span class="hljs-comment">//        String s1 = (String) ss2;</span><br><span class="hljs-comment">//        String s1 = (String) l1;</span><br><span class="hljs-comment">//        String s1 = (String) l2;</span><br><span class="hljs-comment">//        String s1 = (String) c1;</span><br><span class="hljs-comment">//        String s1 = (String) c2;</span><br><span class="hljs-comment">//        String s1 = (String) f1;</span><br><span class="hljs-comment">//        String s1 = (String)f2;</span><br><span class="hljs-comment">//        String s1 = (String) d1;</span><br><span class="hljs-comment">//        String s1 = (String) d2;</span><br><br>        <span class="hljs-comment">//基本数据类型没有toString方法</span><br><span class="hljs-comment">//      a1.toString();</span><br>        System.out.println(a2.toString());<span class="hljs-comment">//10</span><br><br>        <span class="hljs-comment">//null.toString()会报错</span><br>        a2 = <span class="hljs-literal">null</span>;<br>        <span class="hljs-comment">//println()底层使用了String.valueOf()方法，源码如下：</span><br>        	<span class="hljs-comment">//return (obj == null) ? &quot;null&quot; : obj.toString();</span><br>        System.out.println(a2);<span class="hljs-comment">//null</span><br><span class="hljs-comment">//      System.out.println(a2.toString());</span><br><br>        <span class="hljs-comment">//基本数据类型及其包装类转String类型推荐做法是String.valueOf()</span><br>        <span class="hljs-comment">//如果是null会返回字符串null</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(a1));<span class="hljs-comment">//10</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(a2));<span class="hljs-comment">//null</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(b1));<span class="hljs-comment">//12</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(b2));<span class="hljs-comment">//12</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(c2));<span class="hljs-comment">//a</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(c1));<span class="hljs-comment">//a</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(ss1));<span class="hljs-comment">//2</span><br>        System.out.println(<span class="hljs-string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(ss2));<span class="hljs-comment">//2</span><br><br>        <span class="hljs-comment">//通过拼接字符串的方法，将基本数据类型及其包装类变为String</span><br>        <span class="hljs-comment">//基本数据类型转String除了拼接空字符就是String.valueOf(x)</span><br>        System.out.println(<span class="hljs-string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + b1 + <span class="hljs-string">&quot;&quot;</span>);<span class="hljs-comment">//12</span><br>        System.out.println(<span class="hljs-string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + b2 + <span class="hljs-string">&quot;&quot;</span>);<span class="hljs-comment">//12</span><br>        System.out.println(<span class="hljs-string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + ss2 + <span class="hljs-string">&quot;&quot;</span>);<span class="hljs-comment">//2</span><br>        System.out.println(<span class="hljs-string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + ss1 + <span class="hljs-string">&quot;&quot;</span>);<span class="hljs-comment">//2</span><br><br><br>        <span class="hljs-comment">//包装类型与String 无论谁强转转谁 都报错，编译就出错</span><br><span class="hljs-comment">//        Integer integer = (Integer) &quot;aaa&quot;;</span><br><br><br>        <span class="hljs-comment">//用Object类型的变量(接基本数据类型的字面值)，强制转换为String(向下转型)，编译不报错</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> <span class="hljs-number">12</span>;<br>        <span class="hljs-comment">//用Object类型的变量接包装类(向上转型)，强制转换为String(向下转型)，编译不报错</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">object</span> <span class="hljs-operator">=</span> a2;<br>        <span class="hljs-comment">//运行的时候就报错，类型转换异常</span><br>        <span class="hljs-comment">//java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String</span><br><span class="hljs-comment">//      String rs = (String) o;</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a&quot;</span>;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> obj <span class="hljs-keyword">instanceof</span> Integer ? (Integer) obj : -<span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&quot;String类与包装类强制类型转换：&quot;</span> + r);<span class="hljs-comment">//-1</span><br>    &#125;<br>&#125;<br>=================================================<br><span class="hljs-number">10</span><br><span class="hljs-literal">null</span><br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="hljs-number">10</span><br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="hljs-literal">null</span><br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="hljs-number">12</span><br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="hljs-number">12</span><br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a<br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a<br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="hljs-number">2</span><br>通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="hljs-number">2</span><br>通过拼接空字符串将基本数据类型及其包装类变为String：<span class="hljs-number">12</span><br>通过拼接空字符串将基本数据类型及其包装类变为String：<span class="hljs-number">12</span><br>通过拼接空字符串将基本数据类型及其包装类变为String：<span class="hljs-number">2</span><br>通过拼接空字符串将基本数据类型及其包装类变为String：<span class="hljs-number">2</span><br>String类与包装类强制类型转换：-<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
-import java.util.Calendar;
-
-/**
- * ClassName: StringDemo1 &lt;br/&gt;
- * Description: &lt;br/&gt;
- * date: 2022/3/21 16:40&lt;br/&gt;
- *
- * @author fgcy&lt;br /&gt;
- * @since JDK 1.8
- */
-public class StringDemo1 &#123;
-    public static void main(String[] args) &#123;
-        int a1 = 10;
-        Integer a2 = 10;
-        byte b1 = 12;
-        Byte b2 = 12;
-        short ss1 = 2;
-        Short ss2 = 2;
-        Long l1 = 888L;
-        long l2 = 888L;
-        char c1 = &#39;a&#39;;
-        Character c2 = &#39;a&#39;;
-        Float f1 = 1.29f;
-        float f2 = 1.29f;
-        double d1 = 9.9;
-        Double d2 = 9.8;
-
-        //编译报错，基本数据类型及其包装类不能强转为String类
-        //同样的的String类也不能强转为基本数据类型及其包装类
-//        String s1 = (String) a1;
-//        String s1 = (String) a2;
-//        String s1 = (String) b1;
-//        String s1 = (String) b2;
-//        String s1 = (String) ss1;
-//        String s1 = (String) ss2;
-//        String s1 = (String) l1;
-//        String s1 = (String) l2;
-//        String s1 = (String) c1;
-//        String s1 = (String) c2;
-//        String s1 = (String) f1;
-//        String s1 = (String)f2;
-//        String s1 = (String) d1;
-//        String s1 = (String) d2;
-
-        //基本数据类型没有toString方法
-//      a1.toString();
-        System.out.println(a2.toString());//10
-
-        //null.toString()会报错
-        a2 = null;
-        //println()底层使用了String.valueOf()方法，源码如下：
-            //return (obj == null) ? &quot;null&quot; : obj.toString();
-        System.out.println(a2);//null
-//      System.out.println(a2.toString());
-
-        //基本数据类型及其包装类转String类型推荐做法是String.valueOf()
-        //如果是null会返回字符串null
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(a1));//10
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(a2));//null
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(b1));//12
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(b2));//12
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(c2));//a
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(c1));//a
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(ss1));//2
-        System.out.println(&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot; + String.valueOf(ss2));//2
-
-        //通过拼接字符串的方法，将基本数据类型及其包装类变为String
-        //基本数据类型转String除了拼接空字符就是String.valueOf(x)
-        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + b1 + &quot;&quot;);//12
-        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + b2 + &quot;&quot;);//12
-        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + ss2 + &quot;&quot;);//2
-        System.out.println(&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot; + ss1 + &quot;&quot;);//2
-
-
-        //包装类型与String 无论谁强转转谁 都报错，编译就出错
-//        Integer integer = (Integer) &quot;aaa&quot;;
-
-
-        //用Object类型的变量(接基本数据类型的字面值)，强制转换为String(向下转型)，编译不报错
-        Object o = 12;
-        //用Object类型的变量接包装类(向上转型)，强制转换为String(向下转型)，编译不报错
-        Object object = a2;
-        //运行的时候就报错，类型转换异常
-        //java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
-//      String rs = (String) o;
-        Object obj = &quot;a&quot;;
-        Integer r = obj instanceof Integer ? (Integer) obj : -1;
-        System.out.println(&quot;String类与包装类强制类型转换：&quot; + r);//-1
-    &#125;
-&#125;
-=================================================
-10
-null
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：10
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：null
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：12
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：12
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：2
-通过String.valueOf(x)，使得基本数据类型及其包装类变为String：2
-通过拼接空字符串将基本数据类型及其包装类变为String：12
-通过拼接空字符串将基本数据类型及其包装类变为String：12
-通过拼接空字符串将基本数据类型及其包装类变为String：2
-通过拼接空字符串将基本数据类型及其包装类变为String：2
-String类与包装类强制类型转换：-1
-</code></pre>
 <ul>
 <li>总结</li>
 </ul>
@@ -309,37 +339,23 @@ String类与包装类强制类型转换：-1
 <li><p>基本数据类型没有toString方法，对象独有</p>
 </li>
 <li><p><code>println()底层</code> 使用了<code>String.valueOf()方法</code>，源码如下：</p>
-<pre><code class="java">return (obj == null) ? &quot;null&quot; : obj.toString();
-</code></pre>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">return</span> (obj == <span class="hljs-literal">null</span>) ? <span class="hljs-string">&quot;null&quot;</span> : obj.toString();<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="三、常见运算符"><a href="#三、常见运算符" class="headerlink" title="三、常见运算符"></a>三、常见运算符</h2><h3 id="1-0-算数运算符"><a href="#1-0-算数运算符" class="headerlink" title="1.0 算数运算符"></a>1.0 算数运算符</h3><pre><code>*  /  %
-+  -
-如果两个整数做除法，其结果一定是整数，因为最高类型是整数。10/3=3  10*1.0/3=3.333335
-</code></pre>
+<h2 id="三、常见运算符"><a href="#三、常见运算符" class="headerlink" title="三、常见运算符"></a>三、常见运算符</h2><h3 id="1-0-算数运算符"><a href="#1-0-算数运算符" class="headerlink" title="1.0 算数运算符"></a>1.0 算数运算符</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">*  /  %<br>+  -<br>如果两个整数做除法，其结果一定是整数，因为最高类型是整数。10/<span class="hljs-attribute">3</span>=3  10<span class="hljs-number">*1</span>.0/<span class="hljs-attribute">3</span>=3.333335<br></code></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li>数值拆分</li>
 </ul>
-<pre><code class="java">    @Test
-    public void testBasic() &#123;
-        int score = 123;
-        //取模运算符可以得到最尾端的数字
-        System.out.println(&quot;个位：&quot; + score % 10 + &quot; 十位:&quot; + score / 10 % 10 + &quot; 百位&quot; + score / 100);
-    &#125;
-</code></pre>
-<h3 id="2-0-做连接符"><a href="#2-0-做连接符" class="headerlink" title="2.0 + 做连接符"></a>2.0 <strong>+</strong> 做连接符</h3><pre><code class="java">能算则算，不能算就在一起。（计算机很聪明）
-int a = 5 ;
-System.out.println(“abc” + ‘a’); // abca   
-System.out.println(&quot;abc&quot; + a);  // abc5
-System.out.println(5 + a);   // 10
-System.out.println(&quot;abc&quot; + 5 + ‘a’);//abc5a
-System.out.println(15 + &quot;abc&quot; + 15);//15abc15
-System.out.println(a + &#39;a’);//102
-System.out.println(a + &quot;&quot; +&#39;a’);//5a
-System.out.println(a + &#39;a&#39;+&quot; itheima &quot;);//102itheima
-System.out.println(&quot;itheima&quot;+ a + &#39;a’);//itheima5a
-System.out.println(&quot;itheima&quot;+ ( a + &#39;a&#39; ));//itheima102
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testBasic</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">score</span> <span class="hljs-operator">=</span> <span class="hljs-number">123</span>;<br>    <span class="hljs-comment">//取模运算符可以得到最尾端的数字</span><br>    System.out.println(<span class="hljs-string">&quot;个位：&quot;</span> + score % <span class="hljs-number">10</span> + <span class="hljs-string">&quot; 十位:&quot;</span> + score / <span class="hljs-number">10</span> % <span class="hljs-number">10</span> + <span class="hljs-string">&quot; 百位&quot;</span> + score / <span class="hljs-number">100</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-0-做连接符"><a href="#2-0-做连接符" class="headerlink" title="2.0 + 做连接符"></a>2.0 <strong>+</strong> 做连接符</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">能算则算，不能算就在一起。（计算机很聪明）<br><span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span> ;<br>System.out.println(“abc” + ‘a’); <span class="hljs-comment">// abca   </span><br>System.out.println(<span class="hljs-string">&quot;abc&quot;</span> + a);  <span class="hljs-comment">// abc5</span><br>System.out.println(<span class="hljs-number">5</span> + a);   <span class="hljs-comment">// 10</span><br>System.out.println(<span class="hljs-string">&quot;abc&quot;</span> + <span class="hljs-number">5</span> + ‘a’);<span class="hljs-comment">//abc5a</span><br>System.out.println(<span class="hljs-number">15</span> + <span class="hljs-string">&quot;abc&quot;</span> + <span class="hljs-number">15</span>);<span class="hljs-comment">//15abc15</span><br>System.out.println(a + <span class="hljs-string">&#x27;a’);//102</span><br><span class="hljs-string">System.out.println(a + &quot;&quot; +&#x27;</span>a’);<span class="hljs-comment">//5a</span><br>System.out.println(a + <span class="hljs-string">&#x27;a&#x27;</span>+<span class="hljs-string">&quot; itheima &quot;</span>);<span class="hljs-comment">//102itheima</span><br>System.out.println(<span class="hljs-string">&quot;itheima&quot;</span>+ a + <span class="hljs-string">&#x27;a’);//itheima5a</span><br><span class="hljs-string">System.out.println(&quot;itheima&quot;+ ( a + &#x27;</span>a<span class="hljs-string">&#x27; ));//itheima102</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="3-0-自增自减运算符"><a href="#3-0-自增自减运算符" class="headerlink" title="3.0 自增自减运算符"></a>3.0 自增自减运算符</h3><ul>
 <li>概念</li>
 </ul>
@@ -351,40 +367,26 @@ System.out.println(&quot;itheima&quot;+ ( a + &#39;a&#39; ));//itheima102
 <ul>
 <li>代码体现</li>
 </ul>
-<pre><code class="java"> @Test
-    public void testBasic1() &#123;
-        int c = 10;
-        int d = 5;
-        int rs3 = c++ + ++c - --d - ++d + 1 + c--;
-        System.out.println(rs3);
-    &#125;
-</code></pre>
-<pre><code>26
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testBasic1</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">rs3</span> <span class="hljs-operator">=</span> c++ + ++c - --d - ++d + <span class="hljs-number">1</span> + c--;<br>       System.out.println(rs3);<br>   &#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">26<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="4-0-赋值运算符"><a href="#4-0-赋值运算符" class="headerlink" title="4.0 赋值运算符"></a>4.0 赋值运算符</h3><ul>
 <li>基本赋值运算符</li>
 </ul>
-<pre><code>=
-</code></pre>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-28_21-50-48.png"></p>
-<hr>
-<pre><code class="java">    @Test
-    public void testBasic2() &#123;
-        int c = 10;
-        int d = 5;
-        c = c + d;
-        c += d;//等价于 c = (int)(c + d)
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><br></code></pre></td></tr></table></figure>
 
-        byte a = 30;
-        byte b = 120;
-        a += b;//等价于  a = (byte)(a + b)
-        System.out.println(a);//精度丢失
-    &#125;
-</code></pre>
-<pre><code>15
--106
-</code></pre>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-28_21-50-48.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testBasic2</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br>       c = c + d;<br>       c += d;<span class="hljs-comment">//等价于 c = (int)(c + d)</span><br><br>       <span class="hljs-type">byte</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">30</span>;<br>       <span class="hljs-type">byte</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">120</span>;<br>       a += b;<span class="hljs-comment">//等价于  a = (byte)(a + b)</span><br>       System.out.println(a);<span class="hljs-comment">//精度丢失</span><br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs diff">15<br><span class="hljs-deletion">-106</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="5-0-关系运算符"><a href="#5-0-关系运算符" class="headerlink" title="5.0 关系运算符"></a>5.0 关系运算符</h3><ul>
 <li>概念</li>
 </ul>
@@ -392,33 +394,22 @@ System.out.println(&quot;itheima&quot;+ ( a + &#39;a&#39; ));//itheima102
 <ul>
 <li>形式</li>
 </ul>
-<pre><code>== &lt; &lt;= &gt;= !=
-</code></pre>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">== &lt; &lt;= &gt;= !=</span><br></code></pre></td></tr></table></figure>
+
 <h3 id="6-0逻辑运算符"><a href="#6-0逻辑运算符" class="headerlink" title="6.0逻辑运算符"></a>6.0<strong>逻辑运算符</strong></h3><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-03-58.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-03-58.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-05-26.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-05-26.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <ul>
 <li>代码体现</li>
 </ul>
-<pre><code class="java">    @Test
-    public void testBasic3() &#123;
-        int c = 10;
-        int d = 5;
-        System.out.println(&quot;短路与：&quot; + (c &gt;= 99 &amp;&amp; d++ &lt; 100) + &quot; d=&quot; + d);
-        System.out.println(&quot;逻辑与：&quot; + (c &gt;= 99 &amp; d++ &lt; 100) + &quot; d=&quot; + d);
-        System.out.println(&quot;----------------------------------------&quot;);
-        System.out.println(&quot;短路或：&quot; + (c &lt;= 99 || d++ &lt; 100) + &quot; d=&quot; + d);
-        System.out.println(&quot;逻辑或：&quot; + (c &gt;= 99 | d++ &lt; 100) + &quot; d=&quot; + d);
-    &#125;
-</code></pre>
-<pre><code>短路与：false d=5
-逻辑与：false d=6
-----------------------------------------
-短路或：true d=6
-逻辑或：true d=7
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testBasic3</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br>    System.out.println(<span class="hljs-string">&quot;短路与：&quot;</span> + (c &gt;= <span class="hljs-number">99</span> &amp;&amp; d++ &lt; <span class="hljs-number">100</span>) + <span class="hljs-string">&quot; d=&quot;</span> + d);<br>    System.out.println(<span class="hljs-string">&quot;逻辑与：&quot;</span> + (c &gt;= <span class="hljs-number">99</span> &amp; d++ &lt; <span class="hljs-number">100</span>) + <span class="hljs-string">&quot; d=&quot;</span> + d);<br>    System.out.println(<span class="hljs-string">&quot;----------------------------------------&quot;</span>);<br>    System.out.println(<span class="hljs-string">&quot;短路或：&quot;</span> + (c &lt;= <span class="hljs-number">99</span> || d++ &lt; <span class="hljs-number">100</span>) + <span class="hljs-string">&quot; d=&quot;</span> + d);<br>    System.out.println(<span class="hljs-string">&quot;逻辑或：&quot;</span> + (c &gt;= <span class="hljs-number">99</span> | d++ &lt; <span class="hljs-number">100</span>) + <span class="hljs-string">&quot; d=&quot;</span> + d);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">短路与：<span class="hljs-literal">false</span> <span class="hljs-attribute">d</span>=5<br>逻辑与：<span class="hljs-literal">false</span> <span class="hljs-attribute">d</span>=6<br>----------------------------------------<br>短路或：<span class="hljs-literal">true</span> <span class="hljs-attribute">d</span>=6<br>逻辑或：<span class="hljs-literal">true</span> <span class="hljs-attribute">d</span>=7<br></code></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li>小结</li>
 </ul>
@@ -428,68 +419,383 @@ System.out.println(&quot;itheima&quot;+ ( a + &#39;a&#39; ));//itheima102
 <li>逻辑或：同假为假</li>
 <li>短路性能更好</li>
 </ol>
-<h3 id="7-0三元运算符（嵌套）"><a href="#7-0三元运算符（嵌套）" class="headerlink" title="7.0三元运算符（嵌套）"></a>7.0三元运算符（嵌套）</h3><pre><code class="java">    @Test
-    public void testBasic4() &#123;
-        int c = 120;
-        int d = 5;
-        int b = 78;
-        System.out.println(c &gt; d ? (c &gt; b ? c : b ):( d &gt; b ? d : b));
-    &#125;
-</code></pre>
-<pre><code>120
-</code></pre>
+<h3 id="7-0三元运算符（嵌套）"><a href="#7-0三元运算符（嵌套）" class="headerlink" title="7.0三元运算符（嵌套）"></a>7.0三元运算符（嵌套）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testBasic4</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">120</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">78</span>;<br>       System.out.println(c &gt; d ? (c &gt; b ? c : b ):( d &gt; b ? d : b));<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">120<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="8-0运算符优先级"><a href="#8-0运算符优先级" class="headerlink" title="8.0运算符优先级"></a>8.0运算符优先级</h3><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-02_15-01-07.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-02_15-01-07.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<pre><code>()
-! - ++ --
-* / %
-+ -
-&lt;&lt; &gt;&gt; &gt;&gt;&gt;
-&lt; &lt;= &gt; &gt;= instanceof
-== !=
-&amp; 
-^
-|
-&amp;&amp;
-||
-?:
-= += =+ *= /= %= &amp;=
-</code></pre>
-<pre><code>算数运算符 》 位移运算符 》 关系运算符 》 逻辑运算符 》 三元运算符 》 赋值运算符
-</code></pre>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">()<br>! - ++ --<br><span class="hljs-bullet">* </span>/ %<br>+ -<br>&lt;&lt; &gt;&gt; &gt;&gt;&gt;<br>&lt; &lt;= &gt; &gt;= instanceof<br><span class="hljs-section">== !=</span><br>&amp; <br>^<br>|<br>&amp;&amp;<br>||<br>?:<br><span class="hljs-section">= += =+ *= /= %= &amp;=</span><br></code></pre></td></tr></table></figure>
 
-    </div>
-    
-</div>
-                         
-<footer id="footer">
-    <div class="footer-wrap">
-        <div>
-            © 2020 - 2022 风格差异的博客
-            <span class="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            @fgcy
-        </div>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">算数运算符 》 位移运算符 》 关系运算符 》 逻辑运算符 》 三元运算符 》 赋值运算符<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
         
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-</footer>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/">#黑马程序员-徐磊-java基础</a>
+      
+    </div>
+  
+</div>
 
-                    </div>
-                </div>
-            </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
-            </div>
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>类型转换&amp;常见运算符</div>
+      <div>http://example.com/2022/08/25/hei-ma-java-ji-chu-lei-xing-zhuan-huan-chang-jian-yun-suan-fu/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>fgcy</div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
-    </body>
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/25/hei-ma-java-ji-chu-liu-cheng-kong-zhi/" title="流程控制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">流程控制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/24/chuan-zhi-bo-ke-mian-shi-xu-ni-ji/" title="虚拟机">
+                        <span class="hidden-mobile">虚拟机</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
 </html>
