@@ -16,15 +16,13 @@
   <meta name="author" content="fgcy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="事务有4种特性：原子性、一致性、隔离性和持久性。 那么事务的四种特性到底是基于什么机制实现呢？ 事务的隔离性由 锁机制 实现。  而事务的原子性、一致性和持久性由事务的 redo 日志和undo 日志来保证。   REDO LOG 称为 重做日志 ，提供再写入操作，恢复提交事务修改的页操作，用来保证事务的持 久性。   UNDO LOG 称为 回滚日志 ，回滚行记录到某个特定版本，用来保证事务的原">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="第14章_MySQL事务日志">
 <meta property="og:url" content="http://example.com/2022/10/12/song-hong-kang-mysql-gao-ji-di-14-zhang-mysql-shi-wu-ri-zhi/index.html">
 <meta property="og:site_name" content="风格差异的博客">
-<meta property="og:description" content="事务有4种特性：原子性、一致性、隔离性和持久性。 那么事务的四种特性到底是基于什么机制实现呢？ 事务的隔离性由 锁机制 实现。  而事务的原子性、一致性和持久性由事务的 redo 日志和undo 日志来保证。   REDO LOG 称为 重做日志 ，提供再写入操作，恢复提交事务修改的页操作，用来保证事务的持 久性。   UNDO LOG 称为 回滚日志 ，回滚行记录到某个特定版本，用来保证事务的原">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-11T23:33:55.000Z">
-<meta property="article:modified_time" content="2022-10-11T16:06:51.750Z">
+<meta property="article:modified_time" content="2022-10-17T13:03:23.763Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          0 字
         
       </span>
     
@@ -231,7 +229,7 @@
         
         
         
-          11 分钟
+          1 分钟
         
       </span>
     
@@ -274,32 +272,7 @@
             
               <div class="markdown-body">
                 
-                <p>事务有4种特性：原子性、一致性、隔离性和持久性。</p>
-<p>那么事务的四种特性到底是基于什么机制实现呢？ 事务的隔离性由 锁机制 实现。 </p>
-<p>而事务的原子性、一致性和持久性由事务的 redo 日志和undo 日志来保证。 </p>
-<ul>
-<li><p>REDO LOG 称为 重做日志 ，提供再写入操作，恢复提交事务修改的页操作，用来保证事务的持 久性。 </p>
-</li>
-<li><p>UNDO LOG 称为 回滚日志 ，回滚行记录到某个特定版本，用来保证事务的原子性、一致性。</p>
-</li>
-</ul>
-<p>有的DBA或许会认为UNDO是REDO.的逆过程，其实不然。REDO 和 UNDO都可以视为是一种恢复操作，但是：</p>
-<ul>
-<li>redo log：是存储引擎层（innodb）生成的日志，记录的是”物理级别”上的页修改操作，比如页号xx、偏移量y写入了’zz”数据。主要为了保证数据的可靠性；</li>
-<li>undo log：是存储引擎层（innodb）生成的日志，记录的是逻辑操作日志，比如对某一行数据进行了INSERT语句操作，那么undo log就记录一条与之相反的DELETE操作。主要用于事务的回滚（undo log 记录的是每个修改操作的逆操作）和 <strong>一致性非锁定读</strong> （undo log 回滚行记录到某种特定的版本—MVCC，即多版本并发控制）</li>
-</ul>
-<span id="more"></span>
-
-<h1 id="1-redo日志"><a href="#1-redo日志" class="headerlink" title="1. redo日志"></a>1. redo日志</h1><p>InnoDB存储引擎是以页为单位来管理存储空间的。在真正访问页面之前，需要把在磁盘上的页缓存到内存中的Buffer Pool之后才可以访问。</p>
-<p>所有的变更都必须先更新缓冲池中的数据，然后缓冲池中的 脏页 【内存中已做出修改的页，还没有写入到磁盘中】会以一宗的频率被刷入磁盘（<code>checkPoint</code>机制），通过缓冲池来优化CPU和磁盘之间的鸿沟，这样就可以保证整体的性能不会下降太快。</p>
-<h2 id="1-1-为什么需要REDO日志"><a href="#1-1-为什么需要REDO日志" class="headerlink" title="1.1 为什么需要REDO日志"></a>1.1 为什么需要REDO日志</h2><p>一方面，缓冲池可以帮助我们消除CPU和磁盘之间的鸿沟，checkpoint机制可以保证数据的最终落盘，然 而由于checkpoint 并不是每次变更的时候就触发 的，而是master线程隔一段时间去处理的。所以最坏的情 况就是事务提交后，刚写完缓冲池，数据库宕机了，那么这段数据就是丢失的，无法恢复。 </p>
-<p>另一方面，事务包含 持久性 的特性，就是说对于一个已经提交的事务，在事务提交后即使系统发生了崩 溃，这个事务对数据库中所做的更改也不能丢失。 那么如何保证这个持久性呢？ </p>
-<p>一个简单的做法 ：在事务提交完成之前把该事务所修改的所有页面都刷新 到磁盘，但是这个简单粗暴的做法有些问题：</p>
-<ul>
-<li>修改量与刷新磁盘工作量严重不成比例<br>有时候我们仅仅修改了某个页面中的一个字节，但是我们知道在InnoDB中是以页为单位来进行磁盘I0的，也就是说我们在该事务提交时不得不将一个完整的页面从内存中刷新到磁盘，我们又知道一个页面默认是16KB大小，只修改一个字节就要刷新16KB的数据到磁盘上显然是太小题大做了。</li>
-<li>随机I0刷新较慢<br>一个事务可能包含很多语句，即使是一条语句也可能修改许多页面，假如该事务修改的这些页面可能并不相邻，这意味着在将某个事务修改的 <code>buffer Pool </code>中的页面修改到磁盘中时，要进行很多的随机IO，随IO比顺序IO要慢，尤其对于传统的机械硬盘来说。</li>
-</ul>
-
+                
                 
               </div>
             
@@ -388,6 +361,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/18/vue/" title="尚硅谷Vue">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">尚硅谷Vue</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
