@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="风格差异的博客">
 <meta property="og:description" content="一、二分查找1.0算法描述 前提：有已排序数组 A（假设已经做好）  定义左边界 L、右边界 R，确定搜索范围，循环执行二分查找（3、4两步）  获取中间索引 M &#x3D; Floor((L+R) &#x2F;2)  中间索引的值  A[M] 与待搜索的值 T 进行比较 ① A[M] &#x3D;&#x3D; T 表示找到，返回中间索引 ② A[M] &gt; T，中间值右侧的其它元素都大于">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-19_20-05-04.png">
-<meta property="og:image" content="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-20_09-13-07.png">
-<meta property="og:image" content="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-20_09-24-34.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/202210101009630.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210232303927.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210232304585.png">
 <meta property="article:published_time" content="2022-08-23T21:21:55.000Z">
-<meta property="article:modified_time" content="2022-08-26T08:59:30.776Z">
+<meta property="article:modified_time" content="2022-10-23T15:04:57.729Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="院校帮-面试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-19_20-05-04.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/202210101009630.png">
   
   
   
@@ -67,6 +67,10 @@
     <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 
 
 
@@ -224,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          42k 字
+          44k 字
         
       </span>
     
@@ -235,7 +239,7 @@
         
         
         
-          347 分钟
+          371 分钟
         
       </span>
     
@@ -517,29 +521,30 @@
 </li>
 <li><p>public ArrayList(Collection&lt;? extends E&gt; c) 会使用 c 的大小作为数组容量</p>
 </li>
-<li><p>add(Object o) 首次扩容为 10，再次扩容为上次容量的 1.5 倍</p>
+<li><p>add(Object o) 首次扩容为 <code>10</code>，再次扩容为上次容量的 1.5 倍</p>
 </li>
 <li><p>addAll(Collection c) 没有元素时，扩容为 Math.max(10, 实际元素个数)，有元素时为 Math.max(原容量 1.5 倍, 实际元素个数)</p>
 </li>
 </ol>
-<p>其中第 4 点必须知道，其它几点视个人情况而定</p>
+<blockquote>
+<p> 其中第 4 点必须知道，其它几点视个人情况而定</p>
+</blockquote>
 <ul>
-<li>ArrayList的初始容量</li>
-</ul>
+<li><p>ArrayList的初始容量</p>
 <p>使用无参构造的方法:容量是零(长度为零的对象数组)<br>使用一个int类型作为入参的构造方法:容量是入参(长度为入参长的对象数组)<br>使用一个集合类型作为入参的构造方法：容量是集合的大小</p>
-<ul>
-<li>add()扩容</li>
-</ul>
+</li>
+<li><p>add()扩容</p>
 <p>当使用ArrayList的无参构造创建对象时，会给分配一个长度为零的数组，当加入第一个元素时，会创建一个长度为10的数组(扩容)，这个数组会替换掉原来的空数组； </p>
-<p>当加入第十个元素时【要插入的元素下标等于数组大小】，ArrayList又进行扩容，为原来的1.5倍(创建一个长度为15的数组，将原来数组的元素拷贝到新数组中)，原来的数组因为没有引用指向，会被gc干掉；</p>
-<p>当加入第十5个元素时，ArrayList又进行扩容，将15&gt;&gt;&gt;1 &#x3D;7,15+7&#x3D;22;创建一个长度为22的数组，将原来数组的元素拷贝到新数组中，原来的数组因为没有引用指向，会被gc干掉；</p>
-<ul>
-<li>addAll()扩容</li>
+<p>当加入第十一个元素时【要插入的元素下标等于数组大小】，ArrayList又进行扩容，为原来的1.5倍(创建一个长度为15的数组，将原来数组的元素拷贝到新数组中)，原来的数组因为没有引用指向，会被gc干掉；</p>
+<p>当加入第16个元素时，ArrayList又进行扩容，将15&gt;&gt;&gt;1 &#x3D;7,15+7&#x3D;22;创建一个长度为22的数组，将原来数组的元素拷贝到新数组中，原来的数组因为没有引用指向，会被gc干掉；</p>
+</li>
+<li><p>addAll()扩容</p>
+</li>
 </ul>
 <ol>
 <li>现在集合中元素个数为零，下一次会扩容为10，添加一个元素个数小于等于10的集合，此时该集合扩容为10；</li>
-<li>现在集合中元素个数为零，下一次会扩容为10，添加一个元素个数为22的集合，此时该集合扩容为22；Math.max(22,22)</li>
-<li>现在集合中元素个数为11个，下一次会扩容为22 ，添加一个元素个数为10的集合（此时所有元素个数为21《22），此时该集合扩容为22；Math.max(21,22)</li>
+<li>现在集合中元素个数为零，下一次会扩容为10，添加一个元素个数为22的集合，此时该集合扩容为22；Math.max(10,22)</li>
+<li>现在集合中元素个数为11个，下一次会扩容为22 ，添加一个元素个数为10的集合（此时所有元素个数为21&lt;22），此时该集合扩容为22；Math.max(21,22)</li>
 </ol>
 <ul>
 <li>扩容机制</li>
@@ -551,32 +556,88 @@
 <li>add(Object o)首次扩容为十，再次扩容为原来的1.5倍（先右移一位，再加上原来数组的长度）</li>
 <li>addAll(Conllection c)没有元素时，扩容为Math.max(10,实际元素个数)，有元素时为Math.max(原容量的1.5倍，实际元素个数)</li>
 </ol>
+<p><strong>首先，通过无参构造创建一个ArrayList对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ArrayList</span> <span class="hljs-variable">arrayList</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>();<br></code></pre></td></tr></table></figure>
+
+
+
+<p>底层原理：调用无参构造器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">public</span> <span class="hljs-title function_">ArrayList</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-built_in">this</span>.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;<br><span class="hljs-comment">//常量DEFAULTCAPACITY_EMPTY_ELEMENTDATA 的值为“&#123;&#125;”，为空数组</span><br></code></pre></td></tr></table></figure>
+
+<p>即使用ArrayList创建ArrayList对象时，并没有初始化底层数组elementData，等到调用add(E e) 方法的时候再初始化elementData，这种”懒加载”模式可以节省内存。</p>
+<p><strong>调用add(E e) 方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">arrayList.add(<span class="hljs-string">&quot;test&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+<p>底层原理：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">add</span><span class="hljs-params">(E e)</span> &#123;<br>        <span class="hljs-comment">// 确认elementData容量是否足够</span><br>        ensureCapacityInternal(size + <span class="hljs-number">1</span>);  <span class="hljs-comment">// 第一次调用add()方法时，size=0</span><br>        elementData[size++] = e;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>先调用<code>ensureCapacityInternal</code>(int minCapacity) 方法,对数组容量进行检查，不够时则进行扩容:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//当当前集合的数组为“&#123;&#125;”时，初始化容量，</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">ensureCapacityInternal</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>    	<span class="hljs-comment">//即第一次调用add(E e)， 如果elementData为&quot;&#123;&#125;&quot;,重新定义minCapacity的值，赋值为DEFAULT_CAPACITY=10</span><br>    	<span class="hljs-comment">// 即第一次调用add(E e)方法时，定义底层数组elementData的长度为10</span><br>        <span class="hljs-keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;<br>            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);<br>        &#125;<br>		<span class="hljs-comment">// 判断是否需要扩容</span><br>        ensureExplicitCapacity(minCapacity);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>ensureExplicitCapacity(minCapacity) 判断是否需要扩容:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">ensureExplicitCapacity</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>        modCount++;<br>	<br>        <span class="hljs-comment">// 第一次进入时，minCapacity=10,elementData.length=0,对数组进行扩容</span><br>        <span class="hljs-comment">// 之后再进入时，minCapacity=size+1，elementData.length=10(每次扩容后会改变)，</span><br>        <span class="hljs-comment">// 需要minCapacity&gt;elementData.length成立，才能扩容</span><br>        <span class="hljs-keyword">if</span> (minCapacity - elementData.length &gt; <span class="hljs-number">0</span>)<br>            grow(minCapacity);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>grow(minCapacity) 对数组进行扩容:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">grow</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>        <span class="hljs-comment">// 将数组长度赋值给oldCapacity</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">oldCapacity</span> <span class="hljs-operator">=</span> elementData.length;<br>    	<br>    	<span class="hljs-comment">// 将oldCapacity右移一位再加上oldCapacity，即相当于newCapacity=1.5oldCapacity(不考虑精度损失)</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> oldCapacity + (oldCapacity &gt;&gt; <span class="hljs-number">1</span>);<br>    	<br>    	<span class="hljs-comment">// 如果newCapacity还是小于minCapacity，直接将minCapacity赋值给newCapacity</span><br>        <span class="hljs-keyword">if</span> (newCapacity - minCapacity &lt; <span class="hljs-number">0</span>)<br>            newCapacity = minCapacity;<br>    <br>    <span class="hljs-comment">// 特殊情况：newCapacity的值过大，直接将整型最大值赋给newCapacity，</span><br>	<span class="hljs-comment">// 即newCapacity=Integer.MAX_VALUE</span><br>        <span class="hljs-keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="hljs-number">0</span>)<br>            newCapacity = hugeCapacity(minCapacity);<br>        <span class="hljs-comment">// 将elementData的数据拷贝到扩容后的数组</span><br>        elementData = Arrays.copyOf(elementData, newCapacity);<br>    &#125;<br><br><span class="hljs-comment">// 如果大于临界值，进行整型最大值的分配</span><br><span class="hljs-comment">//private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hugeCapacity</span><span class="hljs-params">(<span class="hljs-type">int</span> minCapacity)</span> &#123;<br>        <span class="hljs-keyword">if</span> (minCapacity &lt; <span class="hljs-number">0</span>) <span class="hljs-comment">// overflow</span><br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OutOfMemoryError</span>();<br>        <span class="hljs-keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?<br>            Integer.MAX_VALUE :<br>            MAX_ARRAY_SIZE;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>结论：</p>
+<p>使用ArrayList()创建ArrayList对象时，不会定义底层数组的长度，当第一次调用add(E e) 方法时，初始化定义底层数组的长度为10，之后调用add(E e)时，如果需要扩容，则调用grow(int minCapacity) 进行扩容,长度为原来的1.5倍。</p>
+<p>ArrayList还有有参构造器：ArrayList(int initialCapacity) 和 ArrayList(Collection&lt;? extends E&gt; c)，前则创建可以指定初始容量的集合，后者创建一个包含指定collection元素的集合，两者的底层数组初始化和扩容机制与上述ArrayList()一样，且添加方法add(int index, E e)和add(E e)的扩容机制一样。</p>
 <h2 id="2-0-Iterator的fail-fast、fail-safe"><a href="#2-0-Iterator的fail-fast、fail-safe" class="headerlink" title="2.0 Iterator的fail-fast、fail-safe"></a>2.0 Iterator的fail-fast、fail-safe</h2><p>Fail-Fast 与 Fail-Safe</p>
 <ul>
-<li><p>ArrayList 是 fail-fast 的典型代表，遍历的同时不能修改，尽快失败</p>
+<li><p><code>ArrayList </code>    <code>Vector</code>是 fail-fast 的典型代表，<strong>遍历的同时不能修改</strong>，尽快失败</p>
 </li>
-<li><p>CopyOnWriteArrayList 是 fail-safe 的典型代表，遍历的同时可以修改，原理是读写分离</p>
+<li><p><code>CopyOnWriteArrayList </code>是 fail-safe 的典型代表，<strong>遍历的同时可以修改</strong>，原理是读写分离</p>
 </li>
 </ul>
 <p><strong>fail-fast</strong></p>
 <p>ArrayList时fail-fast的典型代表，遍历的同时不能修改，否则抛错，尽快失败<br>一旦发现遍历的时候别人来修改，立即抛异常</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">final</span> ArrayList&lt;Student&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;A&quot;</span>));<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;B&quot;</span>));<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;C&quot;</span>));<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;D&quot;</span>));<br>        <span class="hljs-comment">//调用增强for循环时，底层调用的是iterator迭代器</span><br>        <span class="hljs-keyword">for</span> (Student student : list) &#123;<br>            <span class="hljs-comment">//java.util.ConcurrentModificationException</span><br>            System.out.println(student);<br>        &#125;<br>    &#125;   <br><br><br><span class="hljs-comment">//通过方法返回一个迭代器对象给增强for</span><br><span class="hljs-keyword">public</span> Iterator&lt;E&gt; <span class="hljs-title function_">iterator</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Itr</span>();<span class="hljs-comment">//会调用成员内部类的无参构造</span><br>&#125;<br><br> <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Itr</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Iterator</span>&lt;E&gt; &#123;<br>        <span class="hljs-type">int</span> cursor;       <span class="hljs-comment">// index of next element to return</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">lastRet</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>; <span class="hljs-comment">// index of last element returned; -1 if no such</span><br>     	<span class="hljs-comment">//modCount是ArrayList的实例成员变量，记录当前ArrayList实例被修改的次数</span><br>     	<span class="hljs-comment">//expectedModCount是迭代器实例维护的实例成员变量，记录一开始获得数组时，数组被修改的次数；</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">expectedModCount</span> <span class="hljs-operator">=</span> modCount;<br><br>        Itr() &#123;&#125;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasNext</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-keyword">return</span> cursor != size;<br>        &#125;<br><br>        <span class="hljs-meta">@SuppressWarnings(&quot;unchecked&quot;)</span><br>        <span class="hljs-keyword">public</span> E <span class="hljs-title function_">next</span><span class="hljs-params">()</span> &#123;<br>            checkForComodification();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> cursor;<br>            <span class="hljs-keyword">if</span> (i &gt;= size)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NoSuchElementException</span>();<br>            Object[] elementData = ArrayList.<span class="hljs-built_in">this</span>.elementData;<br>            <span class="hljs-keyword">if</span> (i &gt;= elementData.length)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcurrentModificationException</span>();<br>            cursor = i + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">return</span> (E) elementData[lastRet = i];<br>        &#125;<br>     <span class="hljs-comment">//每次取出元素时都会查看集合是否被修改了，若改了就抛异常</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">checkForComodification</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-keyword">if</span> (modCount != expectedModCount)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcurrentModificationException</span>();<br>        &#125;<br><br></code></pre></td></tr></table></figure>
+<p>并发修改异常：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">final</span> ArrayList&lt;Student&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;A&quot;</span>));<br>    list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;B&quot;</span>));<br>    list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;C&quot;</span>));<br>    list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;D&quot;</span>));<br>    <br>    <span class="hljs-comment">//调用增强for循环时，底层调用的是iterator迭代器</span><br>    <span class="hljs-keyword">for</span> (Student student : list) &#123;<br>        list.remove(student);  <span class="hljs-comment">//java.util.ConcurrentModificationException</span><br>        System.out.println(student);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//集合中 通过方法返回一个迭代器对象给增强for</span><br><span class="hljs-keyword">public</span> Iterator&lt;E&gt; <span class="hljs-title function_">iterator</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Itr</span>();<span class="hljs-comment">//会调用成员内部类的无参构造</span><br>&#125;<br><br>  <span class="hljs-comment">//成员内部类</span><br> <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Itr</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Iterator</span>&lt;E&gt; &#123;<br>        <span class="hljs-type">int</span> cursor;       <span class="hljs-comment">// index of next element to return</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">lastRet</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>; <span class="hljs-comment">// index of last element returned; -1 if no such</span><br>     <br>     	<span class="hljs-comment">//modCount是ArrayList的实例成员变量，记录当前ArrayList实例被修改的次数</span><br>     	<span class="hljs-comment">//expectedModCount是迭代器实例维护的实例成员变量，记录一开始获得数组时，数组被修改的次数；</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">expectedModCount</span> <span class="hljs-operator">=</span> modCount;<br><br>        Itr() &#123;&#125;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasNext</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-comment">//下一个元素的下标不等于该集合的大小</span><br>            <span class="hljs-keyword">return</span> cursor != size;<br>        &#125;<br><br>        <span class="hljs-meta">@SuppressWarnings(&quot;unchecked&quot;)</span><br>        <span class="hljs-keyword">public</span> E <span class="hljs-title function_">next</span><span class="hljs-params">()</span> &#123;<br>            checkForComodification();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> cursor;<br>            <span class="hljs-keyword">if</span> (i &gt;= size)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NoSuchElementException</span>();<br>            Object[] elementData = ArrayList.<span class="hljs-built_in">this</span>.elementData;<br>            <span class="hljs-keyword">if</span> (i &gt;= elementData.length)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcurrentModificationException</span>();<br>            cursor = i + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">return</span> (E) elementData[lastRet = i];<br>        &#125;<br>     <br>     <br>     <br>     <span class="hljs-comment">//-----------------------------------------------------------------</span><br>     <span class="hljs-comment">//每次取出元素时都会查看集合是否被修改了，若改了就抛异常</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">checkForComodification</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-keyword">if</span> (modCount != expectedModCount)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcurrentModificationException</span>();<br>        &#125;<br><br></code></pre></td></tr></table></figure>
 
 
 
 
 
 <p><strong>fail-save</strong></p>
-<p>发现遍历的时候有人来修改，会采取一些策略，例如：牺牲一致性来让整个遍历完成<br>CopyOnWriteArrayList是fail-safe的典型代表，遍历的同时可以修改，原理是读写分离</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java">   <span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test2</span><span class="hljs-params">()</span>&#123;<br>       <span class="hljs-keyword">final</span> CopyOnWriteArrayList&lt;Student&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CopyOnWriteArrayList</span>&lt;&gt;();<br>       list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;A&quot;</span>));<br>       list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;B&quot;</span>));<br>       list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;C&quot;</span>));<br>       list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;D&quot;</span>));<br>       <span class="hljs-comment">//增强for底层调用迭代器</span><br>       <span class="hljs-keyword">for</span> (Student student : list) &#123;<br>           System.out.println(student);<br>       &#125;<br>       System.out.println(list);<br>   &#125;<br><br><br>   <span class="hljs-keyword">public</span> Iterator&lt;E&gt; <span class="hljs-title function_">iterator</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">COWIterator</span>&lt;E&gt;(getArray(), <span class="hljs-number">0</span>);<br>   &#125;<br><br><span class="hljs-comment">//返回当前实例的数组，用于在迭代器中也维护一份（集合中每次添加新的元素就会创建一个长度+1的数组，将原数组的值复制到新数组中，并将新数组作为底层数组），这		样修改集合中的元素，对迭代器没有影响</span><br>   <span class="hljs-keyword">final</span> Object[] getArray() &#123;<br>       <span class="hljs-keyword">return</span> array;<br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">add</span><span class="hljs-params">(E e)</span> &#123;<br>       <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.lock;<br>       lock.lock();<br>       <span class="hljs-keyword">try</span> &#123;<br>           Object[] elements = getArray();<br>           <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> elements.length;<br>           Object[] newElements = Arrays.copyOf(elements, len + <span class="hljs-number">1</span>);<br>           newElements[len] = e;<br>           setArray(newElements);<br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>       &#125; <span class="hljs-keyword">finally</span> &#123;<br>           lock.unlock();<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+<p>发现遍历的时候有人来修改，会采取一些策略，例如：<strong>牺牲一致性</strong>来让整个遍历完成<br><code>CopyOnWriteArrayList</code>是<code> fail-safe</code> 的典型代表，遍历的同时可以修改，<strong>原理是读写分离</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">@Test<br>public void test2()&#123;<br>    final CopyOnWriteArrayList&lt;Student&gt; list = new CopyOnWriteArrayList&lt;&gt;();<br>    list.add(new Student(&quot;A&quot;));<br>    list.add(new Student(&quot;B&quot;));<br>    list.add(new Student(&quot;C&quot;));<br>    list.add(new Student(&quot;D&quot;));<br><br>    //增强for底层调用迭代器<br>    for (Student student : list) &#123;<br>        list.remove(student);<br>        System.out.println(student);<br>    &#125;<br>    System.out.println(list);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css">Student&#123;name:<span class="hljs-string">&#x27;A&#x27;</span>&#125;<br>Student&#123;name:<span class="hljs-string">&#x27;B&#x27;</span>&#125;<br>Student&#123;name:<span class="hljs-string">&#x27;C&#x27;</span>&#125;<br>Student&#123;name:<span class="hljs-string">&#x27;D&#x27;</span>&#125;<br><span class="hljs-selector-attr">[]</span><br></code></pre></td></tr></table></figure>
 
 
 
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Iterator&lt;E&gt; <span class="hljs-title function_">iterator</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">COWIterator</span>&lt;E&gt;(getArray(), <span class="hljs-number">0</span>);<br>   &#125;<br><br><span class="hljs-comment">//返回当前实例的数组，用于在迭代器中也维护一份（集合中每次添加新的元素就会创建一个长度+1的数组，将原数组的值复制到新数组中，	并将新数组作为底层数组），这样修改集合中的元素，对迭代器没有影响</span><br>   <span class="hljs-keyword">final</span> Object[] getArray() &#123;<br>       <span class="hljs-keyword">return</span> array;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>对集合进行修改时，先复制出一份，再进行修改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">add</span><span class="hljs-params">(E e)</span> &#123;<br>      <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.lock;<br>      lock.lock();<br>      <span class="hljs-keyword">try</span> &#123;<br>          Object[] elements = getArray();<br>          <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> elements.length;<br>          Object[] newElements = Arrays.copyOf(elements, len + <span class="hljs-number">1</span>);<br>          newElements[len] = e;<br>          setArray(newElements);<br>          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>      &#125; <span class="hljs-keyword">finally</span> &#123;<br>          lock.unlock();<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>CopyOnWriteArrayList的读写分离，弱一致性</p>
+</blockquote>
 <h2 id="3-0-LinkedList和ArrayList"><a href="#3-0-LinkedList和ArrayList" class="headerlink" title="3.0 LinkedList和ArrayList"></a>3.0 LinkedList和ArrayList</h2><p><strong>LinkedList</strong></p>
 <ol>
 <li>基于双向链表，无需连续内存</li>
 <li>随机访问慢（要沿着链表遍历）</li>
-<li>头尾插入删除性能高</li>
+<li><strong>头尾插入 删除</strong>性能高</li>
 <li>占用内存多</li>
 </ol>
 <p><strong>ArrayList</strong></p>
@@ -584,14 +645,20 @@
 <li>基于数组，需要连续内存</li>
 <li>随机访问快（指根据下标访问）</li>
 <li>尾部插入、删除性能可以，其它部分插入、删除都会移动数据，因此性能会低</li>
-<li>可以利用 cpu 缓存，局部性原理</li>
+<li>可以利用 cpu 缓存 –&gt; 局部性原理</li>
 </ol>
 <p>两者比较：<br>    ArrayList</p>
-<pre><code class="hljs"> 1. 基于数组，需要连续内存
-  2. 随机访问快【根据下标访问】（根据数组地址，元素类型，索引综合计算）直接得到想要访问元素的地址
-  3. 尾部插入、删除性能尚可；其他地方插入、删除需要移动元素，性能较低(尤其是头部)【综合性能ArrayList要优于LinkedList】
-  4. 可以利用cpu缓存(cpu与内存之间访问所需的时间较长，所以使用cpu缓存，来提升读写性能)，局部性原理(访问一个数据的时候，cpu会默认认为它附近的元素有很大概	   率会被访问，所以一并加载进cpu缓存)
-</code></pre>
+<ol>
+<li><p>基于数组，需要连续内存</p>
+</li>
+<li><p>随机访问快【根据下标访问】（根据数组地址，元素类型，索引综合计算）直接得到想要访问元素的地址</p>
+</li>
+<li><p>尾部插入、删除性能尚可；其他地方插入、删除需要移动元素，性能较低(尤其是头部)【<strong>综合性能ArrayList要优于LinkedList</strong>】</p>
+</li>
+<li><p>可以利用cpu缓存(cpu与内存之间访问所需的时间较长，所以使用cpu缓存，来提升读写性能)，局部性原理(访问一个数据的时候，</p>
+<p>cpu会默认认为它附近的元素有很大概率会被访问，所以一并加载进cpu缓存)</p>
+</li>
+</ol>
 <p>LinkedList</p>
 <ol>
 <li>基于双向链表，无需连续内存</li>
@@ -603,22 +670,19 @@
 <li>1.7 数组 + 链表</li>
 <li>1.8 数组 + （链表 | 红黑树）</li>
 </ul>
-<blockquote>
-<p>更形象的演示，见资料中的 hash-demo.jar，运行需要 jdk14 以上环境，进入 jar 包目录，执行下面命令</p>
-</blockquote>
 <h2 id="2-0-树化与退化"><a href="#2-0-树化与退化" class="headerlink" title="2.0 树化与退化"></a>2.0 树化与退化</h2><p><strong>树化意义</strong></p>
 <ul>
-<li>红黑树用来避免 DoS 攻击，防止链表超长时性能下降，树化应当是偶然情况，是保底策略</li>
-<li>hash 表的查找，更新的时间复杂度是 $O(1)$，而红黑树的查找，更新的时间复杂度是 $O(log_2⁡n )$，TreeNode 占用空间也比普通 Node 的大，如非必要，尽量还是使用链表</li>
-<li>hash 值如果足够随机，则在 hash 表内按泊松分布，在负载因子 0.75 的情况下，长度超过 8 的链表出现概率是 0.00000006，树化阈值选择 8 就是为了让树化几率足够小</li>
+<li>红黑树用来避免 <code>DoS </code> 攻击，防止链表超长时性能下降，树化应当是 偶然情况，是保底策略</li>
+<li>hash 表的查找，更新的时间复杂度是 O(1)，而红黑树的查找，更新的时间复杂度是 O(log⁡2N )，TreeNode 占用空间也比普通 Node 的大，如非必要，尽量还是使用链表</li>
+<li>hash 值如果足够随机，则在 hash 表内按泊松分布，在负载因子 <code>0.75 </code>的情况下，长度超过 8 的链表出现概率是 0.00000006，树化阈值选择 8 就是为了让树化几率足够小</li>
 </ul>
 <p><strong>树化规则</strong></p>
 <ul>
-<li>当链表长度超过树化阈值 8 时，先尝试扩容来减少链表长度，如果数组容量已经 &gt;&#x3D;64，才会进行树化</li>
+<li>当 <strong>链表长度</strong> 超过  <strong>树化阈值 8</strong> 时，先尝试扩容来减少链表长度，如果数组容量已经 &gt;&#x3D;64，才会进行树化</li>
 </ul>
 <p><strong>退化规则</strong></p>
 <ul>
-<li>情况1：在扩容时如果拆分树时，树元素个数 &lt;&#x3D; 6 则会退化链表</li>
+<li>情况1：在扩容时如果  <strong>拆分树</strong> 时，<strong>树元素个数 &lt;&#x3D; 6</strong> 则会退化链表</li>
 <li>情况2：remove 树节点时，若 root、root.left、root.right、root.left.left 有一个为 null ，也会退化为链表</li>
 </ul>
 <h2 id="3-0-索引计算"><a href="#3-0-索引计算" class="headerlink" title="3.0 索引计算"></a>3.0 索引计算</h2><p><strong>索引计算方法</strong></p>
@@ -628,17 +692,17 @@
 <li>二次 hash() 是为了综合高位数据，让哈希分布更为均匀</li>
 </ul>
 </li>
-<li>最后 二次hash值 &amp; (capacity – 1) 得到索引</li>
+<li>最后 二次hash值 &amp; (capacity – 1) 得到索引 <strong>hash%tab.length</strong>等价于<strong>hash&amp;(tab.lenngth-1)</strong></li>
 </ul>
 <p><strong>数组容量为何是 2 的 n 次幂</strong></p>
 <ol>
-<li>计算索引时效率更高：如果是 2 的 n 次幂可以使用位与运算代替取模</li>
+<li>计算索引时效率更高：如果是 2 的 n 次幂可以使用 <strong>位与运算</strong> 代替取模</li>
 <li>扩容时重新计算索引效率更高： <strong>hash &amp; oldCap</strong> &#x3D;&#x3D; 0 的元素留在原来位置 ，否则新位置 &#x3D; 旧位置 + oldCap</li>
 </ol>
 <p><strong>注意</strong></p>
 <ul>
-<li>二次 hash 是为了配合 <strong>容量是 2 的 n 次幂</strong> 这一设计前提，如果 hash 表的容量不是 2 的 n 次幂，则不必二次 hash</li>
-<li><strong>容量是 2 的 n 次幂</strong> 这一设计计算索引效率更好，但 hash 的分散性就不好，需要二次 hash 来作为补偿，没有采用这一设计的典型例子是 Hashtable</li>
+<li>二次 hash 是为了配合 <strong>容量是 2 的n次幂</strong> 这一设计前提，如果 hash 表的容量不是 2 的 n 次幂，则不必二次 hash</li>
+<li><strong>容量是 2 的 n 次幂</strong> 这一设计计算索引效率更好，但 hash 的分散性就不好，需要二次 hash 来作为补偿，没有采用这一设计的典型例子是 <code>Hashtable</code></li>
 </ul>
 <h2 id="4-0-put-与扩容"><a href="#4-0-put-与扩容" class="headerlink" title="4.0 put 与扩容"></a>4.0 put 与扩容</h2><p><strong>put 流程</strong></p>
 <ol>
@@ -662,11 +726,13 @@
 </li>
 </ol>
 <p><strong>扩容（加载）因子为何默认是 0.75f</strong></p>
-<ol>
-<li>在空间占用与查询时间之间取得较好的权衡</li>
+<ol start="2">
 <li>大于这个值，空间节省了，但链表就会比较长影响性能</li>
 <li>小于这个值，冲突减少了，但扩容就会更频繁，空间占用也更多</li>
 </ol>
+<blockquote>
+<p> 在空间占用与查询时间之间取得较好的权衡</p>
+</blockquote>
 <h2 id="5-0-并发问题"><a href="#5-0-并发问题" class="headerlink" title="5.0 并发问题"></a>5.0 并发问题</h2><p><strong>扩容死链（1.7 会存在）</strong></p>
 <p>1.7 源码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">transfer</span><span class="hljs-params">(Entry[] newTable, <span class="hljs-type">boolean</span> rehash)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">newCapacity</span> <span class="hljs-operator">=</span> newTable.length;<br>    <span class="hljs-keyword">for</span> (Entry&lt;K,V&gt; e : table) &#123;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-literal">null</span> != e) &#123;<br>            Entry&lt;K,V&gt; next = e.next;<br>            <span class="hljs-keyword">if</span> (rehash) &#123;<br>                e.hash = <span class="hljs-literal">null</span> == e.key ? <span class="hljs-number">0</span> : hash(e.key);<br>            &#125;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> indexFor(e.hash, newCapacity);<br>            e.next = newTable[i];<br>            newTable[i] = e;<br>            e = next;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -674,7 +740,7 @@
 <ul>
 <li><strong>数据错乱（1.7，1.8 都会存在）</strong></li>
 </ul>
-<p>​		多线程下put();元素导致元素缺失</p>
+<p>​		多线程下put()元素导致元素缺失</p>
 <h2 id="6-0-key-的设计"><a href="#6-0-key-的设计" class="headerlink" title="6.0 key 的设计"></a>6.0 key 的设计</h2><ul>
 <li><strong>key 的设计要求</strong></li>
 </ul>
@@ -702,10 +768,10 @@
 </li>
 </ul>
 <p>1.7: </p>
-<pre><code class="hljs"> 1. 数组 + 链表
+<pre><code class="hljs">  1. 数组 + 链表
   2. 链表插入节点时使用头插法
   3. 当前元素个数大于等于阈值(当前数组长度的四分之三)且要插入的元素的桶下标对应的位置有元素时，才进行扩容；
-  4. 扩容后，要迁移元素；计算Node桶下标时没有优化（二次hash值 &amp; oldCapacity == 0则不用移动；否则移动到新的桶下标位置去 新位置=当前桶下标					+oldCacity）
+  4. 扩容后，要迁移元素；计算Node桶下标时没有优化（二次hash值 &amp; oldCapacity == 0则不用移动；否则移动到新的桶下标位置去 新位置=当前桶下标+oldCacity）
 </code></pre>
 <p>1.8: </p>
 <pre><code class="hljs"> 1.  数组 + 链表(或红黑树)
@@ -753,8 +819,13 @@
 </ul>
 <ol>
 <li>首先调用对象的hashCode方法得到原始hash，再通过HashMap的hash方法对原始hash进行计算得到二次hash;</li>
-<li>最后通过二次hash的值对当前数组长度取模获取索引值（桶下标）【这种是方便人计算，当数组容量是2的n次幂时，走的是下面 按位与的方式，效率更高】<br>97 % 16 &#x3D;1  97&amp;(16-1)&#x3D;1<br>二次hash值 &amp; （capacity-1）；注意：capacity的值必须是二的几次幂的形式</li>
+<li>最后通过二次hash的值对当前数组长度取模获取索引值（桶下标）【这种是方便人计算，当数组容量是2的n次幂时，走的是下面 按位与的方式，效率更高】</li>
 </ol>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">97 </span>% <span class="hljs-number">16</span> =<span class="hljs-number">1</span>  <span class="hljs-number">97</span>&amp;(<span class="hljs-number">16</span>-<span class="hljs-number">1</span>)=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>二次hash值 &amp; （capacity-1）；注意：capacity的值必须是二的几次幂的形式</p>
 <ul>
 <li>HashMap中的hash</li>
 </ul>
@@ -825,7 +896,7 @@ S0*31^ n-1+S1*31^ n-2+s3*31^N-3+...&quot;123456&quot; 49*31^5 + 50*31^4 + 51*31^
 </li>
 </ul>
 <hr>
-<p><img src="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-19_20-05-04.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/202210101009630.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h1 id="九、设计模式"><a href="#九、设计模式" class="headerlink" title="九、设计模式"></a>九、设计模式</h1><h2 id="1-0-饿汉懒汉区别"><a href="#1-0-饿汉懒汉区别" class="headerlink" title="1.0 饿汉懒汉区别"></a>1.0 饿汉懒汉区别</h2><p>饿汉本质是在静态代码块中调用私有构造；所以一碰到类就会初始化</p>
 <p>懒汉本质就是不在静态代码块中，调用私有构造</p>
@@ -870,9 +941,11 @@ S0*31^ n-1+S1*31^ n-2+s3*31^N-3+...&quot;123456&quot; 49*31^5 + 50*31^4 + 51*31^
 <h3 id="4-2-为什么要添加valatile修饰符"><a href="#4-2-为什么要添加valatile修饰符" class="headerlink" title="4.2 为什么要添加valatile修饰符"></a>4.2 为什么要添加valatile修饰符</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//主要是为了防止指令重排</span><br><br><span class="hljs-comment">//反编译字节码文件查看文件执行指令顺序</span><br>D:\learn\tencentClass\interview\ChanzPodcast\base\Project\out\production\one\com\itheima\design_pattern&gt;javap -c -v -p Sluggard.class<br><br> 		<span class="hljs-number">17</span>: <span class="hljs-keyword">new</span>           #<span class="hljs-number">6</span>                  <span class="hljs-comment">// class com/itheima/design_pattern/Sluggard</span><br>        <span class="hljs-number">20</span>: dup<br>        <span class="hljs-number">21</span>: invokespecial #<span class="hljs-number">7</span>                  <span class="hljs-comment">// Method &quot;&lt;init&gt;&quot;:()V</span><br>        <span class="hljs-number">24</span>: putstatic     #<span class="hljs-number">5</span>                  <span class="hljs-comment">// Field INSTANCE:Lcom/itheima/design_pattern/Sluggard;</span><br>	<span class="hljs-comment">//第17指令，创建对象；在堆内存中开辟出一块空间，根据Sluggard实例的成员变量和方法引用，计算出空间大小；【创建对象就是分配空间】</span><br>    <span class="hljs-comment">//第21指令，调用构造器，为成员变量初始化(没有就赋默认值)</span><br>    <span class="hljs-comment">//第24指令，给静态变量赋值，将创建好的Sluggard对象赋值给静态变量        </span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><img src="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-20_09-13-07.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210232303927.png" srcset="/img/loading.gif" lazyload alt="image-20221023230321856"></p>
 <hr>
-<p><img src="http://fgcy-pic.zhamao.ml/Snipaste_2022-03-20_09-24-34.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210232304585.png" srcset="/img/loading.gif" lazyload alt="image-20221023230413726"></p>
+<hr>
 <ul>
 <li>小结</li>
 </ul>
@@ -1287,6 +1360,11 @@ S0*31^ n-1+S1*31^ n-2+s3*31^N-3+...&quot;123456&quot; 49*31^5 + 50*31^4 + 51*31^
   <script  src="/js/local-search.js" ></script>
 
 
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
 
 
 
