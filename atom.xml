@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-26T06:13:08.178Z</updated>
+  <updated>2022-11-05T08:52:17.121Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="http://example.com/2022/10/26/git-zong-jie/"/>
     <id>http://example.com/2022/10/26/git-zong-jie/</id>
     <published>2022-10-26T14:10:24.000Z</published>
-    <updated>2022-10-26T06:13:08.178Z</updated>
+    <updated>2022-11-05T08:52:17.121Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;版本控制工具应该具备的功能&quot;&gt;&lt;a href=&quot;#版本控制工具应该具备的功能&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;版本控制工具应该具备的功能&quot;&gt;&lt;a href=&quot;#版本控制工具应该具备的功能&quot; class=&quot;headerlink&quot; title=&quot;版本控制工具应该具备的功能&quot;&gt;&lt;/a&gt;版本控制工具应该具备的功能&lt;/h1&gt;&lt;p&gt;1、协同修改&lt;/p&gt;
+&lt;p&gt;​	 n</summary>
         
       
     
@@ -49,7 +49,7 @@
     <link href="http://example.com/2022/10/18/vue/"/>
     <id>http://example.com/2022/10/18/vue/</id>
     <published>2022-10-17T21:48:48.000Z</published>
-    <updated>2022-11-05T08:13:40.343Z</updated>
+    <updated>2022-11-05T08:35:01.072Z</updated>
     
     
       
