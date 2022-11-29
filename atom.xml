@@ -105,7 +105,7 @@
     <link href="http://example.com/2022/10/12/song-hong-kang-mysql-gao-ji-di-14-zhang-mysql-shi-wu-ri-zhi/"/>
     <id>http://example.com/2022/10/12/song-hong-kang-mysql-gao-ji-di-14-zhang-mysql-shi-wu-ri-zhi/</id>
     <published>2022-10-11T23:33:55.000Z</published>
-    <updated>2022-10-17T13:03:23.763Z</updated>
+    <updated>2022-11-29T13:44:49.081Z</updated>
     
     
     
@@ -122,7 +122,7 @@
     <link href="http://example.com/2022/10/07/song-hong-kang-mysql-gao-ji-di-13-zhang-shi-wu-ji-chu-zhi-shi/"/>
     <id>http://example.com/2022/10/07/song-hong-kang-mysql-gao-ji-di-13-zhang-shi-wu-ji-chu-zhi-shi/</id>
     <published>2022-10-07T10:15:13.000Z</published>
-    <updated>2022-10-11T14:59:15.297Z</updated>
+    <updated>2022-11-29T13:44:43.913Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-数据库事务概述&quot;&gt;&lt;a href=&quot;#1-数据库事务概述&quot; class=&quot;headerlink&quot; title=&quot;1. 数据库事务概述&quot;&gt;&lt;/a&gt;1. 数据库事务概述&lt;/h1&gt;&lt;p&gt;事务 是 &lt;strong&gt;数据库&lt;/strong&gt; 区别于 &lt;strong&gt;文件系统&lt;/strong&gt; 的重要特性之一，当我们有了事务就会让数据库始终保持 &lt;strong&gt;一致性&lt;/strong&gt;，同时我们还能通讨事务的机制 &lt;strong&gt;恢复到某个时间点&lt;/strong&gt;，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失&lt;/p&gt;</summary>
@@ -141,7 +141,7 @@
     <link href="http://example.com/2022/09/30/shen-ru-li-jie-mysql-shi-wu/"/>
     <id>http://example.com/2022/09/30/shen-ru-li-jie-mysql-shi-wu/</id>
     <published>2022-09-29T22:42:42.000Z</published>
-    <updated>2022-09-29T14:57:30.589Z</updated>
+    <updated>2022-11-29T13:43:40.383Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;什么是事务？&quot;&gt;&lt;a href=&quot;#什么是事务？&quot; class=&quot;headerlink&quot; title=&quot;什么是事务？&quot;&gt;&lt;/a&gt;什么是事务？&lt;/h2&gt;&lt;p&gt;事务（Transaction）在计算机术语中是指访问并可能更新数据库中各种数据项的一个   &lt;strong&gt;程序执行单元&lt;/strong&gt;。&lt;/p&gt;
@@ -202,7 +202,7 @@
     <link href="http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/"/>
     <id>http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/</id>
     <published>2022-09-26T22:50:59.000Z</published>
-    <updated>2022-10-07T02:14:16.267Z</updated>
+    <updated>2022-11-29T13:44:38.024Z</updated>
     
     
     <summary type="html">&lt;p&gt;在数据库调优中，我们的目标就是响应时间更快，吞吐量更大、利用  **宏观的监控工且 ** 和 &lt;strong&gt;微观的日志分析&lt;/strong&gt;  可以帮我们快速找到调优的思路和方式&lt;/p&gt;
@@ -223,7 +223,7 @@
     <link href="http://example.com/2022/09/21/song-hong-kang-mysql-gao-ji-di-08-zhang-suo-yin-de-chuang-jian-yu-she-ji-yuan-ze/"/>
     <id>http://example.com/2022/09/21/song-hong-kang-mysql-gao-ji-di-08-zhang-suo-yin-de-chuang-jian-yu-she-ji-yuan-ze/</id>
     <published>2022-09-20T22:02:14.000Z</published>
-    <updated>2022-09-26T14:49:38.046Z</updated>
+    <updated>2022-11-29T13:44:30.301Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-索引的声明与使用&quot;&gt;&lt;a href=&quot;#1-索引的声明与使用&quot; class=&quot;headerlink&quot; title=&quot;1. 索引的声明与使用&quot;&gt;&lt;/a&gt;1. 索引的声明与使用&lt;/h1&gt;&lt;h2 id=&quot;1-1-索引的分类&quot;&gt;&lt;a href=&quot;#1-1-索引的分类&quot; class=&quot;headerlink&quot; title=&quot;1.1 索引的分类&quot;&gt;&lt;/a&gt;1.1 索引的分类&lt;/h2&gt;&lt;p&gt;MySQL的索引包括普通索引、唯一性索引、全文索引、单列索引、多列索引和空间索引等。 &lt;/p&gt;
@@ -250,7 +250,7 @@
     <link href="http://example.com/2022/09/19/di-07-zhang-innodb-shu-ju-cun-chu-jie-gou/"/>
     <id>http://example.com/2022/09/19/di-07-zhang-innodb-shu-ju-cun-chu-jie-gou/</id>
     <published>2022-09-19T00:26:09.000Z</published>
-    <updated>2022-09-20T14:14:15.787Z</updated>
+    <updated>2022-11-29T13:36:07.110Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-数据库的存储结构：页&quot;&gt;&lt;a href=&quot;#1-数据库的存储结构：页&quot; class=&quot;headerlink&quot; title=&quot;1.数据库的存储结构：页&quot;&gt;&lt;/a&gt;1.数据库的存储结构：页&lt;/h1&gt;&lt;p&gt;索引结构给我们提供了高效的索引方式,不过索引信息以及数据记录都是保存在文件上的,确切说是存储在页结构中。&lt;/p&gt;
@@ -282,7 +282,7 @@
     <link href="http://example.com/2022/09/19/song-hong-kang-mysql-gao-ji-di-06-zhang-suo-yin-de-shu-ju-jie-gou/"/>
     <id>http://example.com/2022/09/19/song-hong-kang-mysql-gao-ji-di-06-zhang-suo-yin-de-shu-ju-jie-gou/</id>
     <published>2022-09-19T00:25:52.000Z</published>
-    <updated>2022-09-18T16:38:29.521Z</updated>
+    <updated>2022-11-29T13:44:25.013Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-为什么使用索引&quot;&gt;&lt;a href=&quot;#1-为什么使用索引&quot; class=&quot;headerlink&quot; title=&quot;1. 为什么使用索引&quot;&gt;&lt;/a&gt;1. 为什么使用索引&lt;/h1&gt;&lt;p&gt;&lt;code&gt;索引&lt;/code&gt;  是存储引擎用于   &lt;code&gt;快速找到数据记录&lt;/code&gt;   的一种  &lt;code&gt;数据结构&lt;/code&gt;   &lt;/p&gt;
@@ -309,7 +309,7 @@
     <link href="http://example.com/2022/09/11/ma-shi-bing-yi-xie-ji-chu-de-cao-zuo-xi-tong-zhi-shi/"/>
     <id>http://example.com/2022/09/11/ma-shi-bing-yi-xie-ji-chu-de-cao-zuo-xi-tong-zhi-shi/</id>
     <published>2022-09-10T22:15:57.000Z</published>
-    <updated>2022-09-18T16:42:48.975Z</updated>
+    <updated>2022-11-29T13:49:04.951Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;汇编语言的执行过程&quot;&gt;&lt;a href=&quot;#汇编语言的执行过程&quot; class=&quot;headerlink&quot; title=&quot;汇编语言的执行过程&quot;&gt;&lt;/a&gt;汇编语言的执行过程&lt;/h2&gt;&lt;p&gt;汇编语言的本质：助记符。【将某些单词与一些01串关联起来，用这些单词来代表01串】&lt;/p&gt;
@@ -340,7 +340,7 @@
     <link href="http://example.com/2022/09/07/ma-shi-bing-yi-xie-ji-chu-de-wang-luo-zhi-shi/"/>
     <id>http://example.com/2022/09/07/ma-shi-bing-yi-xie-ji-chu-de-wang-luo-zhi-shi/</id>
     <published>2022-09-06T18:53:48.000Z</published>
-    <updated>2022-09-10T14:12:56.812Z</updated>
+    <updated>2022-11-29T13:49:14.568Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;TCP-与IP与Java中的什么东西相关？&quot;&gt;&lt;a href=&quot;#TCP-与IP与Java中的什么东西相关？&quot; class=&quot;headerlink&quot; title=&quot;TCP 与IP与Java中的什么东西相关？&quot;&gt;&lt;/a&gt;TCP 与IP与Java中的什么东西相关？&lt;/h2&gt;&lt;p&gt;1、高并发，负载均衡&lt;/p&gt;
@@ -365,7 +365,7 @@
     <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-05-zhang-cun-chu-yin-qing/"/>
     <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-05-zhang-cun-chu-yin-qing/</id>
     <published>2022-08-28T20:59:49.000Z</published>
-    <updated>2022-08-28T13:01:33.794Z</updated>
+    <updated>2022-11-29T13:44:19.015Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;存储引擎（表处理器）&quot;&gt;&lt;a href=&quot;#存储引擎（表处理器）&quot; class=&quot;headerlink&quot; title=&quot;存储引擎（表处理器）&quot;&gt;&lt;/a&gt;存储引擎（表处理器）&lt;/h1&gt;&lt;p&gt;为了管理方便,人们把  &lt;code&gt;连接管理&lt;/code&gt;、&lt;code&gt;查询缓存&lt;/code&gt;  、&lt;code&gt;语法解析&lt;/code&gt;  、&lt;code&gt;查询优化&lt;/code&gt;    这些并不涉及  &lt;strong&gt;真实数据存储&lt;/strong&gt;  的功能划分为  &lt;strong&gt;MySQL server 的功能&lt;/strong&gt;&lt;/p&gt;
@@ -393,7 +393,7 @@
     <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-04-zhang-luo-ji-jia-gou/"/>
     <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-04-zhang-luo-ji-jia-gou/</id>
     <published>2022-08-28T20:54:44.000Z</published>
-    <updated>2022-08-28T12:59:22.114Z</updated>
+    <updated>2022-11-29T13:44:13.329Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-逻辑架构剖析&quot;&gt;&lt;a href=&quot;#1-逻辑架构剖析&quot; class=&quot;headerlink&quot; title=&quot;1. 逻辑架构剖析&quot;&gt;&lt;/a&gt;1. 逻辑架构剖析&lt;/h1&gt;&lt;h2 id=&quot;1-1服务器处理客户端请求&quot;&gt;&lt;a href=&quot;#1-1服务器处理客户端请求&quot; class=&quot;headerlink&quot; title=&quot;1.1服务器处理客户端请求&quot;&gt;&lt;/a&gt;1.1服务器处理客户端请求&lt;/h2&gt;&lt;p&gt;首先MySQL是典型的C&amp;#x2F;s架构, 即 &lt;code&gt;Client/Server&lt;/code&gt; 架构,服务器端程序使用的&lt;code&gt;mysqld&lt;/code&gt;&lt;/p&gt;
@@ -414,7 +414,7 @@
     <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-03-zhang-yong-hu-yu-quan-xian-guan-li/"/>
     <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-03-zhang-yong-hu-yu-quan-xian-guan-li/</id>
     <published>2022-08-28T20:50:53.000Z</published>
-    <updated>2022-08-28T12:54:23.481Z</updated>
+    <updated>2022-11-29T13:44:07.772Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-用户管理&quot;&gt;&lt;a href=&quot;#1-用户管理&quot; class=&quot;headerlink&quot; title=&quot;1. 用户管理&quot;&gt;&lt;/a&gt;1. 用户管理&lt;/h1&gt;&lt;p&gt;MySQL用户可以分为&lt;strong&gt;普通用户&lt;/strong&gt;和&lt;strong&gt;root&lt;/strong&gt;用户&lt;/p&gt;
@@ -437,7 +437,7 @@
     <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-02-zhang-mysql-de-shu-ju-mu-lu/"/>
     <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-02-zhang-mysql-de-shu-ju-mu-lu/</id>
     <published>2022-08-28T20:48:57.000Z</published>
-    <updated>2022-08-28T12:50:20.035Z</updated>
+    <updated>2022-11-29T13:44:02.429Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1-目录结构&quot;&gt;&lt;a href=&quot;#1-目录结构&quot; class=&quot;headerlink&quot; title=&quot;1.目录结构&quot;&gt;&lt;/a&gt;1.目录结构&lt;/h1&gt;&lt;h2 id=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;a href=&quot;#1、MySQL8的主要目录结构&quot; class=&quot;headerlink&quot; title=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;/a&gt;1、MySQL8的主要目录结构&lt;/h2&gt;&lt;p&gt;安装好MySQL 之后，我们查看与之相关的目录结构：&lt;/p&gt;
@@ -457,7 +457,7 @@
     <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-01-zhang-linux-xia-mysql-de-an-zhuang-yu-shi-yong/"/>
     <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-01-zhang-linux-xia-mysql-de-an-zhuang-yu-shi-yong/</id>
     <published>2022-08-28T20:46:46.000Z</published>
-    <updated>2022-08-28T12:48:22.601Z</updated>
+    <updated>2022-11-29T13:43:57.447Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;1、安装前说明&quot;&gt;&lt;a href=&quot;#1、安装前说明&quot; class=&quot;headerlink&quot; title=&quot;1、安装前说明&quot;&gt;&lt;/a&gt;1、安装前说明&lt;/h1&gt;&lt;h2 id=&quot;1-1-Linux系统及工具的准备&quot;&gt;&lt;a href=&quot;#1-1-Linux系统及工具的准备&quot; class=&quot;headerlink&quot; title=&quot;1.1 Linux系统及工具的准备&quot;&gt;&lt;/a&gt;1.1 Linux系统及工具的准备&lt;/h2&gt;&lt;p&gt;安装并启动好两台虚拟机： CentOS 7&lt;br&gt;掌握克隆虚拟机的操作&lt;/p&gt;
@@ -488,7 +488,7 @@
     <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/"/>
     <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/</id>
     <published>2022-08-28T20:44:10.000Z</published>
-    <updated>2022-08-29T14:24:37.629Z</updated>
+    <updated>2022-11-29T13:43:51.108Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
