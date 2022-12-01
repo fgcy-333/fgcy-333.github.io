@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-27T16:18:58.431Z</updated>
+  <updated>2022-12-01T16:11:17.835Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>xml与设计模式</title>
+    <link href="http://example.com/2022/12/02/hei-ma-java-ji-chu-xml-yu-she-ji-mo-shi/"/>
+    <id>http://example.com/2022/12/02/hei-ma-java-ji-chu-xml-yu-she-ji-mo-shi/</id>
+    <published>2022-12-02T00:10:24.000Z</published>
+    <updated>2022-12-01T16:11:17.835Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;XML&quot;&gt;&lt;a href=&quot;#XML&quot; class=&quot;headerlink&quot; title=&quot;XML&quot;&gt;&lt;/a&gt;XML&lt;/h1&gt;&lt;h2 id=&quot;XML概述：&quot;&gt;&lt;a href=&quot;#XML概述：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="黑马程序员-徐磊-java基础" scheme="http://example.com/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%BE%90%E7%A3%8A-java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>23种设计模式</title>
@@ -473,34 +498,6 @@
 &lt;li&gt;防火墙：6是iptables，7是firewalld &lt;/li&gt;
 &lt;li&gt;启动服务的命令：6是service，7是systemctl&lt;/li&gt;
 &lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第零章虚拟机克隆</title>
-    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/"/>
-    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-00-zhang-xu-ni-ji-ke-long/</id>
-    <published>2022-08-28T20:44:10.000Z</published>
-    <updated>2022-11-29T13:43:51.108Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文以centos为例&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;vmware中的完整克隆是基于指定的虚拟机克隆出相同的一份出来，不必再安装&lt;/p&gt;
-&lt;p&gt;但是我们要保证几个地方不能一样&lt;/p&gt;
-&lt;p&gt;1、主机名称（hostname）&lt;/p&gt;
-&lt;p&gt;2、虚拟网卡设备mac地址&lt;/p&gt;
-&lt;p&gt;3、ip地址&lt;/p&gt;
-&lt;p&gt;4、UUID&lt;/p&gt;
-&lt;p&gt;所以我们在克隆后要对这四个地方进行修改&lt;/p&gt;</summary>
     
     
     
