@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-05T15:48:25.785Z</updated>
+  <updated>2022-12-07T15:21:19.706Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IO模型</title>
+    <link href="http://example.com/2022/12/08/io-mo-xing/"/>
+    <id>http://example.com/2022/12/08/io-mo-xing/</id>
+    <published>2022-12-07T23:19:12.000Z</published>
+    <updated>2022-12-07T15:21:19.706Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;第一章-BIO、NIO、AIO课程介绍&quot;&gt;&lt;a href=&quot;#第一章-BIO、NIO、AIO课程介绍&quot; class=&quot;headerlink&quot; title=&quot;第一章 BIO、NIO、AIO课程介绍&quot;&gt;&lt;/a&gt;第一章 BIO、NIO、AIO课程介绍&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="黑马程序员" scheme="http://example.com/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+    <category term="IO模型" scheme="http://example.com/tags/IO%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="NIO" scheme="http://example.com/tags/NIO/"/>
+    
+    <category term="BIO" scheme="http://example.com/tags/BIO/"/>
+    
+    <category term="AIO" scheme="http://example.com/tags/AIO/"/>
+    
+  </entry>
   
   <entry>
     <title>spring-security</title>
@@ -474,26 +507,6 @@
 &lt;p&gt;普通用户只拥有被授予的各种权限&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;MySQL提供了许多语句用来管理用户账号&lt;/code&gt;,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;MySQL数据库的安全性需要通过账户管理来保证&lt;/code&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第02章_MySQL的数据目录</title>
-    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-02-zhang-mysql-de-shu-ju-mu-lu/"/>
-    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-02-zhang-mysql-de-shu-ju-mu-lu/</id>
-    <published>2022-08-28T20:48:57.000Z</published>
-    <updated>2022-11-29T13:44:02.429Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;1-目录结构&quot;&gt;&lt;a href=&quot;#1-目录结构&quot; class=&quot;headerlink&quot; title=&quot;1.目录结构&quot;&gt;&lt;/a&gt;1.目录结构&lt;/h1&gt;&lt;h2 id=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;a href=&quot;#1、MySQL8的主要目录结构&quot; class=&quot;headerlink&quot; title=&quot;1、MySQL8的主要目录结构&quot;&gt;&lt;/a&gt;1、MySQL8的主要目录结构&lt;/h2&gt;&lt;p&gt;安装好MySQL 之后，我们查看与之相关的目录结构：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs shell&quot;&gt;find / -name mysql&lt;br&gt;&lt;br&gt;/etc/logrotate.d/mysql&lt;br&gt;/var/lib/mysql&lt;br&gt;/var/lib/mysql/mysql&lt;br&gt;/usr/bin/mysql&lt;br&gt;/usr/lib64/mysql&lt;br&gt;/usr/share/mysql&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
