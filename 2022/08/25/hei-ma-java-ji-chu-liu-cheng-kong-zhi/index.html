@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/java.png">
 <meta property="article:published_time" content="2022-08-24T23:00:47.000Z">
-<meta property="article:modified_time" content="2022-11-27T16:25:43.492Z">
+<meta property="article:modified_time" content="2022-12-09T16:32:51.152Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="黑马程序员-徐磊-java基础">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.3k 字
+          5k 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          36 分钟
+          42 分钟
         
       </span>
     
@@ -314,7 +314,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：12 天前
+                    本文最后更新于：4 分钟前
                   
                 
               </p>
@@ -349,7 +349,7 @@
 <ul>
 <li>代码体现</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>      <span class="hljs-comment">//switch天然与枚举结合进行信息分类，对入参类型进行校验，但只适合信息标志</span><br>      <span class="hljs-comment">//如果需要记录一些信息的就使用常量</span><br>      choose(CaseType.FIFTH);<br>  &#125;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">choose</span><span class="hljs-params">(CaseType caseType)</span> &#123;<br>      <span class="hljs-comment">//这里可以是byte short int char String 枚举 不支持小数和long（小数不精确不利于比对，long太大了，没有可能有这么多的标志位）</span><br>      <span class="hljs-keyword">switch</span> (caseType) &#123;<br>          <span class="hljs-comment">//这里只能是字面量或枚举或常量，不能重复</span><br>          <span class="hljs-keyword">case</span> FIFTH:<br>              System.out.println(<span class="hljs-string">&quot;1&quot;</span>);<br>              <span class="hljs-comment">//不加beak会发生switch穿透，有时候会有用到switch穿透</span><br>              <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">case</span> SECOND:<br>              System.out.println(<span class="hljs-string">&quot;2&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>              <span class="hljs-keyword">break</span>;<br>              System.out.println(<span class="hljs-string">&quot;4&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">case</span> FIRST:<br>              System.out.println(<span class="hljs-string">&quot;5&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>      <span class="hljs-comment">//switch天然与枚举结合进行信息分类，对入参类型进行校验，但只适合信息标志</span><br>      <span class="hljs-comment">//如果需要记录一些信息的就使用常量</span><br>      choose(CaseType.FIFTH);<br>  &#125;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">choose</span><span class="hljs-params">(CaseType caseType)</span> &#123;<br>      <span class="hljs-comment">//这里可以是byte short int char String 枚举 不支持小数和long（小数不精确不利于比对，long太大了，没有可能有这么多的标志位）</span><br>      <span class="hljs-keyword">switch</span> (caseType) &#123;<br>          <span class="hljs-comment">//这里只能是字面量或枚举或常量，不能重复</span><br>          <span class="hljs-keyword">case</span> FIFTH:<br>              System.out.println(<span class="hljs-string">&quot;1&quot;</span>);<br>              <span class="hljs-comment">//不加beak会发生switch穿透，有时候会有用到switch穿透</span><br>              <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">case</span> SECOND:<br>              System.out.println(<span class="hljs-string">&quot;2&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">case</span> FIRST:<br>              System.out.println(<span class="hljs-string">&quot;5&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -390,6 +390,19 @@
 </ol>
 </li>
 </ul>
+<p>枚举实现状态码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">Code</span> &#123;<br>    SUCCESS(<span class="hljs-number">2000</span>, <span class="hljs-string">&quot;操作成功!&quot;</span>),<br><br>    UPLOAD_FAIL(<span class="hljs-number">5000</span>, <span class="hljs-string">&quot;上传错误&quot;</span>),<br><br>    DOWNLOAD_ERROR(<span class="hljs-number">5001</span>, <span class="hljs-string">&quot;下载出错&quot;</span>),<br><br>    NO_PERMISSION(<span class="hljs-number">5002</span>, <span class="hljs-string">&quot;您没有权限执行该操作&quot;</span>),<br><br>    DISABLE_DISK_FAIL(<span class="hljs-number">5003</span>, <span class="hljs-string">&quot;禁用用户出错&quot;</span>),<br><br>    RENAME_ERR(<span class="hljs-number">5004</span>, <span class="hljs-string">&quot;重命名失败&quot;</span>),<br><br>    NEW_FOLDER_FAIL(<span class="hljs-number">5005</span>, <span class="hljs-string">&quot;新建文件夹失败&quot;</span>);<br><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> code;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String msg;<br><br>    Code(<span class="hljs-type">int</span> code, String msg) &#123;<br>        <span class="hljs-built_in">this</span>.code = code;<br>        <span class="hljs-built_in">this</span>.msg = msg;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> code;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getMsg</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> msg;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
 <h3 id="2-0-if"><a href="#2-0-if" class="headerlink" title="2.0 if"></a>2.0 if</h3><hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_15-15-57.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
@@ -422,8 +435,14 @@
 
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dns">请输入数字<br><span class="hljs-number">153,370</span>,<span class="hljs-number">371,111</span><br><span class="hljs-number">153</span>是水仙花<br><span class="hljs-number">370</span>是水仙花<br><span class="hljs-number">371</span>是水仙花<br><span class="hljs-number">111</span>不是水仙花<br></code></pre></td></tr></table></figure>
 
-
-
+<blockquote>
+<p>注意点：</p>
+</blockquote>
+<p>scan.nextLine()以回车符作为输入结束标志,读取方式是读取包括回车在内前面所有队列中的字符,向控制台返回时候,会自动舍弃回车符,将输入的各个字符组成字符串输出,同时队列将会清空包含回车符；</p>
+<p>scan.nextlnt()也是以回车符作为输入结束标志,读取方式是只读取回车符前面输入的所有内容,所以返回的时候它会将回车符前面内容返回并且清空回车符前的队列内容,将 <strong>回车符留在队列中</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/202211101148906.png" srcset="/img/loading.gif" lazyload alt="image-20221110114802983"></p>
+<hr>
 <h2 id="2-0-while"><a href="#2-0-while" class="headerlink" title="2.0 while"></a>2.0 while</h2><hr>
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_15-49-05.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
@@ -520,7 +539,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月27日</div>
+          <div>2022年12月9日</div>
         </div>
       
       

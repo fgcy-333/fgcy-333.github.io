@@ -19,13 +19,13 @@
     <meta name="description" content="版本控制工具应该具备的功能1、协同修改 ​	 n 多人并行不悖的修改服务器端的同一个文件【你改你的，我改我的】 2、数据备份 ​	不仅保存目录和文件的当前状态，还能够保存每一个提交过的历史状态。 3、版本管理 ​	n 在保存每一个版本的文件信息的时候要做到不保存重复数据，以节约存储空间，提高运行效率。 ​	这方面 SVN 采用的是增量式管理的方式，而 Git 采取了文件系统快照的方式。 4、权限控">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git总结">
-<meta property="og:url" content="http://example.com/2022/10/26/git-zong-jie/index.html">
+<meta property="og:url" content="http://example.com/2022/10/26/hei-ma-git-zong-jie/index.html">
 <meta property="og:site_name" content="风格差异的博客">
 <meta property="og:description" content="版本控制工具应该具备的功能1、协同修改 ​	 n 多人并行不悖的修改服务器端的同一个文件【你改你的，我改我的】 2、数据备份 ​	不仅保存目录和文件的当前状态，还能够保存每一个提交过的历史状态。 3、版本管理 ​	n 在保存每一个版本的文件信息的时候要做到不保存重复数据，以节约存储空间，提高运行效率。 ​	这方面 SVN 采用的是增量式管理的方式，而 Git 采取了文件系统快照的方式。 4、权限控">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/git.png">
 <meta property="article:published_time" content="2022-10-26T14:10:24.000Z">
-<meta property="article:modified_time" content="2022-11-27T16:20:13.395Z">
+<meta property="article:modified_time" content="2022-12-09T16:32:51.150Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="尚硅谷">
@@ -315,7 +315,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：12 天前
+                    本文最后更新于：4 分钟前
                   
                 
               </p>
@@ -411,7 +411,7 @@
 <h1 id="Git-命令行操作"><a href="#Git-命令行操作" class="headerlink" title="Git 命令行操作"></a>Git 命令行操作</h1><h2 id="本地库初始化"><a href="#本地库初始化" class="headerlink" title="本地库初始化"></a>本地库初始化</h2><blockquote>
 <p>git init</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ll</span><br>total 15021<br>-rw-r--r-- 1 fgcy 197121 3978870 Jan 17 11:25 &#x27;Git&amp;GitHub.bmp&#x27;<br>-rw-r--r-- 1 fgcy 197121 3583371 Jan 17 11:25 &#x27;Git&amp;GitHub.pdf&#x27;<br>-rw-r--r-- 1 fgcy 197121 7792408 Jun 17 22:56 &#x27;Git&amp;GitHub_.docx&#x27;<br>drwxr-xr-x 1 fgcy 197121       0 Jun 17 23:54  git总结.assets/<br>-rw-r--r-- 1 fgcy 197121    8457 Jun 18 00:00  git总结.md<br>-rw-r--r-- 1 fgcy 197121     162 Jun 17 23:03 &#x27;~$t&amp;GitHub_.docx&#x27;<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 #当前目录<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ll</span><br>total 15021<br>-rw-r--r-- 1 fgcy 197121 3978870 Jan 17 11:25 &#x27;Git&amp;GitHub.bmp&#x27;<br>-rw-r--r-- 1 fgcy 197121 3583371 Jan 17 11:25 &#x27;Git&amp;GitHub.pdf&#x27;<br>-rw-r--r-- 1 fgcy 197121 7792408 Jun 17 22:56 &#x27;Git&amp;GitHub_.docx&#x27;<br>drwxr-xr-x 1 fgcy 197121       0 Jun 17 23:54  git总结.assets/<br>-rw-r--r-- 1 fgcy 197121    8457 Jun 18 00:00  git总结.md<br>-rw-r--r-- 1 fgcy 197121     162 Jun 17 23:03 &#x27;~$t&amp;GitHub_.docx&#x27;<br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 #当前目录<br></code></pre></td></tr></table></figure>
 
 
 
@@ -444,7 +444,9 @@
 
 
 <p>实例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config user.name swx</span><br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config user.email swx@learn_git.com</span><br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> .git/config</span><br>[core]<br>        repositoryformatversion = 0<br>        filemode = false<br>        bare = false<br>        logallrefupdates = true<br>        symlinks = false<br>        ignorecase = true<br>[user]<br>        name = swx<br>        email = swx@learn_git.com<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config user.name swx</span><br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config user.email swx@learn_git.com</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> .git/config</span><br>[core]<br>        repositoryformatversion = 0<br>        filemode = false<br>        bare = false<br>        logallrefupdates = true<br>        symlinks = false<br>        ignorecase = true<br>[user]<br>        name = swx<br>        email = swx@learn_git.com<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -453,12 +455,10 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">git config --global user.name swx<br>git config --global user.email swx@learn_git.com<br></code></pre></td></tr></table></figure>
 
+
+
 <p>信息保存位置：~&#x2F;.gitconfig  文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name fgcy</span><br>fgcy@fgcy MINGW64 ~<br><br>fgcy@fgcy MINGW64 ~<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email fgcy@2000.com</span><br><br>fgcy@fgcy MINGW64 ~<br></code></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">total 18371<br>drwxr-xr-x 1 fgcy 197121       0 Jun 18 00:21 ./<br>drwxr-xr-x 1 fgcy 197121       0 Mar 16 21:50 ../<br>-rw-r--r-- 1 fgcy 197121      96 Jun 18 00:21 .gitconfig<br>-rw-r--r-- 1 fgcy 197121       0 Jan 15 20:05 .mongorc.js<br>drwxr-xr-x 1 fgcy 197121       0 Apr  1 00:01 .npminstall_tarball/<br>drwxr-xr-x 1 fgcy 197121       0 May 27 10:43 .picgo/<br>drwx<br>(END)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name fgcy</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email fgcy@2000.com</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -466,7 +466,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> ~</span><br><br>fgcy@fgcy MINGW64 ~<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">pwd</span></span><br>/c/Users/fgcy<br></code></pre></td></tr></table></figure>
 
 <p>​                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> .gitconfig</span><br>[user]<br>        name = fgcy<br>        email = fgcy@2000.com<br>[credential &quot;https://gitee.com&quot;]<br>        provider = generic<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> .gitconfig</span><br>[user]<br>        name = fgcy<br>        email = fgcy@2000.com<br>[credential &quot;https://gitee.com&quot;]<br>        provider = generic<br></code></pre></td></tr></table></figure>
 
 
 
@@ -526,6 +526,7 @@
 
 
 
+<p><code>ESC + : + W + Q</code> 退出vi编辑器，保存注释</p>
 <p>提交到版本库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[master (root-commit) 959b098] this is the commit comment for commit the note_for_git.doc<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 note_for_git.docx<br></code></pre></td></tr></table></figure>
 
@@ -538,7 +539,7 @@
 
 
 
-<h2 id="将note-for-git-doc文件修改后"><a href="#将note-for-git-doc文件修改后" class="headerlink" title="将note_for_git.doc文件修改后"></a>将note_for_git.doc文件修改后</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git status</span><br>On branch master<br>Changes not staged for commit:<br>  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)<br>        modified:   note_for_git.docx<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        Git&amp;GitHub.bmp<br>        Git&amp;GitHub.pdf<br>        &quot;git\346\200\273\347\273\223.assets/&quot;<br>        &quot;git\346\200\273\347\273\223.md&quot;<br>        ~$te_for_git.docx<br><br>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)<br></code></pre></td></tr></table></figure>
+<h2 id="将note-for-git-doc文件修改后"><a href="#将note-for-git-doc文件修改后" class="headerlink" title="将note_for_git.doc文件修改后"></a>将note_for_git.doc文件修改后</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git status</span><br>On branch master<br>Changes not staged for commit:<br>  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)<br>  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)<br>        modified:   note_for_git.docx<br><br>Untracked files:<br>  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)<br>        Git&amp;GitHub.bmp<br>        Git&amp;GitHub.pdf<br>        &quot;git\346\200\273\347\273\223.assets/&quot;<br>        &quot;git\346\200\273\347\273\223.md&quot;<br>        ~$note_for_git.docx<br><br>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -627,7 +628,7 @@
 <blockquote>
 <p>git reflog       最常用</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>6a297c1 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: note_for_git.doc second commit<br>959b098 HEAD@&#123;1&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>6a297c1 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: note_for_git.doc second commit<br>959b098 HEAD@&#123;1&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
 
 <p>HEAD@{移动到该版本需要多少步}</p>
 <h2 id="版本穿梭【前进后退】"><a href="#版本穿梭【前进后退】" class="headerlink" title="版本穿梭【前进后退】"></a>版本穿梭【前进后退】</h2><p>本质：HEAD指针移动</p>
@@ -641,7 +642,16 @@
 <blockquote>
 <p>git reset –hard [局部索引值]</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>b2c89a7 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: fifth commit for note_for_git.doc<br>abfb1c4 HEAD@&#123;1&#125;: commit: fourth commit for note_for_git.doc<br>68c5839 HEAD@&#123;2&#125;: commit: third commit for note_for_git.doc<br>6a297c1 HEAD@&#123;3&#125;: commit: note_for_git.doc second commit<br>959b098 HEAD@&#123;4&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard 959b098</span><br>HEAD is now at 959b098 this is the commit comment for commit the note_for_git.doc<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>959b098 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 959b098<br>b2c89a7 HEAD@&#123;1&#125;: commit: fifth commit for note_for_git.doc<br>abfb1c4 HEAD@&#123;2&#125;: commit: fourth commit for note_for_git.doc<br>68c5839 HEAD@&#123;3&#125;: commit: third commit for note_for_git.doc<br>6a297c1 HEAD@&#123;4&#125;: commit: note_for_git.doc second commit<br>959b098 (HEAD -&gt; master) HEAD@&#123;5&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>b2c89a7 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: fifth commit for note_for_git.doc<br>abfb1c4 HEAD@&#123;1&#125;: commit: fourth commit for note_for_git.doc<br>68c5839 HEAD@&#123;2&#125;: commit: third commit for note_for_git.doc<br>6a297c1 HEAD@&#123;3&#125;: commit: note_for_git.doc second commit<br>959b098 HEAD@&#123;4&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard 959b098</span><br>HEAD is now at 959b098 this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>959b098 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 959b098<br>b2c89a7 HEAD@&#123;1&#125;: commit: fifth commit for note_for_git.doc<br>abfb1c4 HEAD@&#123;2&#125;: commit: fourth commit for note_for_git.doc<br>68c5839 HEAD@&#123;3&#125;: commit: third commit for note_for_git.doc<br>6a297c1 HEAD@&#123;4&#125;: commit: note_for_git.doc second commit<br>959b098 (HEAD -&gt; master) HEAD@&#123;5&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
 
 
 
@@ -653,13 +663,15 @@
 <blockquote>
 <p>git reset –hard HEAD^ </p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>b2c89a7 (HEAD -&gt; master) fifth commit for note_for_git.doc<br>abfb1c4 fourth commit for note_for_git.doc<br>68c5839 third commit for note_for_git.doc<br>6a297c1 note_for_git.doc second commit<br>959b098 this is the commit comment for commit the note_for_git.doc<br><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard HEAD^</span><br>HEAD is now at abfb1c4 fourth commit for note_for_git.doc<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>abfb1c4 (HEAD -&gt; master) fourth commit for note_for_git.doc<br>68c5839 third commit for note_for_git.doc<br>6a297c1 note_for_git.doc second commit<br>959b098 this is the commit comment for commit the note_for_git.doc<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>b2c89a7 (HEAD -&gt; master) fifth commit for note_for_git.doc<br>abfb1c4 fourth commit for note_for_git.doc<br>68c5839 third commit for note_for_git.doc<br>6a297c1 note_for_git.doc second commit<br>959b098 this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard HEAD^^</span><br>HEAD is now at 6a297c1 note_for_git.doc second commit<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>6a297c1 (HEAD -&gt; master) note_for_git.doc second commit<br>959b098 this is the commit comment for commit the note_for_git.doc<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard HEAD^</span><br>HEAD is now at abfb1c4 fourth commit for note_for_git.doc<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>abfb1c4 (HEAD -&gt; master) fourth commit for note_for_git.doc<br>68c5839 third commit for note_for_git.doc<br>6a297c1 note_for_git.doc second commit<br>959b098 this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard HEAD^^</span><br>HEAD is now at 6a297c1 note_for_git.doc second commit<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>6a297c1 (HEAD -&gt; master) note_for_git.doc second commit<br>959b098 this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
 
 <p>注：一个^表示后退一步，n 个表示后退 n 步</p>
 <ul>
@@ -669,7 +681,7 @@
 <p>git reset –hard HEAD~n</p>
 </blockquote>
 <p>注：表示后退 n 步</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard HEAD~1</span><br>HEAD is now at 959b098 this is the commit comment for commit the note_for_git.doc<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>959b098 (HEAD -&gt; master) this is the commit comment for commit the note_for_git.doc<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard HEAD~1</span><br>HEAD is now at 959b098 this is the commit comment for commit the note_for_git.doc<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --oneline</span><br>959b098 (HEAD -&gt; master) this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
 
 
 
@@ -736,7 +748,9 @@
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211051642827.png" srcset="/img/loading.gif" lazyload alt="image-20220618113855583"></p>
 <hr>
 <p>版本回退</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>9580539 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: delete aaa.txt<br>1beefc9 HEAD@&#123;1&#125;: commit: new aaa.text<br>b2c89a7 HEAD@&#123;2&#125;: reset: moving to b2c89a7<br>959b098 HEAD@&#123;3&#125;: reset: moving to HEAD~1<br>6a297c1 HEAD@&#123;4&#125;: reset: moving to HEAD^^<br>abfb1c4 HEAD@&#123;5&#125;: reset: moving to HEAD^<br>b2c89a7 HEAD@&#123;6&#125;: reset: moving to b2c89a7<br>959b098 HEAD@&#123;7&#125;: reset: moving to 959b098<br>959b098 HEAD@&#123;8&#125;: reset: moving to 959b098<br>959b098 HEAD@&#123;9&#125;: reset: moving to 959b098<br>959b098 HEAD@&#123;10&#125;: reset: moving to 959b098<br>b2c89a7 HEAD@&#123;11&#125;: commit: fifth commit for note_for_git.doc<br>abfb1c4 HEAD@&#123;12&#125;: commit: fourth commit for note_for_git.doc<br>68c5839 HEAD@&#123;13&#125;: commit: third commit for note_for_git.doc<br>6a297c1 HEAD@&#123;14&#125;: commit: note_for_git.doc second commit<br>959b098 HEAD@&#123;15&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard 1beefc9</span><br>HEAD is now at 1beefc9 new aaa.text<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br>9580539 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: delete aaa.txt<br>1beefc9 HEAD@&#123;1&#125;: commit: new aaa.text<br>b2c89a7 HEAD@&#123;2&#125;: reset: moving to b2c89a7<br>959b098 HEAD@&#123;3&#125;: reset: moving to HEAD~1<br>6a297c1 HEAD@&#123;4&#125;: reset: moving to HEAD^^<br>abfb1c4 HEAD@&#123;5&#125;: reset: moving to HEAD^<br>b2c89a7 HEAD@&#123;6&#125;: reset: moving to b2c89a7<br>959b098 HEAD@&#123;7&#125;: reset: moving to 959b098<br>959b098 HEAD@&#123;8&#125;: reset: moving to 959b098<br>959b098 HEAD@&#123;9&#125;: reset: moving to 959b098<br>959b098 HEAD@&#123;10&#125;: reset: moving to 959b098<br>b2c89a7 HEAD@&#123;11&#125;: commit: fifth commit for note_for_git.doc<br>abfb1c4 HEAD@&#123;12&#125;: commit: fourth commit for note_for_git.doc<br>68c5839 HEAD@&#123;13&#125;: commit: third commit for note_for_git.doc<br>6a297c1 HEAD@&#123;14&#125;: commit: note_for_git.doc second commit<br>959b098 HEAD@&#123;15&#125;: commit (initial): this is the commit comment for commit the note_for_git.doc<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard 1beefc9</span><br>HEAD is now at 1beefc9 new aaa.text<br></code></pre></td></tr></table></figure>
 
 
 
@@ -761,18 +775,13 @@
 <p>4、比较暂存区和工作区的apple.txt文件区别</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff apple.txt</span><br>warning: LF will be replaced by CRLF in apple.txt.<br>The file will have its original line endings in your working directory<br>diff --git a/apple.txt b/apple.txt<br>index a5d954f..6ba728d 100644<br>--- a/apple.txt<br>+++ b/apple.txt<br>@@ -3,3 +3,4 @@ bbbbbbbbbbbbbbbbbbbb<br> cccccccccccccccccccc<br> dddddddddddddd<br> eeeeeeeeeeee<br>+ffffffffffffffffff<br><br></code></pre></td></tr></table></figure>
 
-<hr>
+
+
 <blockquote>
 <p> git diff [本地库中历史版本] [文件名]</p>
 </blockquote>
 <p>将工作区中的文件和本地库历史记录比较</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff HEAD^ apple.txt</span><br>warning: LF will be replaced by CRLF in apple.txt.<br>The file will have its original line endings in your working directory<br>diff --git a/apple.txt b/apple.txt<br>new file mode 100644<br>index 0000000..6ba728d<br>--- /dev/null<br>+++ b/apple.txt<br>@@ -0,0 +1,6 @@<br>+aaaaaaaaaaaaaaaaaaa<br>+bbbbbbbbbbbbbbbbbbbb<br>+cccccccccccccccccccc<br>+dddddddddddddd<br>+eeeeeeeeeeee<br>+ffffffffffffffffff<br><br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
 
 
 
@@ -794,7 +803,7 @@
 <blockquote>
 <p>git branch -v</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -v</span><br>* master 1beefc9 new aaa.text    #只有一个分支，且正处于该分支上<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -v</span><br>* master 1beefc9 new aaa.text    #只有一个分支，且正处于该分支上<br></code></pre></td></tr></table></figure>
 
 
 
@@ -810,7 +819,7 @@
 <blockquote>
 <p>git checkout [分支名]</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout hot_fix</span><br>Switched to branch &#x27;hot_fix&#x27;               #切换到hot_fix分支<br>M       aaa.txt<br>A       apple.txt<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (hot_fix)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -v</span><br>* hot_fix 1beefc9 new aaa.text						#有两个分支，且正处于hot_fix分支上<br>  master  1beefc9 new aaa.text<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout hot_fix</span><br>Switched to branch &#x27;hot_fix&#x27;               #切换到hot_fix分支<br>M       aaa.txt<br>A       apple.txt<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (hot_fix)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -v</span><br>* hot_fix 1beefc9 new aaa.text						#有两个分支，且正处于hot_fix分支上<br>  master  1beefc9 new aaa.text<br></code></pre></td></tr></table></figure>
 
 
 
@@ -826,9 +835,9 @@
 <p>4、查看分支</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -v</span><br>* hot_fix 1dd3fe0 test branch hot_fix                #hot_fix是绿色的；说明hot_fix已经向前推进了一步<br>  master  1beefc9 new aaa.text<br><br></code></pre></td></tr></table></figure>
 
-<p>5、切换到主分支上，既是接收修改的分支</p>
+<p>5、切换到主分支上，即是接收修改的分支</p>
 <p>6、执行合并操作</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git merge hot_fix</span><br>Updating 1beefc9..1dd3fe0<br>Fast-forward<br> apple.txt | 6 ++++++<br> 1 file changed, 6 insertions(+)<br> create mode 100644 apple.txt<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git merge hot_fix</span><br>Updating 1beefc9..1dd3fe0<br>Fast-forward<br> apple.txt | 6 ++++++<br> 1 file changed, 6 insertions(+)<br> create mode 100644 apple.txt<br><br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master)<br></code></pre></td></tr></table></figure>
 
 <p>7、查看新文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cat</span> apple.txt</span><br>aaaaaaaaaaaaaaaaaaa<br>bbbbbbbbbbbbbbbbbbbb<br>cccccccccccccccccccc<br>dddddddddddddd<br>eeeeeeeeeeee<br>ffffffffffffffffff    edit by hot_fix<br></code></pre></td></tr></table></figure>
@@ -840,7 +849,7 @@
 <h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>在多个不同分支上修改同一个文件的同一行</p>
 <p>1、在master分支上</p>
 <p>冲突的表现</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git merge hot_fix</span><br>Auto-merging aaa.txt<br>CONFLICT (content): Merge conflict in aaa.txt<br>Automatic merge failed; fix conflicts and then commit the result.<br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master|MERGING)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git merge hot_fix</span><br>Auto-merging aaa.txt<br>CONFLICT (content): Merge conflict in aaa.txt<br>Automatic merge failed; fix conflicts and then commit the result.<br>fgcy@fgcy MINGW64 /d/learn/尚硅谷/Git&amp;github学习资料 (master|MERGING)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -1450,6 +1459,17 @@
 <p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211051639384.png" srcset="/img/loading.gif" lazyload alt="image-20220619172302127"></p>
 <hr>
 <p>只要 GitLab 的远程库连接定义好以后，对 GitLab 远程库进行 pull 和 clone 的操作和<br>Github 和码云一致，此处不再赘述</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Failed-to-connect-to-github-com-port-443-Timed-out"><a href="#Failed-to-connect-to-github-com-port-443-Timed-out" class="headerlink" title="Failed to connect to github.com port 443: Timed out"></a>Failed to connect to github.com port 443: Timed out</h2><p>触发：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">$ git pull origin master<br>fatal: unable <span class="hljs-keyword">to</span> <span class="hljs-keyword">access</span> <span class="hljs-string">&#x27;https://github.com/fgcy-333/hexo_blogs.git/&#x27;</span>: Failed <span class="hljs-keyword">to</span> <span class="hljs-keyword">connect</span> <span class="hljs-keyword">to</span> github.com port <span class="hljs-number">443</span> <span class="hljs-keyword">after</span> <span class="hljs-number">21102</span> ms: Timed <span class="hljs-keyword">out</span><br></code></pre></td></tr></table></figure>
+
+<p>描述：可以登录外网，就是推送和拉取代码时超时</p>
+<p>解决方案：</p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/202212070919465.png" srcset="/img/loading.gif" lazyload alt="image-20221207091904254" style="zoom: 50%;" />
+
+<hr>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">git <span class="hljs-built_in">config</span> <span class="hljs-comment">--global http.proxy 127.0.0.1:10810 为全局的 git 项目都设置代理</span><br>git <span class="hljs-built_in">config</span> <span class="hljs-comment">--local http.proxy 127.0.0.1:10810 为某个 git 项目单独设置代理</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -1498,7 +1518,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>git总结</div>
-      <div>http://example.com/2022/10/26/git-zong-jie/</div>
+      <div>http://example.com/2022/10/26/hei-ma-git-zong-jie/</div>
     </div>
     <div class="license-meta">
       
@@ -1516,7 +1536,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月27日</div>
+          <div>2022年12月9日</div>
         </div>
       
       
@@ -1547,7 +1567,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/28/23-chong-she-ji-mo-shi/" title="23种设计模式">
+                      <a href="/2022/11/28/hei-ma-23-chong-she-ji-mo-shi/" title="23种设计模式">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">23种设计模式</span>
                         <span class="visible-mobile">上一篇</span>
@@ -1557,7 +1577,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/18/vue/" title="vue">
+                      <a href="/2022/10/18/shang-huo-gu-vue/" title="vue">
                         <span class="hidden-mobile">vue</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
