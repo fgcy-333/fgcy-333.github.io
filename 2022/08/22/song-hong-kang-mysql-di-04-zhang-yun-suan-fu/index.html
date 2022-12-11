@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/mysql.png">
 <meta property="article:published_time" content="2022-08-21T19:06:59.000Z">
-<meta property="article:modified_time" content="2022-12-10T08:22:17.283Z">
+<meta property="article:modified_time" content="2022-12-11T04:20:40.762Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34k 字
+          37k 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          283 分钟
+          308 分钟
         
       </span>
     
@@ -314,7 +314,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：7 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -327,7 +327,8 @@
 <span id="more"></span>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012100749193.png" srcset="/img/loading.gif" lazyload alt="image-20211012100749193"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012100749193.png" srcset="/img/loading.gif" lazyload alt="image-20211012100749193" style="zoom: 67%;" />
+
 <hr>
 <p><strong>1．加法与减法运算符</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT 100, 100 + 0, 100 - 0, 100 + 50, 100 + 50 -30, 100 + 35.5, 100 - 35.5 <br>FROM dual;<br><br>+-----+---------+---------+----------+--------------+------------+------------+<br>| 100 | 100 + 0 | 100 - 0 | 100 + 50 | 100 + 50 -30 | 100 + 35.5 | 100 - 35.5 |<br>+-----+---------+---------+----------+--------------+------------+------------+<br>| 100 |     100 |     100 |      150 |          120 |      135.5 |       64.5 |<br>+-----+---------+---------+----------+--------------+------------+------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
@@ -344,19 +345,19 @@
 <li><p>加法和减法的优先级相同，进行先加后减操作与进行先减后加操作的结果是一样的；</p>
 </li>
 <li><p>在Java中，+的左右两边如果有字符串，那么表示字符串的拼接。但是在MySQL中 + 只表示数值相加。</p>
-<p>如果遇到非数值类型，先尝试转成数值，如果转失败，就按0计算。（补充：MySQL中字符串拼接要使用字符串函数CONCAT()实现）</p>
+<p>如果遇到非数值类型，先尝试转成数值，如果转失败，就按0计算。</p>
+<p>（补充：MySQL中字符串拼接要使用字符串函数CONCAT()实现）</p>
 </li>
 </ul>
 </blockquote>
 <h2 id="字符串和数字的转换规则"><a href="#字符串和数字的转换规则" class="headerlink" title="字符串和数字的转换规则"></a><strong>字符串和数字的转换规则</strong></h2><p><strong>隐式转换</strong></p>
 <p>注意点：</p>
-<p>1、在SQL中，+没有连接的作用，就表示加法运算。此时，会将字符串转换为数值<strong>（隐式转换）</strong>【数字字符串转为对应数字，字符字符串转为0】</p>
+<p>1、在SQL中，<code> +</code> 没有连接的作用，就表示加法运算。此时，会将字符串转换为数值<strong>（隐式转换）</strong>【数字字符串转为对应数字，字符字符串转为0】</p>
 <p>2、即字符与数字参与运算，先将字符转为数字，能转数字就转数字，不能就转0</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT 100 + &#x27;1&#x27;  # 在Java语言中，结果是：1001。 <br>FROM DUAL; #伪表<br><br>+-----------+<br>| 100 + &#x27;1&#x27; |<br>+-----------+<br>|       101 |<br>+-----------+<br></code></pre></td></tr></table></figure>
 
 
 
-<hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT 100 + &#x27;a&#x27; #此时将&#x27;a&#x27;看做0处理<br>FROM DUAL;<br><br>+-----------+<br>| 100 + &#x27;a&#x27; |<br>+-----------+<br>|       100 |<br>+-----------+<br></code></pre></td></tr></table></figure>
 
 
@@ -375,9 +376,9 @@
 <p>由运算结果可以得出如下结论：</p>
 <blockquote>
 <ul>
-<li>一个数乘以整数1和除以整数1后仍得原数</li>
-<li>一个数乘以浮点数1和除以浮点数1后变成浮点数，数值与原数相等</li>
+<li>一个数乘以整数1得原数</li>
 <li>一个数除以整数后，不管是否能除尽，结果都为一个浮点数</li>
+<li>一个数乘以浮点数1和除以浮点数1后变成浮点数，数值与原数相等</li>
 <li>一个数除以另一个数，除不尽时，结果为一个浮点数，并保留到小数点后4位</li>
 <li>乘法和除法的优先级相同，进行先乘后除操作与先除后乘操作，得出的结果相同</li>
 <li>在数学运算中，0不能用作除数，在MySQL中，一个数除以0为NULL</li>
@@ -394,13 +395,14 @@
 <h2 id="2-比较运算符"><a href="#2-比较运算符" class="headerlink" title="2. 比较运算符"></a>2. 比较运算符</h2><p>比较运算符用来对	<strong>表达式左边的操作数	和	右边的操作数进行比较</strong>	，比较的结果为 <strong>真则返回1</strong>，<strong>比较的结果为  假则返回0</strong>，其他情况则返回<strong>NULL</strong></p>
 <p>比较运算符经常被用来作为SELECT查询语句的条件来使用，返回符合条件的结果记录</p>
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012101110021.png" srcset="/img/loading.gif" lazyload alt="image-20211012101110021" />
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012101110021.png" srcset="/img/loading.gif" lazyload alt="image-20211012101110021" style="zoom:67%;" />
 
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012104955094.png" srcset="/img/loading.gif" lazyload alt="image-20211012104955094"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012104955094.png" srcset="/img/loading.gif" lazyload alt="image-20211012104955094" style="zoom:50%;" />
+
 <hr>
 <p><strong>1．等号运算符</strong></p>
 <ul>
-<li><p>等号运算符（&#x3D;）判断等号两边的值、字符串或表达式是否相等，如果相等则返回1，不相等则返回0。</p>
+<li><p>等号运算符（&#x3D;）判断等号两边的值、字符串或表达式 <strong>是否相等</strong>，如果相等则返回1，不相等则返回0。</p>
 </li>
 <li><p>在使用等号运算符时，遵循如下规则：</p>
 <ul>
@@ -410,7 +412,7 @@
 <li>如果等号两边的值、字符串或表达式中  <strong>有一个为NULL</strong>，则<strong>比较结果为NULL</strong>。</li>
 </ul>
 </li>
-<li><p>对比：SQL中赋值符号使用   <code>   =</code></p>
+<li><p>对比：SQL中赋值符号使用   <code>   =</code>   比较符号也是用 <code>=</code></p>
 </li>
 <li><p><strong>字符串的隐式转换</strong></p>
 </li>
@@ -436,14 +438,14 @@
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询salary=10000，注意在Java中基本数据类型的比较是= =<br>SELECT employee_id,salary FROM employees WHERE salary = 10000;<br>mysql&gt; SELECT employee_id,salary FROM employees WHERE salary = 10000;<br><br>+-------------+----------+<br>| employee_id | salary   |<br>+-------------+----------+<br>|         150 | 10000.00 |<br>|         156 | 10000.00 |<br>|         169 | 10000.00 |<br>|         204 | 10000.00 |<br>+-------------+----------+<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询salary=10000，注意在Java中基本数据类型的比较是= =<br>SELECT employee_id,salary FROM employees WHERE salary = 10000;<br><br>+-------------+----------+<br>| employee_id | salary   |<br>+-------------+----------+<br>|         150 | 10000.00 |<br>|         156 | 10000.00 |<br>|         169 | 10000.00 |<br>|         204 | 10000.00 |<br>+-------------+----------+<br></code></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li><strong>null作为过滤条件</strong></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># null作为过滤条件，相当于没有过滤<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>-- where salary = 6000;<br>WHERE commission_pct = NULL;  #此时执行，不会有任何的结果【只有当过滤条件为真1时，才会取出这条记录；左右两边有一边为null则结果为null】<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># null作为过滤条件，相当于没有过滤<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE commission_pct = NULL;  #此时执行，不会有任何的结果【只有当过滤条件为真1时，才会取出这条记录；左右两边有一边为null则结果为null】<br><br>Empty set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -453,17 +455,17 @@
 
 
 
-<p><strong>2．安全等于运算符</strong><br>安全等于运算符（<code>&lt;=&gt;</code>）与等于运算符（&#x3D;）的作用是相似的，<code>唯一的区别</code>是    <code>‘&lt;=&gt;’</code>  可以用来<strong>对NULL进行判断</strong></p>
+<p><strong>2．安全等于运算符</strong><br>安全等于运算符（<code>&lt;=&gt;</code>）与等于运算符（&#x3D;）的作用是相似的，<code>唯一的区别</code>是    <code>&lt;=&gt;</code>  可以用来<strong>对NULL进行判断</strong></p>
 <p>在两个操作数均为NULL时，其   <strong>返回值为1</strong>  ，而不为NULL</p>
 <p>当一个操作数为NULL时，其   <strong>返回值为0</strong>  ，而不为NULL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- &lt;=&gt; ：安全等于。 记忆技巧：为NULL而生，与null进行比较结果不再只是null<br><br><br>SELECT 1 &lt;=&gt; 2,1 &lt;=&gt; &#x27;1&#x27;,1 &lt;=&gt; &#x27;a&#x27;,0 &lt;=&gt; &#x27;a&#x27;<br>FROM DUAL;<br><br>+---------+-----------+-----------+-----------+<br>| 1 &lt;=&gt; 2 | 1 &lt;=&gt; &#x27;1&#x27; | 1 &lt;=&gt; &#x27;a&#x27; | 0 &lt;=&gt; &#x27;a&#x27; |<br>+---------+-----------+-----------+-----------+<br>|       0 |         1 |         0 |         1 |<br>+---------+-----------+-----------+-----------+<br><br>SELECT 1 &lt;=&gt; NULL, NULL &lt;=&gt; NULL #安全等于 为NULL而生 假、真<br>FROM DUAL;<br>+------------+---------------+<br>| 1 &lt;=&gt; NULL | NULL &lt;=&gt; NULL |<br>+------------+---------------+<br>|          0 |             1 |<br>+------------+---------------+<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- &lt;=&gt; ：安全等于。 记忆技巧：为NULL而生，与null进行比较结果不再只是null<br>SELECT 1 &lt;=&gt; 2,1 &lt;=&gt; &#x27;1&#x27;,1 &lt;=&gt; &#x27;a&#x27;,0 &lt;=&gt; &#x27;a&#x27;<br>FROM DUAL;<br><br>+---------+-----------+-----------+-----------+<br>| 1 &lt;=&gt; 2 | 1 &lt;=&gt; &#x27;1&#x27; | 1 &lt;=&gt; &#x27;a&#x27; | 0 &lt;=&gt; &#x27;a&#x27; |<br>+---------+-----------+-----------+-----------+<br>|       0 |         1 |         0 |         1 |<br>+---------+-----------+-----------+-----------+<br><br>SELECT 1 &lt;=&gt; NULL, NULL &lt;=&gt; NULL #安全等于 为NULL而生 假、真<br>FROM DUAL;<br>+------------+---------------+<br>| 1 &lt;=&gt; NULL | NULL &lt;=&gt; NULL |<br>+------------+---------------+<br>|          0 |             1 |<br>+------------+---------------+<br></code></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询commission_pct等于0.40<br>SELECT employee_id,commission_pct FROM employees<br>WHERE commission_pct = 0.40;<br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE commission_pct &lt;=&gt; 0.40;<br><br>#如果把0.40改成 NULL 呢？<br># 只有当过滤条件为真1时，才会取出这条记录,其他null，0都不会取出<br><br><br><br><br>#练习：查询表中commission_pct为null的数据有哪些<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE commission_pct &lt;=&gt; NULL;<br><br><br>+-------------+----------+----------------+<br>| last_name   | salary   | commission_pct |<br>+-------------+----------+----------------+<br>| King        | 24000.00 |           NULL |<br>| Kochhar     | 17000.00 |           NULL |<br>| Gietz       |  8300.00 |           NULL |<br>+-------------+----------+----------------+<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询commission_pct等于0.40<br>SELECT employee_id,commission_pct FROM employees<br>WHERE commission_pct = 0.40;<br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE commission_pct &lt;=&gt; 0.40;<br><br>#如果把0.40改成 NULL 呢？<br># 只有当过滤条件为真1时，才会取出这条记录,其他null，0都不会取出<br>#练习：查询表中commission_pct为null的数据有哪些<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE commission_pct &lt;=&gt; NULL;<br><br><br>+-------------+----------+----------------+<br>| last_name   | salary   | commission_pct |<br>+-------------+----------+----------------+<br>| King        | 24000.00 |           NULL |<br>| Kochhar     | 17000.00 |           NULL |<br>| Gietz       |  8300.00 |           NULL |<br>+-------------+----------+----------------+<br></code></pre></td></tr></table></figure>
 
 <p>可以看到，使用安全等于运算符时，两边的操作数的值都为NULL时，返回的结果为1而不是NULL，其他返回结果与等于运算符相同</p>
-<p><strong>3．不等于运算符</strong><br>不等于运算符（&lt;&gt;和!&#x3D;）用于判断两边的数字、字符串或者表达式的值是否不相等，如果不相等则返回1，相等则返回0。</p>
+<p><strong>3．不等于运算符</strong><br>不等于运算符（ <code>&lt;&gt;</code> 和  <code>!=</code> ）用于判断两边的数字、字符串或者表达式的值是否不相等，如果不相等则返回1，相等则返回0。</p>
 <p><strong>不等于运算符不能判断NULL值</strong>。如果两边的值有任意一个为NULL，或两边都为NULL，则结果为NULL</p>
 <blockquote>
 <p>&lt;&gt;   </p>
@@ -480,8 +482,9 @@
 
 <p><strong>此外，还有非符号类型的运算符：</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012105303219-16558596435351.png" srcset="/img/loading.gif" lazyload alt="image-20211012105303219"><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012105030527.png" srcset="/img/loading.gif" lazyload alt="image-20211012105030527"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012105052456.png" srcset="/img/loading.gif" lazyload alt="image-20211012105052456"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012105303219-16558596435351.png" srcset="/img/loading.gif" lazyload alt="image-20211012105303219"><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012105030527.png" srcset="/img/loading.gif" lazyload alt="image-20211012105030527" style="zoom:50%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012105052456.png" srcset="/img/loading.gif" lazyload alt="image-20211012105052456" style="zoom:50%;" />
+
 <hr>
 <p><strong>4. 空运算符</strong><br>空运算符（<code>关键字IS NULL</code>或者<code>ISNULL函数</code>）判断一个值是否为NULL，如果为NULL则返回1，否则返回0。</p>
 <p>SQL语句示例如下：</p>
@@ -495,8 +498,7 @@
 
 
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询commission_pct等于NULL。比较如下的四种写法<br>SELECT employee_id,commission_pct FROM employees<br>WHERE commission_pct IS NULL;#结果为0 1<br><br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE commission_pct &lt;=&gt; NULL;#结果为0 1<br><br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE ISNULL(commission_pct); #结果为0 1<br><br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE commission_pct = NULL; #与NULL作运算，结果永远为null 没有看到1就不会出结果，所以不会有结果<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询commission_pct等于NULL。比较如下的四种写法<br>SELECT employee_id,commission_pct FROM employees<br>WHERE commission_pct IS NULL;#结果为0 1<br><br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE commission_pct &lt;=&gt; NULL;#结果为0 1<br><br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE ISNULL(commission_pct); #结果为0 1<br><br><br>SELECT employee_id,commission_pct FROM employees <br>WHERE commission_pct = NULL; #与NULL作运算，结果永远为null 没有看到1就不会要这条记录，所以不会有结果<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#练习：查询表中commission_pct为null的数据有哪些<br><br>-- 1 使用关键字判断某个字段是否为空<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE commission_pct IS NULL;<br>+-------------+----------+----------------+<br>| last_name   | salary   | commission_pct |<br>+-------------+----------+----------------+<br>| King        | 24000.00 |           NULL |<br>| Kochhar     | 17000.00 |           NULL |<br>| Gietz       |  8300.00 |           NULL |<br>+-------------+----------+----------------+<br><br><br><br>#或<br>-- 2 使用函数判断某个字段是否为空<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE ISNULL(commission_pct);<br><br>+-------------+----------+----------------+<br>| last_name   | salary   | commission_pct |<br>+-------------+----------+----------------+<br>| King        | 24000.00 |           NULL |<br>| Kochhar     | 17000.00 |           NULL |<br>| Gietz       |  8300.00 |           NULL |<br>+-------------+----------+----------------+<br></code></pre></td></tr></table></figure>
 
@@ -513,12 +515,12 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT NULL IS NOT NULL, &#x27;a&#x27; IS NOT NULL,  1 IS NOT NULL; <br><br><br>+------------------+-----------------+---------------+<br>| NULL IS NOT NULL | &#x27;a&#x27; IS NOT NULL | 1 IS NOT NULL |<br>+------------------+-----------------+---------------+<br>|                0 |               1 |             1 |<br>+------------------+-----------------+---------------+<br>1 row in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
-<hr>
+
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询commission_pct不等于NULL<br>SELECT employee_id,commission_pct FROM employees WHERE commission_pct IS NOT NULL;<br>SELECT employee_id,commission_pct FROM employees WHERE NOT commission_pct &lt;=&gt; NULL;<br>SELECT employee_id,commission_pct FROM employees WHERE NOT ISNULL(commission_pct);<br></code></pre></td></tr></table></figure>
 
 
 
-<hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#练习：查询表中commission_pct不为null的数据有哪些<br>-- 1 使用关键字判断某个字段是否不为空<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE commission_pct IS NOT NULL;<br><br>#或<br>-- 2 使用安全等与某个字段是否为null，然后取反 NOT<br>SELECT last_name,salary,commission_pct<br>FROM employees<br>WHERE NOT commission_pct &lt;=&gt; NULL;<br></code></pre></td></tr></table></figure>
 
 
@@ -529,8 +531,6 @@
 
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">-- LEAST（）取集合中的最小<br>-- GREATEST（）取集合中的最大<br><br><br>SELECT LEAST(&#x27;g&#x27;,&#x27;b&#x27;,&#x27;t&#x27;,&#x27;m&#x27;),GREATEST(&#x27;g&#x27;,&#x27;b&#x27;,&#x27;t&#x27;,&#x27;m&#x27;)<br>FROM DUAL;<br>+------------------------+---------------------------+<br>| LEAST(&#x27;g&#x27;,&#x27;b&#x27;,&#x27;t&#x27;,&#x27;m&#x27;) | GREATEST(&#x27;g&#x27;,&#x27;b&#x27;,&#x27;t&#x27;,&#x27;m&#x27;) |<br>+------------------------+---------------------------+<br>| b                      | t                         |<br>+------------------------+---------------------------+<br><br><br>SELECT LEAST(first_name,last_name) a,LEAST(LENGTH(first_name),LENGTH(last_name)) b,first_name,last_name,length(first_name) from employees;<br>+-------------+------+-------------+-------------+--------------------+<br>| a           | b    | first_name  | last_name   | length(first_name) |<br>+-------------+------+-------------+-------------+--------------------+<br>| King        |    4 | Steven      | King        |                  6 |<br>| Kochhar     |    5 | Neena       | Kochhar     |                  5 |<br>| Gietz       |    5 | William     | Gietz       |                  7 |<br>+-------------+------+-------------+-------------+--------------------+<br></code></pre></td></tr></table></figure>
-
-
 
 <p>由结果可以看到，当参数是整数或者浮点数时，LEAST将返回其中最小的值；当参数为字符串时，返回字母表中顺序最靠前的字符；当比较值列表中有NULL时，不能判断大小，返回值为NULL。</p>
 <p><strong>7. 最大值运算符</strong><br>语法格式为：<code>GREATEST(值1，值2，...，值n)</code>。其中，n表示参数列表中有n个值。当有两个或多个参数时，返回值为最大值。</p>
@@ -545,7 +545,8 @@
 
 
 
-<hr>
+
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- BETWEEN 条件下界1 AND 条件上界2  （查询条件1和条件2范围内的数据，包含边界）<br><br>#查询工资在6000 到 8000的员工信息<br>SELECT employee_id,last_name,salary<br>FROM employees<br>#where salary between 6000 and 7000;<br>WHERE salary &gt;= 6000 &amp;&amp; salary &lt;= 7000; #等同<br><br><br>+-------------+-----------+---------+<br>| employee_id | last_name | salary  |<br>+-------------+-----------+---------+<br>|         104 | Ernst     | 6000.00 |<br>|         113 | Popp      | 6900.00 |<br>|         179 | Johnson   | 6200.00 |<br>|         202 | Fay       | 6000.00 |<br>|         203 | Mavris    | 6500.00 |<br>+-------------+-----------+---------+<br><br><br><br><br><br>-- between ... and ... 是有上界值和下界值的<br>#交换6000 和 8000之后，查询不到数据<br>SELECT employee_id,last_name,salary<br>FROM employees<br>WHERE salary BETWEEN 7000 AND 6000;<br><br><br>-- 确定区间范围，再取反<br>#查询工资不在6000 到 8000的员工信息<br>SELECT employee_id,last_name,salary<br>FROM employees<br>WHERE salary NOT BETWEEN 2500 AND 15000;<br>-- 相当于  where salary &lt; 2500 or salary &gt; 15000;<br><br><br>+-------------+------------+----------+<br>| employee_id | last_name  | salary   |<br>+-------------+------------+----------+<br>|         100 | King       | 24000.00 |<br>|         101 | Kochhar    | 17000.00 |<br>|         102 | De Haan    | 17000.00 |<br>|         127 | Landry     |  2400.00 |<br>|         128 | Markle     |  2200.00 |<br>|         132 | Olson      |  2100.00 |<br>|         135 | Gee        |  2400.00 |<br>|         136 | Philtanker |  2200.00 |<br>+-------------+------------+----------+<br></code></pre></td></tr></table></figure>
 
 
@@ -554,13 +555,12 @@
 
 <p><strong>9. IN运算符</strong><br>IN运算符用于判断	<strong>给定的值</strong>	是否是	<strong>IN列表中的一个值</strong>，如果是则返回1，否则返回0。</p>
 <p>如果给定的值为NULL，或者IN列表中存在NULL，则结果为NULL。【除了安全等于 和 IS NULL相关的关键字函数外，有NULL参与运算，结果为NULL】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT &#x27;a&#x27; IN (&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;), 1 IN (2,3), NULL IN (&#x27;a&#x27;,&#x27;b&#x27;), &#x27;a&#x27; IN (&#x27;a&#x27;, NULL);<br>+----------------------+------------+-------------------+--------------------+<br>| &#x27;a&#x27; IN (&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;) | 1 IN (2,3) | NULL IN (&#x27;a&#x27;,&#x27;b&#x27;) | &#x27;a&#x27; IN (&#x27;a&#x27;, NULL) |<br>+----------------------+------------+-------------------+--------------------+<br>|            1         |        0   |         NULL      |         1          |<br>+----------------------+------------+-------------------+--------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT &#x27;a&#x27; IN (&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;), 1 IN (2,3), NULL IN (&#x27;a&#x27;,&#x27;b&#x27;), &#x27;a&#x27; IN (NULL,&#x27;a&#x27;);<br>+----------------------+------------+-------------------+--------------------+<br>| &#x27;a&#x27; IN (&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;) | 1 IN (2,3) | NULL IN (&#x27;a&#x27;,&#x27;b&#x27;) | &#x27;a&#x27; IN (NULL,&#x27;a&#x27;) |<br>+----------------------+------------+-------------------+--------------------+<br>|            1         |        0   |         NULL      |         1          |<br>+----------------------+------------+-------------------+--------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 
 
-<hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- in((set) 相当于使用过滤条件的or<br><br>#练习：查询部门为10,20,30部门的员工信息<br>SELECT last_name,salary,department_id<br>FROM employees<br>#where department_id = 10 or 20 or 30; #在有SQL中逻辑运算符只要有一边是1；则会过滤出该条件 【or有真为真，全假为假】<br>#where department_id = 10 or department_id = 20 or department_id = 30;<br>WHERE department_id IN (10,20,30); -- 相当于使用or<br><br><br>+------------+----------+---------------+<br>| last_name  | salary   | department_id |<br>+------------+----------+---------------+<br>| Whalen     |  4400.00 |            10 |<br>| Hartstein  | 13000.00 |            20 |<br>| Fay        |  6000.00 |            20 |<br>| Raphaely   | 11000.00 |            30 |<br>| Khoo       |  3100.00 |            30 |<br>| Baida      |  2900.00 |            30 |<br>| Tobias     |  2800.00 |            30 |<br>| Himuro     |  2600.00 |            30 |<br>| Colmenares |  2500.00 |            30 |<br>+------------+----------+---------------+<br>9 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
@@ -579,26 +579,26 @@
 <p>LIKE运算符通常使用如下通配符：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">“%”：匹配0个或多个字符。<br>“_”：只能匹配一个字符。<br></code></pre></td></tr></table></figure>
 
-
-
-
-
 <p>SQL语句示例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT NULL LIKE &#x27;abc&#x27;, &#x27;abc&#x27; LIKE NULL;  <br><br><br>+-----------------+-----------------+<br>| NULL LIKE &#x27;abc&#x27; | &#x27;abc&#x27; LIKE NULL |<br>+-----------------+-----------------+<br>|          NULL   |          NULL   |<br>+-----------------+-----------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT NULL LIKE &#x27;abc&#x27;, &#x27;abc&#x27; LIKE NULL;  <br><br>+-----------------+-----------------+<br>| NULL LIKE &#x27;abc&#x27; | &#x27;abc&#x27; LIKE NULL |<br>+-----------------+-----------------+<br>|          NULL   |          NULL   |<br>+-----------------+-----------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 <hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#练习：查询last_name中包含字符&#x27;a&#x27;的员工信息<br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;%a%&#x27;;<br><br><br>+------------+<br>| last_name  |<br>+------------+<br>| Kochhar    |<br>| De Haan    |<br>| Baer       |<br>+------------+<br> <br> <br> <br> <br> <br> <br>#练习：查询last_name中以字符&#x27;a&#x27;开头的员工信息<br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;a%&#x27;;<br>+-----------+<br>| last_name |<br>+-----------+<br>| Austin    |<br>| Atkinson  |<br>| Ande      |<br>| Abel      |<br>+-----------+<br><br>#练习：查询last_name中包含字符&#x27;a&#x27;且包含字符&#x27;e&#x27;的员工信息<br>#写法1：<br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;%a%&#x27; AND last_name LIKE &#x27;%e%&#x27;;<br><br>#写法2：<br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;%a%e%&#x27; OR last_name LIKE &#x27;%e%a%&#x27;;<br>+------------+<br>| last_name  |<br>+------------+<br>| De Haan    |<br>| Faviet     |<br>| Baer       |<br>+------------+<br><br><br><br>#练习：查询第3个字符是&#x27;a&#x27;的员工信息<br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;__a%&#x27;;<br><br><br><br>+-----------+<br>| last_name |<br>+-----------+<br>| Grant     |<br>| Grant     |<br>| Whalen    |<br>+-----------+<br></code></pre></td></tr></table></figure>
 
 
 
-<p><strong>ESCAPE</strong>【转移符号】</p>
+<p><strong>ESCAPE</strong>【转义符号】</p>
 <ul>
 <li><p>回避特殊符号的：<strong>使用转义符</strong></p>
 </li>
 <li><p>如果使用\表示转义，要省略ESCAPE。如果不是\，则要加上ESCAPE。</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#练习：查询第2个字符是_且第3个字符是&#x27;a&#x27;的员工信息<br>#需要使用转义字符: \ <br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;_\_a%&#x27;;<br><br><br><br><br><br>#或者  (了解)【定义$作为转义标识】<br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;_$_a%&#x27; ESCAPE &#x27;$&#x27;;<br><br>Empty set (0.00 sec)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#练习：查询第2个字符是_且第3个字符是&#x27;a&#x27;的员工信息<br>#需要使用转义字符: \ <br>SELECT last_name<br>FROM employees<br>WHERE last_name LIKE &#x27;_\_a%&#x27;;<br><br>+-----------+<br>| last_name |<br>+-----------+<br>| a_a       |<br>| a_a       |<br>+-----------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">#或者  (了解)【定义$作为转义标识】<br><span class="hljs-keyword">SELECT</span> last_name<br><span class="hljs-keyword">FROM</span> employees<br><span class="hljs-keyword">WHERE</span> last_name <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;_$_a%&#x27;</span> <span class="hljs-keyword">ESCAPE</span> <span class="hljs-string">&#x27;$&#x27;</span>;<br><br><span class="hljs-keyword">Empty</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -608,9 +608,13 @@
 <p>REGEXP运算符在进行匹配时，常用的有下面几种通配符：</p>
 <p>（1）<code>‘^’</code>  匹配以该字符后面的字符开头的字符串。<br>（2）<code>‘$’ </code> 匹配以该字符前面的字符结尾的字符串。<br>（3）<code>‘.’</code>  匹配任何一个单字符。<br>（4）<code>“[...]”</code>  匹配在方括号内的任何字符。例如，“[abc]”匹配“a”或“b”或“c”。</p>
 <p>​			可以指定命名字符的范围，使用一个  <code>‘-&#39;</code>。“[a-z]”匹配任何字母，而“[0-9]”匹配任何数字。</p>
-<p>（5）<code>‘*’</code>匹配零个或多个在它前面的字符。例如，“x*”匹配任何数量的‘x’字符，“[0-9]<em>”匹配任何数量的数字，而“</em>”匹配任何数量的任何字符。</p>
+<p>（5）<code>‘*’</code>匹配零个或多个在它前面的字符。例如，“x”匹配一个 ‘x’ 字符，“[0-9]”一个数字，而 “*” 匹配任何数量。</p>
 <p>SQL语句示例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 以shk开头，以t结尾，包含hk<br>SELECT &#x27;shkstart&#x27; REGEXP &#x27;^shk&#x27;, &#x27;shkstart&#x27; REGEXP &#x27;t$&#x27;, &#x27;shkstart&#x27; REGEXP &#x27;hk&#x27;<br>FROM DUAL;<br><br>+--------------------------+------------------------+------------------------+<br>| &#x27;shkstart&#x27; REGEXP &#x27;^shk&#x27; | &#x27;shkstart&#x27; REGEXP &#x27;t$&#x27; | &#x27;shkstart&#x27; REGEXP &#x27;hk&#x27; |<br>+--------------------------+------------------------+------------------------+<br>|                        1 |                      1 |                      1 |<br>+--------------------------+------------------------+------------------------+<br><br><br><br><br><br>-- 通配符 . 代表除换行符之外的全部字符<br>SELECT &#x27;atguigu&#x27; REGEXP &#x27;gu.gu&#x27;,&#x27;atguigu&#x27; REGEXP &#x27;[ab]&#x27;<br>FROM DUAL;<br><br>+--------------------------+-------------------------+<br>| &#x27;atguigu&#x27; REGEXP &#x27;gu.gu&#x27; | &#x27;atguigu&#x27; REGEXP &#x27;[ab]&#x27; |<br>+--------------------------+-------------------------+<br>|                        1 |                       1 |<br>+--------------------------+-------------------------+<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 以shk开头，以t结尾，包含hk</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-string">&#x27;shkstart&#x27;</span> REGEXP <span class="hljs-string">&#x27;^shk&#x27;</span>, <span class="hljs-string">&#x27;shkstart&#x27;</span> REGEXP <span class="hljs-string">&#x27;t$&#x27;</span>, <span class="hljs-string">&#x27;shkstart&#x27;</span> REGEXP <span class="hljs-string">&#x27;hk&#x27;</span><br><span class="hljs-keyword">FROM</span> DUAL;<br><br><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------+------------------------+------------------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-string">&#x27;shkstart&#x27;</span> REGEXP <span class="hljs-string">&#x27;^shk&#x27;</span> <span class="hljs-operator">|</span> <span class="hljs-string">&#x27;shkstart&#x27;</span> REGEXP <span class="hljs-string">&#x27;t$&#x27;</span> <span class="hljs-operator">|</span> <span class="hljs-string">&#x27;shkstart&#x27;</span> REGEXP <span class="hljs-string">&#x27;hk&#x27;</span> <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------+------------------------+------------------------+</span><br><span class="hljs-operator">|</span>                        <span class="hljs-number">1</span> <span class="hljs-operator">|</span>                      <span class="hljs-number">1</span> <span class="hljs-operator">|</span>                      <span class="hljs-number">1</span> <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------+------------------------+------------------------+</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 通配符 . 代表除换行符之外的全部字符<br>SELECT &#x27;atguigu&#x27; REGEXP &#x27;gu.gu&#x27;,&#x27;atguigu&#x27; REGEXP &#x27;[ab]&#x27;<br>FROM DUAL;<br><br>+--------------------------+-------------------------+<br>| &#x27;atguigu&#x27; REGEXP &#x27;gu.gu&#x27; | &#x27;atguigu&#x27; REGEXP &#x27;[ab]&#x27; |<br>+--------------------------+-------------------------+<br>|                        1 |                       1 |<br>+--------------------------+-------------------------+<br></code></pre></td></tr></table></figure>
 
 
 
@@ -621,12 +625,13 @@
 <h2 id="3-逻辑运算符"><a href="#3-逻辑运算符" class="headerlink" title="3. 逻辑运算符"></a>3. 逻辑运算符</h2><p>逻辑运算符主要用来判断表达式的真假，在MySQL中，逻辑运算符的返回结果为1、0或者NULL。</p>
 <p>MySQL中支持4种逻辑运算符如下：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110241418.png" srcset="/img/loading.gif" lazyload alt="image-20211012110241418"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110241418.png" srcset="/img/loading.gif" lazyload alt="image-20211012110241418" style="zoom: 50%;" />
+
 <hr>
 <p><strong>1．逻辑非运算符</strong><br>逻辑非（NOT或!）运算符表示当给定的值为0时返回1；当给定的值	<strong>为非0值时</strong>	<strong>返回0</strong>；当给定的值为NULL时，返回NULL。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT NOT 1, NOT 0, NOT(1+1), NOT !1, NOT NULL;   <br><br>+-------+-------+----------+--------+----------+<br>| NOT 1 | NOT 0 | NOT(1+1) | NOT !1 | NOT NULL |<br>+-------+-------+----------+--------+----------+<br>|     0 |     1 |        0 |      1 |     NULL |<br>+-------+-------+----------+--------+----------+<br>1 row in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name, job_id<br>FROM   employees<br>WHERE  job_id NOT IN (&#x27;IT_PROG&#x27;, &#x27;ST_CLERK&#x27;, &#x27;SA_REP&#x27;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name, job_id<br>FROM   employees<br>WHERE  job_id NOT IN (&#x27;IT_PROG&#x27;, &#x27;ST_CLERK&#x27;, &#x27;SA_REP&#x27;);<br><br>+------------+------------+<br>| last_name  | job_id     |<br>+------------+------------+<br>| King       | AD_PRES    |<br>| Kochhar    | AD_VP      |<br>| De Haan    | AD_VP      |<br>| Greenberg  | FI_MGR     |<br>| Faviet     | FI_ACCOUNT |<br>| Chen       | FI_ACCOUNT |<br>| Sciarra    | FI_ACCOUNT |<br>| Urman      | FI_ACCOUNT |<br>| Popp       | FI_ACCOUNT |<br>| Raphaely   | PU_MAN     |<br>| Khoo       | PU_CLERK   |<br>| Baida      | PU_CLERK   |<br>| Tobias     | PU_CLERK   |<br>| Himuro     | PU_CLERK   |<br>| Colmenares | PU_CLERK   |<br>| Weiss      | ST_MAN     |<br>| Fripp      | ST_MAN     |<br>| Kaufling   | ST_MAN     |<br>| Vollman    | ST_MAN     |<br>| Mourgos    | ST_MAN     |<br>| Russell    | SA_MAN     |<br>| Partners   | SA_MAN     |<br>| Errazuriz  | SA_MAN     |<br>| Cambrault  | SA_MAN     |<br>| Zlotkey    | SA_MAN     |<br>| Taylor     | SH_CLERK   |<br>| Fleaur     | SH_CLERK   |<br>| Sullivan   | SH_CLERK   |<br>| Geoni      | SH_CLERK   |<br>| Sarchand   | SH_CLERK   |<br>| Bull       | SH_CLERK   |<br>| Dellinger  | SH_CLERK   |<br>| Cabrio     | SH_CLERK   |<br>| Chung      | SH_CLERK   |<br>| Dilly      | SH_CLERK   |<br>| Gates      | SH_CLERK   |<br>| Perkins    | SH_CLERK   |<br>| Bell       | SH_CLERK   |<br>| Everett    | SH_CLERK   |<br>| McCain     | SH_CLERK   |<br>| Jones      | SH_CLERK   |<br>| Walsh      | SH_CLERK   |<br>| Feeney     | SH_CLERK   |<br>| OConnell   | SH_CLERK   |<br>| Grant      | SH_CLERK   |<br>| Whalen     | AD_ASST    |<br>| Hartstein  | MK_MAN     |<br>| Fay        | MK_REP     |<br>| Mavris     | HR_REP     |<br>| Baer       | PR_REP     |<br>| Higgins    | AC_MGR     |<br>| Gietz      | AC_ACCOUNT |<br>+------------+------------+<br>52 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -641,7 +646,6 @@
 
 
 
-<hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- or  并集<br>-- and 交集 <br>SELECT last_name,salary,department_id<br>FROM employees<br>-- where department_id = 10 or department_id = 20;<br>-- where department_id = 10 and department_id = 20;<br>WHERE department_id = 50 AND salary &gt; 6000;<br><br><br>+-----------+---------+---------------+<br>| last_name | salary  | department_id |<br>+-----------+---------+---------------+<br>| Weiss     | 8000.00 |            50 |<br>| Fripp     | 8200.00 |            50 |<br>| Kaufling  | 7900.00 |            50 |<br>| Vollman   | 6500.00 |            50 |<br>+-----------+---------+---------------+<br><br># 注意：AND的优先级高于OR<br></code></pre></td></tr></table></figure>
 
 
@@ -664,7 +668,6 @@
 
 
 
-<hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 工资大于一万或者职位包含MAN的员工信息<br>SELECT employee_id, last_name, job_id, salary<br>FROM   employees<br>WHERE  salary &gt;= 10000<br>OR     job_id LIKE &#x27;%MAN%&#x27;;<br><br><br>+-------------+-----------+---------+----------+<br>| employee_id | last_name | job_id  | salary   |<br>+-------------+-----------+---------+----------+<br>|         100 | King      | AD_PRES | 24000.00 |<br>|         101 | Kochhar   | AD_VP   | 17000.00 |<br>|         102 | De Haan   | AD_VP   | 17000.00 |<br>|         108 | Greenberg | FI_MGR  | 12000.00 |<br>|         114 | Raphaely  | PU_MAN  | 11000.00 |<br>|         120 | Weiss     | ST_MAN  |  8000.00 |<br>|         121 | Fripp     | ST_MAN  |  8200.00 |<br>|         122 | Kaufling  | ST_MAN  |  7900.00 |<br>|         123 | Vollman   | ST_MAN  |  6500.00 |<br>|         124 | Mourgos   | ST_MAN  |  5800.00 |<br>|         145 | Russell   | SA_MAN  | 14000.00 |<br>|         146 | Partners  | SA_MAN  | 13500.00 |<br>|         147 | Errazuriz | SA_MAN  | 12000.00 |<br>|         148 | Cambrault | SA_MAN  | 11000.00 |<br>|         149 | Zlotkey   | SA_MAN  | 10500.00 |<br>|         150 | Tucker    | SA_REP  | 10000.00 |<br>|         156 | King      | SA_REP  | 10000.00 |<br>|         162 | Vishney   | SA_REP  | 10500.00 |<br>|         168 | Ozer      | SA_REP  | 11500.00 |<br>|         169 | Bloom     | SA_REP  | 10000.00 |<br>|         174 | Abel      | SA_REP  | 11000.00 |<br>|         201 | Hartstein | MK_MAN  | 13000.00 |<br>|         204 | Baer      | PR_REP  | 10000.00 |<br>|         205 | Higgins   | AC_MGR  | 12000.00 |<br>+-------------+-----------+---------+----------+<br>24 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 <blockquote>
@@ -674,7 +677,7 @@
 <p><strong>4．逻辑异或运算符</strong><br>逻辑异或（XOR）运算符是当给定的值中任意一个值为NULL时，则返回NULL；</p>
 <p>如果两个非NULL的值都是0或者都不等于0时，则返回0；【同为假】</p>
 <p>如果一个值为0，另一个值不为0时，则返回1。【不同为真】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT 1 XOR -1, 1 XOR 0, 0 XOR 0, 1 XOR NULL, 1 XOR 1 XOR 1, 0 XOR 0 XOR 0;<br><br>+----------+---------+---------+------------+---------------+---------------+<br>| 1 XOR -1 | 1 XOR 0 | 0 XOR 0 | 1 XOR NULL | 1 XOR 1 XOR 1 | 0 XOR 0 XOR 0 |<br>+----------+---------+---------+------------+---------------+---------------+<br>|        0 |       1 |       0 |       NULL |             1 |             0 |<br>+----------+---------+---------+------------+---------------+---------------+<br>1 row in set (0.00 sec)<br><br># 本身与本身的相反数做异或，会返回零<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT 1 XOR -1, 1 XOR 0, 0 XOR 0, 1 XOR NULL, 1 XOR 1 XOR 1, 0 XOR 0 XOR 0;<br><br>+----------+---------+---------+------------+---------------+---------------+<br>| 1 XOR -1 | 1 XOR 0 | 0 XOR 0 | 1 XOR NULL | 1 XOR 1 XOR 1 | 0 XOR 0 XOR 0 |<br>+----------+---------+---------+------------+---------------+---------------+<br>|        0 |       1 |       0 |       NULL |             1 |             0 |<br>+----------+---------+---------+------------+---------------+---------------+<br>1 row in set (0.00 sec)<br><br># 只能是1 和 0 玩<br></code></pre></td></tr></table></figure>
 
 
 
@@ -690,7 +693,8 @@
 <p>位运算符会先将操作数变成二进制数，然后进行位运算，最后将计算结果从二进制变回十进制数。</p>
 <p>MySQL支持的位运算符如下：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110511223.png" srcset="/img/loading.gif" lazyload alt="image-20211012110511223"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110511223.png" srcset="/img/loading.gif" lazyload alt="image-20211012110511223" style="zoom:50%;" />
+
 <hr>
 <p><strong>1．按位与运算符</strong><br>按位与（&amp;）运算符将给定值对应的二进制数逐位进行逻辑与运算。当给定值对应的二进制位的数值都为1时，则该位返回1，否则返回0。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT 1 &amp; 10, 20 &amp; 30;<br><br><br>+--------+---------+<br>| 1 &amp; 10 | 20 &amp; 30 |<br>+--------+---------+<br>|      0 |      20 |<br>+--------+---------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
@@ -713,7 +717,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT 12 &amp; 5, 12 | 5,12 ^ 5 FROM DUAL;<br><br><br>+--------+--------+--------+<br>| 12 &amp; 5 | 12 | 5 | 12 ^ 5 |<br>+--------+--------+--------+<br>|      4 |     13 |      9 |<br>+--------+--------+--------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211023115738415.png" srcset="/img/loading.gif" lazyload alt="image-20211023115738415" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211023115738415.png" srcset="/img/loading.gif" lazyload alt="image-20211023115738415" style="zoom: 50%;" />
 
 <hr>
 <p><strong>4. 按位取反运算符</strong><br>按位取反（~）运算符将给定的值的二进制数逐位进行取反操作，即将1变为0，将0变为1。</p>
@@ -735,13 +739,14 @@
 <p>1的二进制数为0000 0001，左移两位为0000 0100，对应的十进制数为4。</p>
 <p>4的二进制数为0000 0100，左移两位为0001 0000，对应的十进制数为16。</p>
 <h2 id="5-运算符的优先级"><a href="#5-运算符的优先级" class="headerlink" title="5. 运算符的优先级"></a>5. 运算符的优先级</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012111042395-16558626753503.png" srcset="/img/loading.gif" lazyload alt="image-20211012111042395"><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110731059.png" srcset="/img/loading.gif" lazyload alt="image-20211012110731059"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012111042395-16558626753503.png" srcset="/img/loading.gif" lazyload alt="image-20211012111042395" style="zoom:50%;" /><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110731059.png" srcset="/img/loading.gif" lazyload alt="image-20211012110731059" style="zoom:50%;" /></p>
 <hr>
 <p>数字编号越大，优先级越高，优先级高的运算符先进行计算。可以看到，赋值运算符的优先级最低，使用“()”括起来的表达式的优先级最高</p>
 <h2 id="拓展：使用正则表达式查询"><a href="#拓展：使用正则表达式查询" class="headerlink" title="拓展：使用正则表达式查询"></a>拓展：使用正则表达式查询</h2><p>正则表达式通常被用来检索或替换那些符合某个模式的文本内容，根据指定的匹配模式匹配文本中符合要求的特殊字符串。例如，从一个文本文件中提取电话号码，查找一篇文章中重复的单词或者替换用户输入的某些敏感词语等，这些地方都可以使用正则表达式。正则表达式强大而且灵活，可以应用于非常复杂的查询。</p>
 <p>MySQL中使用REGEXP关键字指定正则表达式的字符匹配模式。下表列出了REGEXP操作符中常用字符匹配列表。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220821203018273.png" srcset="/img/loading.gif" lazyload alt="image-20220821203018273"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220821203018273.png" srcset="/img/loading.gif" lazyload alt="image-20220821203018273" style="zoom:50%;" />
+
 <hr>
 <p><strong>1. 查询以特定字符或字符串开头的记录</strong><br>字符<code>‘^’</code>	匹配以特定字符或者字符串开头的文本。</p>
 <p>在fruits表中，查询f_name字段以字母‘b’开头的记录，SQL语句如下：</p>
@@ -887,6 +892,38 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name,salary,manager_id<br>FROM employees<br>WHERE manager_id IN (100,101,110);<br>+-----------+----------+------------+<br>| last_name | salary   | manager_id |<br>+-----------+----------+------------+<br>| Kochhar   | 17000.00 |        100 |<br>| De Haan   | 17000.00 |        100 |<br>| Raphaely  | 11000.00 |        100 |<br>| Greenberg | 12000.00 |        101 |<br>| Whalen    |  4400.00 |        101 |<br>| Mavris    |  6500.00 |        101 |<br>| Baer      | 10000.00 |        101 |<br>| Higgins   | 12000.00 |        101 |<br>+-----------+----------+------------+<br>19 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>AND的优先级高于OR</p>
+<p>一个整数类型的值对整数进行加法和减法操作，结果还是一个整数；</p>
+<p>一个整数类型的值对浮点数进行加法和减法操作，结果是一个浮点数；</p>
+<p>在Java中，<code>+</code> 的左右两边如果有字符串，那么表示字符串的拼接。但是在MySQL中 <code>+ </code>只表示数值相加。如果遇到非数值类型，先尝试转成数值，如果转失败，就按0计算。（补充：MySQL中字符串拼接要使用字符串函数CONCAT()实现）</p>
+<p>在数学运算中，0不能用作除数，在MySQL中，一个数除以0为NULL</p>
+<p>SQL中只要涉及除法运算，结果都是浮点数</p>
+<p>即字符与数字参与运算，先将字符转为数字，能转数字就转数字，不能就转0</p>
+<p>MySQL中字符串拼接要使用字符串函数CONCAT()实现</p>
+<p>取模结果，与被模数有关，与模数无关</p>
+<p>比较运算符 比较的结果为 <strong>真则返回1</strong>，<strong>比较的结果为  假则返回0</strong>，其他情况则返回<strong>NULL</strong></p>
+<p>SQL中赋值符号使用   <code>   =</code>   比较符号也是用 <code>=</code></p>
+<p>  <code>&lt;=&gt;</code>  可以用来<strong>对NULL进行判断</strong>在两个操作数均为NULL时，其   <strong>返回值为1</strong>  ，而不为NULL   当一个操作数为NULL时，其   <strong>返回值为0</strong>  ，而不为NULL</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs isbl">字段 <span class="hljs-variable">IS</span> <span class="hljs-variable"><span class="hljs-keyword">NOT</span></span> <span class="hljs-variable"><span class="hljs-literal">NULL</span></span><br><br><span class="hljs-variable"><span class="hljs-keyword">NOT</span></span> 字段 &lt;=&gt;<span class="hljs-variable"><span class="hljs-literal">NULL</span></span><br><br><span class="hljs-variable"><span class="hljs-keyword">NOT</span></span> <span class="hljs-function"><span class="hljs-title">ISNULL</span>(字段)</span><br></code></pre></td></tr></table></figure>
+
+<p>LEAST（）取集合中的最小<br>GREATEST（）取集合中的最大</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>), <span class="hljs-number">1</span> <span class="hljs-keyword">IN</span> (<span class="hljs-number">2</span>,<span class="hljs-number">3</span>), <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>), <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">NULL</span>,<span class="hljs-string">&#x27;a&#x27;</span>);<br><span class="hljs-operator">+</span><span class="hljs-comment">----------------------+------------+-------------------+--------------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>) <span class="hljs-operator">|</span> <span class="hljs-number">1</span> <span class="hljs-keyword">IN</span> (<span class="hljs-number">2</span>,<span class="hljs-number">3</span>) <span class="hljs-operator">|</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>) <span class="hljs-operator">|</span> <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">NULL</span>,<span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------------+------------+-------------------+--------------------+</span><br><span class="hljs-operator">|</span>            <span class="hljs-number">1</span>         <span class="hljs-operator">|</span>        <span class="hljs-number">0</span>   <span class="hljs-operator">|</span>         <span class="hljs-keyword">NULL</span>      <span class="hljs-operator">|</span>         <span class="hljs-number">1</span>          <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------------+------------+-------------------+--------------------+</span><br><span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql">#练习：查询第<span class="hljs-number">2</span>个字符是_且第<span class="hljs-number">3</span>个字符是<span class="hljs-string">&#x27;a&#x27;</span>的员工信息<br>#需要使用转义字符: \ <br><span class="hljs-keyword">SELECT</span> last_name<br><span class="hljs-keyword">FROM</span> employees<br><span class="hljs-keyword">WHERE</span> last_name <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;_\_a%&#x27;</span>;<br><br><span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span><br><span class="hljs-operator">|</span> last_name <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span><br><span class="hljs-operator">|</span> a_a       <span class="hljs-operator">|</span><br><span class="hljs-operator">|</span> a_a       <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span><br><span class="hljs-number">2</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)<br></code></pre></td></tr></table></figure>
+
+<p>REGEXP运算符在进行匹配时，常用的有下面几种通配符：</p>
+<p>（1）<code>‘^’</code>  匹配以该字符后面的字符开头的字符串。<br>（2）<code>‘$’ </code> 匹配以该字符前面的字符结尾的字符串。<br>（3）<code>‘.’</code>  匹配任何一个单字符。<br>（4）<code>“[...]”</code>  匹配在方括号内的任何字符。例如，“[abc]”匹配“a”或“b”或“c”。</p>
+<p>​			可以指定命名字符的范围，使用一个  <code>‘-&#39;</code>。“[a-z]”匹配任何字母，而“[0-9]”匹配任何数字。</p>
+<p>（5）<code>‘*’</code>匹配零个或多个在它前面的字符。例如，“x”匹配一个 ‘x’ 字符，“[0-9]”一个数字，而 “*” 匹配任何数量。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 通配符 . 代表除换行符之外的全部字符</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-string">&#x27;atguigu&#x27;</span> REGEXP <span class="hljs-string">&#x27;gu.gu&#x27;</span>,<span class="hljs-string">&#x27;atguigu&#x27;</span> REGEXP <span class="hljs-string">&#x27;[ab]&#x27;</span><br><span class="hljs-keyword">FROM</span> DUAL;<br><br><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------+-------------------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-string">&#x27;atguigu&#x27;</span> REGEXP <span class="hljs-string">&#x27;gu.gu&#x27;</span> <span class="hljs-operator">|</span> <span class="hljs-string">&#x27;atguigu&#x27;</span> REGEXP <span class="hljs-string">&#x27;[ab]&#x27;</span> <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------+-------------------------+</span><br><span class="hljs-operator">|</span>                        <span class="hljs-number">1</span> <span class="hljs-operator">|</span>                       <span class="hljs-number">1</span> <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------+-------------------------+</span><br></code></pre></td></tr></table></figure>
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012110241418.png" srcset="/img/loading.gif" lazyload alt="image-20211012110241418" style="zoom: 50%;" />
+
                 
               </div>
             
@@ -950,7 +987,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年12月10日</div>
+          <div>2022年12月11日</div>
         </div>
       
       
