@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/mysql.png">
 <meta property="article:published_time" content="2022-08-21T19:08:02.000Z">
-<meta property="article:modified_time" content="2022-11-29T13:45:36.392Z">
+<meta property="article:modified_time" content="2022-12-31T06:38:52.622Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -263,7 +263,7 @@
         
         
         
-          121 分钟
+          127 分钟
         
       </span>
     
@@ -314,7 +314,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：12 天前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -342,7 +342,7 @@
 <li><strong>SUM()</strong></li>
 <li><strong>MAX()</strong> </li>
 <li><strong>MIN()</strong> </li>
-<li>**COUNT() **</li>
+<li><strong>COUNT()</strong></li>
 </ul>
 </li>
 <li><p>聚合函数语法</p>
@@ -360,9 +360,9 @@
 
 
 
-<h3 id="1-2-MIN和MAX函数"><a href="#1-2-MIN和MAX函数" class="headerlink" title="1.2 MIN和MAX函数"></a>1.2 MIN和MAX函数</h3><p>可以对<strong>任意数据类型</strong>的数据使用 MIN 和 MAX 函数</p>
+<h3 id="1-2-MIN和MAX函数"><a href="#1-2-MIN和MAX函数" class="headerlink" title="1.2 MIN和MAX函数"></a>1.2 MIN和MAX函数</h3><p>可以对 <strong>任意数据类型</strong> 的数据使用 MIN 和 MAX 函数</p>
 <p>既可以对字符串、日期进行比较</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(hire_date), <span class="hljs-built_in">MAX</span>(hire_date)<br><span class="hljs-keyword">FROM</span>	  employees;<br><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------+----------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-built_in">MIN</span>(hire_date) <span class="hljs-operator">|</span> <span class="hljs-built_in">MAX</span>(hire_date) <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------+----------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-number">1987</span><span class="hljs-number">-06</span><span class="hljs-number">-17</span>     <span class="hljs-operator">|</span> <span class="hljs-number">2000</span><span class="hljs-number">-04</span><span class="hljs-number">-21</span>     <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------+----------------+</span><br><span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(hire_date), <span class="hljs-built_in">MAX</span>(hire_date)<br><span class="hljs-keyword">FROM</span> employees;<br><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------+----------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-built_in">MIN</span>(hire_date) <span class="hljs-operator">|</span> <span class="hljs-built_in">MAX</span>(hire_date) <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------+----------------+</span><br><span class="hljs-operator">|</span> <span class="hljs-number">1987</span><span class="hljs-number">-06</span><span class="hljs-number">-17</span>     <span class="hljs-operator">|</span> <span class="hljs-number">2000</span><span class="hljs-number">-04</span><span class="hljs-number">-21</span>     <span class="hljs-operator">|</span><br><span class="hljs-operator">+</span><span class="hljs-comment">----------------+----------------+</span><br><span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -374,7 +374,7 @@
 
 
 <ul>
-<li><p>COUNT(expr)</p>
+<li><p>COUNT(具体字段)</p>
 <p>返回<strong>expr不为空</strong>的记录总数。</p>
 </li>
 </ul>
@@ -393,7 +393,7 @@
 <ul>
 <li><p><strong>问题：用count(*)，count(1)，count(列名)谁好呢?</strong></p>
 <p>其实，对于MyISAM引擎的表是没有区别的。这种引擎内部有一计数器在维护着行数。</p>
-<p>Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因为innodb真的要去数一遍。但好于具体的count(列名)。</p>
+<p>Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因为innodb真的要去数一遍。但好于具体的count(列名)  count(列名)需要判空，空值不做计算。</p>
 </li>
 <li><p><strong>问题：能不能使用count(列名)替换count(*)?</strong></p>
 <p>不要使用 count(列名)来替代 <code>count(*)</code>，<code>count(*)</code>是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关。 </p>
@@ -402,7 +402,7 @@
 <li><p><strong>公式：AVG &#x3D; SUM &#x2F; COUNT</strong></p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- SUN COUNT AVG 有NULL不算 所以 AVG(commission_pct) = SUM(commission_pct)/COUNT(commission_pct) <br>SELECT AVG(salary),SUM(salary)/COUNT(salary),<br>AVG(commission_pct),SUM(commission_pct)/COUNT(commission_pct),<br>SUM(commission_pct) / 107<br>FROM employees;<br>+-------------+---------------------------+---------------------+-------------------------------------------+-------------------<br>|AVG(salary)|SUM(salary)/COUNT(salary)|AVG(commission_pct)|SUM(commission_pct)/COUNT(commission_pct) | SUM(commission_pct) / 107 |<br>+-------------+---------------------------+---------------------+-------------------------------------------+-------------------<br>| 6461.682243 |           6461.682243 |          0.222857 |                                 0.222857 |                  0.072897 |<br>+-------------+---------------------------+---------------------+-------------------------------------------+-------------------<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- SUN COUNT AVG 有NULL不算 所以 AVG(commission_pct) = SUM(commission_pct)/COUNT(commission_pct) <br>SELECT AVG(salary),SUM(salary)/COUNT(salary),<br>AVG(commission_pct),SUM(commission_pct)/COUNT(commission_pct),<br>SUM(commission_pct) / 107<br>FROM employees;<br>+-------------+---------------------------+---------------------+-------------------------------------------+-------------------<br>|AVG(salary)  |SUM(salary)/COUNT(salary)  |AVG(commission_pct)  |SUM(commission_pct)/COUNT(commission_pct)  | SUM(commission_pct) / 107 |<br>+-------------+---------------------------+---------------------+-------------------------------------------+-------------------<br>| 6461.682243 |           6461.682243     |          0.222857   |                                 0.222857  |                  0.072897                 |<br>+-------------+---------------------------+---------------------+-------------------------------------------+-------------------<br></code></pre></td></tr></table></figure>
 
 
 
@@ -487,7 +487,7 @@
 
 
 
-<p>首先注意一个执行顺序：1、FROM  2、WHERE  3、SELECT   4、GROUP BY   5、ORDER BY</p>
+<p>首先注意一个执行顺序：1、FROM  ON  2、WHERE    3、GROUP BY  4、HAVING   5、SELECT  6、ORDER BY  7、LIMIT </p>
 <p>所以，分组后会出现一个记录所有记录总和的数据，该数据要参与ORDER BY 显然是不合理的</p>
 <h2 id="3-HAVING"><a href="#3-HAVING" class="headerlink" title="3. HAVING"></a>3. HAVING</h2><h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><p>用于过滤数据</p>
 <hr>
@@ -554,24 +554,33 @@
 </tbody></table>
 <p><strong>开发中的选择：</strong></p>
 <p>WHERE 和 HAVING 也不是互相排斥的，我们可以在一个查询里面同时使用 WHERE 和 HAVING。包含分组统计函数的条件用 HAVING，普通条件用 WHERE。这样，我们就既利用了 WHERE 条件的高效快速，又发挥了 HAVING 可以使用包含分组统计函数的查询条件的优点。当数据量特别大的时候，运行效率会有很大的差别</p>
-<h2 id="4-SELECT的执行过程"><a href="#4-SELECT的执行过程" class="headerlink" title="4. SELECT的执行过程"></a>4. SELECT的执行过程</h2><h3 id="4-1-查询的结构"><a href="#4-1-查询的结构" class="headerlink" title="4.1 查询的结构"></a>4.1 查询的结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#方式1SQL92语法：<br>SELECT 字段1，字段2，字段3，聚合函数(字段4)，聚合函数(字段5)，聚合函数(字段6)<br>FROM 表1  ，表2  ，表3.......<br>WHERE 多表的连接条件<br>AND 不包含组函数的过滤条件<br>GROUP BY 字段1，字段2，字段3<br>HAVING 包含组函数的过滤条件<br>ORDER BY  ASC、DESC<br>LIMIT 偏移量，个数<br><br>#方式2SQL99语法：<br>SELECT 字段1，字段2，字段3，聚合函数(字段4)，聚合函数(字段5)，聚合函数(字段6)<br>FROM 表1  （LEFT、RIGHT）JOIN 表2 <br>ON 多表的连接条件<br>（LEFT、RIGHT）JOIN 表3<br>ON 多表的连接条件<br>WHERE 不包含组函数的过滤条件<br>AND/OR 不包含组函数的过滤条件<br>GROUP BY 字段1，字段2，字段3<br>HAVING 包含组函数的过滤条件<br>ORDER BY  ASC、DESC<br>LIMIT  偏移量，个数<br><br>#其中：<br>#（1）from：从哪些表中筛选<br>#（2）on：关联多表查询时，去除笛卡尔积<br>#（3）where：从表中筛选的条件<br>#（4）group by：分组依据<br>#（5）having：在统计结果中再次筛选<br>#（6）order by：排序<br>#（7）limit：分页<br></code></pre></td></tr></table></figure>
+<h2 id="4-SELECT的执行过程"><a href="#4-SELECT的执行过程" class="headerlink" title="4. SELECT的执行过程"></a>4. SELECT的执行过程</h2><h3 id="4-1-查询的结构"><a href="#4-1-查询的结构" class="headerlink" title="4.1 查询的结构"></a>4.1 查询的结构</h3><p>方式1  SQL92语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段<span class="hljs-number">1</span>，字段<span class="hljs-number">2</span>，字段<span class="hljs-number">3</span>，聚合函数(字段<span class="hljs-number">4</span>)，聚合函数(字段<span class="hljs-number">5</span>)，聚合函数(字段<span class="hljs-number">6</span>)<br><span class="hljs-keyword">FROM</span> 表<span class="hljs-number">1</span>  ，表<span class="hljs-number">2</span>  ，表<span class="hljs-number">3.</span>......<br><span class="hljs-keyword">WHERE</span> 多表的连接条件<br><span class="hljs-keyword">AND</span> 不包含聚合函数的过滤条件<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 字段<span class="hljs-number">1</span>，字段<span class="hljs-number">2</span>，字段<span class="hljs-number">3</span><br><span class="hljs-keyword">HAVING</span> 包含聚合函数的过滤条件<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span>  <span class="hljs-keyword">ASC</span>、<span class="hljs-keyword">DESC</span><br>LIMIT 偏移量，个数<br></code></pre></td></tr></table></figure>
 
 
 
+<p>方式2   SQL99语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT 字段1，字段2，字段3，聚合函数(字段4)，聚合函数(字段5)，聚合函数(字段6)<br>FROM 表1  （LEFT、RIGHT）JOIN 表2 <br>ON 多表的连接条件<br>（LEFT、RIGHT）JOIN 表3<br>ON 多表的连接条件<br>WHERE 不包含聚合函数的过滤条件<br>AND/OR 不包含聚合函数的过滤条件<br>GROUP BY 字段1,字段2,字段3<br>HAVING 包含聚合函数的过滤条件<br>ORDER BY  字段1 ASC/DESC<br>LIMIT  偏移量,个数<br></code></pre></td></tr></table></figure>
+
+<p>其中：<br>（1）from：从哪些表中筛选</p>
+<p>（2）on：关联多表查询时，去除笛卡尔积</p>
+<p>（3）where：从表中筛选的条件</p>
+<p>（4）group by：分组依据</p>
+<p>（5）having：在统计结果中再次筛选</p>
+<p>（6）select：选择出需要的字段</p>
+<p>（6）order by：排序</p>
+<p>（7）limit：分页</p>
 <h3 id="4-2-SELECT执行顺序"><a href="#4-2-SELECT执行顺序" class="headerlink" title="4.2 SELECT执行顺序"></a>4.2 SELECT执行顺序</h3><p>你需要记住 SELECT 查询时的两个顺序：</p>
-<p><strong>1. 关键字的顺序是不能颠倒的：</strong></p>
+<p><strong>1.SELECT语句的书写顺序：</strong></p>
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">SELECT</span> <span class="hljs-params">...</span> FROM <span class="hljs-params">...</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-params">...</span> <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-params">...</span> HAVING <span class="hljs-params">...</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-params">...</span> LIMIT<span class="hljs-params">...</span><br></code></pre></td></tr></table></figure>
 
-
-
-
-
+<p> 关键字的顺序是不能颠倒的</p>
 <p><strong>2.SELECT 语句的执行顺序</strong>（在 MySQL 和 Oracle 中，SELECT 执行顺序基本相同）：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">FROM</span> -&gt; <span class="hljs-keyword">WHERE</span>、<span class="hljs-keyword">ON</span> -&gt; <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> -&gt; <span class="hljs-keyword">HAVING</span> -&gt; <span class="hljs-keyword">SELECT</span> 的字段 -&gt; <span class="hljs-keyword">DISTINCT</span> -&gt; <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> -&gt; <span class="hljs-keyword">LIMIT</span><br></code></pre></td></tr></table></figure>
 
 <p>1、FROM 两个表进行CROSS JOIN，获取笛卡尔积；</p>
 <p>2、通过WHERE或是ON给出多表间的连接条件进行记录过滤</p>
-<p>3、判断是不是外连接，如是，则补充主表有记录而不满足多表间连接条件的记录</p>
+<p>3、判断是不是外连接，如是，则补充 主表有记录而不满足多表间连接条件的记录</p>
 <p>4、WHERE过滤数据</p>
 <p>5、GROUP  BY 进行数据分组</p>
 <p>6、HAVING进行数据过滤</p>
@@ -580,7 +589,7 @@
 <p>9、ORDER BY 排序</p>
 <p>10、LIMIT 分页</p>
 <p>比如你写了一个 SQL 语句，那么它的关键字顺序和执行顺序是下面这样的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT DISTINCT player_id, player_name, count(*) as num # 顺序 5<br>FROM player JOIN team ON player.team_id = team.team_id # 顺序 1<br>WHERE height &gt; 1.80 # 顺序 2<br>GROUP BY player.team_id # 顺序 3<br>HAVING num &gt; 2 # 顺序 4<br>ORDER BY num DESC # 顺序 6<br>LIMIT 2 # 顺序 7<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT DISTINCT player_id, player_name, count(*) as num -- 顺序 6<br>FROM player JOIN team            						-- 顺序 1<br>ON player.team_id = team.team_id 						-- 顺序 2<br>WHERE height &gt; 1.80 			 						-- 顺序 3<br>GROUP BY player.team_id 		 						-- 顺序 4<br>HAVING num &gt; 2 					 						-- 顺序 5<br>ORDER BY num DESC 				 						-- 顺序 7<br>LIMIT 2 						 						-- 顺序 8<br></code></pre></td></tr></table></figure>
 
 <p>在 SELECT 语句执行这些步骤的时候，每个步骤都会产生一个<code>虚拟表</code>，然后将这个虚拟表传入下一个步骤中作为输入。需要注意的是，这些步骤隐含在 SQL 的执行过程中，对于我们来说是不可见的</p>
 <h3 id="4-3-SQL-的执行原理"><a href="#4-3-SQL-的执行原理" class="headerlink" title="4.3 SQL 的执行原理"></a>4.3 SQL 的执行原理</h3><p>SELECT 是先执行 FROM 这一步的。在这个阶段，如果是多张表联查，还会经历下面的几个步骤：</p>
@@ -599,7 +608,28 @@
 <p>当然我们在写 SELECT 语句的时候，不一定存在所有的关键字，相应的阶段就会省略。</p>
 <p>同时因为 SQL 是一门类似英语的结构化查询语言，所以我们在写 SELECT 语句的时候，还要注意相应的关键字顺序</p>
 <p><strong>所谓底层运行的原理，就是我们刚才讲到的执行顺序</strong></p>
-<h1 id="合函数的课后练习"><a href="#合函数的课后练习" class="headerlink" title="合函数的课后练习"></a>合函数的课后练习</h1><h2 id="查询公司员工工资的最大值，最小值，平均值，总和"><a href="#查询公司员工工资的最大值，最小值，平均值，总和" class="headerlink" title="查询公司员工工资的最大值，最小值，平均值，总和"></a><strong>查询公司员工工资的最大值，最小值，平均值，总和</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT MAX(salary) max_sal ,MIN(salary) mim_sal,AVG(salary) avg_sal,SUM(salary) sum_sal<br>FROM employees;<br>+----------+---------+-------------+-----------+<br>| max_sal  | mim_sal | avg_sal     | sum_sal   |<br>+----------+---------+-------------+-----------+<br>| 24000.00 | 2100.00 | 6461.682243 | 691400.00 |<br>+----------+---------+-------------+-----------+<br>-- 没有分组<br></code></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><h2 id="理解聚合函数："><a href="#理解聚合函数：" class="headerlink" title="理解聚合函数："></a>理解聚合函数：</h2><p>按照某种计算方式将当前所掌握的所有记录中的数据计算出来</p>
+<h2 id="SQL执行顺序："><a href="#SQL执行顺序：" class="headerlink" title="SQL执行顺序："></a>SQL执行顺序：</h2><p>1、FROM …..ON………</p>
+<p>2、WHERE ….</p>
+<p>3、GROUP  BY ……</p>
+<p>4、HAVING …….</p>
+<p>5、SELECT ……</p>
+<p>6、ORDER BY ……</p>
+<p>7、LIMIT …….</p>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><p>聚合函数不能嵌套调用</p>
+<p>字符串、日期都不适用 AVG() 、SUM()</p>
+<h2 id="mysql中-count-，count-1-，count-列名-谁好"><a href="#mysql中-count-，count-1-，count-列名-谁好" class="headerlink" title="mysql中 count(*)，count(1)，count(列名)谁好"></a>mysql中 count(*)，count(1)，count(列名)谁好</h2><p>如果使用的是InnoDB 存储引擎，则三者效率：COUNT(*) &#x3D; COUNT(1)&gt; COUNT(字段)</p>
+<p>如果使用MyIsam存储引擎则一样，因为MyIsam存储引擎不涉及事务，可以维护一个记录专门记录列数</p>
+<h2 id="理解Group-By"><a href="#理解Group-By" class="headerlink" title="理解Group By"></a>理解Group By</h2><p>按照某一列或某几列对一堆数据进行分组（相同的为一组）</p>
+<p>在SELECT列表中所有未包含在组函数中的列都应该包含在 GROUP BY子句中，否则这个数据可能不对</p>
+<p>GROUP BY中使用WITH ROLLUP <code>group by xxxx with rollup</code>   这会追加一行数据 会算出使用到聚合函数的列的总和</p>
+<h2 id="理解-Having"><a href="#理解-Having" class="headerlink" title="理解 Having"></a>理解 Having</h2><p>对已经分组的数据进行过滤（可以在其中使用聚合函数，而在where中不能使用聚合函数）</p>
+<p>在having中也可以作普通字段的过滤，不会这么做，效率低；因为where在多张虚拟表连接完成后就开始过滤掉许多无用的数据，而having则在分组后才会进行过滤，即是很多无用的数据进行了分组然后有被过滤掉了</p>
+<p>MySQL语句的执行顺序：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212311425483.png" srcset="/img/loading.gif" lazyload alt="image-20221231142542481"></p>
+<hr>
+<h1 id="聚合函数的课后练习"><a href="#聚合函数的课后练习" class="headerlink" title="聚合函数的课后练习"></a>聚合函数的课后练习</h1><h2 id="查询公司员工工资的最大值，最小值，平均值，总和"><a href="#查询公司员工工资的最大值，最小值，平均值，总和" class="headerlink" title="查询公司员工工资的最大值，最小值，平均值，总和"></a><strong>查询公司员工工资的最大值，最小值，平均值，总和</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT MAX(salary) max_sal ,MIN(salary) mim_sal,AVG(salary) avg_sal,SUM(salary) sum_sal<br>FROM employees;<br>+----------+---------+-------------+-----------+<br>| max_sal  | mim_sal | avg_sal     | sum_sal   |<br>+----------+---------+-------------+-----------+<br>| 24000.00 | 2100.00 | 6461.682243 | 691400.00 |<br>+----------+---------+-------------+-----------+<br>-- 没有分组<br></code></pre></td></tr></table></figure>
 
 
 
@@ -689,7 +719,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月29日</div>
+          <div>2022年12月31日</div>
         </div>
       
       

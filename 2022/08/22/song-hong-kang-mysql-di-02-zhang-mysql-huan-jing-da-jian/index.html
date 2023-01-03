@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/mysql.png">
 <meta property="article:published_time" content="2022-08-21T19:06:30.000Z">
-<meta property="article:modified_time" content="2022-12-10T15:13:42.411Z">
+<meta property="article:modified_time" content="2022-12-14T15:16:19.755Z">
 <meta property="article:author" content="fgcy">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -314,7 +314,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：13 小时前
+                    本文最后更新于：20 天前
                   
                 
               </p>
@@ -709,7 +709,7 @@
 
 <hr>
 <p>注意：</p>
-<p>（1）**-p与密码之间不能有空格，其他参数名与参数值之间可以有空格也可以没有空格**</p>
+<p>（1）-p与密码之间不能有空格，其他参数名与参数值之间可以有空格也可以没有空格</p>
 <p>如：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql <span class="hljs-operator">-</span>hlocalhost <span class="hljs-operator">-</span>P3306 <span class="hljs-operator">-</span>uroot <span class="hljs-operator">-</span>proot123<br></code></pre></td></tr></table></figure>
 
@@ -1020,22 +1020,22 @@
 </tbody></table>
 <h3 id="6-2-MySQL-源代码获取"><a href="#6-2-MySQL-源代码获取" class="headerlink" title="6.2 MySQL 源代码获取"></a>6.2 MySQL 源代码获取</h3><p>首先，你要进入 MySQL下载界面。</p>
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193635459.png" srcset="/img/loading.gif" lazyload alt="image-20220621193635459" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193635459.png" srcset="/img/loading.gif" lazyload alt="image-20220621193635459" style="zoom: 33%;" />
 
 <hr>
 <p>点击MySQL Community Server</p>
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193718002.png" srcset="/img/loading.gif" lazyload alt="image-20220621193718002" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193718002.png" srcset="/img/loading.gif" lazyload alt="image-20220621193718002" style="zoom: 33%;" />
 
 <hr>
 <p>这里你不要选择用默认的“Microsoft Windows”，而是要通过下拉栏，找到“Source Code”</p>
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193821419.png" srcset="/img/loading.gif" lazyload alt="image-20220621193821419" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193821419.png" srcset="/img/loading.gif" lazyload alt="image-20220621193821419" style="zoom: 33%;" />
 
 <hr>
 <p>在下面的操作系统版本里面， 选择 Windows（Architecture Independent），然后点击下载 </p>
 <hr>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193848282.png" srcset="/img/loading.gif" lazyload alt="image-20220621193848282" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220621193848282.png" srcset="/img/loading.gif" lazyload alt="image-20220621193848282" style="zoom: 33%;" />
 
 <hr>
 <p>接下来，把下载下来的压缩文件解压，我们就得到了 MySQL 的源代码。</p>
@@ -1110,7 +1110,8 @@
 <hr>
 <p>解决方案，设置当前连接的客户端字符集 <strong>“SET NAMES GBK;”</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554912957353.png" srcset="/img/loading.gif" lazyload alt="1554912957353"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554912957353.png" srcset="/img/loading.gif" lazyload alt="1554912957353" style="zoom:50%;" />
+
 <hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SHOW VARIABLES LIKE &#x27;character_set_%&#x27;;<br>+--------------------------+----------------------------------------------+<br>| Variable_name            | Value                                        |<br>+--------------------------+----------------------------------------------+<br>| character_set_client     | gbk                                          |<br>| character_set_connection | gbk                                          |<br>| character_set_database   | utf8                                         |<br>| character_set_filesystem | binary                                       |<br>| character_set_results    | gbk                                          |<br>| character_set_server     | utf8                                         |<br>| character_set_system     | utf8                                         |<br>| character_sets_dir       | D:\sofeware\Idea\Mysql5.7.34\share\charsets\ |<br>+--------------------------+----------------------------------------------+<br>8 rows in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
@@ -1150,7 +1151,7 @@
 <p>特点：<br>1、<strong>开源的</strong>、<strong>关系型的</strong>数据库<br>2、支持<strong>千万级别数据量的存储</strong>，大型的数据库</p>
 <h3 id="3-说说你对DB、DBMS、SQL的理解"><a href="#3-说说你对DB、DBMS、SQL的理解" class="headerlink" title="3.说说你对DB、DBMS、SQL的理解"></a>3.说说你对DB、DBMS、SQL的理解</h3><p>DB：database，看做是数据库文件。 （类似于：.doc、.txt、.mp3、.avi……….）<br>DBMS：数据库管理系统。（类似于word工具、wps工具、记事本工具、qq影音播放器等……………）管理文件的工具<br>SQL: MySQL数据库服务器中安装了MySQL DBMS,使用MySQL DBMS 来管理和操作DB，使用的是SQL语言</p>
 <h3 id="4-你知道哪些非关系型数据库的类型呢？（了解）"><a href="#4-你知道哪些非关系型数据库的类型呢？（了解）" class="headerlink" title="4.你知道哪些非关系型数据库的类型呢？（了解）"></a>4.你知道哪些非关系型数据库的类型呢？（了解）</h3><p>1、键值型数据库：Redis<br>2、文档型数据库：MongoDB<br>3、搜索引擎数据库：ES、Solr<br>4、列式数据库：HBase<br>5、图形数据库：InfoGrid</p>
-<h3 id="5-表与表的记录之间存在哪些关联关系？"><a href="#5-表与表的记录之间存在哪些关联关系？" class="headerlink" title="5.表与表的记录之间存在哪些关联关系？"></a>5.表与表的记录之间存在哪些关联关系？</h3><p>ORM思想（了解）<br>表与表的记录之间的关系：一对一关系、一对多关系、多对多关系、自关联 （了解）</p>
+<h3 id="5-表与表的记录之间存在哪些关联关系？"><a href="#5-表与表的记录之间存在哪些关联关系？" class="headerlink" title="5.表与表的记录之间存在哪些关联关系？"></a>5.表与表的记录之间存在哪些关联关系？</h3><p>ORM思想  表：类    一条记录：一个对象<br>表与表的记录之间的关系：一对一关系、一对多关系、多对多关系、自关联 </p>
 <h3 id="5、安装好MySQL之后在windows系统中哪些位置能看到MySQL"><a href="#5、安装好MySQL之后在windows系统中哪些位置能看到MySQL" class="headerlink" title="5、安装好MySQL之后在windows系统中哪些位置能看到MySQL?"></a>5、安装好MySQL之后在windows系统中哪些位置能看到MySQL?</h3><p>MySQL DBMS软件的安装位置 </p>
 <blockquote>
 <p>D:\sofeware\Idea\Mysql8.0.26</p>
@@ -1257,7 +1258,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年12月10日</div>
+          <div>2022年12月14日</div>
         </div>
       
       

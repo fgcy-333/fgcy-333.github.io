@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-09T16:16:41.567Z</updated>
+  <updated>2023-01-03T15:13:12.005Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第10章_索引优化与查询优化</title>
+    <link href="http://example.com/2023/01/04/song-hong-kang-mysql-gao-ji-di-10-zhang-suo-yin-you-hua-yu-cha-xun-you-hua/"/>
+    <id>http://example.com/2023/01/04/song-hong-kang-mysql-gao-ji-di-10-zhang-suo-yin-you-hua-yu-cha-xun-you-hua/</id>
+    <published>2023-01-03T22:27:02.000Z</published>
+    <updated>2023-01-03T15:13:12.005Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;都有哪些维度可以进行数据库调优？简言之：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;索引失效、没有充分利用到索引–索引建立&lt;/li&gt;
+&lt;li&gt;关联查询太多JOIN(设计缺陷或不得已的需求)——SQL优化、反范式设计&lt;/li&gt;
+&lt;li&gt;服务器调优及各个参数设置(缓冲、线程数等)–调整my.c</summary>
+        
+      
+    
+    
+    
+    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>IO模型</title>
@@ -133,7 +162,7 @@
     <link href="http://example.com/2022/10/26/hei-ma-git-zong-jie/"/>
     <id>http://example.com/2022/10/26/hei-ma-git-zong-jie/</id>
     <published>2022-10-26T14:10:24.000Z</published>
-    <updated>2022-12-09T16:32:51.150Z</updated>
+    <updated>2022-12-16T15:21:34.112Z</updated>
     
     
       
@@ -161,7 +190,7 @@
     <link href="http://example.com/2022/10/18/shang-huo-gu-vue/"/>
     <id>http://example.com/2022/10/18/shang-huo-gu-vue/</id>
     <published>2022-10-17T21:48:48.000Z</published>
-    <updated>2022-11-27T16:19:22.781Z</updated>
+    <updated>2022-12-16T15:18:54.223Z</updated>
     
     
       
@@ -287,7 +316,7 @@
     <link href="http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/"/>
     <id>http://example.com/2022/09/27/song-hong-kang-mysql-gao-ji-di-09-zhang-xing-neng-fen-xi-gong-ju-de-shi-yong/</id>
     <published>2022-09-26T22:50:59.000Z</published>
-    <updated>2022-11-29T13:44:38.024Z</updated>
+    <updated>2023-01-03T14:29:05.646Z</updated>
     
     
     <summary type="html">&lt;p&gt;在数据库调优中，我们的目标就是响应时间更快，吞吐量更大、利用  **宏观的监控工且 ** 和 &lt;strong&gt;微观的日志分析&lt;/strong&gt;  可以帮我们快速找到调优的思路和方式&lt;/p&gt;
@@ -484,29 +513,6 @@
     <summary type="html">&lt;h1 id=&quot;1-逻辑架构剖析&quot;&gt;&lt;a href=&quot;#1-逻辑架构剖析&quot; class=&quot;headerlink&quot; title=&quot;1. 逻辑架构剖析&quot;&gt;&lt;/a&gt;1. 逻辑架构剖析&lt;/h1&gt;&lt;h2 id=&quot;1-1服务器处理客户端请求&quot;&gt;&lt;a href=&quot;#1-1服务器处理客户端请求&quot; class=&quot;headerlink&quot; title=&quot;1.1服务器处理客户端请求&quot;&gt;&lt;/a&gt;1.1服务器处理客户端请求&lt;/h2&gt;&lt;p&gt;首先MySQL是典型的C&amp;#x2F;s架构, 即 &lt;code&gt;Client/Server&lt;/code&gt; 架构,服务器端程序使用的&lt;code&gt;mysqld&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是:&lt;/p&gt;
 &lt;p&gt;客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="视频学习笔记" scheme="http://example.com/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="尚硅谷-宋红康-MySQL(高级)" scheme="http://example.com/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第03章_用户与权限管理</title>
-    <link href="http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-03-zhang-yong-hu-yu-quan-xian-guan-li/"/>
-    <id>http://example.com/2022/08/29/song-hong-kang-mysql-gao-ji-di-03-zhang-yong-hu-yu-quan-xian-guan-li/</id>
-    <published>2022-08-28T20:50:53.000Z</published>
-    <updated>2022-11-29T13:44:07.772Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;1-用户管理&quot;&gt;&lt;a href=&quot;#1-用户管理&quot; class=&quot;headerlink&quot; title=&quot;1. 用户管理&quot;&gt;&lt;/a&gt;1. 用户管理&lt;/h1&gt;&lt;p&gt;MySQL用户可以分为&lt;strong&gt;普通用户&lt;/strong&gt;和&lt;strong&gt;root&lt;/strong&gt;用户&lt;/p&gt;
-&lt;p&gt;root用户是超级管理员,拥有所有权限,包括创建用户、删除用户和修改用户的密码等管理权限;&lt;/p&gt;
-&lt;p&gt;普通用户只拥有被授予的各种权限&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;MySQL提供了许多语句用来管理用户账号&lt;/code&gt;,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;MySQL数据库的安全性需要通过账户管理来保证&lt;/code&gt;&lt;/p&gt;</summary>
     
     
     
