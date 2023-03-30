@@ -1,155 +1,289 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>第06章-索引的数据结构-atguigu-shk | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1. 为什么使用索引索引  是存储引擎用于   快速找到数据记录   的一种  数据结构    就好比一本教课书的目录部分,通过目录中找到对应文章的页码,便可快速定位到需要的文章 MySQL中也是一样的道理,进行数据查找时,  首先   查看   查询条件    是否   命中某条索引     符合则   通过索引查找相关数据    如果不符合则   需要全表扫描   ,即需要一条一条地查找记录,">
+    <meta name="description" content="1. 为什么使用索引索引  是存储引擎用于   快速找到数据记录   的一种  数据结构    就好比一本教课书的目录部分,通过目录中找到对应文章的页码,便可快速定位到需要的文章 MySQL中也是一样的道理,进行数据查找时,  首先   查看   查询条件    是否   命中某条索引     符合则   通过索引查找相关数据    如果不符合则   需要全表扫描   ,即需要一条一条地查找记录,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第06章-索引的数据结构-atguigu-shk">
 <meta property="og:url" content="http://example.com/2023/03/30/%E7%AC%AC06%E7%AB%A0-%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-atguigu-shk/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 为什么使用索引索引  是存储引擎用于   快速找到数据记录   的一种  数据结构    就好比一本教课书的目录部分,通过目录中找到对应文章的页码,便可快速定位到需要的文章 MySQL中也是一样的道理,进行数据查找时,  首先   查看   查询条件    是否   命中某条索引     符合则   通过索引查找相关数据    如果不符合则   需要全表扫描   ,即需要一条一条地查找记录,">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028287.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028544.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028221.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037251.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037133.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037537.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037218.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037558.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036190.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036480.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036056.png">
-<meta property="og:image" content="http://img.fgcy.xyz/image-20220709145930742.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036068.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034611.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034059.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034911.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036161.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034498.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034528.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034402.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034354.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034296.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190033274.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034463.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190033705.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282230091.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282235787.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282236321.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282305467.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282311453.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282313307.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292227476.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292229088.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292239236.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292240639.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292247508.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292252067.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292311023.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208312303582.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208302320083.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208302324471.png">
+<meta property="og:image" content="http://example.com/images/mysql.png">
 <meta property="article:published_time" content="2023-03-30T12:09:56.000Z">
 <meta property="article:modified_time" content="2023-03-30T14:13:02.354Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028287.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
   
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>第06章-索引的数据结构-atguigu-shk - Hexo</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第06章-索引的数据结构-atguigu-shk"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:09" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          23k words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        
+          191 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-第06章-索引的数据结构-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E7%AC%AC06%E7%AB%A0-%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-atguigu-shk/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:09:56.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      第06章-索引的数据结构-atguigu-shk
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-为什么使用索引"><a href="#1-为什么使用索引" class="headerlink" title="1. 为什么使用索引"></a>1. 为什么使用索引</h1><p><code>索引</code>  是存储引擎用于   <code>快速找到数据记录</code>   的一种  <code>数据结构</code>   </p>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第06章-索引的数据结构-atguigu-shk</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-为什么使用索引"><a href="#1-为什么使用索引" class="headerlink" title="1. 为什么使用索引"></a>1. 为什么使用索引</h1><p><code>索引</code>  是存储引擎用于   <code>快速找到数据记录</code>   的一种  <code>数据结构</code>   </p>
 <p>就好比一本教课书的目录部分,通过目录中找到对应文章的页码,便可快速定位到需要的文章</p>
 <p>MySQL中也是一样的道理,进行数据查找时,</p>
 <p> 首先   查看   <code>查询条件</code>    是否   <code>命中某条索引</code>    </p>
 <p>符合则  <code> 通过索引查找相关数据</code>   </p>
 <p>如果不符合则  <code> 需要全表扫描</code>   ,即需要一条一条地查找记录,直到找到与条件符合的记录。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028287.png" alt="image-20220709093410182"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028287.png" srcset="/img/loading.gif" lazyload alt="image-20220709093410182"></p>
 <hr>
 <span id="more"></span>
 
@@ -160,7 +294,7 @@
 <p>这个过程 <code>最耗时间</code>  的就是  <code> 磁盘I/0</code>  (涉及到磁盘的旋转时间(速度较快) 、磁头的寻道时间(速度慢、费时))</p>
 <p>假如给数据使用 二叉树 这样的数据结构进行存储，如下图所示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028544.png" alt="image-20220709095331442"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028544.png" srcset="/img/loading.gif" lazyload alt="image-20220709095331442"></p>
 <hr>
 <p> <code>对字段Col 2添加了索引</code>  ,就相当于在硬盘上  <code> 为Col2</code>    <code> 维护了一个索引的数据结构</code>   ,这个数据结构为<code>  二叉搜索树</code></p>
 <p><code>二叉搜索树</code>  的每个结点存储的是(K, V)结构,  <code>key是  Col 2的值</code>  , value是该key  <code>所在行的文件指针(地址)  </code></p>
@@ -210,12 +344,12 @@
 <p>2.从所在的页内中查找相应的记录</p>
 <p><strong>在没有索引的情况下</strong>，不论是根据主键列或者其他列的值进行查找，由于我们并不能快速的定位到记录 所在的页，所以只能 <strong>从第一个页</strong> 沿着 双向链表 一直往下找，在每一个页中根据我们上面的查找方式去查 找指定的记录因为要遍历所有的数据页，所以这种方式显然是 超级耗时 的</p>
 <p>如果一个表有一亿条记录 呢？此时 索引 应运而生</p>
-<h2 id="3-2-设计索引"><a href="#3-2-设计索引" class="headerlink" title="3.2 设计索引"></a>3.2 设计索引</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE index_demo(</span><br><span class="line">        c1 INT,</span><br><span class="line">        c2 INT,</span><br><span class="line">        c3 CHAR(1),</span><br><span class="line">        PRIMARY KEY(c1)</span><br><span class="line">) ROW_FORMAT = Compact;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3-2-设计索引"><a href="#3-2-设计索引" class="headerlink" title="3.2 设计索引"></a>3.2 设计索引</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE index_demo(<br>        c1 INT,<br>        c2 INT,<br>        c3 CHAR(1),<br>        PRIMARY KEY(c1)<br>) ROW_FORMAT = Compact;<br><br></code></pre></td></tr></table></figure>
 
 <p>这个新建的 index_demo 表中有2个INT类型的列，1个CHAR(1)类型的列，而且我们规定了c1列为主键， 这个表使用   <code>Compact 行格式</code>  来实际存储记录的</p>
 <p>这里我们  <strong>简化了</strong>  index_demo表的  <strong>行格式</strong>  <strong>示意图</strong>    :</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028221.png" alt="image-20220709113204772"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190028221.png" srcset="/img/loading.gif" lazyload alt="image-20220709113204772"></p>
 <hr>
 <p>我们只在示意图里展示记录的这几个部分：</p>
 <ul>
@@ -230,11 +364,11 @@
 </ul>
 <p>将记录格式示意图的其他信息项暂时去掉并把它竖起来的效果就是这样：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037251.png" alt="image-20220709114134135"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037251.png" srcset="/img/loading.gif" lazyload alt="image-20220709114134135"></p>
 <hr>
 <p>把一些记录放到页里的示意图就是：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037133.png" alt="image-20220709114650073"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037133.png" srcset="/img/loading.gif" lazyload alt="image-20220709114650073"></p>
 <hr>
 <h3 id="1-一个简单的索引设计方案"><a href="#1-一个简单的索引设计方案" class="headerlink" title="1. 一个简单的索引设计方案"></a>1. 一个简单的索引设计方案</h3><p>我们在根据某个搜索条件查找一些记录时为什么要遍历所有的数据页呢？</p>
 <p>因为各个页中的记录并没有规 律，我们并不知道我们的搜索条件匹配哪些页中的记录，所以   <code>不得不</code>  依次  <code>遍历所有的数据页</code></p>
@@ -243,23 +377,23 @@
 <p><strong>建这个目录必须完成下边这些事：</strong></p>
 <p>1、下一个数据页中用户记录的  主键值  <code>必须大于</code>    上一个页中用户记录的主键值</p>
 <p>假设:每个数据页最多能存放3条记录(实际上一个数据页非常大,可以存放下好多记录)。有了这个假设之后我们向index_demo表插入3条记录:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO index_demo VALUES</span><br><span class="line">(1, 4, &#x27;u&#x27;),</span><br><span class="line">(3, 9, &#x27;d&#x27;), </span><br><span class="line">(5, 3, &#x27;y&#x27;);</span><br><span class="line"></span><br><span class="line">Query OK, 3 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs MySQL">INSERT INTO index_demo VALUES<br>(1, 4, &#x27;u&#x27;),<br>(3, 9, &#x27;d&#x27;), <br>(5, 3, &#x27;y&#x27;);<br><br>Query OK, 3 rows affected (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <p>那么这些记录已经按照主键值的大小串联成一个单向链表了,如图所示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037537.png" alt="image-20220709115153061"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037537.png" srcset="/img/loading.gif" lazyload alt="image-20220709115153061"></p>
 <hr>
 <p>从图中可以看出来, index_demo表中的3条记录都被插入到了编号为10的数据页中了</p>
 <p>此时我们再来插入一条记录:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO index_demo VALUES(4, 4, &#x27;a&#x27;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO index_demo VALUES(4, 4, &#x27;a&#x27;);<br></code></pre></td></tr></table></figure>
 
 
 
 <p>因为页10最多只能放3条记录,所以我们不得不再   <code>分配一个新页                                                                                   </code>:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037218.png" alt="image-20220709115416936"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037218.png" srcset="/img/loading.gif" lazyload alt="image-20220709115416936"></p>
 <hr>
 <p>注意:</p>
 <p>新分配的数据页编号可能并不是连续的。它们只是通过维护着上一个页和下一个页的编号而建立了链表关系</p>
@@ -267,7 +401,7 @@
 <p>所以在  <code> 插入主键值为4的记录</code>   的时候  <code> 需要伴随着一次记录移动</code>   ,也就是把主键值为5的记录移动到页28中,然后再把主键值为4的记录插入到页10中</p>
 <p>这个过程的示意图如下:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037558.png" alt="image-20220709115839397"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190037558.png" srcset="/img/loading.gif" lazyload alt="image-20220709115839397"></p>
 <hr>
 <p>这个过程表明了   <code>在对页中的记录进行增删改操作的过程中 </code> ,  <code>我们必须通过一些诸如记录移动的操作</code>  <code>来始终保证这个状态一直成立</code>   :</p>
 <p>下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值</p>
@@ -275,7 +409,7 @@
 <p>2、给所有的页建立一个目录项</p>
 <p>由于 <code> 数据页的编号可能是不连续</code>   的,所以在向index_demo表中插入许多条记录后,可能是这样的效果:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036190.png" alt="image-20220709141429416"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036190.png" srcset="/img/loading.gif" lazyload alt="image-20220709141429416"></p>
 <hr>
 <p>因为这些  <code>16KB的页</code> <code>在物理存储上</code>   是  <code>不连续 </code>  的,所以如果想从这么多页中根据主键值快速定位某些记录所在的页,我们需要给它们做个目录,每个页对应一个目录项</p>
 <p>每个目录项包括下边两个部分:</p>
@@ -283,7 +417,7 @@
 <p>​	<code>页号</code> : 我们用page_no表示</p>
 <p>所以我们为上边几个页做好的目录就像这样子:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036480.png" alt="image-20220709141943983"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036480.png" srcset="/img/loading.gif" lazyload alt="image-20220709141943983"></p>
 <hr>
 <p>以 页28 为例，它对应 目录项2 ，这个  、<code>目录项中</code>  包含着  <code>该页的页号 28  </code> 以及   <code>该页中用户记录的最小主 键值 5  </code> </p>
 <p>我们只需要把几个目录项在物理存储器上连续存储（比如：数组），就可以实现根据主键 值快速查找某条记录的功能了</p>
@@ -309,7 +443,7 @@
 </ul>
 <p>我们把前边使用到的目录项放到数据页中的样子就是这样：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036056.png" alt="image-20220709143625882"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036056.png" srcset="/img/loading.gif" lazyload alt="image-20220709143625882"></p>
 <hr>
 <p>从图中可以看出来，我们新分配了一个编号为30的页来  <code>专门存储目录项记录</code></p>
 <p>这里再次强调 <code>目录项记录</code> 和<code>普通的 用户记录</code> 的不同点：</p>
@@ -328,7 +462,7 @@
 <p>2、再到存储用户记录的页9中根据 二分法 快速定位到主键值为 20 的用户记录</p>
 <p><strong>② 迭代2次：多个目录项纪录的页</strong></p>
 <hr>
-<p><img src="http://img.fgcy.xyz/image-20220709145930742.png" alt="image-20220709145930742"></p>
+<p><img src="http://img.fgcy.xyz/image-20220709145930742.png" srcset="/img/loading.gif" lazyload alt="image-20220709145930742"></p>
 <hr>
 <p>从图中可以看出，我们插入了一条主键值为320的用户记录之后需要  <code>两个新的数据页</code>：</p>
 <p>为存储该  <code>用户记录</code>  而新生成了<code> 页31(作为数据页)</code></p>
@@ -343,12 +477,12 @@
 <p>那就  <strong>为</strong>  这些  <strong>存储目录项记录的页</strong>  再  <code>生成一个更高级的目录</code> ,就像是一个多级目录一样,大目录里嵌套小目录,小目录里才是实际的数据</p>
 <p>所以现在各个页的示意图就是这样子:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036068.png" alt="image-20220709150230444"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036068.png" srcset="/img/loading.gif" lazyload alt="image-20220709150230444"></p>
 <hr>
 <p>如图上图，我们生成了一个存储更高级目录项的 页33 ，这个页中的两条记录分别代表页30和页32，如果用 户记录的主键值在 [1, 320) 之间，则到页30中查找更详细的目录项记录，如果主键值 不小于320 的 话，就到页32中查找更详细的目录项记录</p>
 <p>我们可以用下边这个图来描述它：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034611.png" alt="image-20220709151831430"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034611.png" srcset="/img/loading.gif" lazyload alt="image-20220709151831430"></p>
 <hr>
 <p>这个数据结构，它的名称是 B+树 </p>
 <p>④ B+Tree<br>不论是  <code>存放用户记录  </code> 的   数据页   ,还是   <code>存放目录项记录</code>   的  数据页(也可以称为目录页)   ,我们都把它们存放到B+树这个数据结构中了,所以我们也称这些数据页为节点。</p>
@@ -423,7 +557,7 @@
 <p>我们可以多建几棵B+树,不同的B+树中的数据采用不同的排序规则。</p>
 <p>比方说我们用c2列的大小作为数据页、页中记录的排序规则,再建一棵B+树,效果如下图所示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034059.png" alt="image-20220821164701978"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034059.png" srcset="/img/loading.gif" lazyload alt="image-20220821164701978"></p>
 <hr>
 <p>按C2升序排列。</p>
 <p>目录页的记录值会包含索引的id值，以及页号。</p>
@@ -473,7 +607,7 @@
 </ul>
 <p>非聚簇索引的存在不影响数据在聚簇索引中的组织,所以一张表可以有多个非聚簇索引。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034911.png" alt="image-20220821170535348"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034911.png" srcset="/img/loading.gif" lazyload alt="image-20220821170535348"></p>
 <hr>
 <p>小结:</p>
 <p>聚簇索引与非聚簇索引的原理不同,在使用上也有一些区别:</p>
@@ -492,7 +626,7 @@
 </ul>
 <p>为C1与C2建立的联合索引如下：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036161.png" alt="image-20220919003609231"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190036161.png" srcset="/img/loading.gif" lazyload alt="image-20220919003609231"></p>
 <hr>
 <p>如图所示,我们需要注意以下几点:</p>
 <ul>
@@ -523,11 +657,11 @@
 <h3 id="2-内节点中目录项记录的唯一性"><a href="#2-内节点中目录项记录的唯一性" class="headerlink" title="2. 内节点中目录项记录的唯一性"></a>2. 内节点中目录项记录的唯一性</h3><p>我们知道B+树索引的  内节点  中目录项记录的内容是 <code>  索引列+页号</code>  的搭配, 但是这个搭配对于二级索引来说有点儿不严谨。</p>
 <p>还拿index_demo表为例,假设这个表中的数据是这样的:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034498.png" alt="image-20220822214812417"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034498.png" srcset="/img/loading.gif" lazyload alt="image-20220822214812417"></p>
 <hr>
 <p>如果二级索引中目录项记录的内容只是  <strong>索引列+页号</strong>  的搭配的话,那么为c2列建立索引后的B+树  <strong>应该</strong>  长这样:【实际上目录页中的目录项会有主键】</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034528.png" alt="image-20220822222006892"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034528.png" srcset="/img/loading.gif" lazyload alt="image-20220822222006892"></p>
 <hr>
 <p>如果我们想新插入一行记录,其中c1、c2、c3的值分别是:9、1、’c’,那么在修改这个为c2列建立的二级索引对应的B+树时便碰到了个大问题:</p>
 <p>由于页3中存储的目录项记录是 <code>****</code>  的值构成的,页3中的两条目录项记录对应的c2列的值都是1,而我们新插入的这条记录的c2列的值也是1,那我们这条新插入的记录到底应该放到页4中,还是应该放到页5中啊?</p>
@@ -545,7 +679,7 @@
 <p>也就是我们把主键值也添加到二级索引内节点中的目录项记录了 , 这样就能保证B+树每一层节点中各条目录项记录除页号这个字段外是唯一的。</p>
 <p>所以我们为c2列建立二级索引后的示意图  <strong>实际上</strong>  应该是这样子的:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034402.png" alt="image-20220822223357140"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034402.png" srcset="/img/loading.gif" lazyload alt="image-20220822223357140"></p>
 <hr>
 <p>这样我们再插入记录(9, 1, ‘c’)时,由于页3中存储的目录项记录是由 <code> c2列+主键+页号</code>  的值构成的</p>
 <p>可以先把新记录的c2列的值和页3中各目录项记录的c2列的值作比较,如果c2列的值相同的话,可以接着比较主键值,因为B+树同一层中不同目录项记录的<code> c2列+主键</code>  的值  <strong>肯定是不一样的</strong>,所以最后肯定能定位唯一的一条目录项记录,在本例中最后确定新记录应该被插入到页5中。</p>
@@ -554,7 +688,7 @@
 <p>那如果一个大的目录中只存放一个子目录是个啥效果呢?那就是目录层级非常非常非常多,而且最后的那个存放真实数据的目录中只能存放一条记录。费了半天劲只能存放一条真实的用户记录?所以InnoDB的一个数据页至少可以存放两条记录。【实际肯定是远大于两条的】</p>
 <h1 id="4-MyISAM中的索引方案"><a href="#4-MyISAM中的索引方案" class="headerlink" title="4. MyISAM中的索引方案"></a>4. MyISAM中的索引方案</h1><h3 id="4-1-适应B-Tree的存储引擎"><a href="#4-1-适应B-Tree的存储引擎" class="headerlink" title="4.1 适应B+Tree的存储引擎"></a>4.1 适应B+Tree的存储引擎</h3><p>B树索引适用存储引擎如表所示：【在MySQL中写B-Tree其实就是 B+Tree】</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034354.png" alt="image-20220822224052369"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034354.png" srcset="/img/loading.gif" lazyload alt="image-20220822224052369"></p>
 <hr>
 <p>即使多个存储引擎支持同一种类型的索引，但是他们的实现原理也是不同的。</p>
 <p><code>Innodb </code> 和  <code>MyISAM </code>默认的索 引是<code>Btree索引</code>.</p>
@@ -566,19 +700,19 @@
 <li>将表中的记录按照   <strong>记录的插入顺序</strong>  单独存储   在一个文件中,称之为  <strong>数据文件</strong>。这个文件并不划分为若干个数据页,有多少记录就往这个文件中塞多少记录就成了。由于在插入数据的时候并  <strong>没有刻意按照主键大小排序</strong>,所以我们并  <strong>不能</strong>  在这些数据上使用  <strong>二分法进行查找</strong>。</li>
 <li>使用<code>MyISAM存储引擎</code>的表会把  <strong>索引信息</strong>  另外存储到一个称为  <strong>索引文件</strong>  的另一个文件中。MyISAM会单独为表的  <strong>主键创建一个索引</strong>,只不过在索引的叶子节点中存储的不是完整的用户记录,而是  <strong>主键值+数据记录地址</strong>  的组合。</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/mysql</span><br><span class="line">cd ./dbtest1</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /var/lib/mysql<br>cd ./dbtest1<br>ll<br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034296.png" alt="image-20220822225530535"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034296.png" srcset="/img/loading.gif" lazyload alt="image-20220822225530535"></p>
 <hr>
 <p>下图是MyISAM索引的原理图:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190033274.png" alt="image-20220822225746931"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190033274.png" srcset="/img/loading.gif" lazyload alt="image-20220822225746931"></p>
 <p>这里设表一共有三列,假设我们以col1为主键,上图是一个<strong>MyISAM表的主索引</strong>(Primary key)示意。可以看出<code> MyISAM的索引文件</code> 仅仅保存  <strong>数据记录的地址</strong>。</p>
 <p>在MyISAM中,  <strong>主键索引</strong>  和  <strong>二级索引</strong>  (Secondary key)在  <strong>结构上  没有任何区别</strong>,只是主键索引要求key是唯一的,而二级索引的key可以重复。</p>
 <p>如果我们在Col2上建立一个二级索引,则此索引的结构如下图所示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034463.png" alt="image-20220822230239163"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190034463.png" srcset="/img/loading.gif" lazyload alt="image-20220822230239163"></p>
 <hr>
 <p>同样也是一棵<code>B+Tree</code>, data域保存  <strong>数据记录的地址</strong> 。</p>
 <p>因此 , MyISAM中索引检索的算法为:</p>
@@ -595,7 +729,7 @@
 <p>举例1:知道了InnoDB的索引实现后，就很容易明白为什么不建议使用过长的字段作为主键，因为<code>所有二级索引</code>都引用主键索引,过长的主键索引会令二级索引变得过大。</p>
 <p>举例2:用非单调的字段作为主键在InnoDB中不是个好主意,因为InnoDB数据文件本身是一棵B+Tree,非单调的主键会造成在插入新记录时,数据文件为了维持B+Tree的特性而频繁的  <strong>分裂调整</strong>  【页分裂】,十分低效,而使用  <strong>自增字段</strong>  作为主键则是一个很好的选择。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190033705.png" alt="image-20220822232017089"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209190033705.png" srcset="/img/loading.gif" lazyload alt="image-20220822232017089"></p>
 <hr>
 <h1 id="5-索引的代价"><a href="#5-索引的代价" class="headerlink" title="5. 索引的代价"></a>5. 索引的代价</h1><p>索引是个好东西，可不能乱建，它在空间和时间上都会有消耗： </p>
 <p>空间上的代价 ：</p>
@@ -631,26 +765,26 @@
 <p>(1)树,例如<strong>平衡二叉搜索树</strong>,  查询 &#x2F; 插入 &#x2F; 修改 &#x2F; 删除的  平均时间复杂度都是<code>0(1og2N)</code>;</p>
 <p>(2)哈希,例如<code>HashMap</code>, 查询 &#x2F; 插入 &#x2F; 修改 &#x2F; 删除 的平均时间复杂度都是<code>0(1)</code></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282230091.png" alt="image-20220828223018600"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282230091.png" srcset="/img/loading.gif" lazyload alt="image-20220828223018600"></p>
 <hr>
 <p>采用Hash进行检索效率非常高,基本上一次检索就可以找到数据,而B+树需要自顶向下依次查找,多次访问节点才能找到数据,中间需要多次I&#x2F;0操作, 从效率来说Haah比B+树更快。</p>
 <p>在哈希的方式下,一个元素k处于h(k)中,即利用哈希函数h,根据关键字k计算出槽的位置。函数h将关键字域映射到哈希表T[o…m-1]的槽位上。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282235787.png" alt="image-20220828223522762"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282235787.png" srcset="/img/loading.gif" lazyload alt="image-20220828223522762"></p>
 <hr>
 <p>上图中哈希函数h有可能将两个不同的关键字映射到相同的位置，这叫做 碰撞 ，在数据库中一般采用 链 接法 来解决。在链接法中，将散列到同一槽位的元素放在一个链表中，</p>
 <p>如下图所示：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282236321.png" alt="image-20220828223612653"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282236321.png" srcset="/img/loading.gif" lazyload alt="image-20220828223612653"></p>
 <hr>
 <p>实验:体会数组和hash表的查找方面的效率区别：</p>
 <p>数组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 算法复杂度为 O(n)</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100000</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">//数组下标索引范围 0~99999</span></span><br><span class="line">        <span class="comment">//数组元素范围1~100000</span></span><br><span class="line">        arr[i] = i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">    <span class="comment">//循环1~100000 每次拿循环中的次数作为索引去数组中获取值</span></span><br><span class="line">    <span class="comment">//然后拿这个值与数组中的每一个元素比较，找到就下一次。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= <span class="number">100000</span>; j++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> j;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (temp == arr[i]) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">    System.out.println(<span class="string">&quot;time： &quot;</span> + (end - start)); <span class="comment">//time： 823</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 算法复杂度为 O(n)</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">100000</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-comment">//数组下标索引范围 0~99999</span><br>        <span class="hljs-comment">//数组元素范围1~100000</span><br>        arr[i] = i + <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> System.currentTimeMillis();<br>    <span class="hljs-comment">//循环1~100000 每次拿循环中的次数作为索引去数组中获取值</span><br>    <span class="hljs-comment">//然后拿这个值与数组中的每一个元素比较，找到就下一次。</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">100000</span>; j++) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> j;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (temp == arr[i]) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> System.currentTimeMillis();<br>    System.out.println(<span class="hljs-string">&quot;time： &quot;</span> + (end - start)); <span class="hljs-comment">//time： 823</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <p>HashSet</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//算法复杂度为 O(1)</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span> &#123;</span><br><span class="line">    HashSet&lt;Integer&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(<span class="number">100000</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">        set.add(i + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= <span class="number">100000</span>; j++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> j;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">contains</span> <span class="operator">=</span> set.contains(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">    System.out.println(<span class="string">&quot;time： &quot;</span> + (end - start)); <span class="comment">//time： 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//算法复杂度为 O(1)</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test2</span><span class="hljs-params">()</span> &#123;<br>    HashSet&lt;Integer&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;(<span class="hljs-number">100000</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100000</span>; i++) &#123;<br>        set.add(i + <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> System.currentTimeMillis();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">100000</span>; j++) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> j;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">contains</span> <span class="hljs-operator">=</span> set.contains(temp);<br>    &#125;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> System.currentTimeMillis();<br>    System.out.println(<span class="hljs-string">&quot;time： &quot;</span> + (end - start)); <span class="hljs-comment">//time： 5</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -675,7 +809,7 @@
 </li>
 </ul>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282305467.png" alt="image-20220828230532628"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282305467.png" srcset="/img/loading.gif" lazyload alt="image-20220828230532628"></p>
 <hr>
 <p>Hash是Memory存储引擎的 默认索引结构。</p>
 <p>Hash索引的适用性：</p>
@@ -686,15 +820,15 @@
 <p>如果某个数据经常被访问,当满足一定条件的时候,就会将这个数据页的地址存放到Hash表中。这样下次查询的时候,就可以直接找到这个页面的所在位置。这样让B+树也具备了Hash索引的优点。</p>
 <p>InnoDb的自适应Hash</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282311453.png" alt="image-20220828231154130"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282311453.png" srcset="/img/loading.gif" lazyload alt="image-20220828231154130"></p>
 <hr>
 <p>采用自适应 Hash 索引目的是方便根据 SQL 的查询条件加速定位到叶子节点，特别是当 B+ 树比较深的时 候，通过自适应 Hash 索引可以明显提高数据的检索效率。 </p>
 <p>我们可以通过<code>innodb_adaptive_hash_index</code>变量来查看是否开启了自适应 Hash。默认开启</p>
 <p>比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">mysql&gt; </span><span class="language-bash">show variables like <span class="string">&#x27;%adaptive_hash_index&#x27;</span>;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">mysql&gt; </span><span class="language-bash">show variables like <span class="hljs-string">&#x27;%adaptive_hash_index&#x27;</span>;</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282313307.png" alt="image-20220828231324828"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282313307.png" srcset="/img/loading.gif" lazyload alt="image-20220828231324828"></p>
 <hr>
 <h2 id="6-3-二叉搜索树"><a href="#6-3-二叉搜索树" class="headerlink" title="6.3 二叉搜索树"></a>6.3 二叉搜索树</h2><p>如果我们利用二叉树作为索引结构,那么  <strong>磁盘的I0次数</strong>  和<code>索引树的高度是相关的</code>。</p>
 <h2 id="1-二叉搜索树的特点"><a href="#1-二叉搜索树的特点" class="headerlink" title="1. 二叉搜索树的特点"></a>1. 二叉搜索树的特点</h2><ul>
@@ -714,14 +848,14 @@
 </ol>
 <p>举个例子,我们对数列(34, 22, 89,5, 23, 77, 91)创造出来的二分查找树如下图所示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292227476.png" alt="image-20220829222731468"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292227476.png" srcset="/img/loading.gif" lazyload alt="image-20220829222731468"></p>
 <hr>
 <p>假设要找的是92，从根节点出发。比34大，找右子树。比89大，找右子树。比91大，但没有右子树，没找到。</p>
 <p>时间复杂度是  <strong>O(log<del>2</del>^N^)</strong></p>
 <p>但是存在特殊的情况,就是有时候二叉树的深度非常大。比如我们给出的数据顺序是(5,22, 23, 34, 77, 89, 91),创造出来的二分搜索树</p>
 <p>如下图所示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292229088.png" alt="image-20220829222929215"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292229088.png" srcset="/img/loading.gif" lazyload alt="image-20220829222929215"></p>
 <hr>
 <p>上面第二棵树也属于二分查找树,但是性能上已经退化成了一条链表,查找数据的时间复杂度变成了**0(n)**。</p>
 <p>能看出来第一个树的深度是3,也就是说最多只需3次比较,就可以找到节点,而第二个树的深度是7,最多需要7次比较才能找到节点。</p>
@@ -736,26 +870,26 @@
 <p>数据查询的时间主要依赖于磁盘1&#x2F;0的次数,如果我们采用二叉树的形式,即使通过平衡二叉搜索树进行了改进,树的深度也是 **O(log<del>2</del>^N^),**当n比较大时,深度也是比较高的</p>
 <p>比如下图的情况:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292239236.png" alt="image-20220829223945040"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292239236.png" srcset="/img/loading.gif" lazyload alt="image-20220829223945040"></p>
 <hr>
 <p>每访问一次节点就需要进行一次磁盘 I&#x2F;0操作,对于上面的树来说,我们需要进行5次1&#x2F;0操作。</p>
 <p>虽然平衡二叉树的效率高,但是树的深度也同样高,这就意味着磁盘1&#x2F;0操作次数多,会影响整体数据查询的效率。</p>
 <p>针对同样的数据,如果我们把二叉树改成M叉树(M&gt;2)呢?当M&#x3D;3时,同样的31个节点可以由下面的三叉树来进行存储:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292240639.png" alt="image-20220829224049269"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292240639.png" srcset="/img/loading.gif" lazyload alt="image-20220829224049269"></p>
 <hr>
 <p>你能看到此时树的高度降低了,当数据量N大的时候,以及树的分叉数M大的时候,M叉树的高度会远小于二叉树的高度(M&gt;2)。</p>
 <p>所以,我们需要把树从“瘦高”变”矮胖”</p>
 <h2 id="6-5-B-Tree"><a href="#6-5-B-Tree" class="headerlink" title="6.5 B-Tree"></a>6.5 B-Tree</h2><p>B树的英文是Balance Tree,也就是多路平衡查找树。简写为B-Tree (注意横杠表示这两个单词连起来的意思,不是减号)。它的高度<strong>远小于</strong>平衡二叉树的高度。</p>
 <p>B 树的结构如下图所示：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292247508.png" alt="image-20220829224753328"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292247508.png" srcset="/img/loading.gif" lazyload alt="image-20220829224753328"></p>
 <hr>
 <p>B树作为多路平衡查找树,它的  <strong>每一个节点</strong>  最多可以包括M个子节点,M称为B树的 <strong>阶</strong>。每个磁盘块中包括了关键字和子节点的指针。</p>
 <p>如果一个磁盘块中包括了x个关键字,那么指针数就是x+1。对于一个100阶的B树来说,如果有3层的话最多可以存储约100万的索引数据。对于大量的索引数据来说,采用B树的结构是非常适合的,因为树的高度要远小于二叉树的高度。</p>
 <p>举例：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292252067.png" alt="image-20220829225236633"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292252067.png" srcset="/img/loading.gif" lazyload alt="image-20220829225236633"></p>
 <hr>
 <p>一个 M 阶的 B 树（M&gt;2）有以下的特性： </p>
 <ol>
@@ -783,16 +917,16 @@
 <h2 id="6-6-B-Tree"><a href="#6-6-B-Tree" class="headerlink" title="6.6 B+Tree"></a>6.6 B+Tree</h2><p>B+树也是一种多路搜索树,基于B 树做出了改进,主流的DBMS都支持B+树的索引方式,比如MySQL。相比于B-Tree, <strong>B+Tree适合文件索引系统</strong>。</p>
 <p><code>+</code>  : plus</p>
 <p>MySQL官网说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIL_PAGE_PREV and FIL_PAGE_NExT are the page&#x27;s &quot;backward&quot; and &quot;forward&quot; pointers. To show what they&#x27;re about, l&#x27;ll draw a two-level B-tree.</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">FIL_PAGE_PREV <span class="hljs-keyword">and</span> FIL_PAGE_NExT are the pag<span class="hljs-string">e&#x27;s &quot;backward&quot; and &quot;forward&quot; pointers. To show what they&#x27;</span>re about, l<span class="hljs-string">&#x27;ll draw a two-level B-tree.</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIL_PAGE_PREV和FIL_PAGE_NEXT是页面的“向后”和“向前”指针。为了显示它们的内容，这里将绘制一个两级B树。</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">FIL_PAGE_PREV和FIL_PAGE_NEXT是页面的“向后”和“向前”指针。为了显示它们的内容，这里将绘制一个两级<span class="hljs-selector-tag">B</span>树。<br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292311023.png" alt="image-20220829231114610"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208292311023.png" srcset="/img/loading.gif" lazyload alt="image-20220829231114610"></p>
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Everyone has seen a B-tree and knows that the entries in the root page point to the leaf pages.  (I indicate those pointers with vertical &#x27;|&#x27; bars in the drawing.)  But sometimes people miss the detail that leaf pages can also point to each other (I indicate those pointers with a horizontal two-way pointer &#x27;&lt;-&gt;&#x27; in the drawing).  This feature allows InnoDB to navigate from leaf to leaf without having to back up to the root level.  This is a sophistication which you won&#x27;t find in the classic B-tree, which is why InnoDB should perhaps be called a B+-tree instead.</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">Everyone has seen <span class="hljs-keyword">a</span> B-tree <span class="hljs-keyword">and</span> knows that <span class="hljs-keyword">the</span> entries <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> root page point <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> leaf pages.  (I indicate those pointers <span class="hljs-keyword">with</span> vertical <span class="hljs-string">&#x27;|&#x27;</span> bars <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> drawing.)  But sometimes people miss <span class="hljs-keyword">the</span> detail that leaf pages can also point <span class="hljs-built_in">to</span> <span class="hljs-keyword">each</span> other (I indicate those pointers <span class="hljs-keyword">with</span> <span class="hljs-keyword">a</span> horizontal <span class="hljs-literal">two</span>-way pointer <span class="hljs-string">&#x27;&lt;-&gt;&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> drawing).  This feature allows InnoDB <span class="hljs-built_in">to</span> navigate <span class="hljs-built_in">from</span> leaf <span class="hljs-built_in">to</span> leaf <span class="hljs-keyword">without</span> having <span class="hljs-built_in">to</span> back up <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> root level.  This is <span class="hljs-keyword">a</span> sophistication which you won<span class="hljs-string">&#x27;t find in the classic B-tree, which is why InnoDB should perhaps be called a B+-tree instead.</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">每个人都看过B树，并且知道根页面中的条目指向叶页面。(我在图中用竖线‘|’表示这些指针)。</span><br><span class="line">但有时人们忽略了叶子页面也可以相互指向的细节(我在图中用水平双向指针‘&lt;-&gt;’来表示这些指针)。</span><br><span class="line">此功能允许InnoDB在叶与叶之间导航，而不必备份到根级别。这是您在经典的B树中找不到的一种复杂性，这就是为什么InnoDB可能应该被称为B+树。</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs less">每个人都看过<span class="hljs-selector-tag">B</span>树，并且知道根页面中的条目指向叶页面。(我在图中用竖线‘|’表示这些指针)。<br>但有时人们忽略了叶子页面也可以相互指向的细节(我在图中用水平双向指针‘&lt;-&gt;’来表示这些指针)。<br>此功能允许<span class="hljs-selector-tag">InnoDB</span>在叶与叶之间导航，而不必备份到根级别。这是您在经典的<span class="hljs-selector-tag">B</span>树中找不到的一种复杂性，这就是为什么<span class="hljs-selector-tag">InnoDB</span>可能应该被称为<span class="hljs-selector-tag">B</span>+树。<br></code></pre></td></tr></table></figure>
 
 
 
@@ -816,7 +950,7 @@
 <p>下图就是一棵B+树,阶数为3,根节点中的关键字1、18、35分别是子节点(1, 8, 14), (18, 24, 31)和(35, 41, 53)中的最小值。</p>
 <p>每一层父节点的关键字都会出现在下一层的子节点的关键字中,因此在叶子节点中包括了所有的关键字信息,并且每一个叶子节点都有一个指向下一个节点的指针,这样就形成了一个链表。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208312303582.png" alt="image-20220831230337778"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208312303582.png" srcset="/img/loading.gif" lazyload alt="image-20220831230337778"></p>
 <hr>
 <p>比如,我们想要查找关键字16, B+树会自顶向下逐层进行查找:</p>
 <ol>
@@ -875,7 +1009,7 @@
 <p>如果使用的是MySQL的话,我们需要了解MySQL的存储引擎都支持哪些索引结构,如下图所示</p>
 <p>(参考来源<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/create-index.html">https://dev.mysql.com/doc/refman/8.0/en/create-index.html</a>) .如果是其他的DBMS, 可以参考相关的DBMS文档。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208302320083.png" alt="image-20220830232041391"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208302320083.png" srcset="/img/loading.gif" lazyload alt="image-20220830232041391"></p>
 <hr>
 <p>你能看到,针对InnoDB和MyISAM 存储引擎,都会默认采用B+树索引,无法使用Hash索引。</p>
 <p>InnoDB提供的自适应Hash是不需要手动指定的。如果是Memory&#x2F;Heap 和NDB存储引擎,是可以进行选择Hash索引的</p>
@@ -885,7 +1019,7 @@
 <p>并在添加、删除操作时采用合并、分解结点的方法,保证树的平衡性。</p>
 <p>因此 <strong>,R树</strong> 就是一棵用来存储  <strong>高维数据的平衡树</strong>  。相对于B-Tree, R-Tree的优势在于范围查找。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208302324471.png" alt="image-20220830232419068"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208302324471.png" srcset="/img/loading.gif" lazyload alt="image-20220830232419068"></p>
 <hr>
 <h2 id="6-8小结"><a href="#6-8小结" class="headerlink" title="6.8小结"></a>6.8小结</h2><ul>
 <li><p>使用索引可以帮助我们从海量的数据中快速定位想要查找的数据,不过索引也存在一些不足,比如占用存储空间、降低数据库写操作的性能等,如果有多个索引还会增加索引选择的时间。当我们使用索引时,需要平衡索引的利(提升查询效率)和弊(维护索引所需的代价)。</p>
@@ -894,157 +1028,372 @@
 </li>
 </ul>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E7%AC%AC06%E7%AB%A0-%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-atguigu-shk/" data-id="clfv77yrr0003j0cx25o4f43r" data-title="第06章-索引的数据结构-atguigu-shk" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
   
-    <a href="/2023/03/30/%E7%AC%AC05%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-atguigu-shk/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第05章-存储引擎-atguigu-shk
-        
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/">#尚硅谷-宋红康-MySQL(高级)</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第06章-索引的数据结构-atguigu-shk</div>
+      <div>http://example.com/2023/03/30/第06章-索引的数据结构-atguigu-shk/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%AC%AC05%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-atguigu-shk/" title="第05章-存储引擎-atguigu-shk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第05章-存储引擎-atguigu-shk</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%AC%AC08%E7%AB%A0-%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-atguigu-shk/" title="第08章-索引的创建与设计原则-atguigu-shk">
+                        <span class="hidden-mobile">第08章-索引的创建与设计原则-atguigu-shk</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2023/03/30/%E7%AC%AC08%E7%AB%A0-%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-atguigu-shk/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第08章-索引的创建与设计原则-atguigu-shk</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

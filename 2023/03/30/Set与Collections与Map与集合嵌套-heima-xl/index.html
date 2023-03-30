@@ -1,123 +1,283 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>Set与Collections与Map与集合嵌套-heima-xl | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Set系列集合的特点">
+    <meta name="description" content="Set系列集合的特点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Set与Collections与Map与集合嵌套-heima-xl">
 <meta property="og:url" content="http://example.com/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Set系列集合的特点">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013369.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013031.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013747.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013748.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013029.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013186.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013877.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013420.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013657.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013609.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013840.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013316.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013218.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013353.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270012353.png">
+<meta property="og:image" content="http://example.com/images/java.png">
 <meta property="article:published_time" content="2023-03-30T12:19:23.000Z">
 <meta property="article:modified_time" content="2023-03-30T12:27:11.692Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java基础-heima">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013369.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/java.png">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
   
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>Set与Collections与Map与集合嵌套-heima-xl - Hexo</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Set与Collections与Map与集合嵌套-heima-xl"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:19" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          21k words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        
+          177 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-Set与Collections与Map与集合嵌套-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:19:23.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Set与Collections与Map与集合嵌套-heima-xl
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Set系列集合的特点"><a href="#Set系列集合的特点" class="headerlink" title="Set系列集合的特点"></a><strong>Set</strong>系列集合的特点</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013369.png" alt="image-20220826184606933"></p>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Set与Collections与Map与集合嵌套-heima-xl</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Set系列集合的特点"><a href="#Set系列集合的特点" class="headerlink" title="Set系列集合的特点"></a><strong>Set</strong>系列集合的特点</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013369.png" srcset="/img/loading.gif" lazyload alt="image-20220826184606933"></p>
 <hr>
 <span id="more"></span>
 
@@ -132,9 +292,9 @@
 <p>LinkedHashSet：有序(按插入顺序)、不重复、无索引。</p>
 <p>TreeSet：排序(非基本数据类型需要定义比较规则)、不重复、无索引。</p>
 <p>Set集合的功能上基本上与Collection的API一致</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">final</span> Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();<span class="comment">//多态写法,hashset无序 不重复 无索引</span></span><br><span class="line">    set.add(<span class="string">&quot;java&quot;</span>);</span><br><span class="line">    System.out.println(set.add(<span class="string">&quot;java&quot;</span>));</span><br><span class="line">    set.add(<span class="string">&quot;spring&quot;</span>);</span><br><span class="line">    set.add(<span class="string">&quot;springboot&quot;</span>);</span><br><span class="line">    set.add(<span class="string">&quot;springmvc&quot;</span>);</span><br><span class="line">    System.out.println(set);</span><br><span class="line">    System.out.println(<span class="string">&quot;------------------&quot;</span>);</span><br><span class="line">    </span><br><span class="line">     Set&lt;String&gt; set1 = <span class="keyword">new</span> <span class="title class_">LinkedHashSet</span>&lt;&gt;();<span class="comment">//多态写法，有序 不重复 无索引</span></span><br><span class="line">    set1.add(<span class="string">&quot;java&quot;</span>);</span><br><span class="line">    System.out.println(set1.add(<span class="string">&quot;java&quot;</span>));</span><br><span class="line">    set1.add(<span class="string">&quot;spring&quot;</span>);</span><br><span class="line">    set1.add(<span class="string">&quot;springboot&quot;</span>);</span><br><span class="line">    set1.add(<span class="string">&quot;springmvc&quot;</span>);</span><br><span class="line">    System.out.println(set1);</span><br><span class="line">    System.out.println(<span class="string">&quot;------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Set&lt;String&gt; set3 = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;();<span class="comment">//多态写法，排序 不重复 无索引</span></span><br><span class="line">    set3.add(<span class="string">&quot;java&quot;</span>);</span><br><span class="line">    System.out.println(set3.add(<span class="string">&quot;java&quot;</span>));</span><br><span class="line">    set3.add(<span class="string">&quot;spring&quot;</span>);</span><br><span class="line">    set3.add(<span class="string">&quot;mybatis&quot;</span>);</span><br><span class="line">    set3.add(<span class="string">&quot;apache&quot;</span>);</span><br><span class="line">    System.out.println(set3);</span><br><span class="line">    System.out.println(set3.remove(<span class="string">&quot;java&quot;</span>));</span><br><span class="line">    System.out.println(set3.isEmpty());</span><br><span class="line">    <span class="keyword">final</span> Object[] array = set3.toArray();</span><br><span class="line">    System.out.println(Arrays.toString(array));</span><br><span class="line">    set3.clear();</span><br><span class="line">    System.out.println(set3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">final</span> Set&lt;String&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<span class="hljs-comment">//多态写法,hashset无序 不重复 无索引</span><br>    set.add(<span class="hljs-string">&quot;java&quot;</span>);<br>    System.out.println(set.add(<span class="hljs-string">&quot;java&quot;</span>));<br>    set.add(<span class="hljs-string">&quot;spring&quot;</span>);<br>    set.add(<span class="hljs-string">&quot;springboot&quot;</span>);<br>    set.add(<span class="hljs-string">&quot;springmvc&quot;</span>);<br>    System.out.println(set);<br>    System.out.println(<span class="hljs-string">&quot;------------------&quot;</span>);<br>    <br>     Set&lt;String&gt; set1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedHashSet</span>&lt;&gt;();<span class="hljs-comment">//多态写法，有序 不重复 无索引</span><br>    set1.add(<span class="hljs-string">&quot;java&quot;</span>);<br>    System.out.println(set1.add(<span class="hljs-string">&quot;java&quot;</span>));<br>    set1.add(<span class="hljs-string">&quot;spring&quot;</span>);<br>    set1.add(<span class="hljs-string">&quot;springboot&quot;</span>);<br>    set1.add(<span class="hljs-string">&quot;springmvc&quot;</span>);<br>    System.out.println(set1);<br>    System.out.println(<span class="hljs-string">&quot;------------------&quot;</span>);<br><br>    Set&lt;String&gt; set3 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeSet</span>&lt;&gt;();<span class="hljs-comment">//多态写法，排序 不重复 无索引</span><br>    set3.add(<span class="hljs-string">&quot;java&quot;</span>);<br>    System.out.println(set3.add(<span class="hljs-string">&quot;java&quot;</span>));<br>    set3.add(<span class="hljs-string">&quot;spring&quot;</span>);<br>    set3.add(<span class="hljs-string">&quot;mybatis&quot;</span>);<br>    set3.add(<span class="hljs-string">&quot;apache&quot;</span>);<br>    System.out.println(set3);<br>    System.out.println(set3.remove(<span class="hljs-string">&quot;java&quot;</span>));<br>    System.out.println(set3.isEmpty());<br>    <span class="hljs-keyword">final</span> Object[] array = set3.toArray();<br>    System.out.println(Arrays.toString(array));<br>    set3.clear();<br>    System.out.println(set3);<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">false</span><br><span class="line">[spring, java, springboot, springmvc]</span><br><span class="line">------------------</span><br><span class="line">false</span><br><span class="line">[java, spring, springboot, springmvc]</span><br><span class="line">------------------</span><br><span class="line">false</span><br><span class="line">[apache, java, mybatis, spring]</span><br><span class="line">true</span><br><span class="line">false</span><br><span class="line">[apache, mybatis, spring]</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-literal">false</span><br><span class="hljs-string">[spring, java, springboot, springmvc]</span><br>------------------<br><span class="hljs-literal">false</span><br><span class="hljs-string">[java, spring, springboot, springmvc]</span><br>------------------<br><span class="hljs-literal">false</span><br><span class="hljs-string">[apache, java, mybatis, spring]</span><br><span class="hljs-literal">true</span><br><span class="hljs-literal">false</span><br><span class="hljs-string">[apache, mybatis, spring]</span><br><span class="hljs-string">[]</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -155,11 +315,11 @@
 <p>Object类的API：<br>    public int hashCode()：返回对象的哈希值</p>
 <p>同一个对象多次调用hashCode()方法返回的哈希值是相同的<br>默认情况下，不同对象的哈希值是不同的</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013031.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013031.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <p>创建一个默认长度16的数组，数组名table<br>根据元素的哈希值跟数组的长度求余计算出应存入的位置（哈希算法）<br>判断当前位置是否为null，如果是null直接存入<br>如果位置不为null，表示有元素，则调用equals方法比较<br>如果一样，则不存，如果不一样，则存入数组，<br>JDK 7头插法<br>JDK 8尾插法<br>结论：<br>  哈希表是一种对于增删改查数据性能都较好的结构</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013747.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013747.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <p>底层结构：哈希表（数组、链表、红黑树的结合体）<br>当挂在元素下面的数据过多时，查询性能降低，从JDK8开始后，当链表长度超过8的时候，自动转换为红黑树;进一步提高了操作数据的性能</p>
 <ul>
@@ -177,11 +337,11 @@
 <li>如果一样，则不存，如果不一样，则存入数组，</li>
 </ol>
 <p>结论：如果希望Set集合认为2个内容一样的对象是重复的，<br>必须重写对象的hashCode()【原本的hashcode是根据对象地址通过一定的规则生成的，因为new出来的对象其地址一定不同，所以其hashcode大概率不同，所以要重写】和equals()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">char</span> sex;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age, <span class="type">char</span> sex)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == o) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="literal">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> (Student) o;</span><br><span class="line">        <span class="keyword">return</span> age == student.age &amp;&amp; sex == student.sex &amp;&amp; Objects.equals(name, student.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 入参相同，得到的结果值也相同</span></span><br><span class="line"><span class="comment">     * 先比较hashcode是否相同，如果相同，再调用重写的equals方法比较内容是否相同，相同就认为是同一个对象，不同就认为是不同对象</span></span><br><span class="line"><span class="comment">     * 重写hashcode后，hashcode不同，一定是不同对象；但hashcode相同，不一定是同一个对象，需要判断内容</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age, sex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Student&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&quot;, sex=&quot;</span> + sex +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">char</span> sex;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Student</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age, <span class="hljs-type">char</span> sex)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object o)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span> == o) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (o == <span class="hljs-literal">null</span> || getClass() != o.getClass()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-type">Student</span> <span class="hljs-variable">student</span> <span class="hljs-operator">=</span> (Student) o;<br>        <span class="hljs-keyword">return</span> age == student.age &amp;&amp; sex == student.sex &amp;&amp; Objects.equals(name, student.name);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 入参相同，得到的结果值也相同</span><br><span class="hljs-comment">     * 先比较hashcode是否相同，如果相同，再调用重写的equals方法比较内容是否相同，相同就认为是同一个对象，不同就认为是不同对象</span><br><span class="hljs-comment">     * 重写hashcode后，hashcode不同，一定是不同对象；但hashcode相同，不一定是同一个对象，需要判断内容</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> Objects.hash(name, age, sex);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Student&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, age=&quot;</span> + age +<br>                <span class="hljs-string">&quot;, sex=&quot;</span> + sex +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SetDemo2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Set&lt;Student&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Student</span> <span class="variable">student1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;吴晓阳&quot;</span>, <span class="number">50</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Student</span> <span class="variable">student2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;吴晓阳&quot;</span>, <span class="number">50</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Student</span> <span class="variable">student3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;刘畅&quot;</span>, <span class="number">20</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">        System.out.println(student1.hashCode());</span><br><span class="line">        System.out.println(student2.hashCode());</span><br><span class="line">        System.out.println(student3.hashCode());</span><br><span class="line">        Collections.addAll(set, student1, student2, student3);</span><br><span class="line">        System.out.println(set);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SetDemo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        Set&lt;Student&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Student</span> <span class="hljs-variable">student1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;吴晓阳&quot;</span>, <span class="hljs-number">50</span>, <span class="hljs-string">&#x27;男&#x27;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Student</span> <span class="hljs-variable">student2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;吴晓阳&quot;</span>, <span class="hljs-number">50</span>, <span class="hljs-string">&#x27;男&#x27;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Student</span> <span class="hljs-variable">student3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;刘畅&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&#x27;男&#x27;</span>);<br>        System.out.println(student1.hashCode());<br>        System.out.println(student2.hashCode());<br>        System.out.println(student3.hashCode());<br>        Collections.addAll(set, student1, student2, student3);<br>        System.out.println(set);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-750029800</span><br><span class="line">-750029800</span><br><span class="line">654998255</span><br><span class="line">[Student&#123;name=&#x27;吴晓阳&#x27;, age=50, sex=男&#125;, Student&#123;name=&#x27;刘畅&#x27;, age=20, sex=男&#125;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">-750029800<br>-750029800<br>654998255<br>[Student&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;吴晓阳&#x27;</span>, <span class="hljs-attribute">age</span>=50, <span class="hljs-attribute">sex</span>=男&#125;, Student&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;刘畅&#x27;</span>, <span class="hljs-attribute">age</span>=20, <span class="hljs-attribute">sex</span>=男&#125;]<br></code></pre></td></tr></table></figure>
 
 
 
@@ -190,7 +350,7 @@
 </ul>
 <p>有序、不重复、无索引。<br>这里的有序指的是保证存储和取出的元素顺序一致<br>原理：底层数据结构是依然哈希表，只是每个元素又额外的多了一个双链表的机制记录存储的顺序</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013748.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013748.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h3 id="实现类：TreeSet"><a href="#实现类：TreeSet" class="headerlink" title="实现类：TreeSet"></a>实现类：TreeSet</h3><ul>
 <li>TreeSet集合概述和特点</li>
@@ -237,32 +397,32 @@
 <p>1.一个形参列表中可变参数只能有一个<br>2.可变参数必须放在形参列表的最后面</p>
 <h3 id="集合工具类Collections"><a href="#集合工具类Collections" class="headerlink" title="集合工具类Collections"></a><strong>集合工具类</strong>Collections</h3><p>java.utils.Collections:是集合工具类<br>作用：Collections并不属于集合，是用来操作集合的工具类。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013029.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013029.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013186.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013186.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013877.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013877.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Apple</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Apple&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> weight;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Apple&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, price=&quot;</span> + price +</span><br><span class="line">                <span class="string">&quot;, weight=&quot;</span> + weight +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Apple</span><span class="params">(String name, <span class="type">double</span> price, <span class="type">int</span> weight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">        <span class="built_in">this</span>.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Apple o)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.weight - o.weight;<span class="comment">//去除中重量重复的元素</span></span><br><span class="line"><span class="comment">//        return this.weight - o.weight &gt; 0 ? 1 : -1;//不会去除</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getWeight</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setWeight</span><span class="params">(<span class="type">int</span> weight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Apple</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span>&lt;Apple&gt; &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> price;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> weight;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Apple&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, price=&quot;</span> + price +<br>                <span class="hljs-string">&quot;, weight=&quot;</span> + weight +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Apple</span><span class="hljs-params">(String name, <span class="hljs-type">double</span> price, <span class="hljs-type">int</span> weight)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.price = price;<br>        <span class="hljs-built_in">this</span>.weight = weight;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Apple o)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.weight - o.weight;<span class="hljs-comment">//去除中重量重复的元素</span><br><span class="hljs-comment">//        return this.weight - o.weight &gt; 0 ? 1 : -1;//不会去除</span><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getPrice</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> price;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPrice</span><span class="hljs-params">(<span class="hljs-type">double</span> price)</span> &#123;<br>        <span class="hljs-built_in">this</span>.price = price;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getWeight</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> weight;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setWeight</span><span class="hljs-params">(<span class="hljs-type">int</span> weight)</span> &#123;<br>        <span class="hljs-built_in">this</span>.weight = weight;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Apple&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.addAll(list, </span><br><span class="line">                           <span class="keyword">new</span> <span class="title class_">Apple</span>(<span class="string">&quot;富士康&quot;</span>, <span class="number">12.31</span>, <span class="number">20</span>),</span><br><span class="line">                           <span class="keyword">new</span> <span class="title class_">Apple</span>(<span class="string">&quot;红苹果&quot;</span>, <span class="number">41.2</span>, <span class="number">11</span>),</span><br><span class="line">                           <span class="keyword">new</span> <span class="title class_">Apple</span>(<span class="string">&quot;青苹果&quot;</span>, <span class="number">12.11</span>, <span class="number">14</span>));</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        Collections.shuffle(list);</span><br><span class="line">        System.out.println(list);</span><br><span class="line"><span class="comment">//        Collections.sort(list);//Apple类实现了comparable接口，可以排序</span></span><br><span class="line">        Collections.sort(list, ((o1, o2) -&gt; Double.compare(o1.getPrice(), o2.getPrice())));<span class="comment">//通过价格比较，可以重复，比较器有优先级</span></span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        List&lt;Apple&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        Collections.addAll(list, <br>                           <span class="hljs-keyword">new</span> <span class="hljs-title class_">Apple</span>(<span class="hljs-string">&quot;富士康&quot;</span>, <span class="hljs-number">12.31</span>, <span class="hljs-number">20</span>),<br>                           <span class="hljs-keyword">new</span> <span class="hljs-title class_">Apple</span>(<span class="hljs-string">&quot;红苹果&quot;</span>, <span class="hljs-number">41.2</span>, <span class="hljs-number">11</span>),<br>                           <span class="hljs-keyword">new</span> <span class="hljs-title class_">Apple</span>(<span class="hljs-string">&quot;青苹果&quot;</span>, <span class="hljs-number">12.11</span>, <span class="hljs-number">14</span>));<br>        System.out.println(list);<br>        Collections.shuffle(list);<br>        System.out.println(list);<br><span class="hljs-comment">//        Collections.sort(list);//Apple类实现了comparable接口，可以排序</span><br>        Collections.sort(list, ((o1, o2) -&gt; Double.compare(o1.getPrice(), o2.getPrice())));<span class="hljs-comment">//通过价格比较，可以重复，比较器有优先级</span><br>        System.out.println(list);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Apple&#123;name=&#x27;富士康&#x27;, price=12.31, weight=20&#125;, Apple&#123;name=&#x27;红苹果&#x27;, price=41.2, weight=11&#125;, Apple&#123;name=&#x27;青苹果&#x27;, price=12.11, weight=14&#125;]</span><br><span class="line">[Apple&#123;name=&#x27;红苹果&#x27;, price=41.2, weight=11&#125;, Apple&#123;name=&#x27;富士康&#x27;, price=12.31, weight=20&#125;, Apple&#123;name=&#x27;青苹果&#x27;, price=12.11, weight=14&#125;]</span><br><span class="line">[Apple&#123;name=&#x27;青苹果&#x27;, price=12.11, weight=14&#125;, Apple&#123;name=&#x27;富士康&#x27;, price=12.31, weight=20&#125;, Apple&#123;name=&#x27;红苹果&#x27;, price=41.2, weight=11&#125;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">[Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;富士康&#x27;</span>, <span class="hljs-attribute">price</span>=12.31, <span class="hljs-attribute">weight</span>=20&#125;, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;红苹果&#x27;</span>, <span class="hljs-attribute">price</span>=41.2, <span class="hljs-attribute">weight</span>=11&#125;, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;青苹果&#x27;</span>, <span class="hljs-attribute">price</span>=12.11, <span class="hljs-attribute">weight</span>=14&#125;]<br>[Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;红苹果&#x27;</span>, <span class="hljs-attribute">price</span>=41.2, <span class="hljs-attribute">weight</span>=11&#125;, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;富士康&#x27;</span>, <span class="hljs-attribute">price</span>=12.31, <span class="hljs-attribute">weight</span>=20&#125;, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;青苹果&#x27;</span>, <span class="hljs-attribute">price</span>=12.11, <span class="hljs-attribute">weight</span>=14&#125;]<br>[Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;青苹果&#x27;</span>, <span class="hljs-attribute">price</span>=12.11, <span class="hljs-attribute">weight</span>=14&#125;, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;富士康&#x27;</span>, <span class="hljs-attribute">price</span>=12.31, <span class="hljs-attribute">weight</span>=20&#125;, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;红苹果&#x27;</span>, <span class="hljs-attribute">price</span>=41.2, <span class="hljs-attribute">weight</span>=11&#125;]<br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013420.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013420.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <p>List是基于数组的，元素值之间可以换位置；<br>Set是基于哈希表的，元素值的位置相对固定，不易更换位置；</p>
 <h2 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h2><ul>
 <li>斗地主</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 点数: &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;J&quot;,&quot;Q&quot;,&quot;K&quot;,&quot;A&quot;,&quot;2&quot;</span></span><br><span class="line"><span class="comment"> * 花色: &quot;♠&quot;, &quot;♥&quot;, &quot;♣&quot;, &quot;♦&quot;</span></span><br><span class="line"><span class="comment"> * 大小王: &quot;👲&quot; , &quot;🃏&quot;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GameDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Card&gt; cards = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> String[] sizes = &#123;<span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>, <span class="string">&quot;5&quot;</span>, <span class="string">&quot;6&quot;</span>, <span class="string">&quot;7&quot;</span>, <span class="string">&quot;8&quot;</span>, <span class="string">&quot;9&quot;</span>, <span class="string">&quot;10&quot;</span>, <span class="string">&quot;J&quot;</span>, <span class="string">&quot;Q&quot;</span>, <span class="string">&quot;K&quot;</span>, <span class="string">&quot;A&quot;</span>, <span class="string">&quot;2&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">final</span> String[] colors = &#123;<span class="string">&quot;♠&quot;</span>, <span class="string">&quot;♥&quot;</span>, <span class="string">&quot;♣&quot;</span>, <span class="string">&quot;♦&quot;</span>&#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">counter</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (String size : sizes) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String color : colors) &#123;</span><br><span class="line">                cards.add(<span class="keyword">new</span> <span class="title class_">Card</span>(size, color, counter++));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cards.add(<span class="keyword">new</span> <span class="title class_">Card</span>(<span class="string">&quot;🃏&quot;</span>, <span class="string">&quot;&quot;</span>, counter++));</span><br><span class="line">        cards.add(<span class="keyword">new</span> <span class="title class_">Card</span>(<span class="string">&quot;👲&quot;</span>, <span class="string">&quot;&quot;</span>, counter));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(cards);</span><br><span class="line">        Collections.shuffle(cards);</span><br><span class="line">        List&lt;Card&gt; chong = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Card&gt; jiu = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Card&gt; ying = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; cards.size() - <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                chong.add(cards.get(i));</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                jiu.add(cards.get(i));</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">2</span>) &#123;</span><br><span class="line">                ying.add(cards.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//截取集合中的某段区间，作为一个新的集合</span></span><br><span class="line">        <span class="keyword">final</span> List&lt;Card&gt; lastThree = GameDemo.cards.subList(GameDemo.cards.size() - <span class="number">3</span>, GameDemo.cards.size());</span><br><span class="line"></span><br><span class="line">        sortCard(chong);</span><br><span class="line">        sortCard(jiu);</span><br><span class="line">        sortCard(ying);</span><br><span class="line">        System.out.println(chong);</span><br><span class="line">        System.out.println(jiu);</span><br><span class="line">        System.out.println(ying);</span><br><span class="line">        System.out.println(lastThree);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sortCard</span><span class="params">(List&lt;Card&gt; cards)</span> &#123;</span><br><span class="line">        Collections.sort(cards, ((o1, o2) -&gt; o1.getIndex() - o2.getIndex()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 点数: &quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;J&quot;,&quot;Q&quot;,&quot;K&quot;,&quot;A&quot;,&quot;2&quot;</span><br><span class="hljs-comment"> * 花色: &quot;♠&quot;, &quot;♥&quot;, &quot;♣&quot;, &quot;♦&quot;</span><br><span class="hljs-comment"> * 大小王: &quot;👲&quot; , &quot;🃏&quot;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GameDemo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;Card&gt; cards = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">static</span> &#123;<br>        <span class="hljs-keyword">final</span> String[] sizes = &#123;<span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;5&quot;</span>, <span class="hljs-string">&quot;6&quot;</span>, <span class="hljs-string">&quot;7&quot;</span>, <span class="hljs-string">&quot;8&quot;</span>, <span class="hljs-string">&quot;9&quot;</span>, <span class="hljs-string">&quot;10&quot;</span>, <span class="hljs-string">&quot;J&quot;</span>, <span class="hljs-string">&quot;Q&quot;</span>, <span class="hljs-string">&quot;K&quot;</span>, <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>&#125;;<br>        <span class="hljs-keyword">final</span> String[] colors = &#123;<span class="hljs-string">&quot;♠&quot;</span>, <span class="hljs-string">&quot;♥&quot;</span>, <span class="hljs-string">&quot;♣&quot;</span>, <span class="hljs-string">&quot;♦&quot;</span>&#125;;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">counter</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (String size : sizes) &#123;<br>            <span class="hljs-keyword">for</span> (String color : colors) &#123;<br>                cards.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Card</span>(size, color, counter++));<br>            &#125;<br>        &#125;<br>        cards.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Card</span>(<span class="hljs-string">&quot;🃏&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, counter++));<br>        cards.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Card</span>(<span class="hljs-string">&quot;👲&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, counter));<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(cards);<br>        Collections.shuffle(cards);<br>        List&lt;Card&gt; chong = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        List&lt;Card&gt; jiu = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        List&lt;Card&gt; ying = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; cards.size() - <span class="hljs-number">3</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) &#123;<br>                chong.add(cards.get(i));<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">1</span>) &#123;<br>                jiu.add(cards.get(i));<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">2</span>) &#123;<br>                ying.add(cards.get(i));<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//截取集合中的某段区间，作为一个新的集合</span><br>        <span class="hljs-keyword">final</span> List&lt;Card&gt; lastThree = GameDemo.cards.subList(GameDemo.cards.size() - <span class="hljs-number">3</span>, GameDemo.cards.size());<br><br>        sortCard(chong);<br>        sortCard(jiu);<br>        sortCard(ying);<br>        System.out.println(chong);<br>        System.out.println(jiu);<br>        System.out.println(ying);<br>        System.out.println(lastThree);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sortCard</span><span class="hljs-params">(List&lt;Card&gt; cards)</span> &#123;<br>        Collections.sort(cards, ((o1, o2) -&gt; o1.getIndex() - o2.getIndex()));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Card &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/12 19:21&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Card</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String size;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> index;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSize</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSize</span><span class="params">(String size)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.size = size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setColor</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getIndex</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setIndex</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.index = index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size + color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Card</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Card</span><span class="params">(String size, String color, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.size = size;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">        <span class="built_in">this</span>.index = index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: Card &lt;br/&gt;</span><br><span class="hljs-comment"> * Description: &lt;br/&gt;</span><br><span class="hljs-comment"> * date: 2022/3/12 19:21&lt;br/&gt;</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy&lt;br /&gt;</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Card</span> &#123;<br>    <span class="hljs-keyword">private</span> String size;<br>    <span class="hljs-keyword">private</span> String color;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> index;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getSize</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> size;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSize</span><span class="hljs-params">(String size)</span> &#123;<br>        <span class="hljs-built_in">this</span>.size = size;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getColor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> color;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setColor</span><span class="hljs-params">(String color)</span> &#123;<br>        <span class="hljs-built_in">this</span>.color = color;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getIndex</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> index;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> &#123;<br>        <span class="hljs-built_in">this</span>.index = index;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> size + color;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Card</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Card</span><span class="hljs-params">(String size, String color, <span class="hljs-type">int</span> index)</span> &#123;<br>        <span class="hljs-built_in">this</span>.size = size;<br>        <span class="hljs-built_in">this</span>.color = color;<br>        <span class="hljs-built_in">this</span>.index = index;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[3♥, 4♦, 6♥, 8♦, 9♣, 9♦, 10♥, 10♣, J♥, J♣, Q♠, Q♥, Q♣, K♠, A♠, A♥, A♣]</span><br><span class="line">[3♠, 3♦, 4♠, 5♠, 5♦, 6♠, 6♦, 7♥, 7♣, 8♠, 9♠, 10♦, K♥, K♣, A♦, 2♥, 2♦]</span><br><span class="line">[4♥, 4♣, 5♥, 5♣, 6♣, 7♠, 8♥, 8♣, 9♥, 10♠, J♠, Q♦, K♦, 2♠, 2♣, 🃏, 👲]</span><br><span class="line">[3♣, J♦, 7♦]</span><br></pre></td></tr></table></figure>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-string">[3♥, 4♦, 6♥, 8♦, 9♣, 9♦, 10♥, 10♣, J♥, J♣, Q♠, Q♥, Q♣, K♠, A♠, A♥, A♣]</span><br><span class="hljs-string">[3♠, 3♦, 4♠, 5♠, 5♦, 6♠, 6♦, 7♥, 7♣, 8♠, 9♠, 10♦, K♥, K♣, A♦, 2♥, 2♦]</span><br><span class="hljs-string">[4♥, 4♣, 5♥, 5♣, 6♣, 7♠, 8♥, 8♣, 9♥, 10♠, J♠, Q♦, K♦, 2♠, 2♣, 🃏, 👲]</span><br><span class="hljs-string">[3♣, J♦, 7♦]</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -273,7 +433,7 @@
 <p>Map集合的完整格式：{key1&#x3D;value1 , key2&#x3D;value2 , key3&#x3D;value3}双列集合，键值对集合<br>Collection集合的格式: [元素1,元素2,元素3..]  单列集合</p>
 <p>Map集合是什么？使用场景是什么样的？<br>    Map集合是键值对集合<br>    Map集合非常适合做类购物车这样的业务场景</p>
 <h3 id="Map集合体系特点"><a href="#Map集合体系特点" class="headerlink" title="Map集合体系特点"></a>Map集合体系特点</h3><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013657.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013657.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <ul>
 <li>说明</li>
@@ -287,9 +447,9 @@
 <li><strong>Map</strong>集合实现类特点</li>
 </ul>
 <p>HashMap:元素按照键是无序，不重复，无索引，值不做要求。（与Map体系一致）<br>LinkedHashMap:元素按照键是有序，不重复，无索引，值可重复<br>TreeMap：元素按照建是排序，不重复，无索引的，值可重复</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">    Map&lt;String, String&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();<span class="comment">//键无序，不重复，无索引</span></span><br><span class="line">    maps.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;fgcy&quot;</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;java&quot;</span>, <span class="string">&quot;12&quot;</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;18&quot;</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;like&quot;</span>, <span class="string">&quot;no&quot;</span>);</span><br><span class="line">    maps.put(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;like&quot;</span>, <span class="string">&quot;girl&quot;</span>);<span class="comment">//当当前元素的键与之前元素相同时，值会更新成当前元素的值</span></span><br><span class="line">    System.out.println(maps);</span><br><span class="line">    System.out.println(<span class="string">&quot;-----------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Map&lt;String, String&gt; maps2 = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();<span class="comment">//键有序，不重复，无索引</span></span><br><span class="line">    maps2.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;fgcy&quot;</span>);</span><br><span class="line">    maps2.put(<span class="string">&quot;java&quot;</span>, <span class="string">&quot;12&quot;</span>);</span><br><span class="line">    maps2.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;18&quot;</span>);</span><br><span class="line">    maps2.put(<span class="string">&quot;like&quot;</span>, <span class="string">&quot;no&quot;</span>);</span><br><span class="line">    maps2.put(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">    maps2.put(<span class="string">&quot;like&quot;</span>, <span class="string">&quot;girl&quot;</span>);<span class="comment">//当当前元素的键与之前元素相同时，值会更新成当前元素的值</span></span><br><span class="line">    System.out.println(maps2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> &#123;<br>    Map&lt;String, String&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<span class="hljs-comment">//键无序，不重复，无索引</span><br>    maps.put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;fgcy&quot;</span>);<br>    maps.put(<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-string">&quot;12&quot;</span>);<br>    maps.put(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;18&quot;</span>);<br>    maps.put(<span class="hljs-string">&quot;like&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>);<br>    maps.put(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>);<br>    maps.put(<span class="hljs-string">&quot;like&quot;</span>, <span class="hljs-string">&quot;girl&quot;</span>);<span class="hljs-comment">//当当前元素的键与之前元素相同时，值会更新成当前元素的值</span><br>    System.out.println(maps);<br>    System.out.println(<span class="hljs-string">&quot;-----------------------------&quot;</span>);<br><br><br>    Map&lt;String, String&gt; maps2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedHashMap</span>&lt;&gt;();<span class="hljs-comment">//键有序，不重复，无索引</span><br>    maps2.put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;fgcy&quot;</span>);<br>    maps2.put(<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-string">&quot;12&quot;</span>);<br>    maps2.put(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;18&quot;</span>);<br>    maps2.put(<span class="hljs-string">&quot;like&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>);<br>    maps2.put(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>);<br>    maps2.put(<span class="hljs-string">&quot;like&quot;</span>, <span class="hljs-string">&quot;girl&quot;</span>);<span class="hljs-comment">//当当前元素的键与之前元素相同时，值会更新成当前元素的值</span><br>    System.out.println(maps2);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;null=null, java=12, like=girl, name=fgcy, age=18&#125;</span><br><span class="line">-----------------------------</span><br><span class="line">&#123;name=fgcy, java=12, age=18, like=girl, null=null&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&#123;<span class="hljs-attribute">null</span>=<span class="hljs-literal">null</span>, <span class="hljs-attribute">java</span>=12, <span class="hljs-attribute">like</span>=girl, <span class="hljs-attribute">name</span>=fgcy, <span class="hljs-attribute">age</span>=18&#125;<br>-----------------------------<br>&#123;<span class="hljs-attribute">name</span>=fgcy, <span class="hljs-attribute">java</span>=12, <span class="hljs-attribute">age</span>=18, <span class="hljs-attribute">like</span>=girl, <span class="hljs-attribute">null</span>=<span class="hljs-literal">null</span>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -297,11 +457,11 @@
 
 <h3 id="Map集合常用API"><a href="#Map集合常用API" class="headerlink" title="Map集合常用API"></a>Map集合常用API</h3><p>Map集合<br>Map是双列集合的祖宗接口，它的功能是全部双列集合都可以继承使用的</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013609.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013609.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span> &#123;</span><br><span class="line">        Map&lt;String, String&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        Map&lt;String, String&gt; maps2 = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        System.out.println(maps.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;苏未晓&quot;</span>));<span class="comment">//null</span></span><br><span class="line">        maps.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;11&quot;</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;sex&quot;</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;hobby&quot;</span>, <span class="string">&quot;女&quot;</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;22&quot;</span>);<span class="comment">//key为age的值被覆盖为22</span></span><br><span class="line">        System.out.println(maps.size());</span><br><span class="line">        System.out.println(maps);</span><br><span class="line">        System.out.println(<span class="string">&quot;是否包含键\&#x27;name\&#x27;:&quot;</span> + maps.containsKey(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;是否包含值\&#x27;22\&#x27;&quot;</span> + maps.containsValue(<span class="string">&quot;22&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;集合是否为空:&quot;</span> + maps.isEmpty());</span><br><span class="line">        System.out.println(<span class="string">&quot;删除键为name的值为：&quot;</span> + maps.remove(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">        System.out.println(maps);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">final</span> Set&lt;String&gt; keySet = maps.keySet();<span class="comment">//用set来接，应为Map的键时无序 不重复 无索引</span></span><br><span class="line">        <span class="keyword">for</span> (String s : keySet) &#123;</span><br><span class="line">            System.out.print(s + <span class="string">&quot;=&quot;</span>);</span><br><span class="line">            System.out.print(maps.get(s) + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(<span class="string">&quot;当没有这个键时，值为：&quot;</span> + maps.get(<span class="string">&quot;name1&quot;</span>));<span class="comment">//null</span></span><br><span class="line">        <span class="keyword">final</span> Collection&lt;String&gt; values = maps.values();<span class="comment">//用Collection来接 可以重复</span></span><br><span class="line">        System.out.println(values);</span><br><span class="line">        maps.clear();</span><br><span class="line">        System.out.println(maps);</span><br><span class="line">        maps.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;11&quot;</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;sex&quot;</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;hobby&quot;</span>, <span class="string">&quot;女&quot;</span>);</span><br><span class="line"></span><br><span class="line">        maps2.put(<span class="string">&quot;where&quot;</span>, <span class="string">&quot;你爹&quot;</span>);</span><br><span class="line">        maps2.put(<span class="string">&quot;love&quot;</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">        maps2.put(<span class="string">&quot;honey&quot;</span>, <span class="string">&quot;女&quot;</span>);</span><br><span class="line">        maps.putAll(maps2);<span class="comment">//把maps2中的元素全部拷贝一份到maps中</span></span><br><span class="line">        System.out.println(maps);</span><br><span class="line">        System.out.println(maps2);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test2</span><span class="hljs-params">()</span> &#123;<br>        Map&lt;String, String&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        Map&lt;String, String&gt; maps2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>        System.out.println(maps.put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;苏未晓&quot;</span>));<span class="hljs-comment">//null</span><br>        maps.put(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;11&quot;</span>);<br>        maps.put(<span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;男&quot;</span>);<br>        maps.put(<span class="hljs-string">&quot;hobby&quot;</span>, <span class="hljs-string">&quot;女&quot;</span>);<br>        maps.put(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;22&quot;</span>);<span class="hljs-comment">//key为age的值被覆盖为22</span><br>        System.out.println(maps.size());<br>        System.out.println(maps);<br>        System.out.println(<span class="hljs-string">&quot;是否包含键\&#x27;name\&#x27;:&quot;</span> + maps.containsKey(<span class="hljs-string">&quot;name&quot;</span>));<br>        System.out.println(<span class="hljs-string">&quot;是否包含值\&#x27;22\&#x27;&quot;</span> + maps.containsValue(<span class="hljs-string">&quot;22&quot;</span>));<br>        System.out.println(<span class="hljs-string">&quot;集合是否为空:&quot;</span> + maps.isEmpty());<br>        System.out.println(<span class="hljs-string">&quot;删除键为name的值为：&quot;</span> + maps.remove(<span class="hljs-string">&quot;name&quot;</span>));<br>        System.out.println(maps);<br>        <br>        <span class="hljs-keyword">final</span> Set&lt;String&gt; keySet = maps.keySet();<span class="hljs-comment">//用set来接，应为Map的键时无序 不重复 无索引</span><br>        <span class="hljs-keyword">for</span> (String s : keySet) &#123;<br>            System.out.print(s + <span class="hljs-string">&quot;=&quot;</span>);<br>            System.out.print(maps.get(s) + <span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br>        System.out.println();<br>        System.out.println(<span class="hljs-string">&quot;当没有这个键时，值为：&quot;</span> + maps.get(<span class="hljs-string">&quot;name1&quot;</span>));<span class="hljs-comment">//null</span><br>        <span class="hljs-keyword">final</span> Collection&lt;String&gt; values = maps.values();<span class="hljs-comment">//用Collection来接 可以重复</span><br>        System.out.println(values);<br>        maps.clear();<br>        System.out.println(maps);<br>        maps.put(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;11&quot;</span>);<br>        maps.put(<span class="hljs-string">&quot;sex&quot;</span>, <span class="hljs-string">&quot;男&quot;</span>);<br>        maps.put(<span class="hljs-string">&quot;hobby&quot;</span>, <span class="hljs-string">&quot;女&quot;</span>);<br><br>        maps2.put(<span class="hljs-string">&quot;where&quot;</span>, <span class="hljs-string">&quot;你爹&quot;</span>);<br>        maps2.put(<span class="hljs-string">&quot;love&quot;</span>, <span class="hljs-string">&quot;男&quot;</span>);<br>        maps2.put(<span class="hljs-string">&quot;honey&quot;</span>, <span class="hljs-string">&quot;女&quot;</span>);<br>        maps.putAll(maps2);<span class="hljs-comment">//把maps2中的元素全部拷贝一份到maps中</span><br>        System.out.println(maps);<br>        System.out.println(maps2);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">null</span><br><span class="line">4</span><br><span class="line">&#123;sex=男, name=苏未晓, age=22, hobby=女&#125;</span><br><span class="line">是否包含键&#x27;name&#x27;:true</span><br><span class="line">是否包含值&#x27;22&#x27;true</span><br><span class="line">集合是否为空:false</span><br><span class="line">删除键为name的值为：苏未晓</span><br><span class="line">&#123;sex=男, age=22, hobby=女&#125;</span><br><span class="line">sex=男 age=22 hobby=女 </span><br><span class="line">当没有这个键时，值为：null</span><br><span class="line">[男, 22, 女]</span><br><span class="line">&#123;&#125;</span><br><span class="line">&#123;love=男, honey=女, sex=男, where=你爹, age=11, hobby=女&#125;</span><br><span class="line">&#123;love=男, honey=女, where=你爹&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-literal">null</span><br>4<br>&#123;<span class="hljs-attribute">sex</span>=男, <span class="hljs-attribute">name</span>=苏未晓, <span class="hljs-attribute">age</span>=22, <span class="hljs-attribute">hobby</span>=女&#125;<br>是否包含键<span class="hljs-string">&#x27;name&#x27;</span>:true<br>是否包含值<span class="hljs-string">&#x27;22&#x27;</span><span class="hljs-literal">true</span><br>集合是否为空:false<br>删除键为name的值为：苏未晓<br>&#123;<span class="hljs-attribute">sex</span>=男, <span class="hljs-attribute">age</span>=22, <span class="hljs-attribute">hobby</span>=女&#125;<br><span class="hljs-attribute">sex</span>=男 <span class="hljs-attribute">age</span>=22 <span class="hljs-attribute">hobby</span>=女 <br>当没有这个键时，值为：<span class="hljs-literal">null</span><br>[男, 22, 女]<br>&#123;&#125;<br>&#123;<span class="hljs-attribute">love</span>=男, <span class="hljs-attribute">honey</span>=女, <span class="hljs-attribute">sex</span>=男, <span class="hljs-attribute">where</span>=你爹, <span class="hljs-attribute">age</span>=11, <span class="hljs-attribute">hobby</span>=女&#125;<br>&#123;<span class="hljs-attribute">love</span>=男, <span class="hljs-attribute">honey</span>=女, <span class="hljs-attribute">where</span>=你爹&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -314,36 +474,36 @@
 </ul>
 <p>先获取Map集合的全部键的Set集合。<br>遍历键的Set集合，然后通过键提取对应值</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013840.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013840.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test3</span><span class="params">()</span> &#123;</span><br><span class="line">    Map&lt;String, String&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">final</span> Set&lt;String&gt; keySet = maps.keySet();</span><br><span class="line">    maps.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;14&quot;</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;55&quot;</span>);<span class="comment">//值覆盖</span></span><br><span class="line">    maps.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;14&quot;</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;asex&quot;</span>, <span class="string">&quot;14&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String key : keySet) &#123;<span class="comment">//得到一个键的set集合</span></span><br><span class="line">        System.out.println(key + <span class="string">&quot;:&quot;</span> + maps.get(key));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test3</span><span class="hljs-params">()</span> &#123;<br>    Map&lt;String, String&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    <span class="hljs-keyword">final</span> Set&lt;String&gt; keySet = maps.keySet();<br>    maps.put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;14&quot;</span>);<br>    maps.put(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;55&quot;</span>);<span class="hljs-comment">//值覆盖</span><br>    maps.put(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;14&quot;</span>);<br>    maps.put(<span class="hljs-string">&quot;asex&quot;</span>, <span class="hljs-string">&quot;14&quot;</span>);<br>    <span class="hljs-keyword">for</span> (String key : keySet) &#123;<span class="hljs-comment">//得到一个键的set集合</span><br>        System.out.println(key + <span class="hljs-string">&quot;:&quot;</span> + maps.get(key));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name:55</span><br><span class="line">asex:14</span><br><span class="line">age:14</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">name</span>:<span class="hljs-number">55</span><br><span class="hljs-attribute">asex</span>:<span class="hljs-number">14</span><br><span class="hljs-attribute">age</span>:<span class="hljs-number">14</span><br></code></pre></td></tr></table></figure>
 
 
 
 <h3 id="Map集合的遍历方式二：键值对"><a href="#Map集合的遍历方式二：键值对" class="headerlink" title="Map集合的遍历方式二：键值对"></a>Map集合的遍历方式二：键值对</h3><p>先把Map集合中的每个元素转换，一个个的Map.Entry&lt;&gt;实例后，再把Map.Entry&lt;&gt;实例添加进Set集合，Set集合中每个元素都是键值对实体类型了。<br>遍历Set集合，然后提取键以及提取值</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013316.png" alt="Snipaste_2022-03-13_00-24-27"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013316.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2022-03-13_00-24-27"></p>
 <hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test4</span><span class="params">()</span> &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    maps.put(<span class="string">&quot;java&quot;</span>, <span class="number">11</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;Mysql&quot;</span>, <span class="number">20</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;Oracle&quot;</span>, <span class="number">24</span>);</span><br><span class="line">    maps.put(<span class="string">&quot;Mongodb&quot;</span>, <span class="number">54</span>);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * Map.Entry&lt;String, Integer&gt;是键值对类型，可以存储键是String值是Integer的键值对</span></span><br><span class="line"><span class="comment">     *因为Entry是接口，所以Map.Entry&lt;&gt;中存储的键值对实例是有maps.entrySet()方法</span></span><br><span class="line"><span class="comment">     通过遍历maps中的键值对，并为其创作出实例赋值给Map.Entry&lt;&gt;,</span></span><br><span class="line"><span class="comment">     然后再把Map.Entry&lt;&gt;的实例添加到set集合中</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="keyword">final</span> Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySets = maps.entrySet();</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entrySet : entrySets) &#123;</span><br><span class="line">        System.out.println(entrySet.getKey() + <span class="string">&quot;:&quot;</span> + entrySet.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test4</span><span class="hljs-params">()</span> &#123;<br>    Map&lt;String, Integer&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    maps.put(<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-number">11</span>);<br>    maps.put(<span class="hljs-string">&quot;Mysql&quot;</span>, <span class="hljs-number">20</span>);<br>    maps.put(<span class="hljs-string">&quot;Oracle&quot;</span>, <span class="hljs-number">24</span>);<br>    maps.put(<span class="hljs-string">&quot;Mongodb&quot;</span>, <span class="hljs-number">54</span>);<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     * Map.Entry&lt;String, Integer&gt;是键值对类型，可以存储键是String值是Integer的键值对</span><br><span class="hljs-comment">     *因为Entry是接口，所以Map.Entry&lt;&gt;中存储的键值对实例是有maps.entrySet()方法</span><br><span class="hljs-comment">     通过遍历maps中的键值对，并为其创作出实例赋值给Map.Entry&lt;&gt;,</span><br><span class="hljs-comment">     然后再把Map.Entry&lt;&gt;的实例添加到set集合中</span><br><span class="hljs-comment">     * */</span><br>    <span class="hljs-keyword">final</span> Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySets = maps.entrySet();<br>    <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Integer&gt; entrySet : entrySets) &#123;<br>        System.out.println(entrySet.getKey() + <span class="hljs-string">&quot;:&quot;</span> + entrySet.getValue());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java:11</span><br><span class="line">Mysql:20</span><br><span class="line">Mongodb:54</span><br><span class="line">Oracle:24</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">java</span>:<span class="hljs-number">11</span><br><span class="hljs-attribute">Mysql</span>:<span class="hljs-number">20</span><br><span class="hljs-attribute">Mongodb</span>:<span class="hljs-number">54</span><br><span class="hljs-attribute">Oracle</span>:<span class="hljs-number">24</span><br></code></pre></td></tr></table></figure>
 
 
 
 <h3 id="Map集合的遍历方式三：lambda表达式"><a href="#Map集合的遍历方式三：lambda表达式" class="headerlink" title="Map集合的遍历方式三：lambda表达式"></a>Map集合的遍历方式三：lambda表达式</h3><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013218.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013218.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test5</span><span class="params">()</span> &#123;</span><br><span class="line">        Map&lt;String, Integer&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        maps.put(<span class="string">&quot;java&quot;</span>, <span class="number">11</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;Mysql&quot;</span>, <span class="number">20</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;Oracle&quot;</span>, <span class="number">24</span>);</span><br><span class="line">        maps.put(<span class="string">&quot;Mongodb&quot;</span>, <span class="number">54</span>);</span><br><span class="line"><span class="comment">//        maps.forEach(System.out::printf);//方法引用 适用于接收一个参数，并直接将其输出；此处接收有两个参数 【不适用】</span></span><br><span class="line">        <span class="comment">//foreach底层使用的是Map.Entry&lt;&gt;遍历maps的方式</span></span><br><span class="line">        maps.forEach((k, v) -&gt; System.out.println(k + <span class="string">&quot;:&quot;</span> + v));<span class="comment">//一行解决，简洁</span></span><br><span class="line">	<span class="comment">/*        </span></span><br><span class="line"><span class="comment">		maps.forEach(new BiConsumer&lt;String, Integer&gt;() &#123;</span></span><br><span class="line"><span class="comment">            @Override</span></span><br><span class="line"><span class="comment">            public void accept(String k, Integer v) &#123;</span></span><br><span class="line"><span class="comment">                System.out.println(k + &quot;:&quot; + v);</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;);</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test5</span><span class="hljs-params">()</span> &#123;<br>        Map&lt;String, Integer&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        maps.put(<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-number">11</span>);<br>        maps.put(<span class="hljs-string">&quot;Mysql&quot;</span>, <span class="hljs-number">20</span>);<br>        maps.put(<span class="hljs-string">&quot;Oracle&quot;</span>, <span class="hljs-number">24</span>);<br>        maps.put(<span class="hljs-string">&quot;Mongodb&quot;</span>, <span class="hljs-number">54</span>);<br><span class="hljs-comment">//        maps.forEach(System.out::printf);//方法引用 适用于接收一个参数，并直接将其输出；此处接收有两个参数 【不适用】</span><br>        <span class="hljs-comment">//foreach底层使用的是Map.Entry&lt;&gt;遍历maps的方式</span><br>        maps.forEach((k, v) -&gt; System.out.println(k + <span class="hljs-string">&quot;:&quot;</span> + v));<span class="hljs-comment">//一行解决，简洁</span><br>	<span class="hljs-comment">/*        </span><br><span class="hljs-comment">		maps.forEach(new BiConsumer&lt;String, Integer&gt;() &#123;</span><br><span class="hljs-comment">            @Override</span><br><span class="hljs-comment">            public void accept(String k, Integer v) &#123;</span><br><span class="hljs-comment">                System.out.println(k + &quot;:&quot; + v);</span><br><span class="hljs-comment">            &#125;</span><br><span class="hljs-comment">        &#125;);</span><br><span class="hljs-comment">     */</span><br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java:11</span><br><span class="line">Mysql:20</span><br><span class="line">Mongodb:54</span><br><span class="line">Oracle:24</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">java</span>:<span class="hljs-number">11</span><br><span class="hljs-attribute">Mysql</span>:<span class="hljs-number">20</span><br><span class="hljs-attribute">Mongodb</span>:<span class="hljs-number">54</span><br><span class="hljs-attribute">Oracle</span>:<span class="hljs-number">24</span><br></code></pre></td></tr></table></figure>
 
 
 
 <h3 id="Map集合的实现类HashMap"><a href="#Map集合的实现类HashMap" class="headerlink" title="Map集合的实现类HashMap"></a>Map集合的实现类HashMap</h3><p>使用最多的Map集合是HashMap。<br>重点掌握HashMap , LinkedHashMap , TreeMap</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013353.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013353.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <ul>
 <li><strong>HashMap特点：</strong></li>
@@ -353,7 +513,7 @@
 <p>HashMap跟HashSet底层原理是一模一样的，都是哈希表结构，只是HashMap的每个元素包含两个值而已。</p>
 <p>哈希表结构：<br>    1.8之前：数组、链表；元素挂在前<br>    1.8：数组、链表、红黑树，元素挂在后</p>
 <p>实际上：Set系列集合的底层就是Map实现的，只是Set集合中的元素只要键数据，不要值数据而已。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="title function_">HashSet</span><span class="params">()</span> &#123;</span><br><span class="line">​       map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">​    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">	<span class="hljs-keyword">public</span> <span class="hljs-title function_">HashSet</span><span class="hljs-params">()</span> &#123;<br>​       map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>​    &#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -371,11 +531,11 @@
 <ul>
 <li>HashMap存储自定义类型</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> weight;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Student&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&quot;, weight=&quot;</span> + weight +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age, <span class="type">double</span> weight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == o) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="literal">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> (Student) o;</span><br><span class="line">        <span class="keyword">return</span> age == student.age &amp;&amp; Double.compare(student.weight, weight) == <span class="number">0</span> &amp;&amp; Objects.equals(name, student.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age, weight);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> weight;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Student&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, age=&quot;</span> + age +<br>                <span class="hljs-string">&quot;, weight=&quot;</span> + weight +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Student</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Student</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age, <span class="hljs-type">double</span> weight)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>        <span class="hljs-built_in">this</span>.weight = weight;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object o)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span> == o) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (o == <span class="hljs-literal">null</span> || getClass() != o.getClass()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-type">Student</span> <span class="hljs-variable">student</span> <span class="hljs-operator">=</span> (Student) o;<br>        <span class="hljs-keyword">return</span> age == student.age &amp;&amp; Double.compare(student.weight, weight) == <span class="hljs-number">0</span> &amp;&amp; Objects.equals(name, student.name);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> Objects.hash(name, age, weight);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class HashMapDemo1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        final Student s1 = new Student(&quot;张三&quot;, 12, 55.1);//重写了hashcode和equals方法 这两个对象相等</span><br><span class="line">        final Student s2 = new Student(&quot;张三&quot;, 12, 55.1);//重写了hashcode和equals方法 这两个对象相等</span><br><span class="line">        final Student s3 = new Student(&quot;李氏&quot;, 52, 75.1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        final HashMap&lt;Student, String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(s1, &quot;北京&quot;);</span><br><span class="line">        map.put(s2, &quot;上海&quot;);</span><br><span class="line">        map.put(s3, &quot;广州&quot;);</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HashMapDemo1</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">String</span>[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">final</span> Student s1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Student</span>(<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">12</span>, <span class="hljs-number">55.1</span>);<span class="hljs-comment">//重写了hashcode和equals方法 这两个对象相等</span><br>        <span class="hljs-keyword">final</span> Student s2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Student</span>(<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">12</span>, <span class="hljs-number">55.1</span>);<span class="hljs-comment">//重写了hashcode和equals方法 这两个对象相等</span><br>        <span class="hljs-keyword">final</span> Student s3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Student</span>(<span class="hljs-string">&quot;李氏&quot;</span>, <span class="hljs-number">52</span>, <span class="hljs-number">75.1</span>);<br><br><br>        <span class="hljs-keyword">final</span> HashMap&lt;Student, <span class="hljs-type">String</span>&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>        map.<span class="hljs-built_in">put</span>(s1, <span class="hljs-string">&quot;北京&quot;</span>);<br>        map.<span class="hljs-built_in">put</span>(s2, <span class="hljs-string">&quot;上海&quot;</span>);<br>        map.<span class="hljs-built_in">put</span>(s3, <span class="hljs-string">&quot;广州&quot;</span>);<br>        System.out.<span class="hljs-built_in">println</span>(map);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Student&#123;name=&#x27;张三&#x27;, age=12, weight=55.1&#125;=上海, Student&#123;name=&#x27;李氏&#x27;, age=52, weight=75.1&#125;=广州&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&#123;Student&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-attribute">age</span>=12, <span class="hljs-attribute">weight</span>=55.1&#125;=上海, Student&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;李氏&#x27;</span>, <span class="hljs-attribute">age</span>=52, <span class="hljs-attribute">weight</span>=75.1&#125;=广州&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -386,7 +546,7 @@
 <p>这里的有序指的是保证存储和取出的元素顺序一致</p>
 <p>原理：底层数据结构是依然哈希表，只是每个键值对元素又额外的多了一个双链表的机制记录存储的顺序。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270012353.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270012353.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h3 id="Map集合的实现类TreeMap"><a href="#Map集合的实现类TreeMap" class="headerlink" title="Map集合的实现类TreeMap"></a>Map集合的实现类TreeMap</h3><ul>
 <li><strong>TreeMap集合概述和特点</strong></li>
@@ -399,172 +559,387 @@
 <ul>
 <li>案例</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Apple</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Apple&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> weight;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Apple&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, price=&quot;</span> + price +</span><br><span class="line">                <span class="string">&quot;, weight=&quot;</span> + weight +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Apple</span><span class="params">(String name, <span class="type">double</span> price, <span class="type">int</span> weight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">        <span class="built_in">this</span>.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Apple o)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.weight - o.weight;<span class="comment">//去除中重量重复的元素</span></span><br><span class="line"><span class="comment">//        return this.weight - o.weight &gt; 0 ? 1 : -1;//不会去除</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getWeight</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setWeight</span><span class="params">(<span class="type">int</span> weight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Apple</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span>&lt;Apple&gt; &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> price;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> weight;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Apple&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, price=&quot;</span> + price +<br>                <span class="hljs-string">&quot;, weight=&quot;</span> + weight +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Apple</span><span class="hljs-params">(String name, <span class="hljs-type">double</span> price, <span class="hljs-type">int</span> weight)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.price = price;<br>        <span class="hljs-built_in">this</span>.weight = weight;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Apple o)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.weight - o.weight;<span class="hljs-comment">//去除中重量重复的元素</span><br><span class="hljs-comment">//        return this.weight - o.weight &gt; 0 ? 1 : -1;//不会去除</span><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getPrice</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> price;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPrice</span><span class="hljs-params">(<span class="hljs-type">double</span> price)</span> &#123;<br>        <span class="hljs-built_in">this</span>.price = price;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getWeight</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> weight;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setWeight</span><span class="hljs-params">(<span class="hljs-type">int</span> weight)</span> &#123;<br>        <span class="hljs-built_in">this</span>.weight = weight;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeMapDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Apple</span> <span class="variable">a1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Apple</span>(<span class="string">&quot;红富士&quot;</span>, <span class="number">12.3</span>, <span class="number">10</span>);<span class="comment">//苹果类实现了comparable接口，根据重量比较</span></span><br><span class="line">        <span class="keyword">final</span> <span class="type">Apple</span> <span class="variable">a2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Apple</span>(<span class="string">&quot;亲苹果&quot;</span>, <span class="number">22.1</span>, <span class="number">10</span>);<span class="comment">//这个对象与上面的对象，重量是一致的，所以认为这两个对象相同；后值把前值覆盖</span></span><br><span class="line">        <span class="keyword">final</span> <span class="type">Apple</span> <span class="variable">a3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Apple</span>(<span class="string">&quot;黄苹果&quot;</span>, <span class="number">21.3</span>, <span class="number">23</span>);</span><br><span class="line">        <span class="comment">//集合的比较器优先级较高，这个是通过价格来比较的</span></span><br><span class="line">        <span class="keyword">final</span> TreeMap&lt;Apple, Integer&gt; maps = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(((o1, o2) -&gt; Double.compare(o1.getPrice(), o2.getPrice())));</span><br><span class="line">        maps.put(a1, <span class="number">12</span>);</span><br><span class="line">        maps.put(a2, <span class="number">52</span>);</span><br><span class="line">        maps.put(a3, <span class="number">2</span>);</span><br><span class="line">        System.out.println(maps);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeMapDemo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Apple</span> <span class="hljs-variable">a1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Apple</span>(<span class="hljs-string">&quot;红富士&quot;</span>, <span class="hljs-number">12.3</span>, <span class="hljs-number">10</span>);<span class="hljs-comment">//苹果类实现了comparable接口，根据重量比较</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Apple</span> <span class="hljs-variable">a2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Apple</span>(<span class="hljs-string">&quot;亲苹果&quot;</span>, <span class="hljs-number">22.1</span>, <span class="hljs-number">10</span>);<span class="hljs-comment">//这个对象与上面的对象，重量是一致的，所以认为这两个对象相同；后值把前值覆盖</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Apple</span> <span class="hljs-variable">a3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Apple</span>(<span class="hljs-string">&quot;黄苹果&quot;</span>, <span class="hljs-number">21.3</span>, <span class="hljs-number">23</span>);<br>        <span class="hljs-comment">//集合的比较器优先级较高，这个是通过价格来比较的</span><br>        <span class="hljs-keyword">final</span> TreeMap&lt;Apple, Integer&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeMap</span>&lt;&gt;(((o1, o2) -&gt; Double.compare(o1.getPrice(), o2.getPrice())));<br>        maps.put(a1, <span class="hljs-number">12</span>);<br>        maps.put(a2, <span class="hljs-number">52</span>);<br>        maps.put(a3, <span class="hljs-number">2</span>);<br>        System.out.println(maps);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 比较器比较：</span><br><span class="line">&#123;Apple&#123;name=&#x27;红富士&#x27;, price=12.3, weight=10&#125;=12, Apple&#123;name=&#x27;黄苹果&#x27;, price=21.3, weight=23&#125;=2, Apple&#123;name=&#x27;亲苹果&#x27;, price=22.1, weight=10&#125;=52&#125;</span><br><span class="line"></span><br><span class="line">可比较接口比较：</span><br><span class="line">    &#123;Apple&#123;name=&#x27;红富士&#x27;, price=12.3, weight=10&#125;=52, Apple&#123;name=&#x27;黄苹果&#x27;, price=21.3, weight=23&#125;=2&#125;</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros"> 比较器比较：<br>&#123;Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;红富士&#x27;</span>, <span class="hljs-attribute">price</span>=12.3, <span class="hljs-attribute">weight</span>=10&#125;=12, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;黄苹果&#x27;</span>, <span class="hljs-attribute">price</span>=21.3, <span class="hljs-attribute">weight</span>=23&#125;=2, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;亲苹果&#x27;</span>, <span class="hljs-attribute">price</span>=22.1, <span class="hljs-attribute">weight</span>=10&#125;=52&#125;<br><br>可比较接口比较：<br>    &#123;Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;红富士&#x27;</span>, <span class="hljs-attribute">price</span>=12.3, <span class="hljs-attribute">weight</span>=10&#125;=52, Apple&#123;<span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;黄苹果&#x27;</span>, <span class="hljs-attribute">price</span>=21.3, <span class="hljs-attribute">weight</span>=23&#125;=2&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="集合的嵌套"><a href="#集合的嵌套" class="headerlink" title="集合的嵌套"></a>集合的嵌套</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestMapDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> List&lt;String&gt; wants1 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">final</span> List&lt;String&gt; wants2 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">final</span> List&lt;String&gt; wants3 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.addAll(wants1, <span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        Collections.addAll(wants2, <span class="string">&quot;A&quot;</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        Collections.addAll(wants3, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>);</span><br><span class="line">        <span class="comment">//集合嵌套</span></span><br><span class="line">        <span class="keyword">final</span> HashMap&lt;String, List&lt;String&gt;&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">final</span> HashMap&lt;String, Integer&gt; col = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        maps.put(<span class="string">&quot;苏未晓&quot;</span>, wants1);</span><br><span class="line">        maps.put(<span class="string">&quot;李石&quot;</span>, wants2);</span><br><span class="line">        maps.put(<span class="string">&quot;张三&quot;</span>, wants3);</span><br><span class="line"><span class="comment">//        System.out.println(maps);// &#123;张三=[B, C], 李石=[A, C], 苏未晓=[A, B, C]&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> Collection&lt;List&lt;String&gt;&gt; values = maps.values();</span><br><span class="line"><span class="comment">//        System.out.println(values);//   [[B, C], [A, C], [A, B, C]]</span></span><br><span class="line">        <span class="keyword">for</span> (List&lt;String&gt; value : values) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String v : value) &#123;</span><br><span class="line">                col.put(v, col.containsKey(v) ? col.get(v) + <span class="number">1</span> : <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(col);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;A=2, B=2, C=3&#125;</span><br></pre></td></tr></table></figure>
 
 
+<h2 id="集合的嵌套"><a href="#集合的嵌套" class="headerlink" title="集合的嵌套"></a>集合的嵌套</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestMapDemo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">final</span> List&lt;String&gt; wants1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        <span class="hljs-keyword">final</span> List&lt;String&gt; wants2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        <span class="hljs-keyword">final</span> List&lt;String&gt; wants3 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        Collections.addAll(wants1, <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>);<br>        Collections.addAll(wants2, <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>);<br>        Collections.addAll(wants3, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>);<br>        <span class="hljs-comment">//集合嵌套</span><br>        <span class="hljs-keyword">final</span> HashMap&lt;String, List&lt;String&gt;&gt; maps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-keyword">final</span> HashMap&lt;String, Integer&gt; col = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        maps.put(<span class="hljs-string">&quot;苏未晓&quot;</span>, wants1);<br>        maps.put(<span class="hljs-string">&quot;李石&quot;</span>, wants2);<br>        maps.put(<span class="hljs-string">&quot;张三&quot;</span>, wants3);<br><span class="hljs-comment">//        System.out.println(maps);// &#123;张三=[B, C], 李石=[A, C], 苏未晓=[A, B, C]&#125;</span><br><br>        <span class="hljs-keyword">final</span> Collection&lt;List&lt;String&gt;&gt; values = maps.values();<br><span class="hljs-comment">//        System.out.println(values);//   [[B, C], [A, C], [A, B, C]]</span><br>        <span class="hljs-keyword">for</span> (List&lt;String&gt; value : values) &#123;<br>            <span class="hljs-keyword">for</span> (String v : value) &#123;<br>                col.put(v, col.containsKey(v) ? col.get(v) + <span class="hljs-number">1</span> : <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        System.out.println(col);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&#123;<span class="hljs-attribute">A</span>=2, <span class="hljs-attribute">B</span>=2, <span class="hljs-attribute">C</span>=3&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/" data-id="clfv6vsw8001be4cx4u8cez5g" data-title="Set与Collections与Map与集合嵌套-heima-xl" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
   
-    <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          JAVA-IO-下-heima-xl
-        
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Set与Collections与Map与集合嵌套-heima-xl</div>
+      <div>http://example.com/2023/03/30/Set与Collections与Map与集合嵌套-heima-xl/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/" title="JAVA-IO-下-heima-xl">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JAVA-IO-下-heima-xl</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/" title="static关键字与单例与代码段与继承-heima-xl">
+                        <span class="hidden-mobile">static关键字与单例与代码段与继承-heima-xl</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">static关键字与单例与代码段与继承-heima-xl</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

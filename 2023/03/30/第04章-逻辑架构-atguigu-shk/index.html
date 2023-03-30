@@ -1,128 +1,282 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>第04章-逻辑架构-atguigu-shk | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1. 逻辑架构剖析1.1服务器处理客户端请求首先MySQL是典型的C&#x2F;s架构, 即 Client&#x2F;Server 架构,服务器端程序使用的mysqld 不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是: 客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)">
+    <meta name="description" content="1. 逻辑架构剖析1.1服务器处理客户端请求首先MySQL是典型的C&#x2F;s架构, 即 Client&#x2F;Server 架构,服务器端程序使用的mysqld 不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是: 客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第04章-逻辑架构-atguigu-shk">
 <meta property="og:url" content="http://example.com/2023/03/30/%E7%AC%AC04%E7%AB%A0-%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84-atguigu-shk/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 逻辑架构剖析1.1服务器处理客户端请求首先MySQL是典型的C&#x2F;s架构, 即 Client&#x2F;Server 架构,服务器端程序使用的mysqld 不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是: 客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056279.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282058176.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056682.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056461.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056166.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282057244.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056386.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056386.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056712.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056082.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056173.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056600.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056978.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056002.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055602.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055788.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055515.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055631.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055591.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055111.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055571.png">
+<meta property="og:image" content="http://example.com/images/mysql.png">
 <meta property="article:published_time" content="2023-03-30T12:10:29.000Z">
 <meta property="article:modified_time" content="2023-03-30T14:09:54.750Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056279.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
   
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>第04章-逻辑架构-atguigu-shk - Hexo</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第04章-逻辑架构-atguigu-shk"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:10" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          22k words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        
+          187 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-第04章-逻辑架构-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E7%AC%AC04%E7%AB%A0-%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84-atguigu-shk/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:10:29.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      第04章-逻辑架构-atguigu-shk
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-逻辑架构剖析"><a href="#1-逻辑架构剖析" class="headerlink" title="1. 逻辑架构剖析"></a>1. 逻辑架构剖析</h1><h2 id="1-1服务器处理客户端请求"><a href="#1-1服务器处理客户端请求" class="headerlink" title="1.1服务器处理客户端请求"></a>1.1服务器处理客户端请求</h2><p>首先MySQL是典型的C&#x2F;s架构, 即 <code>Client/Server</code> 架构,服务器端程序使用的<code>mysqld</code></p>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第04章-逻辑架构-atguigu-shk</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-逻辑架构剖析"><a href="#1-逻辑架构剖析" class="headerlink" title="1. 逻辑架构剖析"></a>1. 逻辑架构剖析</h1><h2 id="1-1服务器处理客户端请求"><a href="#1-1服务器处理客户端请求" class="headerlink" title="1.1服务器处理客户端请求"></a>1.1服务器处理客户端请求</h2><p>首先MySQL是典型的C&#x2F;s架构, 即 <code>Client/Server</code> 架构,服务器端程序使用的<code>mysqld</code></p>
 <p>不论客户端进程和服务器进程是采用哪种方式进行通信,最后实现的效果都是:</p>
 <p>客户端进程向服务器进程发送一段文本(SQL语句) , 服务器进程处理后再向客户端进程发送一段文本(处理结果)</p>
 <span id="more"></span>
@@ -130,11 +284,11 @@
 <p>那服务器进程对客户端进程发送的请求做了什么处理,才能产生最后的处理结果呢?</p>
 <p>这里以查询请求为例展示:</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056279.png" alt="image-20220706165512726"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056279.png" srcset="/img/loading.gif" lazyload alt="image-20220706165512726"></p>
 <hr>
 <p>下面具体展开看一下：<strong>MySQL5.7</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282058176.png" alt="image-20220706171223619"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282058176.png" srcset="/img/loading.gif" lazyload alt="image-20220706171223619"></p>
 <hr>
 <h2 id="1-2-Connectors"><a href="#1-2-Connectors" class="headerlink" title="1.2 Connectors"></a>1.2 Connectors</h2><p>Connectors, 指的是不同语言中与SQL的交互 （不同客户端与MySQL服务器进行交互）</p>
 <p>MySQL首先是一个网络程序,在TCP之上定义了自己的应用层协议</p>
@@ -154,7 +308,7 @@
 <p>TCP 连接收到请求后，必须要分配给一个线程专门与这个客户端的交互，去走后 面的流程</p>
 <p>每一个连接从线程池中获取线程，省去了创建和销毁线程的开销</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056682.png" alt="image-20220706172253041"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056682.png" srcset="/img/loading.gif" lazyload alt="image-20220706172253041"></p>
 <hr>
 <p>TCP 连接收到请求后,必须要分配给一个线程专门与这个客户端的交互</p>
 <p>所以还会有个线程池,去走后面的流程。每一个连接从线程池中获取线程,省去了创建和销毁线程的开销</p>
@@ -180,7 +334,7 @@
 <p>例如：</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,name FROM student WHERE gender = &#x27;女&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT id,name FROM student WHERE gender = &#x27;女&#x27;;<br></code></pre></td></tr></table></figure>
 
 <p>这个SELECT查询先根据WHERE语句进行 选取 ，而不是将表全部查询出来以后再进行gender过 滤</p>
 <p> +这个SELECT查询先根据id和name进行属性 投影 ，而不是将属性全部取出以后再进行过 滤，将这两个查询条件 连接 起来生成最终查询结果</p>
@@ -199,10 +353,10 @@
 <p>插件式存储引警层(Storage Engines),真正的负责了MySQL中数据的存储和提取,对物理服务器级别维护的底层数据执行操作,服务器通过API与存储引擎进行通信</p>
 <p>不同的存储引擎具有的功能不同,这样我们可以根据自己的实际需要进行选取</p>
 <p> MySQL 8.0.25默认支持的存储引擎如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW ENGINES;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">SHOW ENGINES;<br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056461.png" alt="image-20220706175810475"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056461.png" srcset="/img/loading.gif" lazyload alt="image-20220706175810475"></p>
 <hr>
 <h2 id="1-6-存储层"><a href="#1-6-存储层" class="headerlink" title="1.6 存储层"></a>1.6 存储层</h2><p>所有的数据，数据库、表的定义，表的每一行的内容，索引，都是<code>存在 文件系统 上</code>，以 <code>文件 的方式存 在的</code>，并完成与存储引擎的交互</p>
 <p>当然有些存储引擎比如InnoDB，也支持不使用文件系统直接管理裸设 备，但现代文件系统的实现使得这样做没有必要了</p>
@@ -210,14 +364,14 @@
 <blockquote>
 <p>&#x2F;var&#x2F;lib&#x2F; 目录下</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &#x27;%datadir%&#x27;;</span><br><span class="line"></span><br><span class="line">+---------------+-----------------+</span><br><span class="line">| Variable_name | Value           |</span><br><span class="line">+---------------+-----------------+</span><br><span class="line">| datadir       | /var/lib/mysql/ |</span><br><span class="line">+---------------+-----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW VARIABLES LIKE &#x27;%datadir%&#x27;;<br><br>+---------------+-----------------+<br>| Variable_name | Value           |<br>+---------------+-----------------+<br>| datadir       | /var/lib/mysql/ |<br>+---------------+-----------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="1-7-小结"><a href="#1-7-小结" class="headerlink" title="1.7 小结"></a>1.7 小结</h2><p>MySQL架构图本节开篇所示</p>
 <p>下面为了熟悉SQL执行流程方便，我们可以简化如下：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056166.png" alt="image-20220706180146859"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056166.png" srcset="/img/loading.gif" lazyload alt="image-20220706180146859"></p>
 <hr>
 <p>简化为三层结构：</p>
 <ol>
@@ -226,10 +380,10 @@
 <li>存储引擎层：与数据库文件打交道，<strong>负责数据的存储和读取</strong></li>
 </ol>
 <h1 id="2-SQL执行流程"><a href="#2-SQL执行流程" class="headerlink" title="2. SQL执行流程"></a>2. SQL执行流程</h1><h2 id="2-1-MySQL-中的-SQL执行流程"><a href="#2-1-MySQL-中的-SQL执行流程" class="headerlink" title="2.1 MySQL 中的 SQL执行流程"></a>2.1 MySQL 中的 SQL执行流程</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282057244.png" alt="image-20220706180332107"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282057244.png" srcset="/img/loading.gif" lazyload alt="image-20220706180332107"></p>
 <hr>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056386.png" alt="image-20220706195228142"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056386.png" srcset="/img/loading.gif" lazyload alt="image-20220706195228142"></p>
 <hr>
 <p>MySQL拿到一个查询请求后,会先到查询缓存看看,之前是不是执行过这条语句</p>
 <p>之前执行过的语句及其结果可能会以key-value 对的形式,被直接缓存在内存中</p>
@@ -242,7 +396,7 @@
 <p>如果没有，就进入到解析器阶段。需要说明的是，因为查询缓存往往效率不高，所以在 MySQL8.0 之后就抛弃 了这个功能。</p>
 <p>大多数情况查询缓存就是个鸡肋，为什么呢？</p>
 <p>举例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT employee_id,last_name FROM employees WHERE employee_id = 101;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name FROM employees WHERE employee_id = 101;<br></code></pre></td></tr></table></figure>
 
 <p>查询缓存是提前把查询结果缓存起来，这样下次不需要执行就可以直接拿到结果</p>
 <p>需要说明的是，在 MySQL 中的查询缓存，不是缓存查询计划，而是查询对应的结果</p>
@@ -261,16 +415,16 @@
 <p>好在MySQL也提供了这种“按需使用”的方式:</p>
 <p>你可以将  <code>my.cnf </code> 参数   <code>query_cache_type</code>   设置成<code>DEMAND</code>,  代表当sql语句中有<strong>SQL_CACHE关键词时才缓存</strong></p>
 <p>比如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#query_cache_type有3个值 0 代表关闭查询缓存 OFF, 1代表开启ON 2 (DEMAND) </span><br><span class="line"></span><br><span class="line">query_cache_type=2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#query_cache_type有3个值 0 代表关闭查询缓存 OFF, 1代表开启ON 2 (DEMAND) <br><br>query_cache_type=2<br></code></pre></td></tr></table></figure>
 
 <p>这样对于默认的SQL语句都不使用查询缓存</p>
 <p>而对于你确定要使用查询缓存的语句,可以用 <code>SQL_CACHE</code> 显式指定,像下面这个语句一样:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 先过查询缓存</span><br><span class="line">select SQL_CACHE * from test where ID=5;</span><br><span class="line"></span><br><span class="line">-- 不走查询缓存</span><br><span class="line">select SQL_NO_CACHE * from test where ID=5;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">-- 先过查询缓存<br>select SQL_CACHE * from test where ID=5;<br><br>-- 不走查询缓存<br>select SQL_NO_CACHE * from test where ID=5;<br></code></pre></td></tr></table></figure>
 
 
 
 <p>查看当前mysql实例是否开启缓存机制:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- MySQL5.7</span><br><span class="line">show variables like &#x27;%query_cache_type%&#x27;;</span><br><span class="line"> </span><br><span class="line">+------------------+-------+</span><br><span class="line">| Variable_name    | Value |</span><br><span class="line">+------------------+-------+</span><br><span class="line">| query_cache_type | OFF   |</span><br><span class="line">+------------------+-------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- MySQL8.0 </span><br><span class="line">show variables like &#x27;%query_cache_type%&#x27;;</span><br><span class="line"> </span><br><span class="line">Empty set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- MySQL5.7<br>show variables like &#x27;%query_cache_type%&#x27;;<br> <br>+------------------+-------+<br>| Variable_name    | Value |<br>+------------------+-------+<br>| query_cache_type | OFF   |<br>+------------------+-------+<br>1 row in set (0.01 sec)<br><br><br><br>-- MySQL8.0 <br>show variables like &#x27;%query_cache_type%&#x27;;<br> <br>Empty set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -280,7 +434,7 @@
 
 <h3 id="2、解析器："><a href="#2、解析器：" class="headerlink" title="2、解析器："></a>2、解析器：</h3><p>在解析器中对 SQL 语句进行语法分析、语义分析</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056386.png" alt="image-20220706211801837"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056386.png" srcset="/img/loading.gif" lazyload alt="image-20220706211801837"></p>
 <hr>
 <p>如果没有命中查询缓存,就要开始真正执行语句了</p>
 <p>首先,MySQL需要知道你要做什么,因此需要<strong>对SQL语句做解析</strong></p>
@@ -293,15 +447,15 @@
 <p>​		根据词法分析的结果,语法分析器(比如:Bison)会根据语法规则,判断你输入的这个SQL语句是否满足MySQL 语法</p>
 <p>如果你的语句不对,就会收到  <code>You have an error in your SQL syntax</code> 的错误提醒</p>
 <p>比如下面这个语句 from 写成了”rom”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#语句:</span><br><span class="line">select * fro test where id=1;</span><br><span class="line"></span><br><span class="line">#错误;</span><br><span class="line">ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;fro test where id=1&#x27; at line 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#语句:<br>select * fro test where id=1;<br><br>#错误;<br>ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;fro test where id=1&#x27; at line 1<br></code></pre></td></tr></table></figure>
 
 
 
 <p>如果SQL语句正确，则会生成一个这样的语法树：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056712.png" alt="image-20220706212636873"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056712.png" srcset="/img/loading.gif" lazyload alt="image-20220706212636873"></p>
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT username,ismale FROM userinfo</span><br><span class="line">WHERE age&gt;20 AND level&gt;5 AND 1=1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT username,ismale FROM userinfo<br>WHERE age&gt;20 AND level&gt;5 AND 1=1;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -311,7 +465,7 @@
 
 <p><strong>下图是SQL词法分析的过程步骤:</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056082.png" alt="image-20220706212927560"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056082.png" srcset="/img/loading.gif" lazyload alt="image-20220706212927560"></p>
 <hr>
 <h3 id="3、优化器："><a href="#3、优化器：" class="headerlink" title="3、优化器："></a>3、优化器：</h3><p>在优化器中会确定 SQL 语句的执行路径，比如是根据 全表检索 ，还是根据 索引检索 等</p>
 <p>经过了解析器,MySQL就知道你要做什么了</p>
@@ -319,12 +473,12 @@
 <p>一条查询可以有很多种执行方式,最后都返回相同的结果</p>
 <p>优化器的作用就是<strong>找到这其中最好的执行计划</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056173.png" alt="image-20220706213418784"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056173.png" srcset="/img/loading.gif" lazyload alt="image-20220706213418784"></p>
 <hr>
 <p>优化器优化后会生成一个执行计划</p>
 <p>举例：</p>
 <p>如下语句是执行两个表的 join：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from test1 join test2 </span><br><span class="line">using(ID) -- 使用id进行等值内连接</span><br><span class="line">where test1.name=&#x27;zhangwei&#x27; and test2.name=&#x27;mysql高级课程&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from test1 join test2 <br>using(ID) -- 使用id进行等值内连接<br>where test1.name=&#x27;zhangwei&#x27; and test2.name=&#x27;mysql高级课程&#x27;;<br></code></pre></td></tr></table></figure>
 
 <p>方案1：</p>
 <p>可以先从表 test1 里面取出  <code>name=&#39;zhangwei&#39;</code> 的记录的 ID 值，再根据 ID 值关联到表 test2，再判 断 test2 里面 name的值是否等于 <code> &#39;mysql高级课程&#39;</code> </p>
@@ -340,15 +494,15 @@
 <p>2、**物理查询优化 ** 是基于  <strong>关系代数</strong>   进行的  查询重写  ,而关系代数的每一步都对应着  <strong>物理计算</strong>  ,这些物理计算往往存在多种算法,因此需要计算    <strong>各种物理路径</strong>  的代价,从中选择    <strong>代价最小的作为执行计划</strong>      在这个阶段里,对于单表和多表连接的操作,需要   <strong>高效地使用索引</strong>   ,   提升查询效率。</p>
 <h3 id="4、执行器："><a href="#4、执行器：" class="headerlink" title="4、执行器："></a>4、执行器：</h3><p> 截止到现在，还没有真正去读写真实的表，仅仅只是产出了一个执行计划。于是就进入了 执行器阶段</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056600.png" alt="image-20220706215100525"></p>
-<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056978.png" alt="image-20220706215540900" style="zoom:90%;" />
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056600.png" srcset="/img/loading.gif" lazyload alt="image-20220706215100525"></p>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056978.png" srcset="/img/loading.gif" lazyload alt="image-20220706215540900" style="zoom:90%;" />
 
 <hr>
 <p>在执行之前需要判断该用户是否 具备权限 </p>
 <p>如果没有，就会返回权限错误</p>
 <p>如果具备权限，就执行 SQL 查询并返回结果</p>
 <p>在 MySQL8.0 以下的版本，如果设置了查询缓存，这时会将查询结果进行缓存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from test where id=1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from test where id=1;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -363,7 +517,7 @@
 <p>对于有索引的表，执行的逻辑也差不多</p>
 <p> SQL 语句在 MySQL 中的流程是：<code> SQL语句→查询缓存→解析器→优化器→执行器</code></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056002.png" alt="image-20220706215837134"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282056002.png" srcset="/img/loading.gif" lazyload alt="image-20220706215837134"></p>
 <hr>
 <h2 id="2-2-MySQL8中SQL执行原理"><a href="#2-2-MySQL8中SQL执行原理" class="headerlink" title="2.2 MySQL8中SQL执行原理"></a>2.2 MySQL8中SQL执行原理</h2><p>前面的结构图很复杂,我们需要抓取最核心的部分: SQL的执行原理</p>
 <p>不同的DBMS的   SQL的执行原理是相通的   ,只是在不同的软件中,各有各的实现路径</p>
@@ -372,13 +526,13 @@
 <ol>
 <li>确认profiling 是否开启</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">-- 当前MySQL8.0</span><br><span class="line">select version();</span><br><span class="line"> </span><br><span class="line">+-----------+</span><br><span class="line">| version() |</span><br><span class="line">+-----------+</span><br><span class="line">| 8.0.25    |</span><br><span class="line">+-----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 确认profiling 是否开启 (方式一)</span><br><span class="line">select @@profiling; -- 系统变量 默认是SESSION级别</span><br><span class="line"></span><br><span class="line">+-------------+</span><br><span class="line">| @@profiling |</span><br><span class="line">+-------------+</span><br><span class="line">|           0 |</span><br><span class="line">+-------------+</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 确认profiling 是否开启 (方式二)</span><br><span class="line">show variables like &#x27;profiling&#x27;;</span><br><span class="line"></span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| profiling     | OFF   |</span><br><span class="line">+---------------+-------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 当前MySQL8.0<br>select version();<br> <br>+-----------+<br>| version() |<br>+-----------+<br>| 8.0.25    |<br>+-----------+<br>1 row in set (0.00 sec)<br><br><br>-- 确认profiling 是否开启 (方式一)<br>select @@profiling; -- 系统变量 默认是SESSION级别<br><br>+-------------+<br>| @@profiling |<br>+-------------+<br>|           0 |<br>+-------------+<br>1 row in set, 1 warning (0.00 sec)<br><br><br><br>-- 确认profiling 是否开启 (方式二)<br>show variables like &#x27;profiling&#x27;;<br><br>+---------------+-------+<br>| Variable_name | Value |<br>+---------------+-------+<br>| profiling     | OFF   |<br>+---------------+-------+<br>1 row in set (0.01 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <p><code>开启profile</code><strong>（让系统记录一些指标信息，默认不记录）</strong></p>
 <p>profiling&#x3D;0 代表关闭，我们需要把 profiling 打开，即设置为 1：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set profiling=1;</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set profiling=1;<br><br>Query OK, 0 rows affected, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -388,14 +542,14 @@
 <li>多次执行相同SQL查询</li>
 </ol>
 <p>然后我们执行一个 SQL 查询（你可以执行任何一个 SQL 查询）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from employees; -- 两次</span><br><span class="line"></span><br><span class="line">107 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from employees; -- 两次<br><br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <ol start="3">
 <li>查看profiles 查看   <strong>当前会话</strong>   所产生的所有 profiles：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">show profiles; # 显示最近的几次查询</span><br><span class="line"></span><br><span class="line">+----------+------------+----------------------------+</span><br><span class="line">| Query_ID | Duration   | Query                      |</span><br><span class="line">+----------+------------+----------------------------+</span><br><span class="line">|        1 | 0.00284525 | select * from employees    |</span><br><span class="line">|        2 | 0.00760025 | 107 rows in set (0.00 sec) |</span><br><span class="line">|        3 | 0.00115325 | select * from employees    |</span><br><span class="line">+----------+------------+----------------------------+</span><br><span class="line">3 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show profiles; # 显示最近的几次查询<br><br>+----------+------------+----------------------------+<br>| Query_ID | Duration   | Query                      |<br>+----------+------------+----------------------------+<br>|        1 | 0.00284525 | select * from employees    |<br>|        2 | 0.00760025 | 107 rows in set (0.00 sec) |<br>|        3 | 0.00115325 | select * from employees    |<br>+----------+------------+----------------------------+<br>3 rows in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -403,20 +557,20 @@
 <li>查看profile</li>
 </ol>
 <p>显示执行计划，查看程序的执行步骤：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> show profile;</span><br><span class="line"> </span><br><span class="line"> +--------------------------------+----------+</span><br><span class="line">| Status                         | Duration |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| starting                       | 0.000062 |</span><br><span class="line">| Executing hook on transaction  | 0.000003 |</span><br><span class="line">| starting                       | 0.000009 |</span><br><span class="line">| checking permissions           | 0.000006 | -- 权限检查</span><br><span class="line">| Opening tables                 | 0.000035 | -- 打开表 </span><br><span class="line">| init                           | 0.000005 | -- 初始化</span><br><span class="line">| System lock                    | 0.000008 | -- 所系统</span><br><span class="line">| optimizing                     | 0.000004 | -- 优化查询</span><br><span class="line">| statistics                     | 0.000016 | -- 统计</span><br><span class="line">| preparing                      | 0.000015 | -- 准备</span><br><span class="line">| executing                      | 0.000129 | -- 执行</span><br><span class="line">| end                            | 0.000003 |</span><br><span class="line">| query end                      | 0.000002 |</span><br><span class="line">| waiting for handler commit     | 0.000006 |</span><br><span class="line">| closing tables                 | 0.000006 |</span><br><span class="line">| freeing items                  | 0.000290 |</span><br><span class="line">| cleaning up                    | 0.000555 |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">17 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql"> show profile;<br> <br> +--------------------------------+----------+<br>| Status                         | Duration |<br>+--------------------------------+----------+<br>| starting                       | 0.000062 |<br>| Executing hook on transaction  | 0.000003 |<br>| starting                       | 0.000009 |<br>| checking permissions           | 0.000006 | -- 权限检查<br>| Opening tables                 | 0.000035 | -- 打开表 <br>| init                           | 0.000005 | -- 初始化<br>| System lock                    | 0.000008 | -- 所系统<br>| optimizing                     | 0.000004 | -- 优化查询<br>| statistics                     | 0.000016 | -- 统计<br>| preparing                      | 0.000015 | -- 准备<br>| executing                      | 0.000129 | -- 执行<br>| end                            | 0.000003 |<br>| query end                      | 0.000002 |<br>| waiting for handler commit     | 0.000006 |<br>| closing tables                 | 0.000006 |<br>| freeing items                  | 0.000290 |<br>| cleaning up                    | 0.000555 |<br>+--------------------------------+----------+<br>17 rows in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <p>当然你也可以查询指定的 Query ID <strong>（查看某条语句的执行计划）</strong></p>
 <p>比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">+----------+------------+----------------------------+</span><br><span class="line">| Query_ID | Duration   | Query                      |</span><br><span class="line">+----------+------------+----------------------------+</span><br><span class="line">|        1 | 0.00284525 | select * from employees    |</span><br><span class="line">|        2 | 0.00760025 | 107 rows in set (0.00 sec) |</span><br><span class="line">|        3 | 0.00115325 | select * from employees    |</span><br><span class="line">+----------+------------+----------------------------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show profile for query 3;</span><br><span class="line"></span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| Status                         | Duration |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| starting                       | 0.000062 |</span><br><span class="line">| Executing hook on transaction  | 0.000003 |</span><br><span class="line">| starting                       | 0.000009 |</span><br><span class="line">| checking permissions           | 0.000006 |</span><br><span class="line">| Opening tables                 | 0.000035 |</span><br><span class="line">| init                           | 0.000005 |</span><br><span class="line">| System lock                    | 0.000008 |</span><br><span class="line">| optimizing                     | 0.000004 |</span><br><span class="line">| statistics                     | 0.000016 |</span><br><span class="line">| preparing                      | 0.000015 |</span><br><span class="line">| executing                      | 0.000129 |</span><br><span class="line">| end                            | 0.000003 |</span><br><span class="line">| query end                      | 0.000002 |</span><br><span class="line">| waiting for handler commit     | 0.000006 |</span><br><span class="line">| closing tables                 | 0.000006 |</span><br><span class="line">| freeing items                  | 0.000290 |</span><br><span class="line">| cleaning up                    | 0.000555 |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">17 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs mysql">+----------+------------+----------------------------+<br>| Query_ID | Duration   | Query                      |<br>+----------+------------+----------------------------+<br>|        1 | 0.00284525 | select * from employees    |<br>|        2 | 0.00760025 | 107 rows in set (0.00 sec) |<br>|        3 | 0.00115325 | select * from employees    |<br>+----------+------------+----------------------------+<br><br><br><br>show profile for query 3;<br><br>+--------------------------------+----------+<br>| Status                         | Duration |<br>+--------------------------------+----------+<br>| starting                       | 0.000062 |<br>| Executing hook on transaction  | 0.000003 |<br>| starting                       | 0.000009 |<br>| checking permissions           | 0.000006 |<br>| Opening tables                 | 0.000035 |<br>| init                           | 0.000005 |<br>| System lock                    | 0.000008 |<br>| optimizing                     | 0.000004 |<br>| statistics                     | 0.000016 |<br>| preparing                      | 0.000015 |<br>| executing                      | 0.000129 |<br>| end                            | 0.000003 |<br>| query end                      | 0.000002 |<br>| waiting for handler commit     | 0.000006 |<br>| closing tables                 | 0.000006 |<br>| freeing items                  | 0.000290 |<br>| cleaning up                    | 0.000555 |<br>+--------------------------------+----------+<br>17 rows in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 <p>查询 SQL 的执行时间结果和上面（show profile）是一样的</p>
 <p>此外，还可以查询更丰富的内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">show profile cpu,block io for query 5;</span><br><span class="line"></span><br><span class="line">+--------------------------------+----------+----------+------------+--------------+---------------+</span><br><span class="line">| Status                         | Duration | CPU_user | CPU_system | Block_ops_in | Block_ops_out |</span><br><span class="line">+--------------------------------+----------+----------+------------+--------------+---------------+</span><br><span class="line">| starting                       | 0.000104 | 0.000030 |   0.000068 |            0 |             0 |</span><br><span class="line">| Executing hook on transaction  | 0.000005 | 0.000001 |   0.000002 |            0 |             0 |</span><br><span class="line">| starting                       | 0.000008 | 0.000003 |   0.000006 |            0 |             0 |</span><br><span class="line">| checking permissions           | 0.000005 | 0.000001 |   0.000004 |            0 |             0 |</span><br><span class="line">| Opening tables                 | 0.000034 | 0.000011 |   0.000023 |            0 |             0 |</span><br><span class="line">| init                           | 0.000004 | 0.000001 |   0.000003 |            0 |             0 |</span><br><span class="line">| System lock                    | 0.000006 | 0.000002 |   0.000004 |            0 |             0 |</span><br><span class="line">| optimizing                     | 0.000034 | 0.000034 |   0.000000 |            0 |             0 |</span><br><span class="line">| statistics                     | 0.000046 | 0.000046 |   0.000000 |            0 |             0 |</span><br><span class="line">| preparing                      | 0.000009 | 0.000008 |   0.000000 |            0 |             0 |</span><br><span class="line">| executing                      | 0.000010 | 0.000010 |   0.000000 |            0 |             0 |</span><br><span class="line">| end                            | 0.000002 | 0.000002 |   0.000000 |            0 |             0 |</span><br><span class="line">| query end                      | 0.000002 | 0.000002 |   0.000000 |            0 |             0 |</span><br><span class="line">| waiting for handler commit     | 0.000007 | 0.000007 |   0.000000 |            0 |             0 |</span><br><span class="line">| closing tables                 | 0.000006 | 0.000006 |   0.000000 |            0 |             0 |</span><br><span class="line">| freeing items                  | 0.000086 | 0.000087 |   0.000000 |            0 |             0 |</span><br><span class="line">| cleaning up                    | 0.000009 | 0.000008 |   0.000000 |            0 |             0 |</span><br><span class="line">+--------------------------------+----------+----------+------------+--------------+---------------+</span><br><span class="line">17 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show profile cpu,block io for query 5;<br><br>+--------------------------------+----------+----------+------------+--------------+---------------+<br>| Status                         | Duration | CPU_user | CPU_system | Block_ops_in | Block_ops_out |<br>+--------------------------------+----------+----------+------------+--------------+---------------+<br>| starting                       | 0.000104 | 0.000030 |   0.000068 |            0 |             0 |<br>| Executing hook on transaction  | 0.000005 | 0.000001 |   0.000002 |            0 |             0 |<br>| starting                       | 0.000008 | 0.000003 |   0.000006 |            0 |             0 |<br>| checking permissions           | 0.000005 | 0.000001 |   0.000004 |            0 |             0 |<br>| Opening tables                 | 0.000034 | 0.000011 |   0.000023 |            0 |             0 |<br>| init                           | 0.000004 | 0.000001 |   0.000003 |            0 |             0 |<br>| System lock                    | 0.000006 | 0.000002 |   0.000004 |            0 |             0 |<br>| optimizing                     | 0.000034 | 0.000034 |   0.000000 |            0 |             0 |<br>| statistics                     | 0.000046 | 0.000046 |   0.000000 |            0 |             0 |<br>| preparing                      | 0.000009 | 0.000008 |   0.000000 |            0 |             0 |<br>| executing                      | 0.000010 | 0.000010 |   0.000000 |            0 |             0 |<br>| end                            | 0.000002 | 0.000002 |   0.000000 |            0 |             0 |<br>| query end                      | 0.000002 | 0.000002 |   0.000000 |            0 |             0 |<br>| waiting for handler commit     | 0.000007 | 0.000007 |   0.000000 |            0 |             0 |<br>| closing tables                 | 0.000006 | 0.000006 |   0.000000 |            0 |             0 |<br>| freeing items                  | 0.000086 | 0.000087 |   0.000000 |            0 |             0 |<br>| cleaning up                    | 0.000009 | 0.000008 |   0.000000 |            0 |             0 |<br>+--------------------------------+----------+----------+------------+--------------+---------------+<br>17 rows in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 <p>除了查看<code>cpu </code> <code>,io</code> 阻塞等参数情况,还可以查询下列参数的利用情况</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHOW PROFILE [type [,type] ...) </span><br><span class="line">[FOR QUERY n]</span><br><span class="line">[LIMIT row_count [OFFSET offset]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW PROFILE [type [,type] ...) <br>[FOR QUERY n]<br>[LIMIT row_count [OFFSET offset]]<br></code></pre></td></tr></table></figure>
 
 <p>type:</p>
 <p><code>ALL</code> : 	显示所有参数的开销信息</p>
@@ -440,27 +594,27 @@
 <p>vim &#x2F;etc&#x2F;my.cnf</p>
 </blockquote>
 <p>添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query_cache_type=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">query_cache_type</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 
 
 <p>重启服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">systemctl restart mysqld</span><br></code></pre></td></tr></table></figure>
 
 
 
 <p>查看  查询缓存是否开启：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;query_cache_type&#x27;;</span><br><span class="line"></span><br><span class="line">+------------------+-------+</span><br><span class="line">| Variable_name    | Value |</span><br><span class="line">+------------------+-------+</span><br><span class="line">| query_cache_type | ON    |</span><br><span class="line">+------------------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs MySQL">show variables like &#x27;query_cache_type&#x27;;<br><br>+------------------+-------+<br>| Variable_name    | Value |<br>+------------------+-------+<br>| query_cache_type | ON    |<br>+------------------+-------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <p>开启  查询执行计划</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set profiling=1;</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.03 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set profiling=1;<br><br>Query OK, 0 rows affected, 1 warning (0.03 sec)<br></code></pre></td></tr></table></figure>
 
 
 
 <p>走缓存的情况：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">-- 显示最近的几次查询</span><br><span class="line">show profiles;</span><br><span class="line"></span><br><span class="line">+----------+------------+---------------------------+</span><br><span class="line">| Query_ID | Duration   | Query                     |</span><br><span class="line">+----------+------------+---------------------------+</span><br><span class="line">|        1 | 0.00985375 | select database()         |</span><br><span class="line">|        2 | 0.00695000 | show databases            |</span><br><span class="line">|        3 | 0.00014225 | SELECT DATABASE()         |</span><br><span class="line">|        4 | 0.00017675 | show databases            |</span><br><span class="line">|        5 | 0.00008550 | show tables               |</span><br><span class="line">|        6 | 0.00021600 | show tables               |</span><br><span class="line">|        7 | 0.00333350 | select * from departments |</span><br><span class="line">|        8 | 0.00006775 | select * from departments |</span><br><span class="line">+----------+------------+---------------------------+</span><br><span class="line">8 rows in set, 1 warning (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 查看第七条查询语句的执行计划</span><br><span class="line"> show profile for query 7;</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| Status                         | Duration |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| starting                       | 0.000031 |</span><br><span class="line">| Waiting for query cache lock   | 0.000003 |</span><br><span class="line">| starting                       | 0.000001 |</span><br><span class="line">| checking query cache for query | 0.000196 |</span><br><span class="line">| checking permissions           | 0.000024 |</span><br><span class="line">| Opening tables                 | 0.000022 |</span><br><span class="line">| init                           | 0.000041 |</span><br><span class="line">| System lock                    | 0.000019 |</span><br><span class="line">| Waiting for query cache lock   | 0.000003 |</span><br><span class="line">| System lock                    | 0.000027 |</span><br><span class="line">| optimizing                     | 0.000003 |</span><br><span class="line">| statistics                     | 0.000014 |</span><br><span class="line">| preparing                      | 0.000010 |</span><br><span class="line">| executing                      | 0.000002 |</span><br><span class="line">| Sending data                   | 0.002876 |</span><br><span class="line">| end                            | 0.000004 |</span><br><span class="line">| query end                      | 0.000006 |</span><br><span class="line">| closing tables                 | 0.000005 |</span><br><span class="line">| freeing items                  | 0.000004 |</span><br><span class="line">| Waiting for query cache lock   | 0.000001 |</span><br><span class="line">| freeing items                  | 0.000007 |</span><br><span class="line">| Waiting for query cache lock   | 0.000001 |</span><br><span class="line">| freeing items                  | 0.000001 |</span><br><span class="line">| storing result in query cache  | 0.000001 | -- 把结果缓存起来</span><br><span class="line">| cleaning up                    | 0.000035 |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">25 rows in set, 1 warning (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 查看第8条查询语句的执行计划</span><br><span class="line">SHOW PROFILE FOR QUERY 8;</span><br><span class="line"></span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| Status                         | Duration |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| starting                       | 0.000029 |</span><br><span class="line">| Waiting for query cache lock   | 0.000002 |</span><br><span class="line">| starting                       | 0.000001 |</span><br><span class="line">| checking query cache for query | 0.000007 |</span><br><span class="line">| checking privileges on cached  | 0.000003 |</span><br><span class="line">| checking permissions           | 0.000012 |</span><br><span class="line">| sending cached result to clien | 0.000010 |</span><br><span class="line">| cleaning up                    | 0.000004 |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">8 rows in set, 1 warning (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 显示最近的几次查询<br>show profiles;<br><br>+----------+------------+---------------------------+<br>| Query_ID | Duration   | Query                     |<br>+----------+------------+---------------------------+<br>|        1 | 0.00985375 | select database()         |<br>|        2 | 0.00695000 | show databases            |<br>|        3 | 0.00014225 | SELECT DATABASE()         |<br>|        4 | 0.00017675 | show databases            |<br>|        5 | 0.00008550 | show tables               |<br>|        6 | 0.00021600 | show tables               |<br>|        7 | 0.00333350 | select * from departments |<br>|        8 | 0.00006775 | select * from departments |<br>+----------+------------+---------------------------+<br>8 rows in set, 1 warning (0.00 sec)<br><br><br><br><br><br>-- 查看第七条查询语句的执行计划<br> show profile for query 7;<br>+--------------------------------+----------+<br>| Status                         | Duration |<br>+--------------------------------+----------+<br>| starting                       | 0.000031 |<br>| Waiting for query cache lock   | 0.000003 |<br>| starting                       | 0.000001 |<br>| checking query cache for query | 0.000196 |<br>| checking permissions           | 0.000024 |<br>| Opening tables                 | 0.000022 |<br>| init                           | 0.000041 |<br>| System lock                    | 0.000019 |<br>| Waiting for query cache lock   | 0.000003 |<br>| System lock                    | 0.000027 |<br>| optimizing                     | 0.000003 |<br>| statistics                     | 0.000014 |<br>| preparing                      | 0.000010 |<br>| executing                      | 0.000002 |<br>| Sending data                   | 0.002876 |<br>| end                            | 0.000004 |<br>| query end                      | 0.000006 |<br>| closing tables                 | 0.000005 |<br>| freeing items                  | 0.000004 |<br>| Waiting for query cache lock   | 0.000001 |<br>| freeing items                  | 0.000007 |<br>| Waiting for query cache lock   | 0.000001 |<br>| freeing items                  | 0.000001 |<br>| storing result in query cache  | 0.000001 | -- 把结果缓存起来<br>| cleaning up                    | 0.000035 |<br>+--------------------------------+----------+<br>25 rows in set, 1 warning (0.00 sec)<br><br><br><br><br>-- 查看第8条查询语句的执行计划<br>SHOW PROFILE FOR QUERY 8;<br><br>+--------------------------------+----------+<br>| Status                         | Duration |<br>+--------------------------------+----------+<br>| starting                       | 0.000029 |<br>| Waiting for query cache lock   | 0.000002 |<br>| starting                       | 0.000001 |<br>| checking query cache for query | 0.000007 |<br>| checking privileges on cached  | 0.000003 |<br>| checking permissions           | 0.000012 |<br>| sending cached result to clien | 0.000010 |<br>| cleaning up                    | 0.000004 |<br>+--------------------------------+----------+<br>8 rows in set, 1 warning (0.00 sec)<br><br></code></pre></td></tr></table></figure>
 
 
 
@@ -469,17 +623,17 @@
 
 
 <p>验证查询语句不一致，导致命中失败</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">-- 执行语句两次：（意思一样，但字符串不一样）</span><br><span class="line"></span><br><span class="line">select * from departments where department_id=10;</span><br><span class="line">+---------------+-----------------+------------+-------------+</span><br><span class="line">| department_id | department_name | manager_id | location_id |</span><br><span class="line">+---------------+-----------------+------------+-------------+</span><br><span class="line">|            10 | Administration  |        200 |        1700 |</span><br><span class="line">+---------------+-----------------+------------+-------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">select * from departments where department_id=    10;</span><br><span class="line">+---------------+-----------------+------------+-------------+</span><br><span class="line">| department_id | department_name | manager_id | location_id |</span><br><span class="line">+---------------+-----------------+------------+-------------+</span><br><span class="line">|            10 | Administration  |        200 |        1700 |</span><br><span class="line">+---------------+-----------------+------------+-------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 查询最近的查询语句</span><br><span class="line">SHOW PROFILES;</span><br><span class="line"></span><br><span class="line"> SHOW PROFILES;</span><br><span class="line">+----------+------------+------------------------------------------------------+</span><br><span class="line">| Query_ID | Duration   | Query                                                |</span><br><span class="line">+----------+------------+------------------------------------------------------+</span><br><span class="line">|        1 | 0.00284525 | select * from employees                              |</span><br><span class="line">|        2 | 0.00760025 | 107 rows in set (0.00 sec)                           |</span><br><span class="line">|        3 | 0.00115325 | select * from employees                              |</span><br><span class="line">|        4 | 0.01454600 | select * from departments where department_id=10     |</span><br><span class="line">|        5 | 0.00037550 | select * from departments where department_id=    10 |</span><br><span class="line">|        6 | 0.00030775 | x show profile cpu,block io for query 6              |</span><br><span class="line">+----------+------------+------------------------------------------------------+</span><br><span class="line">6 rows in set, 1 warning (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 查看第五条语句</span><br><span class="line">show profile for query 5;</span><br><span class="line"></span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| Status                         | Duration |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| starting                       | 0.000104 |</span><br><span class="line">| Executing hook on transaction  | 0.000005 |</span><br><span class="line">| starting                       | 0.000008 |</span><br><span class="line">| checking permissions           | 0.000005 |</span><br><span class="line">| Opening tables                 | 0.000034 |</span><br><span class="line">| init                           | 0.000004 |</span><br><span class="line">| System lock                    | 0.000006 |</span><br><span class="line">| optimizing                     | 0.000034 |</span><br><span class="line">| statistics                     | 0.000046 |</span><br><span class="line">| preparing                      | 0.000009 |</span><br><span class="line">| executing                      | 0.000010 |</span><br><span class="line">| end                            | 0.000002 |</span><br><span class="line">| query end                      | 0.000002 |</span><br><span class="line">| waiting for handler commit     | 0.000007 |</span><br><span class="line">| closing tables                 | 0.000006 |</span><br><span class="line">| freeing items                  | 0.000086 |</span><br><span class="line">| cleaning up                    | 0.000009 |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">17 rows in set, 1 warning (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 查看第4条语句</span><br><span class="line">show profile for query 4;</span><br><span class="line"></span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| Status                         | Duration |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">| starting                       | 0.004945 |</span><br><span class="line">| Executing hook on transaction  | 0.000027 |</span><br><span class="line">| starting                       | 0.000039 |</span><br><span class="line">| checking permissions           | 0.000072 |</span><br><span class="line">| Opening tables                 | 0.004444 |</span><br><span class="line">| init                           | 0.000015 |</span><br><span class="line">| System lock                    | 0.000046 |</span><br><span class="line">| optimizing                     | 0.000244 |</span><br><span class="line">| statistics                     | 0.004020 |</span><br><span class="line">| preparing                      | 0.000103 |</span><br><span class="line">| executing                      | 0.000076 |</span><br><span class="line">| end                            | 0.000003 |</span><br><span class="line">| query end                      | 0.000003 |</span><br><span class="line">| waiting for handler commit     | 0.000064 |</span><br><span class="line">| closing tables                 | 0.000015 |</span><br><span class="line">| freeing items                  | 0.000127 |</span><br><span class="line">| cleaning up                    | 0.000307 |</span><br><span class="line">+--------------------------------+----------+</span><br><span class="line">17 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 执行语句两次：（意思一样，但字符串不一样）<br><br>select * from departments where department_id=10;<br>+---------------+-----------------+------------+-------------+<br>| department_id | department_name | manager_id | location_id |<br>+---------------+-----------------+------------+-------------+<br>|            10 | Administration  |        200 |        1700 |<br>+---------------+-----------------+------------+-------------+<br>1 row in set (0.01 sec)<br><br><br><br><br>select * from departments where department_id=    10;<br>+---------------+-----------------+------------+-------------+<br>| department_id | department_name | manager_id | location_id |<br>+---------------+-----------------+------------+-------------+<br>|            10 | Administration  |        200 |        1700 |<br>+---------------+-----------------+------------+-------------+<br>1 row in set (0.00 sec)<br><br><br><br><br><br>-- 查询最近的查询语句<br>SHOW PROFILES;<br><br> SHOW PROFILES;<br>+----------+------------+------------------------------------------------------+<br>| Query_ID | Duration   | Query                                                |<br>+----------+------------+------------------------------------------------------+<br>|        1 | 0.00284525 | select * from employees                              |<br>|        2 | 0.00760025 | 107 rows in set (0.00 sec)                           |<br>|        3 | 0.00115325 | select * from employees                              |<br>|        4 | 0.01454600 | select * from departments where department_id=10     |<br>|        5 | 0.00037550 | select * from departments where department_id=    10 |<br>|        6 | 0.00030775 | x show profile cpu,block io for query 6              |<br>+----------+------------+------------------------------------------------------+<br>6 rows in set, 1 warning (0.00 sec)<br><br><br><br><br><br><br>-- 查看第五条语句<br>show profile for query 5;<br><br>+--------------------------------+----------+<br>| Status                         | Duration |<br>+--------------------------------+----------+<br>| starting                       | 0.000104 |<br>| Executing hook on transaction  | 0.000005 |<br>| starting                       | 0.000008 |<br>| checking permissions           | 0.000005 |<br>| Opening tables                 | 0.000034 |<br>| init                           | 0.000004 |<br>| System lock                    | 0.000006 |<br>| optimizing                     | 0.000034 |<br>| statistics                     | 0.000046 |<br>| preparing                      | 0.000009 |<br>| executing                      | 0.000010 |<br>| end                            | 0.000002 |<br>| query end                      | 0.000002 |<br>| waiting for handler commit     | 0.000007 |<br>| closing tables                 | 0.000006 |<br>| freeing items                  | 0.000086 |<br>| cleaning up                    | 0.000009 |<br>+--------------------------------+----------+<br>17 rows in set, 1 warning (0.00 sec)<br><br><br><br>-- 查看第4条语句<br>show profile for query 4;<br><br>+--------------------------------+----------+<br>| Status                         | Duration |<br>+--------------------------------+----------+<br>| starting                       | 0.004945 |<br>| Executing hook on transaction  | 0.000027 |<br>| starting                       | 0.000039 |<br>| checking permissions           | 0.000072 |<br>| Opening tables                 | 0.004444 |<br>| init                           | 0.000015 |<br>| System lock                    | 0.000046 |<br>| optimizing                     | 0.000244 |<br>| statistics                     | 0.004020 |<br>| preparing                      | 0.000103 |<br>| executing                      | 0.000076 |<br>| end                            | 0.000003 |<br>| query end                      | 0.000003 |<br>| waiting for handler commit     | 0.000064 |<br>| closing tables                 | 0.000015 |<br>| freeing items                  | 0.000127 |<br>| cleaning up                    | 0.000307 |<br>+--------------------------------+----------+<br>17 rows in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 <p>发现前后两次相同的sql语句，执行的查询过程仍然是相同的。说明没有缓存之说</p>
 <p>在<code>8.0版本</code>之后,MySQL <code>不再支持缓存的查询</code></p>
 <p>因为一旦数据表有更新,缓存都将清空 ;	因此只有数据表是静态的时候；或者数据表很少发生变化时,使用缓存查询才有价值,否则如果数据表经常更新,反而增加了SQL的查询时间。</p>
 <p><strong>结论：字符串不一致，就不走缓存</strong></p>
 <h2 id="2-4-SQL语法顺序"><a href="#2-4-SQL语法顺序" class="headerlink" title="2.4 SQL语法顺序"></a>2.4 SQL语法顺序</h2><hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055602.png" alt="image-20220707190139382"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055602.png" srcset="/img/loading.gif" lazyload alt="image-20220707190139382"></p>
 <hr>
 <p>需求：查询每个部门年龄高于20岁的人数且高于20岁人数不能少于2人，显示人数最多的第一名部门信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT d.department_id,COUNT(employee_id)</span><br><span class="line">	FROM departments d LEFT JOIN employees e </span><br><span class="line">	ON d.department_id = e.department_id </span><br><span class="line">	WHERE e.salary&gt;3000</span><br><span class="line">GROUP BY department_id</span><br><span class="line">HAVING COUNT(employee_id)&gt;2</span><br><span class="line">	ORDER BY COUNT(employee_id) DESC</span><br><span class="line">	LIMIT 1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT d.department_id,COUNT(employee_id)<br>	FROM departments d LEFT JOIN employees e <br>	ON d.department_id = e.department_id <br>	WHERE e.salary&gt;3000<br>GROUP BY department_id<br>HAVING COUNT(employee_id)&gt;2<br>	ORDER BY COUNT(employee_id) DESC<br>	LIMIT 1;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -487,7 +641,7 @@
 
 <h2 id="2-5-Oracle中的SQL执行流程-了解"><a href="#2-5-Oracle中的SQL执行流程-了解" class="headerlink" title="2.5 Oracle中的SQL执行流程(了解)"></a>2.5 Oracle中的SQL执行流程(了解)</h2><p> Oracle 中采用了 共享池 来判断 SQL 语句是否存在缓存和执行计划，通过这一步骤我们可以知道应该采用 硬解析还是软解析。 我们先来看下 SQL 在 Oracle 中的执行过程：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055788.png" alt="image-20220707194849348"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055788.png" srcset="/img/loading.gif" lazyload alt="image-20220707194849348"></p>
 <hr>
 <p>从上面这张图中可以看出，SQL 语句在 Oracle 中经历了以下的几个步骤</p>
 <p>1.语法检查：检查 SQL 拼写是否正确，如果不正确，Oracle 会报语法错误。 </p>
@@ -507,7 +661,7 @@
 <p>你可能会问，如何避免硬解析，尽量使用软解析呢？</p>
 <p>在 Oracle 中， <code>绑定变量</code> 是它的一大特色</p>
 <p>举个例子，我们可以使用下面的查询语句：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> player <span class="keyword">where</span> player_id <span class="operator">=</span> <span class="number">10001</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 等价替换</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> player <span class="keyword">where</span> player_id <span class="operator">=</span> :player_id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> player <span class="hljs-keyword">where</span> player_id <span class="hljs-operator">=</span> <span class="hljs-number">10001</span>;<br><br><br><span class="hljs-comment">-- 等价替换</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> player <span class="hljs-keyword">where</span> player_id <span class="hljs-operator">=</span> :player_id;<br></code></pre></td></tr></table></figure>
 
 <p>这两个查询语句的效率在 Oracle 中是完全不同的</p>
 <p>如果你在查询 player_id &#x3D; 10001 之后，还会查询 10002、10003 之类的数据，那么每一次查询都会创建一个新的查询解析</p>
@@ -516,11 +670,11 @@
 <p>因此是否需要绑定变量还需要视情况 而定</p>
 <p>Oracle的架构图：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055515.png" alt="image-20220707200050579"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055515.png" srcset="/img/loading.gif" lazyload alt="image-20220707200050579"></p>
 <hr>
 <p>简图：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055631.png" alt="image-20220707200122635"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055631.png" srcset="/img/loading.gif" lazyload alt="image-20220707200122635"></p>
 <hr>
 <p>小结： </p>
 <p>Oracle 和 MySQL 在进行 SQL 的查询上面有软件实现层面的差异。Oracle 提出了共享池的概念，通过共享 池来判断是进行软解析，还是硬解析</p>
@@ -533,7 +687,7 @@
 <p>在  <code> InnoDB 存储引擎</code>  中有 <code>一部分数据会放到内存</code> 中，<code>缓冲池</code> 则占了这部分内存的 <code>大部分</code> ，它用来存储各种 数据的缓存</p>
 <p>如下图所示：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055591.png" alt="image-20220707200934938"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055591.png" srcset="/img/loading.gif" lazyload alt="image-20220707200934938"></p>
 <hr>
 <p>从图中，你能看到 <code> InnoDB 缓冲池</code> 包括了 <code>数据页、索引页、插入缓冲、锁信息、自适应 Hash 和数据字典 信息</code> 等</p>
 <p><strong>缓存池的重要性：</strong></p>
@@ -563,7 +717,7 @@
 <h2 id="3-2-缓冲池如何读取数据"><a href="#3-2-缓冲池如何读取数据" class="headerlink" title="3.2 缓冲池如何读取数据"></a>3.2 缓冲池如何读取数据</h2><p><code>缓冲池管理器 </code>  会尽量将经常使用的数据保存起来，在   <code>数据库进行  页面  读 </code> 操 作的时候，首先会判断该页面 是否在缓冲池中，如果存在就直接读取，如果不存在，就会通过内存或磁盘将页面存放到缓冲池中再进 行读取</p>
 <p>缓存在数据库中的结构和作用如下图所示：</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055111.png" alt="image-20220707202817535"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055111.png" srcset="/img/loading.gif" lazyload alt="image-20220707202817535"></p>
 <hr>
 <p>如果我们执行 SQL 语句的时候更新了缓存池中的数据，那么这些数据会马上同步到磁盘上吗？</p>
 <p>实际上,当我们对数据库中的记录进行修改的时候,  <code>首先</code>  会  <code>修改 </code> 缓冲池中   <strong>页</strong>   里面的 <code> 记录信息</code>   ,然后<strong>数据库</strong>会以  <strong>一定的频率</strong> <code>刷新 </code>到磁盘上（刷盘）  </p>
@@ -573,11 +727,11 @@
 <p>这里 <code>脏页</code> (dirty page)指的是   <code>缓冲池中被修改过的页</code>   ,   与 <code>磁盘上的数据页</code>    <strong>不一致</strong></p>
 <h2 id="3-3-查看-x2F-设置缓冲池的大小"><a href="#3-3-查看-x2F-设置缓冲池的大小" class="headerlink" title="3.3 查看&#x2F;设置缓冲池的大小"></a>3.3 查看&#x2F;设置缓冲池的大小</h2><p>如果你使用的是MySQL <code> MyISAM存储引擎</code> ,它只缓存索引,不缓存数据,对应的键缓存参数为  <code>key_buffer_size</code> ,你可以用它进行查看。</p>
 <p>如果你使用的是 InnoDB 存储引擎，可以通过查看  <code> innodb_buffer_pool_size</code> 变量来查看缓冲池的大 小。命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;innodb_buffer_pool_size&#x27;;</span><br><span class="line"></span><br><span class="line">+-------------------------+-----------+</span><br><span class="line">| Variable_name           | Value     |</span><br><span class="line">+-------------------------+-----------+</span><br><span class="line">| innodb_buffer_pool_size | 134217728 | -- 128兆</span><br><span class="line">+-------------------------+-----------+</span><br><span class="line">1 row in set (0.03 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show variables like &#x27;innodb_buffer_pool_size&#x27;;<br><br>+-------------------------+-----------+<br>| Variable_name           | Value     |<br>+-------------------------+-----------+<br>| innodb_buffer_pool_size | 134217728 | -- 128兆<br>+-------------------------+-----------+<br>1 row in set (0.03 sec)<br></code></pre></td></tr></table></figure>
 
 <p>你能看到此时 InnoDB 的缓冲池大小只有 134217728&#x2F;1024&#x2F;1024&#x3D;128MB</p>
 <p>我们可以修改缓冲池大小，比如 改为256MB，方法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 全局范围修改缓冲持大小 （重启失效）</span><br><span class="line">set global innodb_buffer_pool_size = 268435456;</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 全局范围修改缓冲持大小 （重启失效）<br>set global innodb_buffer_pool_size = 268435456;<br><br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -585,12 +739,12 @@
 <blockquote>
 <p>vim &#x2F;etc&#x2F;my.cnf</p>
 </blockquote>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">[server]</span></span><br><span class="line"><span class="attr">innodb_buffer_pool_size</span> = <span class="string">268435456</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><span class="hljs-attr">innodb_buffer_pool_size</span> = <span class="hljs-string">268435456</span><br></code></pre></td></tr></table></figure>
 
 
 
 <p>查看缓冲池大小：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 已修改</span><br><span class="line">show variables like &#x27;innodb_buffer_pool_size&#x27;;</span><br><span class="line"></span><br><span class="line">+-------------------------+-----------+</span><br><span class="line">| Variable_name           | Value     |</span><br><span class="line">+-------------------------+-----------+</span><br><span class="line">| innodb_buffer_pool_size | 268435456 |</span><br><span class="line">+-------------------------+-----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 已修改<br>show variables like &#x27;innodb_buffer_pool_size&#x27;;<br><br>+-------------------------+-----------+<br>| Variable_name           | Value     |<br>+-------------------------+-----------+<br>| innodb_buffer_pool_size | 268435456 |<br>+-------------------------+-----------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -606,11 +760,11 @@
 <p>所以在多线程并发访问时并不会相互影响,从而提高并发处理能力。</p>
 <p>我们可以在服务器启动的时候通过设置  <code>innodb_buffer_pool_instances</code> 的值来修改Buffer Pool实例的个数</p>
 <p>比方说这样:</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">[server]</span></span><br><span class="line"><span class="attr">innodb_buffer_pool_instances</span> = <span class="string">2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><span class="hljs-attr">innodb_buffer_pool_instances</span> = <span class="hljs-string">2</span><br></code></pre></td></tr></table></figure>
 
 <p>这样就表明我们要创建2个 Buffer Pool 实例</p>
 <p>我们看下如何查看缓冲池的个数，使用命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 默认情况下 缓冲池个数是1</span><br><span class="line">show variables like &#x27;innodb_buffer_pool_instances&#x27;;</span><br><span class="line"></span><br><span class="line">+------------------------------+-------+</span><br><span class="line">| Variable_name                | Value |</span><br><span class="line">+------------------------------+-------+</span><br><span class="line">| innodb_buffer_pool_instances | 1     |</span><br><span class="line">+------------------------------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 默认情况下 缓冲池个数是1<br>show variables like &#x27;innodb_buffer_pool_instances&#x27;;<br><br>+------------------------------+-------+<br>| Variable_name                | Value |<br>+------------------------------+-------+<br>| innodb_buffer_pool_instances | 1     |<br>+------------------------------+-------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -628,7 +782,7 @@
 <h2 id="3-5-引申问题"><a href="#3-5-引申问题" class="headerlink" title="3.5 引申问题"></a>3.5 引申问题</h2><p>Buffer Pool是MySQL内存结构中十分核心的一个组成，你可以先把它想象成一个黑盒子</p>
 <p><strong>黑盒下的更新数据流程</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055571.png" alt="image-20220707214309132"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282055571.png" srcset="/img/loading.gif" lazyload alt="image-20220707214309132"></p>
 <hr>
 <p>当我们查询数据的时候,会   <code> 先去Buffer Pool中查询</code></p>
 <p>如果  <code>Buffer Pool中不存在</code> ,存储引擎  <code>会先将数据从磁盘加载到Buffer Pool</code>   中,然后  <code>将数据返回给客户端</code>  ;</p>
@@ -641,157 +795,372 @@
 <p>连   <strong>数据持久化的保证</strong>   、  <strong>事务回滚</strong>   都  <strong>做不到</strong>  还谈什么   <strong>崩溃恢复</strong>  ?</p>
 <p>答案：<code>Redo Log</code> &amp; <code>Undo Log</code></p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E7%AC%AC04%E7%AB%A0-%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84-atguigu-shk/" data-id="clfv71urr000d9scxhbjk9hsr" data-title="第04章-逻辑架构-atguigu-shk" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
   
-    <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-atguigu-shk/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第03章-用户与权限管理-atguigu-shk
-        
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/">#尚硅谷-宋红康-MySQL(高级)</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第04章-逻辑架构-atguigu-shk</div>
+      <div>http://example.com/2023/03/30/第04章-逻辑架构-atguigu-shk/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-atguigu-shk/" title="第03章-用户与权限管理-atguigu-shk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第03章-用户与权限管理-atguigu-shk</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%AC%AC05%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-atguigu-shk/" title="第05章-存储引擎-atguigu-shk">
+                        <span class="hidden-mobile">第05章-存储引擎-atguigu-shk</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2023/03/30/%E7%AC%AC05%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-atguigu-shk/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第05章-存储引擎-atguigu-shk</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

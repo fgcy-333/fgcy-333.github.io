@@ -1,117 +1,293 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>第02章-MySQL的数据目录-atguigu-shk | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1.目录结构1、MySQL8的主要目录结构安装好MySQL 之后，我们查看与之相关的目录结构： 12345678find &#x2F; -name mysql&#x2F;etc&#x2F;logrotate.d&#x2F;mysql&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql&#x2F;usr&#x2F;bin&#x2F;mysql&#x2F;usr&#x2F;lib64&#x2F;mysql&#x2F;usr&#x2F;share&#x2F;mysql">
+    <meta name="description" content="1.目录结构1、MySQL8的主要目录结构安装好MySQL 之后，我们查看与之相关的目录结构： 12345678find &#x2F; -name mysql&#x2F;etc&#x2F;logrotate.d&#x2F;mysql&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql&#x2F;usr&#x2F;bin&#x2F;mysql&#x2F;usr&#x2F;lib64&#x2F;mysql&#x2F;usr&#x2F;share&#x2F;mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第02章-MySQL的数据目录-atguigu-shk">
 <meta property="og:url" content="http://example.com/2023/03/30/%E7%AC%AC02%E7%AB%A0-MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95-atguigu-shk/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.目录结构1、MySQL8的主要目录结构安装好MySQL 之后，我们查看与之相关的目录结构： 12345678find &#x2F; -name mysql&#x2F;etc&#x2F;logrotate.d&#x2F;mysql&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql&#x2F;usr&#x2F;bin&#x2F;mysql&#x2F;usr&#x2F;lib64&#x2F;mysql&#x2F;usr&#x2F;share&#x2F;mysql">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/mysql.png">
 <meta property="article:published_time" content="2023-03-30T12:11:04.000Z">
 <meta property="article:modified_time" content="2023-03-30T14:08:46.667Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <title>第02章-MySQL的数据目录-atguigu-shk - Hexo</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第02章-MySQL的数据目录-atguigu-shk"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:11" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          9k words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        
+          75 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-第02章-MySQL的数据目录-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E7%AC%AC02%E7%AB%A0-MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95-atguigu-shk/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:11:04.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      第02章-MySQL的数据目录-atguigu-shk
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-目录结构"><a href="#1-目录结构" class="headerlink" title="1.目录结构"></a>1.目录结构</h1><h2 id="1、MySQL8的主要目录结构"><a href="#1、MySQL8的主要目录结构" class="headerlink" title="1、MySQL8的主要目录结构"></a>1、MySQL8的主要目录结构</h2><p>安装好MySQL 之后，我们查看与之相关的目录结构：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">find / -name mysql</span><br><span class="line"></span><br><span class="line">/etc/logrotate.d/mysql</span><br><span class="line">/var/lib/mysql</span><br><span class="line">/var/lib/mysql/mysql</span><br><span class="line">/usr/bin/mysql</span><br><span class="line">/usr/lib64/mysql</span><br><span class="line">/usr/share/mysql</span><br></pre></td></tr></table></figure>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第02章-MySQL的数据目录-atguigu-shk</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-目录结构"><a href="#1-目录结构" class="headerlink" title="1.目录结构"></a>1.目录结构</h1><h2 id="1、MySQL8的主要目录结构"><a href="#1、MySQL8的主要目录结构" class="headerlink" title="1、MySQL8的主要目录结构"></a>1、MySQL8的主要目录结构</h2><p>安装好MySQL 之后，我们查看与之相关的目录结构：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">find / -name mysql<br><br>/etc/logrotate.d/mysql<br>/var/lib/mysql<br>/var/lib/mysql/mysql<br>/usr/bin/mysql<br>/usr/lib64/mysql<br>/usr/share/mysql<br></code></pre></td></tr></table></figure>
 
 
 
 <span id="more"></span>
 
-<h2 id="1-1-数据库文件的存放路径"><a href="#1-1-数据库文件的存放路径" class="headerlink" title="1.1 数据库文件的存放路径"></a>1.1 数据库文件的存放路径</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 查看数据库文件存放路径</span><br><span class="line">show variables like &#x27;datadir&#x27;;</span><br><span class="line"></span><br><span class="line">+---------------+-----------------+</span><br><span class="line">| Variable_name | Value           |</span><br><span class="line">+---------------+-----------------+</span><br><span class="line">| datadir       | /var/lib/mysql/ |</span><br><span class="line">+---------------+-----------------+</span><br><span class="line">1 row in set (0.03 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="1-1-数据库文件的存放路径"><a href="#1-1-数据库文件的存放路径" class="headerlink" title="1.1 数据库文件的存放路径"></a>1.1 数据库文件的存放路径</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看数据库文件存放路径<br>show variables like &#x27;datadir&#x27;;<br><br>+---------------+-----------------+<br>| Variable_name | Value           |<br>+---------------+-----------------+<br>| datadir       | /var/lib/mysql/ |<br>+---------------+-----------------+<br>1 row in set (0.03 sec)<br></code></pre></td></tr></table></figure>
 
 <p>从结果中可以看出，在我的计算机上MySQL的数据目录就是   <code> /var/lib/mysql/</code></p>
 <p>查看该目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入存放数据库文件目录</span></span><br><span class="line">cd /var/lib/mysql/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看该目录下的文件</span></span><br><span class="line">ll</span><br><span class="line"></span><br><span class="line">总用量 122952</span><br><span class="line">-rw-r-----. 1 mysql mysql       56 7月   4 17:05 auto.cnf</span><br><span class="line">-rw-------. 1 mysql mysql     1672 7月   4 17:05 ca-key.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 ca.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 client-cert.pem</span><br><span class="line">-rw-------. 1 mysql mysql     1676 7月   4 17:05 client-key.pem</span><br><span class="line">drwxr-x---. 2 mysql mysql       88 7月   5 14:26 dbtest1						    # 数据库</span><br><span class="line">-rw-r-----. 1 mysql mysql      382 7月   5 00:09 ib_buffer_pool</span><br><span class="line">-rw-r-----. 1 mysql mysql 12582912 7月   5 14:34 ibdata1</span><br><span class="line">-rw-r-----. 1 mysql mysql 50331648 7月   5 14:34 ib_logfile0</span><br><span class="line">-rw-r-----. 1 mysql mysql 50331648 7月   4 17:05 ib_logfile1</span><br><span class="line">-rw-r-----. 1 mysql mysql 12582912 7月   5 10:14 ibtmp1</span><br><span class="line">drwxr-x---. 2 mysql mysql     4096 7月   4 17:05 mysql                       # 数据库</span><br><span class="line">srwxrwxrwx. 1 mysql mysql        0 7月   5 10:14 mysql.sock</span><br><span class="line">-rw-------. 1 mysql mysql        5 7月   5 10:14 mysql.sock.lock</span><br><span class="line">drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 performance_schema					    # 数据库</span><br><span class="line">-rw-------. 1 mysql mysql     1676 7月   4 17:05 private_key.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql      452 7月   4 17:05 public_key.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 server-cert.pem</span><br><span class="line">-rw-------. 1 mysql mysql     1676 7月   4 17:05 server-key.pem</span><br><span class="line">drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 sys							    # 数据库</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入存放数据库文件目录</span><br>cd /var/lib/mysql/<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看该目录下的文件</span><br>ll<br><br>总用量 122952<br>-rw-r-----. 1 mysql mysql       56 7月   4 17:05 auto.cnf<br>-rw-------. 1 mysql mysql     1672 7月   4 17:05 ca-key.pem<br>-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 ca.pem<br>-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 client-cert.pem<br>-rw-------. 1 mysql mysql     1676 7月   4 17:05 client-key.pem<br>drwxr-x---. 2 mysql mysql       88 7月   5 14:26 dbtest1						    # 数据库<br>-rw-r-----. 1 mysql mysql      382 7月   5 00:09 ib_buffer_pool<br>-rw-r-----. 1 mysql mysql 12582912 7月   5 14:34 ibdata1<br>-rw-r-----. 1 mysql mysql 50331648 7月   5 14:34 ib_logfile0<br>-rw-r-----. 1 mysql mysql 50331648 7月   4 17:05 ib_logfile1<br>-rw-r-----. 1 mysql mysql 12582912 7月   5 10:14 ibtmp1<br>drwxr-x---. 2 mysql mysql     4096 7月   4 17:05 mysql                       # 数据库<br>srwxrwxrwx. 1 mysql mysql        0 7月   5 10:14 mysql.sock<br>-rw-------. 1 mysql mysql        5 7月   5 10:14 mysql.sock.lock<br>drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 performance_schema					    # 数据库<br>-rw-------. 1 mysql mysql     1676 7月   4 17:05 private_key.pem<br>-rw-r--r--. 1 mysql mysql      452 7月   4 17:05 public_key.pem<br>-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 server-cert.pem<br>-rw-------. 1 mysql mysql     1676 7月   4 17:05 server-key.pem<br>drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 sys							    # 数据库<br></code></pre></td></tr></table></figure>
 
 
 
@@ -139,7 +315,7 @@
 <p>当我们想写入数据的时候,这些存储引擎会把这些数据又写回文件系统</p>
 <p>本章学习一下：InnoDB 和MyISAM这两个存储引擎的数据如何在文件系统中存储</p>
 <h2 id="2-1-查看默认数据库"><a href="#2-1-查看默认数据库" class="headerlink" title="2.1 查看默认数据库"></a>2.1 查看默认数据库</h2><p>查看一下在我的计算机上当前有哪些数据库：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br><span class="line"></span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| dbtest1            | -- 这个是自己创建的，其他四个是系统自带的</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">+--------------------+</span><br><span class="line">5 rows in set (0.02 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| information_schema |<br>| dbtest1            | -- 这个是自己创建的，其他四个是系统自带的<br>| mysql              |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>5 rows in set (0.02 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -152,7 +328,7 @@
 <li>information_schema</li>
 </ul>
 <p>MySQL 系统自带的数据库，这个数据库保存着MySQL服务器 维护的所有其他数据库的信息 ，比如有 哪些表、哪些视图、哪些触发器、哪些列、哪些索引。这些信息并不是真实的用户数据，而是一些 描述性信息，有时候也称之为 元数据 。在系统数据库 information_schema 中提供了一些以 innodb_sys 开头的表，用于表示内部系统表。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">USE information_schema;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SHOW TABLES LIKE &#x27;innodb_sys%&#x27;;</span><br><span class="line">+--------------------------------------------+</span><br><span class="line">| Tables_in_information_schema (innodb_sys%) |</span><br><span class="line">+--------------------------------------------+</span><br><span class="line">| INNODB_SYS_DATAFILES 					 	 |</span><br><span class="line">| INNODB_SYS_VIRTUAL 					  	 |</span><br><span class="line">| INNODB_SYS_INDEXES 						 |</span><br><span class="line">| INNODB_SYS_TABLES							 |</span><br><span class="line">| INNODB_SYS_FIELDS 						 |</span><br><span class="line">| INNODB_SYS_TABLESPACES 					 |</span><br><span class="line">| INNODB_SYS_FOREIGN_COLS 					 |</span><br><span class="line">| INNODB_SYS_COLUMNS 						 |</span><br><span class="line">| INNODB_SYS_FOREIGN						 |</span><br><span class="line">| INNODB_SYS_TABLESTATS						 |</span><br><span class="line">+--------------------------------------------+</span><br><span class="line">10 rows in set (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE information_schema;<br>Database changed<br><br><br><br>SHOW TABLES LIKE &#x27;innodb_sys%&#x27;;<br>+--------------------------------------------+<br>| Tables_in_information_schema (innodb_sys%) |<br>+--------------------------------------------+<br>| INNODB_SYS_DATAFILES 					 	 |<br>| INNODB_SYS_VIRTUAL 					  	 |<br>| INNODB_SYS_INDEXES 						 |<br>| INNODB_SYS_TABLES							 |<br>| INNODB_SYS_FIELDS 						 |<br>| INNODB_SYS_TABLESPACES 					 |<br>| INNODB_SYS_FOREIGN_COLS 					 |<br>| INNODB_SYS_COLUMNS 						 |<br>| INNODB_SYS_FOREIGN						 |<br>| INNODB_SYS_TABLESTATS						 |<br>+--------------------------------------------+<br>10 rows in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
 
 
 
@@ -165,17 +341,17 @@
 </ul>
 <p>MySQL 系统自带的数据库，这个数据库主要是通过 视图 的形式把 information_schema 和 performance_schema 结合起来，帮助系统管理员和开发人员监控 MySQL 的技术性能</p>
 <h2 id="2-2-数据库在文件系统中的表示"><a href="#2-2-数据库在文件系统中的表示" class="headerlink" title="2.2 数据库在文件系统中的表示"></a>2.2 数据库在文件系统中的表示</h2><p>MySQL5.7.28</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/mysql</span><br><span class="line"></span><br><span class="line">ll</span><br><span class="line"></span><br><span class="line">总用量 122952</span><br><span class="line">-rw-r-----. 1 mysql mysql       56 7月   4 17:05 auto.cnf</span><br><span class="line">-rw-------. 1 mysql mysql     1672 7月   4 17:05 ca-key.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 ca.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 client-cert.pem</span><br><span class="line">-rw-------. 1 mysql mysql     1676 7月   4 17:05 client-key.pem</span><br><span class="line">drwxr-x---. 2 mysql mysql       88 7月   5 14:26 dbtest1</span><br><span class="line">-rw-r-----. 1 mysql mysql      382 7月   5 00:09 ib_buffer_pool</span><br><span class="line">-rw-r-----. 1 mysql mysql 12582912 7月   5 14:34 ibdata1   	 #系统表空间 </span><br><span class="line">-rw-r-----. 1 mysql mysql 50331648 7月   5 14:34 ib_logfile0</span><br><span class="line">-rw-r-----. 1 mysql mysql 50331648 7月   4 17:05 ib_logfile1</span><br><span class="line">-rw-r-----. 1 mysql mysql 12582912 7月   5 10:14 ibtmp1</span><br><span class="line">drwxr-x---. 2 mysql mysql     4096 7月   4 17:05 mysql</span><br><span class="line">srwxrwxrwx. 1 mysql mysql        0 7月   5 10:14 mysql.sock</span><br><span class="line">-rw-------. 1 mysql mysql        5 7月   5 10:14 mysql.sock.lock</span><br><span class="line">drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 performance_schema</span><br><span class="line">-rw-------. 1 mysql mysql     1676 7月   4 17:05 private_key.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql      452 7月   4 17:05 public_key.pem</span><br><span class="line">-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 server-cert.pem</span><br><span class="line">-rw-------. 1 mysql mysql     1676 7月   4 17:05 server-key.pem</span><br><span class="line">drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 sys</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /var/lib/mysql<br><br>ll<br><br>总用量 122952<br>-rw-r-----. 1 mysql mysql       56 7月   4 17:05 auto.cnf<br>-rw-------. 1 mysql mysql     1672 7月   4 17:05 ca-key.pem<br>-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 ca.pem<br>-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 client-cert.pem<br>-rw-------. 1 mysql mysql     1676 7月   4 17:05 client-key.pem<br>drwxr-x---. 2 mysql mysql       88 7月   5 14:26 dbtest1<br>-rw-r-----. 1 mysql mysql      382 7月   5 00:09 ib_buffer_pool<br>-rw-r-----. 1 mysql mysql 12582912 7月   5 14:34 ibdata1   	 #系统表空间 <br>-rw-r-----. 1 mysql mysql 50331648 7月   5 14:34 ib_logfile0<br>-rw-r-----. 1 mysql mysql 50331648 7月   4 17:05 ib_logfile1<br>-rw-r-----. 1 mysql mysql 12582912 7月   5 10:14 ibtmp1<br>drwxr-x---. 2 mysql mysql     4096 7月   4 17:05 mysql<br>srwxrwxrwx. 1 mysql mysql        0 7月   5 10:14 mysql.sock<br>-rw-------. 1 mysql mysql        5 7月   5 10:14 mysql.sock.lock<br>drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 performance_schema<br>-rw-------. 1 mysql mysql     1676 7月   4 17:05 private_key.pem<br>-rw-r--r--. 1 mysql mysql      452 7月   4 17:05 public_key.pem<br>-rw-r--r--. 1 mysql mysql     1112 7月   4 17:05 server-cert.pem<br>-rw-------. 1 mysql mysql     1676 7月   4 17:05 server-key.pem<br>drwxr-x---. 2 mysql mysql     8192 7月   4 17:05 sys<br></code></pre></td></tr></table></figure>
 
 
 
 <p>这个数据目录下的文件和子目录比较多，除了 information_schema 这个系统数据库外，其他的数据库 在 数据目录 下都有对应的子目录</p>
 <p> 以我的 dbtest1数据库为例，在MySQL5.7 中打开：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">use dbtest1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">+-------------------+</span><br><span class="line">| Tables_in_dbtest1 |</span><br><span class="line">+-------------------+</span><br><span class="line">| emp1              |</span><br><span class="line">| mytb12            |</span><br><span class="line">+-------------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use dbtest1;<br><br><br>show tables;<br><br>+-------------------+<br>| Tables_in_dbtest1 |<br>+-------------------+<br>| emp1              |<br>| mytb12            |<br>+-------------------+<br>2 rows in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd dbtest1/</span><br><span class="line">ll</span><br><span class="line"></span><br><span class="line">总用量 220</span><br><span class="line">-rw-r-----. 1 mysql mysql    61 7月   5 10:18 db.opt   #存储该数据库的字符集、比较规则......</span><br><span class="line">-rw-r-----. 1 mysql mysql  8588 7月   5 00:26 emp1.frm   #存储表结构</span><br><span class="line">-rw-r-----. 1 mysql mysql 98304 7月   5 00:17 emp1.ibd	#默认放在此处（独立表空间）</span><br><span class="line">-rw-r-----. 1 mysql mysql  8644 7月   5 14:26 mytb12.frm</span><br><span class="line">-rw-r-----. 1 mysql mysql 98304 7月   5 14:34 mytb12.ibd</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd dbtest1/<br>ll<br><br>总用量 220<br>-rw-r-----. 1 mysql mysql    61 7月   5 10:18 db.opt   #存储该数据库的字符集、比较规则......<br>-rw-r-----. 1 mysql mysql  8588 7月   5 00:26 emp1.frm   #存储表结构<br>-rw-r-----. 1 mysql mysql 98304 7月   5 00:17 emp1.ibd	#默认放在此处（独立表空间）<br>-rw-r-----. 1 mysql mysql  8644 7月   5 14:26 mytb12.frm<br>-rw-r-----. 1 mysql mysql 98304 7月   5 14:34 mytb12.ibd<br></code></pre></td></tr></table></figure>
 
 
 
@@ -196,7 +372,7 @@
 <blockquote>
 <p>基于MySQL5.7</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-rw-r-----. 1 mysql mysql    61 7月   5 10:18 db.opt</span><br><span class="line">-rw-r-----. 1 mysql mysql  8588 7月   5 00:26 emp1.frm</span><br><span class="line">-rw-r-----. 1 mysql mysql 98304 7月   5 00:17 emp1.ibd</span><br></pre></td></tr></table></figure>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tap">-rw-r-----.<span class="hljs-number"> 1 </span>mysql mysql   <span class="hljs-number"> 61 </span>7月  <span class="hljs-number"> 5 </span>10:18 db.opt<br>-rw-r-----.<span class="hljs-number"> 1 </span>mysql mysql <span class="hljs-number"> 8588 </span>7月  <span class="hljs-number"> 5 </span>00:26 emp1.frm<br>-rw-r-----.<span class="hljs-number"> 1 </span>mysql mysql<span class="hljs-number"> 98304 </span>7月  <span class="hljs-number"> 5 </span>00:17 emp1.ibd<br></code></pre></td></tr></table></figure>
 
 
 
@@ -212,7 +388,7 @@
 <p>当然，如果你想让系统表空间对应文件系统上多个实际文件，或者仅仅觉得原来的 ibdata1 这个文件名 难听</p>
 <p>那可以在MySQL启动时配置对应的文件路径以及它们的大小</p>
 <p>比如我们这样修改一下my.cnf 配置 文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[server]</span><br><span class="line">innodb_data_file_path=data1:512M;data2:512M:autoextend</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[server]<br>innodb_data_file_path=data1:512M;data2:512M:autoextend<br></code></pre></td></tr></table></figure>
 
 <p>记得重启服务器</p>
 <p>② 独立表空间(file-per-table tablespace)</p>
@@ -223,11 +399,11 @@
 <p>表名.ibd</p>
 </blockquote>
 <p><strong>在8.0.16中打开</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">use dbtest1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">+-------------------+</span><br><span class="line">| Tables_in_dbtest1 |</span><br><span class="line">+-------------------+</span><br><span class="line">| emp1              |</span><br><span class="line">| emp2              |</span><br><span class="line">+-------------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use dbtest1;<br><br><br>show tables;<br><br>+-------------------+<br>| Tables_in_dbtest1 |<br>+-------------------+<br>| emp1              |<br>| emp2              |<br>+-------------------+<br>2 rows in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd dbtest1/</span><br><span class="line">ll</span><br><span class="line"></span><br><span class="line">总用量 160</span><br><span class="line">-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp1.ibd</span><br><span class="line">-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp2.ibd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">cd dbtest1/<br>ll<br><br>总用量 160<br>-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp1.ibd<br>-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp2.ibd<br></code></pre></td></tr></table></figure>
 
 
 
@@ -238,7 +414,7 @@
 <p>MySQL 8.0属于Oracle旗下,同理。为了从IBD文件中提取SDI信息, Oracle提供了一个应用程序ibd2sdi</p>
 <p>&#x3D;&#x3D;ibd2sdi官方文档&#x3D;&#x3D;这个工具不需要下载, <strong>MySQL8自带</strong>的有,只要你配好环境变量就能到处用</p>
 <p>(1)查看表结构到存储ibd文件的目录下,执行下面的命令:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入具体数据库文件</span></span><br><span class="line">cd dbtest1/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有文件</span></span><br><span class="line">ll</span><br><span class="line"></span><br><span class="line">总用量 160</span><br><span class="line">-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp1.ibd</span><br><span class="line">-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp2.ibd</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mysql8.0以上 直接使用该命令 生成可查看的.txt文件</span></span><br><span class="line">ibd2sdi --dump-file=emp1.txt emp1.ibd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入具体数据库文件</span><br>cd dbtest1/<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看所有文件</span><br>ll<br><br>总用量 160<br>-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp1.ibd<br>-rw-r-----. 1 mysql mysql 114688 7月   5 15:31 emp2.ibd<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">mysql8.0以上 直接使用该命令 生成可查看的.txt文件</span><br>ibd2sdi --dump-file=emp1.txt emp1.ibd<br><br></code></pre></td></tr></table></figure>
 
 
 
@@ -249,11 +425,11 @@
 <p>③ 系统表空间与独立表空间的设置 </p>
 <p>我们可以自己指定使用 系统表空间 还是 独立表空间 来存储数据，这个功能由启动参数 innodb_file_per_table 控制</p>
 <p>比如说我们想刻意将表数据都存储到 系统表空间 时，可以在启动 MySQL服务器的时候这样配置：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[server]</span><br><span class="line">innodb_file_per_table=0 # 0：代表使用系统表空间； 1：代表使用独立表空间</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[server]<br>innodb_file_per_table=0 # 0：代表使用系统表空间； 1：代表使用独立表空间<br></code></pre></td></tr></table></figure>
 
 <p>记得重启服务器</p>
 <p>默认情况：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;innodb_file_per_table&#x27;;</span><br><span class="line"></span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| Variable_name         | Value |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| innodb_file_per_table | ON    |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">1 row in set (0.05 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show variables like &#x27;innodb_file_per_table&#x27;;<br><br>+-----------------------+-------+<br>| Variable_name         | Value |<br>+-----------------------+-------+<br>| innodb_file_per_table | ON    |<br>+-----------------------+-------+<br>1 row in set (0.05 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -274,7 +450,7 @@
 <p>在MyISAM中的索引全部都是 二级索引 ，该存储引擎的 <strong>数据和索引是分开存放</strong> 的</p>
 <p>所以在文件系统中也是 使用不同的文件来存储数据文件和索引文件，同时表数据都存放在对应的数据库子目录下</p>
 <p>假如 test 表使用MyISAM存储引擎的话，那么在它所在数据库对应的 atguigu 目录下会为 test 表创建这三个文 件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test.frm 存储表结构</span><br><span class="line">test.MYD 存储数据 (MYData)</span><br><span class="line">test.MYI 存储索引 (MYIndex)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">test</span>.frm 存储表结构<br><span class="hljs-keyword">test</span>.MYD 存储数据 (MYData)<br><span class="hljs-keyword">test</span>.MYI 存储索引 (MYIndex)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -282,7 +458,7 @@
 
 <p>举例：</p>
 <p>创建一个 MyISAM 表，使用 ENGINE 选项显式指定引擎。因为 InnoDB 是默认引擎</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">-- 切换数据库</span><br><span class="line">use dbtest1;</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 建表</span><br><span class="line">CREATE TABLE `student_myisam` (</span><br><span class="line">	`id` bigint NOT NULL AUTO_INCREMENT,</span><br><span class="line">	`name` varchar(64) DEFAULT NULL,</span><br><span class="line">	`age` int DEFAULT NULL,</span><br><span class="line">	`sex` varchar(2) DEFAULT NULL,</span><br><span class="line">	PRIMARY KEY (`id`)</span><br><span class="line">)ENGINE=MYISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb3;</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.05 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 查看数据库</span><br><span class="line">show tables;</span><br><span class="line">+-------------------+</span><br><span class="line">| Tables_in_dbtest1 |</span><br><span class="line">+-------------------+</span><br><span class="line">| emp1              |</span><br><span class="line">| mytb12            |</span><br><span class="line">| student_myisam    |</span><br><span class="line">+-------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 切换数据库<br>use dbtest1;<br><br>Database changed<br><br><br><br><br>-- 建表<br>CREATE TABLE `student_myisam` (<br>	`id` bigint NOT NULL AUTO_INCREMENT,<br>	`name` varchar(64) DEFAULT NULL,<br>	`age` int DEFAULT NULL,<br>	`sex` varchar(2) DEFAULT NULL,<br>	PRIMARY KEY (`id`)<br>)ENGINE=MYISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb3;<br><br>Query OK, 0 rows affected, 1 warning (0.05 sec)<br><br><br><br><br>-- 查看数据库<br>show tables;<br>+-------------------+<br>| Tables_in_dbtest1 |<br>+-------------------+<br>| emp1              |<br>| mytb12            |<br>| student_myisam    |<br>+-------------------+<br>3 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -290,14 +466,14 @@
 <blockquote>
 <p>基于MySQL05.7</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-rw-r-----. 1 mysql mysql  8642 7月   5 16:44 student_myisam.frm</span><br><span class="line">-rw-r-----. 1 mysql mysql     0 7月   5 16:44 student_myisam.MYD</span><br><span class="line">-rw-r-----. 1 mysql mysql  1024 7月   5 16:44 student_myisam.MYI</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">-rw-r-----. 1 mysql mysql  8642 7月   5 16:44 student_myisam.frm<br>-rw-r-----. 1 mysql mysql     0 7月   5 16:44 student_myisam.MYD<br>-rw-r-----. 1 mysql mysql  1024 7月   5 16:44 student_myisam.MYI<br></code></pre></td></tr></table></figure>
 
 
 
 <blockquote>
 <p>基于MySQL8.0</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-rw-r-----. 1 mysql mysql   4330 7月   5 16:43 student_myisam_362.sdi #相当于MySQL5.7中的 .frm</span><br><span class="line">-rw-r-----. 1 mysql mysql      0 7月   5 16:43 student_myisam.MYD</span><br><span class="line">-rw-r-----. 1 mysql mysql   1024 7月   5 16:43 student_myisam.MYI</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">-rw-r-----. 1 mysql mysql   4330 7月   5 16:43 student_myisam_362.sdi #相当于MySQL5.7中的 .frm<br>-rw-r-----. 1 mysql mysql      0 7月   5 16:43 student_myisam.MYD<br>-rw-r-----. 1 mysql mysql   1024 7月   5 16:43 student_myisam.MYI<br></code></pre></td></tr></table></figure>
 
 
 
@@ -339,157 +515,372 @@
 </ul>
 <p>主要是为了客户端和服务器安全通信而创建的一些文件</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E7%AC%AC02%E7%AB%A0-MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95-atguigu-shk/" data-id="clfv71uri00019scxem645u5w" data-title="第02章-MySQL的数据目录-atguigu-shk" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
   
-    <a href="/2023/03/30/%E7%AC%AC01%E7%AB%A0-Linux%E4%B8%8BMySQL%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-atguigu-shk/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第01章-Linux下MySQL的安装与使用-atguigu-shk
-        
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/">#尚硅谷-宋红康-MySQL(高级)</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第02章-MySQL的数据目录-atguigu-shk</div>
+      <div>http://example.com/2023/03/30/第02章-MySQL的数据目录-atguigu-shk/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%AC%AC01%E7%AB%A0-Linux%E4%B8%8BMySQL%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-atguigu-shk/" title="第01章-Linux下MySQL的安装与使用-atguigu-shk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第01章-Linux下MySQL的安装与使用-atguigu-shk</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-atguigu-shk/" title="第03章-用户与权限管理-atguigu-shk">
+                        <span class="hidden-mobile">第03章-用户与权限管理-atguigu-shk</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-atguigu-shk/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第03章-用户与权限管理-atguigu-shk</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

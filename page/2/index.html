@@ -1,778 +1,1017 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
   
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>Hexo</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-多态与内部类与常用API-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:17:01.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/">多态与内部类与常用API-heima-xl</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="一、面向对象的三大特征之多态"><a href="#一、面向对象的三大特征之多态" class="headerlink" title="一、面向对象的三大特征之多态"></a>一、面向对象的三大特征之多态</h1><h2 id="1-0-什么是多态？"><a href="#1-0-什么是多态？" class="headerlink" title="1.0 什么是多态？"></a>1.0 什么是多态？</h2><ul>
-<li>同类型的对象，执行同一个行为，会表现出不同的行为特征。</li>
-</ul>
-<h2 id="2-0-多态的常见形式"><a href="#2-0-多态的常见形式" class="headerlink" title="2.0 多态的常见形式"></a>2.0 多态的常见形式</h2><ol>
-<li>父类类型 对象名称 &#x3D; new 子类构造器;</li>
-<li>接口 对象名称 &#x3D; new 实现类构造器;</li>
-</ol>
-<h2 id="3-0-多态中成员访问特点"><a href="#3-0-多态中成员访问特点" class="headerlink" title="3.0 多态中成员访问特点"></a>3.0 多态中成员访问特点</h2><ul>
-<li>方法调用：编译看左边，运行看右边。</li>
-<li>变量调用：编译看左边，运行也看左边。（多态侧重行为多态）</li>
-</ul>
         
-          <p class="article-more-link">
-            <a href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" data-id="clfv6vswr002re4cxb3zb5h0d" data-title="多态与内部类与常用API-heima-xl" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-多线程-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:16:41.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/">多线程-heima-xl</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="初识线程"><a href="#初识线程" class="headerlink" title="初识线程"></a>初识线程</h2><ul>
-<li>什么是线程</li>
-</ul>
-<p>线程(thread)是一个程序内部的一条执行路径。是CPU调度和分派的基本单位<br>我们之前启动程序执行后，main方法的执行其实就是一条单独的执行路<br>程序中如果只有一条执行路径，那么这个程序就是单线程的程序。</p>
-<h2 id="多线程的创建"><a href="#多线程的创建" class="headerlink" title="多线程的创建"></a>多线程的创建</h2><h3 id="方式一：继承Thread类"><a href="#方式一：继承Thread类" class="headerlink" title="方式一：继承Thread类"></a>方式一：继承Thread类</h3><ul>
-<li>概念</li>
-</ul>
-<p>Thread类<br>    Java是通过java.lang.Thread 类来代表线程的。<br>    按照面向对象的思想，Thread类应该提供了实现多线程的方式</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" data-id="clfv6vswr002ue4cxcnsb23go" data-title="多线程-heima-xl" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-方法-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:16:28.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/">方法-heima-xl</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="一、什么是方法"><a href="#一、什么是方法" class="headerlink" title="一、什么是方法"></a>一、什么是方法</h2><h3 id="1-0-方法概念"><a href="#1-0-方法概念" class="headerlink" title="1.0 方法概念"></a>1.0 方法概念</h3><p>它可以把一段代码封装成一个功能，以方便重复调用</p>
-<h3 id="2-0-好处"><a href="#2-0-好处" class="headerlink" title="2.0 好处"></a>2.0 好处</h3><ol>
-<li>提高代码复用</li>
-<li>逻辑清晰</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" data-id="clfv6vsvs0008e4cx5eoh9h0x" data-title="方法-heima-xl" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-面向对象基础-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:16:17.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/">面向对象基础-heima-xl</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="一、初识面向对象"><a href="#一、初识面向对象" class="headerlink" title="一、初识面向对象"></a>一、初识面向对象</h2><ol>
-<li>面向对象并不是一个技术，而是一种编程指导思想</li>
-<li>面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题</li>
-<li>生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。</li>
-</ol>
-<h2 id="二、类、对象"><a href="#二、类、对象" class="headerlink" title="二、类、对象"></a>二、类、对象</h2><p>对象: 是对现实世界具体事物的抽象,是类的具体实例 。<br>类(可以看成是设计图)：同类事物的共性，是对对象的抽象。<br>在Java中，必须先设计类，才能获得对象</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" data-id="clfv6vsw40016e4cx362573wt" data-title="面向对象基础-heima-xl" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-数组-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:15:55.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/">数组-heima-xl</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="一、什么是方法"><a href="#一、什么是方法" class="headerlink" title="一、什么是方法"></a>一、什么是方法</h2><h3 id="1-0-方法概念"><a href="#1-0-方法概念" class="headerlink" title="1.0 方法概念"></a>1.0 方法概念</h3><p>它可以把一段代码封装成一个功能，以方便重复调用</p>
-<h3 id="2-0-好处"><a href="#2-0-好处" class="headerlink" title="2.0 好处"></a>2.0 好处</h3><ol>
-<li>提高代码复用</li>
-<li>逻辑清晰</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" data-id="clfv6vsvq0006e4cx88ik27k0" data-title="数组-heima-xl" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-JavaWeb-Servlet-Jsp-Tomcat-dongli-du" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:15:28.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/">JavaWeb&amp;Servlet&amp;Jsp&amp;Tomcat-dongli-du</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="一、系统架构"><a href="#一、系统架构" class="headerlink" title="一、系统架构"></a>一、系统架构</h1><h2 id="1-0-C-x2F-S架构"><a href="#1-0-C-x2F-S架构" class="headerlink" title="1.0 C&#x2F;S架构"></a>1.0 C&#x2F;S<strong>架构</strong></h2><p>1.0 Client &#x2F; Server（客户端 &#x2F; 服务器）</p>
-<p>2.0 C&#x2F;S架构的特点</p>
-<ul>
-<li>需要   <strong>安装</strong>   特定的   <strong>客户端软件</strong>   。</li>
-</ul>
-<p>3.0    <strong>C&#x2F;S架构   的系统</strong>   优点和缺点分别是什么？</p>
-<ul>
-<li><p>优点：</p>
-<ul>
-<li>速度快（软件中的   <strong>数据大部分</strong>    都是   集成到<strong>客户端软件</strong>当中    的，    <strong>很少量的数据</strong>     <code>从服务器端传送过来</code>，所以C&#x2F;S结构的系统速度快）</li>
-<li>界面酷炫（专门的语言去实现界面的，不仅是HTML &#x2F; CSS &#x2F; JS。）</li>
-<li>体验好（速度又快，界面又酷炫，当然体验好了。）</li>
-<li>服务器压力小（因为大量的数据都是集成在客户端软件当中，所以     <code>服务器</code>      只需要传送      <strong>很少的数据量</strong>，当然服务器压力小。）</li>
-<li>安全（因为大量的数据是集成在客户端软件当中的，并且客户端有很多个，服务器虽然只有一个，就算服务器那边地震了，火灾了，服务器受损了，问题也不大，因为大量的数据在多个    <strong>客户端上有缓  存</strong>   ，有存储，所以从这个方面来说，<strong>C&#x2F;S结构的系统比较安全 数据安全</strong>）</li>
-<li>…..</li>
-</ul>
-</li>
-<li><p>缺点：</p>
-<ul>
-<li><strong>升级维护</strong>    比较差劲。（升级维护比较麻烦。成本比较高。每一个客户端软件都需要升级。有一些软件不是那么容易安装的）</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" data-id="clfv6vsy7005be4cx6lmchpr5" data-title="JavaWeb&amp;Servlet&amp;Jsp&amp;Tomcat-dongli-du" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-第07章-InnoDB数据存储结构-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:14:16.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/">第07章-InnoDB数据存储结构-atguigu-shk</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-数据库的存储结构：页"><a href="#1-数据库的存储结构：页" class="headerlink" title="1.数据库的存储结构：页"></a>1.数据库的存储结构：页</h1><p>索引结构给我们提供了高效的索引方式,不过索引信息以及数据记录都是保存在文件上的,确切说是存储在页结构中。</p>
-<p>在MySQL中，B+Tree中所有的节点称为数据页。其中可以把非叶子节点称为目录页。</p>
-<p><strong>索引</strong>  是在 <strong>存储引擎</strong> 中实现的,MySQL服务器上的  <strong>存储引擎</strong>  负责对  <strong>表中数据  的读取和写入</strong>   工作。</p>
-<p> <strong>不同存储引擎</strong> 中存放的	<strong>格式一般是不同的</strong>	,甚至有的存储引擎,比如  <strong><code>Memory</code>  都不用磁盘来存储数据</strong>。</p>
-<blockquote>
-<p>由于InnoDB 是MySQL的默认存储引擎,所以本章剖析InnoDB存储引擎的数据存储结构。</p>
-</blockquote>
-<h2 id="1-1磁盘与内存交互基本单位-页"><a href="#1-1磁盘与内存交互基本单位-页" class="headerlink" title="1.1磁盘与内存交互基本单位:页"></a>1.1磁盘与内存交互基本单位:页</h2><p>InnoDB将  数据  划分为  <strong>若干个页</strong>  , <strong>InnoDB中页的大小默认为16KB</strong>。</p>
-<p>以页作为磁盘和内存之间交互的  **基本单位 **,也就是  <strong>一次最少</strong>  从磁盘中读取16KB的内容到内存中,一次最少把内存中的16KB内容刷新到磁盘中。</p>
-<p>也就是说,在数据库中,不论读一行,还是读多行,都是将这些行所在的页进行加载。</p>
-<p>也就是说,  数据库  <strong>管理存储空间</strong>  的基本单位  是页(Page),数据库   <strong>I&#x2F;O操作的最小单位</strong>  是页。一个页中可以存储多个行记录。</p>
-<blockquote>
-<p>记录是按照行来存储的，但是数据库的读取并不以行为单位，否则一次读取(也就是一次I&#x2F;0操作)只能处理一行数据,效率会非常低。</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" data-id="clfv77yrr0004j0cx2jo91wpy" data-title="第07章-InnoDB数据存储结构-atguigu-shk" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SpringBoot-dongli" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/SpringBoot-dongli/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:13:45.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/SpringBoot-dongli/">SpringBoot-dongli</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="第一章-JavaConfig"><a href="#第一章-JavaConfig" class="headerlink" title="第一章  JavaConfig"></a>第一章  JavaConfig</h1><ol>
-<li><p>为什么要使用 Spring Boot</p>
-<p>因为Spring， SpringMVC 需要使用的大量的配置文件 （xml文件）</p>
-<p>还需要配置各种对象，把使用的对象放入到spring容器中才能使用对象</p>
-<p>需要了解其他框架配置规则</p>
-</li>
-<li><p>SpringBoot 就相当于 <strong>不需要配置文件的Spring+SpringMVC</strong>。 <strong>常用的框架和第三方库都已经配置好了</strong>。</p>
-<p>拿来就可以使用了<strong>。【开箱即用】</strong></p>
-</li>
-<li><p>SpringBoot开发效率高，使用方便多了</p>
-</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/SpringBoot-dongli/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/SpringBoot-dongli/" data-id="clfv6vsxn004ue4cxdefo0shf" data-title="SpringBoot-dongli" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Mybatis-dongli" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/Mybatis-dongli/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:13:34.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/Mybatis-dongli/">Mybatis-dongli</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="一、框架概述"><a href="#一、框架概述" class="headerlink" title="一、框架概述"></a>一、框架概述</h1><h2 id="1-软件开发常用结构"><a href="#1-软件开发常用结构" class="headerlink" title="1.软件开发常用结构"></a>1.软件开发常用结构</h2><h3 id="1-1-三层架构"><a href="#1-1-三层架构" class="headerlink" title="1.1.三层架构"></a>1.1.三层架构</h3><p>什么是三层架构<br>  在项目开发中,遵循的一种形式模式.分为三层.<br>  界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer)<br>      1)界面层表示层，视图层):用来接收客 户端的输入,调用业务逻辑层进行功能处理,返回结果给客户端.过去的servlet就是界面层的功能.<br>      2)业务逻辑层:用来进行整个项目的业务逻辑处理,向上为界面层提供处理结果,向下问数据访问层要数据.<br>      3)数据访问层:专门用来进行数据库的增删改查操作,向上为业务逻辑层提供数据.</p>
-<ul>
-<li><strong>三层的处理请求的交互：</strong></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端&lt;---&gt;界面层&lt;---&gt;业务逻辑层&lt;---&gt;数据访问层&lt;---&gt;数据库。</span><br></pre></td></tr></table></figure>
-
-<p>  各层之间的调用顺序是固定的,不允许跨层访问</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/Mybatis-dongli/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/Mybatis-dongli/" data-id="clfv6vsxc0048e4cxc3y0duv3" data-title="Mybatis-dongli" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SpringMVC-dongli" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/03/30/SpringMVC-dongli/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T12:13:14.000Z" itemprop="datePublished">2023-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/SpringMVC-dongli/">SpringMVC-dongli</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="SpringMVC概述"><a href="#SpringMVC概述" class="headerlink" title="SpringMVC概述"></a>SpringMVC概述</h1><h2 id="什么是SpringMVC"><a href="#什么是SpringMVC" class="headerlink" title="什么是SpringMVC"></a>什么是SpringMVC</h2><p>  它是<strong>基于MVC开发模式</strong>的<strong>框架</strong>,用来优化控制器.它是Spring家族的一员.它也具备IOC和AOP.</p>
-<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC?"></a>什么是MVC?</h2><p>  它是一种<strong>开发模式</strong>,它是模型 视图 控制器的简称.所有的<strong>web应用都是基于MVC开发</strong>.</p>
-<ul>
-<li>M:模型层,包含实体类,业务逻辑层,数据访问层</li>
-<li>V:视图层,html,javaScript,vue等都是视图层,用来显现数据</li>
-<li>C:控制器,它是用来接收客户端的请求,并返回响应到客户端的组件,Servlet就是组件</li>
-</ul>
-<p><strong>图解MVC</strong></p>
-<hr>
-<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261738023.png" alt="image-20220509122947011"></p>
-<hr>
-        
-          <p class="article-more-link">
-            <a href="/2023/03/30/SpringMVC-dongli/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/SpringMVC-dongli/" data-id="clfv6vsxc0049e4cxaod2bawh" data-title="SpringMVC-dongli" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
-          </li>
         
-          <li>
-            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" target="_self">
+          <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="多态与内部类与常用API-heima-xl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" target="_self">
+          多态与内部类与常用API-heima-xl
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" target="_self">
+        <div>
+          一、面向对象的三大特征之多态1.0 什么是多态？ 同类型的对象，执行同一个行为，会表现出不同的行为特征。  2.0 多态的常见形式 父类类型 对象名称 &#x3D; new 子类构造器; 接口 对象名称 &#x3D; new 实现类构造器;  3.0 多态中成员访问特点 方法调用：编译看左边，运行看右边。 变量调用：编译看左边，运行也看左边。（多态侧重行为多态）
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:17" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
   
-</nav>
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" target="_self">
+          <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="多线程-heima-xl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" target="_self">
+          多线程-heima-xl
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" target="_self">
+        <div>
+          初识线程 什么是线程  线程(thread)是一个程序内部的一条执行路径。是CPU调度和分派的基本单位我们之前启动程序执行后，main方法的执行其实就是一条单独的执行路程序中如果只有一条执行路径，那么这个程序就是单线程的程序。 多线程的创建方式一：继承Thread类 概念  Thread类    Java是通过java.lang.Thread 类来代表线程的。    按照面向对象的思想，Threa
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:16" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" target="_self">
+          <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="方法-heima-xl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" target="_self">
+          方法-heima-xl
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" target="_self">
+        <div>
+          一、什么是方法1.0 方法概念它可以把一段代码封装成一个功能，以方便重复调用 2.0 好处 提高代码复用 逻辑清晰
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:16" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" target="_self">
+          <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="面向对象基础-heima-xl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" target="_self">
+          面向对象基础-heima-xl
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" target="_self">
+        <div>
+          一、初识面向对象 面向对象并不是一个技术，而是一种编程指导思想 面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题 生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。  二、类、对象对象: 是对现实世界具体事物的抽象,是类的具体实例 。类(可以看成是设计图)：同类事物的共性
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:16" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" target="_self">
+          <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="数组-heima-xl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" target="_self">
+          数组-heima-xl
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" target="_self">
+        <div>
+          一、什么是方法1.0 方法概念它可以把一段代码封装成一个功能，以方便重复调用 2.0 好处 提高代码复用 逻辑清晰
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:15" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" target="_self">
+          <img src="/images/servlet.png" srcset="/img/loading.gif" lazyload alt="JavaWeb&amp;Servlet&amp;Jsp&amp;Tomcat-dongli-du">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" target="_self">
+          JavaWeb&amp;Servlet&amp;Jsp&amp;Tomcat-dongli-du
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" target="_self">
+        <div>
+          一、系统架构1.0 C&#x2F;S架构1.0 Client &#x2F; Server（客户端 &#x2F; 服务器） 2.0 C&#x2F;S架构的特点  需要   安装   特定的   客户端软件   。  3.0    C&#x2F;S架构   的系统   优点和缺点分别是什么？  优点：  速度快（软件中的   数据大部分    都是   集成到客户端软件当中    的，    很少量的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:15" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/servlet/">#servlet</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" target="_self">
+          <img src="/images/mysql.png" srcset="/img/loading.gif" lazyload alt="第07章-InnoDB数据存储结构-atguigu-shk">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" target="_self">
+          第07章-InnoDB数据存储结构-atguigu-shk
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" target="_self">
+        <div>
+          1.数据库的存储结构：页索引结构给我们提供了高效的索引方式,不过索引信息以及数据记录都是保存在文件上的,确切说是存储在页结构中。 在MySQL中，B+Tree中所有的节点称为数据页。其中可以把非叶子节点称为目录页。 索引  是在 存储引擎 中实现的,MySQL服务器上的  存储引擎  负责对  表中数据  的读取和写入   工作。  不同存储引擎 中存放的	格式一般是不同的	,甚至有的存储引擎,比
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:14" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/">#尚硅谷-宋红康-MySQL(高级)</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/SpringBoot-dongli/" target="_self">
+          <img src="/images/springboot.png" srcset="/img/loading.gif" lazyload alt="SpringBoot-dongli">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/SpringBoot-dongli/" target="_self">
+          SpringBoot-dongli
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/SpringBoot-dongli/" target="_self">
+        <div>
+          第一章  JavaConfig 为什么要使用 Spring Boot 因为Spring， SpringMVC 需要使用的大量的配置文件 （xml文件） 还需要配置各种对象，把使用的对象放入到spring容器中才能使用对象 需要了解其他框架配置规则  SpringBoot 就相当于 不需要配置文件的Spring+SpringMVC。 常用的框架和第三方库都已经配置好了。 拿来就可以使用了。【开箱即用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:13" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SpringBoot-DongLi/">#SpringBoot-DongLi</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/Mybatis-dongli/" target="_self">
+          <img src="/images/mybatis.png" srcset="/img/loading.gif" lazyload alt="Mybatis-dongli">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/Mybatis-dongli/" target="_self">
+          Mybatis-dongli
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/Mybatis-dongli/" target="_self">
+        <div>
+          一、框架概述1.软件开发常用结构1.1.三层架构什么是三层架构  在项目开发中,遵循的一种形式模式.分为三层.  界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer)      1)界面层表示层，视图层):用来接收客 户端的输入,调用业务逻辑层进行功能处理,返回结果给客户端.过去的servlet
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:13" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Mybatis-DongLi/">#Mybatis-DongLi</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/30/SpringMVC-dongli/" target="_self">
+          <img src="/images/springmvc.png" srcset="/img/loading.gif" lazyload alt="SpringMVC-dongli">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/03/30/SpringMVC-dongli/" target="_self">
+          SpringMVC-dongli
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2023/03/30/SpringMVC-dongli/" target="_self">
+        <div>
+          SpringMVC概述什么是SpringMVC  它是基于MVC开发模式的框架,用来优化控制器.它是Spring家族的一员.它也具备IOC和AOP. 什么是MVC?  它是一种开发模式,它是模型 视图 控制器的简称.所有的web应用都是基于MVC开发.  M:模型层,包含实体类,业务逻辑层,数据访问层 V:视图层,html,javaScript,vue等都是视图层,用来显现数据 C:控制器,它是用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-30 20:13" pubdate>
+              2023-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SpringMVC-DongLi/">#SpringMVC-DongLi</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
