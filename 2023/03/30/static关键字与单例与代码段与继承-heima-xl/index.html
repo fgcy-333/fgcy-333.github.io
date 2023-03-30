@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>static关键字与单例与代码段与继承-heima-xl | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="static关键字static概述static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。 成员变量可以分为两种 实例成员变量：类内方法外，无static修饰，属于每一个对象 静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="static关键字与单例与代码段与继承-heima-xl">
+<meta property="og:url" content="http://example.com/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="static关键字static概述static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。 成员变量可以分为两种 实例成员变量：类内方法外，无static修饰，属于每一个对象 静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107897.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107422.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107522.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107284.png">
+<meta property="article:published_time" content="2023-03-30T12:18:58.000Z">
+<meta property="article:modified_time" content="2023-03-30T12:31:27.653Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础-heima">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107897.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-static关键字与单例与代码段与继承-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:18:58.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      static关键字与单例与代码段与继承-heima-xl
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="static概述"><a href="#static概述" class="headerlink" title="static概述"></a>static概述</h3><p>static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；<br>static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。</p>
+<h3 id="成员变量可以分为两种"><a href="#成员变量可以分为两种" class="headerlink" title="成员变量可以分为两种"></a>成员变量可以分为两种</h3><ol>
+<li>实例成员变量：类内方法外，无static修饰，属于每一个对象</li>
+<li>静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问</li>
+</ol>
+<span id="more"></span>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107897.png"></p>
+<hr>
+<ol>
+<li>加载User.class文件进入方法区内存</li>
+<li>将静态成员变量加载进堆内存</li>
+<li>将方法区中的main方法加载进栈内存中运行</li>
+<li>通过类名操作静态成员变量</li>
+<li>在栈内存中开辟一块存储User类型的空间，再到堆内存中开辟一块存放User实例的空间，并为成员变量赋初始值；然后把实例的地址交给栈中的user变量</li>
+<li>通过实例的地址操作实例的成员变量</li>
+<li>通过实例的地址找到实例再操作静态成员变量</li>
+</ol>
+<ul>
+<li>两种成员方法</li>
+</ul>
+<p>实例成员方法：(无static修饰，属于对象），只能用对象触发访问 表示对象自己的行为的，且方法中需要访问实例成员的，则该方法必须申明成实例方法或者实例一个对象，通过对象访问；<br>静态成员方法：（有static修饰，属于类），建议用类名访问【子类类名也可以】，也可以用对象访问。如果该方法是以执行一个共用功能为目的，或者想要方便访问则可以申明成静态方法；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> static_demo;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: StaticDemo &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 17:19&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticDemo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String ip;</span><br><span class="line">    <span class="keyword">private</span> String time;</span><br><span class="line">    <span class="comment">//静态成员变量属于类,可以被所有该类的实例访问</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> onlineNumber;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 实例成员方法可以访问本类中全部的成员变量和成员方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span> &#123;</span><br><span class="line">        ip = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">        time = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">        onlineNumber = <span class="number">123</span>;</span><br><span class="line">        test1();</span><br><span class="line">        StaticDemo.test2();</span><br><span class="line">        System.out.println(<span class="string">&quot;实例成员方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 静态成员方法只能访问静态成员变量和静态成员方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">funcSay</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//ip = &quot;1 你你 23&quot;;   //报错</span></span><br><span class="line">        <span class="comment">//time = &quot;123&quot;;//报错</span></span><br><span class="line">        onlineNumber = <span class="number">123</span>;</span><br><span class="line">        <span class="comment">//test1();//报错</span></span><br><span class="line">        StaticDemo.test2();</span><br><span class="line">        System.out.println(<span class="string">&quot;静态成员方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">StaticDemo</span> <span class="variable">staticDemo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StaticDemo</span>();</span><br><span class="line">        System.out.println(StaticDemo.onlineNumber);<span class="comment">//访问静态成员变量</span></span><br><span class="line">        System.out.println(onlineNumber);<span class="comment">//访问静态成员变量（在本类中可以这么写）</span></span><br><span class="line">        StaticDemo.funcSay();<span class="comment">//访问静态成员方法</span></span><br><span class="line">        funcSay();<span class="comment">//访问静态方法（在本类中可以这么写）</span></span><br><span class="line">        staticDemo.onlineNumber = <span class="number">222</span>;<span class="comment">//可以通过实例访问静态成员变量（不推荐）</span></span><br><span class="line">        staticDemo.funcSay();<span class="comment">//可以通过实例访问静态成员方法（不推荐）</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>static成员方法内存原理</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107422.png"></p>
+<hr>
+<ol>
+<li>加载Student.class文件到方法区，此时会暴露静态方法的访问入口</li>
+<li>提取main方法到栈内存中运行</li>
+<li>通过类名访问该类的静态方法，从方法区中提取到栈中运行</li>
+<li>在该类中调用该类的静态方法，可以省略不写 类名. ；从方法区中提取到栈中运行；编译后会不写</li>
+<li>在栈中开辟一快存储Student类型的空间，用于存储在堆中开辟Student实例的空间的地址</li>
+<li>通过句柄（Student实例的地址）对该实例的实例成员变量进行操作</li>
+<li>通过实例地址，找到实例中的方法引用，从方法区中提取到占内存中运行</li>
+</ol>
+<ul>
+<li>工具类</li>
+</ul>
+<ol>
+<li>工具类中定义的都是一些静态方法，每个方法都是以完成一个共用的功能为目的。</li>
+<li>工具类既可方便调用，又可提高了代码复用（一次编写，处处可用）<br>为什么工具类中的方法不用实例方法做？<br>     实例方法需要创建对象调用，此时用对象只是为了调用方法，这样只会浪费内存</li>
+<li>建议将工具类的构造器进行私有，工具类无需创建对象。</li>
+<li>工具类里面都是静态方法，直接用类名访问即可</li>
+</ol>
+<ul>
+<li>注意点</li>
+</ul>
+<ol>
+<li>静态方法只能访问静态的成员，不可以直接访问实例成员。可以间接—》通过构造器获取一个实例，再通过句柄调用实例方法</li>
+<li>实例方法可以访问静态的成员，也可以访问实例成员。（属性和方法）</li>
+<li>静态方法中是不可以出现this关键字和super</li>
+</ol>
+<ul>
+<li>代码块</li>
+</ul>
+<ol>
+<li>代码块是类的5大成分之一（成员变量、构造器，成员方法，代码块，内部类），定义在类中方法外。</li>
+<li>在Java类下，使用 {} 括起来的代码被称为代码块</li>
+</ol>
+<ul>
+<li>静态代码块</li>
+</ul>
+<p>格式：static{}<br>特点：需要通过static关键字修饰，随着类的加载而加载，并且自动触发、只执行一次；优先执行，比main还早<br>使用场景：在类加载的时候做一些静态数据初始化的操作，以便后续使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticDemo2</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;===============main=================&quot;</span>);</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 随类一起加载，优先执行 用于对静态变量的初始化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;静态代码块执行&quot;</span>);</span><br><span class="line">        name = <span class="string">&quot;fgcy&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">静态代码块执行</span><br><span class="line">===============main=================</span><br><span class="line">fgcy</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>构造(实例 )代码块</li>
+</ul>
+<p>格式：{}<br>特点：每次创建对象，调用构造器执行时，都会执行该代码块中的代码，并且在构造器执行前执行（相当于把实例代码块中的代码放到构造器最开始）<br>使用场景：初始化实例资源</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> static_demo;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: StaticDemo3 &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 20:18&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticDemo3</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">StaticDemo3</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造器执行&quot;</span>);</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 优先于构造器执行，调用构造器先执行该代码段</span></span><br><span class="line"><span class="comment">     */</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造代码块执行&quot;</span>);</span><br><span class="line">        name = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">StaticDemo3</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">构造代码块执行</span><br><span class="line">构造器执行</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>一副扑克牌</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> static_demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: StaticDemo4 &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 20:31&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticDemo4</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;String&gt; cards = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        String[] colors = &#123;<span class="string">&quot;♠&quot;</span>, <span class="string">&quot;♥&quot;</span>, <span class="string">&quot;♣&quot;</span>, <span class="string">&quot;♦&quot;</span>&#125;;</span><br><span class="line">        <span class="comment">// 5、定义点数</span></span><br><span class="line">        String[] sizes = &#123;<span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>, <span class="string">&quot;5&quot;</span>, <span class="string">&quot;6&quot;</span>, <span class="string">&quot;7&quot;</span>, <span class="string">&quot;8&quot;</span>, <span class="string">&quot;9&quot;</span>, <span class="string">&quot;10&quot;</span>, <span class="string">&quot;J&quot;</span>, <span class="string">&quot;Q&quot;</span>, <span class="string">&quot;K&quot;</span>, <span class="string">&quot;A&quot;</span>, <span class="string">&quot;2&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; sizes.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; colors.length; j++) &#123;</span><br><span class="line">                cards.add(sizes[i] + colors[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cards.add(<span class="string">&quot;大王&quot;</span>);</span><br><span class="line">        cards.add(<span class="string">&quot;小王&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(cards);</span><br><span class="line">        Collections.shuffle(cards);</span><br><span class="line">        System.out.println(cards);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[3♠, 3♥, 3♣, 3♦, 4♠, 4♥, 4♣, 4♦, 5♠, 5♥, 5♣, 5♦, 6♠, 6♥, 6♣, 6♦, 7♠, 7♥, 7♣, 7♦, 8♠, 8♥, 8♣, 8♦, 9♠, 9♥, 9♣, 9♦, 10♠, 10♥, 10♣, 10♦, J♠, J♥, J♣, J♦, Q♠, Q♥, Q♣, Q♦, K♠, K♥, K♣, K♦, A♠, A♥, A♣, A♦, 2♠, 2♥, 2♣, 2♦, 大王, 小王]</span><br><span class="line">[小王, 10♣, 3♦, J♦, A♠, 4♥, 6♠, J♥, J♣, 7♦, 3♣, Q♦, 5♥, 6♦, 5♠, A♥, 10♥, K♠, J♠, Q♣, 大王, Q♠, 3♠, 8♥, 9♦, 9♠, K♣, 8♠, K♥, 2♠, Q♥, 5♣, 4♠, 10♦, 4♦, 2♣, 9♥, 10♠, 6♥, A♦, 7♣, 4♣, 2♥, 8♦, 2♦, 9♣, 3♥, K♦, 7♠, A♣, 7♥, 6♣, 5♦, 8♣]</span><br></pre></td></tr></table></figure>
+
+<p>在启动系统时对数据进行初始化。<br>使用静态代码块完成数据的初始化操作，代码优雅。</p>
+<h3 id="设计模式之单例"><a href="#设计模式之单例" class="headerlink" title="设计模式之单例"></a>设计模式之单例</h3><ul>
+<li>什么是设计模式</li>
+</ul>
+<p>设计模式是一套被前人反复使用，多数人知晓，经过分类编目的代码设计经验总结，后来者可以直接拿来解决问题<br>好的设计模式能够提高代码的重用性</p>
+<ul>
+<li>单例模式</li>
+</ul>
+<p>可以保证系统中，应用该模式的这个类永远只有一个实例，即一个类永远只能创建一个对象。<br>例如任务管理器对象我们只需要一个就可以解决问题了，这样可以节省内存空间。</p>
+<ul>
+<li>饿汉单例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> static_demo;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: SingleInstanceDemo1 &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 20:48&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleInstanceDemo1</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">SingleInstanceDemo1</span> <span class="variable">singleInstanceDemo1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SingleInstanceDemo1</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SingleInstanceDemo1</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SingleInstanceDemo1</span> <span class="variable">s1</span> <span class="operator">=</span> singleInstanceDemo1;</span><br><span class="line">        <span class="type">SingleInstanceDemo1</span> <span class="variable">s2</span> <span class="operator">=</span> singleInstanceDemo1;</span><br><span class="line">        <span class="type">SingleInstanceDemo1</span> <span class="variable">s3</span> <span class="operator">=</span> singleInstanceDemo1;</span><br><span class="line">        System.out.println(s1==s2);<span class="comment">//true</span></span><br><span class="line">        System.out.println(s1==s3);<span class="comment">//true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在用类获取对象的时候，对象已经提前为你创建好了</p>
+<ul>
+<li>懒汉单例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> static_demo;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: SingleInstanceDemo1 &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 20:48&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleInstanceDemo2</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleInstanceDemo2 singleInstanceDemo2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SingleInstanceDemo2</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingleInstanceDemo2 <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (singleInstanceDemo2 == <span class="literal">null</span>) &#123;</span><br><span class="line">            singleInstanceDemo2 = <span class="keyword">new</span> <span class="title class_">SingleInstanceDemo2</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleInstanceDemo2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SingleInstanceDemo2</span> <span class="variable">s1</span> <span class="operator">=</span> getInstance();</span><br><span class="line">        <span class="type">SingleInstanceDemo2</span> <span class="variable">s2</span> <span class="operator">=</span> getInstance();</span><br><span class="line">        <span class="type">SingleInstanceDemo2</span> <span class="variable">s3</span> <span class="operator">=</span> getInstance();</span><br><span class="line">        System.out.println(s1 == s2);<span class="comment">//true</span></span><br><span class="line">        System.out.println(s1 == s3);<span class="comment">//true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在真正需要该对象的时候，才去创建一个对象(延迟加载对象)。</p>
+<h3 id="面向对象三大特征之继承"><a href="#面向对象三大特征之继承" class="headerlink" title="面向对象三大特征之继承"></a>面向对象三大特征之继承</h3><ul>
+<li>继承概念</li>
+</ul>
+<ol>
+<li>Java中提供一个关键字extends，用这个关键字，我们可以让一个类和另一个类建立起父子关系。<br>public class Student extends People {}<br>Student称为子类（派生类），People称为父类(基类 或超类)   子类 extends父类</li>
+<li>当子类继承父类后，就可以直接使用父类公共的属性和方法了。因此，用好这个技术可以很好的我们提高代码的复用性</li>
+<li>子类 继承父类，子类可以得到父类的公开属性和行为，子类可以使用。</li>
+<li>Java中子类更强大</li>
+</ol>
+<ul>
+<li>初始继承</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Son &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 21:12&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(getName() + <span class="string">&quot;张开嘴巴啊啊啊&quot;</span>);<span class="comment">//调用父类的公共方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Son</span> <span class="variable">son</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">        son.setName(<span class="string">&quot;苏未晓&quot;</span>);<span class="comment">//调用父类的公共方法,初始化父类的成员变量</span></span><br><span class="line">        son.say();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>继承设计规范</li>
+</ul>
+<p>子类们相同特征（共性属性，共性方法）放在父类中定义，子类独有的的属性和行为应该定义在子类自己里面</p>
+<ul>
+<li>继承内存图</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107522.png"></p>
+<hr>
+<ol>
+<li>将Test.class文件加载进方法区，并暴露main方法的访问入口</li>
+<li>在栈内存中开辟一块Student类型的空间，用于存储在堆内存中开辟的存放Student实例相关信息的空间，（其中包含成员属性和方法的引用）</li>
+<li>通过句柄访问实例空间中的父类空间的方法</li>
+<li>通过句柄访问实例空间中的子类空间的方法<br>……</li>
+</ol>
+<ul>
+<li>继承的特点</li>
+</ul>
+<ol>
+<li>子类可以继承父类的属性和行为，但是子类不能继承父类的构造器。子类有自己的构造器，父类构造器用于初始化父类对象</li>
+<li>Java是单继承模式：一个类只能继承一个直接父类。当多个父类中有相同名字的方法时引起二义性</li>
+<li>Java不支持多继承、但是支持多层继承，家族体系（当祖宗们有相同的方法时，使用离自己最近的，可以是自己）</li>
+<li>Java中所有的类都是Object类的子类</li>
+<li>子类可以继承父类私有成员，只是不能直接访问（未证实）</li>
+<li>子类可以直接使用父类的静态成员（共享），但子类不能继承父类的静态成员。因为静态成员随类加载一次，其并不存在于子类空间中；</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Father &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 21:12&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;父类的静态方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Son &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 21:12&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Son.test();<span class="comment">//这里可以通过子类类名调父类的静态方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>在子类中访问成员（成员属性，成员方法）满足就近原则</li>
+</ul>
+<p>先子类局部范围找<br>然后子类成员范围找<br>然后父类成员范围找，如果父类范围还没有找到则报错<br>如果子父类中，出现了重名的成员，会优先使用子类的，此时如果一定要在子类中使用父类的怎么办？<br>可以通过super关键字，指定访问父类的成员，this关键字访问当前的成员变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Demo &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 22:47&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        student.say();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;父类名字&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;子类名字&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;子类局部名字&quot;</span>;</span><br><span class="line">        System.out.println(name);<span class="comment">//子类局部名字 就近原则</span></span><br><span class="line">        System.out.println(<span class="built_in">this</span>.name);<span class="comment">//实例成员变量</span></span><br><span class="line">        System.out.println(<span class="built_in">super</span>.name);<span class="comment">//父类实例成员</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">子类局部名字</span><br><span class="line">子类名字</span><br><span class="line">父类名字</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Demo &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 22:47&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        student.go();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;父类跑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">go</span><span class="params">()</span> &#123;<span class="comment">//中转方法</span></span><br><span class="line">        run();<span class="comment">//就近原则</span></span><br><span class="line">        <span class="built_in">super</span>.run();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;子类跑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">子类跑</span><br><span class="line">父类跑</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>方法重写</li>
+</ul>
+<p>在继承体系中，子类出现了和父类中一模一样的方法声明，我们就称子类这个方法是重写的方法</p>
+<p>方法重写的应用场景<br>    当子类需要父类的功能，但父类的该功能不完全满足自己的需求时。<br>    子类可以重写父类中的方法</p>
+<p>@Override重写注解<br>    @Override是放在重写后的方法上，作为重写是否正确的校验注解。<br>    加上该注解后如果重写错误，编译阶段会出现错误提示。<br>    建议重写方法都加@Override注解，代码安全，优雅！</p>
+<p>方法重写注意事项和要求<br>    重写方法的名称、形参列表必须与被重写方法的名称和参数列表一致。(方法名，形参列表，返回值类型【全部与父类一致】，修饰符【子类大于等于父类】)<br>    私有方法不能被重写。（子类无法访问）<br>    子类重写父类方法时，访问权限必须 大于或者等于 父类 （暂时了解 ：缺省 &lt; protected &lt; public）<br>    子类不能重写父类的静态方法，如果重写会报错的；（子类没有继承父类的静态方法）</p>
+<ul>
+<li>子类构造器特点</li>
+</ul>
+<p>子类中 所有的 构造器默认都会先访问父类中 无参 的构造器，再执行自己</p>
+<p>为什么？<br>    子类在初始化的时候，有可能会使用到父类中的数据，如果父类没有完成初始化，子类将无法使用父类的数据。<br>    子类初始化之前，一定要调用父类构造器先完成父类数据空间的初始化</p>
+<p>子类构造器的第一行语句默认都是：super()，不写也存在</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Demo &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 22:47&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;--------------------------------------------&quot;</span>);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;jjj&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;父类构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        System.out.println(<span class="string">&quot;子类有参构造&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;子类构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">父类构造器</span><br><span class="line">子类构造器</span><br><span class="line">--------------------------------------------</span><br><span class="line">父类构造器</span><br><span class="line">子类有参构造</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>子类构造器访问父类有参构造</li>
+</ul>
+<p>super调用父类有参数构造器的作用：<br>   初始化继承自父类的数据。</p>
+<p>如果父类中没有无参数构造器，只有有参构造器，会出现什么现象呢？<br>    会报错。因为子类默认是调用父类无参构造器的。</p>
+<p>如何解决？<br>    子类构造器中可以通过书写 super(…)，手动调用父类的有参数构造器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Demo &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 22:47&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;苏未晓&quot;</span>, <span class="string">&quot;睡觉&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">        System.out.println(student.getName());</span><br><span class="line">        System.out.println(student.getHobbies());</span><br><span class="line">        System.out.println(student.isYoungster());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String hobbies;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">()</span> &#123;<span class="comment">//会被子类默认调用</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">(String name, String hobbies)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.hobbies = hobbies;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getHobbies</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> hobbies;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHobbies</span><span class="params">(String hobbies)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.hobbies = hobbies;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> youngster;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, String hobbies, <span class="type">boolean</span> youngster)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name, hobbies);<span class="comment">//这里用父类的有参构造代替了默认的父类无参构造</span></span><br><span class="line">        <span class="built_in">this</span>.youngster = youngster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;<span class="comment">//默认在所有子类构造器的第一行调用父类无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isYoungster</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> youngster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setYoungster</span><span class="params">(<span class="type">boolean</span> youngster)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.youngster = youngster;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>this与super</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270107284.png"></p>
+<hr>
+<ul>
+<li>通过this()调用本类的兄弟构造器</li>
+</ul>
+<p>this(…)和super(…)使用注意点：<br>子类通过 this (…）去调用本类的其他构造器，本类其他构造器会通过 super 去手动调用父类的构造器，最终还是会调用父类构造器的。<br>注意：this(…) super(…) 都只能放在构造器的第一行，所以二者不能共存在同一个构造器中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inherit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Demo &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/6 22:47&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">People</span> <span class="variable">people</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">People</span>(<span class="string">&quot;苏未晓&quot;</span>);</span><br><span class="line">        System.out.println(people.getHobbies());</span><br><span class="line">        System.out.println(people.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String hobbies;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="comment">//super();//这里不需要调用父类的构造器，因为兄弟构造器中已经调用了，不需要重复调用 this和super都只能放在构造器的第一行，所以两者不能共存于同一个构造器中</span></span><br><span class="line">        <span class="built_in">this</span>(name, <span class="string">&quot;睡觉&quot;</span>);<span class="comment">//调用本类的其他构造器</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">People</span><span class="params">(String name, String hobbies)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.hobbies = hobbies;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getHobbies</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> hobbies;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHobbies</span><span class="params">(String hobbies)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.hobbies = hobbies;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">睡觉</span><br><span class="line">苏未晓</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/" data-id="clfv6vsw8001he4cx06jjh4ji" data-title="static关键字与单例与代码段与继承-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Set与Collections与Map与集合嵌套-heima-xl
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/30/String%E4%B8%8EArrayList%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-heima-xl/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">String与ArrayList的基本使用-heima-xl</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

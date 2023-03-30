@@ -71,12 +71,16 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-第03章-基本的SELECT语句-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/03/30/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-03-30T09:35:13.441Z" itemprop="datePublished">2023-03-30</time>
+    <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T13:05:19.000Z" itemprop="datePublished">2023-03-30</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -85,7 +89,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/30/hello-world/">Hello World</a>
+      <a class="p-name article-title" href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
     </h1>
   
 
@@ -93,27 +97,535 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        <h1 id="第03章-基本的SELECT语句"><a href="#第03章-基本的SELECT语句" class="headerlink" title="第03章_基本的SELECT语句"></a>第03章_基本的SELECT语句</h1><h2 id="1-SQL概述"><a href="#1-SQL概述" class="headerlink" title="1. SQL概述"></a>1. SQL概述</h2><h3 id="1-1-SQL背景知识"><a href="#1-1-SQL背景知识" class="headerlink" title="1.1 SQL背景知识"></a>1.1 SQL背景知识</h3><ul>
+<li>1946 年，世界上第一台电脑诞生，如今，借由这台电脑发展起来的互联网已经自成江湖。在这几十年里，无数的技术、产业在这片江湖里沉浮，有的方兴未艾，有的已经几幕兴衰。但在这片浩荡的波动里，有一门技术从未消失，甚至“老当益壮”，那就是 SQL。</li>
+<li>45 年前，也就是 1974 年，IBM 研究员发布了一篇揭开数据库技术的论文《SEQUEL：一门结构化的英语查询语言》，直到今天这门结构化的查询语言并没有太大的变化，相比于其他语言，<code>SQL 的半衰期可以说是非常长</code>了。</li>
+<li>不论是前端工程师，还是后端算法工程师，都  <strong>一  定会和数据</strong>   打交道，都需要了解如何又快又准确地提取自己想要的数据。更别提数据分析师了，他们的工作就是和数据打交道，整理不同的报告，以便指导业务决策</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/30/hello-world/" data-id="clfuxd03w000008cxctz67k87" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/" data-id="clfv6vswd001ue4cxb83fhhz8" data-title="第03章-基本的SELECT语句-atguigu-shk" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-char数据类型-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:20:23.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Java数据类型教程-Java-char数据类型"><a href="#Java数据类型教程-Java-char数据类型" class="headerlink" title="Java数据类型教程 - Java char数据类型"></a>Java数据类型教程 - Java char数据类型</h2><p>char数据类型是16位无符号Java基元数据类型。它表示Unicode字符。</p>
+<p>请注意，char是无符号数据类型。因此，char变量不能为负值。</p>
+<p>字符数据类型的范围为0到65535，这与Unicode集的范围相同。</p>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/" data-id="clfv6vsvj0002e4cx1m79erxy" data-title="char数据类型-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Collection与数据结构与List与泛型深入-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:20:03.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="集合概述体系、常用API"><a href="#集合概述体系、常用API" class="headerlink" title="集合概述体系、常用API"></a>集合概述体系、常用API</h2><h3 id="前提引入"><a href="#前提引入" class="headerlink" title="前提引入"></a>前提引入</h3><ul>
+<li>数组特点</li>
+</ul>
+<p>数组定义完成后，类型确定、长度固定。<br>适合元素的个数和类型确定的业务场景，不适合做需要增删数据操作。</p>
+<ul>
+<li>集合的特点</li>
+</ul>
+<p>集合的大小不固定，启动后可以动态变化，类型也可以选择不固定<br>集合非常适合做元素的增删操作</p>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/" data-id="clfv6vswo002ge4cx48xt3nxh" data-title="Collection与数据结构与List与泛型深入-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-JAVA-IO-下-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:19:44.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h3><p>缓冲流也称为高效流、或者高级流。之前学习的字节流可以称为原始流。<br>作用：缓冲流自带缓冲区、可以提高原始字节流、字符流读写数据的性能</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261838986.png"></p>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/" data-id="clfv6vsw70019e4cx5vu0c1d7" data-title="JAVA-IO-下-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Set与Collections与Map与集合嵌套-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:19:23.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Set系列集合的特点"><a href="#Set系列集合的特点" class="headerlink" title="Set系列集合的特点"></a><strong>Set</strong>系列集合的特点</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208270013369.png" alt="image-20220826184606933"></p>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/" data-id="clfv6vsw8001be4cx4u8cez5g" data-title="Set与Collections与Map与集合嵌套-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-static关键字与单例与代码段与继承-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:18:58.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/">static关键字与单例与代码段与继承-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><h3 id="static概述"><a href="#static概述" class="headerlink" title="static概述"></a>static概述</h3><p>static是静态的意思，可以修饰成员变量和成员方法，内部类和代码块；<br>static修饰成员变量表示该成员变量只在内存中只存储一份，可以被共享访问、修改。</p>
+<h3 id="成员变量可以分为两种"><a href="#成员变量可以分为两种" class="headerlink" title="成员变量可以分为两种"></a>成员变量可以分为两种</h3><ol>
+<li>实例成员变量：类内方法外，无static修饰，属于每一个对象</li>
+<li>静态成员变量：类内方法外，有static修饰，属于类（类的每一个对象）需要被共享的信息，可以被共享访问</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/static%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%8D%95%E4%BE%8B%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%AE%B5%E4%B8%8E%E7%BB%A7%E6%89%BF-heima-xl/" data-id="clfv6vsw8001he4cx06jjh4ji" data-title="static关键字与单例与代码段与继承-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-String与ArrayList的基本使用-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/String%E4%B8%8EArrayList%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:18:18.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/String%E4%B8%8EArrayList%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-heima-xl/">String与ArrayList的基本使用-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、String定义变量存储字符串"><a href="#一、String定义变量存储字符串" class="headerlink" title="一、String定义变量存储字符串"></a>一、String定义变量存储字符串</h1><ul>
+<li>API （Application Programming Interface,应用程序编程接口）</li>
+</ul>
+<ol>
+<li>Java写好的技术(功能代码)，咱们可以直接调用。</li>
+<li>Oracle 也为Java提供的这些功能代码提供了相应的 API文档(程序使用说明书) 。</li>
+</ol>
+<ul>
+<li>String类的概述</li>
+</ul>
+<ol>
+<li><p>java.lang.String 类代表字符串，<strong>String类定义的变量</strong> 可以用于指向  <strong>字符串对象</strong> ，同时String类提供了很多操作字符串的功能</p>
+</li>
+<li><p>Java 程序中的所有字符串文字（例如“abc”）都为此类的对象。<br>这种是存放于字符串常量池中;</p>
+<p>new String(“xx”)是存放于堆中的,产生了两个对象，一个在字符串常量池中，一个在堆中</p>
+</li>
+</ol>
+<ul>
+<li>一些特点</li>
+</ul>
+<ol>
+<li><p>String其实常被称为<strong>不可变字符串类型</strong>，它的对象在创建后不能被更改。String变量每次的修改其实都是产生并指向了新的字符串对象。</p>
+<p>原来的字符串对象 都是没有改变的，所以称不可变字符串</p>
+</li>
+<li><p>字符串常量池中的字符通过拼接(运算)，产生一个新的字符串，存放于堆中</p>
+<p>先创建StringBuilder实例用于拼接字符串，然后再把StringBuilder转换成字符串</p>
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/String%E4%B8%8EArrayList%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/String%E4%B8%8EArrayList%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-heima-xl/" data-id="clfv6vsw8001ee4cxa2ck5in4" data-title="String与ArrayList的基本使用-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-不可变集合与Stream流与异常-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88%E4%B8%8EStream%E6%B5%81%E4%B8%8E%E5%BC%82%E5%B8%B8-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:17:58.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88%E4%B8%8EStream%E6%B5%81%E4%B8%8E%E5%BC%82%E5%B8%B8-heima-xl/">不可变集合与Stream流与异常-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="不可变集合"><a href="#不可变集合" class="headerlink" title="不可变集合"></a>不可变集合</h2><ul>
+<li>概念</li>
+</ul>
+<p>不可变集合，就是不可被修改的集合。<br>集合的数据项在创建的时候提供，并且在整个生命周期中都不可改变。否则报错。</p>
+<ul>
+<li>作用</li>
+</ul>
+<p>如果某个数据不能被修改，把它防御性地拷贝到不可变集合中是个很好的实践。<br>或者当集合对象被不可信的库调用时，不可变形式是安全的</p>
+<ul>
+<li><p><strong>如何创建不可变集合？</strong></p>
+<p>在List、Set、Map接口中，都存在of方法，可以创建一个不可变的集合  【since 1.9】<br>这个集合不能添加，不能删除，不能修改。</p>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88%E4%B8%8EStream%E6%B5%81%E4%B8%8E%E5%BC%82%E5%B8%B8-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88%E4%B8%8EStream%E6%B5%81%E4%B8%8E%E5%BC%82%E5%B8%B8-heima-xl/" data-id="clfv6vswq002le4cx3gxf94qu" data-title="不可变集合与Stream流与异常-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-常用API与Lambda表达式与常见算法-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E5%B8%B8%E7%94%A8API%E4%B8%8ELambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:17:41.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/%E5%B8%B8%E7%94%A8API%E4%B8%8ELambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95-heima-xl/">常用API与Lambda表达式与常见算法-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、处理时间"><a href="#一、处理时间" class="headerlink" title="一、处理时间"></a>一、处理时间</h1><h3 id="1-0-Date概念"><a href="#1-0-Date概念" class="headerlink" title="1.0 Date概念"></a>1.0 Date概念</h3><p>Date类代表当前所在系统的日期时间信息</p>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/%E5%B8%B8%E7%94%A8API%E4%B8%8ELambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E5%B8%B8%E7%94%A8API%E4%B8%8ELambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95-heima-xl/" data-id="clfv6vswr002xe4cx7kqv17kg" data-title="常用API与Lambda表达式与常见算法-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-单元测试与反射与注解与动态代理-heima-xl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-heima-xl/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:17:21.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/03/30/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-heima-xl/">单元测试与反射与注解与动态代理-heima-xl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h3 id="1-0-单元测试概述"><a href="#1-0-单元测试概述" class="headerlink" title="1.0 单元测试概述"></a>1.0 单元测试概述</h3><ul>
+<li>概念</li>
+</ul>
+<p>​		单元测试就是针对最小的功能单元编写测试代码，Java程序最小的功能单元是方法，因此，单元测试就是针对Java方法的测试，进而检查方法的正确性</p>
+<ul>
+<li><strong>目前测试方法是怎么进行的，存在什么问题</strong><ul>
+<li>只有一个main方法，如果一个方法的测试失败了，其他方法测试会受到影响。</li>
+<li>无法得到测试的结果报告，需要程序员自己去观察测试是否成功。</li>
+<li>无法实现自动化测试。</li>
+</ul>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2023/03/30/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-heima-xl/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-heima-xl/" data-id="clfv6vswq002oe4cxh25ediy4" data-title="单元测试与反射与注解与动态代理-heima-xl" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
     </footer>
   </div>
   
@@ -124,17 +636,43 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -153,7 +691,23 @@
       <ul>
         
           <li>
-            <a href="/2023/03/30/hello-world/">Hello World</a>
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
           </li>
         
       </ul>

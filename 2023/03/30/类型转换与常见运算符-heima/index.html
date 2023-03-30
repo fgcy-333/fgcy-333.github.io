@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>类型转换与常见运算符-heima | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、类型转换1.0 自动类型转换类型范围小的变量，可以直接赋值给类型范围大的变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类型转换与常见运算符-heima">
+<meta property="og:url" content="http://example.com/2023/03/30/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%8E%E5%B8%B8%E8%A7%81%E8%BF%90%E7%AE%97%E7%AC%A6-heima/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、类型转换1.0 自动类型转换类型范围小的变量，可以直接赋值给类型范围大的变量">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-01-43.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225336185.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225314235.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-41-14.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-28_21-50-48.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-03-58.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-05-26.png">
+<meta property="article:published_time" content="2023-03-30T09:54:53.000Z">
+<meta property="article:modified_time" content="2023-03-30T12:54:18.724Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础-heima">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-类型转换与常见运算符-heima" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%8E%E5%B8%B8%E8%A7%81%E8%BF%90%E7%AE%97%E7%AC%A6-heima/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T09:54:53.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      类型转换与常见运算符-heima
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h2><h3 id="1-0-自动类型转换"><a href="#1-0-自动类型转换" class="headerlink" title="1.0 自动类型转换"></a>1.0 自动类型转换</h3><p>类型范围小的变量，可以直接赋值给类型范围大的变量</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_14-55-27.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-01-43.png"></p>
+<hr>
+<span id="more"></span>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225336185.png" alt="image-20220824225336185"></p>
+<hr>
+<h3 id="2-0-自动类型转换运算"><a href="#2-0-自动类型转换运算" class="headerlink" title="2.0 自动类型转换运算"></a>2.0 自动类型转换运算</h3><ol>
+<li>在表达式中，小范围类型的变量会自动转换成当前较大范围的类型再运算。</li>
+<li>表达式的最终结果类型由表达式中的最高类型决定。</li>
+<li>在表达式中，byte、short、char 是直接转换成int类型参与运算的</li>
+<li><strong>字面量</strong>是整数且没有后缀L、l的当成是int来运算</li>
+<li><strong>字面量</strong>是小数且没有F、f作为后缀的当成是double运算</li>
+</ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220824225314235.png" alt="image-20220824225314235"></p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     <span class="type">byte</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">     <span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">90</span>;</span><br><span class="line"><span class="comment">//byte short char 其中一个或多个在进行运算时自动转成int，再运算</span></span><br><span class="line">     <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> a + b; </span><br><span class="line">     System.out.println(i);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-0-强制类型转换"><a href="#3-0-强制类型转换" class="headerlink" title="3.0 强制类型转换"></a>3.0 强制类型转换</h3><p>可以 强行将类型范围大的变量、数据赋值给类型范围小的变量</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-27_15-41-14.png"></p>
+<hr>
+<p>强制类型转换可能造成数据(丢失)溢出；<br>浮点型强转成整型，直接丢掉小数部分，保留整数部分返回</p>
+<h2 id="二、toString、valueOf、-String-的区别"><a href="#二、toString、valueOf、-String-的区别" class="headerlink" title="二、toString、valueOf、(String)的区别"></a>二、toString、valueOf、(String)的区别</h2><ul>
+<li>代码体现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> api_object;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: StringDemo1 &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * Description: &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * date: 2022/3/21 16:40&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> fgcy&lt;br /&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a1</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">a2</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">byte</span> <span class="variable">b1</span> <span class="operator">=</span> <span class="number">12</span>;</span><br><span class="line">        <span class="type">Byte</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="number">12</span>;</span><br><span class="line">        <span class="type">short</span> <span class="variable">ss1</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">        <span class="type">Short</span> <span class="variable">ss2</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">        <span class="type">Long</span> <span class="variable">l1</span> <span class="operator">=</span> <span class="number">888L</span>;</span><br><span class="line">        <span class="type">long</span> <span class="variable">l2</span> <span class="operator">=</span> <span class="number">888L</span>;</span><br><span class="line">        <span class="type">char</span> <span class="variable">c1</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="type">Character</span> <span class="variable">c2</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="type">Float</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="number">1.29f</span>;</span><br><span class="line">        <span class="type">float</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="number">1.29f</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> <span class="number">9.9</span>;</span><br><span class="line">        <span class="type">Double</span> <span class="variable">d2</span> <span class="operator">=</span> <span class="number">9.8</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//编译报错，基本数据类型及其包装类不能强转为String类</span></span><br><span class="line">        <span class="comment">//同样的的String类也不能强转为基本数据类型及其包装类</span></span><br><span class="line"><span class="comment">//        String s1 = (String) a1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) a2;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) b1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) b2;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) ss1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) ss2;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) l1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) l2;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) c1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) c2;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) f1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String)f2;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) d1;</span></span><br><span class="line"><span class="comment">//        String s1 = (String) d2;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//基本数据类型没有toString方法</span></span><br><span class="line"><span class="comment">//      a1.toString();</span></span><br><span class="line">        System.out.println(a2.toString());<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//null.toString()会报错</span></span><br><span class="line">        a2 = <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">//println()底层使用了String.valueOf()方法，源码如下：</span></span><br><span class="line">        	<span class="comment">//return (obj == null) ? &quot;null&quot; : obj.toString();</span></span><br><span class="line">        System.out.println(a2);<span class="comment">//null</span></span><br><span class="line"><span class="comment">//      System.out.println(a2.toString());</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//基本数据类型及其包装类转String类型推荐做法是String.valueOf()</span></span><br><span class="line">        <span class="comment">//如果是null会返回字符串null</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(a1));<span class="comment">//10</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(a2));<span class="comment">//null</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(b1));<span class="comment">//12</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(b2));<span class="comment">//12</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(c2));<span class="comment">//a</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(c1));<span class="comment">//a</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(ss1));<span class="comment">//2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过String.valueOf(x)，使得基本数据类型及其包装类变为String：&quot;</span> + String.valueOf(ss2));<span class="comment">//2</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过拼接字符串的方法，将基本数据类型及其包装类变为String</span></span><br><span class="line">        <span class="comment">//基本数据类型转String除了拼接空字符就是String.valueOf(x)</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + b1 + <span class="string">&quot;&quot;</span>);<span class="comment">//12</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + b2 + <span class="string">&quot;&quot;</span>);<span class="comment">//12</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + ss2 + <span class="string">&quot;&quot;</span>);<span class="comment">//2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;通过拼接空字符串将基本数据类型及其包装类变为String：&quot;</span> + ss1 + <span class="string">&quot;&quot;</span>);<span class="comment">//2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//包装类型与String 无论谁强转转谁 都报错，编译就出错</span></span><br><span class="line"><span class="comment">//        Integer integer = (Integer) &quot;aaa&quot;;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//用Object类型的变量(接基本数据类型的字面值)，强制转换为String(向下转型)，编译不报错</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> <span class="number">12</span>;</span><br><span class="line">        <span class="comment">//用Object类型的变量接包装类(向上转型)，强制转换为String(向下转型)，编译不报错</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">object</span> <span class="operator">=</span> a2;</span><br><span class="line">        <span class="comment">//运行的时候就报错，类型转换异常</span></span><br><span class="line">        <span class="comment">//java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String</span></span><br><span class="line"><span class="comment">//      String rs = (String) o;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//这样是可以的 不同类型才会ClassCastException</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&quot;111&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">a1</span> <span class="operator">=</span> (String) a;</span><br><span class="line">        </span><br><span class="line">        <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="string">&quot;a&quot;</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">r</span> <span class="operator">=</span> obj <span class="keyword">instanceof</span> Integer ? (Integer) obj : -<span class="number">1</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;String类与包装类强制类型转换：&quot;</span> + r);<span class="comment">//-1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">=================================================</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="literal">null</span></span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="number">10</span></span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="literal">null</span></span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="number">12</span></span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="number">12</span></span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a</span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：a</span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="number">2</span></span><br><span class="line">通过String.valueOf(x)，使得基本数据类型及其包装类变为String：<span class="number">2</span></span><br><span class="line">通过拼接空字符串将基本数据类型及其包装类变为String：<span class="number">12</span></span><br><span class="line">通过拼接空字符串将基本数据类型及其包装类变为String：<span class="number">12</span></span><br><span class="line">通过拼接空字符串将基本数据类型及其包装类变为String：<span class="number">2</span></span><br><span class="line">通过拼接空字符串将基本数据类型及其包装类变为String：<span class="number">2</span></span><br><span class="line">String类与包装类强制类型转换：-<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>总结</li>
+</ul>
+<ol>
+<li><p>toString()，可能会抛空指针异常</p>
+<p>在这种使用方法中，因为<code>java.lang.Object类</code>里已有<code>public方法toString()</code>，所以java对象都可以调用此方法。</p>
+<p>但在使用时要注意，必须保证object不是null值，否则将抛出NullPointerException异常。</p>
+<p>采用这种方法时，通常<strong>派生类会覆盖</strong>Object里的toString()方法。</p>
+</li>
+<li><p>String.valueOf()，推荐使用，因为当对象为null时，返回字符串“null”</p>
+<p><code>String.valueOf()方法</code>是推荐使用的，因为<strong>它不会出现空指针异常</strong>，而且是静态的方法，直接通过String调用即可，只是有一点需要注意，就是上面提到的，如果为对象为null，<code>String.valueOf() </code>返回结果是 <strong>字符串“null”</strong>。而不是null。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">valueOf</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (obj == <span class="literal">null</span>) ? <span class="string">&quot;null&quot;</span> : obj.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>(String)强转，不推荐使用</p>
+<p>（String）是标准的类型转换，将Object类型转为String类型，使用(String)强转时，最好使用instanceof做一个类型检查，以判断是否可以进行强转，否则容易抛出<code> ClassCastException异常</code>。需要注意的是编写的时候，编译器并不会提示有语法错误，所以这个方法要谨慎的使用</p>
+</li>
+<li><p><strong>基本数据类型 及其包装类</strong> 与  <strong>String</strong> 无论谁【强转】转谁 都报错，编译就出错</p>
+</li>
+<li><p>基本数据类型没有toString方法，对象独有</p>
+</li>
+<li><p><code>println()底层</code> 使用了<code>String.valueOf()方法</code>，源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (obj == <span class="literal">null</span>) ? <span class="string">&quot;null&quot;</span> : obj.toString();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三、常见运算符"><a href="#三、常见运算符" class="headerlink" title="三、常见运算符"></a>三、常见运算符</h2><h3 id="1-0-算数运算符"><a href="#1-0-算数运算符" class="headerlink" title="1.0 算数运算符"></a>1.0 算数运算符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*  /  %</span><br><span class="line">+  -</span><br><span class="line">10/3=3  10*1.0/3=3.333335</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果两个整数做除法，其结果一定是整数，因为最高类型是整数</strong></p>
+<ul>
+<li>数值拆分</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBasic</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">score</span> <span class="operator">=</span> <span class="number">123</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;个位：&quot;</span> + score % <span class="number">10</span> + <span class="string">&quot; 十位:&quot;</span> + score / <span class="number">10</span> % <span class="number">10</span> + <span class="string">&quot; 百位&quot;</span> + score / <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>取模10可以得到最尾端的数字</strong></p>
+<h3 id="2-0-做连接符"><a href="#2-0-做连接符" class="headerlink" title="2.0 + 做连接符"></a>2.0 <strong>+</strong> 做连接符</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span> ;</span><br><span class="line">System.out.println(<span class="string">&quot;abc&quot;</span> + <span class="string">&#x27;a&#x27;</span>); <span class="comment">// abca   </span></span><br><span class="line">System.out.println(<span class="string">&quot;abc&quot;</span> + a);  <span class="comment">// abc5</span></span><br><span class="line">System.out.println(<span class="number">5</span> + a);   <span class="comment">// 10</span></span><br><span class="line">System.out.println(<span class="string">&quot;abc&quot;</span> + <span class="number">5</span> + <span class="string">&#x27;a&#x27;</span>);<span class="comment">//abc5a</span></span><br><span class="line">System.out.println(<span class="number">15</span> + <span class="string">&quot;abc&quot;</span> + <span class="number">15</span>);<span class="comment">//15abc15</span></span><br><span class="line">System.out.println(a + <span class="string">&#x27;a’);//102</span></span><br><span class="line"><span class="string">System.out.println(a + &quot;&quot; +&#x27;</span>a’);<span class="comment">//5a</span></span><br><span class="line">System.out.println(a + <span class="string">&#x27;a&#x27;</span>+<span class="string">&quot; itheima &quot;</span>);<span class="comment">//102itheima小写字符a是97</span></span><br><span class="line">System.out.println(<span class="string">&quot;itheima&quot;</span>+ a + <span class="string">&#x27;a’);//itheima5a</span></span><br><span class="line"><span class="string">System.out.println(&quot;itheima&quot;+ ( a + &#x27;</span>a<span class="string">&#x27; ));//itheima102</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>能算则算，不能算就在一起</strong></p>
+<h3 id="3-0-自增自减运算符"><a href="#3-0-自增自减运算符" class="headerlink" title="3.0 自增自减运算符"></a>3.0 自增自减运算符</h3><ul>
+<li>概念</li>
+</ul>
+<ol>
+<li>++ 、– 只能操作变量，不能操作字面量的</li>
+<li>放在变量的前面，先对变量进行+1、-1，再拿变量的值进行运算。 </li>
+<li>放在变量的后面，先拿变量的值进行运算，再对变量的值进行+1、-1</li>
+</ol>
+<ul>
+<li>代码体现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBasic1</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">rs3</span> <span class="operator">=</span> c++ + ++c - --d - ++d + <span class="number">1</span> + c--;</span><br><span class="line">       System.out.println(rs3);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">26</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-0-赋值运算符"><a href="#4-0-赋值运算符" class="headerlink" title="4.0 赋值运算符"></a>4.0 赋值运算符</h3><ul>
+<li>基本赋值运算符</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-02-28_21-50-48.png"></p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBasic2</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">       c = c + d;</span><br><span class="line">       c += d;<span class="comment">//等价于 c = (int)(c + d)</span></span><br><span class="line"></span><br><span class="line">       <span class="type">byte</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">30</span>;</span><br><span class="line">       <span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">120</span>;</span><br><span class="line">       a += b;<span class="comment">//等价于  a = (byte)(a + b)</span></span><br><span class="line">       System.out.println(a);<span class="comment">//精度丢失</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">15</span><br><span class="line">-106</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-0-关系运算符"><a href="#5-0-关系运算符" class="headerlink" title="5.0 关系运算符"></a>5.0 关系运算符</h3><ul>
+<li>概念</li>
+</ul>
+<p>​		是对数据进行条件判断的符号，最终会返回一个比较的布尔结果（false,true）</p>
+<ul>
+<li>形式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">== &lt; &lt;= &gt;= !=</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-0逻辑运算符"><a href="#6-0逻辑运算符" class="headerlink" title="6.0逻辑运算符"></a>6.0<strong>逻辑运算符</strong></h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-03-58.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-01_08-05-26.png"></p>
+<hr>
+<ul>
+<li>代码体现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBasic3</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;短路与：&quot;</span> + (c &gt;= <span class="number">99</span> &amp;&amp; d++ &lt; <span class="number">100</span>) + <span class="string">&quot; d=&quot;</span> + d);</span><br><span class="line">    System.out.println(<span class="string">&quot;逻辑与：&quot;</span> + (c &gt;= <span class="number">99</span> &amp; d++ &lt; <span class="number">100</span>) + <span class="string">&quot; d=&quot;</span> + d);</span><br><span class="line">    System.out.println(<span class="string">&quot;----------------------------------------&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;短路或：&quot;</span> + (c &lt;= <span class="number">99</span> || d++ &lt; <span class="number">100</span>) + <span class="string">&quot; d=&quot;</span> + d);</span><br><span class="line">    System.out.println(<span class="string">&quot;逻辑或：&quot;</span> + (c &gt;= <span class="number">99</span> | d++ &lt; <span class="number">100</span>) + <span class="string">&quot; d=&quot;</span> + d);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">短路与：false d=5</span><br><span class="line">逻辑与：false d=6</span><br><span class="line">----------------------------------------</span><br><span class="line">短路或：true d=6</span><br><span class="line">逻辑或：true d=7</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<ol>
+<li>逻辑与：同真为真</li>
+<li>逻辑异或：不同为真</li>
+<li>逻辑或：同假为假</li>
+<li>短路性能更好</li>
+</ol>
+<h3 id="7-0三元运算符（嵌套）"><a href="#7-0三元运算符（嵌套）" class="headerlink" title="7.0三元运算符（嵌套）"></a>7.0三元运算符（嵌套）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBasic4</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">120</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">78</span>;</span><br><span class="line">       System.out.println(c &gt; d ? c &gt; b ? c : b : d &gt; b ? d : b);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">120</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-0运算符优先级"><a href="#8-0运算符优先级" class="headerlink" title="8.0运算符优先级"></a>8.0运算符优先级</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">()</span><br><span class="line">! - ++ --</span><br><span class="line">* / %</span><br><span class="line">+ -</span><br><span class="line">&lt;&lt; &gt;&gt; &gt;&gt;&gt;</span><br><span class="line">&lt; &lt;= &gt; &gt;= instanceof</span><br><span class="line">== !=</span><br><span class="line">&amp; </span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">&amp;&amp;</span><br><span class="line">||</span><br><span class="line">?:</span><br><span class="line">= += =+ *= /= %= &amp;=</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算数运算符 》 位移运算符 》 关系运算符 》 逻辑运算符 》 三元运算符 》 赋值运算符</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%8E%E5%B8%B8%E8%A7%81%E8%BF%90%E7%AE%97%E7%AC%A6-heima/" data-id="clfv6vsvu000pe4cx9nds1u3h" data-title="类型转换与常见运算符-heima" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/30/File%E4%B8%8E%E9%80%92%E5%BD%92%E4%B8%8EIO-heima/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          File与递归与IO-heima
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/30/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-heima/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java数据结构与算法-heima</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

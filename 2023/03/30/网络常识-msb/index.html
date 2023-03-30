@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>网络常识-msb | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="TCP 与IP与Java中的什么东西相关？1、高并发，负载均衡 2、集群 3、IO模型（文件IO,网络IO） ​	 网络IO本质是内核给程序暴露API，源于C写的socket 4、分布式，微服务，服务网格，大数据，云计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络常识-msb">
+<meta property="og:url" content="http://example.com/2023/03/30/%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86-msb/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="TCP 与IP与Java中的什么东西相关？1、高并发，负载均衡 2、集群 3、IO模型（文件IO,网络IO） ​	 网络IO本质是内核给程序暴露API，源于C写的socket 4、分布式，微服务，服务网格，大数据，云计算">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052341353.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060008048.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052227560.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052220174.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209062310182.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052346523.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052350487.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082356485.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100014837.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100017067.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100027476.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100030142.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100031311.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100035383.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100036856.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100038959.png">
+<meta property="og:image" content="c:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910003832228.png">
+<meta property="og:image" content="c:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910004124571.png">
+<meta property="og:image" content="c:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910004436180.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052350487.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080007091.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080011762.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080014174.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101035904.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082227145.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082241839.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082253916.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060012440.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082301677.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082316691.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101118306.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101659652.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101639658.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101641373.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101656265.png">
+<meta property="og:image" content="c:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910170424409.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101708721.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101725449.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101743482.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101751514.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101752396.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101753662.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101800627.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101803245.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101811085.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101819311.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101819309.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101820267.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101834783.png">
+<meta property="article:published_time" content="2023-03-30T09:47:18.000Z">
+<meta property="article:modified_time" content="2023-03-30T09:48:05.309Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="马士兵">
+<meta property="article:tag" content="网络基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052341353.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-网络常识-msb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86-msb/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T09:47:18.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      网络常识-msb
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="TCP-与IP与Java中的什么东西相关？"><a href="#TCP-与IP与Java中的什么东西相关？" class="headerlink" title="TCP 与IP与Java中的什么东西相关？"></a>TCP 与IP与Java中的什么东西相关？</h2><p>1、高并发，负载均衡</p>
+<p>2、集群</p>
+<p>3、IO模型（文件IO,网络IO）</p>
+<p>​	 网络IO本质是内核给程序暴露API，源于C写的socket</p>
+<p>4、分布式，微服务，服务网格，大数据，云计算</p>
+<span id="more"></span>
+
+
+
+<h2 id="OSI-七层模型-【理论-尚未实现】"><a href="#OSI-七层模型-【理论-尚未实现】" class="headerlink" title="OSI 七层模型 【理论 尚未实现】"></a>OSI 七层模型 【理论 尚未实现】</h2><p>涉及软件工程学–&gt;层与层之间可以解耦</p>
+<p>七层模型：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052341353.png" alt="image-20220905234122294"></p>
+<hr>
+<p>应用层 ：协议的使用和逻辑的开发。</p>
+<p>表示层</p>
+<p>会话层</p>
+<p>传输控制层：控制数据怎么传输。</p>
+<p>网络层：网络中怎么寻址。</p>
+<p>数据链路层：数据在链路中怎么传递。</p>
+<p>物理层：以什么特征将高低电频发送出去。</p>
+<h2 id="TCP-x2F-IP协议"><a href="#TCP-x2F-IP协议" class="headerlink" title="TCP&#x2F;IP协议"></a>TCP&#x2F;IP协议</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060008048.png" alt="image-20220906000852938"></p>
+<hr>
+<blockquote>
+<p>OSI七层模型只是参考，真正使用的还是TCP&#x2F;IP协议</p>
+</blockquote>
+<h2 id="什么是长连接？"><a href="#什么是长连接？" class="headerlink" title="什么是长连接？"></a>什么是长连接？</h2><ul>
+<li><p>所谓的<code>Http/1.1</code>(长链接)，就是一个TCP连接中可以有多个请求。</p>
+<p>那么相对的短链接就是一个TCP连接中只能有一个请求。该请求结束后，就会断开TCP连接。</p>
+<p>这个长短的概念是在应用层实现的</p>
+</li>
+<li><p>所谓的<code>Http/1.1</code>就是在服务器端与客户端建立好TCP连接后，用一个死循环不断接收IO消息。一次IO（一个请求）就会调用一个线程处理。</p>
+<p>短连接时，服务器端在接收到一次IO（请求）后，就断开连接。其中可以使用线程池实现线程复用。</p>
+</li>
+<li><p>长连接是处于应用层的 <code>keep alive</code></p>
+</li>
+<li><p>HTTP&#x2F;1.0是短链接。</p>
+</li>
+</ul>
+<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><strong>三次握手流程图</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052227560.png" alt="image-20220905222701962"></p>
+<hr>
+<p>应用层不能发送消息，需要通过调用内核完成该功能。</p>
+<p>客户端想要建立一个连接，它会调用传输层。此时，传输层会创建一个syn的数据包，通过下层传输出去给服务器。</p>
+<p>服务器收到这个包后，就会生成一个 <code>syn+ack</code> 的包给客户端。此时，客户端可以确认C–&gt;S的通信是正常的。</p>
+<p>客户端收到包后，回一个<code>ack</code> 的包，此时服务器端确认S—&gt;C的通信是正常的。</p>
+<blockquote>
+<p>如果哪一步发送包后，没有收到包，就会有重试机制。直到收到确认包。所以连接是可靠的。</p>
+</blockquote>
+<blockquote>
+<p>三次握手是四层内核完成的，数据传输是端到端的应用层完成的。</p>
+</blockquote>
+<h2 id="什么是连接？"><a href="#什么是连接？" class="headerlink" title="什么是连接？"></a>什么是连接？</h2><p>通过三次握手建立所谓的连接</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052220174.png" alt="image-20220905222055922"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209062310182.png" alt="image-20220906231046326"></p>
+<hr>
+<p>三次握手后，在各自的内存中开辟一块资源。</p>
+<p>只要确保对方发送队列中的包会到达自己接受队列中，且自己发送队列中的包会到达对方接受队列中。</p>
+<p><strong>使用Linux的小程序，对其他服务器进行连接</strong></p>
+<p>1、这一步只是建立连接。没有输出任何东西。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052346523.png" alt="image-20220905234556135"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc：是一个小程序，与其他机器建立连接。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>第五条  <strong>条目</strong>   表示这个nc的程序有在使用。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052350487.png" alt="image-20220905234632133"></p>
+<hr>
+<p><code>192.168.150.11:36008 &lt;--------&gt;  220.181.38.150:80</code> 这个东西可以理解为一次连接。</p>
+<p>nc是一个程序，<code>4714</code>是它的进程id，<code>ESTABLISHED</code>表示是一种连通的状态。</p>
+<p><code>192.168.150.11:36008</code>是本地的IP地址和一个随机端口</p>
+<p><code>220.181.38.150:80</code>是百度的ip和端口</p>
+<p><strong>另一种验证方式：</strong></p>
+<blockquote>
+<p>exec   8&lt;&gt;    &#x2F;dev&#x2F;tcp&#x2F;<a target="_blank" rel="noopener" href="http://www.baidu.com/80">www.baidu.com/80</a></p>
+</blockquote>
+<p>与百度建立TCP连接</p>
+<p><code>&lt;</code>:输入流</p>
+<p><code>&gt;</code> ：输出流</p>
+<p><code>8</code>: 指向socket的文件描述符（file descriptor）,通过这个8可以操作接收队列和发送队列</p>
+<blockquote>
+<p>echo	-e	“GET	&#x2F;	HTTP&#x2F;1.1\n” &gt;&amp; 8</p>
+</blockquote>
+<p><code>-e</code> ：将<code>\n</code>转为换行符</p>
+<p><code>GET	/	HTTP/1.1\n</code>：请求行 【请求方式 	资源URI	http版本号】</p>
+<p><code>&gt;</code> ：重定向</p>
+<p><code>1</code>: 标准输出</p>
+<blockquote>
+<p>cat	0&lt;&amp;	8</p>
+</blockquote>
+<p><code>0</code>: 标准输入</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082356485.png" alt="image-20220908235621004"></p>
+<hr>
+<p>解析文件描述符</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100014837.png" alt="image-20220910001406855"></p>
+<hr>
+<blockquote>
+<p>exec</p>
+</blockquote>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100017067.png" alt="image-20220910001707226"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我们一般写的Linux指令，都是交由外壳接收，然后调用内核执行的。</span><br><span class="line">这个外壳，会长时间处于等待系统输入的状态。</span><br><span class="line">使用exec指令，就是用另一个程序(指令)，替换掉外壳(的功能)。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100027476.png" alt="image-20220910002712920"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls 命令会替换掉外壳程序。</span><br><span class="line">所以会显示文件，然后退出程序</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>不给出替换命令，啥事也没有</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100030142.png" alt="image-20220910003004603"></p>
+<hr>
+<p>了解一个Linux的知识点：<strong>重定向</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100031311.png" alt="image-20220910003117523"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本来使用 ls命令 会在控制台输出文件信息</span><br><span class="line">但是用 ls &gt; aaa.txt</span><br><span class="line">就会重定向到aaa.txt文件中</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>任何一个程序都有输入输出流：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100035383.png" alt="image-20220910003542832"></p>
+<hr>
+<p>该目录下有很多数字命名的文件，代表进程：【Linux中万物皆文件】</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100036856.png" alt="image-20220910003636137"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209100038959.png" alt="image-20220910003803367"></p>
+<hr>
+<p><img src="C:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910003832228.png" alt="image-20220910003832228"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fd是文件描述符的意思</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">0 代表输入流</span><br><span class="line">1 代表输出流</span><br><span class="line">2 代表报错流</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p><img src="C:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910004124571.png" alt="image-20220910004124571"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls命令会将文件信息输出到控制台中</span><br><span class="line">ls 也有 输入流 输出流 报错流</span><br><span class="line">将输出流重定向到一个文件</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<hr>
+<p><img src="C:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910004436180.png" alt="image-20220910004436180"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">echo $$   输出当前解释程序</span><br><span class="line">所以 exec &lt;&gt;8 /dev/tcp/www.baidu.com/80</span><br><span class="line">该命令为 创建一个tcp连接，用数字8代表其输入输出流</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo -e &quot;GET / HTTP/1.1\n&quot; 1&gt;&amp; 8</span><br><span class="line">echo是一个程序也有输入输出报错流，将其的输出流重定向到一个文件描述符，需要多加一个 &amp;</span><br><span class="line">若是给到一个文件则不用&amp;</span><br><span class="line"></span><br><span class="line">cat 0&lt;&amp; 8</span><br><span class="line">cat是一个程序，将文件描述符中的输入流读取到 cat程序的输入流中，即输出到控制台中</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="这里介绍一些程序员接触到的概念"><a href="#这里介绍一些程序员接触到的概念" class="headerlink" title="这里介绍一些程序员接触到的概念:"></a><strong>这里介绍一些程序员接触到的概念:</strong></h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209052350487.png" alt="image-20220905234632133"></p>
+<hr>
+<p>一行记录代表一个<code>socket</code>，一个socket由一个进程为其服务。</p>
+<p>当 一个进程为多个socket服务时，这种情况叫做 多路复用器 EPOLL </p>
+<p><code>socket</code> (套接字)，对资源接收队列和发送队列的封装。有四个部分组成：源ip，端口 &lt;—–&gt;目标ip，端口  【绝对唯一的连接】</p>
+<p><code>端口范围</code>：0~65535</p>
+<p>如下图：（理论上客户端可以与服务器建立多少个连接）</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080007091.png" alt="image-20220908000751529"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">65535</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>如下图：（理论上客户端可以与服务器建立多少个连接）</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080011762.png" alt="image-20220908001126493"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">65535 * 65535</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>经行单机压测时，怎么利用一条客户端对一台服务器产生12万级别的连接。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209080014174.png" alt="image-20220908001451745"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端开两个网卡，理论上每个ip + 端口有65536种组合。两个网卡就是12万。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101035904.png" alt="image-20220910103459217"></p>
+<hr>
+<h2 id="四次分手"><a href="#四次分手" class="headerlink" title="四次分手"></a>四次分手</h2><p><code>分手</code> ：就是断开连接【同时断开，不可以当方面进行】</p>
+<p>四次分手流程图：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082227145.png" alt="image-20220908222721565"></p>
+<hr>
+<p><code>fin + ack </code> : 这个时候还没有断开连接，它只代表收到的fin这个包，保证可靠性。此时会将没有响应的数据响应回去，将没有释放的资源释放掉，做收尾工作。</p>
+<p>问题：</p>
+<p>假设内核建立连接后，没有进行数据传输（包括数据包），那么当互联网断开的时候，它们可以感知到嘛？</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082241839.png" alt="image-20220908224049985"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">答案是不能的。</span><br><span class="line">所以内核会有一个心跳机制，以确保是有在连接的。检查连接的健康。</span><br><span class="line">应用上的心跳机制，是确保应用程序的健康.</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>在Linux下输入 命令<code>curl www.baidu.com:80</code></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082253916.png" alt="image-20220908225300656"></p>
+<hr>
+<p>这条命令包括:	建立连接,接收数据,关闭连接,退出程序.</p>
+<h2 id="Linux抓包-验证三次握手，四次分手"><a href="#Linux抓包-验证三次握手，四次分手" class="headerlink" title="Linux抓包 验证三次握手，四次分手"></a>Linux抓包 验证三次握手，四次分手</h2><blockquote>
+<p>tcpdump -nn -i eth0 port 80</p>
+</blockquote>
+<p>抓取所有 eth0 网卡的80端口的包，ip与端口号用数值的形式显示。</p>
+<p>建立连接后，还需要使用某种协议才可以进行通信。这里使用的是HTTP协议.</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209060012440.png" alt="image-20220906001159563"></p>
+<hr>
+<p>请求行,请求头,请求空行,请求体</p>
+<p>请求行格式:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求方式 请求的URI HTTP协议 </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>抓到的包：</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082301677.png" alt="image-20220908230112485"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209082316691.png" alt="image-20220908231653330"></p>
+<hr>
+<p>上图包含了完整的三次握手,数据传输,四次分手的过程 如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">---------------------------三次握手------------------------------</span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[S]的数据包，其实是syn数据包 长度为零</span><br><span class="line"></span><br><span class="line">182.61.200.7.80 向  192.168.150.11.58254  发送一个[S.]的数据包，其实是syn + ack 数据包 长度为零</span><br><span class="line"></span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[.]的数据包，其实是ack数据包 长度为零</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-----------------------------数据传输-----------------------------------</span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[P.]的数据包，其实是http协议规定的请求格式数据 长度168</span><br><span class="line">182.61.200.7.80 向  192.168.150.11.58254 发送一个[.]的数据包，其实是ack数据包 长度为零【为保证可靠性，收到就会ack】</span><br><span class="line">182.61.200.7.80 向  192.168.150.11.58254 发送一个[P.]的数据包，其实是http协议规定的响应格式数据 长度1400 【一个包最大可穿1400字节】</span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[.]的数据包，其实是ack数据包 长度为零【为保证可靠性，收到就会ack】</span><br><span class="line">182.61.200.7.80 向  192.168.150.11.58254 发送一个[P.]的数据包，其实是http协议规定的响应格式数据【接上一个会的包】 长度1381【一个包最大可穿1400字节】</span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[.]的数据包，其实是ack数据包 长度为零【为保证可靠性，收到就会ack】</span><br><span class="line"></span><br><span class="line">-----------------------------四次分手-----------------------------------</span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[F.]的数据包，其实是fin 数据包 长度为零</span><br><span class="line">182.61.200.7.80 向  192.168.150.11.58254 发送一个[.]的数据包,其实是fin + ack 数据包 长度为零</span><br><span class="line">182.61.200.7.80 向  192.168.150.11.58254 发送一个[FP.]的数据包,其实是fin 数据包 长度为零</span><br><span class="line">192.168.150.11.58254  向  182.61.200.7.80 发送一个[.]的数据包，其实是ack数据包 长度为零</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：这里的[P]代表立刻处理该程序包的意思</p>
+<p>三次握手 数据传输 四次分手 是一个不可分割的过程</p>
+</blockquote>
+<p>高并发场景下需要使用到负载均衡。</p>
+<p>LVS基于传输控制层的负载均衡器</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101118306.png" alt="image-20220910111828547"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">负载均衡要基于协议约束，不可以破环http协议的三次握手 数据传输 四次分手的过程。</span><br><span class="line">如上图：就不会开辟资源，那么也就没有所谓的连接了。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DDos攻击"><a href="#DDos攻击" class="headerlink" title="DDos攻击"></a>DDos攻击</h2><p>使用相当数量的机器向服务器发送syn数据包，但收到syn+ack后，就是不会ack的数据包。此时，服务器就会计时等待客户端发送ack的包，如果超过这个时间还没有回，就不会开辟资源。计时等待是需要消耗资源的，当数量过多时就会让服务器内存溢出。</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101659652.png" alt="image-20220910165941482"></p>
+<hr>
+<p>Linux配置网卡的ip信息：</p>
+<blockquote>
+<p>vim  &#x2F;etc&#x2F;sysconfig&#x2F;network-srcipt&#x2F;ifcfg-eth0</p>
+</blockquote>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101639658.png" alt="image-20220910163938470"></p>
+<hr>
+<p>配置信息如下：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101641373.png" alt="image-20220910164103118"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IP地址 192.168.150.12 是在网络号为192.168.150.0的网段中的第12号机器</span><br><span class="line">掩码网关</span><br><span class="line">dns服务器地址</span><br></pre></td></tr></table></figure>
+
+<p>ipv4是点分字节，一个字节8位，二的八次方就是256 即0~255</p>
+<p>一个ip地址 和一个掩码做 按位与 得到的就是一个网络号</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101656265.png" alt="image-20220910165630276"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果主机a想要与主机d通信那么主机a需要将数据包发给机器F就可以了，机器F称为主机a【局域网 1中的所有主机】的下一条</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>在Linux中输入：<code>route -n</code></p>
+<p>路由表：</p>
+<hr>
+<p><img src="C:\Users\fgcy\AppData\Roaming\Typora\typora-user-images\image-20220910170424409.png" alt="image-20220910170424409"></p>
+<hr>
+<p>这张路由表是怎么使用的：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101708721.png" alt="image-20220910170845161"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">拿着百度的ip：61.135.169.128 跟路由表中每一条记录做比较</span><br><span class="line">首先是与Genmask做按位与 ，看是否满足Destination的记录，如果符合就走GateWay的记录，若GateWay的记录为0.0.0.0则表示没有网关，是局域网内。从网卡出去，走交换机，到另一台主机，不需要经过路由器。</span><br><span class="line"></span><br><span class="line">第三条记录可以匹配，从网关192.168.150.2中出去。</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>网络层封的数据包是源ip地址和目标ip地址，下一跳的ip地址由数据链路层封。</p>
+<p>IP地址一定是端到端的</p>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><p>链路层表： 使用arp协议</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101725449.png" alt="image-20220910172535958"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101743482.png" alt="image-20220910174254509"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">网络层会封一个端到端的IP地址（一直保持不变），找到下一条</span><br><span class="line">链路层会根据下一跳的ip地址获取下一跳的MAC地址，链路层会将MAC地址封到数据包中</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>抓包验证：链路层获取下一跳的MAC地址，才可以进行后续的三次握手，数据传输，四次分手</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101751514.png" alt="image-20220910175120911"></p>
+<hr>
+<p>删除arp表中，记录某个下一跳的MAC地址的记录。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101752396.png" alt="image-20220910175232207"></p>
+<hr>
+<p>抓包结果：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101753662.png" alt="image-20220910175304525"></p>
+<hr>
+<p><strong>深入了解路由表：</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101800627.png" alt="image-20220910180033741"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里可以看到有两个网卡 eth0【真实的物理网卡】 和lo【虚拟网卡】	</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101803245.png" alt="image-20220910180340212"></p>
+<hr>
+<p>问题：</p>
+<p>一台主机<code>192.168.150.13</code> 可以ping通 在同一个局域网中的主机：<code>192.168.150.12</code></p>
+<p>那么主机 <code>192.168.150.12</code> 可以ping通 <code>192.168.88.88</code>主机嘛？</p>
+<p>答案是不能的。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101811085.png" alt="image-20220910181152993"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">因为ping192.168.88.88这台主机时，会拿路由表的每一条记录的Genmask信息，与主机ip地址做按位与。</span><br><span class="line">比对完所有记录后并没有发现按位与后的结果能与Destination相匹配的。所以会丢弃掉</span><br></pre></td></tr></table></figure>
+
+
+
+<p>解决：路由表添加一条记录</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101819311.png" alt="image-20220910181901246"></p>
+<hr>
+<p>查看路由表：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101819309.png" alt="image-20220910181937275"></p>
+<hr>
+<p>尝试ping</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101820267.png" alt="image-20220910182049438"></p>
+<hr>
+<h2 id="vpn"><a href="#vpn" class="headerlink" title="vpn"></a>vpn</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209101834783.png" alt="image-20220910183419364"></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%AF%86-msb/" data-id="clfv6vswg0023e4cx21t87o8b" data-title="网络常识-msb" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/30/%E7%AC%AC12%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B6%E5%AE%83%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5-atguigu-shk/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第12章-数据库其它调优策略-atguigu-shk
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/30/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-heima-hsp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">23种设计模式-heima-hsp</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

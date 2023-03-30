@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>第08章-聚合函数-atguigu-shk | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="第08章_聚合函数我们上一章讲到了 SQL 单行函数。实际上 SQL 函数还有一类 叫做聚合（或聚集、分组）函数，它是对一组数据进行汇总的函数，输入的是一组数据的集合 输出的是单个值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第08章-聚合函数-atguigu-shk">
+<meta property="og:url" content="http://example.com/2023/03/30/%E7%AC%AC08%E7%AB%A0-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0-atguigu-shk/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第08章_聚合函数我们上一章讲到了 SQL 单行函数。实际上 SQL 函数还有一类 叫做聚合（或聚集、分组）函数，它是对一组数据进行汇总的函数，输入的是一组数据的集合 输出的是单个值">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554980924940.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981029920.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981374920.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981607442.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981656798.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981808091.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212311425483.png">
+<meta property="article:published_time" content="2023-03-30T12:02:28.000Z">
+<meta property="article:modified_time" content="2023-03-30T13:11:11.548Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="尚硅谷-宋红康-MySQL(初级)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554980924940.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-第08章-聚合函数-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E7%AC%AC08%E7%AB%A0-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0-atguigu-shk/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:02:28.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      第08章-聚合函数-atguigu-shk
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="第08章-聚合函数"><a href="#第08章-聚合函数" class="headerlink" title="第08章_聚合函数"></a>第08章_聚合函数</h1><p>我们上一章讲到了 SQL 单行函数。实际上 SQL 函数还有一类</p>
+<p>叫做聚合（或聚集、分组）函数，它是对一组数据进行汇总的函数，输入的是一组数据的集合</p>
+<p>输出的是单个值</p>
+<span id="more"></span>
+
+<h2 id="1-聚合函数介绍"><a href="#1-聚合函数介绍" class="headerlink" title="1. 聚合函数介绍"></a>1. 聚合函数介绍</h2><ul>
+<li><strong>什么是聚合函数</strong></li>
+</ul>
+<p>聚合函数作用于一组数据，并对一组数据返回一个值。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554980924940.png" alt="1554980924940"></p>
+<hr>
+<p>常用的聚合函数：</p>
+<ul>
+<li><p><strong>聚合函数类型</strong></p>
+<ul>
+<li><strong>AVG()</strong> </li>
+<li><strong>SUM()</strong></li>
+<li><strong>MAX()</strong> </li>
+<li><strong>MIN()</strong> </li>
+<li><strong>COUNT()</strong></li>
+</ul>
+</li>
+<li><p>聚合函数语法</p>
+</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981029920.png" alt="1554981029920"></p>
+<hr>
+<ul>
+<li>聚合函数不能嵌套调用。比如不能出现类似“AVG(SUM(字段名称))”形式的调用、</li>
+</ul>
+<h3 id="1-1-AVG和SUM函数"><a href="#1-1-AVG和SUM函数" class="headerlink" title="1.1 AVG和SUM函数"></a>1.1 AVG和SUM函数</h3><p>可以对<strong>数值型数据</strong>使用AVG 和 SUM 函数</p>
+<p>注意：对字符串、日期都不适用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(salary), <span class="built_in">MAX</span>(salary),<span class="built_in">MIN</span>(salary), <span class="built_in">SUM</span>(salary)</span><br><span class="line"><span class="keyword">FROM</span>   employees</span><br><span class="line"><span class="keyword">WHERE</span>  job_id <span class="keyword">LIKE</span> <span class="string">&#x27;%REP%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+-------------+-------------+-------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">AVG</span>(salary) <span class="operator">|</span> <span class="built_in">MAX</span>(salary) <span class="operator">|</span> <span class="built_in">MIN</span>(salary) <span class="operator">|</span> <span class="built_in">SUM</span>(salary) <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+-------------+-------------+-------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">8272.727273</span> <span class="operator">|</span>    <span class="number">11500.00</span> <span class="operator">|</span>     <span class="number">6000.00</span> <span class="operator">|</span>   <span class="number">273000.00</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------+-------------+-------------+-------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-MIN和MAX函数"><a href="#1-2-MIN和MAX函数" class="headerlink" title="1.2 MIN和MAX函数"></a>1.2 MIN和MAX函数</h3><p>可以对 <strong>任意数据类型</strong> 的数据使用 MIN 和 MAX 函数</p>
+<p>既可以对字符串、日期进行比较</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MIN</span>(hire_date), <span class="built_in">MAX</span>(hire_date)</span><br><span class="line"><span class="keyword">FROM</span> employees;</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">----------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">MIN</span>(hire_date) <span class="operator">|</span> <span class="built_in">MAX</span>(hire_date) <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">1987</span><span class="number">-06</span><span class="number">-17</span>     <span class="operator">|</span> <span class="number">2000</span><span class="number">-04</span><span class="number">-21</span>     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----------------+----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-COUNT函数"><a href="#1-3-COUNT函数" class="headerlink" title="1.3 COUNT函数"></a>1.3 COUNT函数</h3><ul>
+<li>COUNT(*)返回表中记录总数，适用于<strong>任意数据类型</strong>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">----------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----------+</span></span><br><span class="line"><span class="operator">|</span>      <span class="number">107</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">----------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>COUNT(具体字段)</p>
+<p>返回<strong>expr不为空</strong>的记录总数。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(commission_pct)</span><br><span class="line"><span class="keyword">FROM</span>   employees</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">COUNT</span>(commission_pct) <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------------------+</span></span><br><span class="line"><span class="operator">|</span>                    <span class="number">35</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#方式1：COUNT(*)</span><br><span class="line">#方式2：COUNT(1)</span><br><span class="line">#方式3：COUNT(具体字段) : 不一定对！【因为null不算】</span><br><span class="line"> </span><br><span class="line">#② 注意：计算指定字段出现的个数时，是不计算NULL值的。</span><br><span class="line">SELECT COUNT(commission_pct)</span><br><span class="line">FROM employees;</span><br><span class="line">+-----------------------+</span><br><span class="line">| COUNT(commission_pct) |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                    35 |</span><br><span class="line">+-----------------------+</span><br><span class="line">-- 表中数据一共有107 rows in set (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 验证</span><br><span class="line">SELECT commission_pct</span><br><span class="line">FROM employees</span><br><span class="line">WHERE commission_pct IS NOT NULL;</span><br><span class="line">35 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li><p><strong>问题：用count(*)，count(1)，count(列名)谁好呢?</strong></p>
+<p>其实，对于MyISAM引擎的表是没有区别的。这种引擎内部有一计数器在维护着行数。</p>
+<p>Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因为innodb真的要去数一遍。但好于具体的count(列名)  count(列名)需要判空，空值不做计算。</p>
+</li>
+<li><p><strong>问题：能不能使用count(列名)替换count(*)?</strong></p>
+<p>不要使用 count(列名)来替代 <code>count(*)</code>，<code>count(*)</code>是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关。 </p>
+<p>说明：count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行。</p>
+</li>
+<li><p><strong>公式：AVG &#x3D; SUM &#x2F; COUNT</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- SUN COUNT AVG 有NULL不算 所以 AVG(commission_pct) = SUM(commission_pct)/COUNT(commission_pct) </span><br><span class="line">SELECT AVG(salary),SUM(salary)/COUNT(salary),</span><br><span class="line">AVG(commission_pct),SUM(commission_pct)/COUNT(commission_pct),</span><br><span class="line">SUM(commission_pct) / 107</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+---------------------------+---------------------+-------------------------------------------+-------------------</span><br><span class="line">|AVG(salary)  |SUM(salary)/COUNT(salary)  |AVG(commission_pct)  |SUM(commission_pct)/COUNT(commission_pct)  | SUM(commission_pct) / 107 |</span><br><span class="line">+-------------+---------------------------+---------------------+-------------------------------------------+-------------------</span><br><span class="line">| 6461.682243 |           6461.682243     |          0.222857   |                                 0.222857  |                  0.072897                 |</span><br><span class="line">+-------------+---------------------------+---------------------+-------------------------------------------+-------------------</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>需求：查询公司中平均奖金率</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#错误的！</span><br><span class="line">-- 因为是平均 所以是个人就要算 聚合函数AVG是不会算NULL</span><br><span class="line">SELECT AVG(commission_pct)</span><br><span class="line">FROM employees;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#正确的：</span><br><span class="line">SELECT SUM(commission_pct) / COUNT(IFNULL(commission_pct,0)),</span><br><span class="line">AVG(IFNULL(commission_pct,0))</span><br><span class="line">FROM employees;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>总结：</p>
+<p>1、如何需要统计表中的记录数，使用COUNT(*)、COUNT(1)、COUNT(具体字段) 哪个效率更高呢？</p>
+<p>2、如果使用的是MyISAM 存储引擎，则三者效率相同，都是O(1)，因为他会维护一个字段存储总记录数</p>
+<p>3、如果使用的是InnoDB 存储引擎，则三者效率：COUNT(*) &#x3D; COUNT(1)&gt; COUNT(字段)</p>
+<h2 id="2-GROUP-BY"><a href="#2-GROUP-BY" class="headerlink" title="2. GROUP BY"></a>2. GROUP BY</h2><h3 id="2-1-基本使用"><a href="#2-1-基本使用" class="headerlink" title="2.1 基本使用"></a>2.1 基本使用</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981374920.png" alt="1554981374920"></p>
+<hr>
+<ul>
+<li><strong>查询各个部门的平均工资，最高工资</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SELECT e.`department_id`,AVG(e.`salary`) &quot;平均工资&quot;,</span><br><span class="line">MAX(e.`salary`) &quot;最高工资&quot;</span><br><span class="line">FROM employees e</span><br><span class="line">GROUP BY e.`department_id`;</span><br><span class="line">+---------------+--------------+--------------+</span><br><span class="line">| department_id | 平均工资     | 最高工资     |</span><br><span class="line">+---------------+--------------+--------------+</span><br><span class="line">|          NULL |  7000.000000 |      7000.00 |</span><br><span class="line">|            10 |  4400.000000 |      4400.00 |</span><br><span class="line">|            20 |  9500.000000 |     13000.00 |</span><br><span class="line">|            30 |  4150.000000 |     11000.00 |</span><br><span class="line">|            40 |  6500.000000 |      6500.00 |</span><br><span class="line">|            50 |  3475.555556 |      8200.00 |</span><br><span class="line">|            60 |  5760.000000 |      9000.00 |</span><br><span class="line">|            70 | 10000.000000 |     10000.00 |</span><br><span class="line">|            80 |  8955.882353 |     14000.00 |</span><br><span class="line">|            90 | 19333.333333 |     24000.00 |</span><br><span class="line">|           100 |  8600.000000 |     12000.00 |</span><br><span class="line">|           110 | 10150.000000 |     12000.00 |</span><br><span class="line">+---------------+--------------+--------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>查询各个job_id的平均工资</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT job_id,AVG(salary)</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY job_id;</span><br><span class="line">+------------+--------------+</span><br><span class="line">| job_id     | AVG(salary)  |</span><br><span class="line">+------------+--------------+</span><br><span class="line">| AC_ACCOUNT |  8300.000000 |</span><br><span class="line">| AC_MGR     | 12000.000000 |</span><br><span class="line">| AD_ASST    |  4400.000000 |</span><br><span class="line">| AD_PRES    | 24000.000000 |</span><br><span class="line">| AD_VP      | 17000.000000 |</span><br><span class="line">| FI_ACCOUNT |  7920.000000 |</span><br><span class="line">| FI_MGR     | 12000.000000 |</span><br><span class="line">| SH_CLERK   |  3215.000000 |</span><br><span class="line">| ST_CLERK   |  2785.000000 |</span><br><span class="line">| ST_MAN     |  7280.000000 |</span><br><span class="line">+------------+--------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2-2-使用多个列分组"><a href="#2-2-使用多个列分组" class="headerlink" title="2.2 使用多个列分组"></a>2.2 使用多个列分组</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981607442.png" alt="1554981607442"></p>
+<hr>
+<p><strong>用两个字段进行分组</strong></p>
+<p><strong>可以使用GROUP BY子句将表中的数据分成若干组</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, group_function(<span class="keyword">column</span>)</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">table</span></span><br><span class="line">[<span class="keyword">WHERE</span>	<span class="keyword">condition</span>]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span>	group_by_expression]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span>	<span class="keyword">column</span>];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>明确：WHERE一定放在FROM后面</strong></p>
+</blockquote>
+<ul>
+<li><strong>查询各个department_id,job_id的平均工资</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#方式1：</span><br><span class="line">SELECT department_id,job_id,AVG(salary)</span><br><span class="line">FROM employees</span><br><span class="line">-- 先按部门分组，再按职位分组</span><br><span class="line">GROUP BY  department_id,job_id;</span><br><span class="line">+---------------+------------+--------------+</span><br><span class="line">| department_id | job_id     | AVG(salary)  |</span><br><span class="line">+---------------+------------+--------------+</span><br><span class="line">|          NULL | SA_REP     |  7000.000000 |</span><br><span class="line">|            10 | AD_ASST    |  4400.000000 |</span><br><span class="line">|            20 | MK_MAN     | 13000.000000 |</span><br><span class="line">|            20 | MK_REP     |  6000.000000 |</span><br><span class="line">|           100 | FI_MGR     | 12000.000000 |</span><br><span class="line">|           110 | AC_ACCOUNT |  8300.000000 |</span><br><span class="line">|           110 | AC_MGR     | 12000.000000 |</span><br><span class="line">+---------------+------------+--------------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#方式2：</span><br><span class="line">SELECT job_id,department_id,AVG(salary)</span><br><span class="line">FROM employees</span><br><span class="line">-- 先按职位分组，再按部门分组</span><br><span class="line">GROUP BY job_id,department_id;</span><br><span class="line">+------------+---------------+--------------+</span><br><span class="line">| job_id     | department_id | AVG(salary)  |</span><br><span class="line">+------------+---------------+--------------+</span><br><span class="line">| AC_ACCOUNT |           110 |  8300.000000 |</span><br><span class="line">| AC_MGR     |           110 | 12000.000000 |</span><br><span class="line">| AD_ASST    |            10 |  4400.000000 |</span><br><span class="line">+-------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>注意：</p>
+<p><strong>在SELECT列表中所有未包含在组函数中的列都应该包含在 GROUP BY子句中</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>   department_id,job_id, <span class="built_in">AVG</span>(salary)</span><br><span class="line"><span class="keyword">FROM</span>     employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id ;</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+---------+--------------+</span></span><br><span class="line"><span class="operator">|</span> department_id <span class="operator">|</span> job_id  <span class="operator">|</span> <span class="built_in">AVG</span>(salary)  <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+---------+--------------+</span></span><br><span class="line"><span class="operator">|</span>          <span class="keyword">NULL</span> <span class="operator">|</span> SA_REP  <span class="operator">|</span>  <span class="number">7000.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">10</span> <span class="operator">|</span> AD_ASST <span class="operator">|</span>  <span class="number">4400.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">20</span> <span class="operator">|</span> MK_MAN  <span class="operator">|</span>  <span class="number">9500.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">30</span> <span class="operator">|</span> PU_MAN  <span class="operator">|</span>  <span class="number">4150.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">40</span> <span class="operator">|</span> HR_REP  <span class="operator">|</span>  <span class="number">6500.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">50</span> <span class="operator">|</span> ST_MAN  <span class="operator">|</span>  <span class="number">3475.555556</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">60</span> <span class="operator">|</span> IT_PROG <span class="operator">|</span>  <span class="number">5760.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">70</span> <span class="operator">|</span> PR_REP  <span class="operator">|</span> <span class="number">10000.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">80</span> <span class="operator">|</span> SA_MAN  <span class="operator">|</span>  <span class="number">8955.882353</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>            <span class="number">90</span> <span class="operator">|</span> AD_PRES <span class="operator">|</span> <span class="number">19333.333333</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>           <span class="number">100</span> <span class="operator">|</span> FI_MGR  <span class="operator">|</span>  <span class="number">8600.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>           <span class="number">110</span> <span class="operator">|</span> AC_MGR  <span class="operator">|</span> <span class="number">10150.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+---------+--------------+</span></span><br><span class="line"><span class="number">12</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>上面虽然有结果，但是结果是错误的；</p>
+<p>上面语句是按部门分组，所以一个部门对应一个平均工资；</p>
+<p>但是一个部门对应有多个工种，这里只是随便选择出一个</p>
+<p>包含在 GROUP BY 子句中的列不必包含在SELECT 列表中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>   <span class="built_in">AVG</span>(salary)</span><br><span class="line"><span class="keyword">FROM</span>     employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id;</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">AVG</span>(salary)  <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7000.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">4400.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">9500.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">4150.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">6500.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">3475.555556</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">5760.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">10000.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">8955.882353</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">19333.333333</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">8600.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> <span class="number">10150.000000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="number">12</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="2-3-GROUP-BY中使用WITH-ROLLUP"><a href="#2-3-GROUP-BY中使用WITH-ROLLUP" class="headerlink" title="2.3 GROUP BY中使用WITH ROLLUP"></a>2.3 GROUP BY中使用WITH ROLLUP</h3><p>使用<code>WITH ROLLUP</code>关键字之后，在所有查询出的分组记录之后增加一条记录，该记录计算查询出的所有记录的总和，即统计记录数量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT department_id,AVG(salary)</span><br><span class="line">FROM employees</span><br><span class="line">WHERE department_id &gt; 80</span><br><span class="line">GROUP BY department_id WITH ROLLUP;</span><br><span class="line"></span><br><span class="line">+---------------+--------------+</span><br><span class="line">| department_id | AVG(salary)  |</span><br><span class="line">+---------------+--------------+</span><br><span class="line">|            90 | 19333.333333 |</span><br><span class="line">|           100 |  8600.000000 |</span><br><span class="line">|           110 | 10150.000000 |</span><br><span class="line">|          NULL | 11809.090909 |</span><br><span class="line">+---------------+--------------+</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>当使用ROLLUP时，不能同时使用ORDER BY子句进行结果排序，即ROLLUP和ORDER BY是互相排斥的</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#说明：当使用ROLLUP时，不能同时使用ORDER BY子句进行结果排序，即ROLLUP和ORDER BY是互相排斥的。</span><br><span class="line">#错误的：</span><br><span class="line">SELECT department_id,AVG(salary) avg_sal</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY department_id WITH ROLLUP</span><br><span class="line">ORDER BY avg_sal ASC;</span><br><span class="line">-- ERROR 1221 (HY000): Incorrect usage of CUBE/ROLLUP and ORDER BY</span><br></pre></td></tr></table></figure>
+
+
+
+<p>首先注意一个执行顺序：1、FROM  ON  2、WHERE    3、GROUP BY  4、HAVING   5、SELECT  6、ORDER BY  7、LIMIT </p>
+<p>所以，分组后会出现一个记录所有记录总和的数据，该数据要参与ORDER BY 显然是不合理的</p>
+<h2 id="3-HAVING"><a href="#3-HAVING" class="headerlink" title="3. HAVING"></a>3. HAVING</h2><h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><p>用于过滤数据</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981656798.png" alt="1554981656798"></p>
+<hr>
+<p><strong>非法使用聚合函数 ： 不能在 WHERE 子句中使用聚合函数。</strong>如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#练习：查询各个部门中最高工资比10000高的部门信息</span><br><span class="line">#错误的写法：</span><br><span class="line">SELECT department_id,MAX(salary)</span><br><span class="line">FROM employees</span><br><span class="line">WHERE MAX(salary) &gt; 10000</span><br><span class="line">GROUP BY department_id;</span><br><span class="line">-- ERROR 1111 (HY000): Invalid use of group function</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#错误的写法：</span><br><span class="line">SELECT department_id,MAX(salary)</span><br><span class="line">FROM employees</span><br><span class="line">HAVING MAX(salary) &gt; 10000</span><br><span class="line">GROUP BY department_id;</span><br><span class="line">ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;GROUP BY department_id&#x27; at line 4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#要求1：如果过滤条件中使用了聚合函数，则必须使用HAVING来替换WHERE。否则，报错。</span><br><span class="line">#要求2：HAVING 必须声明在 GROUP BY 的后面。</span><br><span class="line">#要求3：开发中，我们使用HAVING的前提是SQL中使用了GROUP BY。</span><br><span class="line"></span><br><span class="line">#正确的写法：</span><br><span class="line">SELECT department_id,MAX(salary)</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY department_id</span><br><span class="line">HAVING MAX(salary) &gt; 10000;</span><br></pre></td></tr></table></figure>
+
+<p>注意：HAVING 一般配合 GROUP BY使用</p>
+<p>因为HAVING是用来过滤 每一组是否符合某个要求</p>
+<p>当没有使用GROUP BY时，说明只有一组；</p>
+<p>只能说，一般不会对单独一组进行过滤</p>
+<ul>
+<li><strong>查询部门id为10,20,30,40这4个部门中最高工资比10000高的部门信息</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#方式1：推荐，执行效率高于方式2.</span><br><span class="line">SELECT department_id,MAX(salary)</span><br><span class="line">FROM employees</span><br><span class="line">WHERE department_id IN (10,20,30,40)</span><br><span class="line">GROUP BY department_id</span><br><span class="line">HAVING MAX(salary) &gt; 10000;</span><br><span class="line">+---------------+-------------+</span><br><span class="line">| department_id | MAX(salary) |</span><br><span class="line">+---------------+-------------+</span><br><span class="line">|            20 |    13000.00 |</span><br><span class="line">|            30 |    11000.00 |</span><br><span class="line">+---------------+-------------+</span><br><span class="line"></span><br><span class="line">#方式2：</span><br><span class="line">SELECT department_id,MAX(salary)</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY department_id</span><br><span class="line">HAVING MAX(salary) &gt; 10000 AND department_id IN (10,20,30,40);</span><br><span class="line">+---------------+-------------+</span><br><span class="line">| department_id | MAX(salary) |</span><br><span class="line">+---------------+-------------+</span><br><span class="line">|            20 |    13000.00 |</span><br><span class="line">|            30 |    11000.00 |</span><br><span class="line">+---------------+-------------+</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>过滤分组：HAVING子句</strong></p>
+<ol>
+<li>行已经被分组，HAVING 对组进行过滤</li>
+<li>使用了聚合函数</li>
+<li>满足HAVING 子句中条件的分组将被显示</li>
+<li>HAVING 不能单独使用，必须要跟 GROUP BY 一起使用</li>
+</ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554981808091.png" alt="1554981808091"></p>
+<hr>
+<p>小结：</p>
+<p>1、当过滤条件中有聚合函数时，则此过滤条件<strong>必须</strong>声明在HAVING中<br>2、当<strong>过滤条件中没有聚合函数</strong>时，则此过滤条件声明在WHERE中或HAVING中都可以。但是，<strong>建议大家声明在WHERE</strong>中，效率高</p>
+<h3 id="3-2-WHERE和HAVING的对比"><a href="#3-2-WHERE和HAVING的对比" class="headerlink" title="3.2 WHERE和HAVING的对比"></a>3.2 WHERE和HAVING的对比</h3><p><strong>区别1：WHERE 可以直接使用表中的字段作为筛选条件，但不能使用分组中的计算函数作为筛选条件；HAVING 必须要与 GROUP BY 配合使用，可以把分组计算的函数和分组字段作为筛选条件。</strong></p>
+<p>这决定了，在需要对数据进行分组统计的时候，HAVING 可以完成 WHERE 不能完成的任务</p>
+<p>这是因为，在查询语法结构中，WHERE 在 GROUP BY 之前，所以无法对分组结果进行筛选。</p>
+<p>HAVING 在 GROUP BY 之后，可以使用分组字段和分组中的计算函数，对分组的结果集进行筛选，这个功能是 WHERE 无法完成的。</p>
+<p>另外，WHERE排除的记录不再包括在分组中</p>
+<p><strong>区别2：如果需要通过连接从关联表中获取需要的数据，WHERE 是先筛选后连接，而 HAVING 是先连接后筛选</strong></p>
+<p> 这一点，就决定了在关联查询中，WHERE 比 HAVING 更高效</p>
+<p>因为 WHERE 可以先筛选，用一个筛选后的较小数据集和关联表进行连接，这样占用的资源比较少，执行效率也比较高</p>
+<p>HAVING 则需要先把结果集准备好，也就是用未被筛选的数据集进行关联，然后对这个大的数据集进行筛选，这样占用的资源就比较多，执行效率也较低。</p>
+<p>小结如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WHERE</td>
+<td>先筛选数据再关联，执行效率高</td>
+<td>不能使用分组中的计算函数进行筛选</td>
+</tr>
+<tr>
+<td>HAVING</td>
+<td>可以使用分组中的计算函数</td>
+<td>在最后的结果集中进行筛选，执行效率较低</td>
+</tr>
+</tbody></table>
+<p><strong>开发中的选择：</strong></p>
+<p>WHERE 和 HAVING 也不是互相排斥的，我们可以在一个查询里面同时使用 WHERE 和 HAVING。包含分组统计函数的条件用 HAVING，普通条件用 WHERE。这样，我们就既利用了 WHERE 条件的高效快速，又发挥了 HAVING 可以使用包含分组统计函数的查询条件的优点。当数据量特别大的时候，运行效率会有很大的差别</p>
+<h2 id="4-SELECT的执行过程"><a href="#4-SELECT的执行过程" class="headerlink" title="4. SELECT的执行过程"></a>4. SELECT的执行过程</h2><h3 id="4-1-查询的结构"><a href="#4-1-查询的结构" class="headerlink" title="4.1 查询的结构"></a>4.1 查询的结构</h3><p>方式1  SQL92语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段<span class="number">1</span>，字段<span class="number">2</span>，字段<span class="number">3</span>，聚合函数(字段<span class="number">4</span>)，聚合函数(字段<span class="number">5</span>)，聚合函数(字段<span class="number">6</span>)</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span>  ，表<span class="number">2</span>  ，表<span class="number">3.</span>......</span><br><span class="line"><span class="keyword">WHERE</span> 多表的连接条件</span><br><span class="line"><span class="keyword">AND</span> 不包含聚合函数的过滤条件</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 字段<span class="number">1</span>，字段<span class="number">2</span>，字段<span class="number">3</span></span><br><span class="line"><span class="keyword">HAVING</span> 包含聚合函数的过滤条件</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span>  <span class="keyword">ASC</span>、<span class="keyword">DESC</span></span><br><span class="line">LIMIT 偏移量，个数</span><br></pre></td></tr></table></figure>
+
+
+
+<p>方式2   SQL99语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段1，字段2，字段3，聚合函数(字段4)，聚合函数(字段5)，聚合函数(字段6)</span><br><span class="line">FROM 表1  （LEFT、RIGHT）JOIN 表2 </span><br><span class="line">ON 多表的连接条件</span><br><span class="line">（LEFT、RIGHT）JOIN 表3</span><br><span class="line">ON 多表的连接条件</span><br><span class="line">WHERE 不包含聚合函数的过滤条件</span><br><span class="line">AND/OR 不包含聚合函数的过滤条件</span><br><span class="line">GROUP BY 字段1,字段2,字段3</span><br><span class="line">HAVING 包含聚合函数的过滤条件</span><br><span class="line">ORDER BY  字段1 ASC/DESC</span><br><span class="line">LIMIT  偏移量,个数</span><br></pre></td></tr></table></figure>
+
+<p>其中：<br>（1）from：从哪些表中筛选</p>
+<p>（2）on：关联多表查询时，去除笛卡尔积</p>
+<p>（3）where：从表中筛选的条件</p>
+<p>（4）group by：分组依据</p>
+<p>（5）having：在统计结果中再次筛选</p>
+<p>（6）select：选择出需要的字段</p>
+<p>（6）order by：排序</p>
+<p>（7）limit：分页</p>
+<h3 id="4-2-SELECT执行顺序"><a href="#4-2-SELECT执行顺序" class="headerlink" title="4.2 SELECT执行顺序"></a>4.2 SELECT执行顺序</h3><p>你需要记住 SELECT 查询时的两个顺序：</p>
+<p><strong>1.SELECT语句的书写顺序：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT...</span><br></pre></td></tr></table></figure>
+
+<p> 关键字的顺序是不能颠倒的</p>
+<p><strong>2.SELECT 语句的执行顺序</strong>（在 MySQL 和 Oracle 中，SELECT 执行顺序基本相同）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM -&gt; WHERE、ON -&gt; GROUP BY -&gt; HAVING -&gt; SELECT 的字段 -&gt; DISTINCT -&gt; ORDER BY -&gt; LIMIT</span><br></pre></td></tr></table></figure>
+
+<p>1、FROM 两个表进行CROSS JOIN，获取笛卡尔积；</p>
+<p>2、通过WHERE或是ON给出多表间的连接条件进行记录过滤</p>
+<p>3、判断是不是外连接，如是，则补充 主表有记录而不满足多表间连接条件的记录</p>
+<p>4、WHERE过滤数据</p>
+<p>5、GROUP  BY 进行数据分组</p>
+<p>6、HAVING进行数据过滤</p>
+<p>7、SELECT 选择需要的字段</p>
+<p>8、DISTINCT去重</p>
+<p>9、ORDER BY 排序</p>
+<p>10、LIMIT 分页</p>
+<p>比如你写了一个 SQL 语句，那么它的关键字顺序和执行顺序是下面这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT player_id, player_name, count(*) as num -- 顺序 6</span><br><span class="line">FROM player JOIN team            						-- 顺序 1</span><br><span class="line">ON player.team_id = team.team_id 						-- 顺序 2</span><br><span class="line">WHERE height &gt; 1.80 			 						-- 顺序 3</span><br><span class="line">GROUP BY player.team_id 		 						-- 顺序 4</span><br><span class="line">HAVING num &gt; 2 					 						-- 顺序 5</span><br><span class="line">ORDER BY num DESC 				 						-- 顺序 7</span><br><span class="line">LIMIT 2 						 						-- 顺序 8</span><br></pre></td></tr></table></figure>
+
+<p>在 SELECT 语句执行这些步骤的时候，每个步骤都会产生一个<code>虚拟表</code>，然后将这个虚拟表传入下一个步骤中作为输入。需要注意的是，这些步骤隐含在 SQL 的执行过程中，对于我们来说是不可见的</p>
+<h3 id="4-3-SQL-的执行原理"><a href="#4-3-SQL-的执行原理" class="headerlink" title="4.3 SQL 的执行原理"></a>4.3 SQL 的执行原理</h3><p>SELECT 是先执行 FROM 这一步的。在这个阶段，如果是多张表联查，还会经历下面的几个步骤：</p>
+<ol>
+<li>首先先通过 CROSS JOIN 求笛卡尔积，相当于得到虚拟表 vt（virtual table）1-1；</li>
+<li>通过 ON 进行筛选，在虚拟表 vt1-1 的基础上进行筛选，得到虚拟表 vt1-2；</li>
+<li>添加外部行。如果我们使用的是左连接、右链接或者全连接，就会涉及到外部行，也就是在虚拟表 vt1-2 的基础上增加外部行，得到虚拟表 vt1-3</li>
+</ol>
+<p>当然如果我们操作的是两张以上的表，还会重复上面的步骤，直到所有表都被处理完为止。这个过程得到是我们的原始数据</p>
+<p>当我们拿到了查询数据表的原始数据，也就是最终的虚拟表 <code>vt1</code>，就可以在此基础上再进行 <code>WHERE 阶段</code>。在这个阶段中，会根据 vt1 表的结果进行筛选过滤，得到虚拟表 <code>vt2</code>。</p>
+<p>然后进入第三步和第四步，也就是 <code>GROUP 和 HAVING 阶段</code>。在这个阶段中，实际上是在虚拟表 vt2 的基础上进行分组和分组过滤，得到中间的虚拟表 <code>vt3</code> 和 <code>vt4</code>。</p>
+<p>当我们完成了条件筛选部分之后，就可以筛选表中提取的字段，也就是进入到 <code>SELECT 和 DISTINCT 阶段</code>。</p>
+<p>首先在 SELECT 阶段会提取想要的字段，然后在 DISTINCT 阶段过滤掉重复的行，分别得到中间的虚拟表 <code>vt5-1</code> 和 <code>vt5-2</code>。</p>
+<p>当我们提取了想要的字段数据之后，就可以按照指定的字段进行排序，也就是 <code>ORDER BY 阶段</code>，得到虚拟表 <code>vt6</code>。</p>
+<p>最后在 vt6 的基础上，取出指定行的记录，也就是 <code>LIMIT 阶段</code>，得到最终的结果，对应的是虚拟表 <code>vt7</code>。</p>
+<p>当然我们在写 SELECT 语句的时候，不一定存在所有的关键字，相应的阶段就会省略。</p>
+<p>同时因为 SQL 是一门类似英语的结构化查询语言，所以我们在写 SELECT 语句的时候，还要注意相应的关键字顺序</p>
+<p><strong>所谓底层运行的原理，就是我们刚才讲到的执行顺序</strong></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><h2 id="理解聚合函数："><a href="#理解聚合函数：" class="headerlink" title="理解聚合函数："></a>理解聚合函数：</h2><p>按照某种计算方式将当前所掌握的所有记录中的数据计算出来</p>
+<h2 id="SQL执行顺序："><a href="#SQL执行顺序：" class="headerlink" title="SQL执行顺序："></a>SQL执行顺序：</h2><p>1、FROM …..ON………</p>
+<p>2、WHERE ….</p>
+<p>3、GROUP  BY ……</p>
+<p>4、HAVING …….</p>
+<p>5、SELECT ……</p>
+<p>6、ORDER BY ……</p>
+<p>7、LIMIT …….</p>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><p>聚合函数不能嵌套调用</p>
+<p>字符串、日期都不适用 AVG() 、SUM()</p>
+<h2 id="mysql中-count-，count-1-，count-列名-谁好"><a href="#mysql中-count-，count-1-，count-列名-谁好" class="headerlink" title="mysql中 count(*)，count(1)，count(列名)谁好"></a>mysql中 count(*)，count(1)，count(列名)谁好</h2><p>如果使用的是InnoDB 存储引擎，则三者效率：COUNT(*) &#x3D; COUNT(1)&gt; COUNT(字段)</p>
+<p>如果使用MyIsam存储引擎则一样，因为MyIsam存储引擎不涉及事务，可以维护一个记录专门记录列数</p>
+<h2 id="理解Group-By"><a href="#理解Group-By" class="headerlink" title="理解Group By"></a>理解Group By</h2><p>按照某一列或某几列对一堆数据进行分组（相同的为一组）</p>
+<p>在SELECT列表中所有未包含在组函数中的列都应该包含在 GROUP BY子句中，否则这个数据可能不对</p>
+<p>GROUP BY中使用WITH ROLLUP <code>group by xxxx with rollup</code>   这会追加一行数据 会算出使用到聚合函数的列的总和</p>
+<h2 id="理解-Having"><a href="#理解-Having" class="headerlink" title="理解 Having"></a>理解 Having</h2><p>对已经分组的数据进行过滤（可以在其中使用聚合函数，而在where中不能使用聚合函数）</p>
+<p>在having中也可以作普通字段的过滤，不会这么做，效率低；因为where在多张虚拟表连接完成后就开始过滤掉许多无用的数据，而having则在分组后才会进行过滤，即是很多无用的数据进行了分组然后有被过滤掉了</p>
+<p>MySQL语句的执行顺序：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212311425483.png" alt="image-20221231142542481"></p>
+<hr>
+<h1 id="聚合函数的课后练习"><a href="#聚合函数的课后练习" class="headerlink" title="聚合函数的课后练习"></a>聚合函数的课后练习</h1><h2 id="查询公司员工工资的最大值，最小值，平均值，总和"><a href="#查询公司员工工资的最大值，最小值，平均值，总和" class="headerlink" title="查询公司员工工资的最大值，最小值，平均值，总和"></a><strong>查询公司员工工资的最大值，最小值，平均值，总和</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT MAX(salary) max_sal ,MIN(salary) mim_sal,AVG(salary) avg_sal,SUM(salary) sum_sal</span><br><span class="line">FROM employees;</span><br><span class="line">+----------+---------+-------------+-----------+</span><br><span class="line">| max_sal  | mim_sal | avg_sal     | sum_sal   |</span><br><span class="line">+----------+---------+-------------+-----------+</span><br><span class="line">| 24000.00 | 2100.00 | 6461.682243 | 691400.00 |</span><br><span class="line">+----------+---------+-------------+-----------+</span><br><span class="line">-- 没有分组</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="选择具有各个job-id的员工人数"><a href="#选择具有各个job-id的员工人数" class="headerlink" title="选择具有各个job_id的员工人数"></a><strong>选择具有各个job_id的员工人数</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT job_id,COUNT(*) number</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY job_id;</span><br><span class="line"></span><br><span class="line">+------------+--------+</span><br><span class="line">| job_id     | number |</span><br><span class="line">+------------+--------+</span><br><span class="line">| AC_ACCOUNT |      1 |</span><br><span class="line">| AC_MGR     |      1 |</span><br><span class="line">| AD_ASST    |      1 |</span><br><span class="line">| SA_REP     |     30 |</span><br><span class="line">| SH_CLERK   |     20 |</span><br><span class="line">| ST_CLERK   |     20 |</span><br><span class="line">| ST_MAN     |      5 |</span><br><span class="line">+------------+--------+</span><br><span class="line">19 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询员工最高工资和最低工资的差距（DIFFERENCE）"><a href="#查询员工最高工资和最低工资的差距（DIFFERENCE）" class="headerlink" title="查询员工最高工资和最低工资的差距（DIFFERENCE）"></a><strong>查询员工最高工资和最低工资的差距（DIFFERENCE）</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT MAX(salary) - MIN(salary) &quot;DIFFERENCE&quot;</span><br><span class="line">FROM employees;</span><br><span class="line"></span><br><span class="line">+------------+</span><br><span class="line">| DIFFERENCE |</span><br><span class="line">+------------+</span><br><span class="line">|   21900.00 |</span><br><span class="line">+------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询各个管理者手下员工的最低工资，去掉最低工资低于6000的管理者，没有管理者的员工不计算在内"><a href="#查询各个管理者手下员工的最低工资，去掉最低工资低于6000的管理者，没有管理者的员工不计算在内" class="headerlink" title="查询各个管理者手下员工的最低工资，去掉最低工资低于6000的管理者，没有管理者的员工不计算在内"></a><strong>查询各个管理者手下员工的最低工资，去掉最低工资低于6000的管理者，没有管理者的员工不计算在内</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SELECT manager_id,MIN(salary)</span><br><span class="line">FROM employees</span><br><span class="line">WHERE manager_id IS NOT NULL</span><br><span class="line">GROUP BY manager_id</span><br><span class="line">HAVING MIN(salary) &gt;= 6000;</span><br><span class="line">+------------+-------------+</span><br><span class="line">| manager_id | MIN(salary) |</span><br><span class="line">+------------+-------------+</span><br><span class="line">|        102 |     9000.00 |</span><br><span class="line">|        108 |     6900.00 |</span><br><span class="line">|        145 |     7000.00 |</span><br><span class="line">|        146 |     7000.00 |</span><br><span class="line">|        147 |     6200.00 |</span><br><span class="line">|        148 |     6100.00 |</span><br><span class="line">|        149 |     6200.00 |</span><br><span class="line">|        201 |     6000.00 |</span><br><span class="line">|        205 |     8300.00 |</span><br><span class="line">+------------+-------------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询各个管理者手下员工的最低工资，其中最低工资不得低于6000，没有管理者的员工不计算在内"><a href="#查询各个管理者手下员工的最低工资，其中最低工资不得低于6000，没有管理者的员工不计算在内" class="headerlink" title="查询各个管理者手下员工的最低工资，其中最低工资不得低于6000，没有管理者的员工不计算在内"></a><strong>查询各个管理者手下员工的最低工资，其中最低工资不得低于6000，没有管理者的员工不计算在内</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SELECT manager_id,MIN(salary)</span><br><span class="line">FROM employees</span><br><span class="line">WHERE manager_id IS NOT NULL</span><br><span class="line">AND salary&gt;=6000</span><br><span class="line">GROUP BY manager_id;</span><br><span class="line"></span><br><span class="line">+------------+-------------+</span><br><span class="line">| manager_id | MIN(salary) |</span><br><span class="line">+------------+-------------+</span><br><span class="line">|        100 |     6500.00 |</span><br><span class="line">|        101 |     6500.00 |</span><br><span class="line">|        102 |     9000.00 |</span><br><span class="line">|        103 |     6000.00 |</span><br><span class="line">|        108 |     6900.00 |</span><br><span class="line">|        145 |     7000.00 |</span><br><span class="line">|        146 |     7000.00 |</span><br><span class="line">|        147 |     6200.00 |</span><br><span class="line">|        148 |     6100.00 |</span><br><span class="line">|        149 |     6200.00 |</span><br><span class="line">|        201 |     6000.00 |</span><br><span class="line">|        205 |     8300.00 |</span><br><span class="line">+------------+-------------+</span><br><span class="line">12 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询所有部门的名字，location-id，员工数量和平均工资，并按平均工资降序"><a href="#查询所有部门的名字，location-id，员工数量和平均工资，并按平均工资降序" class="headerlink" title="查询所有部门的名字，location_id，员工数量和平均工资，并按平均工资降序"></a><strong>查询所有部门的名字，location_id，员工数量和平均工资，并按平均工资降序</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-- 这里不能用count(*)因为只要有记录就会当作有一条记录；而此处用了外连接，这就会造成某些部门没有人，但count出一条记录</span><br><span class="line">-- 所以这里采用count（具体字段）</span><br><span class="line">SELECT d.department_name,d.location_id,COUNT(employee_id),AVG(salary)</span><br><span class="line">FROM departments d LEFT JOIN employees e</span><br><span class="line">ON d.`department_id` = e.`department_id`</span><br><span class="line">GROUP BY department_name,location_id</span><br><span class="line">ORDER BY AVG(salary);</span><br><span class="line"></span><br><span class="line">+----------------------+-------------+--------------------+--------------+</span><br><span class="line">| department_name      | location_id | COUNT(employee_id) | AVG(salary)  |</span><br><span class="line">+----------------------+-------------+--------------------+--------------+</span><br><span class="line">| Treasury             |        1700 |                  0 |         NULL |</span><br><span class="line">| Shareholder Services |        1700 |                  0 |         NULL |</span><br><span class="line">| Payroll              |        1700 |                  0 |         NULL |</span><br><span class="line">| Shipping             |        1500 |                 45 |  3475.555556 |</span><br><span class="line">| Executive            |        1700 |                  3 | 19333.333333 |</span><br><span class="line">+----------------------+-------------+--------------------+--------------+</span><br><span class="line">27 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询每个工种、每个部门的部门名、工种名和最低工资"><a href="#查询每个工种、每个部门的部门名、工种名和最低工资" class="headerlink" title="查询每个工种、每个部门的部门名、工种名和最低工资"></a><strong>查询每个工种、每个部门的部门名、工种名和最低工资</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT d.department_name,e.job_id,MIN(salary)</span><br><span class="line">FROM departments d LEFT JOIN employees e</span><br><span class="line">ON d.`department_id` = e.`department_id`</span><br><span class="line">GROUP BY department_name,job_id;</span><br><span class="line">+----------------------+------------+-------------+</span><br><span class="line">| department_name      | job_id     | MIN(salary) |</span><br><span class="line">+----------------------+------------+-------------+</span><br><span class="line">| Accounting           | AC_ACCOUNT |     8300.00 |</span><br><span class="line">| Accounting           | AC_MGR     |    12000.00 |</span><br><span class="line">| Administration       | AD_ASST    |     4400.00 |</span><br><span class="line">| Benefits             | NULL       |        NULL |</span><br><span class="line">| Construction         | NULL       |        NULL |</span><br><span class="line">| Contracting          | NULL       |        NULL |</span><br><span class="line">+--------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E7%AC%AC08%E7%AB%A0-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0-atguigu-shk/" data-id="clfv6vswf001xe4cx5ejg9c37" data-title="第08章-聚合函数-atguigu-shk" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/30/%E7%AC%AC02%E7%AB%A0-MySQL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-atguigu-shk/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第02章-MySQL环境搭建-atguigu-shk
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0-atguigu-shk/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第07章-单行函数-atguigu-shk</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

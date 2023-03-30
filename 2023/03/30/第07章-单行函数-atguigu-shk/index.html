@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>第07章-单行函数-atguigu-shk | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="第07章_单行函数1. 函数的理解1.1 什么是函数把我们经常使用的代码封装起来，需要的时候直接调用即可 这样既提高了代码效率，又提高了可维护性 在 SQL 中我们也可以使用函数对检索出来的数据进行函数操作 使用这些函数，可以极大地提高用户对数据库的管理效率。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第07章-单行函数-atguigu-shk">
+<meta property="og:url" content="http://example.com/2023/03/30/%E7%AC%AC07%E7%AB%A0-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0-atguigu-shk/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第07章_单行函数1. 函数的理解1.1 什么是函数把我们经常使用的代码封装起来，需要的时候直接调用即可 这样既提高了代码效率，又提高了可维护性 在 SQL 中我们也可以使用函数对检索出来的数据进行函数操作 使用这些函数，可以极大地提高用户对数据库的管理效率。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979529525.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1555433204337.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025162304844.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025162538958.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025162730421.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025163846974.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025213504115.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025214818623.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012142639469.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012142746444.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012143203355.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220623143109033.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012145231321.png">
+<meta property="article:published_time" content="2023-03-30T12:02:11.000Z">
+<meta property="article:modified_time" content="2023-03-30T13:11:45.966Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="尚硅谷-宋红康-MySQL(初级)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979529525.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-第07章-单行函数-atguigu-shk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0-atguigu-shk/" class="article-date">
+  <time class="dt-published" datetime="2023-03-30T12:02:11.000Z" itemprop="datePublished">2023-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      第07章-单行函数-atguigu-shk
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="第07章-单行函数"><a href="#第07章-单行函数" class="headerlink" title="第07章_单行函数"></a>第07章_单行函数</h1><h2 id="1-函数的理解"><a href="#1-函数的理解" class="headerlink" title="1. 函数的理解"></a>1. 函数的理解</h2><h3 id="1-1-什么是函数"><a href="#1-1-什么是函数" class="headerlink" title="1.1 什么是函数"></a>1.1 什么是函数</h3><p>把我们经常使用的代码封装起来，需要的时候直接调用即可</p>
+<p>这样既<code>提高了代码效率</code>，又<code>提高了可维护性</code></p>
+<p>在 SQL 中我们也可以使用函数对检索出来的数据进行函数操作</p>
+<p>使用这些函数，可以极大地<code>提高用户对数据库的管理效率</code>。</p>
+<span id="more"></span>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979529525.png" alt="1554979529525"></p>
+<hr>
+<p>从函数定义的角度出发，我们可以将函数分成   <code>内置函数</code>  和   <code>自定义函数</code></p>
+<p>在 SQL 语言中，同样也包括了内置函数和自定义函数。内置函数是系统内置的通用函数，而自定义函数是我们根据自己的需要编写的</p>
+<p>本章及下一章讲解的是 SQL 的内置函数。</p>
+<h3 id="1-2-不同DBMS函数的差异"><a href="#1-2-不同DBMS函数的差异" class="headerlink" title="1.2 不同DBMS函数的差异"></a>1.2 不同DBMS函数的差异</h3><p>1、我们在使用 SQL 语言的时候，不是直接和这门语言打交道，而是通过它与不同的数据库软件进行交互，即 书写SQL语言与DBMS进行交互</p>
+<p>​	因为SQL语言是运行在DBMS中的，然后由DBMS对数据库文件进行操作；</p>
+<p>2、<strong>DBMS 之间的差异性很大，远大于同一个语言不同版本之间的差异。</strong></p>
+<p>实际上，只有很少的函数是被 DBMS 同时支持的</p>
+<p>比如，大多数 DBMS 使用（||）或者（+）来做拼接符，而在 MySQL 中的字符串拼接函数为concat()</p>
+<p>3、大部分 DBMS 会有自己特定的函数，这就意味着 <strong>采用 SQL 函数的代码可移植性是很差的</strong> ，因此在使用函数的时候需要特别注意。</p>
+<h3 id="1-3-MySQL的内置函数及分类"><a href="#1-3-MySQL的内置函数及分类" class="headerlink" title="1.3 MySQL的内置函数及分类"></a>1.3 MySQL的内置函数及分类</h3><p>MySQL提供的内置函数从<code>实现的功能角度</code>可以分为数值函数、字符串函数、日期和时间函数、流程控制函数、加密与解密函数、获取MySQL信息函数、聚合函数等</p>
+<p>这里将这些丰富的内置函数再分为两类：<code>单行函数</code>、<code>聚合函数（或分组函数）</code></p>
+<p><strong>两种SQL函数</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1555433204337.png" alt="1555433204337"></p>
+<hr>
+<p><strong>单行函数</strong></p>
+<ul>
+<li>接受参数返回一个结果</li>
+<li><strong>只对一行进行变换</strong></li>
+<li><strong>每行返回一个结果</strong></li>
+<li>可以嵌套</li>
+<li>参数可以是一个字段或一个值</li>
+</ul>
+<p>​	<strong>即是：一进一出</strong></p>
+<h2 id="2-数值函数"><a href="#2-数值函数" class="headerlink" title="2. 数值函数"></a>2. 数值函数</h2><h3 id="2-1-基本函数"><a href="#2-1-基本函数" class="headerlink" title="2.1 基本函数"></a>2.1 基本函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ABS(x)</td>
+<td>返回x的绝对值</td>
+</tr>
+<tr>
+<td>SIGN(X)</td>
+<td>返回X的符号。正数返回1，负数返回-1，0返回0</td>
+</tr>
+<tr>
+<td>PI()</td>
+<td>返回圆周率的值</td>
+</tr>
+<tr>
+<td>CEIL(x)，CEILING(x)</td>
+<td>返回大于或等于某个值的最小整数</td>
+</tr>
+<tr>
+<td>FLOOR(x)</td>
+<td>返回小于或等于某个值的最大整数</td>
+</tr>
+<tr>
+<td>LEAST(e1,e2,e3…)</td>
+<td>返回列表中的最小值</td>
+</tr>
+<tr>
+<td>GREATEST(e1,e2,e3…)</td>
+<td>返回列表中的最大值</td>
+</tr>
+<tr>
+<td>MOD(x,y)</td>
+<td>返回X除以Y后的余数</td>
+</tr>
+<tr>
+<td>RAND()</td>
+<td>返回0~1的随机值</td>
+</tr>
+<tr>
+<td>RAND(x)</td>
+<td>返回0~1的随机值，其中x的值用作种子值，相同的X值会产生相同的随机数</td>
+</tr>
+<tr>
+<td>ROUND(x)</td>
+<td>返回一个对x的值进行四舍五入后，最接近于X的整数</td>
+</tr>
+<tr>
+<td>ROUND(x,y)</td>
+<td>返回一个对x的值进行四舍五入后最接近X的值，并保留到小数点后面Y位</td>
+</tr>
+<tr>
+<td>TRUNCATE(x,y)</td>
+<td>返回数字x截断为y位小数的结果</td>
+</tr>
+<tr>
+<td>SQRT(x)</td>
+<td>返回x的平方根。当X的值为负数时，返回NULL</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<p><strong>绝对值、取符号、获取圆周率的值、向下取整，向上取整、求模</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT ABS(-123),ABS(32),SIGN(-23),SIGN(43),PI(),CEIL(32.32),CEILING(-43.23),FLOOR(32.32),</span><br><span class="line">FLOOR(-43.23),MOD(12,5)</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025162304844.png" alt="image-20211025162304844"></p>
+<hr>
+<p><strong>0~1的随机函数，带种子的随机值函数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT RAND(),RAND(),RAND(10),RAND(10),RAND(-1),RAND(-1)</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025162538958.png" alt="image-20211025162538958"></p>
+<hr>
+<p><strong>一个参数的四舍五入函数，两个参数的四舍五入函数，数值截断函数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT ROUND(12.33),ROUND(12.343,2),ROUND(12.324,-1),TRUNCATE(12.66,1),TRUNCATE(12.66,-1)</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<p>– ROUND双参数函数，第二位参数为 0保留个位，-1保留十位，1保留小数点后第一位<br>– ROUND(x);保留整数</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025162730421.png" alt="image-20211025162730421"></p>
+<hr>
+<p><strong>截断操作</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT TRUNCATE(123.456,0),TRUNCATE(123.496,1),TRUNCATE(129.45,-1)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+---------------------+---------------------+---------------------+</span><br><span class="line">| TRUNCATE(123.456,0) | TRUNCATE(123.496,1) | TRUNCATE(129.45,-1) |</span><br><span class="line">+---------------------+---------------------+---------------------+</span><br><span class="line">|                 123 |               123.4 |                 120 |</span><br><span class="line">+---------------------+---------------------+---------------------+</span><br></pre></td></tr></table></figure>
+
+<p>—TRUNCATE:双参数函数：第二位参数为 0保留个位，-1保留十位，1保留小数点后第一位</p>
+<p><strong>单行函数可以嵌套</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT TRUNCATE(ROUND(123.456,2),0)</span><br><span class="line">FROM DUAL;</span><br><span class="line">-- 四舍五入 123.46</span><br><span class="line">-- 保留整数</span><br><span class="line">+------------------------------+</span><br><span class="line">| TRUNCATE(ROUND(123.456,2),0) |</span><br><span class="line">+------------------------------+</span><br><span class="line">|                          123 |</span><br><span class="line">+------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-角度与弧度互换函数-了解"><a href="#2-2-角度与弧度互换函数-了解" class="headerlink" title="2.2 角度与弧度互换函数(了解)"></a>2.2 角度与弧度互换函数(了解)</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RADIANS(x)</td>
+<td>将角度转化为弧度，其中，参数x为角度值</td>
+</tr>
+<tr>
+<td>DEGREES(x)</td>
+<td>将弧度转化为角度，其中，参数x为弧度值</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT RADIANS(30),RADIANS(60),RADIANS(90),DEGREES(2*PI()),DEGREES(RADIANS(90))</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-三角函数-了解"><a href="#2-3-三角函数-了解" class="headerlink" title="2.3 三角函数(了解)"></a>2.3 三角函数(了解)</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIN(x)</td>
+<td>返回x的正弦值，其中，参数x为弧度值</td>
+</tr>
+<tr>
+<td>ASIN(x)</td>
+<td>返回x的反正弦值，即获取正弦为x的值。如果x的值不在-1到1之间，则返回NULL</td>
+</tr>
+<tr>
+<td>COS(x)</td>
+<td>返回x的余弦值，其中，参数x为弧度值</td>
+</tr>
+<tr>
+<td>ACOS(x)</td>
+<td>返回x的反余弦值，即获取余弦为x的值。如果x的值不在-1到1之间，则返回NULL</td>
+</tr>
+<tr>
+<td>TAN(x)</td>
+<td>返回x的正切值，其中，参数x为弧度值</td>
+</tr>
+<tr>
+<td>ATAN(x)</td>
+<td>返回x的反正切值，即返回正切值为x的值</td>
+</tr>
+<tr>
+<td>ATAN2(m,n)</td>
+<td>返回两个参数的反正切值</td>
+</tr>
+<tr>
+<td>COT(x)</td>
+<td>返回x的余切值，其中，X为弧度值</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<p>ATAN2(M,N)函数返回两个参数的反正切值</p>
+<p>与ATAN(X)函数相比，ATAN2(M,N)需要两个参数，例如有两个点point(x1,y1)和point(x2,y2)，使用ATAN(X)函数计算反正切值为ATAN((y2-y1)&#x2F;(x2-x1))，使用ATAN2(M,N)计算反正切值则为ATAN2(y2-y1,x2-x1)。由使用方式可以看出，当x2-x1等于0时，ATAN(X)函数会报错，而ATAN2(M,N)函数则仍然可以计算</p>
+<p>ATAN2(M,N)函数的使用示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT SIN(RADIANS(30)),DEGREES(ASIN(1)),TAN(RADIANS(45)),DEGREES(ATAN(1)),DEGREES(ATAN2(1,1))</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025163846974.png" alt="image-20211025163846974"></p>
+<hr>
+<h3 id="2-4-指数与对数-了解"><a href="#2-4-指数与对数-了解" class="headerlink" title="2.4 指数与对数(了解)"></a>2.4 指数与对数(了解)</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POW(x,y)，POWER(X,Y)</td>
+<td>返回x的y次方</td>
+</tr>
+<tr>
+<td>EXP(X)</td>
+<td>返回e的X次方，其中e是一个常数，2.718281828459045</td>
+</tr>
+<tr>
+<td>LN(X)，LOG(X)</td>
+<td>返回以e为底的X的对数，当X &lt;&#x3D; 0 时，返回的结果为NULL</td>
+</tr>
+<tr>
+<td>LOG10(X)</td>
+<td>返回以10为底的X的对数，当X &lt;&#x3D; 0 时，返回的结果为NULL</td>
+</tr>
+<tr>
+<td>LOG2(X)</td>
+<td>返回以2为底的X的对数，当X &lt;&#x3D; 0 时，返回NULL</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT POW(2,5),POWER(2,4),EXP(2),LN(10),LOG10(10),LOG2(4)</span><br><span class="line">    -&gt; FROM DUAL;</span><br><span class="line">+----------+------------+------------------+-------------------+-----------+---------+</span><br><span class="line">| POW(2,5) | POWER(2,4) | EXP(2)           | LN(10)            | LOG10(10) | LOG2(4) |</span><br><span class="line">+----------+------------+------------------+-------------------+-----------+---------+</span><br><span class="line">|       32 |         16 | 7.38905609893065 | 2.302585092994046 |         1 |       2 |</span><br><span class="line">+----------+------------+------------------+-------------------+-----------+---------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2-5-进制间的转换"><a href="#2-5-进制间的转换" class="headerlink" title="2.5 进制间的转换"></a>2.5 进制间的转换</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BIN(x)</td>
+<td>返回x的二进制编码</td>
+</tr>
+<tr>
+<td>HEX(x)</td>
+<td>返回x的十六进制编码</td>
+</tr>
+<tr>
+<td>OCT(x)</td>
+<td>返回x的八进制编码</td>
+</tr>
+<tr>
+<td>CONV(x,f1,f2)</td>
+<td>返回f1进制数变成f2进制数</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT BIN(10),HEX(10),OCT(10),CONV(10,2,8)</span><br><span class="line">    -&gt; FROM DUAL;</span><br><span class="line">+---------+---------+---------+--------------+</span><br><span class="line">| BIN(10) | HEX(10) | OCT(10) | CONV(10,2,8) |</span><br><span class="line">+---------+---------+---------+--------------+</span><br><span class="line">| 1010    | A       | 12      | 2            |</span><br><span class="line">+---------+---------+---------+--------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="3-字符串函数"><a href="#3-字符串函数" class="headerlink" title="3. 字符串函数"></a>3. 字符串函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ASCII(S)</td>
+<td>返回字符串S中的第一个字符的ASCII码值</td>
+</tr>
+<tr>
+<td>CHAR_LENGTH(s)</td>
+<td>返回字符串s的字符数。作用与CHARACTER_LENGTH(s)相同</td>
+</tr>
+<tr>
+<td>LENGTH(s)</td>
+<td>返回字符串s的字节数，和字符集有关</td>
+</tr>
+<tr>
+<td>CONCAT(s1,s2,……,sn)</td>
+<td>连接s1,s2,……,sn为一个字符串</td>
+</tr>
+<tr>
+<td>CONCAT_WS(x, s1,s2,……,sn)</td>
+<td>同CONCAT(s1,s2,…)函数，但是每个字符串之间要加上x</td>
+</tr>
+<tr>
+<td>INSERT(str, idx, len, replacestr)</td>
+<td>将字符串str从第idx位置开始，len个字符长的子串替换为字符串replacestr</td>
+</tr>
+<tr>
+<td>REPLACE(str, a, b)</td>
+<td>用字符串b替换字符串str中所有出现的字符串a</td>
+</tr>
+<tr>
+<td>UPPER(s) 或 UCASE(s)</td>
+<td>将字符串s的所有字母转成大写字母</td>
+</tr>
+<tr>
+<td>LOWER(s)  或LCASE(s)</td>
+<td>将字符串s的所有字母转成小写字母</td>
+</tr>
+<tr>
+<td>LEFT(str,n)</td>
+<td>返回字符串str最左边的n个字符</td>
+</tr>
+<tr>
+<td>RIGHT(str,n)</td>
+<td>返回字符串str最右边的n个字符</td>
+</tr>
+<tr>
+<td>LPAD(str, len, pad)</td>
+<td>用字符串pad对str最左边进行填充，直到str的长度为len个字符</td>
+</tr>
+<tr>
+<td>RPAD(str ,len, pad)</td>
+<td>用字符串pad对str最右边进行填充，直到str的长度为len个字符</td>
+</tr>
+<tr>
+<td>LTRIM(s)</td>
+<td>去掉字符串s左侧的空格</td>
+</tr>
+<tr>
+<td>RTRIM(s)</td>
+<td>去掉字符串s右侧的空格</td>
+</tr>
+<tr>
+<td>TRIM(s)</td>
+<td>去掉字符串s开始与结尾的空格</td>
+</tr>
+<tr>
+<td>TRIM(s1 FROM s)</td>
+<td>去掉字符串s开始与结尾的s1</td>
+</tr>
+<tr>
+<td>TRIM(LEADING s1 FROM s)</td>
+<td>去掉字符串s开始处的s1</td>
+</tr>
+<tr>
+<td>TRIM(TRAILING s1 FROM s)</td>
+<td>去掉字符串s结尾处的s1</td>
+</tr>
+<tr>
+<td>REPEAT(str, n)</td>
+<td>返回str重复n次的结果</td>
+</tr>
+<tr>
+<td>SPACE(n)</td>
+<td>返回n个空格</td>
+</tr>
+<tr>
+<td>STRCMP(s1,s2)</td>
+<td>比较字符串s1,s2的ASCII码值的大小</td>
+</tr>
+<tr>
+<td>SUBSTR(s,index,len)</td>
+<td>返回从字符串s的index位置其len个字符，作用与SUBSTRING(s,n,len)、MID(s,n,len)相同</td>
+</tr>
+<tr>
+<td>LOCATE(substr,str)</td>
+<td>返回字符串substr在字符串str中首次出现的位置，作用于POSITION(substr IN str)、INSTR(str,substr)相同。未找到，返回0</td>
+</tr>
+<tr>
+<td>ELT(m,s1,s2,…,sn)</td>
+<td>返回指定位置的字符串，如果m&#x3D;1，则返回s1，如果m&#x3D;2，则返回s2，如果m&#x3D;n，则返回sn</td>
+</tr>
+<tr>
+<td>FIELD(s,s1,s2,…,sn)</td>
+<td>返回字符串s在字符串列表中第一次出现的位置</td>
+</tr>
+<tr>
+<td>FIND_IN_SET(s1,s2)</td>
+<td>返回字符串s1在字符串s2中出现的位置。其中，字符串s2是一个以逗号分隔的字符串</td>
+</tr>
+<tr>
+<td>REVERSE(s)</td>
+<td>返回s反转后的字符串</td>
+</tr>
+<tr>
+<td>NULLIF(value1,value2)</td>
+<td>比较两个字符串，如果value1与value2相等，则返回NULL，否则返回value1</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：MySQL中，字符串的位置是从1开始的</p>
+</blockquote>
+<p><strong>字符数、字节数、ASCII值</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 返回字符串S中的第一个字符的ASCII码值</span><br><span class="line">SELECT ASCII(&#x27;Abcdfsf&#x27;),CHAR_LENGTH(&#x27;hello&#x27;),CHAR_LENGTH(&#x27;我们&#x27;),</span><br><span class="line">LENGTH(&#x27;hello&#x27;),LENGTH(&#x27;我们&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------------+----------------------+-----------------------+-----------------+------------------+</span><br><span class="line">| ASCII(&#x27;Abcdfsf&#x27;) | CHAR_LENGTH(&#x27;hello&#x27;) | CHAR_LENGTH(&#x27;我们&#x27;)   | LENGTH(&#x27;hello&#x27;) | LENGTH(&#x27;我们&#x27;)   |</span><br><span class="line">+------------------+----------------------+-----------------------+-----------------+------------------+</span><br><span class="line">|               65 |                    5 |                     2 |               5 |                6 |</span><br><span class="line">+------------------+----------------------+-----------------------+-----------------+------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>字符串连接 CONCAT</strong></p>
+<p><strong>1、CONCAT</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">--  自连接 + 内连接</span><br><span class="line">SELECT CONCAT(emp.last_name,&#x27; worked for &#x27;,mgr.last_name) &quot;details&quot;</span><br><span class="line">FROM employees emp JOIN employees mgr</span><br><span class="line">WHERE emp.`manager_id` = mgr.employee_id;</span><br><span class="line">+--------------------------------+</span><br><span class="line">| details                        |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| Kochhar worked for King        |</span><br><span class="line">| De Haan worked for King        |</span><br><span class="line">| Hunold worked for De Haan      |</span><br><span class="line">| Ernst worked for Hunold        |</span><br><span class="line">+--------------------------------+</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、CONCAT_WS</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT CONCAT_WS(&#x27;-&#x27;,&#x27;hello&#x27;,&#x27;world&#x27;,&#x27;hello&#x27;,&#x27;beijing&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+--------------------------------------------------+</span><br><span class="line">| CONCAT_WS(&#x27;-&#x27;,&#x27;hello&#x27;,&#x27;world&#x27;,&#x27;hello&#x27;,&#x27;beijing&#x27;) |</span><br><span class="line">+--------------------------------------------------+</span><br><span class="line">| hello-world-hello-beijing                        |</span><br><span class="line">+--------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>两个替换函数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#字符串的索引是从1开始的！</span><br><span class="line">-- 这里的意思是将 ell 换成 aaaaa</span><br><span class="line">SELECT INSERT(&#x27;helloworld&#x27;,2,3,&#x27;aaaaa&#x27;),REPLACE(&#x27;hello&#x27;,&#x27;lol&#x27;,&#x27;mmm&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+----------------------------------+------------------------------+</span><br><span class="line">| INSERT(&#x27;helloworld&#x27;,2,3,&#x27;aaaaa&#x27;) | REPLACE(&#x27;hello&#x27;,&#x27;llo&#x27;,&#x27;mmm&#x27;) |</span><br><span class="line">+----------------------------------+------------------------------+</span><br><span class="line">| haaaaaoworld                     | hemmm                        |</span><br><span class="line">+----------------------------------+------------------------------+</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>字符串的索引是从1开始的</p>
+<p>REPLACE（）：当第一个参数中没有第2个参数的值，则替换失败，但不会报错</p>
+<p><strong>大写、小写</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SELECT UPPER(&#x27;HelLo&#x27;),LOWER(&#x27;HelLo&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+----------------+----------------+</span><br><span class="line">| UPPER(&#x27;HelLo&#x27;) | LOWER(&#x27;HelLo&#x27;) |</span><br><span class="line">+----------------+----------------+</span><br><span class="line">| HELLO          | hello          |</span><br><span class="line">+----------------+----------------+</span><br><span class="line"></span><br><span class="line">-- MYSQL对SQL的支持不是特别高，字符串内不区分大小写</span><br><span class="line">SELECT last_name,salary</span><br><span class="line">FROM employees</span><br><span class="line">WHERE LOWER(last_name) = &#x27;King&#x27;;</span><br><span class="line">+-----------+----------+</span><br><span class="line">| last_name | salary   |</span><br><span class="line">+-----------+----------+</span><br><span class="line">| King      | 24000.00 |</span><br><span class="line">| King      | 10000.00 |</span><br><span class="line">+-----------+----------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>截取字符串（左右两边）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT LEFT(&#x27;hello&#x27;,2),RIGHT(&#x27;hello&#x27;,3),RIGHT(&#x27;hello&#x27;,13)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+-----------------+------------------+-------------------+</span><br><span class="line">| LEFT(&#x27;hello&#x27;,2) | RIGHT(&#x27;hello&#x27;,3) | RIGHT(&#x27;hello&#x27;,13) |</span><br><span class="line">+-----------------+------------------+-------------------+</span><br><span class="line">| he              | llo              | hello             |</span><br><span class="line">+-----------------+------------------+-------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>实现右对齐效果 、实现左对齐效果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-- 将工资转为字符串，一共占十位，不足十位在前面补空格</span><br><span class="line">-- 在左边补零，右对齐</span><br><span class="line"></span><br><span class="line">SELECT employee_id,last_name,LPAD(salary,10,&#x27; &#x27;)</span><br><span class="line">FROM employees;</span><br><span class="line"></span><br><span class="line">+-------------+-------------+---------------------+</span><br><span class="line">| employee_id | last_name   | LPAD(salary,10,&#x27; &#x27;) |</span><br><span class="line">+-------------+-------------+---------------------+</span><br><span class="line">|         100 | King        |   24000.00          |</span><br><span class="line">|         102 | De Haan     |   17000.00          |</span><br><span class="line">|         104 | Ernst       |    6000.00          |</span><br><span class="line">+-------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>去除字符（空格）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 去除左边的空格</span><br><span class="line">SELECT CONCAT(&#x27;---&#x27;,LTRIM(&#x27;    h  el  lo   &#x27;),&#x27;***&#x27;),</span><br><span class="line">-- 只是去除左边符合的oo，右边的o不管</span><br><span class="line">TRIM(&#x27;oo&#x27; FROM &#x27;ooheollo&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+-----------------------------------------------+----------------------------+</span><br><span class="line">| CONCAT(&#x27;---&#x27;,LTRIM(&#x27;    h  el  lo   &#x27;),&#x27;***&#x27;) | TRIM(&#x27;oo&#x27; FROM &#x27;ooheollo&#x27;) |</span><br><span class="line">+-----------------------------------------------+----------------------------+</span><br><span class="line">| ---h  el  lo   ***                            | heollo                     |</span><br><span class="line">+-----------------------------------------------+----------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>重复、空格、比较大小</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT REPEAT(&#x27;hello&#x27;,4),LENGTH(SPACE(5)),STRCMP(&#x27;abc&#x27;,&#x27;abe&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+----------------------+------------------+---------------------+</span><br><span class="line">| REPEAT(&#x27;hello&#x27;,4)    | LENGTH(SPACE(5)) | STRCMP(&#x27;abc&#x27;,&#x27;abe&#x27;) |</span><br><span class="line">+----------------------+------------------+---------------------+</span><br><span class="line">| hellohellohellohello |                5 |                  -1 |#负数表示后面的大</span><br><span class="line">+----------------------+------------------+---------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>截取字符串</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">-- SUBSTR(s,index,len)返回从字符串s的index位置其len个字符，作用与SUBSTRING(s,n,len)、MID(s,n,len)相同</span><br><span class="line">-- 返回字符串substr在字符串str中首次出现的位置</span><br><span class="line">SELECT SUBSTR(&#x27;hello&#x27;,2,2),LOCATE(&#x27;lll&#x27;,&#x27;hello&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+---------------------+-----------------------+</span><br><span class="line">| SUBSTR(&#x27;hello&#x27;,2,2) | LOCATE(&#x27;lll&#x27;,&#x27;hello&#x27;) |</span><br><span class="line">+---------------------+-----------------------+</span><br><span class="line">| el                  |                     0 |</span><br><span class="line">+---------------------+-----------------------+</span><br><span class="line"></span><br><span class="line">select substring(&#x27;helloworld&#x27;,2,2);</span><br><span class="line">+-----------------------------+</span><br><span class="line">| substring(&#x27;helloworld&#x27;,2,2) |</span><br><span class="line">+-----------------------------+</span><br><span class="line">| el                          |</span><br><span class="line">+-----------------------------+</span><br><span class="line"></span><br><span class="line">select mid(&#x27;helloworld&#x27;,2,2);</span><br><span class="line">+-----------------------+</span><br><span class="line">| mid(&#x27;helloworld&#x27;,2,2) |</span><br><span class="line">+-----------------------+</span><br><span class="line">| el                    |</span><br><span class="line">+-----------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>字符串查找</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--  ELT(m,s1,s2,…,sn)   返回指定位置的字符串，如果m=1，则返回s1，如果m=2，则返回s2，如果m=n，则返回sn 相当于charAt()</span><br><span class="line">-- FIELD(s,s1,s2,…,sn) 返回字符串s在字符串列表中第一次出现的位置 indexOf()                  </span><br><span class="line">--  FIND_IN_SET(s1,s2)  返回字符串s1在字符串s2中出现的位置。其中，字符串s2是一个以逗号分隔的字符串    indexOf（）                                  </span><br><span class="line">SELECT ELT(2,&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;),FIELD(&#x27;mm&#x27;,&#x27;gg&#x27;,&#x27;jj&#x27;,&#x27;mm&#x27;,&#x27;dd&#x27;,&#x27;mm&#x27;),</span><br><span class="line">FIND_IN_SET(&#x27;mm&#x27;,&#x27;gg,mm,jj,dd,mm,gg&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------------------+--------------------------------------+---------------------------------------+</span><br><span class="line">| ELT(2,&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;) | FIELD(&#x27;mm&#x27;,&#x27;gg&#x27;,&#x27;jj&#x27;,&#x27;mm&#x27;,&#x27;dd&#x27;,&#x27;mm&#x27;) | FIND_IN_SET(&#x27;mm&#x27;,&#x27;gg,mm,jj,dd,mm,gg&#x27;) |</span><br><span class="line">+------------------------+--------------------------------------+---------------------------------------+</span><br><span class="line">| b                      |                                    3 |                                     2 |</span><br><span class="line">+------------------------+--------------------------------------+---------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>字符串比较 相同为null</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- NULLIF(value1,value2)比较两个字符串，如果value1与value2相等，则返回NULL，否则返回value1</span><br><span class="line">SELECT employee_id,NULLIF(LENGTH(first_name),LENGTH(last_name)) &quot;compare&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+---------+</span><br><span class="line">| employee_id | compare+ |</span><br><span class="line">+-------------+---------+</span><br><span class="line">|         100 |       6 |</span><br><span class="line">|         101 |       5 |</span><br><span class="line">|         102 |       3 |</span><br><span class="line">|         103 |       9 |</span><br><span class="line">|         104 |    NULL |</span><br><span class="line">+-----------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT FIELD(&#x27;mm&#x27;,&#x27;hello&#x27;,&#x27;msm&#x27;,&#x27;amma&#x27;),FIND_IN_SET(&#x27;mm&#x27;,&#x27;hello,mm,amma&#x27;)</span><br><span class="line">    -&gt; FROM DUAL;</span><br><span class="line">+----------------------------------+-----------------------------------+</span><br><span class="line">| FIELD(&#x27;mm&#x27;,&#x27;hello&#x27;,&#x27;msm&#x27;,&#x27;amma&#x27;) | FIND_IN_SET(&#x27;mm&#x27;,&#x27;hello,mm,amma&#x27;) |</span><br><span class="line">+----------------------------------+-----------------------------------+</span><br><span class="line">|                                0 |                                 2 |</span><br><span class="line">+----------------------------------+-----------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT NULLIF(&#x27;mysql&#x27;,&#x27;mysql&#x27;),NULLIF(&#x27;mysql&#x27;, &#x27;&#x27;);</span><br><span class="line">+-------------------------+---------------------+</span><br><span class="line">| NULLIF(&#x27;mysql&#x27;,&#x27;mysql&#x27;) | NULLIF(&#x27;mysql&#x27;, &#x27;&#x27;) |</span><br><span class="line">+-------------------------+---------------------+</span><br><span class="line">| NULL                    | mysql               |</span><br><span class="line">+-------------------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-日期和时间函数"><a href="#4-日期和时间函数" class="headerlink" title="4. 日期和时间函数"></a>4. 日期和时间函数</h2><h3 id="4-1-获取日期、时间"><a href="#4-1-获取日期、时间" class="headerlink" title="4.1 获取日期、时间"></a>4.1 获取日期、时间</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CURDATE()</strong> ，CURRENT_DATE()</td>
+<td>返回当前日期，只包含年、月、日</td>
+</tr>
+<tr>
+<td><strong>CURTIME()</strong> ， CURRENT_TIME()</td>
+<td>返回当前时间，只包含时、分、秒</td>
+</tr>
+<tr>
+<td><strong>NOW()</strong> &#x2F; SYSDATE() &#x2F; CURRENT_TIMESTAMP() &#x2F; LOCALTIME() &#x2F; LOCALTIMESTAMP()</td>
+<td>返回当前系统日期和时间</td>
+</tr>
+<tr>
+<td>UTC_DATE()</td>
+<td>返回UTC（世界标准时间）日期</td>
+</tr>
+<tr>
+<td>UTC_TIME()</td>
+<td>返回UTC（世界标准时间）时间</td>
+</tr>
+</tbody></table>
+<p><strong>年月日、时分秒、年月日时分秒</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT CURDATE(),CURRENT_DATE(),CURTIME(),NOW(),SYSDATE(),</span><br><span class="line">UTC_DATE(),UTC_TIME()</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------+----------------+-----------+---------------------+---------------------+------------+------------+</span><br><span class="line">| CURDATE()  | CURRENT_DATE() | CURTIME() | NOW()               | SYSDATE()           | UTC_DATE() | UTC_TIME() |</span><br><span class="line">+------------+----------------+-----------+---------------------+---------------------+------------+------------+</span><br><span class="line">| 2022-04-21 | 2022-04-21     | 13:33:23  | 2022-04-21 13:33:23 | 2022-04-21 13:33:23 | 2022-04-21 | 05:33:23   |</span><br><span class="line">+------------+----------------+-----------+---------------------+---------------------+------------+------------+</span><br><span class="line"></span><br><span class="line">SELECT CURDATE(),CURDATE() + 0,CURTIME() + 0,NOW() + 0</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------+---------------+---------------+----------------+</span><br><span class="line">| CURDATE()  | CURDATE() + 0 | CURTIME() + 0 | NOW() + 0      |</span><br><span class="line">+------------+---------------+---------------+----------------+</span><br><span class="line">| 2022-04-21 |      20220421 |        133455 | 20220421133455 |</span><br><span class="line">+------------+---------------+---------------+----------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="4-2-日期与时间戳的转换（了解）"><a href="#4-2-日期与时间戳的转换（了解）" class="headerlink" title="4.2 日期与时间戳的转换（了解）"></a>4.2 日期与时间戳的转换（了解）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UNIX_TIMESTAMP()</td>
+<td>以UNIX时间戳的形式返回当前时间。SELECT UNIX_TIMESTAMP() -&gt;1634348884</td>
+</tr>
+<tr>
+<td>UNIX_TIMESTAMP(date)</td>
+<td>将时间date以UNIX时间戳的形式返回。</td>
+</tr>
+<tr>
+<td>FROM_UNIXTIME(timestamp)</td>
+<td>将UNIX时间戳的时间转换为普通格式的时间</td>
+</tr>
+</tbody></table>
+<p>日期与时间戳的转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT UNIX_TIMESTAMP(),UNIX_TIMESTAMP(&#x27;2021-10-01 12:12:32&#x27;),</span><br><span class="line">FROM_UNIXTIME(1635173853),FROM_UNIXTIME(1633061552)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------------+---------------------------------------+---------------------------+---------------------------+</span><br><span class="line">| UNIX_TIMESTAMP() | UNIX_TIMESTAMP(&#x27;2021-10-01 12:12:32&#x27;) | FROM_UNIXTIME(1635173853) | FROM_UNIXTIME(1633061552) |</span><br><span class="line">+------------------+---------------------------------------+---------------------------+---------------------------+</span><br><span class="line">|       1650519378 |                            1633061552 | 2021-10-25 22:57:33       | 2021-10-01 12:12:32       |</span><br><span class="line">+------------------+---------------------------------------+---------------------------+---------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT UNIX_TIMESTAMP(now());</span><br><span class="line">+-----------------------+</span><br><span class="line">| UNIX_TIMESTAMP(now()) |</span><br><span class="line">+-----------------------+</span><br><span class="line">|            1576380910 |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT UNIX_TIMESTAMP(CURDATE());</span><br><span class="line">+---------------------------+</span><br><span class="line">| UNIX_TIMESTAMP(CURDATE()) |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                1576339200 |</span><br><span class="line">+---------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT UNIX_TIMESTAMP(CURTIME());</span><br><span class="line">+---------------------------+</span><br><span class="line">| UNIX_TIMESTAMP(CURTIME()) |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                1576380969 |</span><br><span class="line">+---------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT UNIX_TIMESTAMP(&#x27;2011-11-11 11:11:11&#x27;)</span><br><span class="line">+---------------------------------------+</span><br><span class="line">| UNIX_TIMESTAMP(&#x27;2011-11-11 11:11:11&#x27;) |</span><br><span class="line">+---------------------------------------+</span><br><span class="line">|                            1320981071 |</span><br><span class="line">+---------------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT FROM_UNIXTIME(1576380910);</span><br><span class="line">+---------------------------+</span><br><span class="line">| FROM_UNIXTIME(1576380910) |</span><br><span class="line">+---------------------------+</span><br><span class="line">| 2019-12-15 11:35:10       |</span><br><span class="line">+---------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="4-3-获取月份、星期、星期数、天数等函数（了解）"><a href="#4-3-获取月份、星期、星期数、天数等函数（了解）" class="headerlink" title="4.3 获取月份、星期、星期数、天数等函数（了解）"></a>4.3 获取月份、星期、星期数、天数等函数（了解）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>YEAR(date) &#x2F; MONTH(date) &#x2F; DAY(date)</td>
+<td>返回具体的日期值</td>
+</tr>
+<tr>
+<td>HOUR(time) &#x2F; MINUTE(time) &#x2F; SECOND(time)</td>
+<td>返回具体的时间值</td>
+</tr>
+<tr>
+<td>MONTHNAME(date)</td>
+<td>返回月份：January，…</td>
+</tr>
+<tr>
+<td>DAYNAME(date)</td>
+<td>返回星期几：MONDAY，TUESDAY…..SUNDAY</td>
+</tr>
+<tr>
+<td>WEEKDAY(date)</td>
+<td>返回周几，注意，周1是0，周2是1，。。。周日是6</td>
+</tr>
+<tr>
+<td>QUARTER(date)</td>
+<td>返回日期对应的季度，范围为1～4</td>
+</tr>
+<tr>
+<td>WEEK(date) ， WEEKOFYEAR(date)</td>
+<td>返回一年中的第几周</td>
+</tr>
+<tr>
+<td>DAYOFYEAR(date)</td>
+<td>返回日期是一年中的第几天</td>
+</tr>
+<tr>
+<td>DAYOFMONTH(date)</td>
+<td>返回日期位于所在月份的第几天</td>
+</tr>
+<tr>
+<td>DAYOFWEEK(date)</td>
+<td>返回周几，注意：周日是1，周一是2，。。。周六是7</td>
+</tr>
+</tbody></table>
+<p>单取 年、月、日、时、分、秒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT YEAR(CURDATE()),MONTH(CURDATE()),DAY(CURDATE()),</span><br><span class="line">HOUR(CURTIME()),MINUTE(NOW()),SECOND(SYSDATE())</span><br><span class="line">FROM DUAL;</span><br><span class="line">+-----------------+------------------+----------------+-----------------+---------------+-------------------+</span><br><span class="line">| YEAR(CURDATE()) | MONTH(CURDATE()) | DAY(CURDATE()) | HOUR(CURTIME()) | MINUTE(NOW()) | SECOND(SYSDATE()) |</span><br><span class="line">+-----------------+------------------+----------------+-----------------+---------------+-------------------+</span><br><span class="line">|            2022 |                4 |             21 |              13 |            38 |                45 |</span><br><span class="line">+-----------------+------------------+----------------+-----------------+---------------+-------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-- QUARTER(date)</span><br><span class="line"># 存在隐式转换 将字符串 &#x27;2021-10-26&#x27;转为 日期</span><br><span class="line">SELECT MONTHNAME(&#x27;2021-10-26&#x27;),DAYNAME(&#x27;2021-10-26&#x27;),WEEKDAY(&#x27;2021-10-26&#x27;),</span><br><span class="line">QUARTER(CURDATE()),WEEK(CURDATE()),DAYOFYEAR(NOW()),</span><br><span class="line">DAYOFMONTH(NOW()),DAYOFWEEK(NOW())</span><br><span class="line">FROM DUAL;</span><br><span class="line"></span><br><span class="line">+-------------------------+-----------------------+-----------------------+--------------------+-----------------+</span><br><span class="line">| MONTHNAME(&#x27;2021-10-26&#x27;) | DAYNAME(&#x27;2021-10-26&#x27;) | WEEKDAY(&#x27;2021-10-26&#x27;) | QUARTER(CURDATE()) | WEEK(CURDATE())</span><br><span class="line">+-------------------------+-----------------------+-----------------------+--------------------+-----------------+</span><br><span class="line">| October                 | Tuesday               |                     1 |                  2 |              16 |             </span><br><span class="line">+-------------------------+-----------------------+-----------------------+--------------------+-----------------+</span><br><span class="line"></span><br><span class="line"> | DAYOFYEAR(NOW()) | DAYOFMONTH(NOW()) | DAYOFWEEK(NOW()) |</span><br><span class="line"> |        111       |                21 |                5 |</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT YEAR(CURDATE()),MONTH(CURDATE()),DAY(CURDATE()),</span><br><span class="line">HOUR(CURTIME()),MINUTE(NOW()),SECOND(SYSDATE())</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025213504115.png" alt="image-20211025213504115"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT MONTHNAME(&#x27;2021-10-26&#x27;),DAYNAME(&#x27;2021-10-26&#x27;),WEEKDAY(&#x27;2021-10-26&#x27;),</span><br><span class="line">QUARTER(CURDATE()),WEEK(CURDATE()),DAYOFYEAR(NOW()),</span><br><span class="line">DAYOFMONTH(NOW()),DAYOFWEEK(NOW())</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211025214818623.png" alt="image-20211025214818623"></p>
+<hr>
+<h3 id="4-4-日期的操作函数（了解）"><a href="#4-4-日期的操作函数（了解）" class="headerlink" title="4.4 日期的操作函数（了解）"></a>4.4 日期的操作函数（了解）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EXTRACT(type FROM date)</td>
+<td>返回指定日期中特定的部分，type指定返回的值</td>
+</tr>
+</tbody></table>
+<p>EXTRACT(type FROM date)函数中type的取值与含义：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012142639469.png" alt="image-20211012142639469"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012142746444.png" alt="image-20211012142746444"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SELECT EXTRACT(MINUTE FROM NOW()) minutes,EXTRACT( WEEK FROM NOW()) week,</span><br><span class="line">EXTRACT( QUARTER FROM NOW()) quarter,EXTRACT( MINUTE_SECOND FROM NOW()) second</span><br><span class="line">FROM DUAL;</span><br><span class="line"></span><br><span class="line">+---------+------+---------+--------+</span><br><span class="line">| minutes | week | quarter | second |</span><br><span class="line">+---------+------+---------+--------+</span><br><span class="line">|      28 |   25 |       2 |   2830 |</span><br><span class="line">+---------+------+---------+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-5-时间和秒钟转换的函数（了解）"><a href="#4-5-时间和秒钟转换的函数（了解）" class="headerlink" title="4.5 时间和秒钟转换的函数（了解）"></a>4.5 时间和秒钟转换的函数（了解）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TIME_TO_SEC(time)</td>
+<td>将 time 转化为秒并返回结果值。转化的公式为：<code>小时*3600+分钟*60+秒</code></td>
+</tr>
+<tr>
+<td>SEC_TO_TIME(seconds)</td>
+<td>将 seconds 描述转化为包含小时、分钟和秒的时间</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<p>通过日期获取秒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT TIME_TO_SEC(NOW());</span><br><span class="line">+--------------------+</span><br><span class="line">| TIME_TO_SEC(NOW()) |</span><br><span class="line">+--------------------+</span><br><span class="line">|               78774 |</span><br><span class="line">+--------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过秒转为时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SEC_TO_TIME(78774);</span><br><span class="line">+--------------------+</span><br><span class="line">| SEC_TO_TIME(78774) |</span><br><span class="line">+--------------------+</span><br><span class="line">| 21:52:54            |</span><br><span class="line">+--------------------+</span><br><span class="line">1 row in set (0.12 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="4-6-计算日期和时间的函数（了解）"><a href="#4-6-计算日期和时间的函数（了解）" class="headerlink" title="4.6 计算日期和时间的函数（了解）"></a>4.6 计算日期和时间的函数（了解）</h3><p><strong>第1组：</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATE_ADD(datetime, INTERVAL  expr type)<br />ADDDATE(date,INTERVAL expr type)</td>
+<td>返回与给定日期时间相差INTERVAL时间段的日期时间</td>
+</tr>
+<tr>
+<td>DATE_SUB(date,INTERVAL expr type)<br />SUBDATE(date,INTERVAL expr type)</td>
+<td>返回与date相差INTERVAL时间间隔的日期</td>
+</tr>
+</tbody></table>
+<p>上述函数中type的取值：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012143203355.png" alt="image-20211012143203355"></p>
+<hr>
+<p>举例：日期加减</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">DATE_ADD(NOW(), INTERVAL 1 DAY) AS col1,</span><br><span class="line">DATE_ADD(&#x27;2021-10-21 23:32:12&#x27;,INTERVAL 1 SECOND) AS col2,</span><br><span class="line">ADDDATE(&#x27;2021-10-21 23:32:12&#x27;,INTERVAL 1 SECOND) AS col3,</span><br><span class="line">DATE_ADD(&#x27;2021-10-21 23:32:12&#x27;,INTERVAL &#x27;1_1&#x27; MINUTE_SECOND) AS col4, -- 加一分钟一秒</span><br><span class="line">DATE_ADD(NOW(), INTERVAL -1 YEAR) AS col5, #可以是负数</span><br><span class="line">DATE_ADD(NOW(), INTERVAL &#x27;1_1&#x27; YEAR_MONTH) AS col6 -- 加一年一个月 需要单引号</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220623143109033.png" alt="image-20220623143109033"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">DATE_SUB(&#x27;2021-01-21&#x27;,INTERVAL 31 DAY) AS col1,</span><br><span class="line">SUBDATE(&#x27;2021-01-21&#x27;,INTERVAL 31 DAY) AS col2,</span><br><span class="line">DATE_SUB(&#x27;2021-01-21 02:01:01&#x27;,INTERVAL &#x27;1 1&#x27; DAY_HOUR) AS col3</span><br><span class="line">FROM DUAL;</span><br><span class="line"></span><br><span class="line">+------------+------------+---------------------+</span><br><span class="line">| col1       | col2       | col3                |</span><br><span class="line">+------------+------------+---------------------+</span><br><span class="line">| 2020-12-21 | 2020-12-21 | 2021-01-20 01:01:01 |</span><br><span class="line">+------------+------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>第2组：</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ADDTIME(time1,time2)</td>
+<td>返回time1加上time2的时间。当time2为一个数字时，代表的是<code>秒</code>，可以为负数</td>
+</tr>
+<tr>
+<td>SUBTIME(time1,time2)</td>
+<td>返回time1减去time2后的时间。当time2为一个数字时，代表的是<code>秒</code>，可以为负数</td>
+</tr>
+<tr>
+<td>DATEDIFF(date1,date2)</td>
+<td>返回date1 - date2的日期间隔天数</td>
+</tr>
+<tr>
+<td>TIMEDIFF(time1, time2)</td>
+<td>返回time1 - time2的时间间隔</td>
+</tr>
+<tr>
+<td>FROM_DAYS(N)</td>
+<td>返回从0000年1月1日起，N天以后的日期</td>
+</tr>
+<tr>
+<td>TO_DAYS(date)</td>
+<td>返回日期date距离0000年1月1日的天数</td>
+</tr>
+<tr>
+<td>LAST_DAY(date)</td>
+<td>返回date所在月份的最后一天的日期</td>
+</tr>
+<tr>
+<td>MAKEDATE(year,n)</td>
+<td>针对给定年份与所在年份中的天数返回一个日期</td>
+</tr>
+<tr>
+<td>MAKETIME(hour,minute,second)</td>
+<td>将给定的小时、分钟和秒组合成时间并返回</td>
+</tr>
+<tr>
+<td>PERIOD_ADD(time,n)</td>
+<td>返回time加上n后的时间</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT ADDTIME(NOW(),20),SUBTIME(NOW(),30),SUBTIME(NOW(),&#x27;1:1:3&#x27;),DATEDIFF(NOW(),&#x27;2021-10-01&#x27;),</span><br><span class="line">TIMEDIFF(NOW(),&#x27;2021-10-25 22:10:10&#x27;),FROM_DAYS(366),TO_DAYS(&#x27;0000-12-25&#x27;),</span><br><span class="line">LAST_DAY(NOW()),MAKEDATE(YEAR(NOW()),12),MAKETIME(10,21,23),PERIOD_ADD(20200101010101,10)</span><br><span class="line">FROM DUAL;</span><br><span class="line"></span><br><span class="line">+---------------------+---------------------+------------------------+------------------------------+---------------------------------------+----------------+-----------------------+-----------------+--------------------------+--------------------+-------------------------------+</span><br><span class="line">| ADDTIME(NOW(),20)   | SUBTIME(NOW(),30)   | SUBTIME(NOW(),&#x27;1:1:3&#x27;) | DATEDIFF(NOW(),&#x27;2021-10-01&#x27;) | TIMEDIFF(NOW(),&#x27;2021-10-25 22:10:10&#x27;) | FROM_DAYS(366) | TO_DAYS(&#x27;0000-12-25&#x27;) | LAST_DAY(NOW()) | MAKEDATE(YEAR(NOW()),12) | MAKETIME(10,21,23) | PERIOD_ADD(20200101010101,10) |</span><br><span class="line">+---------------------+---------------------+------------------------+------------------------------+---------------------------------------+----------------+-----------------------+-----------------+--------------------------+--------------------+-------------------------------+</span><br><span class="line">| 2022-12-31 17:01:50 | 2022-12-31 17:01:00 | 2022-12-31 16:00:27    |                          456 | 838:59:59                             | 0001-01-01     |                   359 | 2022-12-31      | 2022-01-12               | 10:21:23           |                20200101010111 |</span><br><span class="line">+---------------------+---------------------+------------------------+------------------------------+---------------------------------------+----------------+-----------------------+-----------------+--------------------------+--------------------+-------------------------------+</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT ADDTIME(NOW(), 50),now();</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| ADDTIME(NOW(), 50)  | now()               |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| 2022-12-31 17:03:09 | 2022-12-31 17:02:19 |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT ADDTIME(NOW(),&#x27;1:1:1&#x27;),now();</span><br><span class="line">+------------------------+---------------------+</span><br><span class="line">| ADDTIME(NOW(),&#x27;1:1:1&#x27;) | now()               |</span><br><span class="line">+------------------------+---------------------+</span><br><span class="line">| 2022-12-31 18:04:53    | 2022-12-31 17:03:52 |</span><br><span class="line">+------------------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SUBTIME(NOW(), &#x27;1:1:1&#x27;),now();</span><br><span class="line">+-------------------------+---------------------+</span><br><span class="line">| SUBTIME(NOW(), &#x27;1:1:1&#x27;) | now()               |</span><br><span class="line">+-------------------------+---------------------+</span><br><span class="line">| 2022-12-31 16:03:45     | 2022-12-31 17:04:46 |</span><br><span class="line">+-------------------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SUBTIME(NOW(), &#x27;-1:-1:-1&#x27;),now(); </span><br><span class="line">+----------------------------+---------------------+</span><br><span class="line">| SUBTIME(NOW(), &#x27;-1:-1:-1&#x27;) | now()               |</span><br><span class="line">+----------------------------+---------------------+</span><br><span class="line">| 2022-12-31 17:05:07        | 2022-12-31 17:05:06 |</span><br><span class="line">+----------------------------+---------------------+</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT FROM_DAYS(366);</span><br><span class="line">+----------------+</span><br><span class="line">| FROM_DAYS(366) |</span><br><span class="line">+----------------+</span><br><span class="line">| 0001-01-01     |</span><br><span class="line">+----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MAKEDATE(2020,1);</span><br><span class="line">+------------------+</span><br><span class="line">| MAKEDATE(2020,1) |</span><br><span class="line">+------------------+</span><br><span class="line">| 2020-01-01       |</span><br><span class="line">+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT MAKEDATE(2020,32);</span><br><span class="line">+-------------------+</span><br><span class="line">| MAKEDATE(2020,32) |</span><br><span class="line">+-------------------+</span><br><span class="line">| 2020-02-01        |</span><br><span class="line">+-------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MAKETIME(1,1,1);</span><br><span class="line">+-----------------+</span><br><span class="line">| MAKETIME(1,1,1) |</span><br><span class="line">+-----------------+</span><br><span class="line">| 01:01:01        |</span><br><span class="line">+-----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT PERIOD_ADD(20200101010101,1);</span><br><span class="line">+------------------------------+</span><br><span class="line">| PERIOD_ADD(20200101010101,1) |</span><br><span class="line">+------------------------------+</span><br><span class="line">|               20200101010102 |</span><br><span class="line">+------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT TO_DAYS(NOW());</span><br><span class="line">+----------------+</span><br><span class="line">| TO_DAYS(NOW()) |</span><br><span class="line">+----------------+</span><br><span class="line">|          737773 |</span><br><span class="line">+----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>举例：查询 7 天内的新增用户数有多少？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) as num FROM new_user WHERE TO_DAYS(NOW())-TO_DAYS(regist_time)&lt;=7</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">SELECT NOW(),DATE_ADD(NOW(),INTERVAL 1 YEAR),</span><br><span class="line">DATE_ADD(NOW(),INTERVAL -1 YEAR),</span><br><span class="line">DATE_SUB(NOW(),INTERVAL 1 YEAR)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+---------------------+---------------------------------+----------------------------------+---------------------------------+</span><br><span class="line">| NOW()               | DATE_ADD(NOW(),INTERVAL 1 YEAR) | DATE_ADD(NOW(),INTERVAL -1 YEAR) | DATE_SUB(NOW(),INTERVAL 1 YEAR) |</span><br><span class="line">+---------------------+---------------------------------+----------------------------------+---------------------------------+</span><br><span class="line">| 2022-04-21 13:54:51 | 2023-04-21 13:54:51             | 2021-04-21 13:54:51              | 2021-04-21 13:54:51             |</span><br><span class="line">+---------------------+---------------------------------+----------------------------------+---------------------------------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SELECT DATE_ADD(NOW(), INTERVAL 1 DAY) AS col1,DATE_ADD(&#x27;2021-10-21 23:32:12&#x27;,INTERVAL 1 SECOND) AS col2,</span><br><span class="line">ADDDATE(&#x27;2021-10-21 23:32:12&#x27;,INTERVAL 1 SECOND) AS col3,</span><br><span class="line">DATE_ADD(&#x27;2021-10-21 23:32:12&#x27;,INTERVAL &#x27;1_1&#x27; MINUTE_SECOND) AS col4,</span><br><span class="line">DATE_ADD(NOW(), INTERVAL -1 YEAR) AS col5, #可以是负数</span><br><span class="line">DATE_ADD(NOW(), INTERVAL &#x27;1_1&#x27; YEAR_MONTH) AS col6 #需要单引号</span><br><span class="line">FROM DUAL;</span><br><span class="line">+---------------------+---------------------+---------------------+---------------------+---------------------+</span><br><span class="line">| col1                | col2                | col3                | col4                | col5                |            </span><br><span class="line">+---------------------+---------------------+---------------------+---------------------+---------------------+</span><br><span class="line">| 2022-04-22 13:59:29 | 2021-10-21 23:32:13 | 2021-10-21 23:32:13 | 2021-10-21 23:33:13 | 2021-04-21 13:59:29 |</span><br><span class="line">+---------------------+---------------------+---------------------+---------------------+---------------------+</span><br><span class="line">+-----------------------+</span><br><span class="line">|    col6              |</span><br><span class="line">|  2023-05-21 13:59:29 |</span><br><span class="line">+----------------------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SELECT ADDTIME(NOW(),20),SUBTIME(NOW(),&#x27;1:1:3&#x27;),DATEDIFF(NOW(),&#x27;2021-10-01&#x27;),</span><br><span class="line">TIMEDIFF(NOW(),&#x27;2021-10-25 22:10:10&#x27;) from dual;</span><br><span class="line">+---------------------+------------------------+------------------------------+---------------------------------------+</span><br><span class="line">| ADDTIME(NOW(),20)   | SUBTIME(NOW(),&#x27;1:1:3&#x27;) | DATEDIFF(NOW(),&#x27;2021-10-01&#x27;) | TIMEDIFF(NOW(),&#x27;2021-10-25 22:10:10&#x27;) |</span><br><span class="line">+---------------------+------------------------+------------------------------+---------------------------------------+</span><br><span class="line">| 2022-04-21 14:07:09 | 2022-04-21 13:05:46    |                          202 | 838:59:59                             |</span><br><span class="line">+---------------------+------------------------+------------------------------+---------------------------------------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">select FROM_DAYS(366),TO_DAYS(&#x27;0000-12-25&#x27;),</span><br><span class="line">LAST_DAY(NOW()),MAKEDATE(YEAR(NOW()),32),MAKETIME(10,21,23),PERIOD_ADD(20200101010101,10)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+----------------+-----------------------+-----------------+--------------------------+--------------------+</span><br><span class="line">| FROM_DAYS(366) | TO_DAYS(&#x27;0000-12-25&#x27;) | LAST_DAY(NOW()) | MAKEDATE(YEAR(NOW()),32) | MAKETIME(10,21,23) | </span><br><span class="line">+----------------+-----------------------+-----------------+--------------------------+--------------------+</span><br><span class="line">| 0001-01-01     |                   359 | 2022-04-30      | 2022-02-01               | 10:21:23           |  </span><br><span class="line">+----------------------------------------------------------------------------------------------------------+</span><br><span class="line">+------------------------------+</span><br><span class="line">|PERIOD_ADD(20200101010101,10) |</span><br><span class="line">|         869817111            |</span><br><span class="line">+------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="4-7-日期的格式化与解析（了解）"><a href="#4-7-日期的格式化与解析（了解）" class="headerlink" title="4.7 日期的格式化与解析（了解）"></a>4.7 日期的格式化与解析（了解）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATE_FORMAT(date,fmt)</td>
+<td>按照字符串fmt格式化日期date值</td>
+</tr>
+<tr>
+<td>TIME_FORMAT(time,fmt)</td>
+<td>按照字符串fmt格式化时间time值</td>
+</tr>
+<tr>
+<td>GET_FORMAT(date_type,format_type)</td>
+<td>返回日期字符串的显示格式</td>
+</tr>
+<tr>
+<td>STR_TO_DATE(str, fmt)</td>
+<td>按照字符串fmt对str进行解析，解析为一个日期</td>
+</tr>
+</tbody></table>
+<p>上述<code>非GET_FORMAT</code>函数中fmt参数常用的格式符：</p>
+<table>
+<thead>
+<tr>
+<th>格式符</th>
+<th>说明</th>
+<th>格式符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%Y</td>
+<td>4位数字表示年份</td>
+<td>%y</td>
+<td>表示两位数字表示年份</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>月名表示月份（January,….）</td>
+<td>%m</td>
+<td>两位数字表示月份（01,02,03。。。）</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>缩写的月名（Jan.，Feb.，….）</td>
+<td>%c</td>
+<td>数字表示月份（1,2,3,…）</td>
+</tr>
+<tr>
+<td>%D</td>
+<td>英文后缀表示月中的天数（1st,2nd,3rd,…）</td>
+<td>%d</td>
+<td>两位数字表示月中的天数(01,02…)</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>数字形式表示月中的天数（1,2,3,4,5…..）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>%H</td>
+<td>两位数字表示小数，24小时制（01,02..）</td>
+<td>%h和%I</td>
+<td>两位数字表示小时，12小时制（01,02..）</td>
+</tr>
+<tr>
+<td>%k</td>
+<td>数字形式的小时，24小时制(1,2,3)</td>
+<td>%l</td>
+<td>数字形式表示小时，12小时制（1,2,3,4….）</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>两位数字表示分钟（00,01,02）</td>
+<td>%S和%s</td>
+<td>两位数字表示秒(00,01,02…)</td>
+</tr>
+<tr>
+<td>%W</td>
+<td>一周中的星期名称（Sunday…）</td>
+<td>%a</td>
+<td>一周中的星期缩写（Sun.，Mon.,Tues.，..）</td>
+</tr>
+<tr>
+<td>%w</td>
+<td>以数字表示周中的天数(0&#x3D;Sunday,1&#x3D;Monday….)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>%j</td>
+<td>以3位数字表示年中的天数(001,002…)</td>
+<td>%U</td>
+<td>以数字表示年中的第几周，（1,2,3。。）其中Sunday为周中第一天</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>以数字表示年中的第几周，（1,2,3。。）其中Monday为周中第一天</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>%T</td>
+<td>24小时制</td>
+<td>%r</td>
+<td>12小时制</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM或PM</td>
+<td>%%</td>
+<td>表示%</td>
+</tr>
+</tbody></table>
+<p>GET_FORMAT函数中date_type和format_type参数取值如下：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20211012145231321.png" alt="image-20211012145231321"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 格式化：日期 ---&gt; 字符串</span><br><span class="line"># 解析：  字符串 ----&gt; 日期</span><br><span class="line"></span><br><span class="line">#此时我们谈的是日期的显式格式化和解析</span><br><span class="line"></span><br><span class="line">#之前，我们接触过隐式的格式化或解析</span><br><span class="line">SELECT *</span><br><span class="line">FROM employees</span><br><span class="line">WHERE hire_date = &#x27;1993-01-13&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>显式格式化</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SELECT DATE_FORMAT(CURDATE(),&#x27;%Y-%M-%D&#x27;),</span><br><span class="line">DATE_FORMAT(NOW(),&#x27;%Y-%m-%d&#x27;),TIME_FORMAT(CURTIME(),&#x27;%h:%i:%S&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+-----------------------------------+-------------------------------+-----------------------------------+</span><br><span class="line">| DATE_FORMAT(CURDATE(),&#x27;%Y-%M-%D&#x27;) | DATE_FORMAT(NOW(),&#x27;%Y-%m-%d&#x27;) | TIME_FORMAT(CURTIME(),&#x27;%h:%i:%S&#x27;) |</span><br><span class="line">+-----------------------------------+-------------------------------+-----------------------------------+</span><br><span class="line">| 2022-April-21st                   | 2022-04-21                    | 02:13:11                          |</span><br><span class="line">+-----------------------------------+-------------------------------+-----------------------------------+</span><br><span class="line"></span><br><span class="line">select DATE_FORMAT(NOW(),&#x27;%Y-%M-%D %h:%i:%S %W %w %T %r&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+----------------------------------------------------------+</span><br><span class="line">| DATE_FORMAT(NOW(),&#x27;%Y-%M-%D %h:%i:%S %W %w %T %r&#x27;)       |</span><br><span class="line">+----------------------------------------------------------+</span><br><span class="line">| 2022-April-21st 02:13:46 Thursday 4 14:13:46 02:13:46 PM |</span><br><span class="line">+----------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>格式化的逆过程【解析】</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">-- 将字符串转为时间日期</span><br><span class="line">SELECT STR_TO_DATE(&#x27;2021-October-25th 11:37:30 Monday 1&#x27;,&#x27;%Y-%M-%D %h:%i:%S %W %w&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------------------------------------------------------------------------+</span><br><span class="line">| STR_TO_DATE(&#x27;2021-October-25th 11:37:30 Monday 1&#x27;,&#x27;%Y-%M-%D %h:%i:%S %W %w&#x27;) |</span><br><span class="line">+------------------------------------------------------------------------------+</span><br><span class="line">| 2021-10-25 11:37:30                                                          |</span><br><span class="line">+------------------------------------------------------------------------------+</span><br><span class="line"></span><br><span class="line">SELECT GET_FORMAT(DATE,&#x27;USA&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line">+------------------------+</span><br><span class="line">| GET_FORMAT(DATE,&#x27;USA&#x27;) |</span><br><span class="line">+------------------------+</span><br><span class="line">| %m.%d.%Y               |</span><br><span class="line"></span><br><span class="line">+------------------------+</span><br><span class="line">SELECT DATE_FORMAT(CURDATE(),GET_FORMAT(DATE,&#x27;USA&#x27;))</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT DATE_FORMAT(NOW(), &#x27;%H:%i:%s&#x27;);</span><br><span class="line">+--------------------------------+</span><br><span class="line">| DATE_FORMAT(NOW(), &#x27;%H:%i:%s&#x27;) |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| 22:57:34                        |</span><br><span class="line">+--------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT STR_TO_DATE(&#x27;09/01/2009&#x27;,&#x27;%m/%d/%Y&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line"></span><br><span class="line">SELECT STR_TO_DATE(&#x27;20140422154706&#x27;,&#x27;%Y%m%d%H%i%s&#x27;)</span><br><span class="line">FROM DUAL;</span><br><span class="line"></span><br><span class="line">SELECT STR_TO_DATE(&#x27;2014-04-22 15:47:06&#x27;,&#x27;%Y-%m-%d %H:%i:%s&#x27;)</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT GET_FORMAT(DATE, &#x27;USA&#x27;);</span><br><span class="line">+-------------------------+</span><br><span class="line">| GET_FORMAT(DATE, &#x27;USA&#x27;) |</span><br><span class="line">+-------------------------+</span><br><span class="line">| %m.%d.%Y                |</span><br><span class="line">+-------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">SELECT DATE_FORMAT(NOW(),GET_FORMAT(DATE,&#x27;USA&#x27;)),</span><br><span class="line">FROM DUAL;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT STR_TO_DATE(&#x27;2020-01-01 00:00:00&#x27;,&#x27;%Y-%m-%d&#x27;); </span><br><span class="line">+-----------------------------------------------+</span><br><span class="line">| STR_TO_DATE(&#x27;2020-01-01 00:00:00&#x27;,&#x27;%Y-%m-%d&#x27;) |</span><br><span class="line">+-----------------------------------------------+</span><br><span class="line">| 2020-01-01                                    |</span><br><span class="line">+-----------------------------------------------+</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-流程控制函数"><a href="#5-流程控制函数" class="headerlink" title="5. 流程控制函数"></a>5. 流程控制函数</h2><p>流程处理函数可以根据不同的条件，执行不同的处理流程，可以在SQL语句中实现不同的条件选择。</p>
+<p>MySQL中的流程处理函数主要包括IF()、IFNULL()和CASE()函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IF(value,value1,value2)</td>
+<td>如果value的值为TRUE，返回value1，否则返回value2</td>
+</tr>
+<tr>
+<td>IFNULL(value1, value2)</td>
+<td>如果value1不为NULL，返回value1，否则返回value2</td>
+</tr>
+<tr>
+<td>CASE WHEN 条件1 THEN 结果1 WHEN 条件2 THEN 结果2 …. [ELSE resultn] END</td>
+<td>相当于Java的if…else if…else…</td>
+</tr>
+<tr>
+<td>CASE  expr WHEN 常量值1 THEN 值1 WHEN 常量值1 THEN 值1 …. [ELSE 值n] END</td>
+<td>相当于Java的switch…case…</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>IF(flag,v1,v2)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(1 &gt; 0,&#x27;正确&#x27;,&#x27;错误&#x27;);</span><br><span class="line"></span><br><span class="line">+-------------------------+</span><br><span class="line">| IF(1 &gt; 0,&#x27;正确&#x27;,&#x27;错误&#x27;) |</span><br><span class="line">+-------------------------+</span><br><span class="line">| 正确                    |</span><br><span class="line">+-------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name,salary,IF(salary &gt;= 6000,&#x27;高工资&#x27;,&#x27;低工资&#x27;) &quot;details&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+----------+-----------+</span><br><span class="line">| last_name   | salary   | details   |</span><br><span class="line">+-------------+----------+-----------+</span><br><span class="line">| King        | 24000.00 | 高工资    |</span><br><span class="line">| Kochhar     | 17000.00 | 高工资    |</span><br><span class="line">+-----------------------------------+</span><br><span class="line"></span><br><span class="line">-- 一年总工资</span><br><span class="line">SELECT last_name,commission_pct,IF(commission_pct IS NOT NULL,commission_pct,0) &quot;details&quot;,</span><br><span class="line">salary * 12 * (1 + IF(commission_pct IS NOT NULL,commission_pct,0)) &quot;annual_sal&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+----------------+---------+------------+</span><br><span class="line">| last_name   | commission_pct | details | annual_sal |</span><br><span class="line">+-------------+----------------+---------+------------+</span><br><span class="line">| King        |           NULL |    0.00 |  288000.00 |</span><br><span class="line">| Kochhar     |           NULL |    0.00 |  204000.00 |</span><br><span class="line">| De Haan     |           NULL |    0.00 |  204000.00 |</span><br><span class="line">+-----------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>IFNULL(flagValue,value)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 看做是IF(VALUE,VALUE1,VALUE2)的特殊情况</span><br><span class="line">SELECT last_name,commission_pct,IFNULL(commission_pct,0) &quot;details&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+----------------+---------+</span><br><span class="line">| last_name   | commission_pct | details |</span><br><span class="line">+-------------+----------------+---------+</span><br><span class="line">| King        |           NULL |    0.00 |</span><br><span class="line">| Kochhar     |           NULL |    0.00 |</span><br><span class="line">+----------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>CASE </p>
+<p>WHEN … THEN …</p>
+<p>WHEN … THEN … </p>
+<p>ELSE … </p>
+<p>END</p>
+</blockquote>
+<p>注意：</p>
+<p>1、一定要有END作为结尾</p>
+<p>2、可以在END后给 改字段取别名 AS ‘xxxx’</p>
+<p><strong>类似于java的if … else if … else if … else</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name,salary,CASE</span><br><span class="line">				 WHEN salary &gt;= 15000 THEN &#x27;白骨精&#x27; </span><br><span class="line">			     WHEN salary &gt;= 10000 THEN &#x27;潜力股&#x27;</span><br><span class="line">			     WHEN salary &gt;= 8000 THEN &#x27;小屌丝&#x27;</span><br><span class="line">			     ELSE &#x27;草根&#x27; </span><br><span class="line">			     END &quot;details&quot;</span><br><span class="line">			     ,department_id</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+----------+-----------+---------------+</span><br><span class="line">| last_name   | salary   | details   | department_id |</span><br><span class="line">+-------------+----------+-----------+---------------+</span><br><span class="line">| King        | 24000.00 | 白骨精    |            90 |</span><br><span class="line">| Kochhar     | 17000.00 | 白骨精    |            90 |</span><br><span class="line">| De Haan     | 17000.00 | 白骨精    |            90 |</span><br><span class="line">| Hunold      |  9000.00 | 小屌丝    |            60 |</span><br><span class="line">| Ernst       |  6000.00 | 草根      |            60 |</span><br><span class="line">+-----------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>类似于switch</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT CASE  2</span><br><span class="line">								   WHEN 1 THEN &#x27;未付款&#x27; </span><br><span class="line">								   WHEN 2 THEN &#x27;已付款&#x27; </span><br><span class="line">								   WHEN 3 THEN &#x27;已发货&#x27;  </span><br><span class="line">								   WHEN 4 THEN &#x27;确认收货&#x27;  </span><br><span class="line">								   ELSE &#x27;无效订单&#x27; </span><br><span class="line">								   END &#x27;订单情况&#x27;;</span><br><span class="line">+----------+</span><br><span class="line">| 订单情况 |</span><br><span class="line">+----------+</span><br><span class="line">| 已付款   |</span><br><span class="line">+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>练习：查询部门号为 10,20, 30 的员工信息, 若部门号为 10, 则打印其工资的 1.1 倍, 20 号部门, 则打印其工资的 1.2 倍, 30 号部门打印其工资的 1.3 倍数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">SELECT employee_id,last_name,department_id,salary,CASE department_id </span><br><span class="line">									 WHEN 10 THEN salary * 1.1</span><br><span class="line">								     WHEN 20 THEN salary * 1.2</span><br><span class="line">								     WHEN 30 THEN salary * 1.3</span><br><span class="line">								     END &quot;details&quot;</span><br><span class="line">FROM employees</span><br><span class="line">WHERE department_id IN (10,20,30);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+-------------+------------+---------------+----------+----------+</span><br><span class="line">| employee_id | last_name  | department_id | salary   | details  |</span><br><span class="line">+-------------+------------+---------------+----------+----------+</span><br><span class="line">|         200 | Whalen     |            10 |  4400.00 |  4840.00 |</span><br><span class="line">|         201 | Hartstein  |            20 | 13000.00 | 15600.00 |</span><br><span class="line">|         202 | Fay        |            20 |  6000.00 |  7200.00 |</span><br><span class="line">|         114 | Raphaely   |            30 | 11000.00 | 14300.00 |</span><br><span class="line">|         115 | Khoo       |            30 |  3100.00 |  4030.00 |</span><br><span class="line">|         116 | Baida      |            30 |  2900.00 |  3770.00 |</span><br><span class="line">|         117 | Tobias     |            30 |  2800.00 |  3640.00 |</span><br><span class="line">|         118 | Himuro     |            30 |  2600.00 |  3380.00 |</span><br><span class="line">|         119 | Colmenares |            30 |  2500.00 |  3250.00 |</span><br><span class="line">+-------------+------------+---------------+----------+----------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p>流程控制：</p>
+<p>1、顺序</p>
+<p>2、分支</p>
+<p>3、循环</p>
+<h2 id="6-加密与解密函数"><a href="#6-加密与解密函数" class="headerlink" title="6. 加密与解密函数"></a>6. 加密与解密函数</h2><p>加密与解密函数主要用于对数据库中的数据进行加密和解密处理，以防止数据被他人窃取。这些函数在保证数据库安全时非常有用。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PASSWORD(str)</td>
+<td>返回字符串str的加密版本，41位长的字符串。加密结果<code>不可逆</code>，常用于<strong>用户的密码加密</strong></td>
+</tr>
+<tr>
+<td>MD5(str)</td>
+<td>返回字符串str的md5加密后的值，也是一种加密方式。若参数为NULL，则会返回NULL</td>
+</tr>
+<tr>
+<td>SHA(str)</td>
+<td>从原明文密码str计算并返回加密后的密码字符串，当参数为NULL时，返回NULL。<code>SHA加密算法比MD5更加安全</code>。</td>
+</tr>
+<tr>
+<td>ENCODE(value,password_seed)</td>
+<td>返回使用password_seed作为加密密码加密value</td>
+</tr>
+<tr>
+<td>DECODE(value,password_seed)</td>
+<td>返回使用password_seed作为加密密码解密value</td>
+</tr>
+</tbody></table>
+<p>可以看到，ENCODE(value,password_seed)函数与DECODE(value,password_seed)函数互为反函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># PASSWORD()在mysql8.0中弃用。</span><br><span class="line">SELECT MD5(&#x27;mysql&#x27;),SHA(&#x27;mysql&#x27;),MD5(MD5(&#x27;mysql&#x27;))</span><br><span class="line">FROM DUAL;</span><br><span class="line">+----------------------------------+------------------------------------------+----------------------------------+</span><br><span class="line">| MD5(&#x27;mysql&#x27;)                     | SHA(&#x27;mysql&#x27;)                             | MD5(MD5(&#x27;mysql&#x27;))                |</span><br><span class="line">+----------------------------------+------------------------------------------+----------------------------------+</span><br><span class="line">| 81c3b080dad537de7e10e0987a4bf52e | f460c882a18c1304d88854e902e11b85d71e7e1b | 9b1c95c962f12d84f57c68e694274783 |</span><br><span class="line">+----------------------------------+------------------------------------------+----------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT PASSWORD(&#x27;mysql&#x27;), PASSWORD(NULL);</span><br><span class="line">+-------------------------------------------+----------------+</span><br><span class="line">| PASSWORD(&#x27;mysql&#x27;)                         | PASSWORD(NULL) |</span><br><span class="line">+-------------------------------------------+----------------+</span><br><span class="line">| *E74858DB86EBA20BC33D0AECAE8A8108C56B17FA |                |</span><br><span class="line">+-------------------------------------------+----------------+</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT md5(&#x27;123&#x27;)</span><br><span class="line">-&gt;202cb962ac59075b964b07152d234b70</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT SHA(&#x27;Tom123&#x27;)</span><br><span class="line">-&gt;c7c506980abc31cc390a2438c90861d0f1216d50</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#ENCODE()、DECODE() 在mysql8.0中弃用。</span><br><span class="line">mysql&gt; SELECT ENCODE(&#x27;mysql&#x27;, &#x27;mysql&#x27;);</span><br><span class="line">+--------------------------+</span><br><span class="line">| ENCODE(&#x27;mysql&#x27;, &#x27;mysql&#x27;) |</span><br><span class="line">+--------------------------+</span><br><span class="line">| íg　¼　ìÉ                  |</span><br><span class="line">+--------------------------+</span><br><span class="line">1 row in set, 1 warning (0.01 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT DECODE(ENCODE(&#x27;mysql&#x27;,&#x27;mysql&#x27;),&#x27;mysql&#x27;);</span><br><span class="line">+-----------------------------------------+</span><br><span class="line">| DECODE(ENCODE(&#x27;mysql&#x27;,&#x27;mysql&#x27;),&#x27;mysql&#x27;) |</span><br><span class="line">+-----------------------------------------+</span><br><span class="line">| mysql                                   |</span><br><span class="line">+-----------------------------------------+</span><br><span class="line">1 row in set, 2 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-MySQL信息函数"><a href="#7-MySQL信息函数" class="headerlink" title="7. MySQL信息函数"></a>7. MySQL信息函数</h2><p>MySQL中内置了一些可以查询MySQL信息的函数，这些函数主要用于帮助数据库开发或运维人员更好地对数据库进行维护工作。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VERSION()</td>
+<td>返回当前MySQL的版本号</td>
+</tr>
+<tr>
+<td>CONNECTION_ID()</td>
+<td>返回当前MySQL服务器的连接数</td>
+</tr>
+<tr>
+<td>**DATABASE()**，SCHEMA()</td>
+<td>返回MySQL命令行当前所在的数据库</td>
+</tr>
+<tr>
+<td>USER()，CURRENT_USER()、SYSTEM_USER()，SESSION_USER()</td>
+<td>返回当前连接MySQL的用户名，返回结果格式为“主机名@用户名”</td>
+</tr>
+<tr>
+<td>CHARSET(value)</td>
+<td>返回字符串value自变量的字符集</td>
+</tr>
+<tr>
+<td>COLLATION(value)</td>
+<td>返回字符串value的比较规则</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SELECT VERSION(),CONNECTION_ID(),DATABASE(),SCHEMA(),USER(),CURRENT_USER() </span><br><span class="line"> from dual;</span><br><span class="line">+------------+-----------------+------------+-----------+----------------+----------------+</span><br><span class="line">| VERSION()  | CONNECTION_ID() | DATABASE() | SCHEMA()  | USER()         | CURRENT_USER() |</span><br><span class="line">+------------+-----------------+------------+-----------+----------------+----------------+</span><br><span class="line">| 5.7.34-log |               2 | atguigudb  | atguigudb | root@localhost | root@localhost |</span><br><span class="line">+------------+-----------------+------------+-----------+----------------+----------------+</span><br><span class="line"></span><br><span class="line">select CHARSET(&#x27;尚硅谷&#x27;),COLLATION(&#x27;尚硅谷&#x27;)</span><br><span class="line">	FROM DUAL;</span><br><span class="line">+----------------------+------------------------+</span><br><span class="line">| CHARSET(&#x27;尚硅谷&#x27;)    | COLLATION(&#x27;尚硅谷&#x27;)    |</span><br><span class="line">+----------------------+------------------------+</span><br><span class="line">| utf8                 | utf8_general_ci        |</span><br><span class="line">+----------------------+------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT DATABASE();</span><br><span class="line">+------------+</span><br><span class="line">| DATABASE() |</span><br><span class="line">+------------+</span><br><span class="line">| test       |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT DATABASE();</span><br><span class="line">+------------+</span><br><span class="line">| DATABASE() |</span><br><span class="line">+------------+</span><br><span class="line">| test       |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT USER(), CURRENT_USER(), SYSTEM_USER(),SESSION_USER();</span><br><span class="line">+----------------+----------------+----------------+----------------+</span><br><span class="line">| USER()         | CURRENT_USER() | SYSTEM_USER()  | SESSION_USER() |</span><br><span class="line">+----------------+----------------+----------------+----------------+</span><br><span class="line">| root@localhost | root@localhost | root@localhost | root@localhost |</span><br><span class="line">+----------------+----------------+----------------+----------------+</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CHARSET(&#x27;ABC&#x27;);</span><br><span class="line">+----------------+</span><br><span class="line">| CHARSET(&#x27;ABC&#x27;) |</span><br><span class="line">+----------------+</span><br><span class="line">| utf8mb4        |</span><br><span class="line">+----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COLLATION(&#x27;ABC&#x27;);</span><br><span class="line">+--------------------+</span><br><span class="line">| COLLATION(&#x27;ABC&#x27;)   |</span><br><span class="line">+--------------------+</span><br><span class="line">| utf8mb4_general_ci |</span><br><span class="line">+--------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="8-其他函数"><a href="#8-其他函数" class="headerlink" title="8. 其他函数"></a>8. 其他函数</h2><p>MySQL中有些函数无法对其进行具体的分类，但是这些函数在MySQL的开发和运维过程中也是不容忽视的。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FORMAT(value,n)</td>
+<td>返回对数字value进行格式化后的结果数据。n表示<code>四舍五入</code>后保留到小数点后n位</td>
+</tr>
+<tr>
+<td>CONV(value,from,to)</td>
+<td>将value的值进行不同进制之间的转换</td>
+</tr>
+<tr>
+<td>INET_ATON(ipvalue)</td>
+<td>将以点分隔的IP地址转化为一个数字</td>
+</tr>
+<tr>
+<td>INET_NTOA(value)</td>
+<td>将数字形式的IP地址转化为以点分隔的IP地址</td>
+</tr>
+<tr>
+<td>BENCHMARK(n,expr)</td>
+<td>将表达式expr重复执行n次。用于测试MySQL处理expr表达式所耗费的时间</td>
+</tr>
+<tr>
+<td>CONVERT(value USING char_code)</td>
+<td>将value所使用的字符编码修改为char_code</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 如果n的值小于或者等于0，则只保留整数部分</span><br><span class="line">mysql&gt; SELECT FORMAT(123.123, 2), FORMAT(123.523, 0), FORMAT(123.123, -2); </span><br><span class="line">+--------------------+--------------------+---------------------+</span><br><span class="line">| FORMAT(123.123, 2) | FORMAT(123.523, 0) | FORMAT(123.123, -2) |</span><br><span class="line">+--------------------+--------------------+---------------------+</span><br><span class="line">| 123.12             | 124                | 123                 |</span><br><span class="line">+--------------------+--------------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CONV(16, 10, 2), CONV(8888,10,16), CONV(NULL, 10, 2);</span><br><span class="line">+-----------------+------------------+-------------------+</span><br><span class="line">| CONV(16, 10, 2) | CONV(8888,10,16) | CONV(NULL, 10, 2) |</span><br><span class="line">+-----------------+------------------+-------------------+</span><br><span class="line">| 10000           | 22B8             | NULL              |</span><br><span class="line">+-----------------+------------------+-------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT INET_ATON(&#x27;192.168.1.100&#x27;);</span><br><span class="line">+----------------------------+</span><br><span class="line">| INET_ATON(&#x27;192.168.1.100&#x27;) |</span><br><span class="line">+----------------------------+</span><br><span class="line">|                 3232235876 |</span><br><span class="line">+----------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 以“192.168.1.100”为例，计算方式为192乘以256的3次方，加上168乘以256的2次方，加上1乘以256，再加上100。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT INET_NTOA(3232235876);</span><br><span class="line">+-----------------------+</span><br><span class="line">| INET_NTOA(3232235876) |</span><br><span class="line">+-----------------------+</span><br><span class="line">| 192.168.1.100         |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT BENCHMARK(1, MD5(&#x27;mysql&#x27;));</span><br><span class="line">+----------------------------+</span><br><span class="line">| BENCHMARK(1, MD5(&#x27;mysql&#x27;)) |</span><br><span class="line">+----------------------------+</span><br><span class="line">|                          0 |</span><br><span class="line">+----------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT BENCHMARK(1000000, MD5(&#x27;mysql&#x27;)); </span><br><span class="line">+----------------------------------+</span><br><span class="line">| BENCHMARK(1000000, MD5(&#x27;mysql&#x27;)) |</span><br><span class="line">+----------------------------------+</span><br><span class="line">|                                0 |</span><br><span class="line">+----------------------------------+</span><br><span class="line">1 row in set (0.20 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CHARSET(&#x27;mysql&#x27;), CHARSET(CONVERT(&#x27;mysql&#x27; USING &#x27;utf8&#x27;));</span><br><span class="line">+------------------+----------------------------------------+</span><br><span class="line">| CHARSET(&#x27;mysql&#x27;) | CHARSET(CONVERT(&#x27;mysql&#x27; USING &#x27;utf8&#x27;)) |</span><br><span class="line">+------------------+----------------------------------------+</span><br><span class="line">| utf8mb4          | utf8                                   |</span><br><span class="line">+------------------+----------------------------------------+</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="单行函数的课后练习"><a href="#单行函数的课后练习" class="headerlink" title="单行函数的课后练习"></a>单行函数的课后练习</h1><h2 id="显示系统时间-注：日期-时间"><a href="#显示系统时间-注：日期-时间" class="headerlink" title="显示系统时间(注：日期+时间)"></a><strong>显示系统时间(注：日期+时间)</strong></h2><p>now()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT NOW(),SYSDATE(),CURRENT_TIMESTAMP(),LOCALTIME(),LOCALTIMESTAMP() #大家只需要掌握一个函数就可以了</span><br><span class="line">FROM DUAL;</span><br><span class="line">+---------------------+---------------------+---------------------+---------------------+---------------------+</span><br><span class="line">| NOW()               | SYSDATE()           | CURRENT_TIMESTAMP() | LOCALTIME()         | LOCALTIMESTAMP()    |</span><br><span class="line">+---------------------+---------------------+---------------------+---------------------+---------------------+</span><br><span class="line">| 2022-04-21 14:44:04 | 2022-04-21 14:44:04 | 2022-04-21 14:44:04 | 2022-04-21 14:44:04 | 2022-04-21 14:44:04 |</span><br><span class="line">+---------------------+---------------------+---------------------+---------------------+---------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="将员工的姓名按首字母排序，并写出姓名的长度（length）"><a href="#将员工的姓名按首字母排序，并写出姓名的长度（length）" class="headerlink" title="将员工的姓名按首字母排序，并写出姓名的长度（length）"></a><strong>将员工的姓名按首字母排序，并写出姓名的长度（length）</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select substr(last_name,1,1) 首字母,CHAR_LENGTH(last_name) 姓长度 from employees order by 首字母;</span><br><span class="line">+--------+--------+</span><br><span class="line">| 首字母  |  姓长度 |</span><br><span class="line">+--------+--------+</span><br><span class="line">| A      |      6 |</span><br><span class="line">| A      |      8 |</span><br><span class="line">| A      |      4 |</span><br><span class="line">| a      |      3 |</span><br><span class="line">| A      |      4 |</span><br><span class="line">| a      |      3 |</span><br><span class="line">| B      |      5 |</span><br><span class="line">| B      |      6 |</span><br><span class="line">| B      |      9 |</span><br><span class="line">| B      |      5 |</span><br><span class="line">| B      |      5 |</span><br><span class="line">| B      |      5 |</span><br><span class="line">| B      |      4 |</span><br><span class="line">| B      |      4 |</span><br><span class="line">| B      |      4 |</span><br><span class="line">| C      |      4 |</span><br><span class="line">| C      |     10 |</span><br><span class="line">| C      |      9 |</span><br><span class="line">| C      |      9 |</span><br><span class="line">| C      |      6 |</span><br><span class="line">| C      |      5 |</span><br><span class="line">| D      |      7 |</span><br><span class="line">| D      |      6 |</span><br><span class="line">| D      |      5 |</span><br><span class="line">| D      |      9 |</span><br><span class="line">| D      |      5 |</span><br><span class="line">| E      |      5 |</span><br><span class="line">| E      |      9 |</span><br><span class="line">| E      |      7 |</span><br><span class="line">| F      |      6 |</span><br><span class="line">| F      |      5 |</span><br><span class="line">| F      |      3 |</span><br><span class="line">| F      |      6 |</span><br><span class="line">| F      |      6 |</span><br><span class="line">| F      |      3 |</span><br><span class="line">| G      |      9 |</span><br><span class="line">| G      |      3 |</span><br><span class="line">| G      |      6 |</span><br><span class="line">| G      |      5 |</span><br><span class="line">| G      |      5 |</span><br><span class="line">| G      |      5 |</span><br><span class="line">| G      |      5 |</span><br><span class="line">| H      |      6 |</span><br><span class="line">| H      |      6 |</span><br><span class="line">| H      |      4 |</span><br><span class="line">| H      |      6 |</span><br><span class="line">| H      |      9 |</span><br><span class="line">| H      |      7 |</span><br><span class="line">| J      |      7 |</span><br><span class="line">| J      |      5 |</span><br><span class="line">| K      |      4 |</span><br><span class="line">| K      |      7 |</span><br><span class="line">| K      |      4 |</span><br><span class="line">| K      |      8 |</span><br><span class="line">| K      |      4 |</span><br><span class="line">| K      |      5 |</span><br><span class="line">| L      |      7 |</span><br><span class="line">| L      |      6 |</span><br><span class="line">| L      |      6 |</span><br><span class="line">| L      |      3 |</span><br><span class="line">| L      |     10 |</span><br><span class="line">| M      |      7 |</span><br><span class="line">| M      |     11 |</span><br><span class="line">| M      |      6 |</span><br><span class="line">| M      |      6 |</span><br><span class="line">| M      |      6 |</span><br><span class="line">| M      |      5 |</span><br><span class="line">| M      |      6 |</span><br><span class="line">| M      |      7 |</span><br><span class="line">| M      |      6 |</span><br><span class="line">| M      |      6 |</span><br><span class="line">| N      |      5 |</span><br><span class="line">| O      |      5 |</span><br><span class="line">| O      |      5 |</span><br><span class="line">| O      |      4 |</span><br><span class="line">| O      |      8 |</span><br><span class="line">| P      |      9 |</span><br><span class="line">| P      |      4 |</span><br><span class="line">| P      |     10 |</span><br><span class="line">| P      |      5 |</span><br><span class="line">| P      |      8 |</span><br><span class="line">| P      |      7 |</span><br><span class="line">| R      |      8 |</span><br><span class="line">| R      |      6 |</span><br><span class="line">| R      |      4 |</span><br><span class="line">| R      |      7 |</span><br><span class="line">| S      |      7 |</span><br><span class="line">| S      |      6 |</span><br><span class="line">| S      |      3 |</span><br><span class="line">| S      |      5 |</span><br><span class="line">| S      |      5 |</span><br><span class="line">| S      |      6 |</span><br><span class="line">| S      |      8 |</span><br><span class="line">| S      |      8 |</span><br><span class="line">| T      |      6 |</span><br><span class="line">| T      |      6 |</span><br><span class="line">| T      |      7 |</span><br><span class="line">| T      |      6 |</span><br><span class="line">| T      |      6 |</span><br><span class="line">| U      |      5 |</span><br><span class="line">| V      |      7 |</span><br><span class="line">| V      |      6 |</span><br><span class="line">| V      |      7 |</span><br><span class="line">| W      |      5 |</span><br><span class="line">| W      |      5 |</span><br><span class="line">| W      |      6 |</span><br><span class="line">| Z      |      7 |</span><br><span class="line">+--------+--------+</span><br><span class="line">107 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询员工id-last-name-salary，并作为一个列输出，别名为OUT-PUT"><a href="#查询员工id-last-name-salary，并作为一个列输出，别名为OUT-PUT" class="headerlink" title="查询员工id,last_name,salary，并作为一个列输出，别名为OUT_PUT"></a><strong>查询员工id,last_name,salary，并作为一个列输出，别名为OUT_PUT</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT CONCAT(employee_id,&#x27;,&#x27;,last_name,&#x27;,&#x27;,salary) &quot;OUT_PUT&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------------------+</span><br><span class="line">| OUT_PUT                 |</span><br><span class="line">+-------------------------+</span><br><span class="line">| 100,King,24000.00       |</span><br><span class="line">| 101,Kochhar,17000.00    |</span><br><span class="line">| 102,De Haan,17000.00    |</span><br><span class="line">+-------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> SELECT CONCAT_WS(&#x27;-&#x27;,employee_id,last_name,salary) &quot;OUT_PUT&quot; FROM employees;</span><br><span class="line">+-------------------------+</span><br><span class="line">| OUT_PUT                 |</span><br><span class="line">+-------------------------+</span><br><span class="line">| 100-King-24000.00       |</span><br><span class="line">| 101-Kochhar-17000.00    |</span><br><span class="line">| 102-De Haan-17000.00    |</span><br><span class="line">+-------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询公司各员工工作的年数、工作的天数，并按工作年数的降序排序"><a href="#查询公司各员工工作的年数、工作的天数，并按工作年数的降序排序" class="headerlink" title="查询公司各员工工作的年数、工作的天数，并按工作年数的降序排序"></a><strong>查询公司各员工工作的年数、工作的天数，并按工作年数的降序排序</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SELECT employee_id,</span><br><span class="line">DATEDIFF(CURDATE(),hire_date)/365 &quot;worked_years&quot;,</span><br><span class="line">DATEDIFF(CURDATE(),hire_date) &quot;worked_days&quot;,</span><br><span class="line">TO_DAYS(CURDATE()) - TO_DAYS(hire_date) &quot;worked_days1&quot;</span><br><span class="line">FROM employees</span><br><span class="line">ORDER BY worked_years DESC;</span><br><span class="line">+-------------+--------------+-------------+--------------+</span><br><span class="line">| employee_id | worked_years | worked_days | worked_days1 |</span><br><span class="line">+-------------+--------------+-------------+--------------+</span><br><span class="line">|         100 |      34.8685 |       12727 |        12727 |</span><br><span class="line">|         200 |      34.6164 |       12635 |        12635 |</span><br><span class="line">|         101 |      32.6027 |       11900 |        11900 |</span><br><span class="line">|         103 |      32.3178 |       11796 |        11796 |</span><br><span class="line">|         104 |      30.9397 |       11293 |        11293 |</span><br><span class="line">|         102 |      29.2877 |       10690 |        10690 |</span><br><span class="line">|         203 |      27.8904 |       10180 |        10180 |</span><br><span class="line">|         204 |      27.8904 |       10180 |        10180 |</span><br><span class="line">|         205 |      27.8904 |       10180 |        10180 |</span><br><span class="line">|         206 |      27.8904 |       10180 |        10180 |</span><br><span class="line">+---------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询员工姓名，hire-date-department-id，满足以下条件-雇用时间在1997年之后，department-id-为80-或-90-或110-commission-pct不为空"><a href="#查询员工姓名，hire-date-department-id，满足以下条件-雇用时间在1997年之后，department-id-为80-或-90-或110-commission-pct不为空" class="headerlink" title="查询员工姓名，hire_date , department_id，满足以下条件 雇用时间在1997年之后，department_id 为80 或 90 或110, commission_pct不为空"></a><strong>查询员工姓名，hire_date , department_id，满足以下条件 雇用时间在1997年之后，department_id 为80 或 90 或110, commission_pct不为空</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name,hire_date,department_id</span><br><span class="line">FROM employees</span><br><span class="line">WHERE department_id IN (80,90,110)</span><br><span class="line">AND commission_pct IS NOT NULL</span><br><span class="line">#and hire_date &gt;= &#x27;1997-01-01&#x27;;  #存在着隐式转换</span><br><span class="line">#and  date_format(hire_date,&#x27;%Y-%m-%d&#x27;) &gt;= &#x27;1997-01-01&#x27;;  # 显式转换操作，格式化：日期---&gt; 字符串【比较字符串大小】</span><br><span class="line">#and  date_format(hire_date,&#x27;%Y&#x27;) &gt;= &#x27;1997&#x27;;   			  # 显式转换操作，格式化</span><br><span class="line">AND hire_date &gt;= STR_TO_DATE(&#x27;1997-01-01&#x27;,&#x27;%Y-%m-%d&#x27;);# 显式转换操作，解析：字符串 ----&gt; 日期【比较日期大小】</span><br><span class="line">+------------+------------+---------------+</span><br><span class="line">| last_name  | hire_date  | department_id |</span><br><span class="line">+------------+------------+---------------+</span><br><span class="line">| Partners   | 1997-01-05 |            80 |</span><br><span class="line">| Errazuriz  | 1997-03-10 |            80 |</span><br><span class="line">| Cambrault  | 1999-10-15 |            80 |</span><br><span class="line">| Zlotkey    | 2000-01-29 |            80 |</span><br><span class="line">| Tucker     | 1997-01-30 |            80 |</span><br><span class="line">| Bernstein  | 1997-03-24 |            80 |</span><br><span class="line">| Hall       | 1997-08-20 |            80 |</span><br><span class="line">+-----------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查询公司中入职超过10000天的员工姓名、入职时间"><a href="#查询公司中入职超过10000天的员工姓名、入职时间" class="headerlink" title="查询公司中入职超过10000天的员工姓名、入职时间"></a><strong>查询公司中入职超过10000天的员工姓名、入职时间</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name,hire_date</span><br><span class="line">FROM employees</span><br><span class="line">WHERE DATEDIFF(CURDATE(),hire_date) &gt;= 10000;</span><br><span class="line">+-----------+------------+</span><br><span class="line">| last_name | hire_date  |</span><br><span class="line">+-----------+------------+</span><br><span class="line">| King      | 1987-06-17 |</span><br><span class="line">| Kochhar   | 1989-09-21 |</span><br><span class="line">| De Haan   | 1993-01-13 |</span><br><span class="line">| Higgins   | 1994-06-07 |</span><br><span class="line">| Gietz     | 1994-06-07 |</span><br><span class="line">+-----------+------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="做一个查询，产生下面的结果"><a href="#做一个查询，产生下面的结果" class="headerlink" title="做一个查询，产生下面的结果"></a><strong>做一个查询，产生下面的结果</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#&lt;last_name&gt; earns &lt;salary&gt; monthly but wants &lt;salary*3&gt; </span><br><span class="line"></span><br><span class="line">SELECT CONCAT(last_name,&#x27; earns &#x27;,TRUNCATE(salary,0), &#x27; monthly but wants &#x27;,TRUNCATE(salary * 3,0)) &quot;Dream Salary&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-----------------------------------------------+</span><br><span class="line">| Dream Salary                                  |</span><br><span class="line">+-----------------------------------------------+</span><br><span class="line">| King earns 24000 monthly but wants 72000      |</span><br><span class="line">| Kochhar earns 17000 monthly but wants 51000   |</span><br><span class="line">| De Haan earns 17000 monthly but wants 51000   |</span><br><span class="line">| Hunold earns 9000 monthly but wants 27000     |</span><br><span class="line">| Ernst earns 6000 monthly but wants 18000      |</span><br><span class="line">+-----------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用case-when，按照下面的条件"><a href="#使用case-when，按照下面的条件" class="headerlink" title="使用case-when，按照下面的条件"></a><strong>使用case-when，按照下面的条件</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/*job                  grade</span><br><span class="line">AD_PRES              	A</span><br><span class="line">ST_MAN               	B</span><br><span class="line">IT_PROG              	C</span><br><span class="line">SA_REP               	D</span><br><span class="line">ST_CLERK             	E</span><br><span class="line"></span><br><span class="line">产生下面的结果:</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SELECT last_name &quot;Last_name&quot;,job_id &quot;Job_id&quot;,</span><br><span class="line">CASE job_id </span><br><span class="line">							 WHEN &#x27;AD_PRES&#x27; THEN &#x27;A&#x27;</span><br><span class="line">							 WHEN &#x27;ST_MAN&#x27; THEN &#x27;B&#x27;</span><br><span class="line">							 WHEN &#x27;IT_PROG&#x27; THEN &#x27;C&#x27;</span><br><span class="line">							 WHEN &#x27;SA_REP&#x27; THEN &#x27;D&#x27;</span><br><span class="line">							 WHEN &#x27;ST_CLERK&#x27; THEN &#x27;E&#x27;</span><br><span class="line">							 END &quot;Grade&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+------------+-------+</span><br><span class="line">| Last_name   | Job_id     | Grade |</span><br><span class="line">+-------------+------------+-------+</span><br><span class="line">| King        | AD_PRES    | A     |</span><br><span class="line">| Kochhar     | AD_VP      | NULL  |</span><br><span class="line">| De Haan     | AD_VP      | NULL  |</span><br><span class="line">| Hunold      | IT_PROG    | C     |</span><br><span class="line">| Ernst       | IT_PROG    | C     |</span><br><span class="line">+----------------------------------+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name &quot;Last_name&quot;,job_id &quot;Job_id&quot;,</span><br><span class="line">CASE job_id </span><br><span class="line">							 WHEN &#x27;AD_PRES&#x27; THEN &#x27;A&#x27;</span><br><span class="line">							 WHEN &#x27;ST_MAN&#x27; THEN &#x27;B&#x27;</span><br><span class="line">							 WHEN &#x27;IT_PROG&#x27; THEN &#x27;C&#x27;</span><br><span class="line">							 WHEN &#x27;SA_REP&#x27; THEN &#x27;D&#x27;</span><br><span class="line">							 WHEN &#x27;ST_CLERK&#x27; THEN &#x27;E&#x27;</span><br><span class="line">							 ELSE &quot;undefined&quot; </span><br><span class="line">							 END &quot;Grade&quot;</span><br><span class="line">FROM employees;</span><br><span class="line">+-------------+------------+-----------+</span><br><span class="line">| Last_name   | Job_id     | Grade     |</span><br><span class="line">+-------------+------------+-----------+</span><br><span class="line">| King        | AD_PRES    | A         |</span><br><span class="line">| Kochhar     | AD_VP      | undefined |</span><br><span class="line">| De Haan     | AD_VP      | undefined |</span><br><span class="line">| Hunold      | IT_PROG    | C         |</span><br><span class="line">| Ernst       | IT_PROG    | C         |</span><br><span class="line">+--------------------------------------+</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/30/%E7%AC%AC07%E7%AB%A0-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0-atguigu-shk/" data-id="clfv6vsxd004ce4cx7qvi9x4c" data-title="第07章-单行函数-atguigu-shk" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/30/%E7%AC%AC08%E7%AB%A0-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0-atguigu-shk/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第08章-聚合函数-atguigu-shk
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/30/%E7%AC%AC06%E7%AB%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2-atguigu-shk/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第06章-多表查询-atguigu-shk</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">博客学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">视频学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIO/" rel="tag">AIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BIO/" rel="tag">BIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" rel="tag">IO模型-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM-heima/" rel="tag">JVM-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" rel="tag">Java基础-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" rel="tag">Java数据结构与算法-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis-DongLi/" rel="tag">Mybatis-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NIO/" rel="tag">NIO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-DongLi/" rel="tag">Spring-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot-DongLi/" rel="tag">SpringBoot-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC-DongLi/" rel="tag">SpringMVC-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity-sg/" rel="tag">SpringSecurity-sg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-atguigu/" rel="tag">Vue-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo-heima/" rel="tag">dubbo-heima</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-atguigu/" rel="tag">git-atguigu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" rel="tag">java基础-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" rel="tag">java并发-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" rel="tag">java框架-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" rel="tag">java虚拟机-itcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" rel="tag">动态代理-DongLi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="tag">尚硅谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(初级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" rel="tag">尚硅谷-宋红康-MySQL(高级)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" rel="tag">操作系统基础-msb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="tag">网络基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" rel="tag">马士兵</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AIO/" style="font-size: 10px;">AIO</a> <a href="/tags/BIO/" style="font-size: 10px;">BIO</a> <a href="/tags/IO%E6%A8%A1%E5%9E%8B-heima/" style="font-size: 10px;">IO模型-heima</a> <a href="/tags/JVM-heima/" style="font-size: 10px;">JVM-heima</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/" style="font-size: 20px;">Java基础-heima</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-atguigu/" style="font-size: 10px;">Java数据结构与算法-atguigu</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Mybatis-DongLi/" style="font-size: 10px;">Mybatis-DongLi</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/Spring-DongLi/" style="font-size: 10px;">Spring-DongLi</a> <a href="/tags/SpringBoot-DongLi/" style="font-size: 10px;">SpringBoot-DongLi</a> <a href="/tags/SpringMVC-DongLi/" style="font-size: 10px;">SpringMVC-DongLi</a> <a href="/tags/SpringSecurity-sg/" style="font-size: 10px;">SpringSecurity-sg</a> <a href="/tags/Vue-atguigu/" style="font-size: 10px;">Vue-atguigu</a> <a href="/tags/dubbo-heima/" style="font-size: 10px;">dubbo-heima</a> <a href="/tags/git-atguigu/" style="font-size: 10px;">git-atguigu</a> <a href="/tags/java%E5%9F%BA%E7%A1%80-itcast/" style="font-size: 10px;">java基础-itcast</a> <a href="/tags/java%E5%B9%B6%E5%8F%91-itcast/" style="font-size: 10px;">java并发-itcast</a> <a href="/tags/java%E6%A1%86%E6%9E%B6-itcast/" style="font-size: 10px;">java框架-itcast</a> <a href="/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA-itcast/" style="font-size: 10px;">java虚拟机-itcast</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-DongLi/" style="font-size: 10px;">动态代理-DongLi</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/" style="font-size: 10px;">尚硅谷</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/" style="font-size: 13.33px;">尚硅谷-宋红康-MySQL(初级)</a> <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">尚硅谷-宋红康-MySQL(高级)</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80-msb/" style="font-size: 10px;">操作系统基础-msb</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">网络基础</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%A9%AC%E5%A3%AB%E5%85%B5/" style="font-size: 10px;">马士兵</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/30/%E7%AC%AC03%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84SELECT%E8%AF%AD%E5%8F%A5-atguigu-shk/">第03章-基本的SELECT语句-atguigu-shk</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/char%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-heima-xl/">char数据类型-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Collection%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8EList%E4%B8%8E%E6%B3%9B%E5%9E%8B%E6%B7%B1%E5%85%A5-heima-xl/">Collection与数据结构与List与泛型深入-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/JAVA-IO-%E4%B8%8B-heima-xl/">JAVA-IO-下-heima-xl</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/30/Set%E4%B8%8ECollections%E4%B8%8EMap%E4%B8%8E%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97-heima-xl/">Set与Collections与Map与集合嵌套-heima-xl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
