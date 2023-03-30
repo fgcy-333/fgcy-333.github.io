@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、程序流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流程控制-heima-xl">
+<meta property="og:url" content="http://example.com/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/index.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="一、程序流程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/java.png">
+<meta property="article:published_time" content="2023-03-30T12:03:34.000Z">
+<meta property="article:modified_time" content="2023-03-30T12:51:15.412Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础-heima">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/java.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>流程控制-heima-xl - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>主页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签列表</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>音乐</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="流程控制-heima-xl"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:03" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">流程控制-heima-xl</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一、程序流程"><a href="#一、程序流程" class="headerlink" title="一、程序流程"></a>一、程序流程</h1><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-02_15-40-32.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<span id="more"></span> 
+
+<h3 id="1-0-顺序结构-默认流程"><a href="#1-0-顺序结构-默认流程" class="headerlink" title="1.0 顺序结构[默认流程]"></a>1.0 顺序结构[默认流程]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;A&quot;</span>);<br>    System.out.println(<span class="hljs-string">&quot;B&quot;</span>);<br>    System.out.println(<span class="hljs-string">&quot;C&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//如果你没有写其他的结构，按照代码的先后顺序，依次执行程序中大多数的代码都是这样执行的。</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><ul>
+<li>两种：if、switch<ul>
+<li>if其实在功能上远远强大于switch，效率较于switch要低</li>
+<li>if适合做区间匹配。</li>
+<li>switch适合做值匹配，代码优雅,效率高</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-0-循环结构"><a href="#3-0-循环结构" class="headerlink" title="3.0 循环结构"></a>3.0 循环结构</h3><ul>
+<li>三种：for、while、do while</li>
+</ul>
+<h1 id="二、分支"><a href="#二、分支" class="headerlink" title="二、分支"></a>二、分支</h1><h3 id="1-0-switch"><a href="#1-0-switch" class="headerlink" title="1.0 switch"></a>1.0 switch</h3><ul>
+<li>概述</li>
+</ul>
+<p>值匹配，性能好，功能没有if强大（if可以范围匹配）</p>
+<ul>
+<li>代码体现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>      <span class="hljs-comment">//switch天然与枚举结合进行信息分类，对入参类型进行校验，但只适合信息标志</span><br>      <span class="hljs-comment">//如果需要记录一些信息的就使用常量</span><br>      choose(CaseType.FIFTH);<br>  &#125;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">choose</span><span class="hljs-params">(CaseType caseType)</span> &#123;<br>      <span class="hljs-comment">//这里可以是byte short int char String 枚举 不支持小数和long（小数不精确不利于比对，long太大了，没有可能有这么多的标志位）</span><br>      <span class="hljs-keyword">switch</span> (caseType) &#123;<br>          <span class="hljs-comment">//这里只能是字面量或枚举或常量，不能重复</span><br>          <span class="hljs-keyword">case</span> FIFTH:<br>              System.out.println(<span class="hljs-string">&quot;1&quot;</span>);<br>              <span class="hljs-comment">//不加beak会发生switch穿透，有时候会有用到switch穿透</span><br>              <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">case</span> SECOND:<br>              System.out.println(<span class="hljs-string">&quot;2&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>          <span class="hljs-keyword">case</span> FIRST:<br>              System.out.println(<span class="hljs-string">&quot;5&quot;</span>);<br>              <span class="hljs-keyword">break</span>;<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>switch配合枚举类使用</p>
+<ul>
+<li>定义枚举类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">Season</span>&#123;<br>	SPRING,SUMMER,AUTUMN,WINTER;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>枚举类反编译</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">Compiled from <span class="hljs-string">&quot;Season. java&quot;</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Season</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">java</span>.lang. Enum&lt;Season&gt; &#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Season SPRING=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span> ();<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Season</span> <span class="hljs-variable">SUMMER</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span> ();<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Season</span> <span class="hljs-variable">AUTUMN</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span> ();<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Season</span> <span class="hljs-variable">WINTER</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span> ();<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Season [] values ();<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Season <span class="hljs-title function_">valueOf</span> <span class="hljs-params">(java.lang.String)</span>; <br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>枚举类java代码形式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Season</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Enum</span>&#123;<br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Season SPRING;<br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Season SUMMER;<br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Season AUTUMN;<br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Season WINTER;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Season</span><span class="hljs-params">(String name,<span class="hljs-type">int</span> orgin)</span>&#123;<br>        <span class="hljs-built_in">super</span>(name,orgin);<br>    &#125;<br>    <span class="hljs-keyword">static</span>&#123;<br>        SPRING=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span>(<span class="hljs-string">&quot;SPRING&quot;</span>,<span class="hljs-number">0</span>);<br>        SUMMER=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span>(<span class="hljs-string">&quot;SUMMER&quot;</span>,<span class="hljs-number">1</span>);<br>        AUTUMN=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span>(<span class="hljs-string">&quot;AUTUMN&quot;</span>,<span class="hljs-number">2</span>);  <br>        WINTER=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Season</span>(<span class="hljs-string">&quot;WINTER&quot;</span>,<span class="hljs-number">3</span>);<br>    &#125;<br>    .........<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>枚举特性</li>
+</ul>
+<ol>
+<li>继承了java.lang下的Enum类的类就是枚举类</li>
+<li>枚举类是最终类不可以继承</li>
+<li>枚举类的构造器都是私有的，即是不能对外创建对象；</li>
+<li>枚举类相当于多例模式,可以通过枚举实现单例</li>
+<li>枚举类第一行默认是罗列所有对象名称,修饰符是public static final</li>
+<li>每一个名称都代表一个该枚举类的实例，且类型为常量</li>
+<li>选择枚举类型作为信息的标志与分类比选择常量更为严谨</li>
+</ol>
+</li>
+</ul>
+<p>枚举实现状态码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">Code</span> &#123;<br>    SUCCESS(<span class="hljs-number">2000</span>, <span class="hljs-string">&quot;操作成功!&quot;</span>),<br><br>    UPLOAD_FAIL(<span class="hljs-number">5000</span>, <span class="hljs-string">&quot;上传错误&quot;</span>),<br><br>    DOWNLOAD_ERROR(<span class="hljs-number">5001</span>, <span class="hljs-string">&quot;下载出错&quot;</span>),<br><br>    NO_PERMISSION(<span class="hljs-number">5002</span>, <span class="hljs-string">&quot;您没有权限执行该操作&quot;</span>),<br><br>    DISABLE_DISK_FAIL(<span class="hljs-number">5003</span>, <span class="hljs-string">&quot;禁用用户出错&quot;</span>),<br><br>    RENAME_ERR(<span class="hljs-number">5004</span>, <span class="hljs-string">&quot;重命名失败&quot;</span>),<br><br>    NEW_FOLDER_FAIL(<span class="hljs-number">5005</span>, <span class="hljs-string">&quot;新建文件夹失败&quot;</span>);<br><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> code;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String msg;<br><br>    Code(<span class="hljs-type">int</span> code, String msg) &#123;<br>        <span class="hljs-built_in">this</span>.code = code;<br>        <span class="hljs-built_in">this</span>.msg = msg;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> code;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getMsg</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> msg;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="2-0-if"><a href="#2-0-if" class="headerlink" title="2.0 if"></a>2.0 if</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_15-15-57.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h1 id="三、循环"><a href="#三、循环" class="headerlink" title="三、循环"></a>三、循环</h1><h2 id="1-0-for"><a href="#1-0-for" class="headerlink" title="1.0 for"></a>1.0 for</h2><ul>
+<li>格式</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(初始语句;循环条件;迭代语句)</span></span>&#123;<br>	<span class="hljs-comment">//循环逻辑</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>注意</li>
+</ul>
+<ol>
+<li>初始化语句、循环条件、迭代语句如果有多个，用逗号隔开 但分号不能省略</li>
+<li>用break打破循环和switch</li>
+<li>用continue结束本次循环</li>
+</ol>
+<ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testFor</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt;= <span class="hljs-number">102</span>; i += <span class="hljs-number">2</span>) &#123;<br>        sum += i;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;2-102求和：&quot;</span> + sum);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>水仙花数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    * 水仙花（每一位上的数的三次方相加等于原来的数）</span><br><span class="hljs-comment">    * */</span><br>   <span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testFor_</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>       System.out.println(<span class="hljs-string">&quot;请输入数字&quot;</span>);<br>       <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> sc.nextLine();<br>       <span class="hljs-keyword">final</span> String[] strings = s.split(<span class="hljs-string">&quot;,&quot;</span>);<br>       <span class="hljs-keyword">for</span> (String s1 : strings) &#123;<br>           <span class="hljs-comment">//当字符串为不符合数字特征的字符时，数字转换异常</span><br>           <span class="hljs-comment">//java.lang.NumberFormatException（数字转换异常）</span><br>           <span class="hljs-comment">//静态方法valueOf底层调用的是，静态方法parseInt，使用valueOf的目的是方便记忆</span><br>           yes(Integer.valueOf(s1));<br>		<span class="hljs-comment">// Integer.parseInt(s);//将字符串转为整数 java.lang.NumberFormatException（数字转换异常）</span><br>       &#125;<br>   &#125;<br><br>   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">yes</span><span class="hljs-params">(Integer valueOf)</span> &#123;<br>       <span class="hljs-keyword">if</span> (valueOf / <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) &#123;<br>           <span class="hljs-comment">//通过取模得到的是末尾数值，通过除法控制末位</span><br>           <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">bai</span> <span class="hljs-operator">=</span> valueOf / <span class="hljs-number">100</span>;<span class="hljs-comment">//百位</span><br>           <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">ge</span> <span class="hljs-operator">=</span> valueOf % <span class="hljs-number">10</span>;<span class="hljs-comment">//个位</span><br>           <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">shi</span> <span class="hljs-operator">=</span> valueOf / <span class="hljs-number">10</span> % <span class="hljs-number">10</span>;<span class="hljs-comment">//十位</span><br>           <span class="hljs-keyword">if</span> (bai * bai * bai + ge * ge * ge + shi * shi * shi == valueOf) &#123;<br>               System.out.println(valueOf + <span class="hljs-string">&quot;是水仙花&quot;</span>);<br>           &#125; <span class="hljs-keyword">else</span> &#123;<br>               System.out.println(valueOf + <span class="hljs-string">&quot;不是水仙花&quot;</span>);<br>           &#125;<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dns">请输入数字<br><span class="hljs-number">153,370</span>,<span class="hljs-number">371,111</span><br><span class="hljs-number">153</span>是水仙花<br><span class="hljs-number">370</span>是水仙花<br><span class="hljs-number">371</span>是水仙花<br><span class="hljs-number">111</span>不是水仙花<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意点：</p>
+</blockquote>
+<p>scan.nextLine()以回车符作为输入结束标志,读取方式是读取包括回车在内前面所有队列中的字符,向控制台返回时候,会自动舍弃回车符,将输入的各个字符组成字符串输出,同时队列将会清空包含回车符；</p>
+<p>scan.nextlnt()也是以回车符作为输入结束标志,读取方式是只读取回车符前面输入的所有内容,所以返回的时候它会将回车符前面内容返回并且清空回车符前的队列内容,将 <strong>回车符留在队列中</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/202211101148906.png" srcset="/img/loading.gif" lazyload alt="image-20221110114802983"></p>
+<hr>
+<h2 id="2-0-while"><a href="#2-0-while" class="headerlink" title="2.0 while"></a>2.0 while</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-03_15-49-05.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p><strong>问题：</strong></p>
+<p>2、什么时候用for循环，什么时候用while循环？</p>
+<ul>
+<li><p>功能上是完全一样的，for能解决的while也能解决，反之亦然。</p>
+</li>
+<li><p>使用规范是：知道循环几次：使用for；不知道循环几次建议使用：while</p>
+</li>
+<li><p>代码实现(折叠纸张达到珠穆朗玛峰高度 )</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test_</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-keyword">final</span> <span class="hljs-type">double</span> <span class="hljs-variable">mountain</span> <span class="hljs-operator">=</span> <span class="hljs-number">8848860</span>;<br>       <span class="hljs-type">double</span> <span class="hljs-variable">paper</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.1</span>;<br><br>       <span class="hljs-comment">//当不知道次数是用while，确定次数时用for</span><br>   <span class="hljs-comment">/*    while (paper &lt; mountain) &#123;</span><br><span class="hljs-comment">           paper *= 2;</span><br><span class="hljs-comment">       &#125;*/</span><br><br>       <span class="hljs-comment">//不专业</span><br>       <span class="hljs-keyword">for</span> (; paper &lt; mountain; ) &#123;<br>           paper *= <span class="hljs-number">2</span>;<br>       &#125;<br>       System.out.println(paper);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="3-0-do…while"><a href="#3-0-do…while" class="headerlink" title="3.0 do…while"></a>3.0 do…while</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JAVA">初始化语句；<br>    <span class="hljs-keyword">do</span>&#123;<br>        循环语句；<br>        迭代语句；<br>    &#125;<span class="hljs-keyword">while</span>（循环条件）；<br></code></pre></td></tr></table></figure>
+
+<p>（第一次先执行后判断）</p>
+<h2 id="4-0-死循环"><a href="#4-0-死循环" class="headerlink" title="4.0 死循环"></a>4.0 死循环</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java">  <span class="hljs-meta">@Test</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">/*      for (; ; ) &#123;</span><br><span class="hljs-comment">          System.out.println(&quot;1&quot;);</span><br><span class="hljs-comment">      &#125;*/</span><br><br>  <span class="hljs-comment">/*    while (true) &#123;</span><br><span class="hljs-comment">          System.out.println(&quot;1&quot;);</span><br><span class="hljs-comment">      &#125;*/</span><br><br>      <span class="hljs-keyword">do</span> &#123;<br>          System.out.println(<span class="hljs-string">&quot;2&quot;</span>);<br>      &#125; <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-0-跳转语句"><a href="#5-0-跳转语句" class="headerlink" title="5.0 跳转语句"></a>5.0 跳转语句</h2><p>break :<br>        只能用于结束所在循环,<br>        或者结束所在switch分支的执行。<br>        不能用break打破if；<br>        break OUT;用于打破外层循环；将OUT放在外层循环语句的上一行</p>
+<p>continue :<br>        只能在循环中进行使用。</p>
+<h1 id="六、随机数Random类"><a href="#六、随机数Random类" class="headerlink" title="六、随机数Random类"></a>六、随机数Random类</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>        <span class="hljs-comment">//加减法</span><br>        <span class="hljs-comment">//比如42-55 </span><br>        <span class="hljs-comment">//直接 r.nextInt(x)+42  , 然后55-42=13 ， 包前不包后 x=14</span><br>        <span class="hljs-comment">//r.nextInt(14)+42</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> random.nextInt(<span class="hljs-number">10</span>) + <span class="hljs-number">1</span>;<span class="hljs-comment">//1-----9+1</span><br>        System.out.println(r);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>流程控制-heima-xl</div>
+      <div>http://example.com/2023/03/30/Java基础-徐磊-流程控制/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%8C%85%E4%B8%8E%E4%BF%AE%E9%A5%B0%E7%AC%A6%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" title="包与修饰符与抽象类与接口-heima-xl">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">包与修饰符与抽象类与接口-heima-xl</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E5%88%9D%E7%BA%A7-%E7%AC%AC01%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0/" title="第01章-数据库概述-atguigu-shk">
+                        <span class="hidden-mobile">第01章-数据库概述-atguigu-shk</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

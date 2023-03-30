@@ -1,0 +1,1250 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第06章_多表查询多表查询，也称为关联查询，指两个或更多个表一起完成查询操作。 前提条件：这些一起查询的表之间是有关系的（一对一、一对多） ​					它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。 比如：员工表和部门表，这两个表依靠“部门编号”进行关联。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第06章-多表查询-atguigu-shk">
+<meta property="og:url" content="http://example.com/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E5%88%9D%E7%BA%A7-%E7%AC%AC06%E7%AB%A0-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/index.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="第06章_多表查询多表查询，也称为关联查询，指两个或更多个表一起完成查询操作。 前提条件：这些一起查询的表之间是有关系的（一对一、一对多） ​					它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。 比如：员工表和部门表，这两个表依靠“部门编号”进行关联。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/mysql.png">
+<meta property="article:published_time" content="2023-03-30T12:01:43.000Z">
+<meta property="article:modified_time" content="2023-03-30T13:12:11.116Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="尚硅谷-宋红康-MySQL(初级)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>第06章-多表查询-atguigu-shk - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>主页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签列表</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>音乐</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第06章-多表查询-atguigu-shk"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:01" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第06章-多表查询-atguigu-shk</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第06章-多表查询"><a href="#第06章-多表查询" class="headerlink" title="第06章_多表查询"></a>第06章_多表查询</h1><p>多表查询，也称为关联查询，指两个或更多个表一起完成查询操作。</p>
+<p>前提条件：这些一起查询的表之间是有关系的（一对一、一对多）</p>
+<p>​					它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。</p>
+<p>比如：员工表和部门表，这两个表依靠“部门编号”进行关联。</p>
+<span id="more"></span>
+
+
+
+<h2 id="1-一个案例引发的多表连接"><a href="#1-一个案例引发的多表连接" class="headerlink" title="1. 一个案例引发的多表连接"></a>1. 一个案例引发的多表连接</h2><h3 id="1-1-案例说明"><a href="#1-1-案例说明" class="headerlink" title="1.1 案例说明"></a>1.1 案例说明</h3><p><strong>熟悉常见的几个表</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554974984600.png" srcset="/img/loading.gif" lazyload alt="1554974984600"></p>
+<hr>
+<ol>
+<li><strong>employees</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESC employees;<br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| employee_id    | int(6)      | NO   | PRI | 0       |       |<br>| first_name     | varchar(20) | YES  |     | NULL    |       |<br>| last_name      | varchar(25) | NO   |     | NULL    |       |<br>| email          | varchar(25) | NO   | UNI | NULL    |       |<br>| phone_number   | varchar(20) | YES  |     | NULL    |       |<br>| hire_date      | date        | NO   |     | NULL    |       |<br>| job_id         | varchar(10) | NO   | MUL | NULL    |       |<br>| salary         | double(8,2) | YES  |     | NULL    |       |<br>| commission_pct | double(2,2) | YES  |     | NULL    |       |<br>| manager_id     | int(6)      | YES  | MUL | NULL    |       |<br>| department_id  | int(4)      | YES  | MUL | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br></code></pre></td></tr></table></figure>
+
+<p><code>PRI:</code>代表该列有主键约束</p>
+<p><code>UNI:</code>代表该列有唯一约束。</p>
+<p><code>MUL:</code> 该列存在多个相同的值.</p>
+<ol start="2">
+<li><strong>departments</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESC departments;<br>+-----------------+-------------+------+-----+---------+-------+<br>| Field           | Type        | Null | Key | Default | Extra |<br>+-----------------+-------------+------+-----+---------+-------+<br>| department_id   | int(4)      | NO   | PRI | 0       |       |<br>| department_name | varchar(30) | NO   |     | NULL    |       |<br>| manager_id      | int(6)      | YES  | MUL | NULL    |       |<br>| location_id     | int(4)      | YES  | MUL | NULL    |       |<br>+-----------------+-------------+------+-----+---------+-------+<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>locations</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESC locations;<br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| location_id    | int(4)      | NO   | PRI | 0       |       |<br>| street_address | varchar(40) | YES  |     | NULL    |       |<br>| postal_code    | varchar(12) | YES  |     | NULL    |       |<br>| city           | varchar(30) | NO   |     | NULL    |       |<br>| state_province | varchar(25) | YES  |     | NULL    |       |<br>| country_id     | char(2)     | YES  | MUL | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>从多个表中获取数据：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554975020388.png" srcset="/img/loading.gif" lazyload alt="1554975020388"></p>
+<hr>
+<h2 id="案例：查询员工的姓名及其部门名称"><a href="#案例：查询员工的姓名及其部门名称" class="headerlink" title="案例：查询员工的姓名及其部门名称"></a>案例：查询员工的姓名及其部门名称</h2><p>注意：</p>
+<p>这种写法会发生笛卡尔积错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name, department_name<br>FROM employees, departments;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554975097631.png" srcset="/img/loading.gif" lazyload alt="1554975097631"></p>
+<hr>
+<p>查询结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">+-----------+----------------------+<br>| last_name | department_name      |<br>+-----------+----------------------+<br>| King      | Administration       |<br>| King      | Marketing            |<br>| Gietz     | Retail Sales         |<br>....................................<br>....................................<br>| Gietz     | Recruiting           |<br>| Gietz     | Payroll              |<br>+-----------+----------------------+<br>2889 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+<p>2889 rows</p>
+<p><strong>分析错误情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 错误的原因：缺少了多表的连接条件<br><br>select count(*) from employees;<br>+----------+<br>| count(*) |<br>+----------+<br>|      107 |<br>+----------+<br><br> select count(*) from departments;<br>+----------+<br>| count(*) |<br>+----------+<br>|       27 |<br>+----------+<br><br>select 27*107 from dual;<br>+--------+<br>| 27*107 |<br>+--------+<br>|   2889 |<br>+--------+<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 错误的原因：每个员工都与每个部门匹配了一遍。<br>SELECT employee_id,department_name<br>FROM employees,departments;  -- 查询出2889条记录 【笛卡尔积】<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 错误的方式<br>SELECT employee_id,department_name<br>FROM employees CROSS JOIN departments;-- 【笛卡尔积，也称为交叉连接】<br><br>2889 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>我们把上述多表查询中出现的问题称为：<strong>关系型数据库中</strong>的	<strong>笛卡尔积的错误</strong>。</p>
+<h3 id="1-2-笛卡尔积（或交叉连接）的理解"><a href="#1-2-笛卡尔积（或交叉连接）的理解" class="headerlink" title="1.2 笛卡尔积（或交叉连接）的理解"></a>1.2 笛卡尔积（或交叉连接）的理解</h3><p>笛卡尔乘积是一个数学运算。假设我有两个集合 X 和 Y，那么 X 和 Y 的笛卡尔积就是 X 和 Y 的所有可能组合，也就是第一个对象来自于 X，第二个对象来自于 Y 的所有可能。</p>
+<p>组合的个数即为两个集合中元素个数的乘积数</p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/302046364841977.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;" />
+
+<hr>
+<p>SQL92中，笛卡尔积也称为<code>交叉连接</code>，英文是 <code>CROSS JOIN</code></p>
+<p>在 SQL99 中也是使用 CROSS JOIN表示交叉连接。它的作用就是可以把任意表进行连接，即使这两张表不相关。</p>
+<p>在MySQL中如下情况会出现笛卡尔积：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#查询员工姓名和所在部门名称<br>SELECT last_name,department_name FROM employees,departments;<br>SELECT last_name,department_name FROM employees CROSS JOIN departments;-- 交叉连接<br>SELECT last_name,department_name FROM employees INNER JOIN departments;-- 内连接<br>SELECT last_name,department_name FROM employees JOIN departments; -- 内连接<br></code></pre></td></tr></table></figure>
+
+<p>无论是那种多表连接,第一步都是先交叉连接,之后再根据多表连接条件进行过滤.</p>
+<h3 id="1-3-案例分析与问题解决"><a href="#1-3-案例分析与问题解决" class="headerlink" title="1.3 案例分析与问题解决"></a>1.3 案例分析与问题解决</h3><ul>
+<li><p><strong>笛卡尔积的错误会在下面条件下产生</strong>：</p>
+<ul>
+<li><strong>缺少多个表的连接条件</strong>（或关联条件）</li>
+<li>连接条件（或<strong>关联条件）无效</strong></li>
+<li>所有表中的  <strong>所有行互相连接</strong></li>
+</ul>
+</li>
+<li><p>为了避免笛卡尔积， 可以<strong>在 WHERE 加入有效的连接条件。</strong></p>
+</li>
+<li><p>加入连接条件后，查询语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT	table1.column, table2.column<br>FROM	table1, table2<br>WHERE	table1.column1 = table2.column2;  -- 连接条件<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>在 WHERE子句中写入连接条件。</strong></li>
+</ul>
+</li>
+<li><p>正确写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#案例：查询员工的姓名及其部门名称<br>SELECT last_name, department_name<br>FROM employees, departments<br>WHERE employees.department_id = departments.department_id;<br><br>+-------------+------------------+<br>| last_name   | department_name  |<br>+-------------+------------------+<br>| Whalen      | Administration   |<br>| Smith       | Sales            |<br>| Urman       | Finance          |<br>+-------------+------------------+<br>106 rows in set (0.01 sec)<br><br>-- 员工表一共有107个员工，但是有一个员工部门id为null；有null参与的运算结果为null；而过滤需要条件为1才会有结果<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在  表中  有  相同列时，在  列名之前  加上  表名前缀</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name, department_name,department_id<br>FROM employees, departments<br>WHERE employees.department_id = departments.department_id;<br><br>-- ERROR 1052 (23000): Column &#x27;department_id&#x27; in field list is ambiguous<br><br><br><br>SELECT last_name, department_name,departments.department_id<br>FROM employees, departments<br>WHERE employees.department_id = departments.department_id;<br><br>+-------------+------------------+<br>| last_name   | department_name  |<br>+-------------+------------------+<br>| Whalen      | Administration   |<br>| Smith       | Sales            |<br>| Urman       | Finance          |<br>+-------------+------------------+<br>106 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1、从SQL优化的角度，建议多表查询时，每个字段都指明其所在的表</p>
+<p>​	  如果不指定，就会查询两个表确保没有两个表中没有相同的字段 (影响效率)</p>
+<p>2、如果  <strong>给表起了别名</strong>，一旦在SELECT 或WHERE中使用表名时，则   <strong>必须使用表的别名</strong>，而   <strong>不能再使用表的原名</strong></p>
+<p>举例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT emp.employee_id,dept.department_name,emp.department_id<br>FROM employees emp,departments dept<br>WHERE emp.`department_id` = dept.department_id;<br><br>+-------------+------------------+---------------+<br>| employee_id | department_name  | department_id |<br>+-------------+------------------+---------------+<br>|         200 | Administration   |            10 |<br>|         201 | Marketing        |            20 |<br>|         206 | Accounting       |           110 |<br>+-------------+------------------+---------------+<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 如下的操作是错误的：<br>SELECT emp.employee_id,departments.department_name,emp.department_id<br>FROM employees emp,departments dept<br>WHERE emp.`department_id` = departments.department_id;<br><br>-- ERROR 1054 (42S22): Unknown column &#x27;departments.department_name&#x27; in &#x27;field list&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>3、如果有   <strong>n个表</strong>  实现多表的查询，则需要<strong>【至少】n-1个</strong>连接条件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 练习：查询员工的employee_id,last_name,department_name,city<br>--  此处三张表应该有两个条件<br>SELECT e.employee_id,e.last_name,d.department_name,l.city,e.department_id,l.location_id<br>FROM employees e,departments d,locations l<br>WHERE e.`department_id` = d.`department_id`<br>AND <br>d.`location_id` = l.`location_id`;<br><br>+-------------+-------------+------------------+---------------------+---------------+-------------+<br>| employee_id | last_name   | department_name  | city                | department_id | location_id |<br>+-------------+-------------+------------------+---------------------+---------------+-------------+<br>|         200 | Whalen      | Administration   | Seattle             |            10 |        1700 |<br>|         201 | Hartstein   | Marketing        | Toronto             |            20 |        1800 |<br>|         206 | Gietz       | Accounting       | Seattle             |           110 |        1700 |<br>+-------------+-------------+------------------+---------------------+---------------+-------------+<br>106 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+<p>4、新加入的表，等值连接时，   <strong>连接字段</strong>  是要与  <strong>已经</strong>  参与连接的其中一张表的 <strong>字段相同</strong></p>
+<p>​	   类似一种神秘组织，需要有人认识才能进入；如果组织·内没有人认识你，那么就不能加入</p>
+<h2 id="2-多表查询分类讲解"><a href="#2-多表查询分类讲解" class="headerlink" title="2. 多表查询分类讲解"></a>2. 多表查询分类讲解</h2><h3 id="分类1：等值连接-vs-非等值连接"><a href="#分类1：等值连接-vs-非等值连接" class="headerlink" title="分类1：等值连接 vs 非等值连接"></a>分类1：等值连接 vs 非等值连接</h3><h4 id="等值连接"><a href="#等值连接" class="headerlink" title="等值连接"></a>等值连接</h4><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554975496900.png" srcset="/img/loading.gif" lazyload alt="1554975496900"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employees.employee_id, employees.last_name, <br>       employees.department_id, departments.department_id,<br>       departments.location_id<br>FROM   employees, departments<br>WHERE  employees.department_id = departments.department_id;<br><br>+-------------+-------------+---------------+---------------+-------------+<br>| employee_id | last_name   | department_id | department_id | location_id |<br>+-------------+-------------+---------------+---------------+-------------+<br>|         103 | Hunold      |            60 |            60 |        1400 |<br>|         201 | Hartstein   |            20 |            20 |        1800 |<br>|         202 | Fay         |            20 |            20 |        1800 |<br>|         204 | Baer        |            70 |            70 |        2700 |<br>+-------------+-------------+---------------+---------------+-------------+<br>106 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>拓展1：多个连接条件与 AND 操作符</strong> </p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554975606231.png" srcset="/img/loading.gif" lazyload alt="1554975606231"></p>
+<hr>
+<p><strong>拓展2：区分重复的列名</strong></p>
+<ul>
+<li><strong>多个表中有相同列时，必须在列名之前加上表名前缀。</strong></li>
+<li>在不同表中具有相同列名的列可以用<code>表名</code>加以区分。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employees.last_name, departments.department_name,employees.department_id<br>FROM employees, departments<br>WHERE employees.department_id = departments.department_id;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>拓展3：表的别名</strong></p>
+<ul>
+<li><p>使用别名可以简化查询。</p>
+</li>
+<li><p>列名前使用表名前缀可以提高查询效率。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.employee_id, e.last_name, e.department_id,<br>       d.department_id, d.location_id<br>FROM   employees e , departments d<br>WHERE  e.department_id = d.department_id;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要注意的是，如果我们使用了表的别名，在查询字段中、过滤条件中就只能使用别名进行代替，不能使用原有的表名，否则就会报错。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><code>阿里开发规范</code>：</p>
+<p>【<code>强制</code>】对于数据库中表记录的查询和变更，只要涉及多个表，都需要在列名前加表的别名（或 表名）进行限定。 </p>
+<p><code>说明</code>：对多表进行查询记录、更新记录、删除记录时，如果对操作列没有限定表的别名（或表名），并且操作列在多个表中存在时，就会抛异常。 </p>
+<p><code>正例</code>：<code>select t1.name from table_first as t1 , table_second as t2 where t1.id=t2.id; </code></p>
+<p><code>反例</code>：在某业务中，由于多表关联查询语句没有加表的别名（或表名）的限制，正常运行两年后，最近在 某个表中增加一个同名字段，在预发布环境做数据库变更后，线上查询语句出现出 1052 异常：Column  ‘name’ in field list is ambiguous。</p>
+</blockquote>
+<p><strong>拓展4：连接多个表</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978354431.png" srcset="/img/loading.gif" lazyload alt="1554978354431"></p>
+<hr>
+<p><strong>总结：连接 n个表,至少需要n-1个连接条件。</strong>比如，连接三个表，至少需要两个连接条件。</p>
+<h4 id="非等值连接"><a href="#非等值连接" class="headerlink" title="非等值连接"></a>非等值连接</h4><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978442447.png" srcset="/img/loading.gif" lazyload alt="1554978442447"></p>
+<hr>
+<p>job_grades的表结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">desc job_grades;<br><br>+-------------+------------+------+-----+---------+-------+<br>| Field       | Type       | Null | Key | Default | Extra |<br>+-------------+------------+------+-----+---------+-------+<br>| grade_level | varchar(3) | YES  |     | NULL    |       |<br>| lowest_sal  | int(11)    | YES  |     | NULL    |       |<br>| highest_sal | int(11)    | YES  |     | NULL    |       |<br>+-------------+------------+------+-----+---------+-------+<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.last_name, e.salary, j.grade_level<br>FROM   employees e, job_grades j<br>-- WHERE  e.salary BETWEEN j.lowest_sal AND j.highest_sal;<br>where e.salary&gt;=j.lowest_sal AND e.salary&lt;=j.highest_sal;<br><br>+-------------+----------+-------------+<br>| last_name   | salary   | grade_level |<br>+-------------+----------+-------------+<br>| King        | 24000.00 | E           |<br>| Kochhar     | 17000.00 | E           |<br>| Markle      |  2200.00 | A           |<br>| Bissot      |  3300.00 | B           |<br>| Atkinson    |  2800.00 | A           |<br>| Baer        | 10000.00 | D           |<br>| Higgins     | 12000.00 | D           |<br>| Gietz       |  8300.00 | C           |<br>+-------------+----------+-------------+<br>107 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>非等值连接，指的是连接条件不是   <strong>&#x3D;</strong>          </p>
+<p><strong>&gt;&#x3D;</strong>    <strong>&lt;&#x3D;</strong>   <strong>BETWEEN AND</strong> 是可以的</p>
+<h3 id="分类2：自连接-vs-非自连接"><a href="#分类2：自连接-vs-非自连接" class="headerlink" title="分类2：自连接 vs 非自连接"></a>分类2：自连接 vs 非自连接</h3><p><strong>自连接</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978514321-16558825769401.png" srcset="/img/loading.gif" lazyload alt="1554978514321"></p>
+<hr>
+<blockquote>
+<p> <strong>table1和table2本质上是同一张表</strong>，<strong>只是用取别名的方式虚拟成两张表以代表不同的意义</strong></p>
+</blockquote>
+<ul>
+<li><strong>自连接的例子：</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 练习：查询员工id,员工姓名及其管理者的id和姓名<br><br>SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name<br>FROM employees emp ,employees mgr<br>WHERE emp.`manager_id` = mgr.`employee_id`;<br>+-------------+-------------+-------------+-----------+<br>| employee_id | last_name   | employee_id | last_name |<br>+-------------+-------------+-------------+-----------+<br>|         101 | Kochhar     |         100 | King      |<br>|         102 | De Haan     |         100 | King      |<br>|         206 | Gietz       |         205 | Higgins   |<br>+-------------+-------------+-------------+-----------+<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>题目：查询employees表，返回“Xxx  works for Xxx”</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT CONCAT(worker.last_name ,&#x27; works for &#x27; <br>       , manager.last_name)<br>FROM   employees worker, employees manager<br>WHERE  worker.manager_id = manager.employee_id ;<br><br>+---------------------------------------------------------------------+<br>| Kochhar works for King                                              |<br>........................................................................<br>| Vishney works for Errazuriz                                         |<br>+---------------------------------------------------------------------+<br>106 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p><strong>练习：查询出last_name为 ‘Chen’ 的员工的 manager 的信息</strong></p>
+<p>这里使用的是多表连接,也可以使用子查询</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 多表连接<br>SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name<br>FROM employees emp ,employees mgr<br>WHERE emp.`manager_id` = mgr.`employee_id`<br>AND<br>emp.last_name like &quot;Chen&quot;;<br><br>+-------------+-----------+-------------+-----------+<br>| employee_id | last_name | employee_id | last_name |<br>+-------------+-----------+-------------+-----------+<br>|         110 | Chen      |         108 | Greenberg |<br>+-------------+-----------+-------------+-----------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 子查询<br>SELECT last_name,salary,employee_id<br>FROM employees<br>WHERE employee_id=(<br>	SELECT manager_id from employees<br>    WHERE last_name LIKE &#x27;Chen&#x27;<br>);<br><br>+-----------+----------+-------------+<br>| last_name | salary   | employee_id |<br>+-----------+----------+-------------+<br>| Greenberg | 12000.00 |         108 |<br>+-----------+----------+-------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>大多数的多表连接都是非自连接</p>
+<h3 id="分类3：内连接-vs-外连接"><a href="#分类3：内连接-vs-外连接" class="headerlink" title="分类3：内连接 vs 外连接"></a>分类3：内连接 vs 外连接</h3><p>注意：</p>
+<p>1、外连接除了	<strong>查询满足条件的记录以外</strong>，外连接还可以查询	<strong>某一方不满足条件的记录</strong></p>
+<p>2、内连接	<strong>仅仅查询满足条件的记录</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554978955659.png" srcset="/img/loading.gif" lazyload alt="1554978955659"></p>
+<hr>
+<p><strong>内连接与外连接的详解：</strong></p>
+<ul>
+<li>内连接: 合并   具有同一列   的   两个以上的表的行  , <strong>结果集中   不包含   一个表与另一个表不匹配的行</strong></li>
+<li>外连接: 两个表在连接过程中除了返回满足连接条件的行以外</li>
+</ul>
+<p>​		<strong>还返回左（或右）表中不满足条件的行</strong> <strong>，这种连接称为左（或右） 外连接</strong>。没有匹配的行时, 结果表中相应的列为<code>空(NULL)</code>。</p>
+<ul>
+<li><p>如果是左外连接，则连接条件中左边的表也称为  <code>主表</code>，右边的表称为  <code>从表</code>。</p>
+<p>如果是右外连接，则连接条件中右边的表也称为  <code>主表</code>，左边的表称为  <code>从表</code>。</p>
+</li>
+<li><p>除了左外连接和右外连接外，还有一个叫<strong>满外连接</strong></p>
+</li>
+</ul>
+<p>外连接总结：</p>
+<p>1、外连接：合并具有同一列的两个以上的表的行, 结果集中除了包含一个表与另一个表匹配的行之外，还查询到【保留】左表 或 右表中不匹配的行。</p>
+<p>2、外连接的分类：左外连接、右外连接、满外连接</p>
+<p>3、左外连接：两个表在连接过程中除了返回满足连接条件的行以外还返回	<strong>左表中不满足条件的行</strong>	，这种连接称为<code>左外连接</code>。</p>
+<p>4、右外连接：两个表在连接过程中除了返回满足连接条件的行以外还返回	<strong>右表中不满足条件的行</strong>	，这种连接称为<code>右外连接</code>。</p>
+<h4 id="SQL92：使用-创建连接（外连接）"><a href="#SQL92：使用-创建连接（外连接）" class="headerlink" title="SQL92：使用(+)创建连接（外连接）"></a>SQL92：使用(+)创建连接（外连接）</h4><p>SQL92<strong>内连接</strong>如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT emp.employee_id,emp.last_name,mgr.employee_id,mgr.last_name<br>FROM employees emp ,employees mgr<br>WHERE emp.`manager_id` = mgr.`employee_id` #92内连接语法<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>在 SQL92 中采用（+）代表从表所在的位置。即左或右外连接中，(+) 表示哪个是从表</li>
+</ul>
+<p>​		(+) 相当于在缺数据的一边垫一点东西，把（+）放在左边就是右外连接；把（+）放在右边就是左外连接</p>
+<ul>
+<li>Oracle 对 SQL92 支持较好，而 <strong>MySQL 则不支持 SQL92 的外连接</strong></li>
+</ul>
+<p>注意：</p>
+<p>MySQL不支持SQL92的外连接</p>
+<p>Oracle 对 SQL92 支持较好，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#左外连接<br>SELECT last_name,department_name<br>FROM employees ,departments<br>WHERE employees.department_id = departments.department_id(+);<br><br>#右外连接<br>SELECT last_name,department_name<br>FROM employees ,departments<br>WHERE employees.department_id(+) = departments.department_id;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>而且在 <code>SQL92 </code>中，<strong>只有左外连接和右外连接</strong>，<strong>没有</strong>   满（或全）外连接</li>
+</ul>
+<h2 id="3-SQL99语法实现多表查询"><a href="#3-SQL99语法实现多表查询" class="headerlink" title="3. SQL99语法实现多表查询"></a>3. SQL99语法实现多表查询</h2><h3 id="3-1-基本语法"><a href="#3-1-基本语法" class="headerlink" title="3.1 基本语法"></a>3.1 基本语法</h3><ul>
+<li><strong>SQL99语法中使用 JOIN …ON 的方式实现多表的查询</strong></li>
+</ul>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT table1.column, table2.column,table3.column<br>FROM table1<br>    JOIN table2 ON table1 和 table2 的连接条件<br>        JOIN table3 ON table2 和 table3 的连接条件<br></code></pre></td></tr></table></figure>
+
+<p>它的嵌套逻辑类似我们使用的 FOR 循环：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">for t1 in table1:<br>    for t2 in table2:<br>       if condition1:<br>           for t3 in table3:<br>              if condition2:<br>                  output t1 + t2 + t3<br></code></pre></td></tr></table></figure>
+
+<p>SQL99 采用的这种嵌套结构非常清爽、层次性更强、可读性更强，即使再多的表进行连接也都清晰可见。如果你采用 SQL92，可读性就会大打折扣。</p>
+<ul>
+<li><p>语法说明：</p>
+<ul>
+<li><strong>可以使用</strong> <strong>ON</strong> <strong>子句指定额外的连接条件</strong>。</li>
+<li>这个连接条件是与其它条件分开的。</li>
+<li><strong>ON</strong> <strong>子句使语句具有更高的易读性</strong>。</li>
+<li>关键字 <code>JOIN</code>、<code>INNER JOIN</code>、<code>CROSS JOIN </code>的含义是一样的，都表示内连接</li>
+</ul>
+<p>任何的多表连接,第一步都是交叉连接</p>
+</li>
+</ul>
+<h3 id="3-2-内连接-INNER-JOIN-的实现"><a href="#3-2-内连接-INNER-JOIN-的实现" class="headerlink" title="3.2 内连接(INNER JOIN)的实现"></a>3.2 内连接(INNER JOIN)的实现</h3><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT 字段列表<br>FROM A表 INNER JOIN B表<br>ON 关联条件<br>WHERE 等其他子句;<br></code></pre></td></tr></table></figure>
+
+<p>题目1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- SQL99语法实现【内连接】：INNER JOIN<br>SELECT last_name,department_name<br>FROM employees e INNER JOIN departments d<br>ON e.`department_id` = d.`department_id`;<br><br>+-------------+------------------+<br>| last_name   | department_name  |<br>+-------------+------------------+<br>| Whalen      | Administration   |<br>| Hartstein   | Marketing        |<br>| Philtanker  | Shipping         |<br>| Lorentz     | IT               |<br>..................................<br>| Baer        | Public Relations |<br>| Zlotkey     | Sales            |<br>| Tucker      | Sales            |<br>| Gietz       | Accounting       |<br>+-------------+------------------+<br>106 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>题目2：三表内连接</p>
+<p>可以省略 <strong>INNER</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id, city, department_name<br>FROM   <br>employees e JOIN   departments d ON     d.department_id = e.department_id <br>JOIN   locations l ON     d.location_id = l.location_id;<br><br>+-------------+---------------------+------------------+<br>| employee_id | city                | department_name  |<br>+-------------+---------------------+------------------+<br>|         200 | Seattle             | Administration   |<br>|         203 | London              | Human Resources  |<br>|         120 | South San Francisco | Shipping         |<br>........................................................<br>|         104 | Southlake           | IT               |<br>|         158 | Oxford              | Sales            |<br>|         113 | Seattle             | Finance          |<br>+-------------+---------------------+------------------+<br>106 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="3-3-外连接-OUTER-JOIN-的实现"><a href="#3-3-外连接-OUTER-JOIN-的实现" class="headerlink" title="3.3 外连接(OUTER JOIN)的实现"></a>3.3 外连接(OUTER JOIN)的实现</h3><h4 id="3-3-1-左外连接-LEFT-OUTER-JOIN"><a href="#3-3-1-左外连接-LEFT-OUTER-JOIN" class="headerlink" title="3.3.1 左外连接(LEFT OUTER JOIN)"></a>3.3.1 左外连接(LEFT OUTER JOIN)</h4><ul>
+<li>语法：</li>
+</ul>
+<p>可以省略<strong>OUTER</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#实现查询结果是A<br>SELECT 字段列表<br>FROM A表 LEFT JOIN B表<br>ON 关联条件<br>WHERE 等其他子句;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.last_name, e.department_id, d.department_name<br>FROM   <br>employees e LEFT OUTER JOIN departments d ON   e.department_id = d.department_id ;<br><br>+-------------+---------------+------------------+<br>| last_name   | department_id | department_name  |<br>+-------------+---------------+------------------+<br>| King        |            90 | Executive        |<br>| Grant       |          NULL | NULL             | -- 不满足连接条件 只给出来自主表的数据 来自从表的数据为空<br>..................................................<br>| Johnson     |            80 | Sales            |<br>| Gietz       |           110 | Accounting       |<br>+-------------+---------------+------------------+<br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-3-2-右外连接-RIGHT-OUTER-JOIN"><a href="#3-3-2-右外连接-RIGHT-OUTER-JOIN" class="headerlink" title="3.3.2 右外连接(RIGHT OUTER JOIN)"></a>3.3.2 右外连接(RIGHT OUTER JOIN)</h4><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#实现查询结果是B<br>SELECT 字段列表<br>FROM A表 RIGHT JOIN B表<br>ON 关联条件<br>WHERE 等其他子句;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>举例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.last_name, e.department_id, d.department_name<br>FROM   employees e<br>RIGHT OUTER JOIN departments d<br>ON    (e.department_id = d.department_id) ;<br>+-------------+---------------+----------------------+<br>| last_name   | department_id | department_name      |<br>+-------------+---------------+----------------------+<br>| Whalen      |            10 | Administration       |<br>| Hartstein   |            20 | Marketing            |<br>| NULL        |          NULL | Treasury             |<br>| NULL        |          NULL | Government Sales     |<br>| NULL        |          NULL | Retail Sales         |<br>| NULL        |          NULL | Payroll              |<br>+-------------+---------------+----------------------+<br>122 rows in set (0.00 sec)<br>-- 解释122 ：在都满足两个表 的行的基础上，加上右表（部门表）不满足连接条件的行<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>需要注意的是，LEFT JOIN 和 RIGHT JOIN 只存在于 SQL99 及以后的标准中，在 SQL92 中不存在，只能用 (+) 表示</p>
+<p>而(+)这种写法只能在Oracle中使用，不能在MySQL中使用</p>
+</blockquote>
+<h4 id="3-3-3-满外连接-FULL-OUTER-JOIN"><a href="#3-3-3-满外连接-FULL-OUTER-JOIN" class="headerlink" title="3.3.3 满外连接(FULL OUTER JOIN)"></a>3.3.3 满外连接(FULL OUTER JOIN)</h4><ul>
+<li>满外连接的结果 &#x3D; 左右表匹配的数据 + 左表没有匹配到的数据 + 右表没有匹配到的数据。</li>
+<li>SQL99是支持满外连接的。使用FULL JOIN 或 FULL OUTER JOIN来实现。</li>
+<li><strong>需要注意的是，MySQL不支持FULL JOIN</strong>，但是可以用 LEFT JOIN <strong>UNION</strong> RIGHT join代替</li>
+</ul>
+<blockquote>
+<p> <strong>MySQL不支持FULL OUTER JOIN</strong>（满外链接）这种写法，Oracle支持</p>
+<p> 想要达到满外连接的效果需要使用UNION关键字</p>
+</blockquote>
+<h2 id="4-UNION的使用"><a href="#4-UNION的使用" class="headerlink" title="4. UNION的使用"></a>4. UNION的使用</h2><p>作用：</p>
+<p><strong>合并查询结果</strong></p>
+<p>利用UNION关键字，可以给出多条SELECT语句，并将它们的结果组合成单个结果集</p>
+<p>合并时， <strong>两个表</strong> 对应的 <strong>列数和数据类型</strong> <strong>必须相同</strong>，并且相互对应。</p>
+<p>各个SELECT语句之间使用UNION或UNION ALL关键字分隔。</p>
+<p>语法格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT column,... FROM table1<br>UNION [ALL]<br>SELECT column,... FROM table2<br></code></pre></td></tr></table></figure>
+
+<p><strong>UNION操作符</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209042334451.png" srcset="/img/loading.gif" lazyload alt="image-20220904233419349"></p>
+<hr>
+<p>UNION 操作符返回两个查询的结果集的并集，<strong>去除重复记录</strong></p>
+<p>完整的B  +  去重的A</p>
+<p><strong>UNION ALL操作符</strong></p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979343634.png" srcset="/img/loading.gif" lazyload alt="1554979343634" style="zoom: 67%;" />
+
+<hr>
+<p>UNION ALL操作符返回两个查询的结果集的并集。对于两个结果集的重复部分，<strong>不去重</strong></p>
+<blockquote>
+<p>注意：执行UNION ALL语句时所需要的资源比UNION语句少</p>
+<p>如果明确知道合并数据后的结果数据不存在重复数据，或者不需要去除重复的数据，则尽量使用UNION ALL语句，以提高数据查询的效率</p>
+</blockquote>
+<p>举例：查询部门编号&gt;90或邮箱包含a的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#方式1<br>SELECT * FROM employees<br>WHERE email LIKE &#x27;%a%&#x27; <br>OR <br>department_id&gt;90;<br><br>+-------------+-------------+------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+<br>| employee_id | first_name  | last_name  | email    | phone_number       | hire_date  | job_id     | salary   | commission_pct | manager_id | department_id |<br>+-------------+-------------+------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+<br>|         101 | Neena       | Kochhar    | NKOCHHAR | 515.123.4568       | 1989-09-21 | AD_VP      | 17000.00 |           NULL |        100 |            90 |<br>|         102 | Lex         | De Haan    | LDEHAAN  | 515.123.4569       | 1993-01-13 | AD_VP      | 17000.00 |           NULL |        100 |            90 |<br>|         103 | Alexander   | Hunold     | AHUNOLD  | 590.423.4567       | 1990-01-03 | IT_PROG    |  9000.00 |           NULL |        102 |            60 |<br>|         105 | David       | Austin     | DAUSTIN  | 590.423.4569       | 1997-06-25 | IT_PROG    |  4800.00 |           NULL |        103 |            60 |<br>|         106 | Valli       | Pataballa  | VPATABAL | 590.423.4560       | 1998-02-05 | IT_PROG    |  4800.00 |           NULL |        103 |            60 |<br>|         108 | Nancy       | Greenberg  | NGREENBE | 515.124.4569       | 1994-08-17 | FI_MGR     | 12000.00 |           NULL |        101 |           100 |<br>|         109 | Daniel      | Faviet     | DFAVIET  | 515.124.4169       | 1994-08-16 | FI_ACCOUNT |  9000.00 |           NULL |        108 |           100 |<br>|         110 | John        | Chen       | JCHEN    | 515.124.4269       | 1997-09-28 | FI_ACCOUNT |  8200.00 |           NULL |        108 |           100 |<br>|         111 | Ismael      | Sciarra    | ISCIARRA | 515.124.4369       | 1997-09-30 | FI_ACCOUNT |  7700.00 |           NULL |        108 |           100 |<br>|         112 | Jose Manuel | Urman      | JMURMAN  | 515.124.4469       | 1998-03-07 | FI_ACCOUNT |  7800.00 |           NULL |        108 |           100 |<br>|         113 | Luis        | Popp       | LPOPP    | 515.124.4567       | 1999-12-07 | FI_ACCOUNT |  6900.00 |           NULL |        108 |           100 |<br>|         114 | Den         | Raphaely   | DRAPHEAL | 515.127.4561       | 1994-12-07 | PU_MAN     | 11000.00 |           NULL |        100 |            30 |<br>|         115 | Alexander   | Khoo       | AKHOO    | 515.127.4562       | 1995-05-18 | PU_CLERK   |  3100.00 |           NULL |        114 |            30 |<br>|         116 | Shelli      | Baida      | SBAIDA   | 515.127.4563       | 1997-12-24 | PU_CLERK   |  2900.00 |           NULL |        114 |            30 |<br>|         117 | Sigal       | Tobias     | STOBIAS  | 515.127.4564       | 1997-07-24 | PU_CLERK   |  2800.00 |           NULL |        114 |            30 |<br>|         119 | Karen       | Colmenares | KCOLMENA | 515.127.4566       | 1999-08-10 | PU_CLERK   |  2500.00 |           NULL |        114 |            30 |<br>|         121 | Adam        | Fripp      | AFRIPP   | 650.123.2234       | 1997-04-10 | ST_MAN     |  8200.00 |           NULL |        100 |            50 |<br>|         122 | Payam       | Kaufling   | PKAUFLIN | 650.123.3234       | 1995-05-01 | ST_MAN     |  7900.00 |           NULL |        100 |            50 |<br>|         123 | Shanta      | Vollman    | SVOLLMAN | 650.123.4234       | 1997-10-10 | ST_MAN     |  6500.00 |           NULL |        100 |            50 |<br>|         125 | Julia       | Nayer      | JNAYER   | 650.124.1214       | 1997-07-16 | ST_CLERK   |  3200.00 |           NULL |        120 |            50 |<br>|         127 | James       | Landry     | JLANDRY  | 650.124.1334       | 1999-01-14 | ST_CLERK   |  2400.00 |           NULL |        120 |            50 |<br>|         128 | Steven      | Markle     | SMARKLE  | 650.124.1434       | 2000-03-08 | ST_CLERK   |  2200.00 |           NULL |        120 |            50 |<br>|         130 | Mozhe       | Atkinson   | MATKINSO | 650.124.6234       | 1997-10-30 | ST_CLERK   |  2800.00 |           NULL |        121 |            50 |<br>|         131 | James       | Marlow     | JAMRLOW  | 650.124.7234       | 1997-02-16 | ST_CLERK   |  2500.00 |           NULL |        121 |            50 |<br>|         133 | Jason       | Mallin     | JMALLIN  | 650.127.1934       | 1996-06-14 | ST_CLERK   |  3300.00 |           NULL |        122 |            50 |<br>|         136 | Hazel       | Philtanker | HPHILTAN | 650.127.1634       | 2000-02-06 | ST_CLERK   |  2200.00 |           NULL |        122 |            50 |<br>|         137 | Renske      | Ladwig     | RLADWIG  | 650.121.1234       | 1995-07-14 | ST_CLERK   |  3600.00 |           NULL |        123 |            50 |<br>|         140 | Joshua      | Patel      | JPATEL   | 650.121.1834       | 1998-04-06 | ST_CLERK   |  2500.00 |           NULL |        123 |            50 |<br>|         141 | Trenna      | Rajs       | TRAJS    | 650.121.8009       | 1995-10-17 | ST_CLERK   |  3500.00 |           NULL |        124 |            50 |<br>|         142 | Curtis      | Davies     | CDAVIES  | 650.121.2994       | 1997-01-29 | ST_CLERK   |  3100.00 |           NULL |        124 |            50 |<br>|         143 | Randall     | Matos      | RMATOS   | 650.121.2874       | 1998-03-15 | ST_CLERK   |  2600.00 |           NULL |        124 |            50 |<br>|         144 | Peter       | Vargas     | PVARGAS  | 650.121.2004       | 1998-07-09 | ST_CLERK   |  2500.00 |           NULL |        124 |            50 |<br>|         146 | Karen       | Partners   | KPARTNER | 011.44.1344.467268 | 1997-01-05 | SA_MAN     | 13500.00 |           0.30 |        100 |            80 |<br>|         147 | Alberto     | Errazuriz  | AERRAZUR | 011.44.1344.429278 | 1997-03-10 | SA_MAN     | 12000.00 |           0.30 |        100 |            80 |<br>|         148 | Gerald      | Cambrault  | GCAMBRAU | 011.44.1344.619268 | 1999-10-15 | SA_MAN     | 11000.00 |           0.30 |        100 |            80 |<br>|         152 | Peter       | Hall       | PHALL    | 011.44.1344.478968 | 1997-08-20 | SA_REP     |  9000.00 |           0.25 |        145 |            80 |<br>|         154 | Nanette     | Cambrault  | NCAMBRAU | 011.44.1344.987668 | 1998-12-09 | SA_REP     |  7500.00 |           0.20 |        145 |            80 |<br>|         155 | Oliver      | Tuvault    | OTUVAULT | 011.44.1344.486508 | 1999-11-23 | SA_REP     |  7000.00 |           0.15 |        145 |            80 |<br>|         158 | Allan       | McEwen     | AMCEWEN  | 011.44.1345.829268 | 1996-08-01 | SA_REP     |  9000.00 |           0.35 |        146 |            80 |<br>|         160 | Louise      | Doran      | LDORAN   | 011.44.1345.629268 | 1997-12-15 | SA_REP     |  7500.00 |           0.30 |        146 |            80 |<br>|         161 | Sarath      | Sewall     | SSEWALL  | 011.44.1345.529268 | 1998-11-03 | SA_REP     |  7000.00 |           0.25 |        146 |            80 |<br>|         164 | Mattea      | Marvins    | MMARVINS | 011.44.1346.329268 | 2000-01-24 | SA_REP     |  7200.00 |           0.10 |        147 |            80 |<br>|         166 | Sundar      | Ande       | SANDE    | 011.44.1346.629268 | 2000-03-24 | SA_REP     |  6400.00 |           0.10 |        147 |            80 |<br>|         167 | Amit        | Banda      | ABANDA   | 011.44.1346.729268 | 2000-04-21 | SA_REP     |  6200.00 |           0.10 |        147 |            80 |<br>|         172 | Elizabeth   | Bates      | EBATES   | 011.44.1343.529268 | 1999-03-24 | SA_REP     |  7300.00 |           0.15 |        148 |            80 |<br>|         173 | Sundita     | Kumar      | SKUMAR   | 011.44.1343.329268 | 2000-04-21 | SA_REP     |  6100.00 |           0.10 |        148 |            80 |<br>|         174 | Ellen       | Abel       | EABEL    | 011.44.1644.429267 | 1996-05-11 | SA_REP     | 11000.00 |           0.30 |        149 |            80 |<br>|         175 | Alyssa      | Hutton     | AHUTTON  | 011.44.1644.429266 | 1997-03-19 | SA_REP     |  8800.00 |           0.25 |        149 |            80 |<br>|         176 | Jonathon    | Taylor     | JTAYLOR  | 011.44.1644.429265 | 1998-03-24 | SA_REP     |  8600.00 |           0.20 |        149 |            80 |<br>|         178 | Kimberely   | Grant      | KGRANT   | 011.44.1644.429263 | 1999-05-24 | SA_REP     |  7000.00 |           0.15 |        149 |          NULL |<br>|         180 | Winston     | Taylor     | WTAYLOR  | 650.507.9876       | 1998-01-24 | SH_CLERK   |  3200.00 |           NULL |        120 |            50 |<br>|         181 | Jean        | Fleaur     | JFLEAUR  | 650.507.9877       | 1998-02-23 | SH_CLERK   |  3100.00 |           NULL |        120 |            50 |<br>|         182 | Martha      | Sullivan   | MSULLIVA | 650.507.9878       | 1999-06-21 | SH_CLERK   |  2500.00 |           NULL |        120 |            50 |<br>|         184 | Nandita     | Sarchand   | NSARCHAN | 650.509.1876       | 1996-01-27 | SH_CLERK   |  4200.00 |           NULL |        121 |            50 |<br>|         185 | Alexis      | Bull       | ABULL    | 650.509.2876       | 1997-02-20 | SH_CLERK   |  4100.00 |           NULL |        121 |            50 |<br>|         187 | Anthony     | Cabrio     | ACABRIO  | 650.509.4876       | 1999-02-07 | SH_CLERK   |  3000.00 |           NULL |        121 |            50 |<br>|         190 | Timothy     | Gates      | TGATES   | 650.505.3876       | 1998-07-11 | SH_CLERK   |  2900.00 |           NULL |        122 |            50 |<br>|         194 | Samuel      | McCain     | SMCCAIN  | 650.501.3876       | 1998-07-01 | SH_CLERK   |  3200.00 |           NULL |        123 |            50 |<br>|         196 | Alana       | Walsh      | AWALSH   | 650.507.9811       | 1998-04-24 | SH_CLERK   |  3100.00 |           NULL |        124 |            50 |<br>|         199 | Douglas     | Grant      | DGRANT   | 650.507.9844       | 2000-01-13 | SH_CLERK   |  2600.00 |           NULL |        124 |            50 |<br>|         200 | Jennifer    | Whalen     | JWHALEN  | 515.123.4444       | 1987-09-17 | AD_ASST    |  4400.00 |           NULL |        101 |            10 |<br>|         201 | Michael     | Hartstein  | MHARTSTE | 515.123.5555       | 1996-02-17 | MK_MAN     | 13000.00 |           NULL |        100 |            20 |<br>|         202 | Pat         | Fay        | PFAY     | 603.123.6666       | 1997-08-17 | MK_REP     |  6000.00 |           NULL |        201 |            20 |<br>|         203 | Susan       | Mavris     | SMAVRIS  | 515.123.7777       | 1994-06-07 | HR_REP     |  6500.00 |           NULL |        101 |            40 |<br>|         204 | Hermann     | Baer       | HBAER    | 515.123.8888       | 1994-06-07 | PR_REP     | 10000.00 |           NULL |        101 |            70 |<br>|         205 | Shelley     | Higgins    | SHIGGINS | 515.123.8080       | 1994-06-07 | AC_MGR     | 12000.00 |           NULL |        101 |           110 |<br>|         206 | William     | a_a        | WGIETZ   | 515.123.8181       | 1994-06-07 | AC_ACCOUNT |  8300.00 |           NULL |        205 |           110 |<br>+-------------+-------------+------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+<br>67 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#方式2<br>SELECT * FROM employees  <br>	WHERE email LIKE &#x27;%a%&#x27;<br>UNION<br>	SELECT * FROM employees  <br>WHERE department_id&gt;90;<br><br>+-------------+-------------+------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+<br>| employee_id | first_name  | last_name  | email    | phone_number       | hire_date  | job_id     | salary   | commission_pct | manager_id | department_id |<br>+-------------+-------------+------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+<br>|         101 | Neena       | Kochhar    | NKOCHHAR | 515.123.4568       | 1989-09-21 | AD_VP      | 17000.00 |           NULL |        100 |            90 |<br>|         102 | Lex         | De Haan    | LDEHAAN  | 515.123.4569       | 1993-01-13 | AD_VP      | 17000.00 |           NULL |        100 |            90 |<br>|         103 | Alexander   | Hunold     | AHUNOLD  | 590.423.4567       | 1990-01-03 | IT_PROG    |  9000.00 |           NULL |        102 |            60 |<br>|         105 | David       | Austin     | DAUSTIN  | 590.423.4569       | 1997-06-25 | IT_PROG    |  4800.00 |           NULL |        103 |            60 |<br>|         106 | Valli       | Pataballa  | VPATABAL | 590.423.4560       | 1998-02-05 | IT_PROG    |  4800.00 |           NULL |        103 |            60 |<br>|         109 | Daniel      | Faviet     | DFAVIET  | 515.124.4169       | 1994-08-16 | FI_ACCOUNT |  9000.00 |           NULL |        108 |           100 |<br>|         111 | Ismael      | Sciarra    | ISCIARRA | 515.124.4369       | 1997-09-30 | FI_ACCOUNT |  7700.00 |           NULL |        108 |           100 |<br>|         112 | Jose Manuel | Urman      | JMURMAN  | 515.124.4469       | 1998-03-07 | FI_ACCOUNT |  7800.00 |           NULL |        108 |           100 |<br>|         114 | Den         | Raphaely   | DRAPHEAL | 515.127.4561       | 1994-12-07 | PU_MAN     | 11000.00 |           NULL |        100 |            30 |<br>|         115 | Alexander   | Khoo       | AKHOO    | 515.127.4562       | 1995-05-18 | PU_CLERK   |  3100.00 |           NULL |        114 |            30 |<br>|         116 | Shelli      | Baida      | SBAIDA   | 515.127.4563       | 1997-12-24 | PU_CLERK   |  2900.00 |           NULL |        114 |            30 |<br>|         117 | Sigal       | Tobias     | STOBIAS  | 515.127.4564       | 1997-07-24 | PU_CLERK   |  2800.00 |           NULL |        114 |            30 |<br>|         119 | Karen       | Colmenares | KCOLMENA | 515.127.4566       | 1999-08-10 | PU_CLERK   |  2500.00 |           NULL |        114 |            30 |<br>|         121 | Adam        | Fripp      | AFRIPP   | 650.123.2234       | 1997-04-10 | ST_MAN     |  8200.00 |           NULL |        100 |            50 |<br>|         122 | Payam       | Kaufling   | PKAUFLIN | 650.123.3234       | 1995-05-01 | ST_MAN     |  7900.00 |           NULL |        100 |            50 |<br>|         123 | Shanta      | Vollman    | SVOLLMAN | 650.123.4234       | 1997-10-10 | ST_MAN     |  6500.00 |           NULL |        100 |            50 |<br>|         125 | Julia       | Nayer      | JNAYER   | 650.124.1214       | 1997-07-16 | ST_CLERK   |  3200.00 |           NULL |        120 |            50 |<br>|         127 | James       | Landry     | JLANDRY  | 650.124.1334       | 1999-01-14 | ST_CLERK   |  2400.00 |           NULL |        120 |            50 |<br>|         128 | Steven      | Markle     | SMARKLE  | 650.124.1434       | 2000-03-08 | ST_CLERK   |  2200.00 |           NULL |        120 |            50 |<br>|         130 | Mozhe       | Atkinson   | MATKINSO | 650.124.6234       | 1997-10-30 | ST_CLERK   |  2800.00 |           NULL |        121 |            50 |<br>|         131 | James       | Marlow     | JAMRLOW  | 650.124.7234       | 1997-02-16 | ST_CLERK   |  2500.00 |           NULL |        121 |            50 |<br>|         133 | Jason       | Mallin     | JMALLIN  | 650.127.1934       | 1996-06-14 | ST_CLERK   |  3300.00 |           NULL |        122 |            50 |<br>|         136 | Hazel       | Philtanker | HPHILTAN | 650.127.1634       | 2000-02-06 | ST_CLERK   |  2200.00 |           NULL |        122 |            50 |<br>|         137 | Renske      | Ladwig     | RLADWIG  | 650.121.1234       | 1995-07-14 | ST_CLERK   |  3600.00 |           NULL |        123 |            50 |<br>|         140 | Joshua      | Patel      | JPATEL   | 650.121.1834       | 1998-04-06 | ST_CLERK   |  2500.00 |           NULL |        123 |            50 |<br>|         141 | Trenna      | Rajs       | TRAJS    | 650.121.8009       | 1995-10-17 | ST_CLERK   |  3500.00 |           NULL |        124 |            50 |<br>|         142 | Curtis      | Davies     | CDAVIES  | 650.121.2994       | 1997-01-29 | ST_CLERK   |  3100.00 |           NULL |        124 |            50 |<br>|         143 | Randall     | Matos      | RMATOS   | 650.121.2874       | 1998-03-15 | ST_CLERK   |  2600.00 |           NULL |        124 |            50 |<br>|         144 | Peter       | Vargas     | PVARGAS  | 650.121.2004       | 1998-07-09 | ST_CLERK   |  2500.00 |           NULL |        124 |            50 |<br>|         146 | Karen       | Partners   | KPARTNER | 011.44.1344.467268 | 1997-01-05 | SA_MAN     | 13500.00 |           0.30 |        100 |            80 |<br>|         147 | Alberto     | Errazuriz  | AERRAZUR | 011.44.1344.429278 | 1997-03-10 | SA_MAN     | 12000.00 |           0.30 |        100 |            80 |<br>|         148 | Gerald      | Cambrault  | GCAMBRAU | 011.44.1344.619268 | 1999-10-15 | SA_MAN     | 11000.00 |           0.30 |        100 |            80 |<br>|         152 | Peter       | Hall       | PHALL    | 011.44.1344.478968 | 1997-08-20 | SA_REP     |  9000.00 |           0.25 |        145 |            80 |<br>|         154 | Nanette     | Cambrault  | NCAMBRAU | 011.44.1344.987668 | 1998-12-09 | SA_REP     |  7500.00 |           0.20 |        145 |            80 |<br>|         155 | Oliver      | Tuvault    | OTUVAULT | 011.44.1344.486508 | 1999-11-23 | SA_REP     |  7000.00 |           0.15 |        145 |            80 |<br>|         158 | Allan       | McEwen     | AMCEWEN  | 011.44.1345.829268 | 1996-08-01 | SA_REP     |  9000.00 |           0.35 |        146 |            80 |<br>|         160 | Louise      | Doran      | LDORAN   | 011.44.1345.629268 | 1997-12-15 | SA_REP     |  7500.00 |           0.30 |        146 |            80 |<br>|         161 | Sarath      | Sewall     | SSEWALL  | 011.44.1345.529268 | 1998-11-03 | SA_REP     |  7000.00 |           0.25 |        146 |            80 |<br>|         164 | Mattea      | Marvins    | MMARVINS | 011.44.1346.329268 | 2000-01-24 | SA_REP     |  7200.00 |           0.10 |        147 |            80 |<br>|         166 | Sundar      | Ande       | SANDE    | 011.44.1346.629268 | 2000-03-24 | SA_REP     |  6400.00 |           0.10 |        147 |            80 |<br>|         167 | Amit        | Banda      | ABANDA   | 011.44.1346.729268 | 2000-04-21 | SA_REP     |  6200.00 |           0.10 |        147 |            80 |<br>|         172 | Elizabeth   | Bates      | EBATES   | 011.44.1343.529268 | 1999-03-24 | SA_REP     |  7300.00 |           0.15 |        148 |            80 |<br>|         173 | Sundita     | Kumar      | SKUMAR   | 011.44.1343.329268 | 2000-04-21 | SA_REP     |  6100.00 |           0.10 |        148 |            80 |<br>|         174 | Ellen       | Abel       | EABEL    | 011.44.1644.429267 | 1996-05-11 | SA_REP     | 11000.00 |           0.30 |        149 |            80 |<br>|         175 | Alyssa      | Hutton     | AHUTTON  | 011.44.1644.429266 | 1997-03-19 | SA_REP     |  8800.00 |           0.25 |        149 |            80 |<br>|         176 | Jonathon    | Taylor     | JTAYLOR  | 011.44.1644.429265 | 1998-03-24 | SA_REP     |  8600.00 |           0.20 |        149 |            80 |<br>|         178 | Kimberely   | Grant      | KGRANT   | 011.44.1644.429263 | 1999-05-24 | SA_REP     |  7000.00 |           0.15 |        149 |          NULL |<br>|         180 | Winston     | Taylor     | WTAYLOR  | 650.507.9876       | 1998-01-24 | SH_CLERK   |  3200.00 |           NULL |        120 |            50 |<br>|         181 | Jean        | Fleaur     | JFLEAUR  | 650.507.9877       | 1998-02-23 | SH_CLERK   |  3100.00 |           NULL |        120 |            50 |<br>|         182 | Martha      | Sullivan   | MSULLIVA | 650.507.9878       | 1999-06-21 | SH_CLERK   |  2500.00 |           NULL |        120 |            50 |<br>|         184 | Nandita     | Sarchand   | NSARCHAN | 650.509.1876       | 1996-01-27 | SH_CLERK   |  4200.00 |           NULL |        121 |            50 |<br>|         185 | Alexis      | Bull       | ABULL    | 650.509.2876       | 1997-02-20 | SH_CLERK   |  4100.00 |           NULL |        121 |            50 |<br>|         187 | Anthony     | Cabrio     | ACABRIO  | 650.509.4876       | 1999-02-07 | SH_CLERK   |  3000.00 |           NULL |        121 |            50 |<br>|         190 | Timothy     | Gates      | TGATES   | 650.505.3876       | 1998-07-11 | SH_CLERK   |  2900.00 |           NULL |        122 |            50 |<br>|         194 | Samuel      | McCain     | SMCCAIN  | 650.501.3876       | 1998-07-01 | SH_CLERK   |  3200.00 |           NULL |        123 |            50 |<br>|         196 | Alana       | Walsh      | AWALSH   | 650.507.9811       | 1998-04-24 | SH_CLERK   |  3100.00 |           NULL |        124 |            50 |<br>|         199 | Douglas     | Grant      | DGRANT   | 650.507.9844       | 2000-01-13 | SH_CLERK   |  2600.00 |           NULL |        124 |            50 |<br>|         200 | Jennifer    | Whalen     | JWHALEN  | 515.123.4444       | 1987-09-17 | AD_ASST    |  4400.00 |           NULL |        101 |            10 |<br>|         201 | Michael     | Hartstein  | MHARTSTE | 515.123.5555       | 1996-02-17 | MK_MAN     | 13000.00 |           NULL |        100 |            20 |<br>|         202 | Pat         | Fay        | PFAY     | 603.123.6666       | 1997-08-17 | MK_REP     |  6000.00 |           NULL |        201 |            20 |<br>|         203 | Susan       | Mavris     | SMAVRIS  | 515.123.7777       | 1994-06-07 | HR_REP     |  6500.00 |           NULL |        101 |            40 |<br>|         204 | Hermann     | Baer       | HBAER    | 515.123.8888       | 1994-06-07 | PR_REP     | 10000.00 |           NULL |        101 |            70 |<br>|         108 | Nancy       | Greenberg  | NGREENBE | 515.124.4569       | 1994-08-17 | FI_MGR     | 12000.00 |           NULL |        101 |           100 |<br>|         110 | John        | Chen       | JCHEN    | 515.124.4269       | 1997-09-28 | FI_ACCOUNT |  8200.00 |           NULL |        108 |           100 |<br>|         113 | Luis        | Popp       | LPOPP    | 515.124.4567       | 1999-12-07 | FI_ACCOUNT |  6900.00 |           NULL |        108 |           100 |<br>|         205 | Shelley     | Higgins    | SHIGGINS | 515.123.8080       | 1994-06-07 | AC_MGR     | 12000.00 |           NULL |        101 |           110 |<br>|         206 | William     | a_a        | WGIETZ   | 515.123.8181       | 1994-06-07 | AC_ACCOUNT |  8300.00 |           NULL |        205 |           110 |<br>+-------------+-------------+------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+<br>67 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>举例：查询中国用户中男性的信息以及美国用户中年男性的用户信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT id,cname FROM t_chinamale <br>	WHERE csex=&#x27;男&#x27;<br>UNION ALL<br>SELECT id,tname FROM t_usmale<br>	WHERE tGender=&#x27;male&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>小结：</p>
+<p>1、UNION：会执行去重操作</p>
+<p>2、UNION ALL:不会执行去重操作</p>
+<p>3、如果明确知道合并数据后的结果数据不存在重复数据，或者不需要去除重复的数据  则尽量使用UNION ALL语句，以提高数据查询的效率。</p>
+<h2 id="5-7种SQL-JOINS的实现"><a href="#5-7种SQL-JOINS的实现" class="headerlink" title="5. 7种SQL JOINS的实现"></a>5. 7种SQL JOINS的实现</h2><hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979255233.png" srcset="/img/loading.gif" lazyload alt="1554979255233" style="zoom: 33%;" />
+
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/image-20220623204238210.png" srcset="/img/loading.gif" lazyload alt="image-20220623204238210"></p>
+<hr>
+<h3 id="1-0-中图：内连接"><a href="#1-0-中图：内连接" class="headerlink" title="1.0 中图：内连接"></a>1.0 中图：内连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">#中图：内连接 A∩B<br>-- 99内连接<br>SELECT employee_id,department_name<br>FROM employees e JOIN departments d ON e.`department_id` = d.`department_id`;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 混合内连接【上面是99 下面是92】<br>SELECT employee_id,department_name<br>FROM employees e JOIN departments d -- 99<br>where e.`department_id` = d.`department_id`; -- 92<br><br>+-------------+------------------+<br>| employee_id | department_name  |<br>+-------------+------------------+<br>|         200 | Administration   |<br>|         201 | Marketing        |<br>|         206 | Accounting       |<br>+-------------+------------------+<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-0-左上图：左外连接"><a href="#2-0-左上图：左外连接" class="headerlink" title="2.0 左上图：左外连接"></a>2.0 左上图：左外连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#左上图：左外连接<br>SELECT employee_id,department_name<br>FROM employees e LEFT JOIN departments d ON e.`department_id` = d.`department_id`;<br><br>+-------------+------------------+<br>| employee_id | department_name  |<br>+-------------+------------------+<br>|         178 | NULL             |<br>|         200 | Administration   |<br>|         201 | Marketing        |<br>|         202 | Marketing        |<br>|         114 | Purchasing       |<br>|         115 | Purchasing       |<br>|         116 | Purchasing       |<br>|         117 | Purchasing       |<br>|         118 | Purchasing       |<br>|         119 | Purchasing       |<br>|         203 | Human Resources  |<br>|         120 | Shipping         |<br>|         121 | Shipping         |<br>|         122 | Shipping         |<br>|         123 | Shipping         |<br>|         124 | Shipping         |<br>|         125 | Shipping         |<br>|         126 | Shipping         |<br>|         127 | Shipping         |<br>|         128 | Shipping         |<br>|         129 | Shipping         |<br>|         130 | Shipping         |<br>|         131 | Shipping         |<br>|         132 | Shipping         |<br>|         133 | Shipping         |<br>|         134 | Shipping         |<br>|         135 | Shipping         |<br>|         136 | Shipping         |<br>|         137 | Shipping         |<br>|         138 | Shipping         |<br>|         139 | Shipping         |<br>|         140 | Shipping         |<br>|         141 | Shipping         |<br>|         142 | Shipping         |<br>|         143 | Shipping         |<br>|         144 | Shipping         |<br>|         180 | Shipping         |<br>|         181 | Shipping         |<br>|         182 | Shipping         |<br>|         183 | Shipping         |<br>|         184 | Shipping         |<br>|         185 | Shipping         |<br>|         186 | Shipping         |<br>|         187 | Shipping         |<br>|         188 | Shipping         |<br>|         189 | Shipping         |<br>|         190 | Shipping         |<br>|         191 | Shipping         |<br>|         192 | Shipping         |<br>|         193 | Shipping         |<br>|         194 | Shipping         |<br>|         195 | Shipping         |<br>|         196 | Shipping         |<br>|         197 | Shipping         |<br>|         198 | Shipping         |<br>|         199 | Shipping         |<br>|         103 | IT               |<br>|         104 | IT               |<br>|         105 | IT               |<br>|         106 | IT               |<br>|         107 | IT               |<br>|         204 | Public Relations |<br>|         145 | Sales            |<br>|         146 | Sales            |<br>|         147 | Sales            |<br>|         148 | Sales            |<br>|         149 | Sales            |<br>|         150 | Sales            |<br>|         151 | Sales            |<br>|         152 | Sales            |<br>|         153 | Sales            |<br>|         154 | Sales            |<br>|         155 | Sales            |<br>|         156 | Sales            |<br>|         157 | Sales            |<br>|         158 | Sales            |<br>|         159 | Sales            |<br>|         160 | Sales            |<br>|         161 | Sales            |<br>|         162 | Sales            |<br>|         163 | Sales            |<br>|         164 | Sales            |<br>|         165 | Sales            |<br>|         166 | Sales            |<br>|         167 | Sales            |<br>|         168 | Sales            |<br>|         169 | Sales            |<br>|         170 | Sales            |<br>|         171 | Sales            |<br>|         172 | Sales            |<br>|         173 | Sales            |<br>|         174 | Sales            |<br>|         175 | Sales            |<br>|         176 | Sales            |<br>|         177 | Sales            |<br>|         179 | Sales            |<br>|         100 | Executive        |<br>|         101 | Executive        |<br>|         102 | Executive        |<br>|         108 | Finance          |<br>|         109 | Finance          |<br>|         110 | Finance          |<br>|         111 | Finance          |<br>|         112 | Finance          |<br>|         113 | Finance          |<br>|         205 | Accounting       |<br>|         206 | Accounting       |<br>+-------------+------------------+<br>107 rows in set (0.00 sec)<br><br>-- 有一个职工没有部门id 如果是内连接就是106条记录<br>-- 但这个是左外连接,在内连接的基础上,再找到左边表不满足连接条件的记录 107<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-0-右上图：右外连接"><a href="#3-0-右上图：右外连接" class="headerlink" title="3.0 右上图：右外连接"></a>3.0 右上图：右外连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,department_name<br>FROM employees e RIGHT JOIN departments d ON e.`department_id` = d.`department_id`;<br><br>+-------------+----------------------+<br>| employee_id | department_name      |<br>+-------------+----------------------+<br>|         200 | Administration       |<br>|         201 | Marketing            |<br>|         202 | Marketing            |<br>|         114 | Purchasing           |<br>|         115 | Purchasing           |<br>|         116 | Purchasing           |<br>|         117 | Purchasing           |<br>|         118 | Purchasing           |<br>|         119 | Purchasing           |<br>|         203 | Human Resources      |<br>|         120 | Shipping             |<br>|         121 | Shipping             |<br>|         122 | Shipping             |<br>|         123 | Shipping             |<br>|         124 | Shipping             |<br>|         125 | Shipping             |<br>|         126 | Shipping             |<br>|         127 | Shipping             |<br>|         128 | Shipping             |<br>|         129 | Shipping             |<br>|         130 | Shipping             |<br>|         131 | Shipping             |<br>|         132 | Shipping             |<br>|         133 | Shipping             |<br>|         134 | Shipping             |<br>|         135 | Shipping             |<br>|         136 | Shipping             |<br>|         137 | Shipping             |<br>|         138 | Shipping             |<br>|         139 | Shipping             |<br>|         140 | Shipping             |<br>|         141 | Shipping             |<br>|         142 | Shipping             |<br>|         143 | Shipping             |<br>|         144 | Shipping             |<br>|         180 | Shipping             |<br>|         181 | Shipping             |<br>|         182 | Shipping             |<br>|         183 | Shipping             |<br>|         184 | Shipping             |<br>|         185 | Shipping             |<br>|         186 | Shipping             |<br>|         187 | Shipping             |<br>|         188 | Shipping             |<br>|         189 | Shipping             |<br>|         190 | Shipping             |<br>|         191 | Shipping             |<br>|         192 | Shipping             |<br>|         193 | Shipping             |<br>|         194 | Shipping             |<br>|         195 | Shipping             |<br>|         196 | Shipping             |<br>|         197 | Shipping             |<br>|         198 | Shipping             |<br>|         199 | Shipping             |<br>|         103 | IT                   |<br>|         104 | IT                   |<br>|         105 | IT                   |<br>|         106 | IT                   |<br>|         107 | IT                   |<br>|         204 | Public Relations     |<br>|         145 | Sales                |<br>|         146 | Sales                |<br>|         147 | Sales                |<br>|         148 | Sales                |<br>|         149 | Sales                |<br>|         150 | Sales                |<br>|         151 | Sales                |<br>|         152 | Sales                |<br>|         153 | Sales                |<br>|         154 | Sales                |<br>|         155 | Sales                |<br>|         156 | Sales                |<br>|         157 | Sales                |<br>|         158 | Sales                |<br>|         159 | Sales                |<br>|         160 | Sales                |<br>|         161 | Sales                |<br>|         162 | Sales                |<br>|         163 | Sales                |<br>|         164 | Sales                |<br>|         165 | Sales                |<br>|         166 | Sales                |<br>|         167 | Sales                |<br>|         168 | Sales                |<br>|         169 | Sales                |<br>|         170 | Sales                |<br>|         171 | Sales                |<br>|         172 | Sales                |<br>|         173 | Sales                |<br>|         174 | Sales                |<br>|         175 | Sales                |<br>|         176 | Sales                |<br>|         177 | Sales                |<br>|         179 | Sales                |<br>|         100 | Executive            |<br>|         101 | Executive            |<br>|         102 | Executive            |<br>|         108 | Finance              |<br>|         109 | Finance              |<br>|         110 | Finance              |<br>|         111 | Finance              |<br>|         112 | Finance              |<br>|         113 | Finance              |<br>|         205 | Accounting           |<br>|         206 | Accounting           |<br>|        NULL | Treasury             |<br>|        NULL | Corporate Tax        |<br>|        NULL | Control And Credit   |<br>|        NULL | Shareholder Services |<br>|        NULL | Benefits             |<br>|        NULL | Manufacturing        |<br>|        NULL | Construction         |<br>|        NULL | Contracting          |<br>|        NULL | Operations           |<br>|        NULL | IT Support           |<br>|        NULL | NOC                  |<br>|        NULL | IT Helpdesk          |<br>|        NULL | Government Sales     |<br>|        NULL | Retail Sales         |<br>|        NULL | Recruiting           |<br>|        NULL | Payroll              |<br>+-------------+----------------------+<br>122 rows in set (0.00 sec)<br><br>-- 有一个职工没有部门id 如果是内连接就是106条记录<br>-- 但这个是右外连接,在内连接的基础上,再找到右表中不满足连接条件的记录(只有部门记录,没有员工记录的记录 6) 122<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT * FROM departments d LEFT JOIN employees e <br>ON d.`department_id`=e.`department_id`<br>WHERE e.`department_id`&lt;=&gt;NULL;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202209050015258.png" srcset="/img/loading.gif" lazyload alt="image-20220905001532559"></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979255233.png" srcset="/img/loading.gif" lazyload alt="1554979255233"></p>
+<hr>
+<h3 id="4-0-左中图"><a href="#4-0-左中图" class="headerlink" title="4.0 左中图"></a>4.0 左中图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#左中图：A - A ∩ B<br>-- A:相当于左外连接 相当于A与B的内连接 + A中不满足A与B连接条件的记录<br>-- 所以只需要A中不满足A与B连接条件的记录<br>SELECT employee_id,department_name<br>FROM employees e LEFT JOIN departments d ON e.`department_id` = d.`department_id`<br>WHERE d.`department_id` IS NULL;   -- 注意：不要使用 WHERE d.`department_id` = NULL 有null参与的运算结果为null，一条都没有<br><br>+-------------+-----------------+<br>| employee_id | department_name |<br>+-------------+-----------------+<br>|         178 | NULL            |<br>+-------------+-----------------+<br><br>-- 首先走FROM,再走WHERE. 所以此时的记录是107条,员工表与部门表内连接得到106条,再加上一条没有部门的员工记录<br>-- 左中图就是想要 那一条记录,那条记录中部门信息为空,以此为条件.<br></code></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<p>左外连接就是，多个表中所有  <strong>符合的记录</strong>   +    左表（员工表）<strong>中不满足连接条件的记录</strong></p>
+<p>SQL执行是从FROM开始的，所以一开始有 多个表中所有符合的记录 + 左表（员工表）中不满足连接条件的记录</p>
+<p>再通过WHERE 过滤掉满足连接条件的记录，只剩下左表（员工表）中不满足连接条件的记录 （目标）</p>
+<h3 id="5-0-右中图"><a href="#5-0-右中图" class="headerlink" title="5.0 右中图"></a>5.0 右中图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 原理 同左中图 略<br>#右中图：B-A∩B<br>SELECT employee_id,department_name<br>FROM <br>employees e RIGHT JOIN departments dON e.`department_id` = d.`department_id`<br>WHERE e.`department_id` IS NULL;<br>+-------------+----------------------+<br>| employee_id | department_name      |<br>+-------------+----------------------+<br>|        NULL | Treasury             |<br>|        NULL | Corporate Tax        |<br>|        NULL | Control And Credit   |<br>|        NULL | Payroll              |<br>+-------------+----------------------+<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-0-左下图：满外连接"><a href="#6-0-左下图：满外连接" class="headerlink" title="6.0 左下图：满外连接"></a>6.0 左下图：满外连接</h3><ul>
+<li><strong>方式1：左上图 UNION ALL 右中图</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,department_name<br>FROM <br>employees e LEFT JOIN departments d ON e.`department_id` = d.`department_id`<br>UNION ALL  #没有去重操作，效率高<br>SELECT employee_id,department_name<br>FROM <br>employees e RIGHT JOIN departments d ON e.`department_id` = d.`department_id`<br>WHERE e.`department_id` IS NULL;<br><br>+-------------+----------------------+<br>| employee_id | department_name      |<br>+-------------+----------------------+<br>|         178 | NULL                 |<br>|         200 | Administration       |<br>|        NULL | Recruiting           |<br>|        NULL | Payroll              |<br>+-------------+----------------------+<br>123 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>方式2：左中图 UNION ALL 右上图</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 左中图 + 右上图  A∪B<br>SELECT employee_id,department_name<br>FROM employees e LEFT JOIN departments d<br>ON e.`department_id` = d.`department_id`<br>WHERE d.`department_id` IS NULL<br>UNION ALL  #没有去重操作，效率高<br>SELECT employee_id,department_name<br>FROM employees e RIGHT JOIN departments d<br>ON e.`department_id` = d.`department_id`;<br>+-------------+----------------------+<br>| employee_id | department_name      |<br>+-------------+----------------------+<br>|         178 | NULL                 |<br>|         200 | Administration       |<br>|        NULL | Retail Sales         |<br>|        NULL | Recruiting           |<br>|        NULL | Payroll              |<br>+-------------+----------------------+<br>123 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="7-0-右下图"><a href="#7-0-右下图" class="headerlink" title="7.0 右下图"></a>7.0 右下图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#左中图 + 右中图  A ∪B- A∩B 或者 (A -  A∩B) ∪ （B - A∩B）<br>SELECT employee_id,last_name,department_name<br>FROM employees e LEFT JOIN departments d<br>ON e.`department_id` = d.`department_id`<br>WHERE d.`department_id` IS NULL<br>UNION ALL<br>SELECT employee_id,last_name,department_name<br>FROM employees e RIGHT JOIN departments d<br>ON e.`department_id` = d.`department_id`<br>WHERE e.`department_id` IS NULL；<br><br>+-------------+-----------+----------------------+<br>| employee_id | last_name | department_name      |<br>+-------------+-----------+----------------------+<br>|         178 | Grant     | NULL                 |<br>|        NULL | NULL      | Treasury             |<br>|        NULL | NULL      | Corporate Tax        |<br>|        NULL | NULL      | Control And Credit   |<br>|        NULL | NULL      | Shareholder Services |<br>|        NULL | NULL      | Benefits             |<br>|        NULL | NULL      | Manufacturing        |<br>|        NULL | NULL      | Construction         |<br>|        NULL | NULL      | Contracting          |<br>|        NULL | NULL      | Operations           |<br>|        NULL | NULL      | IT Support           |<br>|        NULL | NULL      | NOC                  |<br>|        NULL | NULL      | IT Helpdesk          |<br>|        NULL | NULL      | Government Sales     |<br>|        NULL | NULL      | Retail Sales         |<br>|        NULL | NULL      | Recruiting           |<br>|        NULL | NULL      | Payroll              |<br>+-------------+-----------+----------------------+<br>17 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-7-2-语法格式小结"><a href="#5-7-2-语法格式小结" class="headerlink" title="5.7.2 语法格式小结"></a>5.7.2 语法格式小结</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/1554979255233-16559078653413.png" srcset="/img/loading.gif" lazyload alt="1554979255233"></p>
+<hr>
+<ul>
+<li>左中图</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#实现A -  A∩B<br>select 字段列表<br>from A表 left join B表<br>on 关联条件<br>where 从表关联字段 is null and 等其他子句;<br># 关键点：1 左外连接 2 过滤连接条件为空<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>右中图</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#实现B -  A∩B<br>select 字段列表<br>from A表 right join B表<br>on 关联条件<br>where 从表关联字段 is null and 等其他子句;<br># 关键点：1 右外连接 2 过滤连接条件为空<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>左下图</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#实现查询结果是A∪B<br>#用左外的A，union 右外的B<br>select 字段列表<br>from A表 left join B表<br>on 关联条件<br>where 等其他子句<br><br>union #去重<br><br>select 字段列表<br>from A表 right join B表<br>on 关联条件<br>where 等其他子句;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>右下图</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#实现A∪B -  A∩B  或   (A -  A∩B) ∪ （B - A∩B）<br>#使用左外的 (A -  A∩B)  union 右外的（B - A∩B）<br>select 字段列表<br>from A表 left join B表<br>on 关联条件<br>where 从表关联字段 is null and 等其他子句<br><br>union<br><br>select 字段列表<br>from A表 right join B表<br>on 关联条件<br>where 从表关联字段 is null and 等其他子句<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="6-SQL99语法新特性"><a href="#6-SQL99语法新特性" class="headerlink" title="6. SQL99语法新特性"></a>6. SQL99语法新特性</h2><h3 id="6-1-自然连接（了解）"><a href="#6-1-自然连接（了解）" class="headerlink" title="6.1 自然连接（了解）"></a>6.1 自然连接（了解）</h3><p>SQL99 在 SQL92 的基础上提供了一些特殊语法，比如 <code>NATURAL JOIN</code> 用来表示自然连接</p>
+<p>我们可以把自然连接理解为 SQL92 中的等值连接</p>
+<p>它会帮你自动查询两张连接表中<code>所有相同的字段</code>，然后进行<code>等值连接</code></p>
+<p>格式：</p>
+<blockquote>
+<p>表1 NATURAL JOIN 表2</p>
+</blockquote>
+<p>自然连接特点：</p>
+<p>1、将两张表中的相等的字段进行等值连接</p>
+<p>在SQL92标准中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,department_name<br>FROM employees e JOIN departments d<br>ON e.`department_id` = d.`department_id`<br>AND e.`manager_id` = d.`manager_id`;<br><br>+-------------+------------+-----------------+<br>| employee_id | last_name  | department_name |<br>+-------------+------------+-----------------+<br>|         202 | Fay        | Marketing       |<br>|         119 | Colmenares | Purchasing      |<br>|         131 | Marlow     | Shipping        |<br>|         206 | Gietz      | Accounting      |<br>+-------------+------------+-----------------+<br>32 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在 SQL99 中你可以写成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,department_name<br>FROM employees e NATURAL JOIN departments d;<br><br>+-------------+------------+-----------------+<br>| employee_id | last_name  | department_name |<br>+-------------+------------+-----------------+<br>|         202 | Fay        | Marketing       |<br>|         119 | Colmenares | Purchasing      |<br>|         131 | Marlow     | Shipping        |<br>|         206 | Gietz      | Accounting      |<br>+-------------+------------+-----------------+<br>32 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="6-2-USING连接"><a href="#6-2-USING连接" class="headerlink" title="6.2 USING连接"></a>6.2 USING连接</h3><p>当我们进行连接的时候，SQL99还支持使用 USING 指定数据表里的<code>同名字段</code>进行等值连接</p>
+<p>但是只能配合JOIN一起使用</p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,department_name<br>FROM employees e JOIN departments d<br>USING (department_id);<br>+-------------+-------------+------------------+<br>| employee_id | last_name   | department_name  |<br>+-------------+-------------+------------------+<br>|         200 | Whalen      | Administration   |<br>|         201 | Hartstein   | Marketing        |<br>|         183 | Geoni       | Shipping         |<br>|         151 | Bernstein   | Sales            |<br>|         112 | Urman       | Finance          |<br>|         206 | Gietz       | Accounting       |<br>+-------------+-------------+------------------+<br>106 rows in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>你能看出与自然连接 NATURAL JOIN 不同的是，USING 指定了具体的相同的字段名称，你需要在 USING 的括号 () 中填入要指定<strong>的同名字段</strong>。</p>
+<p>同时使用 <code>JOIN...USING</code> 可以简化 JOIN ON 的等值连接。</p>
+<p>它与下面的 SQL 查询结果是相同的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,department_name<br>FROM employees e ,departments d<br>WHERE e.department_id = d.department_id;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>两张表中，字段名要相同</p>
+<h2 id="7-章节小结"><a href="#7-章节小结" class="headerlink" title="7. 章节小结"></a>7. 章节小结</h2><p>表连接的约束条件可以有三种方式：WHERE, ON, USING</p>
+<ul>
+<li>WHERE：适用于所有关联查询</li>
+<li><code>ON</code>：只能和JOIN一起使用，只能写关联条件。虽然关联条件可以并到WHERE中和其他条件一起写，但分开写可读性更好。</li>
+<li>USING：只能和JOIN一起使用，而且要求<strong>两个</strong>关联字段在关联表中<strong>名称一致</strong>，而且只能表示关联字段值相等</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#关联条件<br>#把关联条件写在where后面<br>-- sql92内连接<br>SELECT last_name,department_name <br>FROM employees,departments <br>WHERE employees.department_id = departments.department_id;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#把关联条件写在on后面，只能和JOIN一起使用<br>-- sql99 内连接<br>SELECT last_name,department_name <br>FROM <br>employees INNER JOIN departments ON employees.department_id = departments.department_id;<br><br>SELECT last_name,department_name <br>FROM <br>employees CROSS JOIN departments  ON employees.department_id = departments.department_id;<br><br>SELECT last_name,department_name  <br>FROM <br>employees JOIN departments  ON employees.department_id = departments.department_id;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#把关联字段写在using()中，只能和JOIN一起使用<br>#而且两个表中的关联字段必须名称相同，而且只能表示=<br>#查询员工姓名与基本工资<br>-- USING()同名字段等值连接<br>SELECT last_name,job_title<br>FROM employees INNER JOIN jobs<br>USING(job_id);<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#n张表关联，需要n-1个关联条件<br>#查询员工姓名，基本工资，部门名称<br>-- sql92内连接<br>SELECT last_name,job_title,department_name <br>FROM employees,departments,jobs <br>WHERE employees.department_id = departments.department_id <br>AND employees.job_id = jobs.job_id;<br><br>SELECT last_name,job_title,department_name <br>FROM employees INNER JOIN departments INNER JOIN jobs <br>ON employees.department_id = departments.department_id <br>AND employees.job_id = jobs.job_id;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>小结</strong></p>
+<p>1、92语法，内连接时，连接条件写在WHERE中</p>
+<p>2、99语法，连接时，连接条件写在ON中；如果用了ON前面必须是使用 JOIN;但是，前面使用了JOIN</p>
+<p>关键字 后面不一定要使用ON关键字</p>
+<p>3、99语法新特性，USING（字段名）；前面必须使用 JOIN</p>
+<p>4、n张表关联，需要右n-1个关联条件</p>
+<p><strong>注意：</strong></p>
+<p>我们要<code>控制连接表的数量</code>。多表连接就相当于嵌套 for 循环一样，非常消耗资源，会让 SQL 查询性能下降得很严重，因此不要连接不必要的表。</p>
+<p>在许多 DBMS 中，也都会有最大连接表的限制。</p>
+<blockquote>
+<p>【强制】</p>
+<p>超过三个表禁止 join。</p>
+<p>需要 join 的字段，数据类型保持绝对一致；</p>
+<p>多表关联查询时， 保证被关联的字段需要有索引。 </p>
+<p>说明：即使双表 join 也要注意表索引、SQL 性能。</p>
+<p>来源：阿里巴巴《Java开发手册》</p>
+</blockquote>
+<h2 id="附录：常用的-SQL-标准有哪些"><a href="#附录：常用的-SQL-标准有哪些" class="headerlink" title="附录：常用的 SQL 标准有哪些"></a>附录：常用的 SQL 标准有哪些</h2><p>在正式开始讲连接表的种类时，我们首先需要知道 SQL 存在不同版本的标准规范，因为不同规范下的表连接操作是有区别的。</p>
+<p>SQL 有两个主要的标准，分别是 <code>SQL92</code> 和 <code>SQL99</code></p>
+<p>92 和 99 代表了标准提出的时间，SQL92 就是 92 年提出的标准规范</p>
+<p>当然除了 SQL92 和 SQL99 以外，还存在 SQL-86、SQL-89、SQL:2003、SQL:2008、SQL:2011 和 SQL:2016 等其他的标准</p>
+<p>这么多标准，到底该学习哪个呢？</p>
+<p><strong>实际上最重要的 SQL 标准就是 SQL92 和 SQL99</strong></p>
+<p>92、99语法相关特性：</p>
+<p>1、一般来说 SQL92 的形式更简单，但是写的 SQL 语句会比较长，可读性较差。</p>
+<p>2、而 SQL99 相比于 SQL92 来说，语法更加复杂，但可读性更强。</p>
+<p>3、我们从这两个标准发布的页数也能看出，SQL92 的标准有 500 页，而 SQL99 标准超过了 1000 页。</p>
+<p>4、实际上从 SQL99 之后，很少有人能掌握所有内容，因为确实太多了。</p>
+<p>5、就好比我们使用 Windows、Linux 和 Office 的时候，很少有人能掌握全部内容一样。我们只需要掌握一些核心的功能，满足日常工作的需求即可。</p>
+<p>注意：</p>
+<p><strong>SQL92 和 SQL99 是经典的 SQL 标准，也分别叫做 SQL-2 和 SQL-3 标准。</strong></p>
+<p>也正是在这两个标准发布之后，SQL 影响力越来越大，甚至超越了数据库领域。</p>
+<p>现如今 SQL 已经不仅仅是数据库领域的主流语言，还是信息领域中信息处理的主流语言。在图形检索、图像检索以及语音检索中都能看到 SQL 语言的使用。</p>
+<h1 id="多表查询的课后练习"><a href="#多表查询的课后练习" class="headerlink" title="多表查询的课后练习"></a>多表查询的课后练习</h1><h2 id="1-0显示-x3D-x3D-所有-x3D-x3D-员工的姓名，部门号和部门名称"><a href="#1-0显示-x3D-x3D-所有-x3D-x3D-员工的姓名，部门号和部门名称" class="headerlink" title="1.0显示&#x3D;&#x3D;所有&#x3D;&#x3D;员工的姓名，部门号和部门名称"></a>1.0<strong>显示&#x3D;&#x3D;所有&#x3D;&#x3D;员工的姓名，部门号和部门名称</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 99外连接<br>SELECT last_name,d.department_id,department_name<br>  FROM <br>  employees LEFT JOIN departments d ON employees.department_id=d.department_id;<br>+-------------+---------------+------------------+<br>| last_name   | department_id | department_name  |<br>+-------------+---------------+------------------+<br>| Whalen      |            10 | Administration   |<br>| Hartstein   |            20 | Marketing        |<br>| Fay         |            20 | Marketing        |<br>| Raphaely    |            30 | Purchasing       |<br>| Olsen       |            80 | Sales            |<br>| Cambrault   |            80 | Sales            |<br>| Popp        |           100 | Finance          |<br>| Higgins     |           110 | Accounting       |<br>| Gietz       |           110 | Accounting       |<br>+-------------+---------------+------------------+<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>在多表查询中，建议每个字段前加上对应的表名；加快效率</p>
+<h2 id="2-0查询90号部门员工的job-id和90号部门的location-id"><a href="#2-0查询90号部门员工的job-id和90号部门的location-id" class="headerlink" title="2.0查询90号部门员工的job_id和90号部门的location_id"></a>2.0<strong>查询90号部门员工的job_id和90号部门的location_id</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.job_id,d.location_id<br>FROM <br>employees e JOIN departments d ON e.`department_id` = d.`department_id`<br>WHERE d.`department_id` = 90;<br>+---------+-------------+<br>| job_id  | location_id |<br>+---------+-------------+<br>| AD_PRES |        1700 |<br>| AD_VP   |        1700 |<br>| AD_VP   |        1700 |<br>+---------+-------------+<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-0选择-x3D-x3D-所有-x3D-x3D-有奖金的员工的-last-name-department-name-location-id-city"><a href="#3-0选择-x3D-x3D-所有-x3D-x3D-有奖金的员工的-last-name-department-name-location-id-city" class="headerlink" title="3.0选择&#x3D;&#x3D;所有&#x3D;&#x3D;有奖金的员工的 last_name , department_name , location_id , city"></a>3.0<strong>选择&#x3D;&#x3D;所有&#x3D;&#x3D;有奖金的员工的 last_name , department_name , location_id , city</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">SELECT e.last_name ,e.`commission_pct`, d.department_name , d.location_id , l.city<br>FROM <br>employees e  JOIN departments d ON e.`department_id` = d.`department_id`<br> JOIN locations l ON d.`location_id` = l.`location_id`<br>WHERE e.`commission_pct` IS NOT NULL; <br><br>34 rows in set (0.00 sec)<br><br>#内连接查询，发现有34条记录<br>-- 题目要求 所有有奖金的员工<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT *<br>FROM employees<br>WHERE commission_pct IS NOT NULL; <br>35 rows in set (0.00 sec)<br>#35条记录<br>-- 向员工表看齐<br></code></pre></td></tr></table></figure>
+
+<p>原因：</p>
+<p>其中一个员工没有部门id，但是有奖金</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.last_name ,e.`commission_pct`, d.department_name , d.location_id , l.city<br>FROM employees e LEFT JOIN departments d<br>ON e.`department_id` = d.`department_id`<br>LEFT JOIN locations l<br>ON d.`location_id` = l.`location_id`<br>WHERE e.`commission_pct` IS NOT NULL; <br><br>35 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-0-选择city在Toronto工作的员工的-last-name-job-id-department-id-department-name"><a href="#4-0-选择city在Toronto工作的员工的-last-name-job-id-department-id-department-name" class="headerlink" title="4.0**选择city在Toronto工作的员工的 last_name , job_id , department_id , department_name **"></a>4.0**选择city在Toronto工作的员工的 last_name , job_id , department_id , department_name **</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 99<br>SELECT e.last_name , e.job_id , e.department_id , d.department_name<br>FROM employees e JOIN departments d<br>ON e.`department_id` = d.`department_id`<br>JOIN locations l<br>ON d.`location_id` = l.`location_id`<br>WHERE l.`city` = &#x27;Toronto&#x27;;<br><br>-- sql92语法：<br>SELECT e.last_name , e.job_id , e.department_id , d.department_name<br>FROM employees e,departments d ,locations l<br>WHERE e.`department_id` = d.`department_id` <br>AND d.`location_id` = l.`location_id`<br>AND l.`city` = &#x27;Toronto&#x27;;<br>+-----------+--------+---------------+-----------------+<br>| last_name | job_id | department_id | department_name |<br>+-----------+--------+---------------+-----------------+<br>| Hartstein | MK_MAN |            20 | Marketing       |<br>| Fay       | MK_REP |            20 | Marketing       |<br>+-----------+--------+---------------+-----------------+<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-0查询员工所在的部门名称、部门地址、姓名、工作、工资，其中员工所在部门的部门名称为’Executive’"><a href="#5-0查询员工所在的部门名称、部门地址、姓名、工作、工资，其中员工所在部门的部门名称为’Executive’" class="headerlink" title="5.0查询员工所在的部门名称、部门地址、姓名、工作、工资，其中员工所在部门的部门名称为’Executive’"></a>5.0<strong>查询员工所在的部门名称、部门地址、姓名、工作、工资，其中员工所在部门的部门名称为’Executive’</strong></h2><p>查看表结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESC departments;<br>+-----------------+-------------+------+-----+---------+-------+<br>| Field           | Type        | Null | Key | Default | Extra |<br>+-----------------+-------------+------+-----+---------+-------+<br>| department_id   | int(4)      | NO   | PRI | 0       |       |<br>| department_name | varchar(30) | NO   |     | NULL    |       |<br>| manager_id      | int(6)      | YES  | MUL | NULL    |       |<br>| location_id     | int(4)      | YES  | MUL | NULL    |       |<br>+-----------------+-------------+------+-----+---------+-------+<br><br>DESC locations;<br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| location_id    | int(4)      | NO   | PRI | 0       |       |<br>| street_address | varchar(40) | YES  |     | NULL    |       |<br>| postal_code    | varchar(12) | YES  |     | NULL    |       |<br>| city           | varchar(30) | NO   |     | NULL    |       |<br>| state_province | varchar(25) | YES  |     | NULL    |       |<br>| country_id     | char(2)     | YES  | MUL | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br><br>DESC employees;<br>+----------------+-------------+------+-----+---------+-------+<br>| Field          | Type        | Null | Key | Default | Extra |<br>+----------------+-------------+------+-----+---------+-------+<br>| employee_id    | int(6)      | NO   | PRI | 0       |       |<br>| first_name     | varchar(20) | YES  |     | NULL    |       |<br>| last_name      | varchar(25) | NO   |     | NULL    |       |<br>| email          | varchar(25) | NO   | UNI | NULL    |       |<br>| phone_number   | varchar(20) | YES  |     | NULL    |       |<br>| hire_date      | date        | NO   |     | NULL    |       |<br>| job_id         | varchar(10) | NO   | MUL | NULL    |       |<br>| salary         | double(8,2) | YES  |     | NULL    |       |<br>| commission_pct | double(2,2) | YES  |     | NULL    |       |<br>| manager_id     | int(6)      | YES  | MUL | NULL    |       |<br>| department_id  | int(4)      | YES  | MUL | NULL    |       |<br>+----------------+-------------+------+-----+---------+-------+<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 考虑到可能在多个城市中有名称相同的部门<br>#所以使用外连接只要部门表有记录就列出来<br>SELECT d.department_name,l.street_address,e.last_name,e.job_id,e.salary<br>FROM departments d LEFT JOIN employees e<br>ON e.`department_id` = d.`department_id`<br>LEFT JOIN locations l<br>ON d.`location_id` = l.`location_id`<br>WHERE d.`department_name` = &#x27;Executive&#x27;;<br><br>+-----------------+-----------------+-----------+---------+----------+<br>| department_name | street_address  | last_name | job_id  | salary   |<br>+-----------------+-----------------+-----------+---------+----------+<br>| Executive       | 2004 Charade Rd | King      | AD_PRES | 24000.00 |<br>| Executive       | 2004 Charade Rd | Kochhar   | AD_VP   | 17000.00 |<br>| Executive       | 2004 Charade Rd | De Haan   | AD_VP   | 17000.00 |<br>+-----------------+-----------------+-----------+---------+----------+<br>3 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-0选择指定员工的姓名，员工号，以及他的管理者的姓名和员工号"><a href="#6-0选择指定员工的姓名，员工号，以及他的管理者的姓名和员工号" class="headerlink" title="6.0选择指定员工的姓名，员工号，以及他的管理者的姓名和员工号"></a>6.0选择指定员工的姓名，员工号，以及他的管理者的姓名和员工号</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 自连接+左外连接【使用自链接，且这个自链接，就是左外连接】<br>SELECT emp.last_name &quot;employees&quot;,emp.employee_id &quot;Emp#&quot;,mgr.last_name &quot;manager&quot;, mgr.employee_id &quot;Mgr#&quot;<br>FROM employees emp LEFT JOIN employees mgr<br>ON emp.manager_id = mgr.employee_id;<br><br>+-------------+------+-----------+------+<br>| employees   | Emp# | manager   | Mgr# |<br>+-------------+------+-----------+------+<br>| King        |  100 | NULL      | NULL |<br>| Sciarra     |  111 | Greenberg |  108 |<br>| Urman       |  112 | Greenberg |  108 |<br>| Gietz       |  206 | Higgins   |  205 |<br>+-------------+------+-----------+------+<br>107 rows in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>这里还是使用外连接，但是是不是用外连接，看实际需求；</p>
+<h2 id="7-0查询哪些部门没有员工"><a href="#7-0查询哪些部门没有员工" class="headerlink" title="7.0查询哪些部门没有员工"></a>7.0<strong>查询哪些部门没有员工</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT d.department_id<br>FROM <br>departments d LEFT JOIN employees e ON d.`department_id` = e.`department_id`<br>WHERE e.`department_id` IS NULL;<br><br>+---------------+<br>| department_id |<br>+---------------+<br>|           120 |<br>|           260 |<br>|           270 |<br>+---------------+<br>16 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>这里使用的是左中图的形式；</p>
+<p>即先使用左外连接获取交集部分以及，特有部分；</p>
+<p>然后去掉特有部分；</p>
+<p>核心：部门为主表，过滤掉连接条件为真的情况；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#本题也可以使用子查询：<br>#方式2：<br>SELECT department_id<br>FROM departments d<br>WHERE NOT EXISTS (<br> SELECT *<br> FROM employees e<br> WHERE e.`department_id` = d.`department_id`<br>     );<br>     <br>+---------------+<br>| department_id |<br>+---------------+<br>|           120 |<br>|           260 |<br>|           270 |<br>+---------------+<br>16 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-0-查询哪个城市没有部门"><a href="#8-0-查询哪个城市没有部门" class="headerlink" title="8.0**查询哪个城市没有部门 **"></a>8.0**查询哪个城市没有部门 **</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT l.location_id,l.city<br>FROM <br>locations l LEFT JOIN departments d ON l.`location_id` = d.`location_id`<br>-- 城市是固定的，肯定是判断部门表的某个部门有没有城市<br>WHERE d.`location_id` IS NULL;<br><br>+-------------+-----------------+<br>| location_id | city            |<br>+-------------+-----------------+<br>|        1000 | Roma            |<br>|        1100 | Venice          |<br>|        1200 | Tokyo           |<br>|        3100 | Utrecht         |<br>|        3200 | Mexico City     |<br>+-------------+-----------------+<br>16 rows in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
+
+<p>核心：城市为主表，过滤掉连接条件为真的情况；</p>
+<p>验证：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT department_id<br>FROM departments<br>WHERE location_id  IN (1000,1100,1200,1300,1600);<br><br>Empty set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="9-0-查询部门名为-Sales-或-IT-的员工信息"><a href="#9-0-查询部门名为-Sales-或-IT-的员工信息" class="headerlink" title="9.0 查询部门名为 Sales 或 IT 的员工信息"></a><strong>9.0 查询部门名为 Sales 或 IT 的员工信息</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT e.employee_id,e.last_name,e.department_id<br>FROM <br>employees e JOIN departments d ON e.`department_id` = d.`department_id`<br>WHERE d.`department_name` IN (&#x27;Sales&#x27;,&#x27;IT&#x27;);<br><br>+-------------+------------+---------------+<br>| employee_id | last_name  | department_id |<br>+-------------+------------+---------------+<br>|         103 | Hunold     |            60 |<br>|         104 | Ernst      |            60 |<br>|         146 | Partners   |            80 |<br>|         147 | Errazuriz  |            80 |<br>|         179 | Johnson    |            80 |<br>+-------------+------------+---------------+<br>39 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>多表查询，做题步骤：</p>
+<p>1、目标字段</p>
+<p>2、涉及那几张表</p>
+<p>3、判断是内连接还是外连接</p>
+<p>4、过滤条件</p>
+<p>记得要在字段前加表名</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E5%88%9D%E7%BA%A7/">#尚硅谷-宋红康-MySQL(初级)</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第06章-多表查询-atguigu-shk</div>
+      <div>http://example.com/2023/03/30/MySQL-宋红康-初级-第06章-多表查询/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E5%88%9D%E7%BA%A7-%E7%AC%AC07%E7%AB%A0-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0/" title="第07章-单行函数-atguigu-shk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第07章-单行函数-atguigu-shk</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E5%88%9D%E7%BA%A7-%E7%AC%AC05%E7%AB%A0-%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%88%86%E9%A1%B5/" title="第05章-排序与分页-atguigu-shk">
+                        <span class="hidden-mobile">第05章-排序与分页-atguigu-shk</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

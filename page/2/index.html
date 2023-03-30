@@ -17,16 +17,18 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="FGCY-BLOG">
 <meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="FGCY-BLOG">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-  <title>Hexo</title>
+  
+  <title>FGCY-BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -58,7 +60,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -84,7 +86,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>FGCY-BLOG</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -104,31 +106,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
+                <span>主页</span>
               </a>
             </li>
           
@@ -140,7 +118,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
+                <span>标签列表</span>
               </a>
             </li>
           
@@ -152,7 +130,19 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>音乐</span>
               </a>
             </li>
           
@@ -186,7 +176,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+            <span id="subtitle" data-typed-text="I hope I can protect the one thing I can&#39;t live without"></span>
           
         </div>
 
@@ -222,7 +212,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API/" target="_self">
           <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="多态与内部类与常用API-heima-xl">
         </a>
       </div>
@@ -230,13 +220,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API/" target="_self">
           多态与内部类与常用API-heima-xl
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API-heima-xl/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%A4%9A%E6%80%81%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%B8%B8%E7%94%A8API/" target="_self">
         <div>
           一、面向对象的三大特征之多态1.0 什么是多态？ 同类型的对象，执行同一个行为，会表现出不同的行为特征。  2.0 多态的常见形式 父类类型 对象名称 &#x3D; new 子类构造器; 接口 对象名称 &#x3D; new 实现类构造器;  3.0 多态中成员访问特点 方法调用：编译看左边，运行看右边。 变量调用：编译看左边，运行也看左边。（多态侧重行为多态）
         </div>
@@ -289,7 +279,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
           <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="多线程-heima-xl">
         </a>
       </div>
@@ -297,13 +287,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
           多线程-heima-xl
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B-heima-xl/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
         <div>
           初识线程 什么是线程  线程(thread)是一个程序内部的一条执行路径。是CPU调度和分派的基本单位我们之前启动程序执行后，main方法的执行其实就是一条单独的执行路程序中如果只有一条执行路径，那么这个程序就是单线程的程序。 多线程的创建方式一：继承Thread类 概念  Thread类    Java是通过java.lang.Thread 类来代表线程的。    按照面向对象的思想，Threa
         </div>
@@ -356,7 +346,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%96%B9%E6%B3%95/" target="_self">
           <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="方法-heima-xl">
         </a>
       </div>
@@ -364,13 +354,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%96%B9%E6%B3%95/" target="_self">
           方法-heima-xl
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/%E6%96%B9%E6%B3%95-heima-xl/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%96%B9%E6%B3%95/" target="_self">
         <div>
           一、什么是方法1.0 方法概念它可以把一段代码封装成一个功能，以方便重复调用 2.0 好处 提高代码复用 逻辑清晰
         </div>
@@ -423,7 +413,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" target="_self">
           <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="面向对象基础-heima-xl">
         </a>
       </div>
@@ -431,13 +421,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" target="_self">
           面向对象基础-heima-xl
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-heima-xl/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" target="_self">
         <div>
           一、初识面向对象 面向对象并不是一个技术，而是一种编程指导思想 面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题 生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。  二、类、对象对象: 是对现实世界具体事物的抽象,是类的具体实例 。类(可以看成是设计图)：同类事物的共性
         </div>
@@ -490,7 +480,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%95%B0%E7%BB%84/" target="_self">
           <img src="/images/java.png" srcset="/img/loading.gif" lazyload alt="数组-heima-xl">
         </a>
       </div>
@@ -498,13 +488,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" target="_self">
+        <a href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%95%B0%E7%BB%84/" target="_self">
           数组-heima-xl
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/%E6%95%B0%E7%BB%84-heima-xl/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E6%95%B0%E7%BB%84/" target="_self">
         <div>
           一、什么是方法1.0 方法概念它可以把一段代码封装成一个功能，以方便重复调用 2.0 好处 提高代码复用 逻辑清晰
         </div>
@@ -557,7 +547,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" target="_self">
+        <a href="/2023/03/30/%E8%80%81%E6%9D%9C-JavaWeb-Servlet-Jsp-Tomcat/" target="_self">
           <img src="/images/servlet.png" srcset="/img/loading.gif" lazyload alt="JavaWeb&amp;Servlet&amp;Jsp&amp;Tomcat-dongli-du">
         </a>
       </div>
@@ -565,13 +555,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" target="_self">
+        <a href="/2023/03/30/%E8%80%81%E6%9D%9C-JavaWeb-Servlet-Jsp-Tomcat/" target="_self">
           JavaWeb&amp;Servlet&amp;Jsp&amp;Tomcat-dongli-du
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/JavaWeb-Servlet-Jsp-Tomcat-dongli-du/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/%E8%80%81%E6%9D%9C-JavaWeb-Servlet-Jsp-Tomcat/" target="_self">
         <div>
           一、系统架构1.0 C&#x2F;S架构1.0 Client &#x2F; Server（客户端 &#x2F; 服务器） 2.0 C&#x2F;S架构的特点  需要   安装   特定的   客户端软件   。  3.0    C&#x2F;S架构   的系统   优点和缺点分别是什么？  优点：  速度快（软件中的   数据大部分    都是   集成到客户端软件当中    的，    很少量的
         </div>
@@ -624,7 +614,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" target="_self">
+        <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/" target="_self">
           <img src="/images/mysql.png" srcset="/img/loading.gif" lazyload alt="第07章-InnoDB数据存储结构-atguigu-shk">
         </a>
       </div>
@@ -632,13 +622,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" target="_self">
+        <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/" target="_self">
           第07章-InnoDB数据存储结构-atguigu-shk
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-atguigu-shk/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC07%E7%AB%A0-InnoDB%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/" target="_self">
         <div>
           1.数据库的存储结构：页索引结构给我们提供了高效的索引方式,不过索引信息以及数据记录都是保存在文件上的,确切说是存储在页结构中。 在MySQL中，B+Tree中所有的节点称为数据页。其中可以把非叶子节点称为目录页。 索引  是在 存储引擎 中实现的,MySQL服务器上的  存储引擎  负责对  表中数据  的读取和写入   工作。  不同存储引擎 中存放的	格式一般是不同的	,甚至有的存储引擎,比
         </div>
@@ -691,7 +681,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/SpringBoot-dongli/" target="_self">
+        <a href="/2023/03/30/%E5%8A%A8%E5%8A%9B-SpringBoot/" target="_self">
           <img src="/images/springboot.png" srcset="/img/loading.gif" lazyload alt="SpringBoot-dongli">
         </a>
       </div>
@@ -699,13 +689,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/SpringBoot-dongli/" target="_self">
+        <a href="/2023/03/30/%E5%8A%A8%E5%8A%9B-SpringBoot/" target="_self">
           SpringBoot-dongli
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/SpringBoot-dongli/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/%E5%8A%A8%E5%8A%9B-SpringBoot/" target="_self">
         <div>
           第一章  JavaConfig 为什么要使用 Spring Boot 因为Spring， SpringMVC 需要使用的大量的配置文件 （xml文件） 还需要配置各种对象，把使用的对象放入到spring容器中才能使用对象 需要了解其他框架配置规则  SpringBoot 就相当于 不需要配置文件的Spring+SpringMVC。 常用的框架和第三方库都已经配置好了。 拿来就可以使用了。【开箱即用
         </div>
@@ -758,7 +748,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/Mybatis-dongli/" target="_self">
+        <a href="/2023/03/30/%E5%8A%A8%E5%8A%9B-Mybatis/" target="_self">
           <img src="/images/mybatis.png" srcset="/img/loading.gif" lazyload alt="Mybatis-dongli">
         </a>
       </div>
@@ -766,13 +756,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/Mybatis-dongli/" target="_self">
+        <a href="/2023/03/30/%E5%8A%A8%E5%8A%9B-Mybatis/" target="_self">
           Mybatis-dongli
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/Mybatis-dongli/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/%E5%8A%A8%E5%8A%9B-Mybatis/" target="_self">
         <div>
           一、框架概述1.软件开发常用结构1.1.三层架构什么是三层架构  在项目开发中,遵循的一种形式模式.分为三层.  界面层（User Interface layer）、业务逻辑层（Business Logic Layer）、数据访问层（Data access layer)      1)界面层表示层，视图层):用来接收客 户端的输入,调用业务逻辑层进行功能处理,返回结果给客户端.过去的servlet
         </div>
@@ -825,7 +815,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2023/03/30/SpringMVC-dongli/" target="_self">
+        <a href="/2023/03/30/%E5%8A%A8%E5%8A%9B-SpringMVC/" target="_self">
           <img src="/images/springmvc.png" srcset="/img/loading.gif" lazyload alt="SpringMVC-dongli">
         </a>
       </div>
@@ -833,13 +823,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/30/SpringMVC-dongli/" target="_self">
+        <a href="/2023/03/30/%E5%8A%A8%E5%8A%9B-SpringMVC/" target="_self">
           SpringMVC-dongli
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2023/03/30/SpringMVC-dongli/" target="_self">
+      <a class="index-excerpt " href="/2023/03/30/%E5%8A%A8%E5%8A%9B-SpringMVC/" target="_self">
         <div>
           SpringMVC概述什么是SpringMVC  它是基于MVC开发模式的框架,用来优化控制器.它是Spring家族的一员.它也具备IOC和AOP. 什么是MVC?  它是一种开发模式,它是模型 视图 控制器的简称.所有的web应用都是基于MVC开发.  M:模型层,包含实体类,业务逻辑层,数据访问层 V:视图层,html,javaScript,vue等都是视图层,用来显现数据 C:控制器,它是用
         </div>
@@ -942,7 +932,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
     </div>
   
   

@@ -1,0 +1,1099 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="网络编程  概念  网络编程可以让程序与网络上的其他设备中的程序进行数据交互  网络通信基本模式  常见的通信模式有如下2种形式：Client-Server(CS) 、 Browser&#x2F;Server(BS)c&#x2F;s: 需要程序员开发实现客户端和服务端，并且需要客户下载安装客户端b&#x2F;s: 需要程序员开发实现服务端，并且需要客户下载安装浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络编程-heima-xl">
+<meta property="og:url" content="http://example.com/2023/03/30/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="网络编程  概念  网络编程可以让程序与网络上的其他设备中的程序进行数据交互  网络通信基本模式  常见的通信模式有如下2种形式：Client-Server(CS) 、 Browser&#x2F;Server(BS)c&#x2F;s: 需要程序员开发实现客户端和服务端，并且需要客户下载安装客户端b&#x2F;s: 需要程序员开发实现服务端，并且需要客户下载安装浏览器">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/java.png">
+<meta property="article:published_time" content="2023-03-30T11:58:57.000Z">
+<meta property="article:modified_time" content="2023-03-30T12:50:28.046Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础-heima">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/java.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>网络编程-heima-xl - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>主页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签列表</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>音乐</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="网络编程-heima-xl"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 19:58" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">网络编程-heima-xl</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>网络编程</p>
+<ul>
+<li>概念</li>
+</ul>
+<p>网络编程可以让程序与网络上的其他设备中的程序进行数据交互</p>
+<ul>
+<li>网络通信基本模式</li>
+</ul>
+<p>常见的通信模式有如下2种形式：Client-Server(CS) 、 Browser&#x2F;Server(BS)<br>c&#x2F;s: 需要程序员开发实现客户端和服务端，并且需要客户下载安装客户端<br>b&#x2F;s: 需要程序员开发实现服务端，并且需要客户下载安装浏览器</p>
+<span id="more"></span>
+
+<h2 id="网络通信三要素"><a href="#网络通信三要素" class="headerlink" title="网络通信三要素"></a><strong>网络通信三要素</strong></h2><ul>
+<li>概念</li>
+</ul>
+<p>IP地址：设备在网络中的地址，是唯一的标识。</p>
+<p>端口：应用程序在设备中唯一的标识。</p>
+<p>协议:数据在网络中传输的规则，常见的协议有UDP协议和TCP协议</p>
+<ul>
+<li>IP地址</li>
+</ul>
+<p>IP（Internet Protocol）：全称”互联网协议地址”，是分配给上网设备的唯一标志。<br>常见的IP分类为：IPv4和IPv6</p>
+<ul>
+<li>IPV4</li>
+</ul>
+<p>目前正在使用的网络协议地址，4字节，32位；采用点分十进制表示法</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829576.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>IPV6</li>
+</ul>
+<p>16个字节，128位，冒分十六进制，分为八个整数用 ： 隔开</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261830205.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2022-03-15_23-36-54"></p>
+<hr>
+<ul>
+<li><strong>IP</strong>地址基本寻路</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829908.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li><strong>IP</strong>地址形式：</li>
+</ul>
+<p>公网地址、和私有地址(局域网使用)。<br>192.168. 开头的就是常见的局域网地址，范围即为192.168.0.0–192.168.255.255，专门为组织机构内部使用</p>
+<ul>
+<li><strong>IP</strong>常用命令：</li>
+</ul>
+<p>ipconfig：查看本机IP地址<br>ping IP地址：检查网络是否连通</p>
+<ul>
+<li><strong>特殊</strong>IP地址</li>
+</ul>
+<p>本机IP: 127.0.0.1或者localhost：称为回送地址也可称本地回环地址，只会寻找当前所在本机</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>说说网络通信至少需要几个要素<br>    IP、端口、协议。<br>IP地址是做什么的，具体有几种<br>    定位网络上的设备的，有IPv4 , IPv6.<br>如何查看本机IP地址，如何看是否与对方互通<br>    ipcofig<br>    ping 192.168.10.23<br>本机IP是谁？<br>    127.0.0.1或者是localhost</p>
+<h3 id="IP地址操作类-InetAddress"><a href="#IP地址操作类-InetAddress" class="headerlink" title="IP地址操作类-InetAddress"></a>IP地址操作类-InetAddress</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829669.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">InetAddress</span> <span class="hljs-variable">localHost</span> <span class="hljs-operator">=</span> InetAddress.getLocalHost();<br>    System.out.println(<span class="hljs-string">&quot;该IP的主机名：&quot;</span> + localHost.getHostName());<br>    System.out.println(<span class="hljs-string">&quot;该IP值：&quot;</span> + localHost.getHostAddress());<br>    System.out.println(<span class="hljs-string">&quot;InetAddress实例：&quot;</span> + localHost);<br>    System.out.println(<span class="hljs-string">&quot;----------------------------&quot;</span>);<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">InetAddress</span> <span class="hljs-variable">baidu</span> <span class="hljs-operator">=</span> InetAddress.getByName(<span class="hljs-string">&quot;www.baidu.com&quot;</span>);<br>    System.out.println(<span class="hljs-string">&quot;InetAddress实例(百度)：&quot;</span> + baidu);<br>    System.out.println(<span class="hljs-string">&quot;该IP的主机名：&quot;</span> + baidu.getHostName());<br>    System.out.println(<span class="hljs-string">&quot;该IP值：&quot;</span> + baidu.getHostAddress());<br>    System.out.println(<span class="hljs-string">&quot;----------------------------&quot;</span>);<br>    <span class="hljs-keyword">final</span> <span class="hljs-type">InetAddress</span> <span class="hljs-variable">baidu2</span> <span class="hljs-operator">=</span> InetAddress.getByName(<span class="hljs-string">&quot;14.215.177.39&quot;</span>);<br>    System.out.println(<span class="hljs-string">&quot;InetAddress实例(百度)：&quot;</span> + baidu2);<br>    System.out.println(<span class="hljs-string">&quot;该IP的主机名：&quot;</span> + baidu2.getHostName());<br>    System.out.println(<span class="hljs-string">&quot;----------------------------&quot;</span>);<br>    System.out.println(baidu.isReachable(<span class="hljs-number">5000</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">该IP的主机名：LAPTOP-KH07R9VQ<br>该IP值：192.168.175.1<br><span class="hljs-section">InetAddress实例：LAPTOP-KH07R9VQ/192.168.175.1</span><br><span class="hljs-section">----------------------------</span><br>InetAddress实例(百度)：www.baidu.com/14.215.177.39<br>该IP的主机名：www.baidu.com<br><span class="hljs-section">该IP值：14.215.177.39</span><br><span class="hljs-section">----------------------------</span><br>InetAddress实例(百度)：/14.215.177.39<br><span class="hljs-section">该IP的主机名：14.215.177.39</span><br><span class="hljs-section">----------------------------</span><br>true<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>IP地址的代表类是谁？<br>    InetAddress类<br>如何获取本机IP对象<br>    public static InetAddress getLocalHost()<br>如何判断与该IP地址对象是否互通？<br>    public boolean isReachable(int timeout)</p>
+<h3 id="要素二：端口号"><a href="#要素二：端口号" class="headerlink" title="要素二：端口号"></a>要素二：端口号</h3><ul>
+<li>概念</li>
+</ul>
+<p>标识正在计算机设备上运行的进程（程序），被规定为一个 16 位的二进制，范围是 0~65535</p>
+<ul>
+<li>端口类型</li>
+</ul>
+<p>周知端口：0~1023，被预先定义的知名应用占用（如：HTTP占用 80，FTP占用21）</p>
+<p>注册端口：1024~49151，分配给用户进程或某些应用程序。（如：Tomcat占 用8080，MySQL占用3306）</p>
+<p>动态端口：49152到65535，之所以称为动态端口，是因为它 一般不固定分配某种进程，而是动态分配。</p>
+<ul>
+<li>注意</li>
+</ul>
+<p>我们自己开发的程序选择注册端口，且一个设备中不能出现两个程序的端口号一样，否则出错<br>但同一个应用，在不同设备上的端口应该是要一致的</p>
+<h3 id="要素三：协议"><a href="#要素三：协议" class="headerlink" title="要素三：协议"></a>要素三：协议</h3><ul>
+<li><strong>通信协议</strong></li>
+</ul>
+<p>连接和通信数据的规则被称为网络通信协议</p>
+<ul>
+<li><strong>网络通信协议有两套参考模型</strong></li>
+</ul>
+<p>OSI参考模型：世界互联协议标准，全球通信规范，由于此模型过于理想化，未能在因特网上进行广泛推广。<br>TCP&#x2F;IP参考模型(或TCP&#x2F;IP协议)：事实上的国际标准；实际应用中</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829209.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li><strong>传输层的</strong>2个常见协议</li>
+</ul>
+<p>TCP(Transmission Control Protocol) ：传输控制协议<br>UDP(User Datagram Protocol)：用户数据报协议</p>
+<ul>
+<li><strong>TCP</strong>协议特点</li>
+</ul>
+<p>使用TCP协议，必须双方先建立连接，它是一种面向连接的可靠通信协议。<br>传输前，采用“三次握手”方式建立连接，所以是可靠的 。<br>在连接中可进行大数据量的传输 。<br>连接、发送数据都需要确认，且传输完毕后，还需释放已建立的连接，通信效率较低</p>
+<ul>
+<li><strong>TCP</strong>协议通信场景</li>
+</ul>
+<p>对信息安全要求较高的场景，例如：文件下载、金融等数据通信。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829430.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261830609.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>UDP协议</li>
+</ul>
+<p>UDP是一种无连接、不可靠传输的协议。<br>将数据源IP、目的地IP和端口封装成数据包，不需要建立连接<br>每个数据包的大小限制在64KB内<br>发送不管对方是否准备好，接收方收到也不确认，故是不可靠的<br>可以广播发送 ，发送数据结束时无需释放资源，开销小，速度快</p>
+<ul>
+<li><strong>UDP</strong>协议通信场景</li>
+</ul>
+<p>语音通话，视频会话等</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>通信协议是什么？<br>    计算机网络中，连接和通信数据的规则被称为网络通信协议。</p>
+<p>TCP通信协议的特点是什么样的?<br>    它是一种面向连接的可靠通信协议。<br>    传输前，采用“三次握手”方式建立连接，点对点的通信，所以可靠。<br>    在连接中可进行大数据量的传输。<br>    通信效率较低。</p>
+<p>UDP协议的特点是什么<br>    用户数据报协议(User Datagram Protocol)<br>    UDP是面向无连接，不可靠传输的通信协议。<br>    速度快，有大小限制一次最多发送64K，数据不安全，易丢失数据。</p>
+<h2 id="UDP通信"><a href="#UDP通信" class="headerlink" title="UDP通信"></a>UDP通信</h2><h3 id="实现一收一发"><a href="#实现一收一发" class="headerlink" title="实现一收一发"></a>实现一收一发</h3><ul>
+<li>UDP协议特点</li>
+</ul>
+<p>UDP是一种无连接、不可靠传输的协议。<br>将数据源IP、目的地IP和端口以及数据封装成数据包，大小限制在64KB内，直接发送出去即可。</p>
+<ul>
+<li><p>UDP的数据包对象</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829864.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+</li>
+<li><p>数据包的常用方法</p>
+</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829065.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829185.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>收发端常用方法</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829428.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>使用UDP通信实现步骤</li>
+</ul>
+<p>客户端实现步骤<br>    1创建DatagramSocket对象（发送端对象）<br>    2创建DatagramPacket对象封装需要发送的数据（数据包对象）<br>    3使用DatagramSocket对象的send方法传入DatagramPacket对象<br>    4释放资源</p>
+<p>接收端实现步骤<br>    1创建DatagramSocket对象并指定端口（接收端对象）<br>    2创建DatagramPacket对象接收数据（数据包对象）<br>    3使用3DatagramSocket对象的receive方法传入DatagramPacket对象<br>    4释放资源</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description:客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>();<span class="hljs-comment">//发送端使用默认端口</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = <span class="hljs-string">&quot;韭菜无敌，冲冲冲！！！！&quot;</span>.getBytes();<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">         public DatagramPacket(byte buf[], int length,</span><br><span class="hljs-comment">                          InetAddress address, int port)</span><br><span class="hljs-comment">             参数一:要发送的数据，需要转化为字节数组</span><br><span class="hljs-comment">             参数二:字节数组的长度，可以指定发送数据的长度</span><br><span class="hljs-comment">             参数三:向那个ip的主机发送数据</span><br><span class="hljs-comment">             参数四:向哪个主机的进程(端口号)发送数据</span><br><span class="hljs-comment">        指定向主机ip为localhost，端口为1111的进程发送，字节长度为data.length的数组</span><br><span class="hljs-comment">        * */</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length, InetAddress.getLocalHost(), <span class="hljs-number">1111</span>);<br>        socket.send(packet);<br>         socket.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============服务端启动=============&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>(<span class="hljs-number">1111</span>);<span class="hljs-comment">//服务端使用指定端口</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span> * <span class="hljs-number">64</span>];<span class="hljs-comment">//udp数据包默认64kb</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length);<span class="hljs-comment">//新建一个数据包用来接数据</span><br>        socket.receive(packet);<br><br>        <span class="hljs-comment">//韭菜无敌，冲冲冲！！！！ ///、/、/、、/、/、/一堆utf-8没有对应的字符</span><br><span class="hljs-comment">//        System.out.println(new String(data, 0, data.length));//数组的长度是数组有多长就取多长（出事）</span><br><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> packet.getLength();<span class="hljs-comment">//通过数据包获取数据长度</span><br>        System.out.println(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(data, <span class="hljs-number">0</span>, length));<span class="hljs-comment">//一收一发 实现</span><br><br>        System.out.println(packet.getAddress());<span class="hljs-comment">//获取对方的ip</span><br>        System.out.println(packet.getPort());<span class="hljs-comment">//获取对方端口</span><br>        System.out.println(packet.getSocketAddress());<span class="hljs-comment">//获取对方端口和ip</span><br>         socket.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dns">=============服务端启动=============<br>韭菜无敌，冲冲冲！！！！<br>/<span class="hljs-number">192.168.175.1</span><br><span class="hljs-number">57397</span><br>/<span class="hljs-number">192.168.175.1</span>:<span class="hljs-number">57397</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>UDP发送端和接收端的对象是哪个？<br>    public DatagramSocket()：创建发送端的Socket对象<br>    public DatagramSocket(int port)：创建接收端的Socket对象</p>
+<p>数据包对象是哪个？<br>    DatagramPacket</p>
+<p>如何发送、接收数据包<br>    使用DatagramSocket的如下方法：<br>    public void send(DatagramPacket dp)：发送数据包<br>    public void receive(DatagramPacket dp) ：接收数据包</p>
+<h3 id="UDP通信：多发多收"><a href="#UDP通信：多发多收" class="headerlink" title="UDP通信：多发多收"></a>UDP通信：多发多收</h3><ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.util.Objects;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description:客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br>        <br>        <span class="hljs-comment">//当指定端口号，想要将这个这个程序开两个进程时，第二个会报错 java.net.BindException: Address already in use: Cannot bind</span><br><span class="hljs-comment">//        final DatagramSocket socket = new DatagramSocket(5555);</span><br><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>();<span class="hljs-comment">//使用无参构造，使用注册端口四万多到65536</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            System.out.print(<span class="hljs-string">&quot;请说：&quot;</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">line</span> <span class="hljs-operator">=</span> sc.nextLine();<br>            <span class="hljs-keyword">if</span> (Objects.equals(<span class="hljs-string">&quot;exit&quot;</span>, line)) &#123;<br>                System.out.println(<span class="hljs-string">&quot;告辞&quot;</span>);<br>                socket.close();<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = line.getBytes();<span class="hljs-comment">//字节数组，toCharArray();是字符数组</span><br><br>            <span class="hljs-comment">//指定想要连接的主机和端口号</span><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length, InetAddress.getLocalHost(), <span class="hljs-number">1111</span>);<br>            socket.send(packet);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============服务端启动=============&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>(<span class="hljs-number">1111</span>);<span class="hljs-comment">//服务端使用指定端口</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span> * <span class="hljs-number">64</span>];<span class="hljs-comment">//udp数据包默认64kb</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length);<span class="hljs-comment">//新建一个数据包用来接数据【可以重复利用的工具包】</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            socket.receive(packet);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> packet.getLength();<span class="hljs-comment">//接完数据后才能知到包中数据的长度</span><br>            System.out.println(<span class="hljs-string">&quot;收到来自[&quot;</span> + packet.getSocketAddress() + <span class="hljs-string">&quot;]的消息：&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(data, <span class="hljs-number">0</span>, length));<span class="hljs-comment">//取多少，输出多少</span><br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns"> =============服务端启动=============<br>收到来自[/<span class="hljs-number">192.168.175.1</span>:<span class="hljs-number">50997</span>]的消息：说你妹夫<br>收到来自[/<span class="hljs-number">192.168.175.1</span>:<span class="hljs-number">50996</span>]的消息：狗看了都摇头<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>请说：狗看了都摇头<br>请说：<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>请说：说你妹夫<br>请说：<br></code></pre></td></tr></table></figure>
+
+<p>​    </p>
+<ul>
+<li>UDP的接收端为什么可以接收很多发送端的消息</li>
+</ul>
+<p>接收端只负责接收数据包，无所谓是哪个发送端的数据包</p>
+<h3 id="程序多开"><a href="#程序多开" class="headerlink" title="程序多开"></a>程序多开</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829907.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829708.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h2 id="UDP通信广播、组播"><a href="#UDP通信广播、组播" class="headerlink" title="UDP通信广播、组播"></a>UDP通信广播、组播</h2><ul>
+<li>UDP的三种通信方式</li>
+</ul>
+<p>单播：单台主机与单台主机之间的通信。<br>组播：当前主机与选定的一组主机的通信。<br>广播：当前主机与所在网络中的所有主机通信</p>
+<ul>
+<li>形式</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829722.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li><strong>UDP如何实现广播</strong></li>
+</ul>
+<p>发送端发送的数据包的目的地写的是广播地址、且指定端口。 （255.255.255.255  ,   9999）<br>本机所在网段的其他主机的程序只要注册对应端口就可以收到消息了。（9999）</p>
+<ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.util.Objects;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description:客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo3</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>();<span class="hljs-comment">//使用无参构造，使用注册端口四万多到65536</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            System.out.print(<span class="hljs-string">&quot;请说：&quot;</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">line</span> <span class="hljs-operator">=</span> sc.nextLine();<br>            <span class="hljs-keyword">if</span> (Objects.equals(<span class="hljs-string">&quot;exit&quot;</span>, line)) &#123;<br>                System.out.println(<span class="hljs-string">&quot;告辞&quot;</span>);<br>                socket.close();<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = line.getBytes();<span class="hljs-comment">//字节数组，toCharArray();是字符数组</span><br><br>            <span class="hljs-comment">//指定端口号，使用代表广播的地址</span><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length, InetAddress.getByName(<span class="hljs-string">&quot;255.255.255.255&quot;</span>), <span class="hljs-number">9999</span>);<br>            socket.send(packet);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo3</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============服务端启动=============&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>(<span class="hljs-number">9999</span>);<span class="hljs-comment">//服务端使用指定端口</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span> * <span class="hljs-number">64</span>];<span class="hljs-comment">//udp数据包默认64kb</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length);<span class="hljs-comment">//新建一个数据包用来接数据</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            socket.receive(packet);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> packet.getLength();<span class="hljs-comment">//接完数据后才能知到包中数据的长度</span><br>            System.out.println(<span class="hljs-string">&quot;收到来自[&quot;</span> + packet.getSocketAddress() + <span class="hljs-string">&quot;]的消息：&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(data, <span class="hljs-number">0</span>, length));<span class="hljs-comment">//取多少，输出多少</span><br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">=============服务端启动=============<br>收到来自[/<span class="hljs-number">192.168.152.1</span>:<span class="hljs-number">59460</span>]的消息：<span class="hljs-number">122</span><br>收到来自[/<span class="hljs-number">192.168.152.1</span>:<span class="hljs-number">59460</span>]的消息：傻狗<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">=============客户端启动=============<br>请说：<span class="hljs-number">122</span><br>请说：傻狗<br>请说：<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>UDP如何实现组播</strong></li>
+</ul>
+<p>发送端的数据包的目的地是组播IP  (例如：224.0.1.1,  端口：9999)<br>使用组播地址：224.0.0.0 ~ 239.255.255.255<br>接收端必须绑定该组播IP(224.0.1.1)，端口还要注册发送端的目的端口9999 ，这样即可接收该组播消息。<br>只有被服务端添加进组的组播地址，客户端一起作为目的主机地址才能被服务器接收到；<br>DatagramSocket的子类MulticastSocket可以在接收端绑定组播IP</p>
+<ul>
+<li>组播代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.xml.soap.SOAPMessage;<br><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.net.MulticastSocket;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:服务端 组播 </span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo4</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============服务端启动=============&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">MulticastSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MulticastSocket</span>(<span class="hljs-number">9999</span>);<span class="hljs-comment">//服务端使用指定端口</span><br>        socket.joinGroup(InetAddress.getByName(<span class="hljs-string">&quot;224.0.1.1&quot;</span>));<br>        socket.joinGroup(InetAddress.getByName(<span class="hljs-string">&quot;224.0.1.2&quot;</span>));<br><span class="hljs-comment">//        socket.joinGroup(InetAddress.getByName(&quot;224.0.0.3&quot;));</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span> * <span class="hljs-number">64</span>];<span class="hljs-comment">//udp数据包默认64kb</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length);<span class="hljs-comment">//新建一个数据包用来接数据</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            socket.receive(packet);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> packet.getLength();<span class="hljs-comment">//接完数据后才能知到包中数据的长度</span><br>            System.out.println(<span class="hljs-string">&quot;收到来自[&quot;</span> + packet.getSocketAddress() + <span class="hljs-string">&quot;]的消息：&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(data, <span class="hljs-number">0</span>, length));<span class="hljs-comment">//取多少，输出多少</span><br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.util.Objects;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description:组播</span><br><span class="hljs-comment"> * 开三个进程去连客户端，224.0.1.1 224.0.1.2 224.0.1.3【客户端没有添加组】</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo4</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramSocket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramSocket</span>();<span class="hljs-comment">//使用无参构造，使用注册端口四万多到65536</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            System.out.print(<span class="hljs-string">&quot;请说：&quot;</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">line</span> <span class="hljs-operator">=</span> sc.nextLine();<br>            <span class="hljs-keyword">if</span> (Objects.equals(<span class="hljs-string">&quot;exit&quot;</span>, line)) &#123;<br>                System.out.println(<span class="hljs-string">&quot;告辞&quot;</span>);<br>                socket.close();<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">byte</span>[] data = line.getBytes();<span class="hljs-comment">//字节数组，toCharArray();是字符数组</span><br>            <span class="hljs-comment">//</span><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">DatagramPacket</span> <span class="hljs-variable">packet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatagramPacket</span>(data, data.length, InetAddress.getByName(<span class="hljs-string">&quot;224.0.1.2&quot;</span>), <span class="hljs-number">9999</span>);<br>            socket.send(packet);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">=============服务端启动=============<br>收到来自[/<span class="hljs-number">192.168.152.1</span>:<span class="hljs-number">49990</span>]的消息：我你么个<br>收到来自[/<span class="hljs-number">192.168.152.1</span>:<span class="hljs-number">57577</span>]的消息：deal late no doubt   <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>请说：<span class="hljs-number">132134654</span>  //这个的地址是<span class="hljs-number">224.0</span>.<span class="hljs-number">1.3</span>，服务器没有添加组，所以客户端发了没用<br>请说：<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>请说：我你么个<br>请说：<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>请说：deal late no doubt<br>请说：<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>如何实现广播，具体怎么操作？<br>    发送端目的IP使用广播IP： 255.255.255.255  9999。<br>    所在网段的其他主机对应了端口（9999）即可接收消息。<br>如何实现组播，具体怎么操作？<br>    发送端目的IP使用组播IP，且指定端口。<br>    所在网段的其他主机注册了该组播IP和对应端口即可接收消息</p>
+<h2 id="TCP通信快速入门"><a href="#TCP通信快速入门" class="headerlink" title="TCP通信快速入门"></a>TCP通信快速入门</h2><h3 id="编写客户端代码"><a href="#编写客户端代码" class="headerlink" title="编写客户端代码"></a>编写客户端代码</h3><ul>
+<li><strong>TCP协议回顾</strong></li>
+</ul>
+<p>TCP是一种面向连接，安全、可靠的传输数据的协议<br>传输前，采用“三次握手”方式，点对点通信，是可靠的<br>在连接中可进行大数据量的传输(面向连接) </p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829916.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2022-03-16_23-25-43"></p>
+<hr>
+<ul>
+<li>注意</li>
+</ul>
+<p>在java中只要是使用java.net.Socket类实现通信，底层即是使用了TCP协议</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261829032.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261828759.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>一收一发代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;<br><span class="hljs-keyword">import</span> java.io.InputStream;<br><span class="hljs-keyword">import</span> java.io.InputStreamReader;<br><span class="hljs-keyword">import</span> java.net.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:TCP连接服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo5</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;------------SERVER RUNNING----------------&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">2222</span>);<br><br>        <span class="hljs-comment">//等待客户端向这里发送建立连接请求</span><br>        <span class="hljs-comment">//得到一个socket对象，建立点对点连接</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> socket.getInputStream();<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is));<br>        String msg;<br><br>        <span class="hljs-comment">// java.net.SocketException: Connection reset</span><br> <span class="hljs-comment">/*       while ((msg = br.readLine()) != null) &#123;//这里是读一行，但是客户端发送完数据后没有换行；所以处于等待状态，客户端跑完了，这里就会外抛异常</span><br><span class="hljs-comment">            System.out.println(msg);</span><br><span class="hljs-comment">        &#125;*/</span><br><br>        <span class="hljs-keyword">if</span> ((msg = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 发送了：&quot;</span> + msg);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStream;<br><span class="hljs-keyword">import</span> java.io.PrintStream;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.Objects;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description: TCP连接客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo5</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br><br>            <span class="hljs-comment">/*</span><br><span class="hljs-comment">               public Socket(String host, int port)</span><br><span class="hljs-comment">               服务端主机和端口</span><br><span class="hljs-comment">            * */</span><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">2222</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> socket.getOutputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(os);<br><br>            <span class="hljs-comment">//需要换行，因为读取是使用BufferedReader读一行；没有读完，服务端会等着，但此时客户端已经跑完了；</span><br>            <span class="hljs-comment">// 又由于TCP是面向连接的，其中一端没了，另一端会直接外抛连接重置异常</span><br><span class="hljs-comment">//            ps.print(&quot;我是一个调理农务系的学生&quot;);//\r\n 换行</span><br>            ps.println(<span class="hljs-string">&quot;我是一个调理农务系的学生&quot;</span>);<span class="hljs-comment">//这里换行了，服务端可以接收到这行数据；但因为使用了while循环，这里又快快跑完了，服务端又会外抛异常</span><br>            ps.flush();<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">------------SERVER RUNNING----------------<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">50942</span> 发送了：我是一个调理农务系的学生<br>    <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>客户端启动<span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>实现步骤</li>
+</ul>
+<p>服务端实现接收消息<br>    需求：服务端实现步骤<br>    创建ServerSocket对象，注册服务端端口。<br>    调用ServerSocket对象的accept()方法，等待客户端的连接，并得到Socket管道对象。<br>    通过Socket对象调用getInputStream()方法得到字节输入流、完成数据的接收。<br>    释放资源：关闭socket管道</p>
+<p>客户端发送消息<br>    需求：客户端实现步骤<br>    创建客户端的Socket对象，请求与服务端的连接。<br>    使用socket对象调用getOutputStream()方法得到字节输出流。<br>    使用字节输出流完成数据的发送。<br>    释放资源：关闭socket管道。</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>TCP通信的客户端的代表类是谁？<br>    Socket类<br>    public Socket(String host , int port)</p>
+<p>TCP通信如何使用Socket管道发送、接收数据。<br>    OutputStream getOutputStream()：获得字节输出流对象（发）<br>    InputStream getInputStream()：获得字节输入流对象（收）</p>
+<p>TCP通信服务端用的代表类？<br>    ServerSocket类,注册端口。<br>    调用accept()方法阻塞等待接收客户端连接。得到Socket对象。</p>
+<p>TCP通信的基本原理？<br>    客户端怎么发，服务端就应该怎么收。<br>    客户端如果没有消息，服务端会进入阻塞等待。<br>    Socket一方关闭或者出现异常、对方Socket也会失效或者出错</p>
+<h2 id="TCP通信多发多收消息"><a href="#TCP通信多发多收消息" class="headerlink" title="TCP通信多发多收消息"></a>TCP通信多发多收消息</h2><ul>
+<li>一个客户端与一个服务端的多发多收</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;<br><span class="hljs-keyword">import</span> java.io.InputStream;<br><span class="hljs-keyword">import</span> java.io.InputStreamReader;<br><span class="hljs-keyword">import</span> java.net.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:TCP连接服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo5</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;------------SERVER RUNNING----------------&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">2222</span>);<br><br>        <span class="hljs-comment">//等待客户端向这里发送建立连接请求</span><br>        <span class="hljs-comment">//得到一个socket对象，建立点对点连接</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> socket.getInputStream();<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is));<br>        String msg;<br>        <span class="hljs-keyword">while</span> ((msg = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 发送消息:&quot;</span> + msg);<br>        &#125;<br><br>    <span class="hljs-comment">/*    if ((msg = br.readLine()) != null) &#123;</span><br><span class="hljs-comment">            System.out.println(socket.getRemoteSocketAddress() + &quot; 发送了：&quot; + msg);</span><br><span class="hljs-comment">        &#125;*/</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStream;<br><span class="hljs-keyword">import</span> java.io.PrintStream;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> java.net.DatagramPacket;<br><span class="hljs-keyword">import</span> java.net.DatagramSocket;<br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.Objects;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description: TCP连接客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo5</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br><br>            <span class="hljs-comment">/*</span><br><span class="hljs-comment">               public Socket(String host, int port)</span><br><span class="hljs-comment">               服务端主机和端口</span><br><span class="hljs-comment">            * */</span><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">2222</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> socket.getOutputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(os);<br><br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>                System.out.print(<span class="hljs-string">&quot;请说:&quot;</span>);<br>                ps.println(sc.nextLine());<br>                ps.flush();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:莫听传林打叶声</span><br><span class="hljs-section">请说:和方孝祥且徐行</span><br><span class="hljs-section">请说:天王盖地虎</span><br><span class="hljs-section">请说:</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-params">------------SERVER</span> RUNNING<span class="hljs-params">----------------</span><br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50317</span> 发送消息:莫听传林打叶声<br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50317</span> 发送消息:和方孝祥且徐行<br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50317</span> 发送消息:天王盖地虎<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>本案例实现了多发多收，那么是否可以同时接收多个客户端的消息</li>
+</ul>
+<p>不可以的。<br>因为服务端现在只有一个线程，只能与一个客户端进行通信</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>本次多发多收是如何实现的<br>    客户端使用循环反复地发送消息。<br>    服务端使用循环反复地接收消息。<br>现在服务端为什么不可以同时接收多个客户端的消息。<br>    目前服务端是单线程的，每次只能处理一个客户端的消息</p>
+<h2 id="TCP通信同时接受多个客户端消息"><a href="#TCP通信同时接受多个客户端消息" class="headerlink" title="TCP通信同时接受多个客户端消息"></a>TCP通信同时接受多个客户端消息</h2><ul>
+<li>问题引入</li>
+</ul>
+<p>之前我们的通信是否可以同时与多个客户端通信，为什么？<br>    不可以的<br>    单线程每次只能处理一个客户端的Socket通信<br>2、如何才可以让服务端可以处理多个客户端的通信需求？<br>    引入多线程</p>
+<ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.InputStream;<br><span class="hljs-keyword">import</span> java.io.InputStreamReader;<br><span class="hljs-keyword">import</span> java.net.ServerSocket;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:TCP连接服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo6</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;------------SERVER RUNNING----------------&quot;</span>);<br>        <span class="hljs-comment">//注册端口</span><br>        <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">2222</span>);<br>        <span class="hljs-comment">//定义一个死循环负责不断接收客户端的socket连接（由main线程负责）</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>            <span class="hljs-comment">//客户端下线提醒</span><br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 他来了，他来了！！&quot;</span>);<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerReaderThread</span>(socket).start();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerReaderThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span> &#123;<br><br>    <span class="hljs-keyword">private</span> Socket socket;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ServerReaderThread</span><span class="hljs-params">(Socket socket)</span> &#123;<br>        <span class="hljs-built_in">this</span>.socket = socket;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> socket.getInputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is));<br>            String msg;<br>            <span class="hljs-keyword">while</span> ((msg = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>                System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 发送消息:&quot;</span> + msg);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            <span class="hljs-comment">//客户端下线提醒</span><br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 它走了！！&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStream;<br><span class="hljs-keyword">import</span> java.io.PrintStream;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description: TCP连接客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo6</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">2222</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> socket.getOutputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(os);<br><br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>                System.out.print(<span class="hljs-string">&quot;请说:&quot;</span>);<br>                ps.println(sc.nextLine());<br>                ps.flush();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-params">------------SERVER</span> RUNNING<span class="hljs-params">----------------</span><br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:64658</span> 他来了，他来了！！<br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:64658</span> 发送消息<span class="hljs-function">:1</span><br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:64658</span> 发送消息:告辞！<br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:64658</span> 它走了！！<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:1</span><br><span class="hljs-section">请说:告辞！</span><br><span class="hljs-section">请说:</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>本次是如何实现服务端接收多个客户端的消息的。<br>    主线程定义了循环负责接收客户端Socket管道连接<br>    每接收到一个Socket通信管道后分配一个独立的线程负责处理它。</p>
+<h2 id="TCP通信使用线程池优化"><a href="#TCP通信使用线程池优化" class="headerlink" title="TCP通信使用线程池优化"></a>TCP通信使用线程池优化</h2><ul>
+<li>目前的架构存在什么问题</li>
+</ul>
+<p>客户端与服务端的线程模型是： N-N的关系。<br>客户端并发越多，系统瘫痪的越快</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStream;<br><span class="hljs-keyword">import</span> java.io.PrintStream;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description: TCP连接客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo7</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">2222</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> socket.getOutputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(os);<br><br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>                System.out.print(<span class="hljs-string">&quot;请说:&quot;</span>);<br>                ps.println(sc.nextLine());<br>                ps.flush();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;<br><span class="hljs-keyword">import</span> java.io.InputStream;<br><span class="hljs-keyword">import</span> java.io.InputStreamReader;<br><span class="hljs-keyword">import</span> java.net.ServerSocket;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.concurrent.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:TCP连接服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo7</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">ExecutorService</span> <span class="hljs-variable">pool</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, TimeUnit.SECONDS<br>            , <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="hljs-number">2</span>), Executors.defaultThreadFactory(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>.AbortPolicy());<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;------------SERVER RUNNING----------------&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">2222</span>);<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 他来了&quot;</span>);<br>            pool.execute(<span class="hljs-keyword">new</span> <span class="hljs-title class_">DealServerThread</span>(socket));<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DealServerThread</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;<br>    <span class="hljs-keyword">private</span> Socket socket;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">DealServerThread</span><span class="hljs-params">(Socket socket)</span> &#123;<br>        <span class="hljs-built_in">this</span>.socket = socket;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> socket.getInputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is));<br>            String msg;<br>            <span class="hljs-keyword">while</span> ((msg = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>                System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 发送消息:&quot;</span> + msg);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 他下线了！！&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java">------------SERVER RUNNING----------------<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65169</span> 他来了<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65169</span> 发送消息:客户端<span class="hljs-number">1</span>，核心线程<span class="hljs-number">1</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65177</span> 他来了<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65177</span> 发送消息:客户端<span class="hljs-number">2</span>，核心线程<span class="hljs-number">2</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65187</span> 他来了    <span class="hljs-comment">//进入了等待队列</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65195</span> 他来了	<span class="hljs-comment">//进入了等待队列</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65202</span> 他来了<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65202</span> 发送消息:客户端<span class="hljs-number">5</span> <span class="hljs-comment">//分配一个临时线程</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65213</span> 他来了<br>Exception in thread <span class="hljs-string">&quot;main&quot;</span> java.util.concurrent.RejectedExecutionException: Task net_demo.DealServerThread@29453f44 rejected from java.util.concurrent.ThreadPoolExecutor@5cad8086[Running, <span class="hljs-type">pool</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>, <span class="hljs-type">active</span> <span class="hljs-variable">threads</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>, <span class="hljs-type">queued</span> <span class="hljs-variable">tasks</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>, <span class="hljs-type">completed</span> <span class="hljs-variable">tasks</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>]<br>	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:<span class="hljs-number">2063</span>)<br>	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:<span class="hljs-number">830</span>)<br>	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:<span class="hljs-number">1379</span>)<br>	at net_demo.ServerDemo7.main(ServerDemo7.java:<span class="hljs-number">29</span>)<span class="hljs-comment">//所有线程在忙，队列已满，还未达到最大线程，分配一个临时线程</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65169</span> 发送消息:客户端下线，归还线程<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65169</span> 他下线了！！<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65187</span> 发送消息:客户端<span class="hljs-number">3</span><br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65177</span> 发送消息:客户端<span class="hljs-number">2</span>下线，归还线程<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65177</span> 他下线了！！<br>/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">65195</span> 发送消息:客户端<span class="hljs-number">4</span><br>进程已结束，退出代码为 -<span class="hljs-number">1</span>    <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:客户端1，核心线程1</span><br><span class="hljs-section">请说:客户端下线，归还线程</span><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:客户端2，核心线程2</span><br><span class="hljs-section">请说:客户端2下线，归还线程</span><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:客户端3</span><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:客户端4</span><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:客户端5</span><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:客户端6</span><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>本次使用线程池的优势在哪里？<br>    服务端可以复用线程处理多个客户端，可以避免系统瘫痪。<br>    适合客户端通信时长较短的场景。</p>
+<h2 id="TCP通信实战案例即时通信"><a href="#TCP通信实战案例即时通信" class="headerlink" title="TCP通信实战案例即时通信"></a>TCP通信实战案例即时通信</h2><ul>
+<li>即时通信是什么含义，要实现怎么样的设计</li>
+</ul>
+<p>即时通信，是指一个客户端的消息发出去，其他客户端可以接收到。<br>之前我们的消息都是发给服务端的。<br>即时通信需要进行端口转发的设计思想。</p>
+<ul>
+<li>TCP广播实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ClientDemo1</span><br><span class="hljs-comment"> * Description: TCP连接客户端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClientDemo8</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;=============客户端启动=============&quot;</span>);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">2222</span>);<br>            <span class="hljs-comment">//开启一个线程用来接收消息</span><br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">DealClientThread</span>(socket).start();<br><br>            <span class="hljs-comment">//通过主线程来发送消息</span><br>            <span class="hljs-keyword">final</span> <span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> socket.getOutputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(os);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                System.out.print(<span class="hljs-string">&quot;请说:&quot;</span>);<br>                ps.println(sc.nextLine());<br>                System.out.println();<br>                ps.flush();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DealClientThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span> &#123;<br>    <span class="hljs-keyword">private</span> Socket socket;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">DealClientThread</span><span class="hljs-params">(Socket socket)</span> &#123;<br>        <span class="hljs-built_in">this</span>.socket = socket;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> socket.getInputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">InputStreamReader</span> <span class="hljs-variable">isr</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is);<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(isr);<br>            String msg;<br>            <span class="hljs-keyword">while</span> ((msg = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>                System.out.println(<span class="hljs-string">&quot;收到广播消息：&quot;</span> + msg);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            System.out.println(<span class="hljs-string">&quot;服务端把你移除群聊！！&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.net.ServerSocket;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * ClassName: ServerDemo1</span><br><span class="hljs-comment"> * Description:TCP连接服务端</span><br><span class="hljs-comment"> * date:2022/3/16</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK 1.8</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ServerDemo8</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;Socket&gt; allSockets = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;------------SERVER RUNNING----------------&quot;</span>);<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">2222</span>);<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 上线了！！&quot;</span>);<br>            allSockets.add(socket);<span class="hljs-comment">//上线</span><br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyServerDeal</span>(socket).start();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyServerDeal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span> &#123;<br>    <span class="hljs-keyword">private</span> Socket socket;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyServerDeal</span><span class="hljs-params">(Socket socket)</span> &#123;<br>        <span class="hljs-built_in">this</span>.socket = socket;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> socket.getInputStream();<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is));<br>            String msg;<br>            <span class="hljs-keyword">while</span> ((msg = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>                System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot; 发送消息:&quot;</span> + msg);<br>                <span class="hljs-comment">//去除当前自己的管道，不给自己发消息</span><br>                ServerDemo8.allSockets.remove(socket);<br>                sendToAllSockets(msg);<br>                <span class="hljs-comment">//将自己的管道再次添加进去</span><br>                ServerDemo8.allSockets.add(socket);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            ServerDemo8.allSockets.remove(socket);<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot;下线了！！！&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendToAllSockets</span><span class="hljs-params">(String msg)</span> &#123;<br>        ServerDemo8.allSockets.forEach(socket1 -&gt; &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">OutputStream</span> <span class="hljs-variable">os</span> <span class="hljs-operator">=</span> socket1.getOutputStream();<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">pw</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(os);<span class="hljs-comment">//要用字节输出打印流</span><br>                pw.println(msg);<br>            &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-params">------------SERVER</span> RUNNING<span class="hljs-params">----------------</span><br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50201</span> 上线了！！<br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50207</span> 上线了！！<br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50207</span> 发送消息<span class="hljs-function">:1</span><br><span class="hljs-string">/127.0.0.1</span><span class="hljs-function">:50201</span> 发送消息<span class="hljs-function">:2</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:收到广播消息：1</span><br>2<br><br><span class="hljs-section">请说:</span><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs makefile">=============客户端启动=============<br><span class="hljs-section">请说:1</span><br><br><span class="hljs-section">请说:收到广播消息：2</span><br><br>进程已结束，退出代码为 -1<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>即时通信是什么含义，要实现怎么样的设计？<br>即时通信，是指一个客户端的消息发出去，其他客户端可以接收到<br>即时通信需要进行端口转发的设计思想。<br>服务端需要把在线的Socket管道存储起来<br>一旦收到一个消息要推送给其他管道</p>
+<h2 id="TCP通信实战案例模拟BS系统"><a href="#TCP通信实战案例模拟BS系统" class="headerlink" title="TCP通信实战案例模拟BS系统"></a>TCP通信实战案例模拟BS系统</h2><ul>
+<li>问题引出</li>
+</ul>
+<p>之前的客户端都是什么样的<br>    其实就是CS架构，客户端实需要我们自己开发实现的。<br>BS结构是什么样的，需要开发客户端吗？<br>    浏览器访问服务端，不需要开发客户端</p>
+<ul>
+<li><strong>HTTP响应数据的协议格式：就是给浏览器显示的网页信息</strong></li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261828004.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li><strong>实现BS开发</strong>（多线程）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> net_bs;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintStream;<br><span class="hljs-keyword">import</span> java.net.ServerSocket;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BSDemo</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">5421</span>);<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">DealBSThread</span>(socket).start();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DealBSThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span> &#123;<br>    <span class="hljs-keyword">private</span> Socket socket;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">DealBSThread</span><span class="hljs-params">(Socket socket)</span> &#123;<br>        <span class="hljs-built_in">this</span>.socket = socket;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(socket.getOutputStream());<br>            ps.println(<span class="hljs-string">&quot;HTTP/1.1 200 OK&quot;</span>);<span class="hljs-comment">//请求头 协议类型和版本相应信息</span><br>            ps.println(<span class="hljs-string">&quot;Content-Type:text/html;charset=UTF-8&quot;</span>);<span class="hljs-comment">//请求行 相应格式类型字符集</span><br>            ps.println();<span class="hljs-comment">//请求空行</span><br>            ps.println(<span class="hljs-string">&quot;&lt;h1 style=&#x27;color:red&#x27;&gt;调理农务系的&lt;/h1&gt;&quot;</span>);<br>            socket.close();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;color:red&#x27;</span>&gt;</span>调理农务系的<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>//http请求格式被浏览器解析，剩下的是文本数据<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>BS代码实现（线程池）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintStream;<br><span class="hljs-keyword">import</span> java.net.ServerSocket;<br><span class="hljs-keyword">import</span> java.net.Socket;<br><span class="hljs-keyword">import</span> java.util.concurrent.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BSDemo2</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">ExecutorService</span> <span class="hljs-variable">pool</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, TimeUnit.SECONDS,<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="hljs-number">2</span>), Executors.defaultThreadFactory(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>.AbortPolicy());<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">ServerSocket</span> <span class="hljs-variable">serverSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerSocket</span>(<span class="hljs-number">5555</span>);<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                <span class="hljs-keyword">final</span> <span class="hljs-type">Socket</span> <span class="hljs-variable">socket</span> <span class="hljs-operator">=</span> serverSocket.accept();<br>                pool.execute(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyServerTask</span>(socket));<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyServerTask</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;<br>    <span class="hljs-keyword">private</span> Socket socket;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyServerTask</span><span class="hljs-params">(Socket socket)</span> &#123;<br>        <span class="hljs-built_in">this</span>.socket = socket;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">final</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(socket.getOutputStream());<br>            ps.println(<span class="hljs-string">&quot;HTTP/1.1 200 OK&quot;</span>);<br>            ps.println(<span class="hljs-string">&quot;Content-Type:text/html;charset=UTF-8&quot;</span>);<br>            ps.println();<br>            ps.println(<span class="hljs-string">&quot;&lt;div style=&#x27;background-color:grey;color:white;margin-top:200px&#x27;&gt;个个个等待&lt;/div&gt;&quot;</span>);<br>            System.out.println(socket.getRemoteSocketAddress() + <span class="hljs-string">&quot;访问&quot;</span>);<br>            ps.close();<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">/0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:1</span><span class="hljs-function">:58354</span>访问<span class="hljs-string">//</span>浏览器发出一次请求，显示了四次访问<br><span class="hljs-string">/0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:1</span><span class="hljs-function">:58355</span>访问<br><span class="hljs-string">/0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:1</span><span class="hljs-function">:58356</span>访问<br><span class="hljs-string">/0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:0</span><span class="hljs-function">:1</span><span class="hljs-function">:58358</span>访问<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>小结</li>
+</ul>
+<p>TCP通信如何实现BS请求网页信息回来呢？<br>客户端使用浏览器发起请求（不需要开发客户端）<br>服务端必须按照浏览器的协议规则响应数据。<br>浏览器使用什么协议规则呢？<br>HTTP协议（简单了解下）</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java%E5%9F%BA%E7%A1%80-heima/">#Java基础-heima</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>网络编程-heima-xl</div>
+      <div>http://example.com/2023/03/30/Java基础-徐磊-网络编程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E5%88%9D%E7%BA%A7-%E7%AC%AC09%E7%AB%A0-%E5%AD%90%E6%9F%A5%E8%AF%A2/" title="第09章-子查询-atguigu-shk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第09章-子查询-atguigu-shk</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/%E7%A1%85%E8%B0%B7-VUE/" title="VUE-atguigu">
+                        <span class="hidden-mobile">VUE-atguigu</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

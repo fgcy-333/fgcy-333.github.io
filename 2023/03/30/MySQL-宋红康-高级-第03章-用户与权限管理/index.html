@@ -1,0 +1,1428 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. 用户管理MySQL用户可以分为普通用户和root用户 root用户是超级管理员,拥有所有权限,包括创建用户、删除用户和修改用户的密码等管理权限; 普通用户只拥有被授予的各种权限 MySQL提供了许多语句用来管理用户账号,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容 MySQL数据库的安全性需要通过账户管理来保证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第03章-用户与权限管理-atguigu-shk">
+<meta property="og:url" content="http://example.com/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC03%E7%AB%A0-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="1. 用户管理MySQL用户可以分为普通用户和root用户 root用户是超级管理员,拥有所有权限,包括创建用户、删除用户和修改用户的密码等管理权限; 普通用户只拥有被授予的各种权限 MySQL提供了许多语句用来管理用户账号,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容 MySQL数据库的安全性需要通过账户管理来保证">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/mysql.png">
+<meta property="article:published_time" content="2023-03-30T12:10:48.000Z">
+<meta property="article:modified_time" content="2023-03-30T14:13:41.739Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="尚硅谷-宋红康-MySQL(高级)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>第03章-用户与权限管理-atguigu-shk - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>主页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签列表</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>音乐</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第03章-用户与权限管理-atguigu-shk"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-30 20:10" pubdate>
+          March 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第03章-用户与权限管理-atguigu-shk</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-用户管理"><a href="#1-用户管理" class="headerlink" title="1. 用户管理"></a>1. 用户管理</h1><p>MySQL用户可以分为<strong>普通用户</strong>和<strong>root</strong>用户</p>
+<p>root用户是超级管理员,拥有所有权限,包括创建用户、删除用户和修改用户的密码等管理权限;</p>
+<p>普通用户只拥有被授予的各种权限</p>
+<p><code>MySQL提供了许多语句用来管理用户账号</code>,这些语句可以用来管理包括登录和退出MySQL服务器、创建用户、删除用户、密码管理和权限管理等内容</p>
+<p><code>MySQL数据库的安全性需要通过账户管理来保证</code></p>
+<span id="more"></span>
+
+<h2 id="1-1-登录MySQL服务器"><a href="#1-1-登录MySQL服务器" class="headerlink" title="1.1 登录MySQL服务器"></a>1.1 登录MySQL服务器</h2><p>启动MySQL服务后，可以通过mysql命令来登录MySQL服务器，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql –h hostname/hostIP –P port –u username –p DatabaseName –e &quot;SQL语句&quot;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>下面详细介绍命令中的参数：</p>
+<p><code> -h参数</code>:  后面接主机名或者主机IP，hostname为主机，hostIP为主机IP</p>
+<p><code> -P参数</code>: 后面接MySQL服务的端口，通过该参数连接到指定的端口。MySQL服务的默认端口是3306， 不使用该参数时自动连接到3306端口，port为连接的端口			  号</p>
+<p><code> -u参数</code> :后面接用户名，username为用户名</p>
+<p><code>-p参数</code>: 会提示输入密码 </p>
+<p><code>DatabaseName参数</code>:  指明登录到哪一个数据库中。<strong>如果没有该参数，就会直接登录到MySQL数据库</strong> 中，然后可以使用USE命令来选择数据库</p>
+<p><code>-e参数 </code>: 后面可以直接加SQL语句。登录MySQL服务器以后即可执行这个SQL语句，然后退出MySQL 服务器</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">mysql -uroot -p -h192.168.175.135 -P3306 mysql -e &quot;select host,user from user&quot;<br>Enter password: *******<br><br>+-----------+------------------+<br>| host      | user             |<br>+-----------+------------------+<br>| %         | root             |<br>| localhost | mysql.infoschema |<br>| localhost | mysql.session    |<br>| localhost | mysql.sys        |<br>+-----------+------------------+<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-2-创建用户"><a href="#1-2-创建用户" class="headerlink" title="1.2 创建用户"></a>1.2 创建用户</h2><p>CREATE USER语句的基本语法形式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE USER 用户名 [IDENTIFIED BY &#x27;密码&#x27;][,用户名 [IDENTIFIED BY &#x27;密码&#x27;]];<br></code></pre></td></tr></table></figure>
+
+
+
+<p>用户名参数表示新建用户的账户，由 用户（User） 和 主机名（Host） 构成；</p>
+<p> “[ ]”表示可选，也就是说，可以指定用户登录时需要密码验证，也可以不指定密码验证，这样用户 可以直接登录</p>
+<p>不过，不指定密码的方式不安全，不推荐使用</p>
+<p>如果指定密码值，这里需要使用 IDENTIFIED BY指定明文密码值</p>
+<p>CREATE USER语句可以同时创建多个用户</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 新建用户<br>CREATE USER zhang3 IDENTIFIED BY &#x27;123123&#x27;; # 默认host是 %<br><br>Query OK, 0 rows affected (0.02 sec)<br><br><br><br>-- 切换数据库<br>use mysql;<br><br>Database changed<br><br><br><br><br><br><br><br>-- 查看用户表<br>SELECT user,host FROM user;<br><br>+------------------+-----------+<br>| user             | host      |<br>+------------------+-----------+<br>| root             | %         |<br>| zhang3           | %         |<br>| mysql.infoschema | localhost |<br>| mysql.session    | localhost |<br>| mysql.sys        | localhost |<br>+------------------+-----------+<br>5 rows in set (0.00 sec)<br><br><br><br><br>-- 新建用户<br>CREATE USER zhang3 IDENTIFIED BY &#x27;123123&#x27;; # 默认host是 %<br><br>-- 不能重复创建<br>ERROR 1396 (HY000): Operation CREATE USER failed for &#x27;zhang3&#x27;@&#x27;%&#x27;<br><br><br><br><br><br><br>-- 新建用户 指定host<br>CREATE USER &#x27;zhang3&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;123123&#x27;; # 默认host是 %<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 新建用户 指定host<br>create user &#x27;li4&#x27;@&#x27;%&#x27; identified by &#x27;123123&#x27;;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br><br><br>-- 查看用户表<br>SELECT user,host FROM user;<br><br>+------------------+-----------+<br>| user             | host      |<br>+------------------+-----------+<br>| li4              | %         |<br>| root             | %         |<br>| zhang3           | %         |<br>| mysql.infoschema | localhost |<br>| mysql.session    | localhost |<br>| mysql.sys        | localhost |<br>| zhang3           | localhost |<br>+------------------+-----------+<br>7 rows in set (0.00 sec)<br><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 尝试登陆<br>mysql -uli4 -h192.168.175.135 -p<br>Enter password: ******<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-3-修改用户"><a href="#1-3-修改用户" class="headerlink" title="1.3 修改用户"></a>1.3 修改用户</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 修改用户名<br>UPDATE mysql.user SET USER=&#x27;wang5&#x27; WHERE USER=&#x27;zhang3&#x27; AND host=&#x27;localhost&#x27;;<br><br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br><br><br><br>-- 记得刷新权限<br>FLUSH PRIVILEGES;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br><br>-- 切换数据库<br>USE mysql;<br><br>Database changed<br><br><br><br><br><br><br><br><br>-- 查看用户信息<br>SELECT host,user from user;<br><br>+-----------+------------------+<br>| host      | user             |<br>+-----------+------------------+<br>| %         | li4              |<br>| %         | root             |<br>| %         | zhang3           |<br>| localhost | mysql.infoschema |<br>| localhost | mysql.session    |<br>| localhost | mysql.sys        |<br>| localhost | wang5            |<br>+-----------+------------------+<br>7 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-4-删除用户"><a href="#1-4-删除用户" class="headerlink" title="1.4 删除用户"></a>1.4 删除用户</h2><p><strong>方式1：</strong>使用DROP方式删除<strong>（推荐）</strong> 使用DROP USER语句来删除用户时，必须用于DROP USER权限。</p>
+<p>DROP USER语句的基本语法形式如下：</p>
+<blockquote>
+<p>DROP USER user[,user]…;</p>
+</blockquote>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 删除host为% 名字为li4的用户<br>DROP USER li4 ; # 默认删除host为%的用户<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br>-- 删除host为localhost 名字为wang5的用户<br>DROP USER &#x27;wang5&#x27;@&#x27;localhost&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br><br><br>-- 查看用户信息<br>SELECT host,user from user;<br><br>+-----------+------------------+<br>| host      | user             |<br>+-----------+------------------+<br>| %         | root             |<br>| %         | zhang3           |<br>| localhost | mysql.infoschema |<br>| localhost | mysql.session    |<br>| localhost | mysql.sys        |<br>+-----------+------------------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>方式2：</strong>使用DELETE方式删除</p>
+<blockquote>
+<p>DELETE FROM mysql.user WHERE Host&#x3D;’hostname’ AND User&#x3D;’username’;</p>
+</blockquote>
+<p>执行完DELETE命令后要使用FLUSH命令来使用户生效，命令如下：</p>
+<p>DML语句执行后，记得执行；DDL不用</p>
+<blockquote>
+<p>FLUSH PRIVILEGES;</p>
+</blockquote>
+<p>注意：</p>
+<p>不推荐通过  <code>DELETE FROM mysql.user WHERE Host=&#39;localhost&#39; AND User=&#39;Emily&#39;;</code>   进行删除，系统会有残留信息保 留</p>
+<p>而drop user命令会删除用户以及对应的权限，执行命令后你会发现mysql.user表和mysql.db表 的相应记录都消失了</p>
+<h2 id="1-5-设置当前用户密码"><a href="#1-5-设置当前用户密码" class="headerlink" title="1.5 设置当前用户密码"></a>1.5 设置当前用户密码</h2><ol>
+<li>使用ALTER USER命令来修改当前用户密码</li>
+</ol>
+<p>用户可以使用ALTER命令来修改自身密码，如下语句代表修 改当前登录用户的密码。</p>
+<p>基本语法如下：</p>
+<blockquote>
+<p>ALTER USER USER() IDENTIFIED BY ‘new_password’;</p>
+</blockquote>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 登录<br>mysql -uzhang3 -h192.168.175.135 -p123123<br><br><br><br>-- 修改当前用户密码<br>ALTER USER USER() IDENTIFIED BY &#x27;root123&#x27;;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br><br>-- 重新登录<br>mysql -uzhang3 -h192.168.175.135 -proot123<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>使用SET语句来修改当前用户密码 使用root用户登录MySQL后，可以使用SET语句来修改密码</li>
+</ol>
+<p>具体 SQL语句如下：</p>
+<blockquote>
+<p>SET PASSWORD&#x3D;’new_password’;</p>
+</blockquote>
+<p>该语句会自动将密码加密后再赋给当前用户</p>
+<p>在mysql中 用户密码是加密存储的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE mysql;<br><br><br><br>DESC user;<br><br>+--------------------------+-----------------------------------+------+-----+-----------------------+-------+<br>| Field                    | Type                              | Null | Key | Default               | Extra |<br>+--------------------------+-----------------------------------+------+-----+-----------------------+-------+<br>| Host                     | char(255)                         | NO   | PRI |                       |       |<br>| User                     | char(32)                          | NO   | PRI |                       |       |<br>| Select_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Insert_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Update_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Delete_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Drop_priv                | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Reload_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Shutdown_priv            | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Process_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| File_priv                | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Grant_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| References_priv          | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Index_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Alter_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Show_db_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Super_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_tmp_table_priv    | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Lock_tables_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Execute_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Repl_slave_priv          | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Repl_client_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_view_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Show_view_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_routine_priv      | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Alter_routine_priv       | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_user_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Event_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Trigger_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_tablespace_priv   | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| ssl_type                 | enum(&#x27;&#x27;,&#x27;ANY&#x27;,&#x27;X509&#x27;,&#x27;SPECIFIED&#x27;) | NO   |     |                       |       |<br>| ssl_cipher               | blob                              | NO   |     | NULL                  |       |<br>| x509_issuer              | blob                              | NO   |     | NULL                  |       |<br>| x509_subject             | blob                              | NO   |     | NULL                  |       |<br>| max_questions            | int unsigned                      | NO   |     | 0                     |       |<br>| max_updates              | int unsigned                      | NO   |     | 0                     |       |<br>| max_connections          | int unsigned                      | NO   |     | 0                     |       |<br>| max_user_connections     | int unsigned                      | NO   |     | 0                     |       |<br>| plugin                   | char(64)                          | NO   |     | caching_sha2_password |       |  -- 密码<br>| authentication_string    | text                              | YES  |     | NULL                  |       |<br>| password_expired         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| password_last_changed    | timestamp                         | YES  |     | NULL                  |       |<br>| password_lifetime        | smallint unsigned                 | YES  |     | NULL                  |       |<br>| account_locked           | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_role_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Drop_role_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Password_reuse_history   | smallint unsigned                 | YES  |     | NULL                  |       |<br>| Password_reuse_time      | smallint unsigned                 | YES  |     | NULL                  |       |<br>| Password_require_current | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | YES  |     | NULL                  |       |<br>| User_attributes          | json                              | YES  |     | NULL                  |       |<br>+--------------------------+-----------------------------------+------+-----+-----------------------+-------+<br>51 rows in set (0.01 sec)<br><br><br><br><br><br>-- 查看用户信息<br>SELECT host,user,authentication_string FROM user;<br><br>+-----------+------------------+------------------------------------------------------------------------+<br>| host      | user             | authentication_string                                                  |<br>+-----------+------------------+------------------------------------------------------------------------+<br>| %         | root             | *FAAFFE644E901CFAFAEC7562415E5FAEC243B8B2                              |<br>| %         | zhang3           | $A$005$/I&#x27;~&lt;eSWY\/0G&amp;?oJKkkbyg5nVJcPddyTL9d2XqJQNqlKmcUiuiJl50mZR6 |<br>| localhost | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |<br>| localhost | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |<br>| localhost | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |<br>+-----------+------------------+------------------------------------------------------------------------+<br>5 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 修改密码<br>set password=&#x27;root&#x27;;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br><br>-- 重新登录<br>mysql -uzhang3 -h192.168.175.135 -proot<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-6-修改其它用户密码"><a href="#1-6-修改其它用户密码" class="headerlink" title="1.6 修改其它用户密码"></a>1.6 修改其它用户密码</h2><ol>
+<li>使用ALTER语句来修改普通用户的密码 可以使用ALTER USER语句来修改普通用户的密码。基本语法形 式如下：</li>
+</ol>
+<blockquote>
+<p>ALTER USER user [IDENTIFIED BY ‘新密码’] [,user[IDENTIFIED BY ‘新密码’]]…;</p>
+</blockquote>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- root用户<br><br>ALTER user &#x27;zhang3&#x27;@&#x27;%&#x27; identified by &#x27;root123&#x27;;<br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br>-- 登录<br>mysql -uzhang3 -h192.168.175.135 -proot123<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<ol start="2">
+<li>使用SET命令来修改普通用户的密码 使用root用户登录到MySQL服务器后，可以使用SET语句来修改普 通用户的密码。SET语句的代码如下：</li>
+</ol>
+<blockquote>
+<p>SET PASSWORD FOR ‘username‘@’hostname’&#x3D;’new_password’;</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- root用户<br>set password for &#x27;zhang3&#x27;@&#x27;%&#x27;=&#x27;root&#x27;;<br>Query OK, 0 rows affected (0.01 sec)<br><br><br>-- 登录<br>mysql -uzhang3 -h192.168.175.135 -proot<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="1-7-MySQL8密码管理-了解"><a href="#1-7-MySQL8密码管理-了解" class="headerlink" title="1.7 MySQL8密码管理(了解)"></a>1.7 MySQL8密码管理(了解)</h2><p>MySQL中记录使用过的历史密码,目前包含如下密码管理功能:</p>
+<p>(1)密码过期:要求定期修改密码</p>
+<p>(2)密码重用限制:不允许使用旧密码</p>
+<p>(3)密码强度评估:要求使用高强度的密码。(第1章已讲)</p>
+<h2 id="1、密码过期策略"><a href="#1、密码过期策略" class="headerlink" title="1、密码过期策略"></a>1、密码过期策略</h2><p>在MySQL中，数据库管理员可以 手动设置 账号密码过期，也可以建立一个 自动 密码过期策略</p>
+<p>过期策略可以是 全局的 ，也可以为 每个账号 设置单独的过期策略</p>
+<blockquote>
+<p>ALTER USER user PASSWORD EXPIRE;</p>
+</blockquote>
+<p>练习：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER USER &#x27;zhang3&#x27;@&#x27;%&#x27; PASSWORD EXPIRE;<br></code></pre></td></tr></table></figure>
+
+<p>该语句将用户zhang3的密码设置为过期</p>
+<p>zhang3用户仍然可以登录进入数据库,但无法进行查</p>
+<p>密码过期后,只有重新设置了新密码,才能正常使用</p>
+<p><strong>手动设置指定时间过期方式1:全局</strong></p>
+<p>如果密码使用的时间大于允许的时间,服务器会自动设置为过期,不需要手动设置</p>
+<p>MySQL使用 default_password_lifetime系统变量建立全局密码过期策略</p>
+<p>它的默认值是0,表示禁用自动密码过期</p>
+<p>它允许的值是正整数N,表示允许的密码生存期。密码必须每隔N天进行修改。</p>
+<p>两种实现方式分别如图所示:</p>
+<p>方式①：使用SQL语句更改该变量的值并持久化</p>
+<blockquote>
+<p>SET PERSIST default_password_lifetime &#x3D; 180; # 建立全局策略，设置密码每隔180天过期</p>
+</blockquote>
+<p>方式②：配置文件my.cnf中进行维护</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[mysqld]<br>default_password_lifetime=180 #建立全局策略，设置密码每隔180天过期<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p><strong>手动设置指定时间过期方式2：单独设置</strong></p>
+<p>每个账号既可延用全局密码过期策略，也可单独设置策略</p>
+<p>在 CREATE USER 和 ALTER USER 语句上加 入 PASSWORD EXPIRE 选项可实现单独设置策略</p>
+<p>下面是一些语句示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#设置kangshifu账号密码每90天过期：<br>CREATE USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE INTERVAL 90 DAY;<br>ALTER USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE INTERVAL 90 DAY;<br><br><br>#设置密码永不过期：<br>CREATE USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE NEVER;<br>ALTER USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE NEVER;<br><br><br><br>#延用全局密码过期策略：<br>CREATE USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE DEFAULT;<br>ALTER USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE DEFAULT;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2、密码重用策略"><a href="#2、密码重用策略" class="headerlink" title="2、密码重用策略"></a>2、密码重用策略</h2><p>手动设置密码重用方式1：<strong>全局</strong></p>
+<p>方式①：使用SQL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET PERSIST password_history = 6; #设置不能选择最近使用过的6个密码<br><br>SET PERSIST password_reuse_interval = 365; #设置不能选择最近一年内的密码<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282052881.png" srcset="/img/loading.gif" lazyload alt="image-20220705204116277"></p>
+<hr>
+<p>方式②：my.cnf配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[mysqld]<br>password_history=6<br>password_reuse_interval=365<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>手动设置密码重用方式2：<strong>单独设置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#不能使用最近5个密码：<br>CREATE USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD HISTORY 5;<br><br>ALTER USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD HISTORY 5;<br><br><br><br><br>#不能使用最近365天内的密码：<br>CREATE USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD REUSE INTERVAL 365 DAY;<br><br>ALTER USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27; PASSWORD REUSE INTERVAL 365 DAY;<br><br><br><br><br>#既不能使用最近5个密码，也不能使用365天内的密码<br>CREATE USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27;<br>PASSWORD HISTORY 5<br>PASSWORD REUSE INTERVAL 365 DAY;<br><br><br>ALTER USER &#x27;kangshifu&#x27;@&#x27;localhost&#x27;<br>PASSWORD HISTORY 5<br>PASSWORD REUSE INTERVAL 365 DAY;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="2-权限管理"><a href="#2-权限管理" class="headerlink" title="2. 权限管理"></a>2. 权限管理</h1><p>关于MysQL的权限简单的理解就是MySQL允许你做你权力以内的事情,不可以越界</p>
+<p>比如只允许你执行SELECT操作,那么你就不能执行UPDATE操作</p>
+<p>只允许你从某台机器上连接MySQL,那么你就不能从除那台机器以外的其他机器连接MySQL</p>
+<h2 id="2-1-权限列表"><a href="#2-1-权限列表" class="headerlink" title="2.1 权限列表"></a>2.1 权限列表</h2><p>MySQL到底都有哪些权限呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看当前用户权限<br>show privileges;<br><br>+----------------------------+---------------------------------------+-------------------------------------------------------+<br>| Privilege                  | Context                               | Comment                                               |<br>+----------------------------+---------------------------------------+-------------------------------------------------------+<br>| Alter                      | Tables                                | To alter the table                                    |<br>| Alter routine              | Functions,Procedures                  | To alter or drop stored functions/procedures          |<br>| Create                     | Databases,Tables,Indexes              | To create new databases and tables                    |<br>| Create routine             | Databases                             | To use CREATE FUNCTION/PROCEDURE                      |<br>| Create role                | Server Admin                          | To create new roles                                   |<br>| Create temporary tables    | Databases                             | To use CREATE TEMPORARY TABLE                         |<br>| Create view                | Tables                                | To create new views                                   |<br>| Create user                | Server Admin                          | To create new users                                   |<br>| Delete                     | Tables                                | To delete existing rows                               |<br>| Drop                       | Databases,Tables                      | To drop databases, tables, and views                  |<br>| Drop role                  | Server Admin                          | To drop roles                                         |<br>| Event                      | Server Admin                          | To create, alter, drop and execute events             |<br>| Execute                    | Functions,Procedures                  | To execute stored routines                            |<br>| File                       | File access on server                 | To read and write files on the server                 |<br>| Grant option               | Databases,Tables,Functions,Procedures | To give to other users those privileges you possess   |<br>| Index                      | Tables                                | To create or drop indexes                             |<br>| Insert                     | Tables                                | To insert data into tables                            |<br>| Lock tables                | Databases                             | To use LOCK TABLES (together with SELECT privilege)   |<br>| Process                    | Server Admin                          | To view the plain text of currently executing queries |<br>| Proxy                      | Server Admin                          | To make proxy user possible                           |<br>| References                 | Databases,Tables                      | To have references on tables                          |<br>| Reload                     | Server Admin                          | To reload or refresh tables, logs and privileges      |<br>| Replication client         | Server Admin                          | To ask where the slave or master servers are          |<br>| Replication slave          | Server Admin                          | To read binary log events from the master             |<br>| Select                     | Tables                                | To retrieve rows from table                           |<br>| Show databases             | Server Admin                          | To see all databases with SHOW DATABASES              |<br>| Show view                  | Tables                                | To see views with SHOW CREATE VIEW                    |<br>| Shutdown                   | Server Admin                          | To shut down the server                               |<br>| Super                      | Server Admin                          | To use KILL thread, SET GLOBAL, CHANGE MASTER, etc.   |<br>| Trigger                    | Tables                                | To use triggers                                       |<br>| Create tablespace          | Server Admin                          | To create/alter/drop tablespaces                      |<br>| Update                     | Tables                                | To update existing rows                               |<br>| Usage                      | Server Admin                          | No privileges - allow connect only                    |<br>| XA_RECOVER_ADMIN           | Server Admin                          |                                                       |<br>| SHOW_ROUTINE               | Server Admin                          |                                                       |<br>| SET_USER_ID                | Server Admin                          |                                                       |<br>| RESOURCE_GROUP_USER        | Server Admin                          |                                                       |<br>| APPLICATION_PASSWORD_ADMIN | Server Admin                          |                                                       |<br>| SYSTEM_VARIABLES_ADMIN     | Server Admin                          |                                                       |<br>| AUDIT_ADMIN                | Server Admin                          |                                                       |<br>| SERVICE_CONNECTION_ADMIN   | Server Admin                          |                                                       |<br>| CLONE_ADMIN                | Server Admin                          |                                                       |<br>| PERSIST_RO_VARIABLES_ADMIN | Server Admin                          |                                                       |<br>| FLUSH_USER_RESOURCES       | Server Admin                          |                                                       |<br>| BINLOG_ADMIN               | Server Admin                          |                                                       |<br>| ROLE_ADMIN                 | Server Admin                          |                                                       |<br>| SESSION_VARIABLES_ADMIN    | Server Admin                          |                                                       |<br>| BINLOG_ENCRYPTION_ADMIN    | Server Admin                          |                                                       |<br>| FLUSH_STATUS               | Server Admin                          |                                                       |<br>| SYSTEM_USER                | Server Admin                          |                                                       |<br>| ENCRYPTION_KEY_ADMIN       | Server Admin                          |                                                       |<br>| REPLICATION_SLAVE_ADMIN    | Server Admin                          |                                                       |<br>| GROUP_REPLICATION_ADMIN    | Server Admin                          |                                                       |<br>| BACKUP_ADMIN               | Server Admin                          |                                                       |<br>| RESOURCE_GROUP_ADMIN       | Server Admin                          |                                                       |<br>| FLUSH_OPTIMIZER_COSTS      | Server Admin                          |                                                       |<br>| TABLE_ENCRYPTION_ADMIN     | Server Admin                          |                                                       |<br>| FLUSH_TABLES               | Server Admin                          |                                                       |<br>| CONNECTION_ADMIN           | Server Admin                          |                                                       |<br>| INNODB_REDO_LOG_ENABLE     | Server Admin                          |                                                       |<br>| INNODB_REDO_LOG_ARCHIVE    | Server Admin                          |                                                       |<br>| REPLICATION_APPLIER        | Server Admin                          |                                                       |<br>+----------------------------+---------------------------------------+-------------------------------------------------------+<br>62 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>权限说明：</p>
+<p>(1) CREATE和DROP权限,可以创建新的数据库和表,或删除(移掉)已有的数据库和表</p>
+<p>​	  如果将MySQL数据库中的DROP权限授予某用户,用户就可以删除MySQL访问权限保存的数据库</p>
+<p>(2) SELECT、 INSERT, UPDATE和DELETE权限 允许在<strong>一个数据库</strong><code>现有的表上</code>实施操作</p>
+<p>(3) SELECT权限只有在它们真正从一个表中检索行时才被用到</p>
+<p>(4) INDEX权限允许创建或删除索引,INDEX适用于已有的表。如果具有某个表的CREATE权限,就可以在CREATE TABLE语句中包括索引定义</p>
+<p>(5) ALTER权限可以使用ALTER TABLE来更改表的结构和重新命名表</p>
+<p>(6) CREATE ROUTINE权限用来创建保存的程序(函数和程序),ALTER ROUTINE权限用来更改和删除保存的程序,EXECUTE权限用来执行保存的程序</p>
+<p>(7) GRANT权限允许授权给其他用户,可用于数据库、表和保存的程序</p>
+<p>(8) FILE权限使用户可以使用LOAD DATA INFILE和SELECT… INTO OUTFILE语句读或写服务器上的文件,任何被授予FILE权限的用户都能读或写MySQL服务器上的任何文件(说明用户可以读任何数据库目录下的文件,因为服务器可以访问这些文件)</p>
+<p>权限分布：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282052590.png" srcset="/img/loading.gif" lazyload alt="image-20220705204853974"></p>
+<hr>
+<h2 id="2-2授予权限的原则"><a href="#2-2授予权限的原则" class="headerlink" title="2.2授予权限的原则"></a>2.2授予权限的原则</h2><p>权限控制主要是出于安全因素,因此需要遵循以下几个经验原则:</p>
+<p>1、只授予能<strong>满足需要的最小权限</strong>,防止用户干坏事。比如用户只是需要查询,那就只给select权限就可以了,不要给用户赋予update, insert或者delete权限</p>
+<p>2、创建用户的时候<strong>限制用户的登录主机</strong>,一般是限制成指定IP或者内网IP段</p>
+<p>3、为每个用户设置<strong>满足密码复杂度的密码</strong></p>
+<p>4、<strong>定期清理不需要的用户</strong>,回收权限或者删除用户</p>
+<h2 id="2-3-授予权限"><a href="#2-3-授予权限" class="headerlink" title="2.3 授予权限"></a>2.3 授予权限</h2><p>给用户授权的方式有 2 种，分别是通过把 <strong>角色赋予用户给用户授权</strong> 和 <strong>直接给用户授权</strong> </p>
+<p>用户是数据库的 使用者，我们可以通过给用户授予访问数据库中资源的权限，来控制使用者对数据库的访问，消除安全 隐患</p>
+<p> 授权命令：</p>
+<blockquote>
+<p>GRANT 权限1,权限2,…权限n  ON  数据库名称.表名称  TO  用户名@用户地址 [IDENTIFIED BY ‘密码口令’];</p>
+</blockquote>
+<p>比如： </p>
+<p>给zhang3用户授予dbtest1这个库下的所有表的改、查的权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 在root用户中，给zhang3用户赋权<br>grant select,update on dbtest1.* to &#x27;zhang3&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br><br><br>-- 在zhang3用户中，查看数据库们<br>SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| dbtest1            |<br>| information_schema |<br>+--------------------+<br>2 rows in set (0.00 sec)<br><br><br><br><br><br>-- 在zhang3用户中，查看权限<br>SHOW GRANTS;<br><br>+-----------------------------------------------------+<br>| Grants for zhang3@%                                 |<br>+-----------------------------------------------------+<br>| GRANT USAGE ON *.* TO `zhang3`@`%`                  | -- 只有登陆权限<br>| GRANT SELECT, UPDATE ON `dbtest1`.* TO `zhang3`@`%` | -- 对dbtest1库的 查看、修改<br>+-----------------------------------------------------+<br>2 rows in set (0.00 sec)<br><br><br><br><br>-- 切换数据库<br>USE dbtest1;<br><br><br><br><br><br>-- 查看该库下的所有表<br>SHOW TABLES;<br>+-------------------+<br>| Tables_in_dbtest1 |<br>+-------------------+<br>| emp1              |<br>| emp2              |<br>| student_myisam    |<br>+-------------------+<br>3 rows in set (0.00 sec)<br><br><br><br><br><br><br>-- 查看数据<br>SELECT * FROM emp1;<br><br>+------+-------+<br>| id   | lname |<br>+------+-------+<br>|    1 | Tom   |<br>|    2 | 罗翔  |<br>+------+-------+<br>2 rows in set (0.00 sec）<br>               <br>               <br>               <br>-- 修改<br>UPDATE emp1 SET lname=&#x27;法外狂徒&#x27;WHERE id=2;<br>               <br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br>               <br>               <br>-- 查看数据<br>SELECT * FROM emp1;<br><br>+------+----------+<br>| id   | lname    |<br>+------+----------+<br>|    1 | Tom      |<br>|    2 | 法外狂徒 |<br>+------+----------+<br>2 rows in set (0.00 sec)<br>               <br>               <br>               <br>               <br>-- 尝试删除  (没有权限)<br>DELETE FROM emp1 WHERE id=1;     <br>               <br>ERROR 1142 (42000): DELETE command denied to user &#x27;zhang3&#x27;@&#x27;192.168.175.1&#x27; for table &#x27;emp1&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 使用root用户赋权 delete<br>GRANT delete on dbtest1.* to &#x27;zhang3&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 使用张三用户尝试删除<br>DELETE FROM emp1 WHERE id=1;<br><br>ERROR 1142 (42000): DELETE command denied to user &#x27;zhang3&#x27;@&#x27;192.168.175.1&#x27; for table &#x27;emp1&#x27;<br><br><br>-- 重新登录<br><br>-- 使用张三用户尝试删除<br>DELETE FROM emp1 WHERE id=1;<br><br>Query OK, 1 row affected (0.00 sec)<br><br><br>-- 查看数据<br>SELECT * FROM emp1;<br><br>+------+----------+<br>| id   | lname    |<br>+------+----------+<br>|    2 | 法外狂徒 |<br>+------+----------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>创建fgcy用户，给予所有库中所有表的权限；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创建用户 (root)<br>CREATE USER &#x27;fgcy&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;root123&#x27;;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br><br><br><br>-- 赋权<br>GRANT ALL PRIVILEGES ON *.* TO &#x27;fgcy&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br>-- 登录 fgcy用户<br>mysql -ufgcy -h192.168.175.135 -p<br><br><br><br><br>-- 查看所有数据库<br>SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| dbtest1            |<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>5 rows in set (0.00 sec)<br><br><br>USE dbtest1;<br><br>Database changed<br><br><br><br>-- 查看emp1表数据<br>SELECT * FROM emp1;<br><br>+------+----------+<br>| id   | lname    |<br>+------+----------+<br>|    2 | 法外狂徒 |<br>+------+----------+<br>1 row in set (0.00 sec)<br><br><br><br><br><br><br>-- 添加记录<br>INSERT INTO emp1 VALUES(3,&#x27;风格差异&#x27;);<br><br>Query OK, 1 row affected (0.00 sec)<br><br><br>-- 修改记录<br>UPDATE  emp1 SET lname=&#x27;fgcy&#x27; where id=3;<br><br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br><br><br><br>-- 查看数据<br>SELECT * FROM emp1;<br><br>+------+----------+<br>| id   | lname    |<br>+------+----------+<br>|    2 | 法外狂徒 |<br>|    3 | fgcy     |<br>+------+----------+<br>2 rows in set (0.00 sec)<br><br><br>-- 删除数据<br>DELETE FROM emp1 WHERE id =3;<br><br>Query OK, 1 row affected (0.00 sec)<br><br><br><br><br>-- 查看数据<br>SELECT * FROM emp1;<br><br>+------+----------+<br>| id   | lname    |<br>+------+----------+<br>|    2 | 法外狂徒 |<br>+------+----------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO joe@’%’ IDENTIFIED BY ‘123’;</p>
+</blockquote>
+<p>参数解释：</p>
+<p><code>ALL PRIVILEGES </code>是表示所有权限,你也可以使用SELECT,UPDATE等权限。</p>
+<p><code>ON </code>用来指定权限针对哪些库和表中前面的<em>号用来指定数据库名,后面的</em>号用来指定表名</p>
+<p><code>* </code> 表示所有的 </p>
+<p><code>TO</code>   表示将权限赋予某个用户</p>
+<p><code>&#39;li4&#39; @ &#39;localhost&#39;</code>  表示li4用户,@后面接限制的主机,可以是IP、IP段、域名以及%,%表示任何地方</p>
+<p>注意:</p>
+<p>这里%有的版本不包括本地,以前碰到过给某个用户设置了%允许任何地方登录,但是在本地登录不了,这个和版本有关系</p>
+<p>遇到这个问题再加一个localhost的用户就可以了</p>
+<p><code>IDENTIFIED BY </code>  指定用户的登录密码</p>
+<p>注意这种方法赋权：如果发现没有该用户，则会直接新建一个用户</p>
+<p>注意:</p>
+<p>这种方式赋权（fgcy用户） 唯独<strong>不包 括</strong>grant的权限（赋予他人权限的权力）</p>
+<ul>
+<li><p>如果需要赋予包括GRANIT的权限,添加参数”WITH GRANT OPTION”这个选项即可,表示该用户可以将自己拥有的权限授权给别人</p>
+<p>经常有人在创建操作用户的时候不指定WITH GRANT OPTION选项导致后来该用户不能使用GRANT命令创建用户或者给其它用户授权</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 使用root用户赋权<br>GRANT ALL PRIVILEGES ON *.* TO &#x27;fgcy&#x27;@&#x27;%&#x27; with grant option;<br>ERROR 1227 (42000): Access denied; you need (at least one of) the SYSTEM_USER privilege(s) for this operation<br><br><br>-- 错误原因：<br>-- MySQL8版本中新增了一个system_user帐户类型，由于root用户没有SYSTEM_USER权限，导致错误出现。<br><br><br><br><br><br>-- 为root添加权限：<br>grant system_user on *.* to &#x27;root&#x27;;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>-- 使用root用户赋权<br>GRANT ALL PRIVILEGES ON *.* TO &#x27;fgcy&#x27;@&#x27;%&#x27; with grant option;<br><br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>可以使用GRANT重复给用户添加权限,权限叠加</p>
+<p>比如你先给用户添加一个SELECT权限,然后又给用户添加一个INSERT权限,那么该用户就同时拥有了SELECT和INSERT权限</p>
+</li>
+</ul>
+<p>我们在开发应用的时候，经常会遇到一种需求，就是要根据用户的不同，对数据进行<strong>横向</strong>和<strong>纵向</strong>的 分组</p>
+<p>所谓<strong>横向的分组</strong>，就是指用户可以接触到的数据的范围，比如可以看到哪些表的数据；</p>
+<p>所谓<strong>纵向的分组</strong>，就是指用户对接触到的数据能访问到什么程度，比如能看、能改，甚至是 删除</p>
+<h2 id="2-4-查看权限"><a href="#2-4-查看权限" class="headerlink" title="2.4 查看权限"></a>2.4 查看权限</h2><p>查看当前用户权限</p>
+<blockquote>
+<p>SHOW GRANTS;</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>SHOW GRANTS FOR CURRENT_USER;</p>
+</blockquote>
+<p> 或</p>
+<blockquote>
+<p>SHOW GRANTS FOR CURRENT_USER();</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">SHOW GRANTS\G<br>*************************** 1. row ***************************<br>Grants for fgcy@%: GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, SHUTDOWN, PROCESS, FILE, REFERENCES, INDEX, ALTER, SHOW DATABASES, SUPER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `fgcy`@`%` WITH GRANT OPTION<br>*************************** 2. row ***************************<br>Grants for fgcy@%: GRANT APPLICATION_PASSWORD_ADMIN,AUDIT_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTION_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,FLUSH_OPTIMIZER_COSTS,FLUSH_STATUS,FLUSH_TABLES,FLUSH_USER_RESOURCES,GROUP_REPLICATION_ADMIN,INNODB_REDO_LOG_ARCHIVE,INNODB_REDO_LOG_ENABLE,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_APPLIER,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SERVICE_CONNECTION_ADMIN,SESSION_VARIABLES_ADMIN,SET_USER_ID,SHOW_ROUTINE,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN,TABLE_ENCRYPTION_ADMIN,XA_RECOVER_ADMIN ON *.* TO `fgcy`@`%` WITH GRANT OPTION<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>查看某用户的全局权限</p>
+<blockquote>
+<p>SHOW GRANTS FOR ‘user‘@’主机地址’ ;</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 当前fgcy用户<br><br>SHOW GRANTS FOR &#x27;root&#x27;@&#x27;%&#x27;\G<br>*************************** 1. row ***************************<br>Grants for root@%: GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, SHUTDOWN, PROCESS, FILE, REFERENCES, INDEX, ALTER, SHOW DATABASES, SUPER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `root`@`%` WITH GRANT OPTION<br>*************************** 2. row ***************************<br>Grants for root@%: GRANT SYSTEM_USER ON *.* TO `root`@`%`<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-5-收回权限"><a href="#2-5-收回权限" class="headerlink" title="2.5 收回权限"></a>2.5 收回权限</h2><p>收回权限就是取消已经赋予用户的某些权限</p>
+<p>收回用户不必要的权限可以在一定程度上保证系统的安全 性</p>
+<p>MySQL中使用 REVOKE语句 取消用户的某些权限</p>
+<p>使用REVOKE收回权限之后，用户账户的记录将从 db、host、tables_priv和columns_priv表中删除，但是用户账户记录仍然在user表中保存（删除user表中 的账户记录使用DROP USER语句）</p>
+<p>注意：在将用户账户从user表删除之前，应该收回相应用户的所有权限</p>
+<p>收回权限命令</p>
+<blockquote>
+<p>REVOKE 权限1,权限2,…权限n ON 数据库名称.表名称 FROM 用户名@用户地址;</p>
+</blockquote>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 当前zhang3用户<br> show grants;<br> <br>+-------------------------------------------------------------+<br>| Grants for zhang3@%                                         |<br>+-------------------------------------------------------------+<br>| GRANT USAGE ON *.* TO `zhang3`@`%`                          |<br>| GRANT SELECT, UPDATE, DELETE ON `dbtest1`.* TO `zhang3`@`%` |<br>+-------------------------------------------------------------+<br>2 rows in set (0.00 sec)<br><br><br><br>-- 在root用户下 回收zhang3的查看权限<br>REVOKE SELECT ON dbtest1.* FROM &#x27;zhang3&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br><br>-- zhang3重新登录后<br>SELECT * FROM emp1;<br>ERROR 1142 (42000): SELECT command denied to user &#x27;zhang3&#x27;@&#x27;192.168.175.1&#x27; for table &#x27;emp1&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>注意： </p>
+<p>须用户重新登录后才能生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">-- 通过 root用户 收回全库全表的所有权限<br>REVOKE ALL PRIVILEGES ON *.* FROM &#x27;zhang3&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- zhang3用户下<br>show databases;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| information_schema |<br>+--------------------+<br>1 row in set (0.00 sec)<br><br><br>show grants;<br><br>+------------------------------------+<br>| Grants for zhang3@%                |<br>+------------------------------------+<br>| GRANT USAGE ON *.* TO `zhang3`@`%` |<br>+------------------------------------+<br>1 row in set (0.00 sec)<br><br><br><br><br>-- 收回zahng3用户 在mysql库下的所有表的插删改查权限<br>REVOKE SELECT,INSERT,UPDATE,DELETE ON mysql.* FROM &#x27;zhang3&#x27;@&#x27;%&#x27;;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>总结：</p>
+<p>有一些程序员喜欢使用Root超级用户来访问数据库,完全把权限控制放在应用层面实现。这样当然也是可以的</p>
+<p>但建议大家,尽量使用数据库自己的角色和用户机制来控制访问权限,不要轻易用Root账号</p>
+<p>因为Root账号密码放在代码里面不安全,一旦泄露,数据库就会完全失去保护</p>
+<p>而且,MySQL的权限控制功能十分完善,应该尽量利用,可以提高效率,而且安全可靠。</p>
+<h1 id="3-权限表"><a href="#3-权限表" class="headerlink" title="3. 权限表"></a>3. 权限表</h1><p>MySQL服务器<strong>通过权限表</strong>来<strong>控制用户对数据库的访问</strong>,<strong>权限表存放在mysql数据库中</strong></p>
+<p>MySQL数据库系统会<strong>根据这些权限表的内容</strong><code>为每个用户赋予相应的权限</code>。这些权限表中最重要的是<strong>user表</strong>、db表。除此之外,还有<strong>table_priv表</strong>、column_priv表 和p<strong>roc_priv表</strong>等</p>
+<p><strong>在MySQL启动时,服务器将这些数据库表中权限信息的内容读入内存</strong></p>
+<h2 id="3-1-user表"><a href="#3-1-user表" class="headerlink" title="3.1 user表"></a>3.1 user表</h2><p>user表是MySQL中最重要的一个权限表， 记录用户账号和权限信息 ，有49个字段。如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs mysql">desc user;<br><br>+--------------------------+-----------------------------------+------+-----+-----------------------+-------+<br>| Field                    | Type                              | Null | Key | Default               | Extra |<br>+--------------------------+-----------------------------------+------+-----+-----------------------+-------+<br>| Host                     | char(255)                         | NO   | PRI |                       |       |<br>| User                     | char(32)                          | NO   | PRI |                       |       |<br>| Select_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                    -- 这里使用的是枚举类型 Y、N<br>| Insert_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                    -- 这里的权限一旦设置为Y 则<br>| Update_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                    -- 对所有的表都有该权限<br>| Delete_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Drop_priv                | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Reload_priv              | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Shutdown_priv            | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Process_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| File_priv                | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Grant_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| References_priv          | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Index_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Alter_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Show_db_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Super_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_tmp_table_priv    | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Lock_tables_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Execute_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Repl_slave_priv          | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Repl_client_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_view_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Show_view_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_routine_priv      | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Alter_routine_priv       | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_user_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Event_priv               | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Trigger_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_tablespace_priv   | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| ssl_type                 | enum(&#x27;&#x27;,&#x27;ANY&#x27;,&#x27;X509&#x27;,&#x27;SPECIFIED&#x27;) | NO   |     |                       |       |<br>| ssl_cipher               | blob                              | NO   |     | NULL                  |       |<br>| x509_issuer              | blob                              | NO   |     | NULL                  |       |<br>| x509_subject             | blob                              | NO   |     | NULL                  |       |<br>| max_questions            | int unsigned                      | NO   |     | 0                     |       |<br>| max_updates              | int unsigned                      | NO   |     | 0                     |       |<br>| max_connections          | int unsigned                      | NO   |     | 0                     |       |<br>| max_user_connections     | int unsigned                      | NO   |     | 0                     |       |<br>| plugin                   | char(64)                          | NO   |     | caching_sha2_password |       |<br>| authentication_string    | text                              | YES  |     | NULL                  -- MySQL5.7之前该字段叫password<br>| password_expired         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| password_last_changed    | timestamp                         | YES  |     | NULL                  |       |<br>| password_lifetime        | smallint unsigned                 | YES  |     | NULL                  |       |<br>| account_locked           | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Create_role_priv         | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Drop_role_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | NO   |     | N                     |       |<br>| Password_reuse_history   | smallint unsigned                 | YES  |     | NULL                  |       |<br>| Password_reuse_time      | smallint unsigned                 | YES  |     | NULL                  |       |<br>| Password_require_current | enum(&#x27;N&#x27;,&#x27;Y&#x27;)                     | YES  |     | NULL                  |       |<br>| User_attributes          | json                              | YES  |     | NULL                  |       |<br>+--------------------------+-----------------------------------+------+-----+-----------------------+-------+<br>51 rows in set (0.14 sec)<br></code></pre></td></tr></table></figure>
+
+<p>这些字段可以分成4类，分别是范围列（或用户列）、权限列、安全列和资源控制列</p>
+<ol>
+<li><p>范围列（或用户列）</p>
+<ul>
+<li><p>host  ： 表示连接类型<br><code>% </code> 表示所有远程通过 TCP方式的连接<br><code>IP 地址</code>  如 (192.168.1.2、127.0.0.1) 通过制定ip地址进行的TCP方式的连接<br><code>机器名</code>  通过制定网络中的机器名进行的TCP方式的连接<br><code>::1</code>  IPv6的本地ip地址，等同于IPv4的 127.0.0.1<br><code>localhost </code> 本地方式通过命令行方式的连接 ，比如mysql -u xxx -p xxx 方式的连接</p>
+</li>
+<li><p>user ： 表示用户名，同一用户通过不同方式链接的权限是不一样的</p>
+</li>
+<li><p>password  ： 密码<br>1、所有密码串通过 password(明文字符串) 生成的密文字符串。MySQL 8.0 在用户管理方面增加了角色管理，默认的密码加密方式也做了调整</p>
+<p>​		由之前的 SHA1 改为了 SHA2 ，不可逆<br>2、加上 MySQL 5.7 的禁用用户和用户过期的功能，MySQL 在用户管理方面的功能和安全性都较之前版本大大的增强了。<br>3、mysql 5.7 及之后版本的密码保存到 authentication_string 字段中不再使用password 字段</p>
+</li>
+</ul>
+</li>
+<li><p>权限列<br><code>Grant_priv字段</code> :表示是否拥有GRANT权限</p>
+</li>
+</ol>
+<p>  <code>Shutdown_priv字段</code>: 表示是否拥有停止MySQL服务的权限</p>
+<p>  <code>Super_priv字段</code> :  表示是否拥有超级权限<br>  <code>Execute_priv字段</code> : 表示是否拥有EXECUTE权限。拥有EXECUTE权限，可以执行存储过程和函数。<br>  <code>Select_priv , Insert_priv等</code> : 为该用户所拥有的权限</p>
+<ol start="3">
+<li><p>安全列 安全列只有6个字段，其中两个是ssl相关的（ssl_type、ssl_cipher），用于 加密 ；</p>
+<p>两个是x509  相关的（x509_issuer、x509_subject），用于 标识用户 ；</p>
+<p>另外两个Plugin字段用于 验证用户身份 的插件，该字段不能为空。如果该字段为空，服务器就使用内建授权验证机制验证用户身份</p>
+</li>
+<li><p>资源控制列 资源控制列的字段用来 <code>限制用户使用的资源</code> ，包含4个字段，分别为：<br>①max_questions，用户每小时允许执行的查询操作次数 </p>
+<p>②max_updates，用户每小时允许执行的更新操作次数</p>
+<p>③max_connections，用户每小时允许执行的连接操作次数</p>
+<p>④max_user_connections，用户允许同时建立的连接次数</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看用户, 以列的方式显示数据：<br>SELECT * FROM mysql.user \G;<br><br>*************************** 1. row ***************************<br>                    Host: %<br>                    User: fgcy<br>             Select_priv: Y<br>             Insert_priv: Y<br>             Update_priv: Y<br>             Delete_priv: Y<br>             Create_priv: Y<br>               Drop_priv: Y<br>             Reload_priv: Y<br>           Shutdown_priv: Y<br>            Process_priv: Y<br>               File_priv: Y<br>              Grant_priv: Y<br>         References_priv: Y<br>              Index_priv: Y<br>              Alter_priv: Y<br>            Show_db_priv: Y<br>              Super_priv: Y<br>   Create_tmp_table_priv: Y<br>        Lock_tables_priv: Y<br>            Execute_priv: Y<br>         Repl_slave_priv: Y<br>        Repl_client_priv: Y<br>        Create_view_priv: Y<br>          Show_view_priv: Y<br>     Create_routine_priv: Y<br>      Alter_routine_priv: Y<br>        Create_user_priv: Y<br>              Event_priv: Y<br>            Trigger_priv: Y<br>  Create_tablespace_priv: Y<br>                ssl_type:<br>              ssl_cipher: NULL<br>             x509_issuer: NULL<br>            x509_subject: NULL<br>           max_questions: 0<br>             max_updates: 0<br>         max_connections: 0<br>    max_user_connections: 0<br>                  plugin: caching_sha2_password<br>   authentication_string: $A$005$Kg&gt;R[JGP5=_F*=l5N6gZ1rDWfBhknyV7GLjNcWvptCx5gKUp4b1b39gUg9<br>        password_expired: N<br>   password_last_changed: 2022-07-05 23:29:36<br>       password_lifetime: NULL<br>          account_locked: N<br>        Create_role_priv: Y<br>          Drop_role_priv: Y<br>  Password_reuse_history: NULL<br>     Password_reuse_time: NULL<br>Password_require_current: NULL<br>         User_attributes: NULL<br>*************************** 2. row ***************************<br>                    Host: %<br>                    User: root<br>             Select_priv: Y<br>             Insert_priv: Y<br>             Update_priv: Y<br>             Delete_priv: Y<br>             Create_priv: Y<br>               Drop_priv: Y<br>             Reload_priv: Y<br>           Shutdown_priv: Y<br>            Process_priv: Y<br>               File_priv: Y<br>              Grant_priv: Y<br>         References_priv: Y<br>              Index_priv: Y<br>              Alter_priv: Y<br>            Show_db_priv: Y<br>              Super_priv: Y<br>   Create_tmp_table_priv: Y<br>        Lock_tables_priv: Y<br>            Execute_priv: Y<br>         Repl_slave_priv: Y<br>        Repl_client_priv: Y<br>        Create_view_priv: Y<br>          Show_view_priv: Y<br>     Create_routine_priv: Y<br>      Alter_routine_priv: Y<br>        Create_user_priv: Y<br>              Event_priv: Y<br>            Trigger_priv: Y<br>  Create_tablespace_priv: Y<br>                ssl_type:<br>              ssl_cipher: NULL<br>             x509_issuer: NULL<br>            x509_subject: NULL<br>           max_questions: 0<br>             max_updates: 0<br>         max_connections: 0<br>    max_user_connections: 0<br>                  plugin: mysql_native_password<br>   authentication_string: *FAAFFE644E901CFAFAEC7562415E5FAEC243B8B2<br>        password_expired: N<br>   password_last_changed: 2022-07-04 16:54:08<br>       password_lifetime: NULL<br>          account_locked: N<br>        Create_role_priv: Y<br>          Drop_role_priv: Y<br>  Password_reuse_history: NULL<br>     Password_reuse_time: NULL<br>Password_require_current: NULL<br>         User_attributes: NULL<br>*************************** 3. row ***************************<br>                    Host: %<br>                    User: zhang3<br>             Select_priv: N<br>             Insert_priv: N<br>             Update_priv: N<br>             Delete_priv: N<br>             Create_priv: N<br>               Drop_priv: N<br>             Reload_priv: N<br>           Shutdown_priv: N<br>            Process_priv: N<br>               File_priv: N<br>              Grant_priv: N<br>         References_priv: N<br>              Index_priv: N<br>              Alter_priv: N<br>            Show_db_priv: N<br>              Super_priv: N<br>   Create_tmp_table_priv: N<br>        Lock_tables_priv: N<br>            Execute_priv: N<br>         Repl_slave_priv: N<br>        Repl_client_priv: N<br>        Create_view_priv: N<br>          Show_view_priv: N<br>     Create_routine_priv: N<br>      Alter_routine_priv: N<br>        Create_user_priv: N<br>              Event_priv: N<br>            Trigger_priv: N<br>  Create_tablespace_priv: N<br>                ssl_type:<br>              ssl_cipher: NULL<br>             x509_issuer: NULL<br>            x509_subject: NULL<br>           max_questions: 0<br>             max_updates: 0<br>         max_connections: 0<br>    max_user_connections: 0<br>                  plugin: caching_sha2_password<br>   authentication_string: $A$005$bAMuF3&#123;:/fR(-m=atB33G.LKIZJUvzz.IsEP9/bxRRfvvbF6NCdL1a.zNOC<br>        password_expired: N<br>   password_last_changed: 2022-07-05 23:07:46<br>       password_lifetime: NULL<br>          account_locked: N<br>        Create_role_priv: N<br>          Drop_role_priv: N<br>  Password_reuse_history: NULL<br>     Password_reuse_time: NULL<br>Password_require_current: NULL<br>         User_attributes: NULL<br>*************************** 4. row ***************************<br>                    Host: localhost<br>                    User: mysql.infoschema<br>             Select_priv: Y<br>             Insert_priv: N<br>             Update_priv: N<br>             Delete_priv: N<br>             Create_priv: N<br>               Drop_priv: N<br>             Reload_priv: N<br>           Shutdown_priv: N<br>            Process_priv: N<br>               File_priv: N<br>              Grant_priv: N<br>         References_priv: N<br>              Index_priv: N<br>              Alter_priv: N<br>            Show_db_priv: N<br>              Super_priv: N<br>   Create_tmp_table_priv: N<br>        Lock_tables_priv: N<br>            Execute_priv: N<br>         Repl_slave_priv: N<br>        Repl_client_priv: N<br>        Create_view_priv: N<br>          Show_view_priv: N<br>     Create_routine_priv: N<br>      Alter_routine_priv: N<br>        Create_user_priv: N<br>              Event_priv: N<br>            Trigger_priv: N<br>  Create_tablespace_priv: N<br>                ssl_type:<br>              ssl_cipher: NULL<br>             x509_issuer: NULL<br>            x509_subject: NULL<br>           max_questions: 0<br>             max_updates: 0<br>         max_connections: 0<br>    max_user_connections: 0<br>                  plugin: caching_sha2_password<br>   authentication_string: $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED<br>        password_expired: N<br>   password_last_changed: 2022-04-11 09:25:05<br>       password_lifetime: NULL<br>          account_locked: Y<br>        Create_role_priv: N<br>          Drop_role_priv: N<br>  Password_reuse_history: NULL<br>     Password_reuse_time: NULL<br>Password_require_current: NULL<br>         User_attributes: NULL<br>*************************** 5. row ***************************<br>                    Host: localhost<br>                    User: mysql.session<br>             Select_priv: N<br>             Insert_priv: N<br>             Update_priv: N<br>             Delete_priv: N<br>             Create_priv: N<br>               Drop_priv: N<br>             Reload_priv: N<br>           Shutdown_priv: Y<br>            Process_priv: N<br>               File_priv: N<br>              Grant_priv: N<br>         References_priv: N<br>              Index_priv: N<br>              Alter_priv: N<br>            Show_db_priv: N<br>              Super_priv: Y<br>   Create_tmp_table_priv: N<br>        Lock_tables_priv: N<br>            Execute_priv: N<br>         Repl_slave_priv: N<br>        Repl_client_priv: N<br>        Create_view_priv: N<br>          Show_view_priv: N<br>     Create_routine_priv: N<br>      Alter_routine_priv: N<br>        Create_user_priv: N<br>              Event_priv: N<br>            Trigger_priv: N<br>  Create_tablespace_priv: N<br>                ssl_type:<br>              ssl_cipher: NULL<br>             x509_issuer: NULL<br>            x509_subject: NULL<br>           max_questions: 0<br>             max_updates: 0<br>         max_connections: 0<br>    max_user_connections: 0<br>                  plugin: caching_sha2_password<br>   authentication_string: $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED<br>        password_expired: N<br>   password_last_changed: 2022-04-11 09:25:05<br>       password_lifetime: NULL<br>          account_locked: Y<br>        Create_role_priv: N<br>          Drop_role_priv: N<br>  Password_reuse_history: NULL<br>     Password_reuse_time: NULL<br>Password_require_current: NULL<br>         User_attributes: NULL<br>*************************** 6. row ***************************<br>                    Host: localhost<br>                    User: mysql.sys<br>             Select_priv: N<br>             Insert_priv: N<br>             Update_priv: N<br>             Delete_priv: N<br>             Create_priv: N<br>               Drop_priv: N<br>             Reload_priv: N<br>           Shutdown_priv: N<br>            Process_priv: N<br>               File_priv: N<br>              Grant_priv: N<br>         References_priv: N<br>              Index_priv: N<br>              Alter_priv: N<br>            Show_db_priv: N<br>              Super_priv: N<br>   Create_tmp_table_priv: N<br>        Lock_tables_priv: N<br>            Execute_priv: N<br>         Repl_slave_priv: N<br>        Repl_client_priv: N<br>        Create_view_priv: N<br>          Show_view_priv: N<br>     Create_routine_priv: N<br>      Alter_routine_priv: N<br>        Create_user_priv: N<br>              Event_priv: N<br>            Trigger_priv: N<br>  Create_tablespace_priv: N<br>                ssl_type:<br>              ssl_cipher: NULL<br>             x509_issuer: NULL<br>            x509_subject: NULL<br>           max_questions: 0<br>             max_updates: 0<br>         max_connections: 0<br>    max_user_connections: 0<br>                  plugin: caching_sha2_password<br>   authentication_string: $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED<br>        password_expired: N<br>   password_last_changed: 2022-04-11 09:25:05<br>       password_lifetime: NULL<br>          account_locked: Y<br>        Create_role_priv: N<br>          Drop_role_priv: N<br>  Password_reuse_history: NULL<br>     Password_reuse_time: NULL<br>Password_require_current: NULL<br>         User_attributes: NULL<br>6 rows in set (0.01 sec)<br>                                                                                    <br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询特定字段：<br>SELECT host,user,authentication_string,select_priv,insert_priv,drop_priv <br>FROM mysql.user;      <br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053263.png" srcset="/img/loading.gif" lazyload alt="image-20220706102055158"></p>
+<hr>
+<h2 id="3-2-db表"><a href="#3-2-db表" class="headerlink" title="3.2 db表"></a>3.2 db表</h2><p>使用DESCRIBE查看db表的基本结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESCRIBE mysql.db;<br> <br>+-----------------------+---------------+------+-----+---------+-------+<br>| Field                 | Type          | Null | Key | Default | Extra |<br>+-----------------------+---------------+------+-----+---------+-------+<br>| Host                  | char(255)     | NO   | PRI |         |       |<br>| Db                    | char(64)      | NO   | PRI |         |       |<br>| User                  | char(32)      | NO   | PRI |         |       | -- 以上三者 构成联合主键<br>| Select_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       | -- 该数据库体现的是 某个用户是否有操作某个数据库的相关权限<br>| Insert_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Update_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Delete_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Create_priv           | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Drop_priv             | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Grant_priv            | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| References_priv       | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Index_priv            | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Alter_priv            | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Create_tmp_table_priv | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Lock_tables_priv      | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Create_view_priv      | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Show_view_priv        | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Create_routine_priv   | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Alter_routine_priv    | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Execute_priv          | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Event_priv            | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>| Trigger_priv          | enum(&#x27;N&#x27;,&#x27;Y&#x27;) | NO   |     | N       |       |<br>+-----------------------+---------------+------+-----+---------+-------+<br>22 rows in set (0.05 sec)<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>用户列 db表用户列有3个字段，分别是Host、User、Db。这3个字段分别表示主机名、用户名和数据库名</li>
+</ol>
+<p>  表示从某个主机连接某个用户对某个数据库的操作权限，这3个字段的组合构成了db表的主键</p>
+<ol start="2">
+<li>权限列<br>Create_routine_priv和Alter_routine_priv这两个字段决定用户是否具有创建和修改存储过程的权限</li>
+</ol>
+<h2 id="3-3-tables-priv表和columns-priv表"><a href="#3-3-tables-priv表和columns-priv表" class="headerlink" title="3.3 tables_priv表和columns_priv表"></a>3.3 tables_priv表和columns_priv表</h2><p><strong>tables_priv</strong></p>
+<p>tables_priv表用来 对表设置操作权限 ，columns_priv表用来对表的 某一列设置权限 </p>
+<p>tables_priv表和columns_priv表的结构分别如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">desc mysql.tables_priv;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053878.png" srcset="/img/loading.gif" lazyload alt="image-20220706100323255"></p>
+<hr>
+<p>描述某个用户针对某个数据库下的某张表的相关权限</p>
+<p>tables_priv表有8个字段，分别是<strong>Host、Db、User、Table_name</strong>、Grantor、Timestamp、Table_priv和Column_priv</p>
+<p>其中，前四个字段构成联合主键；</p>
+<p>各个字段说明如下：<br>Host 、 Db 、 User 和 Table_name 四个字段分别表示主机名、数据库名、用户名和表名。<br>Grantor表示修改该记录的用户<br>Timestamp表示修改该记录的时间<br>Table_priv 表示对象的操作权限。包括Select、Insert、Update、Delete、Create、Drop、Grant、References、Index和Alter<br>Column_priv字段表示对表中的列的操作权限，包括Select、Insert、Update和References</p>
+<p><strong>columns_priv</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">desc mysql.columns_priv;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053067.png" srcset="/img/loading.gif" lazyload alt="image-20220706100822998"></p>
+<hr>
+<p>描述 <code>某个用户</code> 针对 <code>某个数据库下</code> 的 <code>某张表</code> 下的 <code>某个字段</code> 的相关权限</p>
+<h2 id="3-4-procs-priv表"><a href="#3-4-procs-priv表" class="headerlink" title="3.4 procs_priv表"></a>3.4 procs_priv表</h2><p>procs_priv表可以对 存储过程和存储函数设置操作权限 </p>
+<p>表结构如图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">desc mysql.procs_priv;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053454.png" srcset="/img/loading.gif" lazyload alt="image-20220706102353213"></p>
+<hr>
+<h1 id="4-访问控制-了解"><a href="#4-访问控制-了解" class="headerlink" title="4. 访问控制(了解)"></a>4. 访问控制(了解)</h1><p>当用户试图连接MySQL服务器时,服务器基于用户的身份以及用户是否能提供正确的密码验证身份来确定<strong>接受或者拒绝连接</strong></p>
+<p>即客户端用户会在连接请求中提供用户名、主机地址、用户密码, MySQL服务器接收到用户请求后,会使用user表中的<strong>host,、user和authentication_string</strong>这3个字段匹配客户端提供信息。服务器只有在user表记录的Host和User字段匹配客户端主机名和用户名,并且提供正确的密码时才接受连接</p>
+<p>如果连接核实没有通过,服务器就完全拒绝访问;否则,服务器接受连接,然后进入阶段2等待用户请求</p>
+<h2 id="4-1-连接核实阶段"><a href="#4-1-连接核实阶段" class="headerlink" title="4.1 连接核实阶段"></a>4.1 连接核实阶段</h2><p>当用户试图连接MySQL服务器时，服务器基于用户的身份以及用户是否能提供正确的密码验证身份来确<br>定接受或者拒绝连接。即客户端用户会在连接请求中提供用户名、主机地址、用户密码，MySQL服务器<br>接收到用户请求后，会使用user表中的host、user和authentication_string这3个字段匹配客户端提供信<br>息。<br>服务器只有在user表记录的Host和User字段匹配客户端主机名和用户名，并且提供正确的密码时才接受<br>连接。如果连接核实没有通过，服务器就完全拒绝访问；否则，服务器接受连接，然后进入阶段2等待<br>用户请求</p>
+<h2 id="4-2-请求核实阶段"><a href="#4-2-请求核实阶段" class="headerlink" title="4.2 请求核实阶段"></a>4.2 请求核实阶段</h2><p>一旦建立了连接，服务器就进入了访问控制的阶段2，也就是请求核实阶段</p>
+<p>对此连接上进来的每个请求，服务器检查该请求要执行什么操作、是否有足够的权限来执行它，这正是需要授权表中的权限列发挥作用的地方。这些权限可以来自user、db、table_priv和column_priv表</p>
+<p>确认权限时</p>
+<p>MySQL首先 检查user表 ，如果指定的权限没有在user表中被授予</p>
+<p>那么MySQL就会继续 检查db表 ，db表是下一安全层级，其中的权限限定于数据库层级，在该层级的SELECT权限允许用户查看指定数据库的所有表中的数据；</p>
+<p>如果在该层级没有找到限定的权限，则MySQL继续 检查tables_priv表 以及 columns_priv表 ，如果所有权限表都检查完毕，但还是没有找到允许的权限操作，MySQL将 返回错误信息 ，用户请求的操作不能执行，操作失败</p>
+<p>核实过程： </p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053201.png" srcset="/img/loading.gif" lazyload alt="image-20220706110059912"></p>
+<hr>
+<p>提示：</p>
+<p>MySQL通过向下层级的顺序（从user表到columns_priv表）检查权限表，但并不是所有的权限都要执行该过程</p>
+<p>例如，一个用户登录到MySQL服务器之后只执行对MySQL的管理操作，此时只涉及管理权限，因此MySQL只检查user表</p>
+<p>​			另外，如果请求的权限操作不被允许，MySQL也不会继续检查下一层级的表</p>
+<h1 id="5-角色管理"><a href="#5-角色管理" class="headerlink" title="5. 角色管理"></a>5. 角色管理</h1><h2 id="5-1-角色的理解"><a href="#5-1-角色的理解" class="headerlink" title="5.1 角色的理解"></a>5.1 角色的理解</h2><p>角色是在MySQL 8.0中引入的新功能。在MySQL中,<strong>角色是权限的集合</strong>,可以为角色添加或移除权限</p>
+<p>用户可以被赋予角色,同时也被授予角色包含的权限</p>
+<p>对角色进行操作需要较高的权限。并且像用户账户一样,角色可以拥有授予和撤消的权限。引入角色的目的是方便管理拥有相同权限的用户</p>
+<p><strong>恰当的权限设定,可以确保数据的安全性,这是至关重要的</strong></p>
+<p>直接给用户赋权和给用户赋予角色的对比：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053382.png" srcset="/img/loading.gif" lazyload alt="image-20220706110927271"></p>
+<hr>
+<h2 id="5-2-创建角色"><a href="#5-2-创建角色" class="headerlink" title="5.2 创建角色"></a>5.2 创建角色</h2><p>创建角色使用 CREATE ROLE 语句，语法如下：</p>
+<blockquote>
+<p>CREATE ROLE ‘role_name’[@’host_name’] [,’role_name’[@’host_name’]]…</p>
+</blockquote>
+<p>角色名称的命名规则和用户名类似。如果 host_name省略，默认为% ， role_name不可省略 ，不可为空</p>
+<p>如果不写主机名,MySQL默认是通配符“%”,意思是这个账号可以从任何一台主机上登录数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创建角色一<br>CREATE role &#x27;manager&#x27;@&#x27;%&#x27;;<br> <br>Query OK, 0 rows affected (0.08 sec)<br><br><br><br>-- 创建角色二<br>CREATE role &#x27;boss&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>还可以通过如下的指令,一次性创建3个角色:</p>
+<blockquote>
+<p>CREATE ROLE ‘app_developer’, ‘app_read’, ‘app_write’</p>
+</blockquote>
+<h2 id="5-3-给角色赋予权限"><a href="#5-3-给角色赋予权限" class="headerlink" title="5.3 给角色赋予权限"></a>5.3 给角色赋予权限</h2><p>创建角色之后，默认这个角色是没有任何权限的</p>
+<p>只要你创建了一个角色,系统就会自动给你一个“USAGE”权限,意思是连接登录数据库的权限</p>
+<p>我们需要给角色授权</p>
+<p>给角色授权的语法结构是：</p>
+<blockquote>
+<p>GRANT privileges ON table_name TO ‘role_name’[@’host_name’];</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use dbtest1;<br><br>Database changed<br><br><br>show tables;<br><br>+-------------------+<br>| Tables_in_dbtest1 |<br>+-------------------+<br>| emp1              |<br>| emp2              |<br>| student_myisam    |<br>+-------------------+<br>3 rows in set (0.03 sec)<br><br><br> <br>-- 给角色赋权 (manager)<br>GRANT SELECT,UPDATE ON dbtest1.* TO &#x27;manager&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br><br>-- 给角色赋权 (boss)<br>GRANT ALL PRIVILEGES ON *.* TO &#x27;boss&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.01 sec)<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="5-4-查看角色的权限"><a href="#5-4-查看角色的权限" class="headerlink" title="5.4 查看角色的权限"></a>5.4 查看角色的权限</h2><p>赋予角色权限之后，我们可以通过 SHOW GRANTS 语句，来查看权限是否创建成功了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 当前root用户下<br>SHOW GRANTS FOR &#x27;manager&#x27;;<br>+------------------------------------------------------+<br>| Grants for manager@%                                 |<br>+------------------------------------------------------+<br>| GRANT USAGE ON *.* TO `manager`@`%`                  |<br>| GRANT SELECT, UPDATE ON `dbtest1`.* TO `manager`@`%` |<br>+------------------------------------------------------+<br>2 rows in set (0.00 sec)<br><br><br>-- 当前root用户下<br>SHOW GRANTS FOR &#x27;boss&#x27;\G<br><br>*************************** 1. row ***************************<br>Grants for boss@%: GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, SHUTDOWN, PROCESS, FILE, REFERENCES, INDEX, ALTER, SHOW DATABASES, SUPER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `boss`@`%`<br>*************************** 2. row ***************************<br>Grants for boss@%: GRANT APPLICATION_PASSWORD_ADMIN,AUDIT_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTION_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,FLUSH_OPTIMIZER_COSTS,FLUSH_STATUS,FLUSH_TABLES,FLUSH_USER_RESOURCES,GROUP_REPLICATION_ADMIN,INNODB_REDO_LOG_ARCHIVE,INNODB_REDO_LOG_ENABLE,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_APPLIER,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SERVICE_CONNECTION_ADMIN,SESSION_VARIABLES_ADMIN,SET_USER_ID,SHOW_ROUTINE,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN,TABLE_ENCRYPTION_ADMIN,XA_RECOVER_ADMIN ON *.* TO `boss`@`%`<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="5-5-回收角色的权限"><a href="#5-5-回收角色的权限" class="headerlink" title="5.5 回收角色的权限"></a>5.5 回收角色的权限</h2><p>角色授权后，可以对角色的权限进行维护，对权限进行添加或撤销</p>
+<p>添加权限使用GRANT语句，与角色授权相同。撤销角色或角色权限使用REVOKE语句<br>修改了角色的权限，会影响拥有该角色的账户的权限</p>
+<p>撤销角色权限的SQL语法如下：</p>
+<blockquote>
+<p>REVOKE privileges ON tablename FROM ‘rolename’;</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看manager角色权限<br>SHOW GRANTS FOR &#x27;manager&#x27;;<br>+------------------------------------------------------+<br>| Grants for manager@%                                 |<br>+------------------------------------------------------+<br>| GRANT USAGE ON *.* TO `manager`@`%`                  |<br>| GRANT SELECT, UPDATE ON `dbtest1`.* TO `manager`@`%` |<br>+------------------------------------------------------+<br>2 rows in set (0.00 sec)<br><br><br>-- 回收角色 对dbtest1的所有表的更新权限<br>REVOKE UPDATE ON dbtest1.* FROM &#x27;manager&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br>-- 查看manager角色权限<br>SHOW GRANTS FOR &#x27;manager&#x27;;<br> <br>+----------------------------------------------+<br>| Grants for manager@%                         |<br>+----------------------------------------------+<br>| GRANT USAGE ON *.* TO `manager`@`%`          |<br>| GRANT SELECT ON `dbtest1`.* TO `manager`@`%` |<br>+----------------------------------------------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-6-删除角色"><a href="#5-6-删除角色" class="headerlink" title="5.6 删除角色"></a>5.6 删除角色</h2><p>当我们需要对业务重新整合的时候，可能就需要对之前创建的角色进行清理，删除一些不会再使用的角<br>色。删除角色的操作很简单</p>
+<p>你只要掌握语法结构就行了：</p>
+<blockquote>
+<p>DROP ROLE role [,role2]…</p>
+</blockquote>
+<p>注意，：</p>
+<p>如果你删除了角色，那么用户也就失去了通过这个角色所获得的所有权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创建用户 admin<br>CREATE ROLE &#x27;admin&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 查看用户权限 admin<br>SHOW GRANTS FOR &#x27;admin&#x27;;<br><br>+-----------------------------------+<br>| Grants for admin@%                |<br>+-----------------------------------+<br>| GRANT USAGE ON *.* TO `admin`@`%` |<br>+-----------------------------------+<br>1 row in set (0.00 sec)<br><br><br><br><br><br>-- 删除角色<br>DROP ROLE &#x27;admin&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 查看用户权限 admin<br>SHOW GRANTS FOR &#x27;admin&#x27;;<br><br>ERROR 1141 (42000): There is no such grant defined for user &#x27;admin&#x27; on host &#x27;%&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-7-给用户赋予角色"><a href="#5-7-给用户赋予角色" class="headerlink" title="5.7 给用户赋予角色"></a>5.7 给用户赋予角色</h2><p>角色创建并授权后，要赋给用户并处于 激活状态 才能发挥作用。给用户添加角色可使用GRANT语句</p>
+<p>语法形式如下：</p>
+<blockquote>
+<p>GRANT role [,role2,…] TO user [,user2,…];</p>
+</blockquote>
+<p>在上述语句中，role代表角色，user代表用户。可将多个角色同时赋予多个用户，用逗号隔开即可。</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 切换数据库<br>USE mysql;<br><br>Database changed<br><br><br><br><br>-- 查看用户表  （发现角色也在用户表中）<br>SELECT user,host FROM user;<br><br>+------------------+-----------+<br>| user             | host      |<br>+------------------+-----------+<br>| boss             | %         |<br>| fgcy             | %         |<br>| manager          | %         |<br>| root             | %         |<br>| zhang3           | %         |<br>| mysql.infoschema | localhost |<br>| mysql.session    | localhost |<br>| mysql.sys        | localhost |<br>+------------------+-----------+<br>8 rows in set (0.00 sec)<br><br><br><br><br><br><br>-- 创建一个用户  (没有密码 直接回车进入)<br>CREATE USER &#x27;wang5&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br>-- 给角色赋权<br>GRANT &#x27;manager&#x27;@&#x27;%&#x27; TO &#x27;wang5&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 查看wang5用户的权限<br>SHOW GRANTS FOR &#x27;wang5&#x27;;<br><br>+------------------------------------+<br>| Grants for wang5@%                 |<br>+------------------------------------+<br>| GRANT USAGE ON *.* TO `wang5`@`%`  |<br>| GRANT `manager`@`%` TO `wang5`@`%` |<br>+------------------------------------+<br>2 rows in set (0.00 sec)<br><br><br><br>-- 查看manager角色的权限<br>SHOW GRANTS FOR &#x27;manager&#x27;;<br><br>+----------------------------------------------+<br>| Grants for manager@%                         |<br>+----------------------------------------------+<br>| GRANT USAGE ON *.* TO `manager`@`%`          |<br>| GRANT SELECT ON `dbtest1`.* TO `manager`@`%` |<br>+----------------------------------------------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>此时，使用赋予了角色的用户去登录、操作,你会发现,这个账号没有任何权限</p>
+<p>这是因为,MySQL中创建了角色之后,默认都是没有被激活，也就是不能用,必须要手动激活,激活以后用户才能拥有角色对应的权限</p>
+<p>使用wang5用户登录，然后查询当前角色，如果角色未激活，结果将显示NONE</p>
+<p>SQL语句如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT CURRENT_ROLE();<br><br>+----------------+<br>| CURRENT_ROLE() |<br>+----------------+<br>| NONE           |<br>+----------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-8-激活角色"><a href="#5-8-激活角色" class="headerlink" title="5.8 激活角色"></a>5.8 激活角色</h2><p>方式1：使用set default role 命令激活角色</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 激活wang5用户 （的角色）<br>SET DEFAULT ROLE ALL TO &#x27;wang5&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>-- 重新登陆 （wang5用户）<br><br>-- 查看当前用户的角色状态<br>SELECT CURRENT_ROLE();<br><br>+----------------+<br>| CURRENT_ROLE() |<br>+----------------+<br>| `manager`@`%`  |<br>+----------------+<br>1 row in set (0.00 sec)<br><br><br><br>show databases;<br>+--------------------+<br>| Database           |<br>+--------------------+<br>| dbtest1            |<br>| information_schema |<br>+--------------------+<br>2 rows in set (0.01 sec)<br><br><br><br><br>-- 尝试查询<br>USE dbtest1;<br><br>Database changed<br><br><br>SELECT * FROM emp1;<br><br>+------+----------+<br>| id   | lname    |<br>+------+----------+<br>|    2 | 法外狂徒   |<br>+------+----------+<br>1 row in set (0.03 sec)<br><br><br><br>-- 尝试删除 (没有权限)<br>DELETE FROM emp1 WHERE id =2;<br><br>ERROR 1142 (42000): DELETE command denied to user &#x27;wang5&#x27;@&#x27;192.168.175.1&#x27; for table &#x27;emp1&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>举例：</p>
+<p>使用 SET DEFAULT ROLE 为下面4个用户默认激活所有已拥有的角色如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET DEFAULT ROLE ALL TO<br>  &#x27;dev1&#x27;@&#x27;localhost&#x27;,<br>  &#x27;read_user1&#x27;@&#x27;localhost&#x27;,<br>  &#x27;read_user2&#x27;@&#x27;localhost&#x27;,<br>  &#x27;rw_user1&#x27;@&#x27;localhost&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>方式2：将activate_all_roles_on_login设置为ON</p>
+<p>默认情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show variables like &#x27;activate_all_roles_on_login&#x27;;<br><br>+-----------------------------+-------+<br>| Variable_name               | Value |<br>+-----------------------------+-------+<br>| activate_all_roles_on_login | OFF   |<br>+-----------------------------+-------+<br>1 row in set (0.03 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>设置：</p>
+<blockquote>
+<p>SET GLOBAL activate_all_roles_on_login&#x3D;ON;</p>
+</blockquote>
+<p>这条 SQL 语句的意思是，对 所有角色永久激活 ；运行这条语句之后，用户才真正拥有了赋予角色的所有权限</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 全局配置 重启服务器后失效<br>SET GLOBAL activate_all_roles_on_login=ON;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br>show variables like &#x27;activate_all_roles_on_login&#x27;;<br><br>+-----------------------------+-------+<br>| Variable_name               | Value |<br>+-----------------------------+-------+<br>| activate_all_roles_on_login | ON    |<br>+-----------------------------+-------+<br>1 row in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>查看当前会话已激活的角色</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 当前用户wang5<br>SELECT CURRENT_ROLE();<br> <br>+----------------+<br>| CURRENT_ROLE() |<br>+----------------+<br>| `manager`@`%`  |<br>+----------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-9-撤销用户的角色"><a href="#5-9-撤销用户的角色" class="headerlink" title="5.9 撤销用户的角色"></a>5.9 撤销用户的角色</h2><p>撤销用户角色的SQL语法如下：</p>
+<blockquote>
+<p>REVOKE role FROM user;</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 当前root用户下<br>REVOKE &#x27;manager&#x27;@&#x27;%&#x27; FROM &#x27;wang5&#x27;@&#x27;%&#x27;;<br><br>Query OK, 0 rows affected (0.02 sec)<br><br><br><br><br>-- 当前wang5用户下<br><br>-- 查看权限<br> show grants;<br> <br>+-----------------------------------+<br>| Grants for wang5@%                |<br>+-----------------------------------+<br>| GRANT USAGE ON *.* TO `wang5`@`%` |<br>+-----------------------------------+<br>1 row in set (0.00 sec)<br><br><br><br><br>-- 查看数据库<br>SHOW DATABASES;<br><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| information_schema |<br>+--------------------+<br>1 row in set (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-10-设置强制角色-mandatory-role"><a href="#5-10-设置强制角色-mandatory-role" class="headerlink" title="5.10 设置强制角色(mandatory role)"></a>5.10 设置强制角色(mandatory role)</h2><p>了解一下</p>
+<p>使用场景：</p>
+<p>每一个新建的用户都有一个登录权限</p>
+<p>强制角色是给每个创建账户的默认角色,不需要手动设置;</p>
+<p>强制角色无法被REVOKE或者DROP</p>
+<p>方式1：服务启动前设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SHELL">[mysqld]<br>mandatory_roles=&#x27;role1,role2@localhost,r3@%.atguigu.com&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>方式2：运行时设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SHELL">SET PERSIST mandatory_roles = &#x27;role1,role2@localhost,r3@%.example.com&#x27;;  #系统重启后仍然有效<br><br><br>SET GLOBAL mandatory_roles = &#x27;role1,role2@localhost,r3@%.example.com&#x27;;  #系统重启后失效<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-11小结"><a href="#5-11小结" class="headerlink" title="5.11小结"></a>5.11小结</h2><p>MySQL主要管理权限语句：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282054026.png" srcset="/img/loading.gif" lazyload alt="image-20220706132728305"></p>
+<hr>
+<h1 id="6-配置文件的使用"><a href="#6-配置文件的使用" class="headerlink" title="6.配置文件的使用"></a>6.配置文件的使用</h1><h2 id="6-1配置文件格式"><a href="#6-1配置文件格式" class="headerlink" title="6.1配置文件格式"></a>6.1配置文件格式</h2><p>与在命令行中指定启动选项不同的是,配置文件中的启动选项被划分为若干个组,每个组有一个组名,用中括号[]扩起来,像这样:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><span class="hljs-attr">(具体的启动选项..)</span><br><br><span class="hljs-attr">[mysqld]</span><br><span class="hljs-attr">(具体的启动选项..)</span><br><br><span class="hljs-attr">[mysqld_safe]</span><br><span class="hljs-attr">(具体的启动选项...)</span><br><br><span class="hljs-attr">[client]</span><br><span class="hljs-attr">(具体的启动选项...)</span><br><br><span class="hljs-attr">[mysql]</span><br><span class="hljs-attr">(具体的启动选项...)</span><br><br><span class="hljs-attr">[mysqladmin]</span><br><span class="hljs-attr">(具体的启动选项...)</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>像这个配置文件里就定义了许多个组</p>
+<p>组名分别是<code>server</code>、<code>mysqld</code>、<code>mysqld_safe</code>、 <code>client</code>、<code>mysql</code>、<code>mysqladmin </code></p>
+<p>每个组下边可以定义若干个启动选项</p>
+<p>我们以[server]组为例来看一下填写启动选项的形式  (其他组中启动选项的形式是一样的)  :</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><span class="hljs-attr">option1</span> 		 <span class="hljs-string">#这是option1,该选项不需要选项值</span><br><span class="hljs-attr">option2</span>=<span class="hljs-string">value2 		#这是option2,该选项需要选项值</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="6-2启动命令与选项组"><a href="#6-2启动命令与选项组" class="headerlink" title="6.2启动命令与选项组"></a>6.2启动命令与选项组</h2><p>配置文件中不同的选项组是给不同的启动命令使用的</p>
+<p>不过有两个选项组比较特别:</p>
+<p><code>[server]组</code>下边的启动选项将作用于所有的<code>服务器程序</code></p>
+<p><code>[client]组</code>下边的启动选项将作用于所有的<code>客户端程序</code></p>
+<p>下面是启动命令能读取的选项组都有哪些:</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053213.png" srcset="/img/loading.gif" lazyload alt="image-20220706133828443"></p>
+<hr>
+<p>比如,在&#x2F;etc&#x2F;mysql&#x2F;my.cnf 这个配置文件中</p>
+<p>添加一些内容:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><br><span class="hljs-attr">skip-networking</span><br><br><span class="hljs-attr">default-storage-engine</span>=<span class="hljs-string">MyISAM</span><br></code></pre></td></tr></table></figure>
+
+<p>然后直接用mysqld启动服务器程序:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld<br></code></pre></td></tr></table></figure>
+
+
+
+<p>注意：</p>
+<p>虽然在命令行没有添加启动选项,但是在程序启动的时候,就会默认的到我们上边提到的配置文件路径下查找配置文件,其中就包括&#x2F;etc&#x2F;my.cn</p>
+<p>又由于mysqld命令可以读取[server]选项组的内容,所以skipnetworking 和 default-storage-engine&#x3D;MyISAM这两个选项是生效的</p>
+<p>你可以把这些启动选项放在[client]组里再试试用mysqld启动服务器程序,就不生效</p>
+<h2 id="6-3特定MySQL版本的专用选项组"><a href="#6-3特定MySQL版本的专用选项组" class="headerlink" title="6.3特定MySQL版本的专用选项组"></a>6.3特定MySQL版本的专用选项组</h2><p>我们可以在<code>选项组的名称后</code>加上<code>特定的MySQL版本号</code></p>
+<p>比如对于[mysqld]选项组来说,我们可以定义一个<code>[mysqld-5.7]</code>的选项组,它的含义和<code>[mysqld]</code>一样,只不过<code>只有版本号为5.7的mysqld程序</code>才能使用这个选项组中的选项</p>
+<h2 id="6-4同一个配置文件中多个组的优先级"><a href="#6-4同一个配置文件中多个组的优先级" class="headerlink" title="6.4同一个配置文件中多个组的优先级"></a>6.4同一个配置文件中多个组的优先级</h2><p>我们说同一个命令可以访问配置文件中的多个组</p>
+<p>比如<code>mysqld</code>可以访问<code>[mysqld]</code>、<code>[server]</code>组</p>
+<p>如果在同一个配置文件中,比如~&#x2F;.my.cnf,在这些组里出现了同样的配置项,比如这样:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><span class="hljs-attr">default-storage-engine</span>=<span class="hljs-string">InnoDB</span><br><br><br><span class="hljs-attr">[mysqld]</span><br><span class="hljs-attr">default-storage-engine</span>=<span class="hljs-string">MyISAM</span><br></code></pre></td></tr></table></figure>
+
+<p>那么,将以最后一个出现的组中的启动选项为准</p>
+<p>比方说例子中<code>default-storage-engine</code>既出现在**[mysqld]组<strong>也出现在</strong>[server]组**</p>
+<p>因为[mysqld]组在[server]组后边,就以[mysqld]组中的配置项为准</p>
+<h2 id="6-5命令行和配置文件中启动选项的区别"><a href="#6-5命令行和配置文件中启动选项的区别" class="headerlink" title="6.5命令行和配置文件中启动选项的区别"></a>6.5命令行和配置文件中启动选项的区别</h2><p>在命令行上指定的绝大部分启动选项都可以放到配置文件中</p>
+<p>但是有一些选项是专门为命令行设计的,比方说d<code>efaults-extra-file,defaults-file</code>这样的选项本身就是为了指定配置文件路径的,再放在配置文件中使用就没啥意义了</p>
+<p>如果同一个启动选项既出现在<code>命令行中</code>,又出现在<code>配置文件</code>中,<strong>那么以命令行中的启动选项为准</strong>!</p>
+<p>比如我们在配置文件中写了:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><br><span class="hljs-attr">default-storage-engine</span>=<span class="hljs-string">InnoDB</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>而我们的启动命令是:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql.server start --default-storage-engine=MyISAM<br></code></pre></td></tr></table></figure>
+
+<p>那最后<code>default-storage-engine</code>的值就是MyISAM</p>
+<h1 id="7-系统变量-复习"><a href="#7-系统变量-复习" class="headerlink" title="7.系统变量(复习)"></a>7.系统变量(复习)</h1><h2 id="7-1系统变量简介"><a href="#7-1系统变量简介" class="headerlink" title="7.1系统变量简介"></a>7.1系统变量简介</h2><p>MySQL服务器<strong>程序运行过程中</strong>会用到许多<strong>影响程序行为的变量</strong>,它们被称为MysQL系统变量</p>
+<p>比如:<code>max_connections</code> :允许同时连入的客户端数量</p>
+<p><code>default_storage_engine </code>:表的默认存储引擎用系统变量</p>
+<p><code>query_cache_size </code>:查询缓存的大小</p>
+<p>MySQL服务器程序的系统变量有好几百条,我们就不一一列举了</p>
+<h2 id="7-2查看系统变量查看"><a href="#7-2查看系统变量查看" class="headerlink" title="7.2查看系统变量查看"></a>7.2查看系统变量查看</h2><p>MySQL服务器程序支持的系统变量以及它们的当前值:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看所有全局变量<br>SHOW GLOBAL VARIABLES;<br><br>588 rows in set (0.05 sec)<br><br><br>#查看所有会话变量  -- 或SHOW VARIABLES;<br>SHOW SESSION VARIABLES;<br><br>610 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看满足条件的部分系统变量<br>SHOW GLOBAL VARIABLES LIKE &#x27;%标识符%<br><br><br><br>-- 查看满足条件的部分会话变量<br>SHOW SESSION VARIABLES LIKE &#x27;%标识符%&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>由于系统变量实在太多了,所以通常都会带一个LIKE过滤条件来查看我们需要的系统变量的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW VARIABLES LIKE &#x27;default_storage_engine&#x27;;<br><br>+------------------------+--------+<br>| Variable_name          | Value  |<br>+------------------------+--------+<br>| default_storage_engine | InnoDB |<br>+------------------------+--------+<br>1 row in set (0.00 sec)<br><br><br><br><br><br><br>SHOW VARIABLES like &#x27;max_connections&#x27;;<br>+-----------------+-------+<br>| Variable_name   | Value |<br>+-----------------+-------+<br>| max_connections | 151   |<br>+-----------------+-------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>LIKE表达式后边可以跟通配符来进行模糊查询,也就是说我们可以这么写:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW VARIABLES LIKE &#x27;default%&#x27;;<br><br>+-------------------------------+-----------------------+<br>| Variable_name                 | Value                 |<br>+-------------------------------+-----------------------+<br>| default_authentication_plugin | caching_sha2_password |<br>| default_collation_for_utf8mb4 | utf8mb4_0900_ai_ci    |<br>| default_password_lifetime     | 0                     |<br>| default_storage_engine        | InnoDB                |<br>| default_table_encryption      | OFF                   |<br>| default_tmp_storage_engine    | InnoDB                |<br>| default_week_format           | 0                     |<br>+-------------------------------+-----------------------+<br>7 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>这样就查出了所有以default开头的系统变量的值</p>
+<h2 id="7-3设置系统变量"><a href="#7-3设置系统变量" class="headerlink" title="7.3设置系统变量"></a>7.3设置系统变量</h2><h3 id="7-3-1通过启动选项设置"><a href="#7-3-1通过启动选项设置" class="headerlink" title="7.3.1通过启动选项设置"></a>7.3.1通过启动选项设置</h3><p>大部分的系统变量都可以通过启动服务器时传送启动选项的方式来进行设置</p>
+<p>如何填写启动选项我们总结一下</p>
+<p>主要是两种方式:</p>
+<ul>
+<li><p>通过命令行添加启动选项（优先级高、临时有效）</p>
+<p>比方说我们在启动服务器程序时用这个命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --default-storage-engine=MyISAM --max-connections=10<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>通过配置文件添加启动选项 （优先级较低、长久有效）</p>
+<p>我们可以这样填写配置文件:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[server]</span><br><br><span class="hljs-attr">default-storage-engine</span>=<span class="hljs-string">MyISAM</span><br><br><span class="hljs-attr">max-connections</span>=<span class="hljs-string">19</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>当使用上边两种方式中的任意一种启动服务器程序后</p>
+<p>我们再来查看一下系统变量的值:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW VARIABLES LIKE &#x27;default_storage_engine&#x27;;<br><br>+------------------------+--------+<br>| Variable_name          | Value  |<br>+------------------------+--------+<br>| default_storage_engine | MyISAM |<br>+------------------------+--------+<br>1 row in set (0.00 sec)<br><br><br><br> SHOW VARIABLES LIKE &#x27;max_connections&#x27;;<br>+-----------------+-------+<br>| Variable_name   | Value |<br>+-----------------+-------+<br>| max_connections | 10    |<br>+-----------------+-------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="7-3-2服务器程序运行过程中设置"><a href="#7-3-2服务器程序运行过程中设置" class="headerlink" title="7.3.2服务器程序运行过程中设置"></a>7.3.2服务器程序运行过程中设置</h3><p>对于大部分系统变量来说,它们的值可以在服务器程序运行过程中进行动态修改而无需停止并重启服务器</p>
+<p>但是,系统变量有作用范围之分</p>
+<p>设置不同作用范围的系统变量多个客户端程序可以同时连接到一个服务器程序</p>
+<p>对于同一个系统变量,我们有时想<strong>让不同的客户端有不同的值</strong></p>
+<p>比方说客户端A,他想让当前客户端对应的默认存储引擎为<code>InnoDB</code>,所以他可以把系统变量<code>default_storage_engine </code>的值设置为InnoDB ;</p>
+<p>客户端B,他想让当前客户端对应的默认存储引擎为<code>MyISAM</code>,所以他可以把系统变量<code>defaull_storage_engine</code>的值设置为MyISAM</p>
+<p>这样两个客户端拥有不同的默认存储引擎,使用时互不影响,十分方便</p>
+<p>但是这样各个客户端都私有一份系统变量会产生这么两个问题:</p>
+<p>有一些系统变量并不是针对单个客户端的,比如允许同时连接到服务器的客户端数量<code>max_connections</code>,查询缓存的大小<code>query_cache_size</code>,这些公有的系统变量让某个客户端私有显然不合适</p>
+<p>一个新连接到服务器的客户端对应的系统变量的值该怎么设置?</p>
+<p>MySOL提出了系统变量作用范围的概念,具体来说作用范围分为这两种:</p>
+<p><code>GLOBAL </code>:全局变量,影响服务器的整体操作</p>
+<p><code>SESSION</code>:会话变量,影响某个客户端连接的操作 (注: SESSION有个别名叫LOCAL)</p>
+<p>在服务器启动时,会将每个<strong>全局变量初始化</strong>为其<strong>默认值</strong>(可以通过命令行或选项文件中指定的选项更改这些默认值)</p>
+<p>然后服务器还为<strong>每个连接的客户端</strong>维护一组<strong>会话变量</strong>,客户端的会话变量在连接时<strong>使用相应全局变量的当前值</strong>初始化</p>
+<p>以<code>default_storage_engine</code>举例</p>
+<p>在服务器启动时会初始化一个名为<code>default_storage_engine</code>,作用范围为GLOBAL的<strong>系统变量</strong></p>
+<p>之后每当有一个客户端连接到该服务器时,服务器都会<strong>单独为该客户端</strong>分配一个名为<code>default_storage_engine</code>,作用范围为 <code>SESSION</code>的系统变量</p>
+<p>该作用范围为SESSION的系统变量值 **按照 **  <strong>当前作用范围为GLOBAL</strong>的<code>同名系统变量值</code>并行初始化</p>
+<p>很显然,通过启动选项设置的系统变量的作用范围都是<code>GLOBAL</code>的,也就是对所有客户端都有效的</p>
+<p>因为在系统启动的时候还没有客户端程序连接进来呢</p>
+<p>了解了系统变量的GLOBAL 和SESSION作用范围之后</p>
+<p>我们再看一下在服务器程序运行期间<strong>通过客户端程序设置系统变量</strong>的语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET [GLOBAL | SESSION]系统变量名=值;<br><br>-- 或者写成这样也行:<br>SET [@@ (GLOBAL | SESSION) . ]var_name = XXX;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>比如,服务器运行过程中把作用范围为<code>GLOBAL</code>的系统变量<code>default_storage_engine</code>的值修改为MyISAM</p>
+<p>也就是想让之后新连接到服务器的客户端都用MyISAM作为默认的存储引擎</p>
+<p>那我们可以选择下边两条语句中的任意一条来进行设置:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#方式一:<br>SET GLOBAL default_storage_engine = MyISAM;<br><br>#方式二:<br>SET @@GLOBAL.default_storage_engine = MyISAM;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>如果只想对本客户端生效</p>
+<p>也可以选择下边三条语句中的任意一条来进行设置:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#方式一:<br>SET SESSION default_storage_engine = MyISAM;<br><br><br>#方式二:<br>SET @@SESSION. default_storage_engine = MyISAM;<br><br><br># 方式三:<br>SET default_storage_engine = MyISAM;<br></code></pre></td></tr></table></figure>
+
+<p>从上边的方式三可以看出,如果在设置系统变量的语句中省略了作用范围,默认的作用范围就是SESSION</p>
+<p>也就是说</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">SET</span> 系统变量名=值<br>和<br><span class="hljs-built_in">SET</span> SESSION 系统变量名=值   是等价的<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>查看不同作用范围的系统变量</p>
+<p>既然系统变量有作用范围之分,那我们的<code>SHOW VARIABLES</code>语句查看的是什么作用范围的系统变量呢?</p>
+<p>答:默认查看的是SESSION作用范围的系统变量</p>
+<p>我们也可以在查看系统变量的语句上加上要查看哪个作用范围的系统变量:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SHOW</span> [<span class="hljs-keyword">GLOBAL</span> | <span class="hljs-keyword">SESSION</span>] VARIABLES [<span class="hljs-keyword">LIKE</span> E配的模式];<br></code></pre></td></tr></table></figure>
+
+
+
+<p>下边我们演示一下完整的设置并查看系统变量的过程:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW SESSION VARIABLES LIKE &#x27;default_storage_engine&#x27;;<br><br>+------------------------+--------+<br>| Variable_name          | Value  |<br>+------------------------+--------+<br>| default_storage_engine | InnoDB |<br>+------------------------+--------+<br>1 row in set (0.00 sec)<br><br><br><br><br><br><br> SHOW GLOBAL VARIABLES LIKE &#x27;default_storage_engine&#x27;;<br> <br>+------------------------+--------+<br>| Variable_name          | Value  |<br>+------------------------+--------+<br>| default_storage_engine | InnoDB |<br>+------------------------+--------+<br>1 row in set (0.00 sec)<br><br><br><br><br>mysql&gt; SET SESSION default_storage_engine = MyISAM;<br><br>Query OK, 0 rows affected (0.00 sec)<br><br><br><br><br>SHOW SESSION VARIABLES LIKE &#x27;default_storage_engine&#x27;;<br>+------------------------+--------+<br>| Variable_name          | Value  |<br>+------------------------+--------+<br>| default_storage_engine | MyISAM |<br>+------------------------+--------+<br>1 row in set (0.00 sec)<br><br><br><br> SHOW GLOBAL VARIABLES LIKE &#x27;default_storage_engine&#x27;;<br>+------------------------+--------+<br>| Variable_name          | Value  |<br>+------------------------+--------+<br>| default_storage_engine | InnoDB |<br>+------------------------+--------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>可以看到,最初<code>default_storage_engine</code>的系统变量无论是在GLOBAL作用范围上还是在SESSION作用范围上的值都是InnoDB</p>
+<p>我们在SESSION作用范围把它的值设置为MyISAM之后,可以看到GLOBAL作用范围的值并没有改变</p>
+<p>每一个MySQL客户机成功连接MySQL服务器后，都会产生与之对应的会话</p>
+<p>会话期间，MySQL服务实例会在MySQL服务器内存中生成与该会话对应的会话系统变量</p>
+<p>这些会话系统变量的初始值是全局系统变量值的复制</p>
+<p>如下图：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208282053188.png" srcset="/img/loading.gif" lazyload alt="image-20211108114846634"></p>
+<hr>
+<ul>
+<li>全局系统变量针对于所有会话（连接）有效，但<code>不能跨重启</code></li>
+<li>会话系统变量仅针对于当前会话（连接）有效。会话期间，当前会话对某个会话系统变量值的修改，不会影响其他会话同一个会话系统变量的值。</li>
+<li>会话1对某个全局系统变量值的修改会导致会话2中同一个全局系统变量值的修改。</li>
+</ul>
+<p>注意：</p>
+<p>作为 MySQL 编码规范，<strong>MySQL 中的系统变量</strong>以<code>两个“@”</code>开头</p>
+<p>其中<code>@@global</code>仅用于标记全局系统变量</p>
+<p><code>@@session</code>仅用于标记会话系统变量</p>
+<p>**@@**首先标记会话系统变量，如果会话系统变量不存在，则标记全局系统变量</p>
+<p>小贴士:</p>
+<p>如果某个客户端改变了某个系统变量在GLOBAL作用范围的值,并不会影响该系统变量在当前已经连接的客户端作用范围为SESSION的值,只会影响后续连入的客户端在作用范围为SESSION的值</p>
+<p>注意事项:</p>
+<p>并不是所有系统变量都具有GLOBAL 和SESSION的作用范围</p>
+<p>有一些系统变量只具有GLOBAL作用范围,比方说<code>max_connections</code>,表示服务器程序支持同时最多有多少个客户端程序进行连接</p>
+<p>有一些系统变量只具有SESSION作用范围,比如<code>insert_id</code>,表示在对某个包含AUTO_INCREMENT列的表进行插入时,该列初始的值</p>
+<p>有一些系统变量的值既具有GLOBAL作用范围,也具有SESSION作用范围,比如我们前边用到的<code>default_storage_engine</code></p>
+<p>而且其实大部分的系统变量都是这样的有些系统变量是只读的,并不能设置值</p>
+<p>比方说version,表示当前MySQL的版本,我们客户端是不能设置它的值的,只能在<code>SHOW VARIABLES</code>语句里查看。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">视频学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7-%E5%AE%8B%E7%BA%A2%E5%BA%B7-MySQL-%E9%AB%98%E7%BA%A7/">#尚硅谷-宋红康-MySQL(高级)</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第03章-用户与权限管理-atguigu-shk</div>
+      <div>http://example.com/2023/03/30/MySQL-宋红康-高级-第03章-用户与权限管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC02%E7%AB%A0-MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章-MySQL的数据目录-atguigu-shk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第02章-MySQL的数据目录-atguigu-shk</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/30/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC04%E7%AB%A0-%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" title="第04章-逻辑架构-atguigu-shk">
+                        <span class="hidden-mobile">第04章-逻辑架构-atguigu-shk</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
