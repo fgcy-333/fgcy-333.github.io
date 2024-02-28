@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、XML1.0 XML概述：XML是可扩展标记语言（Extensible Markup Language）的缩写，它是是一种数据表示格式，可以描述非常复杂的数据结构，常用于传输和存储数据。 可扩展标记语言 、一种表示数据的格式 、用于自定义数据格式 例如： 1234567891011&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&amp;quo">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xml与设计模式">
+<meta property="og:url" content="http://example.com/%E4%BA%91%E7%9B%98/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-xml%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="一、XML1.0 XML概述：XML是可扩展标记语言（Extensible Markup Language）的缩写，它是是一种数据表示格式，可以描述非常复杂的数据结构，常用于传输和存储数据。 可扩展标记语言 、一种表示数据的格式 、用于自定义数据格式 例如： 1234567891011&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&amp;quo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/java.png">
+<meta property="article:published_time" content="2023-03-30T09:51:53.000Z">
+<meta property="article:modified_time" content="2023-05-19T15:18:26.096Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础">
+<meta property="article:tag" content="dom4j">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/java.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>xml与设计模式 - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>type</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>null</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>music</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="xml与设计模式"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="一、XML"><a href="#一、XML" class="headerlink" title="一、XML"></a>一、XML</h1><h2 id="1-0-XML概述："><a href="#1-0-XML概述：" class="headerlink" title="1.0 XML概述："></a>1.0 XML概述：</h2><p>XML是可扩展标记语言（Extensible Markup Language）的缩写，它是是一种数据表示格式，可以描述非常复杂的数据结构，常用于传输和存储数据。</p>
+<p>可扩展标记语言 、一种表示数据的格式 、用于自定义数据格式</p>
+<p>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">data</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">sender</span>&gt;</span>张三<span class="hljs-tag">&lt;/<span class="hljs-name">sender</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">receiver</span>&gt;</span>李四<span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">addr</span>&gt;</span>北京<span class="hljs-tag">&lt;/<span class="hljs-name">addr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">date</span>&gt;</span>2022-11-11 11:11:11<span class="hljs-tag">&lt;/<span class="hljs-name">date</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">current</span>&gt;</span>武汉<span class="hljs-tag">&lt;/<span class="hljs-name">current</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dest</span>&gt;</span>广州<span class="hljs-tag">&lt;/<span class="hljs-name">dest</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-0-XML的几个特点和使用场景"><a href="#2-0-XML的几个特点和使用场景" class="headerlink" title="2.0 XML的几个特点和使用场景"></a>2.0 XML的几个特点和使用场景</h2><p>一是纯文本，默认使用UTF-8编码；二是可嵌套；如果把XML内容存为文件，那么它就是一个XML文件。</p>
+<ul>
+<li>XML的使用场景：XML内容经常被当成消息进行网络传输，或者作为配置文件用于存储系统的信息。 </li>
+<li>作为：配置文件、数据存储、数据传输</li>
+<li>特点、纯文本、utf-8、可嵌套</li>
+</ul>
+<h2 id="3-0-XML的创建、语法规则"><a href="#3-0-XML的创建、语法规则" class="headerlink" title="3.0  XML的创建、语法规则"></a>3.0  XML的创建、语法规则</h2><p>XML的创建：就是创建一个XML类型的文件，要求文件的后缀必须使用xml</p>
+<ul>
+<li><strong>语法规则</strong>：XML文件的后缀名为：xml 、文档声明必须是第一行</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>version：XML默认的版本号码、该属性是必须存在的<br>encoding：本XML文件的编码</p>
+<p>XML的标签(元素)规则:</p>
+<ul>
+<li><p>标签由一对尖括号和合法标识符组成: <code>&lt;name&gt;&lt;/name&gt;</code>，必须存在一个根标签，有且只能有一个。</p>
+</li>
+<li><p>标签必须成对出现，有开始，有结束: <code>&lt;name&gt;&lt;/name&gt;</code>特殊的标签可以不成对，但是必须有结束标记，如:<code>&lt;br/&gt;</code></p>
+</li>
+<li><p>标签中可以定义属性，属性和标签名空格隔开,属性值必须用引号引起来<code>&lt;student id =&quot;1&quot;&gt;&lt;/name&gt;</code>标签需要正确的嵌套</p>
+</li>
+</ul>
+<p>XML的其他组成</p>
+<ul>
+<li><p>文件后缀必须是xml</p>
+</li>
+<li><p>文档声明必须是第一行</p>
+</li>
+<li><p>必须存在一个根标签，有且只能有一个</p>
+</li>
+<li><p>XML文件中可以定义注释信息：<code>&lt;!-- 注释内容 --&gt;</code></p>
+</li>
+<li><p>标签必须成对出现，有开始，有结束标签: <code>&lt;name&gt;&lt;/name&gt;</code></p>
+</li>
+<li><p>必须能够正确的嵌套</p>
+</li>
+<li><p>XML文件中可以存在CDATA区: <code>&lt;![CDATA[   …内容…  ]]&gt;</code></p>
+</li>
+<li><p>XML的特殊字符</p>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">&amp;lt;    &lt; 小于<br>&amp;gt;    &gt;  大于<br>&amp;amp;   &amp;  和号<br>&amp;apos;  &#x27;  单引号<br>&amp;quot;  &quot;  引号<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282259674.png" srcset="/img/loading.gif" lazyload alt="image-20221128225837320" style="zoom:80%;" />
+
+<hr>
+<p>浏览器打开内容如下：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282259949.png" srcset="/img/loading.gif" lazyload alt="image-20221128225920754"></p>
+<hr>
+<h2 id="4-0-XML文档约束"><a href="#4-0-XML文档约束" class="headerlink" title="4.0 XML文档约束"></a>4.0 XML文档约束</h2><p>什么是文档约束？</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282301411.png" srcset="/img/loading.gif" lazyload alt="image-20221128230108577"></p>
+<hr>
+<blockquote>
+<p>问题：由于XML文件可以自定义标签，导致XML文件可以随意定义，程序在解析的时候可能出现问题。</p>
+</blockquote>
+<p>文档约束：是用来限定xml文件中的标签以及属性应该怎么写。以此强制约束程序员必须按照文档约束的规定来编写xml文件。</p>
+<p>文档约束的分类:DTD、schema</p>
+<h3 id="方式一-DTD文档约束"><a href="#方式一-DTD文档约束" class="headerlink" title="方式一: DTD文档约束"></a>方式一: DTD文档约束</h3><p>需求：利用DTD文档约束，约束一个XML文件的编写。</p>
+<p>分析：<br>①：编写DTD约束文档，后缀必须是.dtd <code>data.dtd</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dtd">&lt;!ELEMENT 书架 (书+)&gt;<br>&lt;!ELEMENT 书 (书名,作者,售价)&gt;<br>&lt;!ELEMENT 书名 (#PCDATA)&gt;<br>&lt;!ELEMENT 作者 (#PCDATA)&gt;<br>&lt;!ELEMENT 售价 (#PCDATA)&gt;<br></code></pre></td></tr></table></figure>
+
+<p>②：在需要编写的XML文件中导入该DTD约束文档 <code>data.xml</code></p>
+<p>③：按照约束的规定编写XML文件的内容。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-comment">&lt;!--导入约束--&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE 书架 <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;data.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">书架</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">书</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">书名</span>&gt;</span>java<span class="hljs-tag">&lt;/<span class="hljs-name">书名</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">作者</span>&gt;</span>111<span class="hljs-tag">&lt;/<span class="hljs-name">作者</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">售价</span>&gt;</span>无价<span class="hljs-tag">&lt;/<span class="hljs-name">售价</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">书</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">书</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">书名</span>&gt;</span>js<span class="hljs-tag">&lt;/<span class="hljs-name">书名</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">作者</span>&gt;</span>222<span class="hljs-tag">&lt;/<span class="hljs-name">作者</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">售价</span>&gt;</span>不买<span class="hljs-tag">&lt;/<span class="hljs-name">售价</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">书</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">书架</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282308939.png" srcset="/img/loading.gif" lazyload alt="image-20221128230853769"></p>
+<hr>
+<p>问题：</p>
+<ul>
+<li>可以约束XML文件的编写。</li>
+<li>不能约束具体的数据类型</li>
+</ul>
+<h3 id="方式二-schema约束"><a href="#方式二-schema约束" class="headerlink" title="方式二: schema约束"></a>方式二: schema约束</h3><p>schema可以约束具体的数据类型，约束能力上更强大。</p>
+<p>schema本身也是一个xml文件，本身也受到其他约束文件的要求，所以编写的更加严谨</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282312448.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>需求：利用schema文档约束，约束一个XML文件的编写。<br>分析：<br>①：编写schema约束文档，后缀必须是.xsd，具体的形式到代码中观看。<code>data.xsd</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">&quot;http://www.fgcy.cn&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">elementFormDefault</span>=<span class="hljs-string">&quot;qualified&quot;</span>&gt;</span><br><br>    <span class="hljs-comment">&lt;!--targetNamespace:申明约束文档地址（命名空间）--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;书架&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span>&gt;</span><br>            <span class="hljs-comment">&lt;!--写子元素--&gt;</span><br>            <span class="hljs-comment">&lt;!--maxOccurs：书架下的子元素可以有任意多个--&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">&quot;unbounded&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;书&quot;</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!--写子元素--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">complexType</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">sequence</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;书名&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;string&quot;</span>/&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;价格&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;string&quot;</span>/&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;售价&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;double&quot;</span>/&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">sequence</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">complexType</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>②：在需要编写的XML文件中导入该schema约束文档<br>③：按照约束内容编写XML文件的标签。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">书架</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.fgcy.cn&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.fgcy.cn data.xsd&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">书</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">书名</span>&gt;</span>神雕侠侣<span class="hljs-tag">&lt;/<span class="hljs-name">书名</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">价格</span>&gt;</span>不买<span class="hljs-tag">&lt;/<span class="hljs-name">价格</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">售价</span>&gt;</span>123.111<span class="hljs-tag">&lt;/<span class="hljs-name">售价</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">书</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">书</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">书名</span>&gt;</span>神雕侠侣2<span class="hljs-tag">&lt;/<span class="hljs-name">书名</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">价格</span>&gt;</span>不买3<span class="hljs-tag">&lt;/<span class="hljs-name">价格</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">售价</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">售价</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">书</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">书架</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>可以约束XML文件的标签内容格式，以及具体的数据类型。<br>本身也是xml文件，格式更严谨。</p>
+<h2 id="5-0-XML解析技术概述"><a href="#5-0-XML解析技术概述" class="headerlink" title="5.0 XML解析技术概述"></a>5.0 XML解析技术概述</h2><p>XML的数据的作用是什么，最终需要怎么处理？</p>
+<p>存储数据、做配置信息、进行数据传输。最终需要被程序进行读取，解析里面的信息。</p>
+<p>什么是XML解析?</p>
+<p>使用程序读取XML中的数据</p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282330210.png" srcset="/img/loading.gif" lazyload alt="image-20221128233015676" style="zoom:80%;" />
+
+<hr>
+<p><strong>两种解析方式</strong></p>
+<ul>
+<li><p>SAX解析(一行一行解析)</p>
+</li>
+<li><p>DOM解析(整个文档一齐解析 常用)</p>
+</li>
+</ul>
+<p><strong>Dom常见的解析工具</strong></p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282331859.png" srcset="/img/loading.gif" lazyload alt="image-20221128233059230" style="zoom:80%;" />
+
+<hr>
+<p>DOM解析文档对象模型:</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282334966.png" srcset="/img/loading.gif" lazyload alt="image-20221128233444855"></p>
+<hr>
+<p>文档对象模型</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202211282335625.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<p>XML的数据的作用是什么，最终需要怎么处理？</p>
+<ul>
+<li><p>存储数据、做配置信息、进行数据传输。</p>
+</li>
+<li><p>最终需要被程序进行读取，解析里面的信息</p>
+</li>
+</ul>
+<h2 id="6-0-Dom4j解析XML-得到Document对象"><a href="#6-0-Dom4j解析XML-得到Document对象" class="headerlink" title="6.0 Dom4j解析XML-得到Document对象"></a>6.0 Dom4j解析XML-得到Document对象</h2><p><strong>SAXReader类</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212012221213.png" srcset="/img/loading.gif" lazyload alt="image-20221201222138025"></p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>    <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>    <span class="hljs-comment">//File</span><br>    <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;src/main/resources/Contacts.xml&quot;</span>);<span class="hljs-comment">//这里是maven项目</span><br>    <span class="hljs-comment">//File file = new File(&quot;xmlDemo/src/main/resources/Contacts.xml&quot;);如果是一个空项目就这要取</span><br>    <span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> saxReader.read(file);<br>    System.out.println(doc);<span class="hljs-comment">//org.dom4j.tree.DefaultDocument@512ddf17</span><br><br>    <span class="hljs-comment">//InputStream</span><br>    <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> Demo1.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts.xml&quot;</span>);<span class="hljs-comment">//读取编译后类路径的文件</span><br>    <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> saxReader.read(inputStream);<br>    System.out.println(document);<span class="hljs-comment">//org.dom4j.tree.DefaultDocument@77556fd</span><br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>Dom4j</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.dom4j/dom4j --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.dom4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>dom4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.1.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212012239134.png" srcset="/img/loading.gif" lazyload alt="image-20221201223909935"></p>
+<hr>
+<h2 id="7-0-Dom4J解析XML文件"><a href="#7-0-Dom4J解析XML文件" class="headerlink" title="7.0 Dom4J解析XML文件"></a>7.0 Dom4J解析XML文件</h2><p><strong>Document类</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212012223194.png" srcset="/img/loading.gif" lazyload alt="image-20221201222334968"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212012238818.png" srcset="/img/loading.gif" lazyload alt="image-20221201223832817"></p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bbbb</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>    <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>    <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> Demo1.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts.xml&quot;</span>);<span class="hljs-comment">//读取编译后类路径的文件</span><br>    <span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> saxReader.read(inputStream);<br><br>    <span class="hljs-type">Element</span> <span class="hljs-variable">rootElement</span> <span class="hljs-operator">=</span> doc.getRootElement();<span class="hljs-comment">//获取根元素</span><br>    System.out.println(rootElement.getName());<span class="hljs-comment">//contactList</span><br><br>    List&lt;Element&gt; elements = rootElement.elements();<span class="hljs-comment">//获取该元素下的所有儿子节点</span><br>    elements.stream().forEach(obj -&gt; System.out.print(obj.getName() + <span class="hljs-string">&quot;、&quot;</span>));<span class="hljs-comment">//contact、contact、contact、user、</span><br>    System.out.println();<br><br>    <span class="hljs-type">Element</span> <span class="hljs-variable">contact</span> <span class="hljs-operator">=</span> rootElement.element(<span class="hljs-string">&quot;contact&quot;</span>);<span class="hljs-comment">//获取某一个子元素，默认第一个</span><br>    System.out.println(contact.getName());<span class="hljs-comment">//contact</span><br>    System.out.println(contact.elementText(<span class="hljs-string">&quot;name&quot;</span>));<span class="hljs-comment">//   潘金莲</span><br>    <span class="hljs-type">Attribute</span> <span class="hljs-variable">idAttribute</span> <span class="hljs-operator">=</span> contact.attribute(<span class="hljs-string">&quot;id&quot;</span>);<br>    System.out.println(idAttribute.getName() + <span class="hljs-string">&quot; = &quot;</span> + idAttribute.getValue());<span class="hljs-comment">//id = 1</span><br>    <span class="hljs-type">Element</span> <span class="hljs-variable">email</span> <span class="hljs-operator">=</span> contact.element(<span class="hljs-string">&quot;email&quot;</span>);<br>    System.out.println(email.getText());<span class="hljs-comment">//panpan@itcast.cn</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>Contacts.xml：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">contactList</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>   潘金莲  <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>女<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>panpan@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武松<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wusong@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武大狼<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wuda@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">contactList</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>Dom4J的解析思想？</p>
+<ul>
+<li>得到文档对象Document，从中获取元素对象和内容</li>
+</ul>
+<h2 id="8-0-XML解析案例"><a href="#8-0-XML解析案例" class="headerlink" title="8.0 XML解析案例"></a>8.0 XML解析案例</h2><p>Contacts.xml：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">contactList</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>   潘金莲  <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>女<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>panpan@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武松<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wusong@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武大狼<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wuda@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">contactList</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>实体类Contact：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2022/12/1</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Contact</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> Boolean vip;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">char</span> gender;<br>    <span class="hljs-keyword">private</span> String email;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Contact&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;id=&quot;</span> + id +<br>                <span class="hljs-string">&quot;, name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, vip=&quot;</span> + vip +<br>                <span class="hljs-string">&quot;, gender=&quot;</span> + gender +<br>                <span class="hljs-string">&quot;, email=&#x27;&quot;</span> + email + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Integer <span class="hljs-title function_">getId</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> id;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Contact <span class="hljs-title function_">setId</span><span class="hljs-params">(Integer id)</span> &#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Contact <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Boolean <span class="hljs-title function_">getVip</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> vip;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Contact <span class="hljs-title function_">setVip</span><span class="hljs-params">(Boolean vip)</span> &#123;<br>        <span class="hljs-built_in">this</span>.vip = vip;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">char</span> <span class="hljs-title function_">getGender</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> gender;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Contact <span class="hljs-title function_">setGender</span><span class="hljs-params">(<span class="hljs-type">char</span> gender)</span> &#123;<br>        <span class="hljs-built_in">this</span>.gender = gender;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEmail</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> email;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Contact <span class="hljs-title function_">setEmail</span><span class="hljs-params">(String email)</span> &#123;<br>        <span class="hljs-built_in">this</span>.email = email;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>解析xml文档：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.dom4j.Attribute;<br><span class="hljs-keyword">import</span> org.dom4j.Document;<br><span class="hljs-keyword">import</span> org.dom4j.DocumentException;<br><span class="hljs-keyword">import</span> org.dom4j.Element;<br><span class="hljs-keyword">import</span> org.dom4j.io.SAXReader;<br><br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Author</span> fgcy</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2022/12/1</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Dom4jTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>        <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>        <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> saxReader.read(Dom4jTest.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts.xml&quot;</span>));<br>        <span class="hljs-type">Element</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> document.getRootElement();<br><br>        ArrayList&lt;Contact&gt; contacts = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        List&lt;Element&gt; elementList = root.elements(<span class="hljs-string">&quot;contact&quot;</span>);<br>        <span class="hljs-keyword">for</span> (Element element : elementList) &#123;<br>            <span class="hljs-type">Contact</span> <span class="hljs-variable">contact</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Contact</span>();<br>            <span class="hljs-type">String</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> element.attribute(<span class="hljs-string">&quot;id&quot;</span>).getValue();<br>            <span class="hljs-type">String</span> <span class="hljs-variable">vip</span> <span class="hljs-operator">=</span> element.attribute(<span class="hljs-string">&quot;vip&quot;</span>).getValue();<br>            <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> element.elementTextTrim(<span class="hljs-string">&quot;name&quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">gender</span> <span class="hljs-operator">=</span> element.elementTextTrim(<span class="hljs-string">&quot;gender&quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">email</span> <span class="hljs-operator">=</span> element.elementTextTrim(<span class="hljs-string">&quot;email&quot;</span>);<br>            contact.setEmail(email);<br>            contact.setGender(gender.charAt(<span class="hljs-number">0</span>));<br>            contact.setName(name);<br>            contact.setId(Integer.valueOf(id));<br>            contact.setVip(<span class="hljs-string">&quot;true&quot;</span>.equals(vip));<br>            contacts.add(contact);<br>        &#125;<br>        contacts.forEach(System.out::println);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="9-0-XML检索技术：Xpath"><a href="#9-0-XML检索技术：Xpath" class="headerlink" title="9.0 XML检索技术：Xpath"></a>9.0 XML检索技术：Xpath</h2><p>如果需要从XML文件中检索需要的某个信息（如name）怎么解决？</p>
+<ul>
+<li><p>Dom4j需要进行文件的全部解析，然后再寻找数据。</p>
+</li>
+<li><p>Xpath技术更加适合做信息检索。</p>
+</li>
+</ul>
+<p>XPath在解析XML文档方面提供了一独树一帜的路径思想，更加优雅，高效</p>
+<p>XPath使用路径表达式来定位XML文档中的元素节点或属性节点。</p>
+<p>通过dom4j的SAXReader获取Document对象</p>
+<p>利用XPath提供的API,结合XPath的语法完成选取XML文档元素节点进行解析操作</p>
+<p><strong>Document中与Xpath相关的API如下：</strong></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212012325169.png" srcset="/img/loading.gif" lazyload alt="image-20221201232517691"></p>
+<hr>
+<p>Xpath:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/jaxen/jaxen --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>jaxen<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jaxen<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.1.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="Xpath的四大检索方案"><a href="#Xpath的四大检索方案" class="headerlink" title="Xpath的四大检索方案"></a>Xpath的四大检索方案</h3><p><strong>绝对路径:</strong></p>
+<p>采用绝对路径获取从根节点开始逐层的查找&#x2F;contactList&#x2F;contact&#x2F;name节点列表并打印信息</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212020005402.png" srcset="/img/loading.gif" lazyload alt="image-20221202000551042"></p>
+<hr>
+<p>Contact2.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">contactList</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>   潘金莲  <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>女<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>panpan@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武松<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wusong@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武大狼<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wuda@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">contact</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">info</span>&gt;</span><br><br>                <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>我是西门庆<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">info</span>&gt;</span><br>         <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">contactList</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">aaa</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>    <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>    <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> saxReader.read(XpathDemo.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts2.xml&quot;</span>));<br><br>    <span class="hljs-comment">//检索所有contact下的名称</span><br>    List&lt;Node&gt; nameNodes = document.selectNodes(<span class="hljs-string">&quot;/contactList/contact/name&quot;</span>);<br>    nameNodes.forEach(obj -&gt; System.out.print(((Element) obj).getTextTrim() + <span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//潘金莲 武松 武大狼</span><br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>相对路径:</strong></p>
+<p>先得到根节点contactList再采用相对路径获取下一级contact 节点的name子节点并打印信息</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212020006526.png" srcset="/img/loading.gif" lazyload alt="image-20221202000610742"></p>
+<hr>
+<p>Contact2.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">contactList</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>   潘金莲  <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>女<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>panpan@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武松<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wusong@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武大狼<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wuda@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">contact</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">info</span>&gt;</span><br><br>                <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>我是西门庆<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">info</span>&gt;</span><br>         <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">contactList</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bbb</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>    <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>    <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> saxReader.read(XpathDemo.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts2.xml&quot;</span>));<br><br>    <span class="hljs-comment">//检索所有contact下的名称</span><br>    <span class="hljs-type">Element</span> <span class="hljs-variable">rootElement</span> <span class="hljs-operator">=</span> document.getRootElement();<br>    List&lt;Node&gt; nameNodes = rootElement.selectNodes(<span class="hljs-string">&quot;./contact/name&quot;</span>);<span class="hljs-comment">//.代表当前元素</span><br>    nameNodes.forEach(obj -&gt; System.out.print(((Element) obj).getTextTrim() + <span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//潘金莲 武松 武大狼</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p><strong>全文检索</strong></p>
+<p>直接全文搜索所有的name元素并打印</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212020006574.png" srcset="/img/loading.gif" lazyload alt="image-20221202000631101"></p>
+<hr>
+<p>Contact2.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">contactList</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>   潘金莲  <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>女<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>panpan@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武松<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wusong@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武大狼<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wuda@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">contact</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">info</span>&gt;</span><br><br>                <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>我是西门庆<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">info</span>&gt;</span><br>         <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">contactList</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">ccc</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>    <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>    <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> saxReader.read(XpathDemo.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts2.xml&quot;</span>));<br><br>    <span class="hljs-comment">//检索所有名称</span><br>    List&lt;Node&gt; nameNodes = document.selectNodes(<span class="hljs-string">&quot;//name&quot;</span>);<br>    nameNodes.forEach(obj -&gt; System.out.print(((Element) obj).getTextTrim() + <span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//潘金莲 武松 武大狼 我是西门庆</span><br>    System.out.println(<span class="hljs-string">&quot; &quot;</span>);<br><br>    <span class="hljs-comment">//检索所有contact下一级的名称</span><br>    List&lt;Node&gt; nodeList = document.selectNodes(<span class="hljs-string">&quot;//contact/name&quot;</span>);<br>    nodeList.forEach(obj -&gt; System.out.print(((Element) obj).getTextTrim() + <span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//潘金莲 武松 武大狼</span><br><br>    System.out.println();<br><br>    <span class="hljs-comment">//检索所有contact下的名称</span><br>    List&lt;Node&gt; nodes = document.selectNodes(<span class="hljs-string">&quot;//contact//name&quot;</span>);<br>    nodes.forEach(obj -&gt; System.out.print(((Element) obj).getTextTrim() + <span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//潘金莲 武松 武大狼 我是西门庆</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>属性查找</strong></p>
+<p>在全文中搜索属性，或者带属性的元素</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202212020006845.png" srcset="/img/loading.gif" lazyload alt="image-20221202000655565"></p>
+<hr>
+<p>Contact2.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">contactList</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>   潘金莲  <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>女<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>panpan@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武松<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wusong@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">contact</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">vip</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>武大狼<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">gender</span>&gt;</span>男<span class="hljs-tag">&lt;/<span class="hljs-name">gender</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>wuda@itcast.cn<span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">contact</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">info</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">name</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;555&quot;</span>&gt;</span>我是西门庆<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">info</span>&gt;</span><br>         <span class="hljs-tag">&lt;/<span class="hljs-name">contact</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">contactList</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dddd</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> DocumentException &#123;<br>    <span class="hljs-type">SAXReader</span> <span class="hljs-variable">saxReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SAXReader</span>();<br>    <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> saxReader.read(XpathDemo.class.getResourceAsStream(<span class="hljs-string">&quot;/Contacts2.xml&quot;</span>));<br>    <span class="hljs-comment">//检索属性</span><br>    List&lt;Node&gt; nodes = document.selectNodes(<span class="hljs-string">&quot;//@id&quot;</span>);<br>    nodes.forEach(obj -&gt; System.out.print(((Attribute) obj).getName() + <span class="hljs-string">&quot;=&quot;</span> + ((Attribute) obj).getValue() + <span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//id=1 id=2 id=3 id=555</span><br>    System.out.println();<br><br>    <span class="hljs-comment">//检索包含某个属性的元素</span><br>    <span class="hljs-comment">//Node node = document.selectSingleNode(&quot;//name[@id]&quot;);</span><br>    <span class="hljs-type">Node</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> document.selectSingleNode(<span class="hljs-string">&quot;//name[@id=555]&quot;</span>);<span class="hljs-comment">//精准定位</span><br>    System.out.println(((Element) node).getTextTrim());<span class="hljs-comment">//我是西门庆</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>Xpath作用，四大类。</p>
+<p>检索XML文件中的信息绝对路径： &#x2F;根元素&#x2F;子元素&#x2F;孙元素</p>
+<p>相对路径：.&#x2F;子元素&#x2F;孙元素</p>
+<p>全文检索：&#x2F;&#x2F;contact</p>
+<p>属性查找：&#x2F;&#x2F;@属性名 、&#x2F;&#x2F;元素[@属性名]、&#x2F;&#x2F;元素&#x2F;&#x2F;[@属性名&#x3D;‘值’]</p>
+<h1 id="二、设计模式"><a href="#二、设计模式" class="headerlink" title="二、设计模式"></a>二、设计模式</h1><p>设计模式（Design Pattern）是一种<strong>通用的解决问题的方案</strong>，它描述了在特定情境下应该如何解决问题，并提供了经过实践验证的可行的解决方案</p>
+<p>设计模式通常是针对软件开发中出现的一些常见问题和经验进行总结和抽象化，以便于开发人员在实际编写代码时能够更加高效地解决类似问题。</p>
+<p>根据目的和使用方式，设计模式可以分为创建型模式、结构型模式和行为型模式三种类型。</p>
+<ul>
+<li><strong>创建型模式</strong>：主要关注对象的创建机制，包括单例模式、工厂方法模式、抽象工厂模式、建造者模式和原型模式等。</li>
+<li><strong>结构型模式</strong>：主要关注对象之间的组合和协作，包括适配器模式、桥接模式、装饰者模式、外观模式、享元模式和组合模式等。</li>
+<li><strong>行为型模式</strong>：主要关注对象之间的交互和职责划分，包括策略模式、模板方法模式、观察者模式、迭代器模式、职责链模式、命令模式、备忘录模式、状态模式、访问者模式和中介者模式等。</li>
+</ul>
+<p>设计模式可以提高代码的可读性、可维护性和可扩展性，避免了重复造轮子和低效的代码冗余，同时也可以减少项目的风险和开发成本。掌握设计模式是每个程序员必备的技能之一。</p>
+<p>通常来说有23种；</p>
+<h2 id="1-0-工厂模式"><a href="#1-0-工厂模式" class="headerlink" title="1.0 工厂模式"></a>1.0 工厂模式</h2><p>工厂模式（Factory Pattern）是一种创建型设计模式，它提供了一种封装对象创建过程的方式，在不暴露对象创建细节的情况下，为客户端代码返回一个合适的对象实例。</p>
+<p>在工厂模式中，我们定义一个工厂类来负责创建具体的对象。这个工厂类通常包含一个公共的工厂方法，根据传入的参数或条件来返回相应类型的对象实例。客户端代码只需要调用工厂方法即可获取所需对象，无需关心对象创建的过程和实现细节。</p>
+<p>工厂模式可以分为三种类型：</p>
+<ol>
+<li>简单工厂模式（Simple Factory Pattern）：由一个工厂类根据传入的参数来决定创建哪一种产品类的实例。</li>
+<li>工厂方法模式（Factory Method Pattern）：将对象创建推迟到子类实现，从而扩展工厂类别的对象创建。</li>
+<li>抽象工厂模式（Abstract Factory Pattern）：提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</li>
+</ol>
+<p><strong>工厂设计模式的作用：</strong></p>
+<ul>
+<li><p>工厂的方法可以封装对象的创建细节，比如：为该对象进行加工和数据注入。</p>
+</li>
+<li><p>可以实现类与类之间的解耦操作（核心思想）。</p>
+</li>
+</ul>
+<p>以下是<strong>简单工厂模式</strong>的示例代码：【根据入参决定创建哪一种产品】</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 抽象产品</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 A</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductA</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 A 的操作&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 B</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductB</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 B 的操作&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 工厂类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Factory</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Product <span class="hljs-title function_">createProduct</span><span class="hljs-params">(String type)</span> &#123;<br>        <span class="hljs-keyword">switch</span> (type) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;A&quot;</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductA</span>();<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;B&quot;</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductB</span>();<br>            <span class="hljs-keyword">default</span>:<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Invalid product type: &quot;</span> + type);<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 客户端代码</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 通过工厂类创建具体产品对象</span><br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product1</span> <span class="hljs-operator">=</span> Factory.createProduct(<span class="hljs-string">&quot;A&quot;</span>);<br>        product1.operation();<br><br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product2</span> <span class="hljs-operator">=</span> Factory.createProduct(<span class="hljs-string">&quot;B&quot;</span>);<br>        product2.operation();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上代码中，工厂类 Factory 包含一个静态方法 createProduct，该方法根据传入的类型参数返回相应的具体产品对象。客户端代码只需要调用工厂方法即可获取所需对象实例，无需关心对象的创建和实现细节。</p>
+<p>工厂模式可以提高代码的灵活性和可扩展性，降低了代码的耦合度，是一种常见的设计模式。</p>
+</blockquote>
+<p>工厂方法模式示例代码：【多态】</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 抽象产品</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 A</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductA</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 A 的操作&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 B</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductB</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 B 的操作&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 工厂接口</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Factory</span> &#123;<br>    Product <span class="hljs-title function_">createProduct</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 具体工厂类 A，用于创建产品 A</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFactoryA</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Factory</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">createProduct</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductA</span>();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 具体工厂类 B，用于创建产品 B</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFactoryB</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Factory</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">createProduct</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductB</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上代码中，抽象产品 Product 定义了产品的标准接口，具体产品 ConcreteProductA 和 ConcreteProductB 实现了产品接口并提供了具体的操作方法。</p>
+<p>抽象工厂接口 Factory 定义了产品的创建方法，具体工厂类 ConcreteFactoryA 和 ConcreteFactoryB 分别实现了工厂接口，并负责创建产品 A 和产品 B。</p>
+<p>在客户端代码中，通过具体工厂类创建对应的产品对象，无需关心对象的创建和实现细节，从而达到降低代码耦合度和提高可扩展性的目的。</p>
+<p>工厂方法模式可以扩展工厂类别的对象创建，同时也保持了代码的灵活性和可维护性，是一种常用的设计模式。</p>
+</blockquote>
+<p>以下是一个使用<strong>抽象工厂模式</strong>的示例 Java 代码：【多态 产品簇】</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 抽象产品 A</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ProductA</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationA</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 A1</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductA1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ProductA</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationA</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 A1 的操作&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 A2</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductA2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ProductA</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationA</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 A2 的操作&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 抽象产品 B</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ProductB</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationB</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 B1</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductB1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ProductB</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationB</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 B1 的操作&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 具体产品 B2</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProductB2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ProductB</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationB</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体产品 B2 的操作&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 抽象工厂接口</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">AbstractFactory</span> &#123;<br>    ProductA <span class="hljs-title function_">createProductA</span><span class="hljs-params">()</span>;<br>    ProductB <span class="hljs-title function_">createProductB</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-comment">// 具体工厂类 1，用于创建产品族 1 的产品</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFactory1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AbstractFactory</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> ProductA <span class="hljs-title function_">createProductA</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductA1</span>();<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> ProductB <span class="hljs-title function_">createProductB</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductB1</span>();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 具体工厂类 2，用于创建产品族 2 的产品</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFactory2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AbstractFactory</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> ProductA <span class="hljs-title function_">createProductA</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductA2</span>();<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> ProductB <span class="hljs-title function_">createProductB</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProductB2</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 客户端代码</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 使用具体工厂类 1 创建产品族 1 的产品</span><br>        <span class="hljs-type">AbstractFactory</span> <span class="hljs-variable">factory1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFactory1</span>();<br>        <span class="hljs-type">ProductA</span> <span class="hljs-variable">productA1</span> <span class="hljs-operator">=</span> factory1.createProductA();<br>        productA1.operationA();<br>        <span class="hljs-type">ProductB</span> <span class="hljs-variable">productB1</span> <span class="hljs-operator">=</span> factory1.createProductB();<br>        productB1.operationB();<br><br>        <span class="hljs-comment">// 使用具体工厂类 2 创建产品族 2 的产品</span><br>        <span class="hljs-type">AbstractFactory</span> <span class="hljs-variable">factory2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFactory2</span>();<br>        <span class="hljs-type">ProductA</span> <span class="hljs-variable">productA2</span> <span class="hljs-operator">=</span> factory2.createProductA();<br>        productA2.operationA();<br>        <span class="hljs-type">ProductB</span> <span class="hljs-variable">productB2</span> <span class="hljs-operator">=</span> factory2.createProductB();<br>        productB2.operationB();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上代码中，抽象产品 ProductA 和 ProductB 分别定义了产品 A 和 B 的标准接口，具体产品 ConcreteProductA1、ConcreteProductA2、ConcreteProductB1 和 ConcreteProductB2 实现了对应的产品接口并提供了具体的操作方法。抽象工厂接口 AbstractFactory 定义了产品族的创建方法，具体工厂类 ConcreteFactory1 和 ConcreteFactory2 实现了工厂接口，并负责创建产品族 1 和产品族 2 的产品。</p>
+<p>在客户端代码中，通过具体工厂类创建对应的产品族对象，无需关心不同产品之间的依赖关系和具体实现，从而达到降低代码耦合度和提高可扩展性的目的。</p>
+<p>抽象工厂模式可以扩展一组相关或者依赖对象的创建，同时也保持了代码的灵活性和可维护性，是一种常用的设计模式。</p>
+</blockquote>
+<h2 id="2-0-建造者模式"><a href="#2-0-建造者模式" class="headerlink" title="2.0 建造者模式"></a>2.0 建造者模式</h2><p>Builder Pattern 是一种创建型设计模式，它通过将一个复杂对象的构建过程分解成多个简单对象的构建过程来完成</p>
+<p>在对象构建过程中，每个简单对象都可以按照特定的顺序进行构建和组装，最终得到一个完整的、复杂的对象。</p>
+<p>以下是一个使用建造者模式的示例 Java 代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 产品类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Product</span> &#123;<br>    <span class="hljs-keyword">private</span> String partA;<br>    <span class="hljs-keyword">private</span> String partB;<br>    <span class="hljs-keyword">private</span> String partC;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPartA</span><span class="hljs-params">(String partA)</span> &#123;<br>        <span class="hljs-built_in">this</span>.partA = partA;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPartB</span><span class="hljs-params">(String partB)</span> &#123;<br>        <span class="hljs-built_in">this</span>.partB = partB;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPartC</span><span class="hljs-params">(String partC)</span> &#123;<br>        <span class="hljs-built_in">this</span>.partC = partC;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Product [partA=&quot;</span> + partA + <span class="hljs-string">&quot;, partB=&quot;</span> + partB + <span class="hljs-string">&quot;, partC=&quot;</span> + partC + <span class="hljs-string">&quot;]&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs mysql">// 抽象建造者类<br>abstract class Builder &#123;<br>    protected Product product = new Product();<br><br>    public abstract void buildPartA();<br>    public abstract void buildPartB();<br>    public abstract void buildPartC();<br><br>    public Product getResult() &#123;<br>        return product;<br>    &#125;<br>&#125;<br><br>// 具体建造者类 1<br>class ConcreteBuilder1 extends Builder &#123;<br>    @Override<br>    public void buildPartA() &#123;<br>        product.setPartA(&quot;ConcreteBuilder1 PartA&quot;);<br>    &#125;<br><br>    @Override<br>    public void buildPartB() &#123;<br>        product.setPartB(&quot;ConcreteBuilder1 PartB&quot;);<br>    &#125;<br><br>    @Override<br>    public void buildPartC() &#123;<br>        product.setPartC(&quot;ConcreteBuilder1 PartC&quot;);<br>    &#125;<br>&#125;<br><br>// 具体建造者类 2<br>class ConcreteBuilder2 extends Builder &#123;<br>    @Override<br>    public void buildPartA() &#123;<br>        product.setPartA(&quot;ConcreteBuilder2 PartA&quot;);<br>    &#125;<br><br>    @Override<br>    public void buildPartB() &#123;<br>        product.setPartB(&quot;ConcreteBuilder2 PartB&quot;);<br>    &#125;<br><br>    @Override<br>    public void buildPartC() &#123;<br>        product.setPartC(&quot;ConcreteBuilder2 PartC&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 指挥者类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Director</span> &#123;<br>    <span class="hljs-keyword">private</span> Builder builder;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Director</span><span class="hljs-params">(Builder builder)</span> &#123;<br>        <span class="hljs-built_in">this</span>.builder = builder;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">construct</span><span class="hljs-params">()</span> &#123;<br>        builder.buildPartA();<br>        builder.buildPartB();<br>        builder.buildPartC();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 客户端代码</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Builder</span> <span class="hljs-variable">builder1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteBuilder1</span>();<br>        <span class="hljs-type">Director</span> <span class="hljs-variable">director1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Director</span>(builder1);<br>        director1.construct();<span class="hljs-comment">//组装内部成员</span><br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product1</span> <span class="hljs-operator">=</span> builder1.getResult();<span class="hljs-comment">//获取目标对象</span><br>        product1.show();<span class="hljs-comment">//调用目标方法</span><br><br>        <span class="hljs-type">Builder</span> <span class="hljs-variable">builder2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteBuilder2</span>();<br>        <span class="hljs-type">Director</span> <span class="hljs-variable">director2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Director</span>(builder2);<br>        director2.construct();<br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product2</span> <span class="hljs-operator">=</span> builder2.getResult();<br>        product2.show();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><p>什么是装饰设计模式？</p>
+<p>创建一个新类，包装原始类，从而在新类中提升原来类的功能。</p>
+<p>装饰设计模式的作用：</p>
+<p>作用：装饰模式指的是在不改变原类的基础上, 动态地扩展一个类的功能。</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、初识面向对象 面向对象并不是一个技术，而是一种编程指导思想 面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题 生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。  二、类、对象对象: 是对现实世界具体事物的抽象,是类的具体实例 。类(可以看成是设计图)：同类事物的共性">
+<meta property="og:type" content="website">
+<meta property="og:title" content="面向对象基础">
+<meta property="og:url" content="http://example.com/%E4%BA%91%E7%9B%98/Java%E5%9F%BA%E7%A1%80-%E5%BE%90%E7%A3%8A-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="一、初识面向对象 面向对象并不是一个技术，而是一种编程指导思想 面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题 生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。  二、类、对象对象: 是对现实世界具体事物的抽象,是类的具体实例 。类(可以看成是设计图)：同类事物的共性">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/java.png">
+<meta property="article:published_time" content="2023-03-30T12:16:17.000Z">
+<meta property="article:modified_time" content="2023-05-19T15:20:45.885Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/java.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>面向对象基础 - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>type</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>null</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>music</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="面向对象基础"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h2 id="一、初识面向对象"><a href="#一、初识面向对象" class="headerlink" title="一、初识面向对象"></a>一、初识面向对象</h2><ol>
+<li>面向对象并不是一个技术，而是一种编程指导思想</li>
+<li>面向对象是指把现实世界的具体事物全部看成一个一个的对象来解决实际问题</li>
+<li>生活中我们是按照对象化的方式解决问题的。如果程序也能够按照生活的中的方式来解决问题，那么程序就更符合人类的思维习惯，代码看	起来会更易理解、更简单、更易维护。</li>
+</ol>
+<h2 id="二、类、对象"><a href="#二、类、对象" class="headerlink" title="二、类、对象"></a>二、类、对象</h2><p>对象: 是对现实世界具体事物的抽象,是类的具体实例 。<br>类(可以看成是设计图)：同类事物的共性，是对对象的抽象。<br>在Java中，必须先设计类，才能获得对象</p>
+<span id="more"></span>
+
+<h3 id="1-0-类的定义"><a href="#1-0-类的定义" class="headerlink" title="1.0 类的定义"></a>1.0 类的定义</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> class 类名&#123;<br>    <span class="hljs-comment">//类中四大金刚</span><br>    <span class="hljs-comment">//1.属性</span><br>        成员变量:实例成员变量、静态成员变量<br>        局部变量:方法中的变量、代码块中的变量、入参<br>    <span class="hljs-comment">//2.构造器</span><br>    		有参构造器<br>    		无参构造器<br>    		私有构造器<br>    		公有构造器<br>    <span class="hljs-comment">//3.方法</span><br>            静态方法<br>            实例方法<br>    <span class="hljs-comment">//4.代码块</span><br>            静态代码块<br>            实例代码块<br>    <span class="hljs-comment">//5.内部类</span><br>            成员内部类<br>            静态内部类<br>            局部内部类<br>            匿名内部类<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-0-注意事项"><a href="#2-0-注意事项" class="headerlink" title="2.0 注意事项"></a>2.0 注意事项</h3><ol>
+<li><p>成员变量的完整定义格式是：修饰符 数据类型 变量名称 &#x3D; 初始化值； 一般无需指定初始化值，存在默认值。</p>
+</li>
+<li><p>类名大驼峰模式,方法名小驼峰</p>
+</li>
+<li><p>一个Java文件中可以定义多个class类，且只能一个类是public修饰，而且public修饰的类名必须成为代码文件名。该java文件编译后	 会生成多个字节码文件</p>
+</li>
+<li><p>实际开发中建议还是一个文件定义一个class类。</p>
+</li>
+<li><p>成员变量 不同数据类型的默认初始值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">byte</span> <span class="hljs-type">short</span> <span class="hljs-type">int</span> <span class="hljs-type">char</span>=<span class="hljs-string">&#x27;\u0000&#x27;</span>     <span class="hljs-number">0</span><br><span class="hljs-type">float</span> <span class="hljs-type">double</span> 					  <span class="hljs-number">0.0</span><br><span class="hljs-type">boolean</span>                          <span class="hljs-literal">false</span><br>类 接口 数组 String                <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三、Java对象内存图"><a href="#三、Java对象内存图" class="headerlink" title="三、Java对象内存图"></a>三、Java对象内存图</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-04_22-47-20.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<ul>
+<li>内存图说明</li>
+</ul>
+<ol>
+<li>加载Test的字节码文件进入方法区，其中字节码文件包括成员方法和成员变量(这里没有)</li>
+<li>将Test字节码中的main方法提取到栈中，开始执行main方法里面的内容</li>
+<li>将Car的字节码文件加载进方法区，其中包括成员变量name、price和成员方法start()、run(),<br>在堆内存中开辟一块内存空间代表汽车对象，其中会开辟一些区域用来存放属性信息（有默认值），还会汽车对象区域中开辟一些空间用于    存储属于该对象的存放在方法区中的	成员方法引用地址</li>
+<li>在（main方法中）栈内存中开辟一块空间作为main方法的局部变量，用于存放汽车对象的地址</li>
+<li>通过局部变量中存放的汽车对象地址找到汽车对象，然后对其name属性进行赋值操作<br>………</li>
+<li>通过局部变量c1存储的对象地址找到汽车对象，再通过汽车对象中的成员方法引用地址找到方法区中的方法提取到栈中运行，因为该方法	知到是哪个对象调用自己的，所以可以获取该对象的成员属性进行操作<br>………………..</li>
+</ol>
+<ul>
+<li>垃圾回收</li>
+</ul>
+<ol>
+<li>注意：当堆内存中的类对象或数组对象，没有被任何变量引用（指向）时，就会被判定为内存中的“垃圾”。</li>
+<li>Java存在自动垃圾回收器，会定期进行清理。</li>
+</ol>
+<h2 id="四、构造器"><a href="#四、构造器" class="headerlink" title="四、构造器"></a>四、构造器</h2><ul>
+<li>构造器定义</li>
+</ul>
+<p>​		构造器的作用用于初始化一个类的对象，并返回对象的地址</p>
+<ul>
+<li>构造器定义格式：</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">修饰符 类名(形参列表)&#123;<br><br>&#125;<br><br>不同修饰符的权限<br><span class="hljs-keyword">private</span>         本类有效<br>缺省			   包权限<br><span class="hljs-keyword">protected</span>	    包权限+子类有效<br><span class="hljs-keyword">public</span>          所有类皆有效<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>构造器分类</li>
+</ul>
+<ol>
+<li>无参数构造器（默认存在的）：初始化的对象时，成员变量的数据均采用默认值。</li>
+<li>有参数构造器：在初始化对象的时候，同时可以为对象进行赋值</li>
+</ol>
+<ul>
+<li>注意</li>
+</ul>
+<ol>
+<li>任何类定义出来，默认就自带了无参数构造器，写不写都有。</li>
+<li>一旦定义了有参数构造器，默认的无参数构造器就没有了，此时就需要自己写一个无参数构造器了</li>
+</ol>
+<h2 id="五、this关键字"><a href="#五、this关键字" class="headerlink" title="五、this关键字"></a>五、this关键字</h2><ol>
+<li>this关键字可以出现在成员方法、构造器中，代表当前对象的地址。</li>
+<li>作用：访问当前对象的成员变量、成员方法。</li>
+</ol>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-05_10-30-38.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h2 id="六、封装"><a href="#六、封装" class="headerlink" title="六、封装"></a>六、封装</h2><ul>
+<li>概念</li>
+</ul>
+<ol>
+<li>将同一类事物共性（属性和方法）归到一个类中</li>
+<li>对象代表什么，就封装对应的数据，并提供相应的方法</li>
+<li>使用一些修饰符尽可能的隐藏内部细节，只暴露一些接口与外界发生联系</li>
+</ol>
+<ul>
+<li>好处</li>
+</ul>
+<ol>
+<li>实现专业化分工（有事，找对象，调方法）</li>
+<li>隐藏信息，实现细节</li>
+</ol>
+<ul>
+<li>JavaBean</li>
+</ul>
+<p>​		也可以称为实体类，其对象用于在程序中封装数据</p>
+<ul>
+<li>格式</li>
+</ul>
+<ol>
+<li>成员变量使用 private 修饰。</li>
+<li>提供每一个成员变量对应的 setXxx() &#x2F; getXxx()。</li>
+<li>必须提供一个无参构造器。</li>
+</ol>
+<h3 id="1-0-成员变量与局部变量"><a href="#1-0-成员变量与局部变量" class="headerlink" title="1.0 成员变量与局部变量"></a>1.0 成员变量与局部变量</h3><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/Snipaste_2022-03-05_11-03-05.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、什么是代理模式 代理模式是指，为目标对象提供一种代理以控制对这个对象的访问 在某些情况下， 一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户和目标对象之间起到中介的作用； 使用代理对象，是为了在不修改目标对象的基础上，增强主业务逻辑。  客户类真正的想要访问的对象是目标对象，但客户类真正可以访问的对象是代理对象。 客户类对目标对象的访问是通过访问代理对象来实现的 二、代理模式的作">
+<meta property="og:type" content="website">
+<meta property="og:title" content="动态代理(rong)">
+<meta property="og:url" content="http://example.com/%E4%BA%91%E7%9B%98/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-dongli.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="一、什么是代理模式 代理模式是指，为目标对象提供一种代理以控制对这个对象的访问 在某些情况下， 一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户和目标对象之间起到中介的作用； 使用代理对象，是为了在不修改目标对象的基础上，增强主业务逻辑。  客户类真正的想要访问的对象是目标对象，但客户类真正可以访问的对象是代理对象。 客户类对目标对象的访问是通过访问代理对象来实现的 二、代理模式的作">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.png">
+<meta property="article:published_time" content="2023-03-30T12:12:47.000Z">
+<meta property="article:modified_time" content="2023-05-19T15:10:28.672Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="动态代理">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="Gof">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>动态代理(rong) - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>type</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>null</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>music</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="动态代理(rong)"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h2 id="一、什么是代理模式"><a href="#一、什么是代理模式" class="headerlink" title="一、什么是代理模式"></a>一、什么是代理模式</h2><ul>
+<li>代理模式是指，为<strong>目标对象</strong>提供一种代理<strong>以控制对这个对象的访问</strong></li>
+<li>在某些情况下， 一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户和目标对象之间起到中介的作用；</li>
+<li>使用代理对象，是<strong>为了在不修改目标对象的基础上，增强主业务逻辑</strong>。</li>
+</ul>
+<p>客户类<strong>真正的想要访问的对象是目标对象</strong>，但客户类真正可以访问的对象是代理对象。</p>
+<p><strong>客户类对目标对象的访问是通过访问代理对象来实现的</strong></p>
+<h2 id="二、代理模式的作用"><a href="#二、代理模式的作用" class="headerlink" title="二、代理模式的作用"></a>二、代理模式的作用</h2><p>1.控制目标对象【被代理对象】的访问<br>2.使用代理对象，是<strong>为了在不修改目标对象的基础上，增强主业务逻辑</strong>。</p>
+<span id="more"></span>
+
+<h2 id="三、代理模式的分类"><a href="#三、代理模式的分类" class="headerlink" title="三、代理模式的分类"></a>三、代理模式的分类</h2><ul>
+<li>静态代理</li>
+</ul>
+<hr>
+<ul>
+<li>动态代理<ul>
+<li>JDK动态代理【接口】<ul>
+<li>CGLib动态代理【父子类】</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、静态代理的特点"><a href="#四、静态代理的特点" class="headerlink" title="四、静态代理的特点"></a>四、静态代理的特点</h2><p>1**.目标对象和代理对象实现同一个业务接口**。【静态代理】</p>
+<p>2.代理对象中的<strong>核心功能</strong>是由<strong>目标对象</strong>来完成，<strong>代理对象负责增强功能</strong></p>
+<p>3.能够<strong>灵活的进行目标对象的切换</strong> <strong>【多态，构造注入】</strong>,却<strong>无法进行功能的灵活处理</strong> 【接口新增方法时，被代理对象要修改代码，代理对象也要修改代码】</p>
+<p>(使用动态代理解决此问题)</p>
+<h2 id="五、静态代理实现"><a href="#五、静态代理实现" class="headerlink" title="五、静态代理实现"></a>五、静态代理实现</h2><ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">*  业务接口Service</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Service</span> &#123;<br>    <span class="hljs-comment">//规定的唱歌的业务功能</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">sing</span><span class="hljs-params">()</span>;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *   目标对象:实现业务接口中的功能</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperStarLiu</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Service</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sing</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;我是刘德华,我正在表演唱歌............&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java">	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	*  代理对象: 静态代理对象要实现业务接口 调用目标对象的对应的方法，并进行功能增强</span><br><span class="hljs-comment">	*/</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Agent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Service</span> &#123;<br>    	<span class="hljs-comment">//类中的成员变量设计为接口</span><br>    	<span class="hljs-keyword">public</span> Service target;  <span class="hljs-comment">//目标对象</span><br><br>        <span class="hljs-comment">//目的：灵活切换目标方法</span><br>    	<span class="hljs-comment">//传入目标对象,方法的参数设计为接口</span><br>    	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Agent</span><span class="hljs-params">(Service target)</span>&#123;<br>       		 <span class="hljs-built_in">this</span>.target = target;<br>    	&#125;<br><br>    	<span class="hljs-meta">@Override</span><br>    	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sing</span><span class="hljs-params">()</span> &#123;<br>        	System.out.println(<span class="hljs-string">&quot;预订时间..........&quot;</span>);<br>        	System.out.println(<span class="hljs-string">&quot;预订场地..........&quot;</span>);<br><br>        <span class="hljs-comment">//切记切记:业务功能必须由目标对象亲自实现</span><br>        <span class="hljs-comment">//这种方法无法经行灵活的目标对象切换</span><br>		<span class="hljs-comment">//SuperStarLiu liu = new SuperStarLiu();</span><br>		<span class="hljs-comment">//liu.sing();</span><br><br>		<span class="hljs-comment">//SuperStarZhou zhou = new SuperStarZhou();</span><br>		<span class="hljs-comment">//hou.sing();</span><br><br>        <span class="hljs-comment">//面向接口编程:变量用接口；方法返回值用接口；接口指向实现类</span><br>        target.sing();<br><br>        System.out.println(<span class="hljs-string">&quot;结算费用..........&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">客户端对象<br> <span class="hljs-meta">@Test</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testAgent</span><span class="hljs-params">()</span>&#123;<br>  <span class="hljs-comment">//有接口和实现类,必须使用接口指向实现类(规范)</span><br>   <span class="hljs-type">Service</span> <span class="hljs-variable">agent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Agent</span>();<br>   agent.sing();<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>**面向接口编程(重要)**：</p>
+<ul>
+<li>类中的成员变量设计为接口</li>
+<li>方法的形参设计为接口</li>
+<li>方法的返回值设计为接口</li>
+<li>调用时接口指向实现类</li>
+</ul>
+<h2 id="六、静态代理的缺陷"><a href="#六、静态代理的缺陷" class="headerlink" title="六、静态代理的缺陷"></a>六、静态代理的缺陷</h2><h3 id="1-代理复杂，难于管理"><a href="#1-代理复杂，难于管理" class="headerlink" title="1. 代理复杂，难于管理"></a>1. 代理复杂，难于管理</h3><p>​		每个代理都需要实现业务接口的方法，这样就出现了大量的代码重复。</p>
+<p>​		如果接口增加一个方法，除了所有目标类需要实现这个方法外，所有代理类也需要实现此方法。增加了代码维护的复杂度。</p>
+<h3 id="2-代理类依赖目标类，代理类过多"><a href="#2-代理类依赖目标类，代理类过多" class="headerlink" title="2. 代理类依赖目标类，代理类过多"></a>2. 代理类依赖目标类，代理类过多</h3><p>​		静态代理类只服务于一种类型的业务，如果要服务多种业务。势必要为每一种业务都进行代理</p>
+<p>​		静态代理在程序规模稍大时就无法胜任了，代理类数量过多</p>
+<h2 id="七、动态代理"><a href="#七、动态代理" class="headerlink" title="七、动态代理"></a>七、动态代理</h2><ul>
+<li><p>动态代理是指代理类对象在程序运行时由 JVM 根据反射机制动态生成的。</p>
+</li>
+<li><p>动态代理其实就是 jdk 运行期间，动态创建 class 字节码并加载到 JVM。</p>
+</li>
+<li><p>代理对象在程序运行的过程中动态在内存构建.可以灵活的进行业务功能的切换</p>
+</li>
+<li><p>动态代理不需要定义代理类的.java 源文件。</p>
+<p>动态代理的实现方式常用的有两种：使用 JDK 动态代理和 CGLIB 动态代理。</p>
+</li>
+</ul>
+<h2 id="八、JDK动态代理"><a href="#八、JDK动态代理" class="headerlink" title="八、JDK动态代理"></a>八、JDK动态代理</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>​		JDK动态代理是基于 Java 的反射机制实现的。</p>
+<p>​		使用 JDK中接口和类实现代理对象的动态创建。</p>
+<p>​		JDK的动态代理要求目标对象必须实现接口，而代理对象不必实现业务接口，这是 java 设计上的要求</p>
+<p>​		从 jdk1.3 以来，java 语言通过 java.lang.reflect 包提供【两个类一个接口】支持代理模式</p>
+<p>​			它们分别Proxy, Method和 InvocationHandler</p>
+<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2.特点"></a>2.特点</h3><pre><code class="hljs">  1)目标对象必须实现业务接口
+  
+  2)JDK代理对象不需要实现业务接口
+  
+   3)JDK动态代理的对象在程序运行前不存在.在程序运行时动态的在内存中构建
+  
+  4)JDK动态代理灵活的进行业务功能的切换【接口新增方法，被代理对象实现方法；代理对象是动态生成的】
+  
+   5)本类中的方法(非接口中的方法)不能被代理
+</code></pre>
+<h3 id="3-JDK动态代理用到的类和接口"><a href="#3-JDK动态代理用到的类和接口" class="headerlink" title="3.JDK动态代理用到的类和接口"></a>3.JDK动态代理用到的类和接口</h3><h3 id="Proxy类"><a href="#Proxy类" class="headerlink" title="Proxy类"></a><strong>Proxy类</strong></h3><p>它是java.lang.reflect.Proxy包下的类. 它有一个方法Proxy.newProxyInstance(…..)专门用来生成动态代理对象.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">										<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">newProxyInstance</span><span class="hljs-params">(ClassLoader loader, //类加载器</span><br><span class="hljs-params">                                        //目标对象实现的所有接口</span><br><span class="hljs-params">                                        Class&lt;?&gt;[] interfaces,</span><br><span class="hljs-params">                                        //叫做调用处理器，负责完成调用目标方法，并增强功能</span><br><span class="hljs-params">                                       InvocationHandler h )</span><br>        <span class="hljs-keyword">throws</span> IllegalArgumentException<br>    &#123;...&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="InvocationHandler接口"><a href="#InvocationHandler接口" class="headerlink" title="InvocationHandler接口"></a>InvocationHandler接口</h3><p>​		InvocationHandler 接口叫做调用处理器，负责完成调用目标方法，并增强功能。</p>
+<p>​		我们需要把功能代理写在 invoke（）方法中 。此接口中只有一个方法：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261730423.png" srcset="/img/loading.gif" lazyload alt="image-20220513205619498"></p>
+<hr>
+<p>在 invoke 方法中可以截取对目标方法的调用。在这里进行功能增强。</p>
+<p>Java 的动态代理是建立在反射机制之上的。</p>
+<p>实现了 InvocationHandler 接口的类用于加强目标类的主业务逻辑。这个接口中有一个方法 invoke()，具体加强的代码逻辑就是定义在该方法中的。</p>
+<p>通过代理对象执行接口中的方法时，会自动调用 invoke()方法。</p>
+<p>invoke()方法的介绍如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">invoke</span> <span class="hljs-params">( Object proxy, Method method, Object[] args)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>proxy：代表生成的<strong>代理对象</strong></p>
+</li>
+<li><p>method：代表<strong>目标方法</strong></p>
+</li>
+<li><p>args：代表<strong>目标方法的参数</strong></p>
+</li>
+<li><p>第一个参数 proxy 是 jdk 在运行时赋值的，在方法中直接使用，第二个参数后面介绍，</p>
+</li>
+<li><p>第三个参数是方法执行的参数， 这三个参数都是 jdk 运行时赋值的，无需程序员给出</p>
+</li>
+</ul>
+<h3 id="Method-类"><a href="#Method-类" class="headerlink" title="Method 类"></a>Method 类</h3><p>invoke()方法的第二个参数为 Method 类对象，该类有一个方法也叫 invoke()，可以调用目标方法。这两个 invoke()方法，虽然同名，但无关。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">invoke</span> <span class="hljs-params">( Object obj, Object... args)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>obj：表示目标对象</p>
+</li>
+<li><p>args：表示目标方法参数，就是其上一层 invoke 方法的第三个参数</p>
+</li>
+</ul>
+<h3 id="4-JDK动态代理代码实现"><a href="#4-JDK动态代理代码实现" class="headerlink" title="4.JDK动态代理代码实现"></a>4.JDK动态代理代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProxyFactory</span> &#123;<br>    <br>    <span class="hljs-comment">//类中的成员变量设计为接口,目标对象</span><br>    Service target;<br><br>    <span class="hljs-comment">//传入目标对象</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ProxyFactory</span><span class="hljs-params">(Service target)</span>&#123;<br>        <span class="hljs-built_in">this</span>.target = target;<br>    &#125;<br><br>    <span class="hljs-comment">//返回动态代理对象</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">getAgent</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> Proxy.newProxyInstance(<br>                <span class="hljs-comment">//ClassLoader 目标类的类加载器，通过目标对象的反射可获取</span><br>                target.getClass().getClassLoader(),<br>            <br>                <span class="hljs-comment">//Class&lt;?&gt;[] interfaces,目标对象实现的所有接口 通过目标对象的反射可获取</span><br>                target.getClass().getInterfaces(),<br>            <br>                <span class="hljs-comment">//InvocationHandler h,实现代理功能的接口 ,我们传入的是匿名内部实现</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvocationHandler</span>() &#123;<br>                    <span class="hljs-meta">@Override</span><br>                    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">invoke</span><span class="hljs-params">(</span><br><span class="hljs-params">                            //代表生成的代理对象</span><br><span class="hljs-params">                            Object proxy,</span><br><span class="hljs-params">                            //代表目标方法</span><br><span class="hljs-params">                            Method method,</span><br><span class="hljs-params">                            //目标方法的参数</span><br><span class="hljs-params">                            Object[] args)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br><br>                        <span class="hljs-comment">//代理功能</span><br>                        System.out.println(<span class="hljs-string">&quot;预订时间........&quot;</span>);<br>                        <span class="hljs-comment">//代理功能</span><br>                        System.out.println(<span class="hljs-string">&quot;预订场地........&quot;</span>);<br>                        <span class="hljs-comment">//主业务功能实现</span><br>                        <span class="hljs-comment">//target.sing();还是写死了方法的调用, 不成</span><br>                        <span class="hljs-comment">//sing(),show(),one()</span><br>                        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> method.invoke(target,args);<br>                        <span class="hljs-comment">//代理功能</span><br>                        System.out.println(<span class="hljs-string">&quot;结算费用........&quot;</span>);<br>                        <span class="hljs-keyword">return</span> obj;  <span class="hljs-comment">//切记:这个是目标方法的返回值</span><br>                    &#125;<br>                &#125;<br>        );<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testDynamicProxy</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-comment">//先创建目标对象</span><br>	IService superStar=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SuperStar</span>();<br>	<span class="hljs-comment">//创建代理对象</span><br>	IService agent=(IService) <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProxyFactory</span>(superStar).getProxyInstance();<br>       <span class="hljs-comment">//通过代理对象调用目标方法</span><br>	agent.sing();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>注意：</strong></p>
+<p>JDK动态代理中，代理对象不需要实现接口，但是目标对象一定要实现接口，否则不能用JDK动态代理。</p>
+<h2 id="九、CGLib-Code-Generation-Library-动态代理"><a href="#九、CGLib-Code-Generation-Library-动态代理" class="headerlink" title="九、CGLib(Code Generation Library)动态代理"></a>九、CGLib(Code Generation Library)动态代理</h2><h3 id="1-问题引出"><a href="#1-问题引出" class="headerlink" title="1.问题引出"></a>1.问题引出</h3><p>想要功能扩展，但目标对象没有实现接口，怎样功能扩展？<br>解决方案：子类的方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">Class subclass  <span class="hljs-keyword">extends</span>  <span class="hljs-title class_">UserDao</span>&#123;<br>       <span class="hljs-comment">//子类继承父类，在不修改父类功能的前提下，对父类功能进行增强</span><br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在内存中构建一个子类对象从而实现对目标对象功能的扩展。【CGLib动态代理】</p>
+<h3 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h3><p>  通过动态的<strong>在内存中构建子类对象</strong>,重写父类的方法进行代理功能的增强.</p>
+<p>  如果目标对象没有实现接口,则只能通过CGLib子类代理来进行功能增强.</p>
+<p> CGLIB包的底层是通过使用一个小而快的字节码处理框架ASM，来转换字节码并生成新的类</p>
+<p> 它广泛的被许多AOP的框架使用，例如Spring AOP</p>
+<p>  注意:<br>      被代理的类不能为final， 否则报错</p>
+<p>​      目标对象的方法如果为final【断子绝孙类】static【不能多态】, 那么就不会被拦截，即不会执行目标对象额外的业务方法。</p>
+<h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProxyFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MethodInterceptor</span> &#123;<br>    <br>    <br>	<span class="hljs-comment">//目标对象</span><br>	<span class="hljs-keyword">private</span> Object target;<br>	<span class="hljs-comment">//传入目标对象</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">ProxyFactory</span><span class="hljs-params">(Object target)</span>&#123;<br>		<span class="hljs-built_in">this</span>.target=target;<br>	&#125;		<br>	<span class="hljs-comment">//Cglib采用底层的字节码技术，在子类中采用方法拦截的技术，拦截父类指定方法的调用，并顺势植入代理功能的代码</span><br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> Object <span class="hljs-title function_">intercept</span><span class="hljs-params">(Object obj, Method method, Object[] arg2, MethodProxy proxy)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>		<span class="hljs-comment">//代理对象的功能</span><br>		System.out.println(<span class="hljs-string">&quot;预定场地............&quot;</span>);<br>		<span class="hljs-comment">//调用目标对象的方法</span><br>		Object returnValue=method.invoke(target, arg2);		<br>		<span class="hljs-comment">//代理对象的功能</span><br>		System.out.println(<span class="hljs-string">&quot;结帐走人............&quot;</span>);		<br>        <span class="hljs-comment">//切记:这个是目标方法的返回值</span><br>		<span class="hljs-keyword">return</span> returnValue;<br>	&#125;	<br>	<span class="hljs-comment">//生成代理对象</span><br>	<span class="hljs-keyword">public</span> Object <span class="hljs-title function_">getProxyInstance</span><span class="hljs-params">()</span>&#123;		<br>		<span class="hljs-comment">//1.使用工具类</span><br>		Enhancer en=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Enhancer</span>();<br>		<span class="hljs-comment">//2.设置父类</span><br>		en.setSuperclass(target.getClass());<br>		<span class="hljs-comment">//3.设置回调函数</span><br>		en.setCallback(<span class="hljs-built_in">this</span>);<br>		<span class="hljs-comment">//4.创建子类（代理）对象</span><br>		<span class="hljs-keyword">return</span> en.create();<br>	&#125;<br>&#125;	<br><br>	测试类<br>	<span class="hljs-meta">@Test</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testCglibProxy</span><span class="hljs-params">()</span>&#123;		<br>		SuperStar superStar=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SuperStar</span>();<br>		System.out.println(superStar.getClass());<br>		SuperStar proxy=(SuperStar) <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProxyFactory</span>(superStar).getProxyInstance();<br>		System.out.println(proxy.getClass());<br>		proxy.sing();<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<p>（1）需要spring-core-5.2.5.jar依赖即可</p>
+<p>（2）引入功能包后，就可以在内存中动态构建子类</p>
+<p>（3）被代理的类不能为final， 否则报错。</p>
+<p>（4）目标对象的方法如果为final&#x2F;static, 那么就不会被拦截，即不会执行目标对象额外的业务方法。</p>
+<h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结."></a>十、总结.</h2><p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202208261730554.png" srcset="/img/loading.gif" lazyload></p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第05章_排序与分页 1. 排序数据1.1 排序规则如果没有使用排序规则，默认按照添加顺序进行排序  使用 ORDER BY 子句排序 ASC（ascend）: 升序 DESC（descend）:降序   ORDER BY 子句在SELECT语句的结尾【sql执行顺序】">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第05章-排序与分页">
+<meta property="og:url" content="http://example.com/%E4%BA%91%E7%9B%98/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E5%88%9D%E7%BA%A7-%E7%AC%AC05%E7%AB%A0-%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%88%86%E9%A1%B5.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="第05章_排序与分页 1. 排序数据1.1 排序规则如果没有使用排序规则，默认按照添加顺序进行排序  使用 ORDER BY 子句排序 ASC（ascend）: 升序 DESC（descend）:降序   ORDER BY 子句在SELECT语句的结尾【sql执行顺序】">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/mysql.png">
+<meta property="article:published_time" content="2023-03-30T12:01:23.000Z">
+<meta property="article:modified_time" content="2023-05-19T15:21:14.127Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="MySQL(初级)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>第05章-排序与分页 - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>type</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>null</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>music</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第05章-排序与分页"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="第05章-排序与分页"><a href="#第05章-排序与分页" class="headerlink" title="第05章_排序与分页"></a>第05章_排序与分页</h1><hr>
+<h2 id="1-排序数据"><a href="#1-排序数据" class="headerlink" title="1. 排序数据"></a>1. 排序数据</h2><h3 id="1-1-排序规则"><a href="#1-1-排序规则" class="headerlink" title="1.1 排序规则"></a>1.1 排序规则</h3><p>如果没有使用排序规则，默认按照添加顺序进行排序</p>
+<ul>
+<li>使用 ORDER BY 子句排序<ul>
+<li><strong>ASC（ascend）: 升序</strong></li>
+<li><strong>DESC（descend）:降序</strong></li>
+</ul>
+</li>
+<li><strong>ORDER BY 子句在SELECT语句的结尾</strong>【sql执行顺序】</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="1-2-单列排序"><a href="#1-2-单列排序" class="headerlink" title="1.2 单列排序"></a>1.2 单列排序</h3><ul>
+<li><strong>按照salary从高到低的顺序显示员工信息</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,salary<br>FROM employees<br>ORDER BY salary DESC;<br><br>+-------------+-------------+----------+<br>| employee_id | last_name   | salary   |<br>+-------------+-------------+----------+<br>|         100 | King        | 24000.00 |<br>|         101 | Kochhar     | 17000.00 |<br>|         132 | Olson       |  2100.00 |<br>+-------------+-------------+----------+<br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>按照salary从低到高的顺序显示员工信息</strong></li>
+</ul>
+<p>​		默认就是降序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,salary<br>FROM employees<br>ORDER BY salary ASC;<br><br>SELECT employee_id,last_name,salary<br>FROM employees<br>ORDER BY salary; --  如果在ORDER BY 后没有显式指名排序的方式的话，则默认按照升序排列<br><br>+-------------+-------------+----------+<br>| employee_id | last_name   | salary   |<br>+-------------+-------------+----------+<br>|         132 | Olson       |  2100.00 |<br>|         128 | Markle      |  2200.00 |<br>|         183 | Geoni       |  2800.00 |<br>|         193 | Everett     |  3900.00 |<br>|         102 | De Haan     | 17000.00 |<br>|         100 | King        | 24000.00 |<br>+-------------+-------------+----------+<br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="使用列的别名，进行排序"><a href="#使用列的别名，进行排序" class="headerlink" title="使用列的别名，进行排序"></a>使用列的别名，进行排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,salary,salary * 12 annual_sal  <br>FROM employees    <br>ORDER BY annual_sal;<br><br>+-------------+----------+------------+<br>| employee_id | salary   | annual_sal |<br>+-------------+----------+------------+<br>|         132 |  2100.00 |   25200.00 |<br>|         128 |  2200.00 |   26400.00 |<br>|         136 |  2200.00 |   26400.00 |<br>|         127 |  2400.00 |   28800.00 |<br>|         135 |  2400.00 |   28800.00 |<br>.......................................<br>|         147 | 12000.00 |  144000.00 |<br>|         205 | 12000.00 |  144000.00 |<br>|         201 | 13000.00 |  156000.00 |<br>|         146 | 13500.00 |  162000.00 |<br>|         145 | 14000.00 |  168000.00 |<br>|         101 | 17000.00 |  204000.00 |<br>|         102 | 17000.00 |  204000.00 |<br>|         100 | 24000.00 |  288000.00 |<br>+-------------+----------+------------+<br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>注意</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#列的别名只能在 ORDER BY 中使用，不能在WHERE中使用。<br>#如下操作报错！<br>SELECT employee_id,salary,salary * 12 annual_sal    【3】<br>FROM employees										【1】<br>WHERE annual_sal &gt; 81600;   						【2】<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>强调格式：WHERE 需要声明在FROM后，ORDER BY之前</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,salary				【3】<br>FROM employees							【1】<br>WHERE department_id IN (50,60,70)		【2】<br>ORDER BY department_id DESC;			【4】<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-多列排序"><a href="#1-3-多列排序" class="headerlink" title="1.3 多列排序"></a>1.3 多列排序</h3><p>此处以二级排序为例：</p>
+<ul>
+<li><strong>显示员工信息，按照department_id的降序排列，salary的升序排列</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT employee_id,salary,department_id<br>   		FROM employees<br>   		ORDER BY department_id DESC,salary ASC;<br>   		<br>   		<br>+-------------+----------+---------------+<br>| employee_id | salary   | department_id |<br>+-------------+----------+---------------+<br>|         206 |  8300.00 |           110 |<br>|         205 | 12000.00 |           110 |<br>|         181 |  3100.00 |            50 |<br>|         196 |  3100.00 |            50 |<br>|         201 | 13000.00 |            20 |<br>|         200 |  4400.00 |            10 |<br>|         178 |  7000.00 |          NULL |<br>+-------------+----------+---------------+<br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>可以使用不在SELECT列表中的列排序（先确定从那个表获取数据，再过滤一波数据，然后才是获取指定的字段，接着进行排序，分页…..）</p>
+</li>
+<li><p>在对多列进行排序的时候，首先   <strong>排序的第一列必须有相同的列值</strong>  ，  <strong>才会对第二列进行排序</strong>   。</p>
+<p>如果第一列数据中所有值都是唯一的，<strong>将不再对第二列进行排序</strong></p>
+</li>
+</ul>
+<h2 id="2-分页"><a href="#2-分页" class="headerlink" title="2. 分页"></a>2. 分页</h2><h3 id="2-1-背景"><a href="#2-1-背景" class="headerlink" title="2.1 背景"></a>2.1 背景</h3><p>背景1：查询返回的记录太多了，查看起来很不方便，怎么样能够实现分页查询呢？</p>
+<p>背景2：表里有 4 条数据，我们只想要显示第 2、3 条数据怎么办呢？</p>
+<h3 id="2-2-实现规则"><a href="#2-2-实现规则" class="headerlink" title="2.2 实现规则"></a>2.2 实现规则</h3><ul>
+<li><p>分页原理</p>
+<p>所谓分页显示，就是将数据库中的结果集，一段一段显示出来需要的条件。</p>
+</li>
+<li><p><strong>MySQL中使用 LIMIT 实现分页</strong></p>
+</li>
+<li><p>格式：</p>
+</li>
+</ul>
+<blockquote>
+<p>LIMIT [位置偏移量,] 行数</p>
+</blockquote>
+<p>第一个“位置偏移量”参数指示MySQL从哪一行开始显示，是一个可选参数，如果不指定“位置偏移量”，将会从表中的第一条记录开始</p>
+<p>(第一条记录的位置偏移量是0，第二条记录的位置偏移量是1，以此类推）；</p>
+<p>第二个参数“行数”指示返回的记录条数。</p>
+<ul>
+<li>举例</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 前10条记录：（第一页）<br>SELECT * FROM 表名 LIMIT 0,10;<br><br>-- 或者<br><br>SELECT * FROM 表名 LIMIT 10;<br><br>--第11至20条记录： （第二页）<br>SELECT * FROM 表名 LIMIT 10,10;<br><br>--第21至30条记录： （第三页）<br>SELECT * FROM 表名 LIMIT 20,10;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li>分页显式公式<strong>：</strong></li>
+</ul>
+<blockquote>
+<p>（当前页数-1）*每页条数，每页条数</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT * FROM table <br>LIMIT(PageNo - 1)*PageSize,PageSize;<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：LIMIT 子句必须放在整个SELECT语句的最后！</strong></p>
+<ul>
+<li>使用 LIMIT 的好处</li>
+</ul>
+<p>​		约束返回结果的数量可以<code>减少数据表的网络传输量</code>，也可以<code>提升查询效率</code>。</p>
+<p>​		如果我们知道返回结果只有 1 条，就可以使用<code>LIMIT 1</code>，告诉 SELECT 语句只需要返回一条记录即可。</p>
+<p>​		这样的好处就是 SELECT 不需要扫描完整的表，只需要检索到一条符合条件的记录即可返回。</p>
+<h2 id="WHERE-、ORDER-BY-、LIMIT-声明顺序"><a href="#WHERE-、ORDER-BY-、LIMIT-声明顺序" class="headerlink" title="WHERE 、ORDER BY  、LIMIT 声明顺序"></a>WHERE 、ORDER BY  、LIMIT 声明顺序</h2><p><strong>注意：这不是执行顺序</strong></p>
+<ul>
+<li><strong>如下</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,salary<br>FROM employees<br>WHERE salary &gt; 6000<br>ORDER BY salary DESC<br>-- limit 0,10;<br>LIMIT 10;<br><br>+-------------+-----------+----------+<br>| employee_id | last_name | salary   |<br>+-------------+-----------+----------+<br>|         100 | King      | 24000.00 |<br>|         101 | Kochhar   | 17000.00 |<br>|         102 | De Haan   | 17000.00 |<br>|         145 | Russell   | 14000.00 |<br>|         146 | Partners  | 13500.00 |<br>|         201 | Hartstein | 13000.00 |<br>|         108 | Greenberg | 12000.00 |<br>|         147 | Errazuriz | 12000.00 |<br>|         205 | Higgins   | 12000.00 |<br>|         168 | Ozer      | 11500.00 |<br>+-------------+-----------+----------+<br>10 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>注意</strong></li>
+</ul>
+<blockquote>
+<p>结构”LIMIT 0,条目数” 等价于 “LIMIT 条目数”</p>
+</blockquote>
+<ul>
+<li><strong>表里有107条数据，我们只想要显示第 32、33 条数据</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name<br>FROM employees<br>LIMIT 31,2; -- 偏移量从0开始<br><br>+-------------+-----------+<br>| employee_id | last_name |<br>+-------------+-----------+<br>|         131 | Marlow    |<br>|         132 | Olson     |<br>+-------------+-----------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>查询员工表中工资最高的员工信息</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,salary<br>FROM employees<br>ORDER BY salary DESC<br>#limit 0,1<br>LIMIT 1;<br><br>+-------------+-----------+----------+<br>| employee_id | last_name | salary   |<br>+-------------+-----------+----------+<br>|         100 | King      | 24000.00 |<br>+-------------+-----------+----------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="MySQL8-0新特性：LIMIT-…-OFFSET-…"><a href="#MySQL8-0新特性：LIMIT-…-OFFSET-…" class="headerlink" title="MySQL8.0新特性：LIMIT … OFFSET …"></a>MySQL8.0新特性：LIMIT … OFFSET …</h2><ul>
+<li><strong>表里有107条数据，我们只想要显示第 32、33 条数据</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name<br>FROM employees<br>LIMIT 2 OFFSET 31;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p><strong>后面的是偏移量，前面的是取多少条记录</strong></p>
+<blockquote>
+<p>MySQL 8.0中可以使用“LIMIT 3 OFFSET 4”，意思是获取从第5条记录开始后面的3条记录，和“LIMIT 4,3;”返回的结果相同</p>
+</blockquote>
+<h3 id="2-3-拓展（了解）"><a href="#2-3-拓展（了解）" class="headerlink" title="2.3 拓展（了解）"></a>2.3 拓展（了解）</h3><p>在不同的 DBMS 中使用的关键字可能不同。在 MySQL、PostgreSQL、MariaDB 和 SQLite 中使用 LIMIT 关键字，而且需要放到 SELECT 语句的最后面。</p>
+<ul>
+<li>如果是 SQL Server 和 Access，需要使用 <code>TOP</code> 关键字，比如：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT TOP 5 name, hp_max FROM heros ORDER BY hp_max DESC<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>如果是 DB2，使用<code>FETCH FIRST 5 ROWS ONLY</code>这样的关键字：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT name, hp_max FROM heros ORDER BY hp_max DESC FETCH FIRST 5 ROWS ONLY<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>如果是 Oracle，你需要基于 <code>ROWNUM</code> 来统计行数：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT rownum,last_name,salary FROM employees WHERE rownum &lt; 5 ORDER BY salary DESC;<br></code></pre></td></tr></table></figure>
+
+<p>需要说明的是，这条语句是先取出来前 5 条数据行，然后再按照 hp_max 从高到低的顺序进行排序。但这样产生的结果和上述方法的并不一样。我会在后面讲到子查询，你可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT rownum, last_name,salary<br>FROM (<br>    SELECT last_name,salary<br>    FROM employees<br>    ORDER BY salary DESC)<br>WHERE rownum &lt; 10;<br></code></pre></td></tr></table></figure>
+
+<p>得到与上述方法一致的结果</p>
+<h2 id="方言-LIMIT"><a href="#方言-LIMIT" class="headerlink" title="方言 LIMIT"></a>方言 LIMIT</h2><p>1· LIMIT 可以使用在<code>MySQL、PGSQL、MariaDB、SQLite</code> 等数据库中使用，表示分页。<br>2· 不能使用在<code>SQL Server、DB2、Oracle</code>！</p>
+<h1 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h1><ul>
+<li>查询员工的姓名和部门号和年薪，按年薪降序,按姓名升序显示</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name,department_id,salary * 12 annual_salary -- 【2】<br>FROM employees	-- 【1】<br>ORDER BY annual_salary DESC,last_name ASC;-- 【3】<br><br>+-------------+---------------+---------------+<br>| last_name   | department_id | annual_salary |<br>+-------------+---------------+---------------+<br>| King        |            90 |     288000.00 |<br>| De Haan     |            90 |     204000.00 |<br>| Partners    |            80 |     162000.00 |<br>| Hartstein   |            20 |     156000.00 |<br>| Gee         |            50 |      28800.00 |<br>| Landry      |            50 |      28800.00 |<br>| Markle      |            50 |      26400.00 |<br>| Philtanker  |            50 |      26400.00 |<br>| Olson       |            50 |      25200.00 |<br>+-------------+---------------+---------------+<br>107 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>选择工资不在 8000 到 17000 的员工的姓名和工资，按工资降序，显示第21到40位置的数据</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT last_name,salary -- 【3】<br>FROM employees -- 【1】<br>WHERE salary NOT BETWEEN 8000 AND 17000 -- 【2】<br>ORDER BY salary DESC-- 【4】<br>LIMIT 20,20; -- 【5】<br><br>+-----------+---------+<br>| last_name | salary  |<br>+-----------+---------+<br>| Ernst     | 6000.00 |<br>| Fay       | 6000.00 |<br>| Mourgos   | 5800.00 |<br>| Austin    | 4800.00 |<br>| Pataballa | 4800.00 |<br>| Whalen    | 4400.00 |<br>| Mallin    | 3300.00 |<br>| Stiles    | 3200.00 |<br>| Nayer     | 3200.00 |<br>+-----------+---------+<br>20 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>查询邮箱中包含 e 的员工信息，并先按邮箱的字节数降序，再按部门号升序</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT employee_id,last_name,email,department_id<br>FROM employees<br>-- where email like &#x27;%e%&#x27;<br>WHERE email REGEXP &#x27;e&#x27;<br>ORDER BY LENGTH(email) DESC,department_id;<br><br>+-------------+------------+----------+---------------+<br>| employee_id | last_name  | email    | department_id |<br>+-------------+------------+----------+---------------+<br>|         201 | Hartstein  | MHARTSTE |            20 |<br>|         114 | Raphaely   | DRAPHEAL |            30 |<br>|         119 | Colmenares | KCOLMENA |            30 |<br>|         151 | Bernstein  | DBERNSTE |            80 |<br>|         150 | Tucker     | PTUCKER  |            80 |<br>|         161 | Sewall     | SSEWALL  |            80 |<br>|         158 | McEwen     | AMCEWEN  |            80 |<br>|         145 | Russell    | JRUSSEL  |            80 |<br>|         110 | Chen       | JCHEN    |           100 |<br>|         135 | Gee        | KGEE     |            50 |<br>|         139 | Seo        | JSEO     |            50 |<br>|         165 | Lee        | DLEE     |            80 |<br>+-------------+------------+----------+---------------+<br>47 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

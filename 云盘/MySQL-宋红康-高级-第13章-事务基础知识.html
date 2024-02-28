@@ -1,0 +1,948 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. 数据库事务概述事务 是 数据库 区别于 文件系统 的重要特性之一，当我们有了事务就会让数据库始终保持 一致性，同时我们还能通讨事务的机制 恢复到某个时间点，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第13章-事务基础知识">
+<meta property="og:url" content="http://example.com/%E4%BA%91%E7%9B%98/MySQL-%E5%AE%8B%E7%BA%A2%E5%BA%B7-%E9%AB%98%E7%BA%A7-%E7%AC%AC13%E7%AB%A0-%E4%BA%8B%E5%8A%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">
+<meta property="og:site_name" content="FGCY-BLOG">
+<meta property="og:description" content="1. 数据库事务概述事务 是 数据库 区别于 文件系统 的重要特性之一，当我们有了事务就会让数据库始终保持 一致性，同时我们还能通讨事务的机制 恢复到某个时间点，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/mysql.png">
+<meta property="article:published_time" content="2023-03-30T12:09:21.000Z">
+<meta property="article:modified_time" content="2023-05-19T15:25:49.361Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="MySQL(高级)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/mysql.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>第13章-事务基础知识 - FGCY-BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":333,"cursorChar":"%","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FGCY-BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>type</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>null</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/playlist/">
+                <i class="iconfont icon-music"></i>
+                <span>music</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第13章-事务基础知识"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="1-数据库事务概述"><a href="#1-数据库事务概述" class="headerlink" title="1. 数据库事务概述"></a>1. 数据库事务概述</h1><p>事务 是 <strong>数据库</strong> 区别于 <strong>文件系统</strong> 的重要特性之一，当我们有了事务就会让数据库始终保持 <strong>一致性</strong>，同时我们还能通讨事务的机制 <strong>恢复到某个时间点</strong>，这样可以保证已提交到数据库的修改不会因为系统崩溃而丢失</p>
+<span id="more"></span>
+
+<h2 id="1-1-存储引擎支持情况"><a href="#1-1-存储引擎支持情况" class="headerlink" title="1.1 存储引擎支持情况"></a>1.1 存储引擎支持情况</h2><p><code>SHOW ENGINES </code>命令来查看当前 MySQL 支持的存储引擎都有哪些，以及这些存储引擎是否支持事务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show engines;<br><br>+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+<br>| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |<br>+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+<br>| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |<br>| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |<br>| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |<br>| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |<br>| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |<br>| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |<br>| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |<br>| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |<br>| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |<br>+--------------------+---------+----------------------------------------------------------------+--------------+------+------------+<br>9 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>能看出在 MySQL 中，只有InnoDB 是支持事务的。 </p>
+<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2 基本概念"></a>1.2 基本概念</h2><p>事务：一组逻辑操作单元，使数据从一种状态变换到另一种状态。 </p>
+<p>事务处理的原则：保证所有事务都作为 一个工作单元 来执行，即使出现了故障，都不能改变这种执行方式。</p>
+<p>当在一个事务中执行多个操作时，要么所有的事务都被提交( commit )，那么这些修改就 永久 地保 存下来；</p>
+<p>要么数据库管理系统将 放弃 所作的所有 修改 ，整个事务回滚( rollback )到最初状态。 </p>
+<p>案例：AA用户给BB用户转账100</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update account set money = money-100 where name =&#x27;AA&#x27;<br>-- --------------<br>-- 服务器宕机<br>-- --------------<br>update account set money = money + 100 where name =&#x27;BB&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-3-事务的ACID特性"><a href="#1-3-事务的ACID特性" class="headerlink" title="1.3 事务的ACID特性"></a>1.3 事务的ACID特性</h2><ul>
+<li>原子性（atomicity）：</li>
+</ul>
+<p>​		原子性是指事务是一个不可分割的工作单位，要么全部提交，要么全部失败回滚。即要么转账成功，要么转账失败，是不存在中间的状态。</p>
+<p>​		如果无法保证原子性会怎么样？就会出现数据不一致的情形，A账户减去100元，而B账户增加100元操作失败，系统将无故丢失100元。</p>
+<ul>
+<li>一致性（consistency）：</li>
+</ul>
+<p>​	（国内很多网站上对一致性的阐述有误，具体你可以参考 Wikipedia 对Consistency的阐述） </p>
+<p>​		根据定义，一致性是指事务执行前后，数据从一个<code>合 法性状态</code>变换到另外一个<code>合法性状态</code>。这种状态 是 语义上 的而不是语法上的，跟具体的业务有关。</p>
+<p>​		 那什么是合法的数据状态呢？满足 预定的约束 的状态就叫做合法的状态。通俗一点，这状态是由你自己 来定义的（比如满足现实世界中的约束）。</p>
+<p>​		满足这个状态，数据就是一致的，不满足这个状态，数据就 是不一致的！如果事务中的某个操作失败了，系统就会自动撤销当前正在执行的事务，返回到事		务操作 之前的状态。</p>
+<p>举例1：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">A</span>账户有<span class="hljs-number">200</span>元，转账<span class="hljs-number">300</span>元出去，此时A账户余额为-<span class="hljs-number">100</span>元。你自然就发现了此时数据是不一致的，为什么呢？因为你定义了一个状态，余额这列必须&gt;=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>举例2：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">A</span>账户<span class="hljs-number">200</span>元，转账<span class="hljs-number">50</span>元给<span class="hljs-selector-tag">B</span>账户，<span class="hljs-selector-tag">A</span>账户的钱扣了，但是<span class="hljs-selector-tag">B</span>账户因为各种意外，余额并没有增加。<br>你也知道此时数据是不一致的，为什么呢？因为你定义了一个状态，要求<span class="hljs-selector-tag">A</span>+<span class="hljs-selector-tag">B</span>的总余额必须不变<br></code></pre></td></tr></table></figure>
+
+
+
+<p>举例3：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">在数据表中我们将姓名字段设置为唯一性约束，这时当事务进行提交或者事务发生回滚的时候，如果数据表中的姓名不唯一，就破坏了事务的一致性要求<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li>隔离型（isolation）：</li>
+</ul>
+<p>​		事务的隔离性是指一个事务的执行 <strong>不能被其他事务干扰</strong> ，即一个事务内部的操作及使用的数据对 <strong>并发</strong> 的 其他事务是隔离的，并发执行的各个事务之间不能		互相干扰【涉及隔离级别】。 </p>
+<p>如果无法保证隔离性会怎么样？假设A账户有200元，B账户0元。A账户往B账户转账两次，每次金额为50 元，分别在两个事务中执行。</p>
+<p>如果无法保证隔离性，会出现下面的情形：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">UPDATE accounts SET money = money - 50 WHERE NAME = &#x27;AA&#x27;;<br><br>UPDATE accounts SET money = money + 50 WHERE NAME = &#x27;BB&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210071156055.png" srcset="/img/loading.gif" lazyload alt="image-20221007115647666"></p>
+<hr>
+<ul>
+<li>持久性（durability）：</li>
+</ul>
+<p>​		持久性是指一个事务一旦被提交，它对数据库中数据的改变就是 永久性的 ，接下来的其他操作和数据库 故障不应该对其有任何影响。 </p>
+<p>​		持久性是通过 事务日志 来保证的。日志包括了 重做日志 和 回滚日志 。当我们通过事务对数据进行修改 的时候，首先会将数据库的变化信息记录到重做日志		中，然后再对数据库中对应的行进行修改。这样做 的好处是，即使数据库系统崩溃，数据库重启后也能找到没有更新到数据库系统中的重做日志，重新执 		行，从而使事务具有持久性。</p>
+<blockquote>
+<p>总结<br>ACID是事务的四大特性，在这四个特性中，原子性是基础，隔离性是手段，一致性是约束条件，而持久性是我们的目的<br>数据库事务，其实就是数据库设计者为了方便起见，把  需要保证  原子性、隔离性、一致性和持久性的一个<strong>或多个数据库操作称为一个事务</strong></p>
+</blockquote>
+<h2 id="1-4-事务的状态"><a href="#1-4-事务的状态" class="headerlink" title="1.4 事务的状态"></a>1.4 事务的状态</h2><p>我们现在知道 事务 是一个抽象的概念，它其实对应着一个或多个数据库操作，MySQL根据这些操作所执 行的不同阶段把 事务 大致划分成几个状态： </p>
+<ul>
+<li><p>活动的（active） </p>
+<p>事务对应的数据库操作正在执行过程中时，我们就说该事务处在 活动的 状态。 </p>
+</li>
+<li><p>部分提交的（partially committed） </p>
+<p>当事务中的最后一个操作执行完成，但由于操作都在内存中执行，所造成的影响并 <strong>没有刷新到磁盘</strong> 时，我们就说该事务处在 部分提交的 状态。 </p>
+</li>
+<li><p>失败的（failed） </p>
+<p>当事务处在 活动的 或者 部分提交的 状态时，可能遇到了某些错误（数据库自身的错误、操作系统 错误或者直接断电等）而无法继续执行，或者人为的停止当前事务的执行，我们就说该事务处在 失 败的 状态。</p>
+</li>
+<li><p>中止的（aborted） </p>
+<p>如果事务执行了一部分而变为 失败的 状态，那么就需要把已经修改的事务中的操作  <strong>还原到</strong> 事务执 行前的状态。换句话说，就是要撤销失败事务对当前数据库造成的影响。我们把这个撤销的过程称 之为 回滚 。当 回滚 操作执行完毕时，也就是数据库  <strong>恢复到了执行事务之前的状态</strong>，我们就说该事 务处在了 中止的 状态。</p>
+</li>
+</ul>
+<p> 举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">UPDATE accounts SET money = money - 50 WHERE NAME = &#x27;AA&#x27;;<br><br>UPDATE accounts SET money = money + 50 WHERE NAME = &#x27;BB&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li><p>提交的（committed）</p>
+<p>当一个处在 部分提交的 状态的事务将修改过的数据都 <strong>同步到磁盘 上之后</strong>，我们就可以说该事务处 在了 提交的 状态。</p>
+</li>
+</ul>
+<p>一个基本的状态转换图如下所示：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210071214344.png" srcset="/img/loading.gif" lazyload alt="image-20221007121452978"></p>
+<hr>
+<blockquote>
+<p>图中可见，只有当事务处于提交的或者中止的状态时，一个事务的生命周期才算是结束了。</p>
+<p>对于已经提交的事务来说，该事务对数据库所做的修改将永久生效</p>
+<p>对于处于中止状态的事务，该事务对数据库所做的所有修改都会被回滚到没执行该事务之前的状态，</p>
+</blockquote>
+<h1 id="2-如何使用事务"><a href="#2-如何使用事务" class="headerlink" title="2. 如何使用事务"></a>2. 如何使用事务</h1><p>使用事务有两种方式，分别为 显式事务 和 隐式事务 。</p>
+<p>使用事务的过程：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">步骤<span class="hljs-number">1</span>：开启事务<br><br>步骤<span class="hljs-number">2</span>：一系列的DML操作<br><br>步骤<span class="hljs-number">3</span>：事务结束的状态：提交的状态（<span class="hljs-keyword">COMMIT</span>）中止的状态（<span class="hljs-keyword">ROLLBACK</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-1-显式事务"><a href="#2-1-显式事务" class="headerlink" title="2.1 显式事务"></a>2.1 显式事务</h2><p>步骤1：使用关键字 <code>START TRANSACTION </code> 或者 <code>BEGIN </code>，作用是显式开启一个事务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">BEGIN;<br><br>-- 或者<br><br>START TRANSACTION;<br></code></pre></td></tr></table></figure>
+
+<p>START TRANSACTION 语句相较于 BEGIN 特别之处在于，后边能跟随几个 修饰符 ：</p>
+<p>① <code>READ ONLY </code>：标识当前事务是一个 只读事务 ，也就是属于该事务的数据库操作只能读取数据，而不 能修改数据。</p>
+<blockquote>
+<p>补充：只读事务中只是不允许修改那些其他事务也能访问到的表中的数据，对于临时表来说（我们使用CREATETMEPORARYTABLE创建的表），由于它们只能在当前会话中可见，所以以只读事务其实也是可以对临时表讲行增，邢，改操作的</p>
+</blockquote>
+<p>② <code>READ WRITE </code>：标识当前事务是一个 读写事务 ，也就是属于该事务的数据库操作既可以读取数据， 也可以修改数据。 【默认】</p>
+<p>③<code>WITH CONSISTENT SNAPSHOT</code>：启动一致性读。 </p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 开启一个只读事务<br>START TRANSACTION READ ONLY;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 开启只读事务和一致性读<br>START TRANSACTION READ ONLY，WITH CONSISTENT SNAPSHOT; <br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>步骤2：一系列事务中的操作（主要是DML，不含DDL） </p>
+<p>步骤3：提交事务 或 中止事务（即回滚事务）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 提交事务。当提交事务后，对数据库的修改是永久性的<br>COMMIT;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 回滚事务。即撤销正在进行的所有没有提交的修改<br>ROLLBACK;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 将事务回滚到某个保存点<br>ROLLBACK TO [SAVEPOINT];<br></code></pre></td></tr></table></figure>
+
+
+
+<p>其中关于<code>SAVEPOINT</code>相关操作有:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 在事务中创建保存点，方便后续针对保存点进行回滚。一个事务中可以存在多个保存点。<br>SAVEPOINT 保存点名称<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 删除某个保存点、<br>RELEASE SAVEPOINT 保存点名称<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="2-2-隐式事务"><a href="#2-2-隐式事务" class="headerlink" title="2.2 隐式事务"></a>2.2 隐式事务</h2><p>MySQL中有一个系统变量autocommit</p>
+<p>关键字  <code>autocommit</code> 默认是开启的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW VARIABLES LIKE &#x27;autocommit&#x27;;<br><br>+---------------+-------+<br>| Variable_name | Value |<br>+---------------+-------+<br>| autocommit    | ON    |<br>+---------------+-------+<br>1 row in set, 1 warning (0.01 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>默认情况下，如果我们不显式的使用<code>START TRANSACTION</code>或者BEGIN语句开启一个事务，那么每一条语句都算是一个独立的事务，这种特性称之为事务的自动提交。也就是说，不以START TRANSACTION或者BEGIN语句显式的开启一个事务，那么下边这两条语句就相当于放到两个独立的事务中去执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">UPDATE account SET balance = balanle - 10 WHERE 1d = 1;-- 比时这条DML操作是一个独立的事务<br><br>UPDATE account SET balance = balance + 10 WHERE id = 2;-- 比时这条DML操作是一个独立的事务<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>关闭这种 自动提交 的功能可以使用下边两种方法之一：</p>
+<p>方式一：把系统变量 autocommit 的值设置为 OFF</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET AUTOCOMMIT = FALSE; -- 针对DML的操作是有效的 对DDL操作是无效的<br><br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">UPDATE account SET balance = balance-10 WHERE id-1;<br><br>UPDATE account SET balance = balance + 10 WHERE id =2;<br><br>COMMIT; -- 或rol1back；<br></code></pre></td></tr></table></figure>
+
+<p>这样的话，我们写入的多条语句就算是属于同一个事务了，直到我们显式的写出COMMIT语句来把这个事务提交掉，或者显式的写出ROLLBACK语句来把这个事务回滚掉</p>
+<blockquote>
+<p>补充：Oracle 默认不自动提交，需要手写COMMIT命令，而MySQL默认自动提交.</p>
+</blockquote>
+<p>方式2：我们在 <code>autocommit </code>为 <code>true </code>的情况下，使用 <code>start transaction </code>或 <code>begin</code>开启事务，那么DML 操作就不会自动提交数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs MYSQL">START TRANSACTION;<br><br>UPDATE account sET balance = balance-10 WHERE id = 1;<br><br>UPDATE account sET balance = balance + 10 WHERE id = 2;<br><br>COMMIT; -- 或rollback;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="2-3-隐式提交数据的情况"><a href="#2-3-隐式提交数据的情况" class="headerlink" title="2.3 隐式提交数据的情况"></a>2.3 隐式提交数据的情况</h2><ul>
+<li>数据定义语言（Data definition language，缩写为：DDL）</li>
+</ul>
+<p>​		数据库对象，指的就是 <strong>数据库</strong>、<strong>表</strong>、<strong>视图</strong>、<strong>存储过程</strong>等结构。</p>
+<p>​		当我们使用 <code>CREATE、ALTER、DROP</code> 等语句去修改数据库对象时，就会隐式的提交前边语句所属于的事务。即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">BEGIN;<br><br>SELECT ... -- 事务中的一条语句<br>UPDATE...  -- 事务中的一条语句<br>.... -- 事务中的其它语句<br><br>CREATE TABLE..,, -- 此语句会隐式的提交前边语句所属于的事务<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li>隐式使用或修改mysql数据库中的表</li>
+</ul>
+<p>​		当我们使用ALTER USER、CREATE USER、DROP USER、GRANT、RENAME USER、REVOKE、SET PASSWORD等语句时也会隐式的提交前边语句所属于的		事务</p>
+<ul>
+<li>事务控制或关于锁定的语句</li>
+</ul>
+<p>① 当我们在一个事务还没提交或者回滚时就又使用 START TRANSACTION 或者 BEGIN 语句开启了 另一个事务时，会 隐式的提交 上一个事务。即：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">BEGIN ;<br><br>SELECT..... -- 事务中的一条语句<br>UPDATE.... -- 事务中的一条语句<br>...... -- 事务中的其它语句<br>BEGIN; -- 此语句会隐式的提交前边语句所属于的事务<br></code></pre></td></tr></table></figure>
+
+<p>② 当前的 <code>autocommit </code>系统变量的值为 OFF ，我们手动把它调为 ON 时，也会 隐式的提交 前边语 句所属的事务。</p>
+<p>③ 使用 LOCK TABLES 、 UNLOCK TABLES 等关于锁定的语句也会 隐式的提交 前边语句所属的事务。</p>
+<ul>
+<li>加载数据的语句</li>
+</ul>
+<p>​		使用 LOAD DATA语句来批量往数据库中导入数据时，也会隐式的提交前边语句所属的事务</p>
+<ul>
+<li>关于MySQL复制的一些语句</li>
+</ul>
+<p>​		使用START SLAVE、STOP SLAVE、RESET SLAVE、CHANGE MASTER TO等语句时会隐式的提交前边语句所属的事务。</p>
+<ul>
+<li>其它的一些语句</li>
+</ul>
+<p>​		使用ANALYZE TABLE、CACHE INDEX、CHECK TABLE、FLUSH、LOAD INDEX INTO CACHE OPTIMIZE TABLE、REPAIR TABLE、RESET等语句也会 隐式的		提交 前边语句所属的事务</p>
+<p>案例分析：</p>
+<p>举例一：体会commit 与 rollback的使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 情况一：<br><br> -- 保证是自动提交事务<br> SET AUTOCOMMIT =TRUE; <br> -- 切换数据库<br> USE atguigudb1;<br> <br> -- 新建表<br> CREATE TABLE use3(NAME VARCHAR(15) PRIMARY KEY );<br> <br> <br> SELECT * FROM use3;<br> <br> <br> -- 开启事务<br> BEGIN ;<br> <br> INSERT INTO use3 VALUES(&#x27;fgcy&#x27;); -- 此时不会自动提交事务 但有记录 ‘fgcy’<br> <br> -- 结束事务<br> COMMIT;<br> <br> <br> <br>BEGIN ;<br><br>INSERT INTO use3 VALUES(&#x27;张三&#x27;); -- 此时不会自动提交事务 但有记录 ‘张三’<br>  <br>INSERT INTO use3 VALUES(&#x27;张三&#x27;); -- 受主键影响 不会插入 ‘张三’<br> <br>ROLLBACK; -- 回滚后 只有记录 ‘fgcy’<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 情况二：<br><br>TRUNCATE TABLE use3; -- DDL操作 会自动提交数据 不受系统变量autocommit的影响<br><br><br>SELECT * FROM use3; -- 表为空<br><br><br>BEGIN ;-- 开启事务<br><br>INSERT INTO use3 VALUES(&#x27;fgcy&#x27;); -- 此时不会自动提交事务 但有记录 ‘fgcy’<br><br>COMMIT;-- 结束事务<br><br><br>-- 默认情况下 DML 会自动提交事务 直接插入数据<br>INSERT INTO use3 VALUES(&#x27;张三&#x27;); <br><br>-- 受主键影响 不会插入 ‘张三’<br>INSERT INTO use3 VALUES(&#x27;张三&#x27;); -- 事务是失败的状态<br><br><br>ROLLBACK; -- 回滚后还是 fgcy 张三 事务是中止的状态<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>举例二：体会 Innodb 与 Myisam的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE test1(i INT )ENGINE=INNODB;<br> <br> <br>CREATE TABLE test2(i INT )ENGINE=MYISAM;<br><br><br><br>-- 针对 innodb<br>BEGIN;<br>INSERT INTO test1 VALUES (1); -- 有记录 1<br>ROLLBACK; -- 没有记录<br><br>SELECT * FROM test1;<br><br><br><br>-- 针对 Myisam MyISAM不支持事务<br>BEGIN;<br>INSERT INTO test2 VALUES (1); -- 有记录 1<br>ROLLBACK; -- 有记录 1<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>举例三：体会savePoint</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 创表<br>CREATE TABLE use1(<br>	NAME VARCHAR(15),<br>	balance DECIMAL(10,2)<br>);<br><br><br>BEGIN;-- 开启事务<br>INSERT INTO use1 VALUES(&#x27;fgcy&#x27;,1000);<br>COMMIT;-- 提交事务<br><br><br>BEGIN;-- 开启事务 【只有开启了事务才能有保存点】<br>UPDATE use1 SET balance =balance-100 WHERE NAME=&#x27;fgcy&#x27;; -- 900<br><br>UPDATE use1 SET balance =balance-100 WHERE NAME=&#x27;fgcy&#x27;; -- 800<br><br>SAVEPOINT s1;-- 设置保存点<br><br>UPDATE use1 SET balance =balance+1 WHERE NAME=&#x27;fgcy&#x27;; -- 801<br><br>ROLLBACK TO s1; -- 800<br><br>ROLLBACK; -- 1000<br><br>SELECT * FROM use1;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-4-使用举例1："><a href="#2-4-使用举例1：" class="headerlink" title="2.4 使用举例1："></a>2.4 使用举例1：</h2><p>提交与回滚 我们看下在 MySQL 的默认状态下，下面这个事务最后的处理结果是什么。 </p>
+<p>情况1：</p>
+<p>当我们设置 autocommit&#x3D;0 时，不论是否采用 START TRANSACTION 或者 BEGIN 的方式来开启事 务，都需要用 COMMIT 进行提交，让事务生效，使用 ROLLBACK 对事务进行回滚。 当我们设置 autocommit&#x3D;1 时，每条 SQL 语句都会自动进行提交。 不过这时，如果你采用 START TRANSACTION 或者 BEGIN 的方式来显式地开启事务，那么这个事务只有在 COMMIT 时才会生效， 在 ROLLBACK 时才会回滚。</p>
+<p>你能看到相同的SQL代码，只是在事务开始之前设置了SET@@completion_type&#x3D; 1；，结果就和我们第一次处理的一样，只有一个”张三”。这是为什么呢？<br>这里讲解下 MySQL 中completion_type 参数的作用，实际上这个参数有3 种可能：</p>
+<ul>
+<li>completion&#x3D;0，这是默认情况。当我们执行 COMMIT的时候会提交事务，在执行下一个事务时，还需要使用START TRANSACTION或者 BEGIN来开启。</li>
+<li>completion&#x3D;1，这种情况下，当我们提交事务后，相当于执行了 COMMIT AND CHAIN，也就是开启一个链式事务，即当我们提交事务之后会开启一个相同隔离级别的事务</li>
+<li>completion&#x3D;2，这种情况下 COMMIT&#x3D;COMMIT AND RELEASE，也就是当我们提交后，会自动与服务器断开连接。</li>
+</ul>
+<h1 id="3-事务隔离级别"><a href="#3-事务隔离级别" class="headerlink" title="3. 事务隔离级别"></a>3. 事务隔离级别</h1><p>MySQL是一个 客户端／服务器 架构的软件，对于同一个服务器来说，可以有若干个客户端与之连接，每 个客户端与服务器连接上之后，就可以称为一个会话（ Session ）。</p>
+<p>每个客户端都可以在自己的会话中 向服务器发出请求语句，一个请求语句可能是某个事务的一部分，也就是对于服务器来说可能同时处理 多个事务。</p>
+<p>事务有 隔离性 的特性，理论上在某个事务 对某个数据进行访问 时，其他事务应该进行 排 队 ，当该事务提交之后，其他事务才可以继续访问这个数据。</p>
+<p>但是这样对 性能影响太大 ，我们既想保持 事务的隔离性，又想让服务器在处理访问同一数据的多个事务时 性能尽量高些【并发】 ，那就看二者如何权衡取舍了。</p>
+<h2 id="3-1-数据准备-我们需要创建一个表："><a href="#3-1-数据准备-我们需要创建一个表：" class="headerlink" title="3.1 数据准备 我们需要创建一个表："></a>3.1 数据准备 我们需要创建一个表：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE student (<br>    studentno INT,<br>    name VARCHAR(20),<br>    class varchar(20),<br>    PRIMARY KEY (studentno)<br>) Engine=InnoDB CHARSET=utf8;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>然后向这个表里插入一条数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO student VALUES(1, &#x27;小谷&#x27;, &#x27;1班&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<p>现在表里的数据就是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from student;<br> <br>+-----------+------+-------+<br>| studentno | name | class |<br>+-----------+------+-------+<br>|         1 | 小谷 | 1班   |<br>+-----------+------+-------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="3-2-数据并发问题"><a href="#3-2-数据并发问题" class="headerlink" title="3.2 数据并发问题"></a>3.2 数据并发问题</h2><p>针对事务的隔离性和并发性，我们怎么做取舍呢？先看一下访问相同数据的事务在 <strong>不保证串行执行</strong> （也 就是执行完一个再执行另一个）的情况下可能会出现哪些问题：</p>
+<ol>
+<li>脏写（ Dirty Write ）</li>
+</ol>
+<p>对于两个事务 Session A、Session B，如果事务Session A 修改了 另一个 未提交 事务Session B 修改过 的数 据，那就意味着发生了 脏写</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210082217025.png" srcset="/img/loading.gif" lazyload alt="image-20221008221704928"></p>
+<hr>
+<p>Session A 和 Session B 各开启了一个事务，Session B中的事务先将studentno列为1的记录的name列更新为’李四’然后Session A中的事务接着又把这条studentno列为1的记录的name列更新为’张三”。如果之后Session B中的事务进行了回滚，那么SessionA中的更新也将不复存在，这种现象就称之为脏写。</p>
+<p>这时 Session A中的事务就没有效果，明明把数据更新了，最后也提交了事务，最后看到的数据什么变化也没有。这里大家对事务的隔离级比较了解的话，会发现默认隔离级别下，上面SessionA中的更新语句会处于等待状态，这里只是跟大家说明一下会出现这样现象，</p>
+<ol start="2">
+<li>脏读（ Dirty Read ）</li>
+</ol>
+<p>对于两个事务 Session A、Session B，Session A 读取 了已经被 Session B 更新 但还 没有被提交 的字段。 之后若 Session B 回滚 ，Session A 读取 的内容就是 临时且无效 的。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210082225920.png" srcset="/img/loading.gif" lazyload alt="image-20221008222542882"></p>
+<hr>
+<p>Session A和Session B各开启了一个事务，Session B中的事务先将studentno列为1的记录的name列更新 为’张三’，然后Session A中的事务再去查询这条studentno为1的记录，如果读到列name的值为’张三’，而 Session B中的事务稍后进行了回滚，那么Session A中的事务相当于读到了一个不存在的数据，这种现象 就称之为 脏读 。</p>
+<ol start="3">
+<li>不可重复读（ Non-Repeatable Read ）</li>
+</ol>
+<p>对于两个事务Session A、Session B，Session A 读取 了一个字段，然后 Session B 更新 了该字段。 之后 Session A 再次读取 同一个字段， 值就不同 了。</p>
+<p>那就意味着发生了不可重复读。-</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210082230495.png" srcset="/img/loading.gif" lazyload alt="image-20221008223032119"></p>
+<hr>
+<p> 我们在Session B中提交了几个 隐式事务 （注意是隐式事务，意味着语句结束事务就提交了），这些事务 都修改了studentno列为1的记录的列name的值，每次事务提交之后，如果Session A中的事务都可以查看 到最新的值，这种现象也被称之为 不可重复读 。</p>
+<ol start="4">
+<li>幻读（ Phantom ）</li>
+</ol>
+<p>对于两个事务Session A、Session B, Session A 从一个表中 读取 了一个字段, 然后 Session B 在该表中 插 入 了一些新的行。 之后, 如果 Session A 再次读取 同一个表, 就会多出几行。那就意味着发生了幻读。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210082234294.png" srcset="/img/loading.gif" lazyload alt="image-20221008223437018"></p>
+<hr>
+<p>Session A中的事务先根据条件 <code>studentno &gt; 0</code> 这个条件查询表student，得到了name列值为’张三’的记录； 之后Session B中提交了一个 隐式事务 ，该事务向表student中插入了一条新记录；</p>
+<p>之后Session A中的事务 再根据相同的条件 studentno &gt; 0查询表student，得到的结果集中包含Session B中的事务新插入的那条记 录，这种现象也被称之为 幻读 </p>
+<p>我们把新插入的那些记录称之为 幻影记录 。</p>
+<p><strong>注意1：</strong></p>
+<p>如果Session B 中删除了一些符合 <code>studentno &gt;0 </code> 的记录而不是插入新记录，那SessionA之后再根据studentno &gt;0的条件读取的记录变少了，这种现象算不算幻读呢？这种现象不属于幻读，幻读强调的是一个事务按照其个相同条件多次读取记录时，后读取时读到了之前没有读到的记录</p>
+<p><strong>注意2：</strong></p>
+<p>那对于先前已经读到的记录，之后又读取不到这种情况，算啥呢？这相当于对 <strong>每一条记录</strong> 都发生了 <strong>不可重复读的现象</strong>。</p>
+<p>幻读只是重点强调了<strong>读取到了之前读取没有获取到的记录</strong></p>
+<h2 id="3-3-SQL中的四种隔离级别"><a href="#3-3-SQL中的四种隔离级别" class="headerlink" title="3.3 SQL中的四种隔离级别"></a>3.3 SQL中的四种隔离级别</h2><p>面介绍了几种并发事务执行过程中可能遇到的一些问题，这些问题有轻重缓急之分，我们给这些问题 按照严重性来排一下序：</p>
+<blockquote>
+<p>脏写 &gt; 脏读 &gt; 不可重复读 &gt; 幻读</p>
+</blockquote>
+<p>我们愿意舍弃一部分隔离性来换取一部分性能在这里就体现在：设立一些隔离级别，隔离级别越低，并 发问题发生的就越多。 <strong>SQL标准</strong> 中设立了 <strong>4个 隔离级别</strong> ： </p>
+<ul>
+<li><code>READ UNCOMMITTED</code> ：读未提交，在该隔离级别，所有事务都可以看到其他未提交事务的执行结 果。不能避免脏读、不可重复读、幻读。</li>
+<li><code>READ COMMITTED</code> ：读已提交，它满足了隔离的简单定义：一个事务只能看见已经提交事务所做 的改变。这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）。可以避免脏读，但不可 重复读、幻读问题仍然存在。</li>
+<li><code>REPEATABLE READ</code> ：可重复读，事务A在读到一条数据之后，此时事务B对该数据进行了修改并提 交，那么事务A再读该数据，读到的还是原来的内容。可以避免脏读、不可重复读，但幻读问题仍 然存在。这是MySQL的默认隔离级别。 </li>
+<li><code>SERIALIZABLE </code>：可串行化，确保事务可以从一个表中读取相同的行。在这个事务持续期间，禁止 其他事务对该表执行插入、更新和删除操作。所有的并发问题都可以避免，但性能十分低下。能避 免脏读、不可重复读和幻读。 SQL标准 中规定，针对不同的隔离级别，并发事务可以发生不同严重程度的问题，具体情况如下：</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210092024759.png" srcset="/img/loading.gif" lazyload alt="image-20221009202359625"></p>
+<hr>
+<p>脏写 怎么没涉及到？因为脏写这个问题太严重了，不论是哪种隔离级别，都不允许脏写的情况发生。 不同的隔离级别有不同的现象，并有不同的锁和并发机制，隔离级别越高，数据库的并发性能就越差</p>
+<p>4 种事务隔离级别与并发性能的关系如下：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210092032095.png" srcset="/img/loading.gif" lazyload alt="image-20221009203200767"></p>
+<hr>
+<p>不同的数据库厂商对SOL标准中规定的四种隔离级别支持不一样。比如，Oracle 就只支持 <code>READ COMNITTED</code> (默认隔离级别）和 <code>SERIALIZABLE</code> 隔离级别。MySQL虽然支持4种隔离级别，但与SQL标准中所规定的各级隔离级别允许发的问题却有些出入，<code>MySOL </code> 在 <code> REPEATABL EREAD</code> 隔离级别下，是可以禁止幻读问题的发生的，禁止幻读的原因我们在第16章讲解</p>
+<p>MySOL的默认隔离级别为 <code>REPEATABLE READ</code>，我们可以手动修改一下事务的隔离级别:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看隔离级别，MySQL 5.7.20的版本之前：<br>SHOW VARIABLES LIKE &#x27;tx_isolation&#x27;;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- MySQL 5.7.20版本之后，引入transaction_isolation来替换tx_isolation<br>-- 查看隔离级别，MySQL 5.7.20的版本及之后：<br>SHOW VARIABLES LIKE &#x27;transaction_isolation&#x27;;<br><br>+-----------------------+-----------------+<br>| Variable_name         | Value           |<br>+-----------------------+-----------------+<br>| transaction_isolation | REPEATABLE-READ |<br>+-----------------------+-----------------+<br>1 row in set, 1 warning (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 或者不同MySQL版本中都可以使用的：<br>SELECT @@transaction_isolation;<br><br>+-------------------------+<br>| @@transaction_isolation |<br>+-------------------------+<br>| REPEATABLE-READ         |<br>+-------------------------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<p>如果在服务器启动时想改变事务的默认隔离级别，可以修改启动参数transaction_isolation 的值。比如，在启动服务器时指定<code>transaction_iso1ation=SERIALIZABLE</code>，那么事务的默认隔离级别就从原来的 <code>REPEATABLE-READ </code>变成了 <code>SERIALIZABLE</code></p>
+<blockquote>
+<p>小结：数据库规定了多种事务隔离级别，不同隔离级别对应不同的干扰程度，隔离级别械高，数据一致性就越好但并发性越弱;</p>
+</blockquote>
+<h2 id="3-5-如何设置事务的隔离级别"><a href="#3-5-如何设置事务的隔离级别" class="headerlink" title="3.5 如何设置事务的隔离级别"></a>3.5 如何设置事务的隔离级别</h2><p>通过下面的语句修改事务的隔离级别：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET [GLOBAL|SESSION] TRANSACTION ISOLATION LEVEL 隔离级别;<br>#其中，隔离级别格式：<br>&gt; READ UNCOMMITTED<br>&gt; READ COMMITTED<br>&gt; REPEATABLE READ<br>&gt; SERIALIZABLE<br></code></pre></td></tr></table></figure>
+
+<p>或是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET [GLOBAL|SESSION] TRANSACTION_ISOLATION = &#x27;隔离级别&#x27;<br>#其中，隔离级别格式：<br>&gt; READ-UNCOMMITTED<br>&gt; READ-COMMITTED<br>&gt; REPEATABLE-READ<br>&gt; SERIALIZABLE<br></code></pre></td></tr></table></figure>
+
+<p>关于设置时使用 <code>GLOBAL</code> 或 <code>SESSION</code> 的影响： 使用 GLOBAL 关键字（在全局范围影响）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;<br>#或<br>SET GLOBAL TRANSACTION_ISOLATION = &#x27;SERIALIZABLE&#x27;;<br></code></pre></td></tr></table></figure>
+
+<p>则： </p>
+<ul>
+<li><p>当前已经存在的会话无效 </p>
+</li>
+<li><p>只对执行完该语句之后产生的会话起作用</p>
+</li>
+</ul>
+<p>使用 SESSION 关键字（在会话范围影响）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;<br>#或<br>SET SESSION TRANSACTION_ISOLATION = &#x27;SERIALIZABLE&#x27;;<br></code></pre></td></tr></table></figure>
+
+<p>则： </p>
+<ul>
+<li><p>对当前会话的所有后续的事务有效 </p>
+</li>
+<li><p>如果在事务之间执行，则对后续的事务有效 </p>
+</li>
+<li><p>该语句可以在已经开启的事务中间执行，但不会影响当前正在执行的事务</p>
+</li>
+</ul>
+<blockquote>
+<p>小结： 数据库规定了多种事务隔离级别，不同隔离级别对应不同的干扰程度，隔离级别越高，数据一致性 就越好，但并发性越弱。</p>
+</blockquote>
+<h2 id="3-6-不同隔离级别举例"><a href="#3-6-不同隔离级别举例" class="headerlink" title="3.6 不同隔离级别举例"></a>3.6 不同隔离级别举例</h2><p>演示1. 读未提交之脏读 设置隔离级别为 <strong>未提交读</strong> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 切换数据库<br>USE dbtest2;<br><br>-- 建表<br>CREATE TABLE account(<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	NAME VARCHAR(15),<br>	balance DECIMAL(10,2)<br>);<br><br>-- 插入数据<br>INSERT INTO account VALUES(1,&#x27;张三&#x27;,100),(2,&#x27;李四&#x27;,0);<br><br>-- 查看数据<br>SELECT * FROM account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br><br><br>-- 查看隔离级别<br>select @@transaction_isolation;<br>+-------------------------+<br>| @@transaction_isolation |<br>+-------------------------+<br>| REPEATABLE-READ         |<br>+-------------------------+<br>1 row in set (0.00 sec)<br><br>-- 修改隔离级别<br>SET SESSION transaction_isolation = &#x27;read-uncommitted&#x27;;<br>Query OK, 0 rows affected (0.00 sec)<br><br>SELECT @@transaction_isolation; -- READ-UNCOMMITTED<br></code></pre></td></tr></table></figure>
+
+<p>另一个会话也设置为 <code>读未提交</code></p>
+<p>在一个事务中进行修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看数据<br>select * from account;<br><br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br><br>-- 开启事务<br>begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br>-- 修改数据<br>update account set balance = balance + 100 where id =1;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br>-- 此时还没有提交<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在另一个（会话）事务中进行查看:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from account;<br> <br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  200.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>此时之前的哪个事务进行回滚，那么读取到的 <code>200 </code> 就是脏数据，脏读：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 事务回滚<br>rollback;<br>Query OK, 0 rows affected (0.00 sec)<br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210092255248.png" srcset="/img/loading.gif" lazyload alt="image-20221009225455210"></p>
+<hr>
+<p>演示二：脏读问题演示：</p>
+<p>会话一： 张三向李四转账，事务未提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br><br><br>begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>update account set balance = balance+100 where id =2;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br>update account set balance = balance-100 where id =1;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |    0.00 |<br>|  2 | 李四 |  100.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：李四向张三转账</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt;  update account set balance = balance-100 where id =2;<br> -- 这里发现是 “卡住”的状态<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>会话一：回滚事务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">rollback;<br><br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：完成转账</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update account set balance = balance-100 where id =2;<br><br>Query OK, 1 row affected (5.83 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br><br>update account set balance = balance+100 where id =1;<br><br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  200.00 |<br>|  2 | 李四 | -100.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210092255589.png" srcset="/img/loading.gif" lazyload alt="image-20221009225513323"></p>
+<hr>
+<p>演示3：读已提交</p>
+<p>会话一：准备数据，修改隔离级别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 清空数据<br>truncate table account;<br>Query OK, 0 rows affected (0.03 sec)<br><br>-- 插入数据<br>INSERT INTO account VALUES(1,&#x27;张三&#x27;,100),(2,&#x27;李四&#x27;,0);<br>Query OK, 2 rows affected (0.01 sec)<br>Records: 2  Duplicates: 0  Warnings: 0<br><br>-- 查看数据<br>select * from account;<br><br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br><br><br>-- 设置事务隔离级别 读已提交<br>SET SESSION transaction_isolation = &#x27;read-committed&#x27;;<br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：修改隔离级别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 设置事务隔离级别 读已提交<br>SET SESSION transaction_isolation = &#x27;read-committed&#x27;;<br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：开启事务，查看数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话一：开启事务，修改数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>update account set balance =balance-50 where id =1;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br><br>-- 查看数据<br> select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   50.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>会话二：查看数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看数据<br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |  100.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br>-- 发现没有读取到脏数据<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话一：提交事务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">commit;<br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：查看数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查看数据<br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   50.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br>-- 在同一个事务中，读取相同的数据发现 数据不相同 -----》不可重复度<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>两个事务设置重复读：</p>
+<p>会话一、二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SET SESSION transaction_isolation = &#x27;repeatable-read&#x27;;<br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>会话一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select @@transaction_isolation;<br><br>+-------------------------+<br>| @@transaction_isolation |<br>+-------------------------+<br>| REPEATABLE-READ         |<br>+-------------------------+<br>1 row in set (0.00 sec)<br><br>-- 开启事务<br>begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   50.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>会话二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select @@transaction_isolation;<br><br>+-------------------------+<br>| @@transaction_isolation |<br>+-------------------------+<br>| REPEATABLE-READ         |<br>+-------------------------+<br>1 row in set (0.00 sec)<br><br><br>-- 开启事务<br>begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   50.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br><br>update account set balance = balance -10 where id=1;<br>Query OK, 1 row affected (0.00 sec)<br>Rows matched: 1  Changed: 1  Warnings: 0<br><br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   40.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>会话一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from account;<br><br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   50.00 | -- 没有脏读的问题【没有读取到提交的数据】<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">commit;<br>Query OK, 0 rows affected (0.00 sec)<br><br>select * from account;-- 与上面的数据虽然是一样的，但是一个是内存级别，这个是磁盘级别<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   40.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 在事务没有结束前 读取数据 没有不可重复读的问题<br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   50.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br><br><br>-- 提交数据<br>commit;<br>Query OK, 0 rows affected (0.00 sec)<br><br>-- 退出上一个事务后，即可读取到另一个事务修改后的数据<br>select * from account;<br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   40.00 |<br>|  2 | 李四 |    0.00 |<br>+----+------+---------+<br>2 rows in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在隔离级别为 <code>repeatable-read</code> 的情况下，演示不可解决幻读问题：</p>
+<p>会话二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br>select * from account where id=3;<br>Empty set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>会话一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">begin;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>insert into account values(3,&#x27;王五&#x27;,100);<br>Query OK, 1 row affected (0.00 sec)<br><br><br><br>select * from account;<br><br>+----+------+---------+<br>| id | name | balance |<br>+----+------+---------+<br>|  1 | 张三 |   40.00 |<br>|  2 | 李四 |    0.00 |<br>|  3 | 王五 |  100.00 |<br>+----+------+---------+<br>3 rows in set (0.00 sec)<br><br>commit;<br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>会话二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select count(*) from account where id=3;<br><br>+----------+<br>| count(*) |<br>+----------+<br>|        0 | -- 不是说可重复读级别不能解决幻读问题嘛 这是因为mysql使用了间隙锁，优化了可重复读的情况下发生幻读的问题幻读<br>+----------+<br>1 row in set (0.00 sec)<br><br><br>insert into account values(3,&#x27;wangwu&#x27;,1000); -- 证明有幻读<br>ERROR 1062 (23000): Duplicate entry &#x27;3&#x27; for key &#x27;account.PRIMARY&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210102232558.png" srcset="/img/loading.gif" lazyload alt="image-20221010223233263"></p>
+<hr>
+<p>这里要灵活的理解读取的意思，第一次select是读取，第二次的 inser 其实也属于隐式的读取，只不过是在mysq的机制中读取的，插入数据也是要先读取一下有没有主键冲突才能决定是否执行插入</p>
+<p>幻读，并不是说两次读取获取的结果集不同，幻读侧重的方面是某一次的 selet 操作得到的结果所表征的数据状态无法支撑后续的业务操作。</p>
+<p>更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行inser时发现此记录已存在，无法插入，此时就发生了幻读</p>
+<p>在RR隔离级别下，step1、step2 是会正常执行的，step3 则会报错主键冲突，对于事务1的业务来说是执行失败的，这里事务1就是发生了幻读，因为事务1在step1中读取的数据状态并不能支撑后续的业务操作，事务1：“见鬼了，我刚才读到的结果应该可以支持我这样操作才对啊，为什么现在不可以”。事务1不敢相信的又执行了step4，发现和setp1 读取的结果是一样的（RR下的MVCC机制）。此时，幻读无疑已经发生，事务1无论读取多少次，都查不到id&#x3D;3的记录，但它的确无法插入这条他通过读取来认定不存在的记录（此数据已被事务2插入），对于事务1来说，它幻读了</p>
+<p>其实 RR 也是可以避免幻读的，通过对select 操作动加行X锁（独占锁）（SELECTFOR UPDATE 这也正是SERIALIZABLE隔离级别下会隐式为你做的事情）。同时，即便当前记录不存在，比如id&#x3D;3是不存在的，当前事务也会获得一把记录锁（因为InnoDB的行锁锁定的是索引，故记录实体存在与否没关系，存在就加行X锁，不存在就加间隙锁》，其他事务则无法插入此素引的记录，故杜绝了幻读</p>
+<p>在 <code>SERIALIZABLE 隔离级别</code> 下，step1 执行时是会隐式的添加<code> 行（X）锁</code> &#x2F; <code>gap（X）锁</code> 的，从而step2会被阻塞step3会正常执行，待事务1提交后，事务2才能继续执行（主键冲突执行失败），对于事务1来说业务是正确的，成功的阳塞扼杀了扰乱业务的事务2，对于事务1来说他前期读取的结果是可以支撑其后续业务的</p>
+<p>所以MySOL的幻读并非读取两次返回的结果集不同，而是 <strong>事务在插入事先检测不到记录时</strong> ，然后放心大胆地进行插入，惊奇的发现这些数据已经存在了，之前的检测做据如同鬼影一般。</p>
+<h1 id="4-事务的常见分类"><a href="#4-事务的常见分类" class="headerlink" title="4. 事务的常见分类"></a>4. 事务的常见分类</h1><p>从事务理论的角度来看，可以把事务分为以下几种类型：</p>
+<ul>
+<li>扁平事务（Flat Transactions）</li>
+</ul>
+<p>​		扁平事务是事务类型中最简单的一种，但是在实际生产环境中，这可能是使用最频繁的事务，在扁平事务中，所有操作都处于同一层次，其由BEGIN WORK开		始，由COMMIT WORK或ROLLBACK WORK结束，其间的操作是原子的，要么都执行，要么都回滚，因此，扁平事务是应用程序成为原子操作的基本组成模		块。扁平事务虽然简单，但是在实际环境中使用最为频繁，也正因为其简单，使用频繁，故每个数据库系统都实现了对扁平事务的支持、扁平事务的丰要限制		是不能提衣或者回滚事务的某一部分，或分几个步骤提交。</p>
+<ul>
+<li>带有保存点的扁平事务（Flat Transactions with Savepoints）</li>
+</ul>
+<p>​		带有保存点的扁平事务除了支持扁平事务支持的操作外，还允许在事务执行过程中回滚到同一事务中较早的一个状态。这是因为某些事务可能在执行过程中出		现的错误并不会导致所有的操作都无效，放弃整个事务不合乎要求，开销太大</p>
+<p>​		保存点 <code>Savepoint </code>用来通知事务系统应该记住事务当前的状态，以便当之后发生错误时，事务能回到保存点当时的状态。对于扁平的事务来说，隐式的设置		了一个保存点，然而在整个事务中，只有这一个保存点，因此回滚只能会滚到事务开始时的状态</p>
+<ul>
+<li>链事务（Chained Transactions）</li>
+</ul>
+<p>​		链事务是指一个事务由多个子事务链式组成，它可以被视为保存点模式的一个变种。带有保存点的扁平事务，当发生系统崩溃时，所有的保存点都将消失，这		意味着当进行恢复时，事务需要从开始处重新执行，而不能从最近的一个保存点继续执行。</p>
+<p>​		链事务的思想是：在提交一个事务时，释放不需要的数据对象，将必要的处理上下文隐式地传给下一个要开始的事务，前一个子事务的提交操作和下一个子事		务的开始操作合并成一个原子操作，这意味着下一个事务将看到上一个事务的结果，就好像在一个事务中进行一样。这样，在提交子事务时就可以释放不需要		的数据对象，而不必等到整个事务完成后才释放。</p>
+<p>其工作方式如下：</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/fgcy-333/gitnote-images/2022/8/27202210072328047.png" srcset="/img/loading.gif" lazyload alt="image-20221007232833618"></p>
+<hr>
+<p>1、链事务与带有保存点的扁平事务的不同之处体现在：带有保存点的扁平事务能回滚到任意正确的保存点，而链事务中的回滚仅限于当前事务，即只能恢复到最近的一个保存点。<br>2、对于锁的处理，两者也不相同，链事务在执行COMMIT后即程放了当前所持有的锁，而带有保存点的扁平事务不影响迄今为止所持有的锁，</p>
+<ul>
+<li>嵌套事务（Nested Transactions）</li>
+</ul>
+<p>​		嵌套事务是一个层次结构框架，由一个顶层事务（Top-LevelTransaction）控制着各个层次的事务，顶层事务之下嵌套的事务被称为子事务							       （Subtransaction），其控制着每一个局部的变换，子事务本身也可以是嵌套事务因此，嵌套事务的层次结构可以看成是一棵树</p>
+<ul>
+<li>分布式事务（Distributed Transactions）</li>
+</ul>
+<p>​		分布式事务通常是在一个分布式环境下运行的扁平事务，因此，需要根据数据所在位置访问网络中不同节点的数据库资源。</p>
+<p>​		例如，一个银行用户从招商银行的账户向工商银行的账户转账1000元，这里需要用到分布式事务，因为不能仅调用某一家银行的数据库就完成任务</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>WAITING</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
